@@ -1,0 +1,8 @@
+{
+  "_comment": "Hand-maintained rules. partHiddenBy: a part with this layer name is hidden when any worn item declares that slot code. zFallback: layer names missing from the game's zmap, drawn as the named layer instead. useEarlierId: when a hair/face name matches several items, keep only the one with the lowest id. stand2Only: weapons with no standing pose, drawn with the whole body in the two-handed pose. exclude: styles left out of the catalogue.",
+  "partHiddenBy": { "hairOverHead": "H1" },
+  "zFallback": { "capBelowBody": "backCap" },
+  "stand2Only": [1702010],
+  "exclude": [{ "kind": "hair", "gender": "male", "style": "Zeta" }],
+  "useEarlierId": ["Bed Head Hair", "Prince Cut Hair", "Bowl Cut"]
+}

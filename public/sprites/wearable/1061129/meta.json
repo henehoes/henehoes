@@ -1,0 +1,1 @@
+{"id":1061129,"name":"Butterfly Skirt","version":"110","kind":"wearable","equipGroup":"Pants","vslots":["Pn"],"islots":["Pn"],"parts":[{"key":"pants","w":20,"h":21,"origin":{"x":9,"y":6,"isEmpty":false},"maps":{"navel":{"x":-2,"y":-6,"isEmpty":false}},"position":"pantsBelowShoes"}]}

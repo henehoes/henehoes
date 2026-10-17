@@ -1,0 +1,11 @@
+{
+  "_comment": "Name tag and chat bubble rings. They draw no avatar sprite; the game builds them from UI pieces (UI/NameTag.img/<code>: w, c, e; UI/ChatBalloon.img/<code>: nw, n, ne, w, c, e, sw, s, se, arrow, optional head) plus a text colour (clr). Names and Classic ids are from henesys.gg/cashshop. The codes are NOT in that data: they were matched by eye against meowdb.com's in-game previews (ring-previews/<id>.png) and the KMS names on maplestudio.app, so each ring carries a note. White Label Ring has no pieces (the client draws a plain box). Applied by scripts/download-rings.mjs then scripts/build-catalog.mjs.",
+  "rings": [
+    { "name": "White Label Ring", "kind": "nameTag", "classicId": 1112100, "plain": true },
+    { "name": "Chocolate Label Ring", "kind": "nameTag", "classicId": 1112113, "code": 15 },
+    { "name": "Ink-and-Wash Painting Name Tag Ring", "kind": "nameTag", "classicId": 1112223, "code": 59 },
+    { "name": "Kitty Chat Ring", "kind": "chatBalloon", "classicId": 1112215, "code": 18 },
+    { "name": "Chocolate Chat Ring", "kind": "chatBalloon", "classicId": 1112231, "code": 26 },
+    { "name": "Ink-and-Wash Thought Bubble Ring", "kind": "chatBalloon", "classicId": 1112227, "code": 59 }
+  ]
+}

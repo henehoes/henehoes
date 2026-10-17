@@ -1,0 +1,1 @@
+{"id":1702010,"name":"Orange Toy Hammer","version":"110","kind":"wearable","equipGroup":"Weapon","vslots":["Wp"],"islots":["Wp"],"parts":[{"key":"weapon","w":55,"h":55,"origin":{"x":25,"y":7,"isEmpty":false},"maps":{"hand":{"x":-5,"y":32,"isEmpty":false}},"position":"weaponOverArm"}]}

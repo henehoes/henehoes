@@ -1,0 +1,4 @@
+{
+  "_comment": "Hand-maintained placeholders (none at the moment). Items found without a standing-pose sprite are added automatically by scripts/build-catalog.mjs.",
+  "wearables": []
+}

@@ -1,0 +1,1 @@
+{"id":1003050,"name":"Bunny Ears","version":"110","kind":"wearable","equipGroup":"Cap","vslots":["Cp"],"islots":["Cp"],"parts":[{"key":"default","w":55,"h":21,"origin":{"x":35,"y":20,"isEmpty":false},"maps":{"brow":{"x":-11,"y":10,"isEmpty":false}},"position":"capOverHair"}]}

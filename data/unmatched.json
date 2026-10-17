@@ -1,0 +1,25 @@
+[
+  {
+    "name": "Kitty Chat Ring",
+    "suggestions": []
+  },
+  {
+    "name": "Beetle Long Sleeve",
+    "suggestions": []
+  },
+  {
+    "name": "Chocolate Chat Ring",
+    "suggestions": [
+      {
+        "id": 1115030,
+        "name": "Pink Bean Chocolate Chat Ring",
+        "category": "Accessory"
+      },
+      {
+        "id": 1115060,
+        "name": "White Chocolate Chat Ring",
+        "category": "Accessory"
+      }
+    ]
+  }
+]

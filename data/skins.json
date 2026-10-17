@@ -1,0 +1,827 @@
+[
+ {
+  "tone": 0,
+  "parts": [
+   {
+    "key": "arm",
+    "w": 10,
+    "h": 19,
+    "origin": {
+     "x": 5,
+     "y": 9,
+     "isEmpty": false
+    },
+    "maps": {
+     "hand": {
+      "x": -1,
+      "y": 5,
+      "isEmpty": false
+     },
+     "navel": {
+      "x": -13,
+      "y": -1,
+      "isEmpty": false
+     }
+    },
+    "position": "arm",
+    "pos": {
+     "x": 25,
+     "y": 37
+    }
+   },
+   {
+    "key": "body",
+    "w": 21,
+    "h": 31,
+    "origin": {
+     "x": 16,
+     "y": 31,
+     "isEmpty": false
+    },
+    "maps": {
+     "navel": {
+      "x": -8,
+      "y": -21,
+      "isEmpty": false
+     },
+     "neck": {
+      "x": -4,
+      "y": -32,
+      "isEmpty": false
+     }
+    },
+    "position": "body",
+    "pos": {
+     "x": 9,
+     "y": 35
+    }
+   },
+   {
+    "key": "head",
+    "w": 39,
+    "h": 35,
+    "origin": {
+     "x": 19,
+     "y": 17,
+     "isEmpty": false
+    },
+    "maps": {},
+    "position": "head",
+    "pos": {
+     "x": 2,
+     "y": 2
+    }
+   }
+  ]
+ },
+ {
+  "tone": 1,
+  "parts": [
+   {
+    "key": "arm",
+    "w": 10,
+    "h": 19,
+    "origin": {
+     "x": 5,
+     "y": 9,
+     "isEmpty": false
+    },
+    "maps": {
+     "hand": {
+      "x": -1,
+      "y": 5,
+      "isEmpty": false
+     },
+     "navel": {
+      "x": -13,
+      "y": -1,
+      "isEmpty": false
+     }
+    },
+    "position": "arm",
+    "pos": {
+     "x": 25,
+     "y": 37
+    }
+   },
+   {
+    "key": "body",
+    "w": 21,
+    "h": 31,
+    "origin": {
+     "x": 16,
+     "y": 31,
+     "isEmpty": false
+    },
+    "maps": {
+     "navel": {
+      "x": -8,
+      "y": -21,
+      "isEmpty": false
+     },
+     "neck": {
+      "x": -4,
+      "y": -32,
+      "isEmpty": false
+     }
+    },
+    "position": "body",
+    "pos": {
+     "x": 9,
+     "y": 35
+    }
+   },
+   {
+    "key": "head",
+    "w": 39,
+    "h": 35,
+    "origin": {
+     "x": 19,
+     "y": 17,
+     "isEmpty": false
+    },
+    "maps": {},
+    "position": "head",
+    "pos": {
+     "x": 2,
+     "y": 2
+    }
+   }
+  ]
+ },
+ {
+  "tone": 2,
+  "parts": [
+   {
+    "key": "arm",
+    "w": 10,
+    "h": 19,
+    "origin": {
+     "x": 5,
+     "y": 9,
+     "isEmpty": false
+    },
+    "maps": {
+     "hand": {
+      "x": -1,
+      "y": 5,
+      "isEmpty": false
+     },
+     "navel": {
+      "x": -13,
+      "y": -1,
+      "isEmpty": false
+     }
+    },
+    "position": "arm",
+    "pos": {
+     "x": 25,
+     "y": 37
+    }
+   },
+   {
+    "key": "body",
+    "w": 21,
+    "h": 31,
+    "origin": {
+     "x": 16,
+     "y": 31,
+     "isEmpty": false
+    },
+    "maps": {
+     "navel": {
+      "x": -8,
+      "y": -21,
+      "isEmpty": false
+     },
+     "neck": {
+      "x": -4,
+      "y": -32,
+      "isEmpty": false
+     }
+    },
+    "position": "body",
+    "pos": {
+     "x": 9,
+     "y": 35
+    }
+   },
+   {
+    "key": "head",
+    "w": 39,
+    "h": 35,
+    "origin": {
+     "x": 19,
+     "y": 17,
+     "isEmpty": false
+    },
+    "maps": {},
+    "position": "head",
+    "pos": {
+     "x": 2,
+     "y": 2
+    }
+   }
+  ]
+ },
+ {
+  "tone": 3,
+  "parts": [
+   {
+    "key": "arm",
+    "w": 10,
+    "h": 19,
+    "origin": {
+     "x": 5,
+     "y": 9,
+     "isEmpty": false
+    },
+    "maps": {
+     "hand": {
+      "x": -1,
+      "y": 5,
+      "isEmpty": false
+     },
+     "navel": {
+      "x": -13,
+      "y": -1,
+      "isEmpty": false
+     }
+    },
+    "position": "arm",
+    "pos": {
+     "x": 25,
+     "y": 37
+    }
+   },
+   {
+    "key": "body",
+    "w": 21,
+    "h": 31,
+    "origin": {
+     "x": 16,
+     "y": 31,
+     "isEmpty": false
+    },
+    "maps": {
+     "navel": {
+      "x": -8,
+      "y": -21,
+      "isEmpty": false
+     },
+     "neck": {
+      "x": -4,
+      "y": -32,
+      "isEmpty": false
+     }
+    },
+    "position": "body",
+    "pos": {
+     "x": 9,
+     "y": 35
+    }
+   },
+   {
+    "key": "head",
+    "w": 39,
+    "h": 35,
+    "origin": {
+     "x": 19,
+     "y": 17,
+     "isEmpty": false
+    },
+    "maps": {},
+    "position": "head",
+    "pos": {
+     "x": 2,
+     "y": 2
+    }
+   }
+  ]
+ },
+ {
+  "tone": 4,
+  "parts": [
+   {
+    "key": "arm",
+    "w": 10,
+    "h": 19,
+    "origin": {
+     "x": 5,
+     "y": 9,
+     "isEmpty": false
+    },
+    "maps": {
+     "hand": {
+      "x": -1,
+      "y": 5,
+      "isEmpty": false
+     },
+     "navel": {
+      "x": -13,
+      "y": -1,
+      "isEmpty": false
+     }
+    },
+    "position": "arm",
+    "pos": {
+     "x": 25,
+     "y": 37
+    }
+   },
+   {
+    "key": "body",
+    "w": 21,
+    "h": 31,
+    "origin": {
+     "x": 16,
+     "y": 31,
+     "isEmpty": false
+    },
+    "maps": {
+     "navel": {
+      "x": -8,
+      "y": -21,
+      "isEmpty": false
+     },
+     "neck": {
+      "x": -4,
+      "y": -32,
+      "isEmpty": false
+     }
+    },
+    "position": "body",
+    "pos": {
+     "x": 9,
+     "y": 35
+    }
+   },
+   {
+    "key": "head",
+    "w": 39,
+    "h": 35,
+    "origin": {
+     "x": 19,
+     "y": 17,
+     "isEmpty": false
+    },
+    "maps": {},
+    "position": "head",
+    "pos": {
+     "x": 2,
+     "y": 2
+    }
+   }
+  ]
+ },
+ {
+  "tone": 5,
+  "parts": [
+   {
+    "key": "arm",
+    "w": 10,
+    "h": 19,
+    "origin": {
+     "x": 5,
+     "y": 9,
+     "isEmpty": false
+    },
+    "maps": {
+     "hand": {
+      "x": -1,
+      "y": 5,
+      "isEmpty": false
+     },
+     "navel": {
+      "x": -13,
+      "y": -1,
+      "isEmpty": false
+     }
+    },
+    "position": "arm",
+    "pos": {
+     "x": 25,
+     "y": 37
+    }
+   },
+   {
+    "key": "body",
+    "w": 21,
+    "h": 31,
+    "origin": {
+     "x": 16,
+     "y": 31,
+     "isEmpty": false
+    },
+    "maps": {
+     "navel": {
+      "x": -8,
+      "y": -21,
+      "isEmpty": false
+     },
+     "neck": {
+      "x": -4,
+      "y": -32,
+      "isEmpty": false
+     }
+    },
+    "position": "body",
+    "pos": {
+     "x": 9,
+     "y": 35
+    }
+   },
+   {
+    "key": "head",
+    "w": 39,
+    "h": 35,
+    "origin": {
+     "x": 19,
+     "y": 17,
+     "isEmpty": false
+    },
+    "maps": {},
+    "position": "head",
+    "pos": {
+     "x": 2,
+     "y": 2
+    }
+   }
+  ]
+ },
+ {
+  "tone": 9,
+  "parts": [
+   {
+    "key": "arm",
+    "w": 10,
+    "h": 19,
+    "origin": {
+     "x": 5,
+     "y": 9,
+     "isEmpty": false
+    },
+    "maps": {
+     "hand": {
+      "x": -1,
+      "y": 5,
+      "isEmpty": false
+     },
+     "navel": {
+      "x": -13,
+      "y": -1,
+      "isEmpty": false
+     }
+    },
+    "position": "arm",
+    "pos": {
+     "x": 25,
+     "y": 37
+    }
+   },
+   {
+    "key": "body",
+    "w": 21,
+    "h": 31,
+    "origin": {
+     "x": 16,
+     "y": 31,
+     "isEmpty": false
+    },
+    "maps": {
+     "navel": {
+      "x": -8,
+      "y": -21,
+      "isEmpty": false
+     },
+     "neck": {
+      "x": -4,
+      "y": -32,
+      "isEmpty": false
+     }
+    },
+    "position": "body",
+    "pos": {
+     "x": 9,
+     "y": 35
+    }
+   },
+   {
+    "key": "head",
+    "w": 39,
+    "h": 35,
+    "origin": {
+     "x": 19,
+     "y": 17,
+     "isEmpty": false
+    },
+    "maps": {},
+    "position": "head",
+    "pos": {
+     "x": 2,
+     "y": 2
+    }
+   }
+  ]
+ },
+ {
+  "tone": 10,
+  "parts": [
+   {
+    "key": "arm",
+    "w": 10,
+    "h": 19,
+    "origin": {
+     "x": 5,
+     "y": 9,
+     "isEmpty": false
+    },
+    "maps": {
+     "hand": {
+      "x": -1,
+      "y": 5,
+      "isEmpty": false
+     },
+     "navel": {
+      "x": -13,
+      "y": -1,
+      "isEmpty": false
+     }
+    },
+    "position": "arm",
+    "pos": {
+     "x": 25,
+     "y": 37
+    }
+   },
+   {
+    "key": "body",
+    "w": 21,
+    "h": 31,
+    "origin": {
+     "x": 16,
+     "y": 31,
+     "isEmpty": false
+    },
+    "maps": {
+     "navel": {
+      "x": -8,
+      "y": -21,
+      "isEmpty": false
+     },
+     "neck": {
+      "x": -4,
+      "y": -32,
+      "isEmpty": false
+     }
+    },
+    "position": "body",
+    "pos": {
+     "x": 9,
+     "y": 35
+    }
+   },
+   {
+    "key": "head",
+    "w": 39,
+    "h": 35,
+    "origin": {
+     "x": 19,
+     "y": 17,
+     "isEmpty": false
+    },
+    "maps": {},
+    "position": "head",
+    "pos": {
+     "x": 2,
+     "y": 2
+    }
+   }
+  ]
+ },
+ {
+  "tone": 11,
+  "parts": [
+   {
+    "key": "arm",
+    "w": 10,
+    "h": 19,
+    "origin": {
+     "x": 5,
+     "y": 9,
+     "isEmpty": false
+    },
+    "maps": {
+     "hand": {
+      "x": -1,
+      "y": 5,
+      "isEmpty": false
+     },
+     "navel": {
+      "x": -13,
+      "y": -1,
+      "isEmpty": false
+     }
+    },
+    "position": "arm",
+    "pos": {
+     "x": 25,
+     "y": 37
+    }
+   },
+   {
+    "key": "body",
+    "w": 21,
+    "h": 31,
+    "origin": {
+     "x": 16,
+     "y": 31,
+     "isEmpty": false
+    },
+    "maps": {
+     "navel": {
+      "x": -8,
+      "y": -21,
+      "isEmpty": false
+     },
+     "neck": {
+      "x": -4,
+      "y": -32,
+      "isEmpty": false
+     }
+    },
+    "position": "body",
+    "pos": {
+     "x": 9,
+     "y": 35
+    }
+   },
+   {
+    "key": "head",
+    "w": 39,
+    "h": 35,
+    "origin": {
+     "x": 19,
+     "y": 17,
+     "isEmpty": false
+    },
+    "maps": {},
+    "position": "head",
+    "pos": {
+     "x": 2,
+     "y": 2
+    }
+   }
+  ]
+ },
+ {
+  "tone": 12,
+  "parts": [
+   {
+    "key": "arm",
+    "w": 10,
+    "h": 19,
+    "origin": {
+     "x": 5,
+     "y": 9,
+     "isEmpty": false
+    },
+    "maps": {
+     "hand": {
+      "x": -1,
+      "y": 5,
+      "isEmpty": false
+     },
+     "navel": {
+      "x": -13,
+      "y": -1,
+      "isEmpty": false
+     }
+    },
+    "position": "arm",
+    "pos": {
+     "x": 25,
+     "y": 37
+    }
+   },
+   {
+    "key": "body",
+    "w": 21,
+    "h": 31,
+    "origin": {
+     "x": 16,
+     "y": 31,
+     "isEmpty": false
+    },
+    "maps": {
+     "navel": {
+      "x": -8,
+      "y": -21,
+      "isEmpty": false
+     },
+     "neck": {
+      "x": -4,
+      "y": -32,
+      "isEmpty": false
+     }
+    },
+    "position": "body",
+    "pos": {
+     "x": 9,
+     "y": 35
+    }
+   },
+   {
+    "key": "head",
+    "w": 39,
+    "h": 35,
+    "origin": {
+     "x": 19,
+     "y": 17,
+     "isEmpty": false
+    },
+    "maps": {},
+    "position": "head",
+    "pos": {
+     "x": 2,
+     "y": 2
+    }
+   }
+  ]
+ },
+ {
+  "tone": 13,
+  "parts": [
+   {
+    "key": "arm",
+    "w": 10,
+    "h": 19,
+    "origin": {
+     "x": 5,
+     "y": 9,
+     "isEmpty": false
+    },
+    "maps": {
+     "hand": {
+      "x": -1,
+      "y": 5,
+      "isEmpty": false
+     },
+     "navel": {
+      "x": -13,
+      "y": -1,
+      "isEmpty": false
+     }
+    },
+    "position": "arm",
+    "pos": {
+     "x": 25,
+     "y": 37
+    }
+   },
+   {
+    "key": "body",
+    "w": 21,
+    "h": 31,
+    "origin": {
+     "x": 16,
+     "y": 31,
+     "isEmpty": false
+    },
+    "maps": {
+     "navel": {
+      "x": -8,
+      "y": -21,
+      "isEmpty": false
+     },
+     "neck": {
+      "x": -4,
+      "y": -32,
+      "isEmpty": false
+     }
+    },
+    "position": "body",
+    "pos": {
+     "x": 9,
+     "y": 35
+    }
+   },
+   {
+    "key": "head",
+    "w": 39,
+    "h": 35,
+    "origin": {
+     "x": 19,
+     "y": 17,
+     "isEmpty": false
+    },
+    "maps": {},
+    "position": "head",
+    "pos": {
+     "x": 2,
+     "y": 2
+    }
+   }
+  ]
+ }
+]

@@ -1,0 +1,51 @@
+# Sections are "kind gender". Gender comes from the lists in the Nexon post.
+# hair male
+Bed Head Hair
+Prince Cut Hair
+Short Regent Cut
+Dreamcatcher
+Metrosexual Hair
+Antagonist
+Bowl Cut
+Line Scratch
+Mohecan Shaggy 'Do
+Mane
+# hair female
+Lovely Ladyhawk
+Ponytail-to-the-Side
+Vivacious Wavy Hair
+Angelica Hair
+Caspia Hair
+Rose
+Bridget
+Jolie
+Holla' Back Do
+Veronica
+Rastafari Hair
+Penelope Hair
+# face male
+Innocent Gaze
+Distant Gaze
+Rebel's Fire
+Worrisome Glare
+Alert Face
+Overjoyed Smile
+Smart Aleck
+Cool Guy Gaze
+Insomniac Daze
+Look of Wonder
+Wisdom Glance
+Babyface Pout
+# face female
+Prim Face
+Posh Look
+Bulbous-Eyed Face
+Round Eyed Face
+Beauty Stare
+Strong Stare
+Curious Look
+Hera's Radiance
+Gentle Glow
+Hopeless Gaze
+Wide-eyed Girl
+Babyface Pout

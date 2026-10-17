@@ -1,0 +1,3879 @@
+{
+  "wearables": [
+    {
+      "id": 1002367,
+      "name": "Angel Halo",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": false
+    },
+    {
+      "id": 1052030,
+      "name": "Toga",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false
+    },
+    {
+      "id": 1102005,
+      "name": "Baby Angel Wings",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Cape",
+      "ambiguous": false
+    },
+    {
+      "id": 1372086,
+      "name": "Angel Wand",
+      "version": "110",
+      "category": "One-Handed Weapon",
+      "subCategory": "Wand",
+      "ambiguous": false
+    },
+    {
+      "id": 1702025,
+      "name": "Cherub's Bow",
+      "version": "110",
+      "category": "One-Handed Weapon",
+      "subCategory": "Cash",
+      "ambiguous": false
+    },
+    {
+      "id": 1002237,
+      "name": "Blue Cap",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": false
+    },
+    {
+      "id": 1040005,
+      "name": "Orange Baseball Jacket",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Top",
+      "ambiguous": false
+    },
+    {
+      "id": 1041125,
+      "name": "Rainbow Knit",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Top",
+      "ambiguous": false
+    },
+    {
+      "id": 1062015,
+      "name": "Ripped Jeans",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Bottom",
+      "ambiguous": false
+    },
+    {
+      "id": 1702010,
+      "name": "Orange Toy Hammer",
+      "version": "110",
+      "category": "One-Handed Weapon",
+      "subCategory": "Cash",
+      "ambiguous": false
+    },
+    {
+      "id": 1002298,
+      "name": "Blue Bucket Hat",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": false
+    },
+    {
+      "id": 1042086,
+      "name": "Tourist T",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Top",
+      "ambiguous": false
+    },
+    {
+      "id": 1062039,
+      "name": "White Jeans",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Bottom",
+      "ambiguous": false
+    },
+    {
+      "id": 1022004,
+      "name": "Black Sunglasses",
+      "version": "110",
+      "category": "Accessory",
+      "subCategory": "Eye Decoration",
+      "ambiguous": false
+    },
+    {
+      "id": 1002031,
+      "name": "Cat Hat",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": false
+    },
+    {
+      "id": 1051002,
+      "name": "Cat Suit",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false
+    },
+    {
+      "id": 1072186,
+      "name": "Gold Kitty Slippers",
+      "version": "210.1.1",
+      "category": "Armor",
+      "subCategory": "Shoes",
+      "ambiguous": false
+    },
+    {
+      "id": 1002429,
+      "name": "Meshcap",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": false
+    },
+    {
+      "id": 1042040,
+      "name": "Pink Allstar",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Top",
+      "ambiguous": false
+    },
+    {
+      "id": 1062021,
+      "name": "Jean Shorts",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Bottom",
+      "ambiguous": false
+    },
+    {
+      "id": 1001013,
+      "name": "Beret",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": false
+    },
+    {
+      "id": 1041009,
+      "name": "Red Sailor Shirt",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Top",
+      "ambiguous": false
+    },
+    {
+      "id": 1061007,
+      "name": "Red Sailor Skirt",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Bottom",
+      "ambiguous": false
+    },
+    {
+      "id": 1072332,
+      "name": "Black Enamel Shoes",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Shoes",
+      "ambiguous": false
+    },
+    {
+      "id": 1002443,
+      "name": "Patissier Hat",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": false
+    },
+    {
+      "id": 1052037,
+      "name": "Patissier Uniform",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false
+    },
+    {
+      "id": 1702012,
+      "name": "Yellow Spatula",
+      "version": "110",
+      "category": "One-Handed Weapon",
+      "subCategory": "Cash",
+      "ambiguous": false
+    },
+    {
+      "id": 1003050,
+      "name": "Bunny Ears",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": false
+    },
+    {
+      "id": 1002738,
+      "name": "Bunny Earmuffs",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": false
+    },
+    {
+      "id": 1102137,
+      "name": "Orange Mushroom Balloon",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Cape",
+      "ambiguous": false
+    },
+    {
+      "id": 1082171,
+      "name": "Blue Watch",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Glove",
+      "ambiguous": false
+    },
+    {
+      "id": 1041109,
+      "name": "Red Trainer Jacket",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Top",
+      "ambiguous": false
+    },
+    {
+      "id": 1061072,
+      "name": "Red Trainer Pants",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Bottom",
+      "ambiguous": false
+    },
+    {
+      "id": 1072379,
+      "name": "Yellow Rainbow Sneaks",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Shoes",
+      "ambiguous": false
+    },
+    {
+      "id": 1012083,
+      "name": "Dollish Pink",
+      "version": "110",
+      "category": "Accessory",
+      "subCategory": "Face Accessory",
+      "ambiguous": false
+    },
+    {
+      "id": 1051173,
+      "name": "Purple Dorothy Dress",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false
+    },
+    {
+      "id": 1002943,
+      "name": "Sailor Hat",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": false
+    },
+    {
+      "id": 1050152,
+      "name": "Sailor Outfit",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false
+    },
+    {
+      "id": 1051139,
+      "name": "White Ribboned Sailor Dress",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false
+    },
+    {
+      "id": 1042030,
+      "name": "Slime T-Shirt",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Top",
+      "ambiguous": false
+    },
+    {
+      "id": 1072235,
+      "name": "Slime Slippers",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Shoes",
+      "ambiguous": false
+    },
+    {
+      "id": 1032052,
+      "name": "Slime Earrings",
+      "version": "110",
+      "category": "Accessory",
+      "subCategory": "Earrings",
+      "ambiguous": false
+    },
+    {
+      "id": 1002501,
+      "name": "Reggae Hat",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": false
+    },
+    {
+      "id": 1042066,
+      "name": "Orange Hooded Shirt",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Top",
+      "ambiguous": false
+    },
+    {
+      "id": 1042042,
+      "name": "White Hooded Vest",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Top",
+      "ambiguous": false
+    },
+    {
+      "id": 1061129,
+      "name": "Butterfly Skirt",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Bottom",
+      "ambiguous": false
+    },
+    {
+      "id": 1062005,
+      "name": "Lined Hip-Hop Pants",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Bottom",
+      "ambiguous": false
+    },
+    {
+      "id": 1003998,
+      "name": "White Choco Bunny",
+      "version": "210.1.1",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": true
+    },
+    {
+      "id": 1050304,
+      "name": "Splash Choco Boy",
+      "version": "210.1.1",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false
+    },
+    {
+      "id": 1051372,
+      "name": "Splash Choco Girl",
+      "version": "210.1.1",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false
+    },
+    {
+      "id": 1072876,
+      "name": "Cacao Bear Shoes",
+      "version": "210.1.1",
+      "category": "Armor",
+      "subCategory": "Shoes",
+      "ambiguous": true
+    },
+    {
+      "id": 1082565,
+      "name": "Chocolate Ribbon",
+      "version": "210.1.1",
+      "category": "Armor",
+      "subCategory": "Glove",
+      "ambiguous": true
+    },
+    {
+      "id": 1702468,
+      "name": "Soft Chocolate Fondue Scepter",
+      "version": "210.1.1",
+      "category": "One-Handed Weapon",
+      "subCategory": "Cash",
+      "ambiguous": false
+    },
+    {
+      "id": 1012450,
+      "name": "Choco Candy Cookie",
+      "version": "210.1.1",
+      "category": "Accessory",
+      "subCategory": "Face Accessory",
+      "ambiguous": false
+    },
+    {
+      "id": 1004026,
+      "name": "Black Cat Beanie",
+      "version": "210.1.1",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": false
+    },
+    {
+      "id": 1004027,
+      "name": "Sky Blue Cat Beanie",
+      "version": "210.1.1",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": false
+    },
+    {
+      "id": 1004028,
+      "name": "Orange Cat Beanie",
+      "version": "210.1.1",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": false
+    },
+    {
+      "id": 1003807,
+      "name": "Heart Sunglasses",
+      "version": "210.1.1",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": false
+    },
+    {
+      "id": 1042287,
+      "name": "Red Check Rider",
+      "version": "210.1.1",
+      "category": "Armor",
+      "subCategory": "Top",
+      "ambiguous": false
+    },
+    {
+      "id": 1062185,
+      "name": "Violet Dot Jeans",
+      "version": "210.1.1",
+      "category": "Armor",
+      "subCategory": "Bottom",
+      "ambiguous": false
+    },
+    {
+      "id": 1042238,
+      "name": "Pink Bunny Sweater",
+      "version": "210.1.1",
+      "category": "Armor",
+      "subCategory": "Top",
+      "ambiguous": true
+    },
+    {
+      "id": 1062174,
+      "name": "Hearts Tights",
+      "version": "210.1.1",
+      "category": "Armor",
+      "subCategory": "Bottom",
+      "ambiguous": false
+    },
+    {
+      "id": 1072529,
+      "name": "Pink Elephant Slippers",
+      "version": "210.1.1",
+      "category": "Armor",
+      "subCategory": "Shoes",
+      "ambiguous": false
+    },
+    {
+      "id": 1042260,
+      "name": "Loose Fit Sweater",
+      "version": "210.1.1",
+      "category": "Armor",
+      "subCategory": "Top",
+      "ambiguous": false
+    },
+    {
+      "id": 1062171,
+      "name": "Stocking Shorts",
+      "version": "210.1.1",
+      "category": "Armor",
+      "subCategory": "Bottom",
+      "ambiguous": false
+    },
+    {
+      "id": 1702445,
+      "name": "Detective Glass",
+      "version": "210.1.1",
+      "category": "One-Handed Weapon",
+      "subCategory": "Cash",
+      "ambiguous": false
+    },
+    {
+      "id": 1022188,
+      "name": "Blank Eye Patch",
+      "version": "210.1.1",
+      "category": "Accessory",
+      "subCategory": "Eye Decoration",
+      "ambiguous": false
+    },
+    {
+      "id": 1012374,
+      "name": "Heartbreaker Lips",
+      "version": "210.1.1",
+      "category": "Accessory",
+      "subCategory": "Face Accessory",
+      "ambiguous": false
+    },
+    {
+      "id": 1702405,
+      "name": "Starlight Heart Scepter",
+      "version": "210.1.1",
+      "category": "One-Handed Weapon",
+      "subCategory": "Cash",
+      "ambiguous": false
+    },
+    {
+      "id": 1042032,
+      "name": "Beetle Long Sleeve",
+      "version": "110",
+      "category": "Armor",
+      "subCategory": "Top"
+    }
+  ],
+  "styles": [
+    {
+      "style": "Bed Head Hair",
+      "matchedAs": "Bed Head Hair",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3239,
+      "colours": [
+        {
+          "id": 32390,
+          "name": "Black Bed Head Hair",
+          "colour": 0
+        },
+        {
+          "id": 32391,
+          "name": "Red Bed Head Hair",
+          "colour": 1
+        },
+        {
+          "id": 32392,
+          "name": "Orange Bed Head Hair",
+          "colour": 2
+        },
+        {
+          "id": 32393,
+          "name": "Blonde Bed Head Hair",
+          "colour": 3
+        },
+        {
+          "id": 32394,
+          "name": "Green Bed Head Hair",
+          "colour": 4
+        },
+        {
+          "id": 32395,
+          "name": "Blue Bed Head Hair",
+          "colour": 5
+        },
+        {
+          "id": 32396,
+          "name": "Purple Bed Head Hair",
+          "colour": 6
+        },
+        {
+          "id": 32397,
+          "name": "Brown Bed Head Hair",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Bed Head Hair",
+      "matchedAs": "Bed Head Hair",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3325,
+      "colours": [
+        {
+          "id": 33250,
+          "name": "Black Bed Head Hair",
+          "colour": 0
+        },
+        {
+          "id": 33251,
+          "name": "Red Bed Head Hair",
+          "colour": 1
+        },
+        {
+          "id": 33252,
+          "name": "Orange Bed Head Hair",
+          "colour": 2
+        },
+        {
+          "id": 33253,
+          "name": "Blonde Bed Head Hair",
+          "colour": 3
+        },
+        {
+          "id": 33254,
+          "name": "Green Bed Head Hair",
+          "colour": 4
+        },
+        {
+          "id": 33255,
+          "name": "Blue Bed Head Hair",
+          "colour": 5
+        },
+        {
+          "id": 33256,
+          "name": "Purple Bed Head Hair",
+          "colour": 6
+        },
+        {
+          "id": 33257,
+          "name": "Brown Bed Head Hair",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Prince Cut Hair",
+      "matchedAs": "Prince Cut",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3300,
+      "colours": [
+        {
+          "id": 33000,
+          "name": "Black Prince Cut",
+          "colour": 0
+        },
+        {
+          "id": 33001,
+          "name": "Red Prince Cut",
+          "colour": 1
+        },
+        {
+          "id": 33002,
+          "name": "Orange Prince Cut",
+          "colour": 2
+        },
+        {
+          "id": 33003,
+          "name": "Blonde Prince Cut",
+          "colour": 3
+        },
+        {
+          "id": 33004,
+          "name": "Green Prince Cut",
+          "colour": 4
+        },
+        {
+          "id": 33005,
+          "name": "Blue Prince Cut",
+          "colour": 5
+        },
+        {
+          "id": 33006,
+          "name": "Purple Prince Cut",
+          "colour": 6
+        },
+        {
+          "id": 33007,
+          "name": "Brown Prince Cut",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Prince Cut Hair",
+      "matchedAs": "Prince Cut",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3306,
+      "colours": [
+        {
+          "id": 33060,
+          "name": "Black Prince Cut",
+          "colour": 0
+        },
+        {
+          "id": 33061,
+          "name": "Red Prince Cut",
+          "colour": 1
+        },
+        {
+          "id": 33062,
+          "name": "Orange Prince Cut",
+          "colour": 2
+        },
+        {
+          "id": 33063,
+          "name": "Blonde Prince Cut",
+          "colour": 3
+        },
+        {
+          "id": 33064,
+          "name": "Green Prince Cut",
+          "colour": 4
+        },
+        {
+          "id": 33065,
+          "name": "Blue Prince Cut",
+          "colour": 5
+        },
+        {
+          "id": 33066,
+          "name": "Purple Prince Cut",
+          "colour": 6
+        },
+        {
+          "id": 33067,
+          "name": "Brown Prince Cut",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Dreamcatcher",
+      "matchedAs": "Dreamcatcher",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3080,
+      "colours": [
+        {
+          "id": 30800,
+          "name": "Black Dreamcatcher",
+          "colour": 0
+        },
+        {
+          "id": 30801,
+          "name": "Red Dreamcatcher",
+          "colour": 1
+        },
+        {
+          "id": 30802,
+          "name": "Orange Dreamcatcher",
+          "colour": 2
+        },
+        {
+          "id": 30803,
+          "name": "Blonde Dreamcatcher",
+          "colour": 3
+        },
+        {
+          "id": 30804,
+          "name": "Green Dreamcatcher",
+          "colour": 4
+        },
+        {
+          "id": 30805,
+          "name": "Blue Dreamcatcher",
+          "colour": 5
+        },
+        {
+          "id": 30806,
+          "name": "Purple Dreamcatcher",
+          "colour": 6
+        },
+        {
+          "id": 30807,
+          "name": "Brown Dreamcatcher",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Metrosexual Hair",
+      "matchedAs": "Metrosexual",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3026,
+      "colours": [
+        {
+          "id": 30260,
+          "name": "Black Metrosexual",
+          "colour": 0
+        },
+        {
+          "id": 30261,
+          "name": "Red Metrosexual",
+          "colour": 1
+        },
+        {
+          "id": 30262,
+          "name": "Orange Metrosexual",
+          "colour": 2
+        },
+        {
+          "id": 30263,
+          "name": "Blonde Metrosexual",
+          "colour": 3
+        },
+        {
+          "id": 30264,
+          "name": "Green Metrosexual",
+          "colour": 4
+        },
+        {
+          "id": 30265,
+          "name": "Blue Metrosexual",
+          "colour": 5
+        },
+        {
+          "id": 30266,
+          "name": "Purple Metrosexual",
+          "colour": 6
+        },
+        {
+          "id": 30267,
+          "name": "Brown Metrosexual",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Antagonist",
+      "matchedAs": "Antagonist",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3013,
+      "colours": [
+        {
+          "id": 30130,
+          "name": "Black Antagonist",
+          "colour": 0
+        },
+        {
+          "id": 30131,
+          "name": "Red Antagonist",
+          "colour": 1
+        },
+        {
+          "id": 30132,
+          "name": "Orange Antagonist",
+          "colour": 2
+        },
+        {
+          "id": 30133,
+          "name": "Blonde Antagonist",
+          "colour": 3
+        },
+        {
+          "id": 30134,
+          "name": "Green Antagonist",
+          "colour": 4
+        },
+        {
+          "id": 30135,
+          "name": "Blue Antagonist",
+          "colour": 5
+        },
+        {
+          "id": 30136,
+          "name": "Purple Antagonist",
+          "colour": 6
+        },
+        {
+          "id": 30137,
+          "name": "Brown Antagonist",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Bowl Cut",
+      "matchedAs": "Bowl Cut",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3019,
+      "colours": [
+        {
+          "id": 30190,
+          "name": "Black Bowl Cut",
+          "colour": 0
+        },
+        {
+          "id": 30191,
+          "name": "Red Bowl Cut",
+          "colour": 1
+        },
+        {
+          "id": 30192,
+          "name": "Orange Bowl Cut",
+          "colour": 2
+        },
+        {
+          "id": 30193,
+          "name": "Blonde Bowl Cut",
+          "colour": 3
+        },
+        {
+          "id": 30194,
+          "name": "Green Bowl Cut",
+          "colour": 4
+        },
+        {
+          "id": 30195,
+          "name": "Blue Bowl Cut",
+          "colour": 5
+        },
+        {
+          "id": 30196,
+          "name": "Purple Bowl Cut",
+          "colour": 6
+        },
+        {
+          "id": 30197,
+          "name": "Brown Bowl Cut",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Bowl Cut",
+      "matchedAs": "Bowl Cut",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3193,
+      "colours": [
+        {
+          "id": 31930,
+          "name": "Black Bowl Cut",
+          "colour": 0
+        },
+        {
+          "id": 31931,
+          "name": "Red Bowl Cut",
+          "colour": 1
+        },
+        {
+          "id": 31932,
+          "name": "Orange Bowl Cut",
+          "colour": 2
+        },
+        {
+          "id": 31933,
+          "name": "Blonde Bowl Cut",
+          "colour": 3
+        },
+        {
+          "id": 31934,
+          "name": "Green Bowl Cut",
+          "colour": 4
+        },
+        {
+          "id": 31935,
+          "name": "Blue Bowl Cut",
+          "colour": 5
+        },
+        {
+          "id": 31936,
+          "name": "Purple Bowl Cut",
+          "colour": 6
+        },
+        {
+          "id": 31937,
+          "name": "Brown Bowl Cut",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Line Scratch",
+      "matchedAs": "Line Scratch",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3017,
+      "colours": [
+        {
+          "id": 30170,
+          "name": "Black Line Scratch",
+          "colour": 0
+        },
+        {
+          "id": 30171,
+          "name": "Red Line Scratch",
+          "colour": 1
+        },
+        {
+          "id": 30172,
+          "name": "Orange Line Scratch",
+          "colour": 2
+        },
+        {
+          "id": 30173,
+          "name": "Blonde Line Scratch",
+          "colour": 3
+        },
+        {
+          "id": 30174,
+          "name": "Green Line Scratch",
+          "colour": 4
+        },
+        {
+          "id": 30175,
+          "name": "Blue Line Scratch",
+          "colour": 5
+        },
+        {
+          "id": 30176,
+          "name": "Purple Line Scratch",
+          "colour": 6
+        },
+        {
+          "id": 30177,
+          "name": "Brown Line Scratch",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Mohecan Shaggy 'Do",
+      "matchedAs": "Mohecan Shaggy Do",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3028,
+      "colours": [
+        {
+          "id": 30280,
+          "name": "Black Mohecan Shaggy Do",
+          "colour": 0
+        },
+        {
+          "id": 30281,
+          "name": "Red Mohecan Shaggy Do",
+          "colour": 1
+        },
+        {
+          "id": 30282,
+          "name": "Orange Mohecan Shaggy Do",
+          "colour": 2
+        },
+        {
+          "id": 30283,
+          "name": "Blonde Mohecan Shaggy Do",
+          "colour": 3
+        },
+        {
+          "id": 30284,
+          "name": "Green Mohecan Shaggy Do",
+          "colour": 4
+        },
+        {
+          "id": 30285,
+          "name": "Blue Mohecan Shaggy Do",
+          "colour": 5
+        },
+        {
+          "id": 30286,
+          "name": "Purple Mohecan Shaggy Do",
+          "colour": 6
+        },
+        {
+          "id": 30287,
+          "name": "Brown Mohecan Shaggy Do",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Mane",
+      "matchedAs": "Mane",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3018,
+      "colours": [
+        {
+          "id": 30180,
+          "name": "Black Mane",
+          "colour": 0
+        },
+        {
+          "id": 30181,
+          "name": "Red Mane",
+          "colour": 1
+        },
+        {
+          "id": 30182,
+          "name": "Orange Mane",
+          "colour": 2
+        },
+        {
+          "id": 30183,
+          "name": "Blonde Mane",
+          "colour": 3
+        },
+        {
+          "id": 30184,
+          "name": "Green Mane",
+          "colour": 4
+        },
+        {
+          "id": 30185,
+          "name": "Blue Mane",
+          "colour": 5
+        },
+        {
+          "id": 30186,
+          "name": "Purple Mane",
+          "colour": 6
+        },
+        {
+          "id": 30187,
+          "name": "Brown Mane",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Lovely Ladyhawk",
+      "matchedAs": "Lovely Ladyhawk",
+      "kind": "hair",
+      "gender": "female",
+      "version": "110",
+      "key": 3168,
+      "colours": [
+        {
+          "id": 31680,
+          "name": "Black Lovely Ladyhawk",
+          "colour": 0
+        },
+        {
+          "id": 31681,
+          "name": "Red Lovely Ladyhawk",
+          "colour": 1
+        },
+        {
+          "id": 31682,
+          "name": "Orange Lovely Ladyhawk",
+          "colour": 2
+        },
+        {
+          "id": 31683,
+          "name": "Blonde Lovely Ladyhawk",
+          "colour": 3
+        },
+        {
+          "id": 31684,
+          "name": "Green Lovely Ladyhawk",
+          "colour": 4
+        },
+        {
+          "id": 31685,
+          "name": "Blue Lovely Ladyhawk",
+          "colour": 5
+        },
+        {
+          "id": 31686,
+          "name": "Purple Lovely Ladyhawk",
+          "colour": 6
+        },
+        {
+          "id": 31687,
+          "name": "Brown Lovely Ladyhawk",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Ponytail-to-the-Side",
+      "matchedAs": "Ponytail-to-the-Side",
+      "kind": "hair",
+      "gender": "female",
+      "version": "210.1.1",
+      "key": 3475,
+      "colours": [
+        {
+          "id": 34750,
+          "name": "Black Ponytail-to-the-Side",
+          "colour": 0
+        },
+        {
+          "id": 34751,
+          "name": "Red Ponytail-to-the-Side",
+          "colour": 1
+        },
+        {
+          "id": 34752,
+          "name": "Orange Ponytail-to-the-Side",
+          "colour": 2
+        },
+        {
+          "id": 34753,
+          "name": "Yellow Ponytail-to-the-Side",
+          "colour": 3
+        },
+        {
+          "id": 34754,
+          "name": "Green Ponytail-to-the-Side",
+          "colour": 4
+        },
+        {
+          "id": 34755,
+          "name": "Blue Ponytail-to-the-Side",
+          "colour": 5
+        },
+        {
+          "id": 34756,
+          "name": "Purple Ponytail-to-the-Side",
+          "colour": 6
+        },
+        {
+          "id": 34757,
+          "name": "Brown Ponytail-to-the-Side",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Vivacious Wavy Hair",
+      "matchedAs": "Vivacious Wavy Hair",
+      "kind": "hair",
+      "gender": "female",
+      "version": "210.1.1",
+      "key": 3421,
+      "colours": [
+        {
+          "id": 34210,
+          "name": "Black Vivacious Wavy Hair",
+          "colour": 0
+        },
+        {
+          "id": 34211,
+          "name": "Red Vivacious Wavy Hair",
+          "colour": 1
+        },
+        {
+          "id": 34212,
+          "name": "Orange Vivacious Wavy Hair",
+          "colour": 2
+        },
+        {
+          "id": 34213,
+          "name": "Blonde Vivacious Wavy Hair",
+          "colour": 3
+        },
+        {
+          "id": 34214,
+          "name": "Green Vivacious Wavy Hair",
+          "colour": 4
+        },
+        {
+          "id": 34215,
+          "name": "Blue Vivacious Wavy Hair",
+          "colour": 5
+        },
+        {
+          "id": 34216,
+          "name": "Purple Vivacious Wavy Hair",
+          "colour": 6
+        },
+        {
+          "id": 34217,
+          "name": "Brown Vivacious Wavy Hair",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Angelica Hair",
+      "matchedAs": "Angelica",
+      "kind": "hair",
+      "gender": "female",
+      "version": "110",
+      "key": 3115,
+      "colours": [
+        {
+          "id": 31150,
+          "name": "Black Angelica",
+          "colour": 0
+        },
+        {
+          "id": 31151,
+          "name": "Red Angelica",
+          "colour": 1
+        },
+        {
+          "id": 31152,
+          "name": "Orange Angelica",
+          "colour": 2
+        },
+        {
+          "id": 31153,
+          "name": "Blonde Angelica",
+          "colour": 3
+        },
+        {
+          "id": 31154,
+          "name": "Green Angelica",
+          "colour": 4
+        },
+        {
+          "id": 31155,
+          "name": "Blue Angelica",
+          "colour": 5
+        },
+        {
+          "id": 31156,
+          "name": "Purple Angelica",
+          "colour": 6
+        },
+        {
+          "id": 31157,
+          "name": "Brown Angelica",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Caspia Hair",
+      "matchedAs": "Caspia",
+      "kind": "hair",
+      "gender": "female",
+      "version": "110",
+      "key": 3122,
+      "colours": [
+        {
+          "id": 31220,
+          "name": "Black Caspia",
+          "colour": 0
+        },
+        {
+          "id": 31221,
+          "name": "Red Caspia",
+          "colour": 1
+        },
+        {
+          "id": 31222,
+          "name": "Orange Caspia",
+          "colour": 2
+        },
+        {
+          "id": 31223,
+          "name": "Blonde Caspia",
+          "colour": 3
+        },
+        {
+          "id": 31224,
+          "name": "Green Caspia",
+          "colour": 4
+        },
+        {
+          "id": 31225,
+          "name": "Blue Caspia",
+          "colour": 5
+        },
+        {
+          "id": 31226,
+          "name": "Purple Caspia",
+          "colour": 6
+        },
+        {
+          "id": 31227,
+          "name": "Brown Caspia",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Rose",
+      "matchedAs": "Rose",
+      "kind": "hair",
+      "gender": "female",
+      "version": "110",
+      "key": 3123,
+      "colours": [
+        {
+          "id": 31230,
+          "name": "Black Rose",
+          "colour": 0
+        },
+        {
+          "id": 31231,
+          "name": "Red Rose",
+          "colour": 1
+        },
+        {
+          "id": 31232,
+          "name": "Orange Rose",
+          "colour": 2
+        },
+        {
+          "id": 31233,
+          "name": "Blonde Rose",
+          "colour": 3
+        },
+        {
+          "id": 31234,
+          "name": "Green Rose",
+          "colour": 4
+        },
+        {
+          "id": 31235,
+          "name": "Blue Rose",
+          "colour": 5
+        },
+        {
+          "id": 31236,
+          "name": "Purple Rose",
+          "colour": 6
+        },
+        {
+          "id": 31237,
+          "name": "Brown Rose",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Bridget",
+      "matchedAs": "Bridget",
+      "kind": "hair",
+      "gender": "female",
+      "version": "110",
+      "key": 3109,
+      "colours": [
+        {
+          "id": 31090,
+          "name": "Black Bridget",
+          "colour": 0
+        },
+        {
+          "id": 31091,
+          "name": "Red Bridget",
+          "colour": 1
+        },
+        {
+          "id": 31092,
+          "name": "Orange Bridget",
+          "colour": 2
+        },
+        {
+          "id": 31093,
+          "name": "Blonde Bridget",
+          "colour": 3
+        },
+        {
+          "id": 31094,
+          "name": "Green Bridget",
+          "colour": 4
+        },
+        {
+          "id": 31095,
+          "name": "Blue Bridget",
+          "colour": 5
+        },
+        {
+          "id": 31096,
+          "name": "Purple Bridget",
+          "colour": 6
+        },
+        {
+          "id": 31097,
+          "name": "Brown Bridget",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Jolie",
+      "matchedAs": "Jolie",
+      "kind": "hair",
+      "gender": "female",
+      "version": "110",
+      "key": 3113,
+      "colours": [
+        {
+          "id": 31130,
+          "name": "Black Jolie",
+          "colour": 0
+        },
+        {
+          "id": 31131,
+          "name": "Red Jolie",
+          "colour": 1
+        },
+        {
+          "id": 31132,
+          "name": "Orange Jolie",
+          "colour": 2
+        },
+        {
+          "id": 31133,
+          "name": "Blonde Jolie",
+          "colour": 3
+        },
+        {
+          "id": 31134,
+          "name": "Green Jolie",
+          "colour": 4
+        },
+        {
+          "id": 31135,
+          "name": "Blue Jolie",
+          "colour": 5
+        },
+        {
+          "id": 31136,
+          "name": "Purple Jolie",
+          "colour": 6
+        },
+        {
+          "id": 31137,
+          "name": "Brown Jolie",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Holla' Back Do",
+      "matchedAs": "Holla' Back Do",
+      "kind": "hair",
+      "gender": "female",
+      "version": "110",
+      "key": 3120,
+      "colours": [
+        {
+          "id": 31200,
+          "name": "Black Holla' Back Do",
+          "colour": 0
+        },
+        {
+          "id": 31201,
+          "name": "Red Holla' Back Do",
+          "colour": 1
+        },
+        {
+          "id": 31202,
+          "name": "Orange Holla' Back Do",
+          "colour": 2
+        },
+        {
+          "id": 31203,
+          "name": "Blonde Holla' Back Do",
+          "colour": 3
+        },
+        {
+          "id": 31204,
+          "name": "Green Holla' Back Do",
+          "colour": 4
+        },
+        {
+          "id": 31205,
+          "name": "Blue Holla' Back Do",
+          "colour": 5
+        },
+        {
+          "id": 31206,
+          "name": "Purple Holla' Back Do",
+          "colour": 6
+        },
+        {
+          "id": 31207,
+          "name": "Brown Holla' Back Do",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Veronica",
+      "matchedAs": "Veronica",
+      "kind": "hair",
+      "gender": "female",
+      "version": "110",
+      "key": 3101,
+      "colours": [
+        {
+          "id": 31010,
+          "name": "Black Veronica",
+          "colour": 0
+        },
+        {
+          "id": 31011,
+          "name": "Red Veronica",
+          "colour": 1
+        },
+        {
+          "id": 31012,
+          "name": "Orange Veronica",
+          "colour": 2
+        },
+        {
+          "id": 31013,
+          "name": "Blonde Veronica",
+          "colour": 3
+        },
+        {
+          "id": 31014,
+          "name": "Green Veronica",
+          "colour": 4
+        },
+        {
+          "id": 31015,
+          "name": "Blue Veronica",
+          "colour": 5
+        },
+        {
+          "id": 31016,
+          "name": "Purple Veronica",
+          "colour": 6
+        },
+        {
+          "id": 31017,
+          "name": "Brown Veronica",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Rastafari Hair",
+      "matchedAs": "Rastafari",
+      "kind": "hair",
+      "gender": "female",
+      "version": "110",
+      "key": 3117,
+      "colours": [
+        {
+          "id": 31170,
+          "name": "Black Rastafari",
+          "colour": 0
+        },
+        {
+          "id": 31171,
+          "name": "Red Rastafari",
+          "colour": 1
+        },
+        {
+          "id": 31172,
+          "name": "Orange Rastafari",
+          "colour": 2
+        },
+        {
+          "id": 31173,
+          "name": "Blonde Rastafari",
+          "colour": 3
+        },
+        {
+          "id": 31174,
+          "name": "Green Rastafari",
+          "colour": 4
+        },
+        {
+          "id": 31175,
+          "name": "Blue Rastafari",
+          "colour": 5
+        },
+        {
+          "id": 31176,
+          "name": "Purple Rastafari",
+          "colour": 6
+        },
+        {
+          "id": 31177,
+          "name": "Brown Rastafari",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Penelope Hair",
+      "matchedAs": "Penelope",
+      "kind": "hair",
+      "gender": "female",
+      "version": "110",
+      "key": 3133,
+      "colours": [
+        {
+          "id": 31330,
+          "name": "Black Penelope",
+          "colour": 0
+        },
+        {
+          "id": 31331,
+          "name": "Red Penelope",
+          "colour": 1
+        },
+        {
+          "id": 31332,
+          "name": "Orange Penelope",
+          "colour": 2
+        },
+        {
+          "id": 31333,
+          "name": "Blonde Penelope",
+          "colour": 3
+        },
+        {
+          "id": 31334,
+          "name": "Green Penelope",
+          "colour": 4
+        },
+        {
+          "id": 31335,
+          "name": "Blue Penelope",
+          "colour": 5
+        },
+        {
+          "id": 31336,
+          "name": "Purple Penelope",
+          "colour": 6
+        },
+        {
+          "id": 31337,
+          "name": "Brown Penelope",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Innocent Gaze",
+      "matchedAs": "Innocent Gaze",
+      "kind": "face",
+      "gender": "male",
+      "version": "210.1.1",
+      "key": 20033,
+      "colours": [
+        {
+          "id": 20033,
+          "name": "Innocent Gaze (Black)",
+          "colour": 0
+        },
+        {
+          "id": 20133,
+          "name": "Innocent Gaze (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 20233,
+          "name": "Innocent Gaze (Red)",
+          "colour": 2
+        },
+        {
+          "id": 20333,
+          "name": "Innocent Gaze (Green)",
+          "colour": 3
+        },
+        {
+          "id": 20433,
+          "name": "Innocent Gaze (Brown)",
+          "colour": 4
+        },
+        {
+          "id": 20533,
+          "name": "Innocent Gaze (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 20633,
+          "name": "Innocent Gaze (Purple)",
+          "colour": 6
+        },
+        {
+          "id": 20733,
+          "name": "Innocent Gaze (Violet)",
+          "colour": 7
+        },
+        {
+          "id": 20833,
+          "name": "Innocent Gaze (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Distant Gaze",
+      "matchedAs": "Distant Gaze",
+      "kind": "face",
+      "gender": "male",
+      "version": "210.1.1",
+      "key": 20035,
+      "colours": [
+        {
+          "id": 20035,
+          "name": "Distant Gaze (Black)",
+          "colour": 0
+        },
+        {
+          "id": 20135,
+          "name": "Distant Gaze (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 20235,
+          "name": "Distant Gaze (Red)",
+          "colour": 2
+        },
+        {
+          "id": 20335,
+          "name": "Distant Gaze (Green)",
+          "colour": 3
+        },
+        {
+          "id": 20435,
+          "name": "Distant Gaze (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 20535,
+          "name": "Distant Gaze (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 20635,
+          "name": "Distant Gaze (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 20735,
+          "name": "Distant Gaze (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 20835,
+          "name": "Distant Gaze (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Rebel's Fire",
+      "matchedAs": "Rebel's Fire",
+      "kind": "face",
+      "gender": "male",
+      "version": "110",
+      "key": 20004,
+      "colours": [
+        {
+          "id": 20004,
+          "name": "Rebel's Fire (Black)",
+          "colour": 0
+        },
+        {
+          "id": 20104,
+          "name": "Rebel's Fire (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 20204,
+          "name": "Rebel's Fire (Red)",
+          "colour": 2
+        },
+        {
+          "id": 20304,
+          "name": "Rebel's Fire (Green)",
+          "colour": 3
+        },
+        {
+          "id": 20404,
+          "name": "Rebel's Fire (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 20504,
+          "name": "Rebel's Fire (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 20604,
+          "name": "Rebel's Fire (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 20704,
+          "name": "Rebel's Fire (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 20804,
+          "name": "Rebel's Fire (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Worrisome Glare",
+      "matchedAs": "Worrisome Glare",
+      "kind": "face",
+      "gender": "male",
+      "version": "110",
+      "key": 20008,
+      "colours": [
+        {
+          "id": 20008,
+          "name": "Worrisome Glare (Black)",
+          "colour": 0
+        },
+        {
+          "id": 20108,
+          "name": "Worrisome Glare (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 20208,
+          "name": "Worrisome Glare (Red)",
+          "colour": 2
+        },
+        {
+          "id": 20308,
+          "name": "Worrisome Glare (Green)",
+          "colour": 3
+        },
+        {
+          "id": 20408,
+          "name": "Worrisome Glare (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 20508,
+          "name": "Worrisome Glare (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 20608,
+          "name": "Worrisome Glare (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 20708,
+          "name": "Worrisome Glare (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 20808,
+          "name": "Worrisome Glare (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Alert Face",
+      "matchedAs": "Alert Face",
+      "kind": "face",
+      "gender": "male",
+      "version": "110",
+      "key": 20005,
+      "colours": [
+        {
+          "id": 20005,
+          "name": "Alert Face (Black)",
+          "colour": 0
+        },
+        {
+          "id": 20105,
+          "name": "Alert Face (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 20205,
+          "name": "Alert Face (Red)",
+          "colour": 2
+        },
+        {
+          "id": 20305,
+          "name": "Alert Face (Green)",
+          "colour": 3
+        },
+        {
+          "id": 20405,
+          "name": "Alert Face (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 20505,
+          "name": "Alert Face (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 20605,
+          "name": "Alert Face (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 20705,
+          "name": "Alert Face (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 20805,
+          "name": "Alert Face (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Overjoyed Smile",
+      "matchedAs": "Overjoyed Smile",
+      "kind": "face",
+      "gender": "male",
+      "version": "110",
+      "key": 20021,
+      "colours": [
+        {
+          "id": 20021,
+          "name": "Overjoyed Smile",
+          "colour": 0
+        },
+        {
+          "id": 20121,
+          "name": "Overjoyed Smile",
+          "colour": 1
+        },
+        {
+          "id": 20221,
+          "name": "Overjoyed Smile",
+          "colour": 2
+        },
+        {
+          "id": 20321,
+          "name": "Overjoyed Smile",
+          "colour": 3
+        },
+        {
+          "id": 20421,
+          "name": "Overjoyed Smile",
+          "colour": 4
+        },
+        {
+          "id": 20521,
+          "name": "Overjoyed Smile",
+          "colour": 5
+        },
+        {
+          "id": 20621,
+          "name": "Overjoyed Smile",
+          "colour": 6
+        },
+        {
+          "id": 20721,
+          "name": "Overjoyed Smile",
+          "colour": 7
+        },
+        {
+          "id": 20821,
+          "name": "Overjoyed Smile (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Smart Aleck",
+      "matchedAs": "Smart Aleck",
+      "kind": "face",
+      "gender": "male",
+      "version": "110",
+      "key": 20009,
+      "colours": [
+        {
+          "id": 20009,
+          "name": "Smart Aleck (Black)",
+          "colour": 0
+        },
+        {
+          "id": 20109,
+          "name": "Smart Aleck (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 20209,
+          "name": "Smart Aleck (Red)",
+          "colour": 2
+        },
+        {
+          "id": 20309,
+          "name": "Smart Aleck (Green)",
+          "colour": 3
+        },
+        {
+          "id": 20409,
+          "name": "Smart Aleck (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 20509,
+          "name": "Smart Aleck (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 20609,
+          "name": "Smart Aleck (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 20709,
+          "name": "Smart Aleck (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 20809,
+          "name": "Smart Aleck (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Cool Guy Gaze",
+      "matchedAs": "Cool Guy Gaze",
+      "kind": "face",
+      "gender": "male",
+      "version": "110",
+      "key": 20011,
+      "colours": [
+        {
+          "id": 20011,
+          "name": "Cool Guy Gaze (Black)",
+          "colour": 0
+        },
+        {
+          "id": 20111,
+          "name": "Cool Guy Gaze (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 20211,
+          "name": "Cool Guy Gaze (Red)",
+          "colour": 2
+        },
+        {
+          "id": 20311,
+          "name": "Cool Guy Gaze (Green)",
+          "colour": 3
+        },
+        {
+          "id": 20411,
+          "name": "Cool Guy Gaze (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 20511,
+          "name": "Cool Guy Gaze (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 20611,
+          "name": "Cool Guy Gaze (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 20711,
+          "name": "Cool Guy Gaze (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 20811,
+          "name": "Cool Guy Gaze (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Insomniac Daze",
+      "matchedAs": "Insomniac Daze",
+      "kind": "face",
+      "gender": "male",
+      "version": "110",
+      "key": 20013,
+      "colours": [
+        {
+          "id": 20013,
+          "name": "Insomniac Daze (Black)",
+          "colour": 0
+        },
+        {
+          "id": 20113,
+          "name": "Insomniac Daze (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 20213,
+          "name": "Insomniac Daze (Red)",
+          "colour": 2
+        },
+        {
+          "id": 20313,
+          "name": "Insomniac Daze (Green)",
+          "colour": 3
+        },
+        {
+          "id": 20413,
+          "name": "Insomniac Daze (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 20513,
+          "name": "Insomniac Daze (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 20613,
+          "name": "Insomniac Daze (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 20713,
+          "name": "Insomniac Daze (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 20813,
+          "name": "Insomniac Daze (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Look of Wonder",
+      "matchedAs": "Look of Wonder",
+      "kind": "face",
+      "gender": "male",
+      "version": "110",
+      "key": 20014,
+      "colours": [
+        {
+          "id": 20014,
+          "name": "Look of Wonder (Black)",
+          "colour": 0
+        },
+        {
+          "id": 20114,
+          "name": "Look of Wonder (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 20214,
+          "name": "Look of Wonder (Red)",
+          "colour": 2
+        },
+        {
+          "id": 20314,
+          "name": "Look of Wonder (Green)",
+          "colour": 3
+        },
+        {
+          "id": 20414,
+          "name": "Look of Wonder (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 20514,
+          "name": "Look of Wonder (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 20614,
+          "name": "Look of Wonder (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 20714,
+          "name": "Look of Wonder (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 20814,
+          "name": "Look of Wonder (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Wisdom Glance",
+      "matchedAs": "Wisdom Glance",
+      "kind": "face",
+      "gender": "male",
+      "version": "110",
+      "key": 21010,
+      "colours": [
+        {
+          "id": 21010,
+          "name": "Wisdom Glance (Black)",
+          "colour": 0
+        },
+        {
+          "id": 21110,
+          "name": "Wisdom Glance (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 21210,
+          "name": "Wisdom Glance (Red)",
+          "colour": 2
+        },
+        {
+          "id": 21310,
+          "name": "Wisdom Glance (Green)",
+          "colour": 3
+        },
+        {
+          "id": 21410,
+          "name": "Wisdom Glance (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 21510,
+          "name": "Wisdom Glance (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 21610,
+          "name": "Wisdom Glance (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 21710,
+          "name": "Wisdom Glance (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 21810,
+          "name": "Wisdom Glance (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Babyface Pout",
+      "matchedAs": "Babyface Pout",
+      "kind": "face",
+      "gender": "male",
+      "version": "110",
+      "key": 20006,
+      "colours": [
+        {
+          "id": 20006,
+          "name": "Babyface Pout (Black)",
+          "colour": 0
+        },
+        {
+          "id": 20106,
+          "name": "Babyface Pout (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 20206,
+          "name": "Babyface Pout (Red)",
+          "colour": 2
+        },
+        {
+          "id": 20306,
+          "name": "Babyface Pout (Green)",
+          "colour": 3
+        },
+        {
+          "id": 20406,
+          "name": "Babyface Pout (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 20506,
+          "name": "Babyface Pout (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 20606,
+          "name": "Babyface Pout (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 20706,
+          "name": "Babyface Pout (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 20806,
+          "name": "Babyface Pout (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Posh Look",
+      "matchedAs": "Posh Look",
+      "kind": "face",
+      "gender": "female",
+      "version": "210.1.1",
+      "key": 21057,
+      "colours": [
+        {
+          "id": 21057,
+          "name": "Posh Look(Black)",
+          "colour": 0
+        },
+        {
+          "id": 21157,
+          "name": "Posh Look(Blue)",
+          "colour": 1
+        },
+        {
+          "id": 21257,
+          "name": "Posh Look(Red)",
+          "colour": 2
+        },
+        {
+          "id": 21357,
+          "name": "Posh Look (Green)",
+          "colour": 3
+        },
+        {
+          "id": 21457,
+          "name": "Posh Look (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 21557,
+          "name": "Posh Look (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 21657,
+          "name": "Posh Look (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 21757,
+          "name": "Posh Look (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 21857,
+          "name": "Posh Look(White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Bulbous-Eyed Face",
+      "matchedAs": "Bulbous-Eyed Face",
+      "kind": "face",
+      "gender": "female",
+      "version": "210.1.1",
+      "key": 21072,
+      "colours": [
+        {
+          "id": 21072,
+          "name": "Bulbous-Eyed Face",
+          "colour": 0
+        },
+        {
+          "id": 21172,
+          "name": "Bulbous-Eyed Face (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 21272,
+          "name": "Bulbous-Eyed Face (Red)",
+          "colour": 2
+        },
+        {
+          "id": 21372,
+          "name": "Bulbous-Eyed Face (Green)",
+          "colour": 3
+        },
+        {
+          "id": 21472,
+          "name": "Bulbous-Eyed Face (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 21572,
+          "name": "Bulbous-Eyed Face (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 21672,
+          "name": "Bulbous-Eyed Face (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 21772,
+          "name": "Bulbous-Eyed Face (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 21872,
+          "name": "Bulbous-Eyed Face (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Round Eyed Face",
+      "matchedAs": "Round Eyed Face",
+      "kind": "face",
+      "gender": "female",
+      "version": "210.1.1",
+      "key": 21077,
+      "colours": [
+        {
+          "id": 21077,
+          "name": "Round Eyed Face",
+          "colour": 0
+        },
+        {
+          "id": 21177,
+          "name": "Round Eyed Face (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 21277,
+          "name": "Round Eyed Face (Red)",
+          "colour": 2
+        },
+        {
+          "id": 21377,
+          "name": "Round Eyed Face (Green)",
+          "colour": 3
+        },
+        {
+          "id": 21477,
+          "name": "Round Eyed Face (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 21577,
+          "name": "Round Eyed Face (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 21677,
+          "name": "Round Eyed Face (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 21777,
+          "name": "Round Eyed Face (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 21877,
+          "name": "Round Eyed Face (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Beauty Stare",
+      "matchedAs": "Beauty Stare",
+      "kind": "face",
+      "gender": "female",
+      "version": "110",
+      "key": 21016,
+      "colours": [
+        {
+          "id": 21016,
+          "name": "Beauty Stare (Black)",
+          "colour": 0
+        },
+        {
+          "id": 21116,
+          "name": "Beauty Stare (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 21216,
+          "name": "Beauty Stare (Red)",
+          "colour": 2
+        },
+        {
+          "id": 21316,
+          "name": "Beauty Stare (Green)",
+          "colour": 3
+        },
+        {
+          "id": 21416,
+          "name": "Beauty Stare (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 21516,
+          "name": "Beauty Stare (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 21616,
+          "name": "Beauty Stare (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 21716,
+          "name": "Beauty Stare (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 21816,
+          "name": "Beauty Stare (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Strong Stare",
+      "matchedAs": "Strong Stare",
+      "kind": "face",
+      "gender": "female",
+      "version": "110",
+      "key": 21003,
+      "colours": [
+        {
+          "id": 21003,
+          "name": "Strong Stare (Black)",
+          "colour": 0
+        },
+        {
+          "id": 21103,
+          "name": "Strong Stare (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 21203,
+          "name": "Strong Stare (Red)",
+          "colour": 2
+        },
+        {
+          "id": 21303,
+          "name": "Strong Stare (Green)",
+          "colour": 3
+        },
+        {
+          "id": 21403,
+          "name": "Strong Stare (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 21503,
+          "name": "Strong Stare (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 21603,
+          "name": "Strong Stare (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 21703,
+          "name": "Strong Stare (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 21803,
+          "name": "Strong Stare (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Curious Look",
+      "matchedAs": "Curious Look",
+      "kind": "face",
+      "gender": "female",
+      "version": "110",
+      "key": 21014,
+      "colours": [
+        {
+          "id": 21014,
+          "name": "Curious Look (Black)",
+          "colour": 0
+        },
+        {
+          "id": 21114,
+          "name": "Curious Look (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 21214,
+          "name": "Curious Look (Red)",
+          "colour": 2
+        },
+        {
+          "id": 21314,
+          "name": "Curious Look (Green)",
+          "colour": 3
+        },
+        {
+          "id": 21414,
+          "name": "Curious Look (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 21514,
+          "name": "Curious Look (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 21614,
+          "name": "Curious Look (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 21714,
+          "name": "Curious Look (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 21814,
+          "name": "Curious Look (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Hera's Radiance",
+      "matchedAs": "Hera's Radiance",
+      "kind": "face",
+      "gender": "female",
+      "version": "110",
+      "key": 21019,
+      "colours": [
+        {
+          "id": 21019,
+          "name": "Hera's Radiance (Black) ",
+          "colour": 0
+        },
+        {
+          "id": 21119,
+          "name": "Hera's Radiance (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 21219,
+          "name": "Hera's Radiance (Red)",
+          "colour": 2
+        },
+        {
+          "id": 21319,
+          "name": "Hera's Radiance (Green)",
+          "colour": 3
+        },
+        {
+          "id": 21419,
+          "name": "Hera's Radiance (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 21519,
+          "name": "Hera's Radiance (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 21619,
+          "name": "Hera's Radiance (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 21719,
+          "name": "Hera's Radiance (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 21819,
+          "name": "Hera's Radiance (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Gentle Glow",
+      "matchedAs": "Gentle Glow",
+      "kind": "face",
+      "gender": "female",
+      "version": "110",
+      "key": 21020,
+      "colours": [
+        {
+          "id": 21020,
+          "name": "Gentle Glow (Black)",
+          "colour": 0
+        },
+        {
+          "id": 21120,
+          "name": "Gentle Glow (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 21220,
+          "name": "Gentle Glow (Red)",
+          "colour": 2
+        },
+        {
+          "id": 21320,
+          "name": "Gentle Glow (Green)",
+          "colour": 3
+        },
+        {
+          "id": 21420,
+          "name": "Gentle Glow (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 21520,
+          "name": "Gentle Glow (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 21620,
+          "name": "Gentle Glow (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 21720,
+          "name": "Gentle Glow (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 21820,
+          "name": "Gentle Glow (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Hopeless Gaze",
+      "matchedAs": "Hopeless Gaze",
+      "kind": "face",
+      "gender": "female",
+      "version": "110",
+      "key": 21008,
+      "colours": [
+        {
+          "id": 21008,
+          "name": "Hopeless Gaze (Black)",
+          "colour": 0
+        },
+        {
+          "id": 21108,
+          "name": "Hopeless Gaze (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 21208,
+          "name": "Hopeless Gaze (Red)",
+          "colour": 2
+        },
+        {
+          "id": 21308,
+          "name": "Hopeless Gaze (Green)",
+          "colour": 3
+        },
+        {
+          "id": 21408,
+          "name": "Hopeless Gaze (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 21508,
+          "name": "Hopeless Gaze (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 21608,
+          "name": "Hopeless Gaze (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 21708,
+          "name": "Hopeless Gaze (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 21808,
+          "name": "Hopeless Gaze (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Wide-eyed Girl",
+      "matchedAs": "Wide-eyed Girl",
+      "kind": "face",
+      "gender": "female",
+      "version": "110",
+      "key": 21013,
+      "colours": [
+        {
+          "id": 21013,
+          "name": "Wide-Eyed Girl (Black)",
+          "colour": 0
+        },
+        {
+          "id": 21113,
+          "name": "Wide-Eyed Girl (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 21213,
+          "name": "Wide-Eyed Girl (Red)",
+          "colour": 2
+        },
+        {
+          "id": 21313,
+          "name": "Wide-Eyed Girl (Green)",
+          "colour": 3
+        },
+        {
+          "id": 21413,
+          "name": "Wide-Eyed Girl (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 21513,
+          "name": "Wide-Eyed Girl (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 21613,
+          "name": "Wide-Eyed Girl (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 21713,
+          "name": "Wide-Eyed Girl (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 21813,
+          "name": "Wide-eyed Girl (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Babyface Pout",
+      "matchedAs": "Babyface Pout",
+      "kind": "face",
+      "gender": "female",
+      "version": "110",
+      "key": 21005,
+      "colours": [
+        {
+          "id": 21005,
+          "name": "Babyface Pout (Black)",
+          "colour": 0
+        },
+        {
+          "id": 21105,
+          "name": "Babyface Pout (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 21205,
+          "name": "Babyface Pout (Red)",
+          "colour": 2
+        },
+        {
+          "id": 21305,
+          "name": "Babyface Pout (Green)",
+          "colour": 3
+        },
+        {
+          "id": 21405,
+          "name": "Babyface Pout (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 21505,
+          "name": "Babyface Pout (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 21605,
+          "name": "Babyface Pout (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 21705,
+          "name": "Babyface Pout (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 21805,
+          "name": "Babyface Pout (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Toben Hair",
+      "matchedAs": "Toben Hair",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3000,
+      "colours": [
+        {
+          "id": 30000,
+          "name": "Black Toben",
+          "colour": 0
+        },
+        {
+          "id": 30001,
+          "name": "Red Toben",
+          "colour": 1
+        },
+        {
+          "id": 30002,
+          "name": "Orange Toben",
+          "colour": 2
+        },
+        {
+          "id": 30003,
+          "name": "Blonde Toben",
+          "colour": 3
+        },
+        {
+          "id": 30004,
+          "name": "Green Toben",
+          "colour": 4
+        },
+        {
+          "id": 30005,
+          "name": "Blue Toben",
+          "colour": 5
+        },
+        {
+          "id": 30006,
+          "name": "Purple Toben",
+          "colour": 6
+        },
+        {
+          "id": 30007,
+          "name": "Brown Toben",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Zeta",
+      "matchedAs": "Zeta",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3001,
+      "colours": [
+        {
+          "id": 30010,
+          "name": "Zeta",
+          "colour": 0
+        }
+      ]
+    },
+    {
+      "style": "Unkempt Hair",
+      "matchedAs": "Unkempt Hair",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3002,
+      "colours": [
+        {
+          "id": 30020,
+          "name": "Black Rebel",
+          "colour": 0
+        },
+        {
+          "id": 30021,
+          "name": "Red Rebel",
+          "colour": 1
+        },
+        {
+          "id": 30022,
+          "name": "Orange Rebel",
+          "colour": 2
+        },
+        {
+          "id": 30023,
+          "name": "Blonde Rebel",
+          "colour": 3
+        },
+        {
+          "id": 30024,
+          "name": "Green Rebel",
+          "colour": 4
+        },
+        {
+          "id": 30025,
+          "name": "Blue Rebel",
+          "colour": 5
+        },
+        {
+          "id": 30026,
+          "name": "Purple Rebel",
+          "colour": 6
+        },
+        {
+          "id": 30027,
+          "name": "Brown Rebel",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Shaved Hair",
+      "matchedAs": "Shaved Hair",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3003,
+      "colours": [
+        {
+          "id": 30030,
+          "name": "Black Buzz",
+          "colour": 0
+        },
+        {
+          "id": 30031,
+          "name": "Red Buzz",
+          "colour": 1
+        },
+        {
+          "id": 30032,
+          "name": "Orange Buzz",
+          "colour": 2
+        },
+        {
+          "id": 30033,
+          "name": "Blonde Buzz",
+          "colour": 3
+        },
+        {
+          "id": 30034,
+          "name": "Green Buzz",
+          "colour": 4
+        },
+        {
+          "id": 30035,
+          "name": "Blue Buzz",
+          "colour": 5
+        },
+        {
+          "id": 30036,
+          "name": "Purple Buzz",
+          "colour": 6
+        },
+        {
+          "id": 30037,
+          "name": "Brown Buzz",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Medium Cornrows",
+      "matchedAs": "Medium Cornrows",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3015,
+      "colours": [
+        {
+          "id": 30150,
+          "name": "Black Dreadlocks",
+          "colour": 0
+        },
+        {
+          "id": 30151,
+          "name": "Red Dreadlocks",
+          "colour": 1
+        },
+        {
+          "id": 30152,
+          "name": "Orange Dreadlocks",
+          "colour": 2
+        },
+        {
+          "id": 30153,
+          "name": "Blonde Dreadlocks",
+          "colour": 3
+        },
+        {
+          "id": 30154,
+          "name": "Green Dreadlocks",
+          "colour": 4
+        },
+        {
+          "id": 30155,
+          "name": "Blue Dreadlocks",
+          "colour": 5
+        },
+        {
+          "id": 30156,
+          "name": "Purple Dreadlocks",
+          "colour": 6
+        },
+        {
+          "id": 30157,
+          "name": "Brown Dreadlocks",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Short Regent Cut",
+      "matchedAs": "Short Regent Cut",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3335,
+      "colours": [
+        {
+          "id": 33350,
+          "name": "Black Short Flip Cut ",
+          "colour": 0
+        },
+        {
+          "id": 33351,
+          "name": "Red Short Regent Cut ",
+          "colour": 1
+        },
+        {
+          "id": 33352,
+          "name": "Orange Short Regent Cut ",
+          "colour": 2
+        },
+        {
+          "id": 33353,
+          "name": "Blonde Short Regent Cut ",
+          "colour": 3
+        },
+        {
+          "id": 33354,
+          "name": "Green Short Regent Cut ",
+          "colour": 4
+        },
+        {
+          "id": 33355,
+          "name": "Blue Short Regent Cut ",
+          "colour": 5
+        },
+        {
+          "id": 33356,
+          "name": "Purple Short Regent Cut ",
+          "colour": 6
+        },
+        {
+          "id": 33357,
+          "name": "Brown Short Regent Cut ",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Defiant Face",
+      "matchedAs": "Defiant Face",
+      "kind": "face",
+      "gender": "male",
+      "version": "110",
+      "key": 20000,
+      "colours": [
+        {
+          "id": 20000,
+          "name": "Motivated Look (Black)",
+          "colour": 0
+        },
+        {
+          "id": 20100,
+          "name": "Motivated Look (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 20200,
+          "name": "Motivated Look (Red)",
+          "colour": 2
+        },
+        {
+          "id": 20300,
+          "name": "Motivated Look (Green)",
+          "colour": 3
+        },
+        {
+          "id": 20400,
+          "name": "Motivated Look (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 20500,
+          "name": "Motivated Look (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 20600,
+          "name": "Motivated Look (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 20700,
+          "name": "Motivated Look (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 20800,
+          "name": "Motivated Look (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Confident Face",
+      "matchedAs": "Confident Face",
+      "kind": "face",
+      "gender": "male",
+      "version": "110",
+      "key": 20001,
+      "colours": [
+        {
+          "id": 20001,
+          "name": "Perplexed Stare (Black)",
+          "colour": 0
+        },
+        {
+          "id": 20101,
+          "name": "Perplexed Stare (Black)",
+          "colour": 1
+        },
+        {
+          "id": 20201,
+          "name": "Perplexed Stare (Red)",
+          "colour": 2
+        },
+        {
+          "id": 20301,
+          "name": "Perplexed Stare (Green)",
+          "colour": 3
+        },
+        {
+          "id": 20401,
+          "name": "Perplexed Stare (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 20501,
+          "name": "Perplexed Stare (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 20601,
+          "name": "Perplexed Stare (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 20701,
+          "name": "Perplexed Stare (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 20801,
+          "name": "Perplexed Stare (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Prudent Face",
+      "matchedAs": "Prudent Face",
+      "kind": "face",
+      "gender": "male",
+      "version": "110",
+      "key": 20002,
+      "colours": [
+        {
+          "id": 20002,
+          "name": "Leisure Look (Black)",
+          "colour": 0
+        },
+        {
+          "id": 20102,
+          "name": "Leisure Look (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 20202,
+          "name": "Leisure Look (Red)",
+          "colour": 2
+        },
+        {
+          "id": 20302,
+          "name": "Leisure Look (Green)",
+          "colour": 3
+        },
+        {
+          "id": 20402,
+          "name": "Leisure Look (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 20502,
+          "name": "Leisure Look (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 20602,
+          "name": "Leisure Look (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 20702,
+          "name": "Leisure Look (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 20802,
+          "name": "Leisure Look (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Motivated Look",
+      "matchedAs": "Motivated Look",
+      "kind": "face",
+      "gender": "female",
+      "version": "110",
+      "key": 21000,
+      "colours": [
+        {
+          "id": 21000,
+          "name": "Motivated Look (Black)",
+          "colour": 0
+        },
+        {
+          "id": 21100,
+          "name": "Motivated Look (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 21200,
+          "name": "Motivated Look (Red)",
+          "colour": 2
+        },
+        {
+          "id": 21300,
+          "name": "Motivated Look (Green)",
+          "colour": 3
+        },
+        {
+          "id": 21400,
+          "name": "Motivated Look (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 21500,
+          "name": "Motivated Look (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 21600,
+          "name": "Motivated Look (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 21700,
+          "name": "Motivated Look (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 21800,
+          "name": "Motivated Look (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Fearful Stare",
+      "matchedAs": "Fearful Stare",
+      "kind": "face",
+      "gender": "female",
+      "version": "110",
+      "key": 21001,
+      "colours": [
+        {
+          "id": 21001,
+          "name": "Fearful Stare (Black)",
+          "colour": 0
+        },
+        {
+          "id": 21101,
+          "name": "Fearful Stare (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 21201,
+          "name": "Fearful Stare (Red)",
+          "colour": 2
+        },
+        {
+          "id": 21301,
+          "name": "Fearful Stare (Green)",
+          "colour": 3
+        },
+        {
+          "id": 21401,
+          "name": "Fearful Stare (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 21501,
+          "name": "Fearful Stare (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 21601,
+          "name": "Fearful Stare (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 21701,
+          "name": "Fearful Stare (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 21801,
+          "name": "Fearful Stare (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Leisure Look",
+      "matchedAs": "Leisure Look",
+      "kind": "face",
+      "gender": "female",
+      "version": "110",
+      "key": 21002,
+      "colours": [
+        {
+          "id": 21002,
+          "name": "Leisure Look (Black)",
+          "colour": 0
+        },
+        {
+          "id": 21102,
+          "name": "Leisure Look (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 21202,
+          "name": "Leisure Look (Red)",
+          "colour": 2
+        },
+        {
+          "id": 21302,
+          "name": "Leisure Look (Green)",
+          "colour": 3
+        },
+        {
+          "id": 21402,
+          "name": "Leisure Look (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 21502,
+          "name": "Leisure Look (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 21602,
+          "name": "Leisure Look (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 21702,
+          "name": "Leisure Look (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 21802,
+          "name": "Leisure Look (White)",
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Prim Face",
+      "matchedAs": "Prim Face",
+      "kind": "face",
+      "gender": "female",
+      "version": "110",
+      "key": 21053,
+      "colours": [
+        {
+          "id": 21053,
+          "name": "Prim Face",
+          "colour": 0
+        },
+        {
+          "id": 21153,
+          "name": "Prim Face (Blue)",
+          "colour": 1
+        },
+        {
+          "id": 21253,
+          "name": "Prim Face (Red)",
+          "colour": 2
+        },
+        {
+          "id": 21353,
+          "name": "Prim Face (Green)",
+          "colour": 3
+        },
+        {
+          "id": 21453,
+          "name": "Prim Face (Hazel)",
+          "colour": 4
+        },
+        {
+          "id": 21553,
+          "name": "Prim Face (Sapphire)",
+          "colour": 5
+        },
+        {
+          "id": 21653,
+          "name": "Prim Face (Violet)",
+          "colour": 6
+        },
+        {
+          "id": 21753,
+          "name": "Prim Face (Amethyst)",
+          "colour": 7
+        },
+        {
+          "id": 21853,
+          "colour": 8
+        }
+      ]
+    },
+    {
+      "style": "Chestnut",
+      "matchedAs": "Chestnut",
+      "kind": "hair",
+      "gender": "male",
+      "version": "110",
+      "key": 3024,
+      "colours": [
+        {
+          "id": 30240,
+          "name": "Black Monkey",
+          "colour": 0
+        },
+        {
+          "id": 30241,
+          "name": "Red Monkey",
+          "colour": 1
+        },
+        {
+          "id": 30242,
+          "name": "Orange Monkey",
+          "colour": 2
+        },
+        {
+          "id": 30243,
+          "name": "Blonde Monkey",
+          "colour": 3
+        },
+        {
+          "id": 30244,
+          "name": "Green Monkey",
+          "colour": 4
+        },
+        {
+          "id": 30245,
+          "name": "Blue Monkey",
+          "colour": 5
+        },
+        {
+          "id": 30246,
+          "name": "Purple Monkey",
+          "colour": 6
+        },
+        {
+          "id": 30247,
+          "name": "Brown Monkey",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Cutie Hair",
+      "matchedAs": "Cutie Hair",
+      "kind": "hair",
+      "gender": "female",
+      "version": "110",
+      "key": 3100,
+      "colours": [
+        {
+          "id": 31000,
+          "name": "Black Sammy",
+          "colour": 0
+        },
+        {
+          "id": 31001,
+          "name": "Red Sammy",
+          "colour": 1
+        },
+        {
+          "id": 31002,
+          "name": "Orange Sammy",
+          "colour": 2
+        },
+        {
+          "id": 31003,
+          "name": "Blonde Sammy",
+          "colour": 3
+        },
+        {
+          "id": 31004,
+          "name": "Green Sammy",
+          "colour": 4
+        },
+        {
+          "id": 31005,
+          "name": "Blue Sammy",
+          "colour": 5
+        },
+        {
+          "id": 31006,
+          "name": "Purple Sammy",
+          "colour": 6
+        },
+        {
+          "id": 31007,
+          "name": "Brown Sammy",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Edgy Hair",
+      "matchedAs": "Edgy Hair",
+      "kind": "hair",
+      "gender": "female",
+      "version": "110",
+      "key": 3104,
+      "colours": [
+        {
+          "id": 31040,
+          "name": "Black Edgy",
+          "colour": 0
+        },
+        {
+          "id": 31041,
+          "name": "Red Edgy",
+          "colour": 1
+        },
+        {
+          "id": 31042,
+          "name": "Orange Edgy",
+          "colour": 2
+        },
+        {
+          "id": 31043,
+          "name": "Blonde Edgy",
+          "colour": 3
+        },
+        {
+          "id": 31044,
+          "name": "Green Edgy",
+          "colour": 4
+        },
+        {
+          "id": 31045,
+          "name": "Blue Edgy",
+          "colour": 5
+        },
+        {
+          "id": 31046,
+          "name": "Purple Edgy",
+          "colour": 6
+        },
+        {
+          "id": 31047,
+          "name": "Brown Edgy",
+          "colour": 7
+        }
+      ]
+    },
+    {
+      "style": "Rockstar Hair",
+      "matchedAs": "Rockstar Hair",
+      "kind": "hair",
+      "gender": "female",
+      "version": "110",
+      "key": 3105,
+      "colours": [
+        {
+          "id": 31050,
+          "name": "Black Connie",
+          "colour": 0
+        },
+        {
+          "id": 31051,
+          "name": "Red Connie",
+          "colour": 1
+        },
+        {
+          "id": 31052,
+          "name": "Orange Connie",
+          "colour": 2
+        },
+        {
+          "id": 31053,
+          "name": "Blonde Connie",
+          "colour": 3
+        },
+        {
+          "id": 31054,
+          "name": "Green Connie",
+          "colour": 4
+        },
+        {
+          "id": 31055,
+          "name": "Blue Connie",
+          "colour": 5
+        },
+        {
+          "id": 31056,
+          "name": "Purple Connie",
+          "colour": 6
+        },
+        {
+          "id": 31057,
+          "name": "Brown Connie",
+          "colour": 7
+        }
+      ]
+    }
+  ]
+}

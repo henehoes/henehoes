@@ -1,0 +1,1 @@
+{"id":1702012,"name":"Yellow Spatula","version":"110","kind":"wearable","equipGroup":"Weapon","vslots":["Wp"],"islots":["Wp"],"parts":[{"key":"weapon","w":51,"h":26,"origin":{"x":25,"y":7,"isEmpty":false},"maps":{"hand":{"x":19,"y":-4,"isEmpty":false}},"position":"weapon"}]}

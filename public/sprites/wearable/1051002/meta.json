@@ -1,0 +1,1 @@
+{"id":1051002,"name":"Cat Suit","version":"110","kind":"wearable","equipGroup":"Longcoat","vslots":["Ma","Pn"],"islots":["Ma","Pn"],"parts":[{"key":"mail","w":28,"h":23,"origin":{"x":11,"y":9,"isEmpty":false},"maps":{"navel":{"x":-7,"y":-3,"isEmpty":false}},"position":"mailChest"}]}

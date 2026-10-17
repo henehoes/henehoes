@@ -1,0 +1,1 @@
+{"id":1052030,"name":"Toga","version":"110","kind":"wearable","equipGroup":"Longcoat","vslots":["Ma","Pn"],"islots":["Ma","Pn"],"parts":[{"key":"mail","w":18,"h":18,"origin":{"x":11,"y":9,"isEmpty":false},"maps":{"navel":{"x":-6,"y":0,"isEmpty":false}},"position":"mailChestOverHighest"}]}

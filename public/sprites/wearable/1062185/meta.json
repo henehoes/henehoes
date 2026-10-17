@@ -1,0 +1,1 @@
+{"id":1062185,"name":"Violet Dot Jeans","version":"210.1.1","kind":"wearable","equipGroup":"Pants","vslots":["Pn"],"islots":["Pn"],"parts":[{"key":"pants","w":14,"h":14,"origin":{"x":3,"y":-1,"isEmpty":false},"maps":{"navel":{"x":0,"y":0,"isEmpty":true}},"position":"pantsBelowShoes"}]}

@@ -1,0 +1,34 @@
+{
+  "wearablesUnresolved": [],
+  "styleUnresolved": [],
+  "styleMultiple": [
+    {
+      "style": "Bed Head Hair",
+      "gender": "male",
+      "keys": [
+        3239,
+        3325
+      ]
+    },
+    {
+      "style": "Prince Cut Hair",
+      "gender": "male",
+      "keys": [
+        3300,
+        3306
+      ]
+    },
+    {
+      "style": "Bowl Cut",
+      "gender": "male",
+      "keys": [
+        3019,
+        3193
+      ]
+    }
+  ],
+  "assumedMatches": [],
+  "skipped": [
+    "Beetle Long Sleeve"
+  ]
+}

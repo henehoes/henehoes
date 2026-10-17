@@ -1,0 +1,567 @@
+{
+ "_comment": "Classic World salon order and ids, copied from https://henesys.gg/salon on 16/10/2026 (male hair and faces only; the page lists no female styles). build-catalog.mjs sorts by these ids, matching on name; styles not listed sort by their own item id.",
+ "hair": [
+  [
+   "Toben Hair",
+   30000
+  ],
+  [
+   "Zeta",
+   30010
+  ],
+  [
+   "Unkempt Hair",
+   30020
+  ],
+  [
+   "Shaved Hair",
+   30030
+  ],
+  [
+   "Rockstar",
+   30040
+  ],
+  [
+   "Metro",
+   30050
+  ],
+  [
+   "Catalyst",
+   30060
+  ],
+  [
+   "All Back",
+   30070
+  ],
+  [
+   "Military Buzzcut",
+   30080
+  ],
+  [
+   "Mohawk",
+   30090
+  ],
+  [
+   "Fantasy",
+   30100
+  ],
+  [
+   "Fireball",
+   30110
+  ],
+  [
+   "Vincent",
+   30120
+  ],
+  [
+   "Antagonist",
+   30130
+  ],
+  [
+   "Topknot",
+   30140
+  ],
+  [
+   "Medium Cornrows",
+   30150
+  ],
+  [
+   "Trip Scratch",
+   30160
+  ],
+  [
+   "Line Scratch Hair",
+   30170
+  ],
+  [
+   "Mane",
+   30180
+  ],
+  [
+   "Bowl Cut",
+   30190
+  ],
+  [
+   "Wind",
+   30200
+  ],
+  [
+   "Shaggy Wax",
+   30210
+  ],
+  [
+   "Grooovy 'Do",
+   30220
+  ],
+  [
+   "Foil Perm",
+   30230
+  ],
+  [
+   "Chestnut",
+   30240
+  ],
+  [
+   "Afro",
+   30250
+  ],
+  [
+   "Metrosexual Hair",
+   30260
+  ],
+  [
+   "with Bald Spot",
+   30270
+  ],
+  [
+   "Mohecan Shaggy 'Do",
+   30280
+  ],
+  [
+   "Old Man 'Do",
+   30290
+  ],
+  [
+   "Romance",
+   30300
+  ],
+  [
+   "Acorn",
+   30310
+  ],
+  [
+   "Close-Cropped Afro",
+   30320
+  ],
+  [
+   "Cabana Boy Hair",
+   30330
+  ],
+  [
+   "Tristan Hair",
+   30340
+  ],
+  [
+   "Astro",
+   30350
+  ],
+  [
+   "Spiky Tail",
+   30360
+  ],
+  [
+   "Shaggy Dragon",
+   30370
+  ],
+  [
+   "Dragon Layered Hair",
+   30380
+  ],
+  [
+   "Tribal Buzz",
+   30400
+  ],
+  [
+   "Natural",
+   30410
+  ],
+  [
+   "Cozy Amber",
+   30420
+  ],
+  [
+   "Bald Head",
+   30430
+  ],
+  [
+   "Fury",
+   30440
+  ],
+  [
+   "Casanova",
+   30450
+  ],
+  [
+   "Tornade Hair",
+   30460
+  ],
+  [
+   "Slick Dean",
+   30470
+  ],
+  [
+   "Babby Cut",
+   30480
+  ],
+  [
+   "Messy Spikes",
+   30490
+  ],
+  [
+   "Rockie",
+   30510
+  ],
+  [
+   "Hontas",
+   30520
+  ],
+  [
+   "Baldie",
+   30530
+  ],
+  [
+   "Robot",
+   30540
+  ],
+  [
+   "Kongfu Braids",
+   30550
+  ],
+  [
+   "Grand Lionman",
+   30560
+  ],
+  [
+   "Eternal Elegance",
+   30570
+  ],
+  [
+   "Saturday Special",
+   30580
+  ],
+  [
+   "Super Suave",
+   30590
+  ],
+  [
+   "The Curl",
+   30600
+  ],
+  [
+   "The Mo Rawk",
+   30610
+  ],
+  [
+   "Bubba GoaTee",
+   30620
+  ],
+  [
+   "Neon Cactus",
+   30630
+  ],
+  [
+   "Urban Dragon",
+   30640
+  ],
+  [
+   "Rise N Shine",
+   30650
+  ],
+  [
+   "Fuzz",
+   30660
+  ],
+  [
+   "Preppy Spike",
+   30670
+  ],
+  [
+   "Hobo",
+   30680
+  ],
+  [
+   "Metro Man",
+   30690
+  ],
+  [
+   "Rising Rocker",
+   30700
+  ],
+  [
+   "Puffy Fro",
+   30710
+  ],
+  [
+   "Exotica",
+   30720
+  ],
+  [
+   "Roving Rockstar",
+   30730
+  ],
+  [
+   "Receding Hair",
+   30740
+  ],
+  [
+   "Buddha Fire",
+   30750
+  ],
+  [
+   "Bowling Ball",
+   30760
+  ],
+  [
+   "Lucky Charms",
+   30770
+  ],
+  [
+   "Dragon Tail",
+   30780
+  ],
+  [
+   "Lion Hair",
+   30790
+  ],
+  [
+   "Dreamcatcher",
+   30800
+  ],
+  [
+   "Gruff & Tough",
+   30810
+  ],
+  [
+   "Matinee Idol",
+   30820
+  ],
+  [
+   "Bed Head Hair",
+   30830
+  ],
+  [
+   "Prince Cut Hair",
+   30840
+  ],
+  [
+   "Short Regent Cut",
+   30850
+  ],
+  [
+   "Angelcakes Hair",
+   30860
+  ],
+  [
+   "Super Tuft Hair",
+   30870
+  ],
+  [
+   "Black Wild Tangles Hair",
+   30880
+  ],
+  [
+   "Black Artist Hair",
+   30890
+  ],
+  [
+   "Sweet Kitty Hair",
+   30900
+  ],
+  [
+   "Frieren Hair",
+   32000
+  ],
+  [
+   "Frieren Hair (Ringlets)",
+   32010
+  ],
+  [
+   "Frieren Hair (Sleep)",
+   32020
+  ],
+  [
+   "Fern Hair",
+   32030
+  ],
+  [
+   "Stark Hair",
+   32040
+  ],
+  [
+   "Himmel Hair",
+   32050
+  ],
+  [
+   "Übel Hair",
+   32060
+  ]
+ ],
+ "face": [
+  [
+   "Defiant Face",
+   20000
+  ],
+  [
+   "Confident Face",
+   20001
+  ],
+  [
+   "Prudent Face",
+   20002
+  ],
+  [
+   "Dramatic Face",
+   20003
+  ],
+  [
+   "Rebel's Fire",
+   20004
+  ],
+  [
+   "Alert Face",
+   20005
+  ],
+  [
+   "Babyface Pout",
+   20006
+  ],
+  [
+   "Sad Innocence",
+   20007
+  ],
+  [
+   "Worrisome Glare",
+   20008
+  ],
+  [
+   "Smart Aleck",
+   20009
+  ],
+  [
+   "Wisdom Glance",
+   20010
+  ],
+  [
+   "Cool Guy Gaze",
+   20011
+  ],
+  [
+   "Curious Dog",
+   20012
+  ],
+  [
+   "Insomniac Daze",
+   20013
+  ],
+  [
+   "Look of Wonder",
+   20014
+  ],
+  [
+   "Eye of the Lion",
+   20015
+  ],
+  [
+   "Ghostface Stare",
+   20016
+  ],
+  [
+   "Demure Poise",
+   20017
+  ],
+  [
+   "Game Face",
+   20018
+  ],
+  [
+   "Irritable Face",
+   20019
+  ],
+  [
+   "Fierce Edge",
+   20020
+  ],
+  [
+   "Overjoyed Smile",
+   20021
+  ],
+  [
+   "Child's Play",
+   20022
+  ],
+  [
+   "Hypnotized Look",
+   20023
+  ],
+  [
+   "Intense Stare",
+   20024
+  ],
+  [
+   "Edge of Emotion",
+   20025
+  ],
+  [
+   "Innocent Gaze",
+   20026
+  ],
+  [
+   "Distant Gaze",
+   20027
+  ],
+  [
+   "Crystal Face",
+   20028
+  ],
+  [
+   "Puppy Eyes Face",
+   20029
+  ],
+  [
+   "Round-Eyed Face",
+   20030
+  ],
+  [
+   "Mysterious Face",
+   20031
+  ],
+  [
+   "Confused Look",
+   20032
+  ],
+  [
+   "Oliver Face",
+   20033
+  ],
+  [
+   "Almond Face",
+   20034
+  ],
+  [
+   "Moonlight Eyes",
+   20035
+  ],
+  [
+   "Frieren Face",
+   22000
+  ],
+  [
+   "Fern Face",
+   22001
+  ],
+  [
+   "Stark Face",
+   22002
+  ],
+  [
+   "Himmel Face",
+   22003
+  ],
+  [
+   "Übel Face",
+   22004
+  ],
+  [
+   "Aura Face",
+   22005
+  ],
+  [
+   "Linie Face",
+   22006
+  ],
+  [
+   "Lügner Face",
+   22007
+  ]
+ ]
+}

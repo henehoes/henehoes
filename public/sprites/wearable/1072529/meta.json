@@ -1,0 +1,1 @@
+{"id":1072529,"name":"Pink Elephant Slippers","version":"210.1.1","kind":"wearable","equipGroup":"Shoes","vslots":["So"],"islots":["So"],"parts":[{"key":"shoes","w":25,"h":8,"origin":{"x":10,"y":-13,"isEmpty":false},"maps":{"navel":{"x":0,"y":0,"isEmpty":true}},"position":"shoesOverPants"}]}

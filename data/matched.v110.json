@@ -1,0 +1,576 @@
+[
+  {
+    "name": "Angel Halo",
+    "candidates": [
+      {
+        "id": 1002367,
+        "name": "Angel Halo",
+        "category": "Armor",
+        "subCategory": "Hat"
+      }
+    ]
+  },
+  {
+    "name": "Toga",
+    "candidates": [
+      {
+        "id": 1052030,
+        "name": "Toga",
+        "category": "Armor",
+        "subCategory": "Overall"
+      }
+    ]
+  },
+  {
+    "name": "Baby Angel Wings",
+    "candidates": [
+      {
+        "id": 1102005,
+        "name": "Baby Angel Wings",
+        "category": "Armor",
+        "subCategory": "Cape"
+      }
+    ]
+  },
+  {
+    "name": "Angel Wand",
+    "candidates": [
+      {
+        "id": 1372086,
+        "name": "Angel Wand",
+        "category": "One-Handed Weapon",
+        "subCategory": "Wand"
+      },
+      {
+        "id": 1702004,
+        "name": "Angel Wand",
+        "category": "One-Handed Weapon",
+        "subCategory": "Cash"
+      }
+    ]
+  },
+  {
+    "name": "Cherub's Bow",
+    "candidates": [
+      {
+        "id": 1702025,
+        "name": "Cherub's Bow",
+        "category": "One-Handed Weapon",
+        "subCategory": "Cash"
+      }
+    ]
+  },
+  {
+    "name": "Blue Cap",
+    "candidates": [
+      {
+        "id": 1002237,
+        "name": "Blue Cap",
+        "category": "Armor",
+        "subCategory": "Hat"
+      }
+    ]
+  },
+  {
+    "name": "Orange Baseball Jacket",
+    "candidates": [
+      {
+        "id": 1040005,
+        "name": "Orange Baseball Jacket",
+        "category": "Armor",
+        "subCategory": "Top"
+      }
+    ]
+  },
+  {
+    "name": "Rainbow Knit",
+    "candidates": [
+      {
+        "id": 1041125,
+        "name": "Rainbow Knit",
+        "category": "Armor",
+        "subCategory": "Top"
+      }
+    ]
+  },
+  {
+    "name": "Ripped Jeans",
+    "candidates": [
+      {
+        "id": 1062015,
+        "name": "Ripped Jeans",
+        "category": "Armor",
+        "subCategory": "Bottom"
+      }
+    ]
+  },
+  {
+    "name": "Orange Toy Hammer",
+    "candidates": [
+      {
+        "id": 1702010,
+        "name": "Orange Toy Hammer",
+        "category": "One-Handed Weapon",
+        "subCategory": "Cash"
+      }
+    ]
+  },
+  {
+    "name": "Blue Bucket Hat",
+    "candidates": [
+      {
+        "id": 1002298,
+        "name": "Blue Bucket Hat",
+        "category": "Armor",
+        "subCategory": "Hat"
+      }
+    ]
+  },
+  {
+    "name": "Tourist T",
+    "candidates": [
+      {
+        "id": 1042086,
+        "name": "Tourist T",
+        "category": "Armor",
+        "subCategory": "Top"
+      }
+    ]
+  },
+  {
+    "name": "White Jeans",
+    "candidates": [
+      {
+        "id": 1062039,
+        "name": "White Jeans",
+        "category": "Armor",
+        "subCategory": "Bottom"
+      },
+      {
+        "id": 1062131,
+        "name": "White Jeans",
+        "category": "Armor",
+        "subCategory": "Bottom"
+      }
+    ]
+  },
+  {
+    "name": "Black Sunglasses",
+    "candidates": [
+      {
+        "id": 1022004,
+        "name": "Black Sunglasses",
+        "category": "Accessory",
+        "subCategory": "Eye Decoration"
+      }
+    ]
+  },
+  {
+    "name": "Cat Hat",
+    "candidates": [
+      {
+        "id": 1002031,
+        "name": "Cat Hat",
+        "category": "Armor",
+        "subCategory": "Hat"
+      },
+      {
+        "id": 1002724,
+        "name": "Cat Hat",
+        "category": "Armor",
+        "subCategory": "Hat"
+      }
+    ]
+  },
+  {
+    "name": "Cat Suit",
+    "candidates": [
+      {
+        "id": 1051002,
+        "name": "Cat Suit",
+        "category": "Armor",
+        "subCategory": "Overall"
+      }
+    ]
+  },
+  {
+    "name": "Meshcap",
+    "candidates": [
+      {
+        "id": 1002429,
+        "name": "Meshcap",
+        "category": "Armor",
+        "subCategory": "Hat"
+      }
+    ]
+  },
+  {
+    "name": "Pink Allstar",
+    "candidates": [
+      {
+        "id": 1042040,
+        "name": "Pink Allstar",
+        "category": "Armor",
+        "subCategory": "Top"
+      }
+    ]
+  },
+  {
+    "name": "Jean Shorts",
+    "candidates": [
+      {
+        "id": 1062021,
+        "name": "Jean Shorts",
+        "category": "Armor",
+        "subCategory": "Bottom"
+      }
+    ]
+  },
+  {
+    "name": "Beret",
+    "candidates": [
+      {
+        "id": 1001013,
+        "name": "Beret",
+        "category": "Armor",
+        "subCategory": "Hat"
+      }
+    ]
+  },
+  {
+    "name": "Red Sailor Shirt",
+    "candidates": [
+      {
+        "id": 1041009,
+        "name": "Red Sailor Shirt",
+        "category": "Armor",
+        "subCategory": "Top"
+      }
+    ]
+  },
+  {
+    "name": "Red Sailor Skirt",
+    "candidates": [
+      {
+        "id": 1061007,
+        "name": "Red Sailor Skirt",
+        "category": "Armor",
+        "subCategory": "Bottom"
+      }
+    ]
+  },
+  {
+    "name": "Black Enamel Shoes",
+    "candidates": [
+      {
+        "id": 1072332,
+        "name": "Black Enamel Shoes",
+        "category": "Armor",
+        "subCategory": "Shoes"
+      }
+    ]
+  },
+  {
+    "name": "Patissier Hat",
+    "candidates": [
+      {
+        "id": 1002443,
+        "name": "Patissier Hat",
+        "category": "Armor",
+        "subCategory": "Hat"
+      }
+    ]
+  },
+  {
+    "name": "Patissier Uniform",
+    "candidates": [
+      {
+        "id": 1052037,
+        "name": "Patissier Uniform",
+        "category": "Armor",
+        "subCategory": "Overall"
+      }
+    ]
+  },
+  {
+    "name": "Yellow Spatula",
+    "candidates": [
+      {
+        "id": 1702012,
+        "name": "Yellow Spatula",
+        "category": "One-Handed Weapon",
+        "subCategory": "Cash"
+      }
+    ]
+  },
+  {
+    "name": "Bunny Ears",
+    "candidates": [
+      {
+        "id": 1003050,
+        "name": "Bunny Ears",
+        "category": "Armor",
+        "subCategory": "Hat"
+      }
+    ]
+  },
+  {
+    "name": "Bunny Earmuffs",
+    "candidates": [
+      {
+        "id": 1002738,
+        "name": "Bunny Earmuffs",
+        "category": "Armor",
+        "subCategory": "Hat"
+      }
+    ]
+  },
+  {
+    "name": "Orange Mushroom Balloon",
+    "candidates": [
+      {
+        "id": 1102137,
+        "name": "Orange Mushroom Balloon",
+        "category": "Armor",
+        "subCategory": "Cape"
+      }
+    ]
+  },
+  {
+    "name": "Blue Watch",
+    "candidates": [
+      {
+        "id": 1082171,
+        "name": "Blue Watch",
+        "category": "Armor",
+        "subCategory": "Glove"
+      }
+    ]
+  },
+  {
+    "name": "Red Trainer Jacket",
+    "candidates": [
+      {
+        "id": 1041109,
+        "name": "Red Trainer Jacket",
+        "category": "Armor",
+        "subCategory": "Top"
+      }
+    ]
+  },
+  {
+    "name": "Red Trainer Pants",
+    "candidates": [
+      {
+        "id": 1061072,
+        "name": "Red Trainer Pants",
+        "category": "Armor",
+        "subCategory": "Bottom"
+      }
+    ]
+  },
+  {
+    "name": "Yellow Rainbow Sneaks",
+    "candidates": [
+      {
+        "id": 1072379,
+        "name": "Yellow Rainbow Sneaks",
+        "category": "Armor",
+        "subCategory": "Shoes"
+      }
+    ]
+  },
+  {
+    "name": "Dollish Pink",
+    "candidates": [
+      {
+        "id": 1012083,
+        "name": "Dollish Pink",
+        "category": "Accessory",
+        "subCategory": "Face Accessory"
+      }
+    ]
+  },
+  {
+    "name": "Purple Dorothy Dress",
+    "candidates": [
+      {
+        "id": 1051173,
+        "name": "Purple Dorothy Dress",
+        "category": "Armor",
+        "subCategory": "Overall"
+      }
+    ]
+  },
+  {
+    "name": "Sailor Hat",
+    "candidates": [
+      {
+        "id": 1002943,
+        "name": "Sailor Hat",
+        "category": "Armor",
+        "subCategory": "Hat"
+      }
+    ]
+  },
+  {
+    "name": "Sailor Outfit",
+    "candidates": [
+      {
+        "id": 1050152,
+        "name": "Sailor Outfit",
+        "category": "Armor",
+        "subCategory": "Overall"
+      },
+      {
+        "id": 1051180,
+        "name": "Sailor Outfit",
+        "category": "Armor",
+        "subCategory": "Overall"
+      }
+    ]
+  },
+  {
+    "name": "White Ribboned Sailor Dress",
+    "candidates": [
+      {
+        "id": 1051139,
+        "name": "White Ribboned Sailor Dress",
+        "category": "Armor",
+        "subCategory": "Overall"
+      }
+    ]
+  },
+  {
+    "name": "Slime T-Shirt",
+    "candidates": [
+      {
+        "id": 1042030,
+        "name": "Slime T-Shirt",
+        "category": "Armor",
+        "subCategory": "Top"
+      }
+    ]
+  },
+  {
+    "name": "Slime Slippers",
+    "candidates": [
+      {
+        "id": 1072235,
+        "name": "Slime Slippers",
+        "category": "Armor",
+        "subCategory": "Shoes"
+      }
+    ]
+  },
+  {
+    "name": "Slime Earrings",
+    "candidates": [
+      {
+        "id": 1032052,
+        "name": "Slime Earrings",
+        "category": "Accessory",
+        "subCategory": "Earrings"
+      }
+    ]
+  },
+  {
+    "name": "Reggae Hat",
+    "candidates": [
+      {
+        "id": 1002501,
+        "name": "Reggae Hat",
+        "category": "Armor",
+        "subCategory": "Hat"
+      }
+    ]
+  },
+  {
+    "name": "Orange Hooded Shirt",
+    "candidates": [
+      {
+        "id": 1042066,
+        "name": "Orange Hooded Shirt",
+        "category": "Armor",
+        "subCategory": "Top"
+      }
+    ]
+  },
+  {
+    "name": "White Hooded Vest",
+    "candidates": [
+      {
+        "id": 1042042,
+        "name": "White Hooded Vest",
+        "category": "Armor",
+        "subCategory": "Top"
+      }
+    ]
+  },
+  {
+    "name": "Butterfly Skirt",
+    "candidates": [
+      {
+        "id": 1061129,
+        "name": "Butterfly Skirt",
+        "category": "Armor",
+        "subCategory": "Bottom"
+      }
+    ]
+  },
+  {
+    "name": "Lined Hip-Hop Pants",
+    "candidates": [
+      {
+        "id": 1062005,
+        "name": "Lined Hip-Hop Pants",
+        "category": "Armor",
+        "subCategory": "Bottom"
+      }
+    ]
+  },
+  {
+    "name": "White Label Ring",
+    "candidates": [
+      {
+        "id": 1112100,
+        "name": "White Label Ring",
+        "category": "Accessory",
+        "subCategory": "Ring"
+      }
+    ]
+  },
+  {
+    "name": "Ink-and-Wash Thought Bubble Ring",
+    "candidates": [
+      {
+        "id": 1112238,
+        "name": "Ink-and-Wash Thought Bubble Ring",
+        "category": "Accessory",
+        "subCategory": "Ring"
+      }
+    ]
+  },
+  {
+    "name": "Ink-and-Wash Painting Name Tag Ring",
+    "candidates": [
+      {
+        "id": 1112135,
+        "name": "Ink-and-Wash Painting Name Tag Ring",
+        "category": "Accessory",
+        "subCategory": "Ring"
+      }
+    ]
+  },
+  {
+    "name": "Chocolate Label Ring",
+    "candidates": [
+      {
+        "id": 1112113,
+        "name": "Chocolate Label Ring",
+        "category": "Accessory",
+        "subCategory": "Ring"
+      }
+    ]
+  }
+]

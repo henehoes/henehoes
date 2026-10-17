@@ -1,0 +1,87 @@
+{
+  "_comment": "Styles pinned by item id. Hair: the id with last digit 0 is colour 0 and ids ending 0 to 7 are the colours. Face: the hundreds digit is the colour (0 to 8). Names are the Classic World salon names from https://henesys.gg/salon. Applied by scripts/add-pinned.mjs, which edits data/items.json; run it after build-manifest.mjs.",
+  "hair": [
+    {
+      "style": "Toben Hair",
+      "gender": "male",
+      "id": 30000
+    },
+    {
+      "style": "Unkempt Hair",
+      "gender": "male",
+      "id": 30020
+    },
+    {
+      "style": "Shaved Hair",
+      "gender": "male",
+      "id": 30030
+    },
+    {
+      "style": "Cutie Hair",
+      "gender": "female",
+      "id": 31000
+    },
+    {
+      "style": "Medium Cornrows",
+      "gender": "male",
+      "id": 30150
+    },
+    {
+      "style": "Short Regent Cut",
+      "gender": "male",
+      "id": 33350
+    },
+    {
+      "style": "Chestnut",
+      "gender": "male",
+      "id": 30240
+    },
+    {
+      "style": "Edgy Hair",
+      "gender": "female",
+      "id": 31040
+    },
+    {
+      "style": "Rockstar Hair",
+      "gender": "female",
+      "id": 31050
+    }
+  ],
+  "face": [
+    {
+      "style": "Defiant Face",
+      "gender": "male",
+      "id": 20000
+    },
+    {
+      "style": "Confident Face",
+      "gender": "male",
+      "id": 20001
+    },
+    {
+      "style": "Prudent Face",
+      "gender": "male",
+      "id": 20002
+    },
+    {
+      "style": "Motivated Look",
+      "gender": "female",
+      "id": 21000
+    },
+    {
+      "style": "Fearful Stare",
+      "gender": "female",
+      "id": 21001
+    },
+    {
+      "style": "Leisure Look",
+      "gender": "female",
+      "id": 21002
+    },
+    {
+      "style": "Prim Face",
+      "gender": "female",
+      "id": 21053
+    }
+  ]
+}

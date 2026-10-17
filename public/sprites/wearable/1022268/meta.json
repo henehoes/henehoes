@@ -1,0 +1,1 @@
+{"id":1022268,"name":"Heart Sunglasses","version":"210.1.1","kind":"wearable","equipGroup":"Accessory","vslots":["Ay"],"islots":["Ay"],"parts":[{"key":"default","w":38,"h":16,"origin":{"x":20,"y":28,"isEmpty":false},"maps":{"brow":{"x":0,"y":-30,"isEmpty":false}},"position":"accessoryEye"}]}

@@ -1,0 +1,111 @@
+:root {
+  --bg: #f6f5f2; --surface: #fff; --text: #1d1d1b; --muted: #6b6a66; --line: #e3e1da;
+  --accent: #d9501e; --accent-text: #fff; --stage: #ecebe6; --focus: #1a5fd0;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #161615; --surface: #202020; --text: #efeeea; --muted: #9a9890; --line: #343432; --accent: #f06a37; --accent-text: #161615; --stage: #2a2a28; --focus: #7aa7ff; }
+}
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 13px/1.35 system-ui, -apple-system, "Segoe UI", sans-serif; overflow: hidden; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* One screen: nothing scrolls except the card grid and, if the window is very short, the left column. */
+.app { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; height: 100dvh; max-width: 1360px; margin: 0 auto; padding: 12px; }
+/* Left half: the preview across the full width, then the Equipped panel. */
+.side { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto; gap: 8px; min-height: 0; overflow: auto; }
+/* A wide, short preview box (it fits the character to its height). */
+.stage-box { position: relative; width: 100%; height: min(240px, calc(100dvh - 400px)); min-height: 160px; grid-column: 1; grid-row: 1; flex-shrink: 0; overflow: hidden; background: var(--stage); border: 1px solid var(--line); border-radius: 10px; }
+#preview { display: block; image-rendering: pixelated; }
+.note { color: var(--muted); font-size: 11px; margin: 0; flex-shrink: 0; grid-column: 1 / -1; grid-row: 3; }
+
+.colour { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px; grid-column: 1 / -1; grid-row: 2; min-height: 96px; overflow: auto; }
+.colour h3 { margin: 0 0 8px; font-size: 12px; }
+.colour .hint { margin: 0; color: var(--muted); }
+
+.panel { display: flex; flex-direction: column; min-height: 0; min-width: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
+.tabs { flex-shrink: 0; display: grid; gap: 6px; margin-bottom: 8px; }
+.tab-group { display: flex; align-items: center; gap: 8px; }
+.tab-group h2 { flex: 0 0 76px; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; font-weight: 600; }
+.tab-row { display: flex; flex-wrap: wrap; gap: 4px; }
+.tab { padding: 3px 10px; border-radius: 999px; border: 1px solid var(--line); background: transparent; font-size: 12px; }
+.tab[aria-selected="true"] { background: var(--text); color: var(--bg); border-color: var(--text); }
+.tab .dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); margin-left: 5px; vertical-align: middle; }
+.fix { display: inline-flex; align-items: center; justify-content: center; width: 12px; height: 12px; margin-left: 5px; border-radius: 50%; background: var(--accent); color: var(--accent-text); font-size: 9px; font-weight: 700; }
+
+.toolbar { flex-shrink: 0; }
+.toolbar:not(:empty) { margin-bottom: 8px; }
+.tab-row .seg { margin-left: 8px; }
+.seg { display: inline-flex; border: 1px solid var(--line); border-radius: 7px; overflow: hidden; }
+.seg button { padding: 3px 12px; border: 0; background: transparent; font-size: 12px; }
+.seg button[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+
+.scroll { flex: 1 1 auto; min-height: 0; overflow: auto; padding: 2px; border-top: 1px solid var(--line); padding-top: 10px; }
+.ph-note { flex-shrink: 0; margin: 8px 0 0; min-height: 1.35em; color: var(--accent); font-size: 12px; }
+
+/* Cards: 5 per row. The art fills the card edge to edge and the card crops whatever spills over. */
+.grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; } /* 5 per row, the same 8px between cards sideways and up and down */
+.card { display: flex; flex-direction: column; align-items: stretch; padding: 0; overflow: hidden; position: relative; border-radius: 7px; border: 1px solid var(--line); background: var(--bg); text-align: center; font-size: 10.5px; line-height: 1.2; }
+.card[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+.art-box { position: relative; height: 84px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.art-box canvas { display: block; position: absolute; top: 0; image-rendering: pixelated; }
+.icon { image-rendering: pixelated; height: auto; }
+.card .label { padding: 4px 4px 0; margin-bottom: 5px; height: calc(1.2em + 4px); display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; } /* one line, so every card is the same size and no space is wasted; a longer name is cut off with an ellipsis (the full name is the tooltip) */
+.card.none, .card.placeholder { justify-content: center; min-height: 118px; color: var(--muted); padding: 6px 4px; gap: 4px; align-items: center; }
+.card.placeholder { border: 2px dashed var(--accent); background: transparent; cursor: help; }
+.card.placeholder .q { font-size: 22px; line-height: 1; color: var(--accent); }
+.badge { font-size: 8.5px; font-weight: 700; letter-spacing: .06em; color: var(--accent-text); background: var(--accent); border-radius: 4px; padding: 1px 4px; }
+.badge.check { position: absolute; top: 4px; left: 4px; z-index: 1; background: #b58900; color: #fff; }
+
+
+.sliders { display: grid; gap: 8px; }
+.slider { display: grid; grid-template-columns: 70px 1fr 44px; align-items: center; gap: 8px; }
+.slider label { font-size: 12px; }
+.slider .num { width: 44px; padding: 3px 4px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; font-size: 12px; font-variant-numeric: tabular-nums; text-align: right; }
+.slider input { width: 100%; margin: 0; accent-color: var(--accent); }
+.small-btn { margin-top: 8px; padding: 4px 10px; border-radius: 7px; border: 1px solid var(--line); background: transparent; }
+
+/* Small screens: let the page scroll instead of squeezing everything. */
+@media (max-width: 800px) {
+  body { overflow: auto; }
+  .app { grid-template-columns: 1fr; height: auto; }
+  .panel { height: 70dvh; }
+  .side { display: flex; flex-direction: column; }
+      .stage-box { width: 100%; }
+}
+
+/* Equipped panel: sprites of what I am wearing; the selected one is outlined */
+
+/* Colour bar above the Face/Hair catalogue */
+.colour-bar { display: flex; align-items: flex-start; gap: 10px; }
+.bar-label { flex: 0 0 76px; padding-top: 8px; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+.swatches { display: flex; flex-wrap: wrap; gap: 4px 8px; }
+.swatch { display: flex; flex-direction: column; align-items: center; gap: 3px; background: none; border: 0; padding: 2px; font-size: 10px; color: var(--muted); }
+.swatch i { width: 26px; height: 22px; border-radius: 3px; border: 2px solid #21323e; display: block; } /* rectangular, like the game's colour picker */
+.swatch[aria-pressed="true"] { color: var(--text); }
+.swatch[aria-pressed="true"] i { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent); }
+
+/* Name tag and chat bubble rings */
+.ring-sample { position: static !important; image-rendering: pixelated; }
+.text-fields { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+.text-field { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--muted); }
+.text-field input { padding: 4px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text); font: inherit; min-width: 0; width: 150px; }
+.colour .text-fields { margin-bottom: 8px; }
+
+/* Equipped panel: small preview tiles with just the category underneath */
+.colour .equipped.grid { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+.equipped .card.mini { width: 68px; border-radius: 6px; }
+.equipped .card.mini .art-box { height: 44px; }
+.equipped .card.mini .label { height: auto; margin-bottom: 2px; padding: 2px 2px 0; font-size: 10px; display: block; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+
+/* Small buttons in the corner of the preview */
+.stage-tools { position: absolute; top: 8px; left: 8px; display: flex; gap: 4px; z-index: 2; }
+.tool { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; padding: 0; border-radius: 7px; border: 1px solid var(--line); background: var(--surface); color: var(--text); }
+.tool:hover { border-color: var(--text); }
+.tool:active { background: var(--bg); }
+.stage-note { position: absolute; top: 12px; left: 108px; z-index: 2; font-size: 11px; color: var(--muted); opacity: 0; transition: opacity .2s; pointer-events: none; }
+.stage-note.show { opacity: 1; }
+
+/* All / Male / Female, just above the Face and Hair cards */
+.gender-bar { margin-bottom: 10px; }

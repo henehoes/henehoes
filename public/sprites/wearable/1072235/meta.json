@@ -1,0 +1,1 @@
+{"id":1072235,"name":"Slime Slippers","version":"110","kind":"wearable","equipGroup":"Shoes","vslots":["So"],"islots":["So"],"parts":[{"key":"shoes","w":26,"h":10,"origin":{"x":10,"y":5,"isEmpty":false},"maps":{"navel":{"x":1,"y":-16,"isEmpty":false}},"position":"shoesTop"}]}

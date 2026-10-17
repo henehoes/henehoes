@@ -1,0 +1,1 @@
+{"id":1082565,"name":"Chocolate Ribbon","version":"210.1.1","kind":"wearable","equipGroup":"Glove","vslots":["Gl","Gw"],"islots":["Gv"],"parts":[{"key":"rWrist","w":10,"h":7,"origin":{"x":4,"y":9,"isEmpty":false},"maps":{"hand":{"x":0,"y":0,"isEmpty":true}},"position":"gloveWrist"}]}

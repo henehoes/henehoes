@@ -1,0 +1,75 @@
+{
+ "_comment": "Which hair and face styles are RELEASED in MapleStory Classic. Everything else in data/henesys-salon.json is datamine only and shows under the Datamine switch. Edit this file by hand: add a style name (as shown in the catalogue) to its list when it releases, then run node scripts/build-catalog.mjs. Names are matched ignoring case, spaces and punctuation.",
+ "hair": {
+  "male": [
+   "Toben Hair",
+   "Unkempt Hair",
+   "Shaved Hair",
+   "Antagonist",
+   "Medium Cornrows",
+   "Line Scratch Hair",
+   "Mane",
+   "Bowl Cut",
+   "Chestnut",
+   "Metrosexual Hair",
+   "Mohecan Shaggy 'Do",
+   "Dreamcatcher",
+   "Bed Head Hair",
+   "Prince Cut Hair",
+   "Short Regent Cut"
+  ],
+  "female": [
+   "Cutie Hair",
+   "Veronica",
+   "Edgy",
+   "Rockstar Hair",
+   "Bridget",
+   "Jolie",
+   "Angelica Hair",
+   "Rastafari Hair",
+   "Holla' Back 'Do",
+   "Caspia Hair",
+   "Rose",
+   "Penelope Hair",
+   "Lovely Ladyhawk",
+   "Vivacious Wavy Hair",
+   "Ponytail-to-the-Side"
+  ]
+ },
+ "face": {
+  "male": [
+   "Defiant Face",
+   "Confident Face",
+   "Prudent Face",
+   "Rebel's Fire",
+   "Alert Face",
+   "Babyface Pout",
+   "Worrisome Glare",
+   "Smart Aleck",
+   "Wisdom Glance",
+   "Cool Guy Gaze",
+   "Insomniac Daze",
+   "Look of Wonder",
+   "Overjoyed Smile",
+   "Innocent Gaze",
+   "Distant Gaze"
+  ],
+  "female": [
+   "Defiant Face",
+   "Prudent Face",
+   "Intelligent Face",
+   "Strong Stare",
+   "Babyface Pout",
+   "Hopeless Gaze",
+   "Wide-eyed Girl",
+   "Curious Look",
+   "Beauty Stare",
+   "Hera's Radiance",
+   "Gentle Glow",
+   "Prim Face",
+   "Posh Look",
+   "Bulbous-Eyed Face",
+   "Round Eyed Face"
+  ]
+ }
+}

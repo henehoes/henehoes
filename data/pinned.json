@@ -37,7 +37,7 @@
       "id": 30240
     },
     {
-      "style": "Edgy Hair",
+      "style": "Edgy",
       "gender": "female",
       "id": 31040
     },
@@ -64,17 +64,17 @@
       "id": 20002
     },
     {
-      "style": "Motivated Look",
+      "style": "Defiant Face",
       "gender": "female",
       "id": 21000
     },
     {
-      "style": "Fearful Stare",
+      "style": "Prudent Face",
       "gender": "female",
       "id": 21001
     },
     {
-      "style": "Leisure Look",
+      "style": "Intelligent Face",
       "gender": "female",
       "id": 21002
     },

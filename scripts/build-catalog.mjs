@@ -21,6 +21,19 @@ const slotOf = id => { const g = Math.floor(id / 10000); return SLOTS.find(([n])
 const read = p => JSON.parse(readFileSync(p, 'utf8'));
 const zmap = read('data/zmap.json');
 const rules = read('data/rules.json');
+// henesys.gg is the single source for Classic names and ids (data/henesys-salon.json, data/henesys-cashshop.json, fetched by
+// scripts/fetch-henesys.mjs). Sprite ids come from the sprite API; the Classic id is stored beside them as classicId.
+const salon = read('data/henesys-salon.json');
+const cashShop = read('data/henesys-cashshop.json').items;
+const released = read('data/released.json');
+const norm = n => n.toLowerCase().replace(/ (hair|face)$/, '').replace(/[^a-z0-9]/g, '');
+const shopIds = new Map(); for (const i of cashShop) { const k = norm(i.name); if (!shopIds.has(k)) shopIds.set(k, []); shopIds.get(k).push(i.id); }
+const salonByName = Object.fromEntries(['hair', 'face'].map(k => [k, new Map(salon[k].map(e => [norm(e.name), e]))]));
+// data/released.json lists names, or Classic ids (numbers) for the rare style whose name is shared with a released one.
+const genders = g => g === 'both' ? ['male', 'female'] : [g];
+const isReleased = (kind, gender, name, s) => genders(gender).some(g => released[kind]?.[g]?.some(n => typeof n === 'number' ? n === s?.classicId : norm(n) === norm(name) && !(s?.datamine && sharesName(kind, g, name))));
+const existingStyles = read('data/items.json').styles.filter(x => !x.datamine);
+const sharesName = (kind, g, name) => existingStyles.some(x => x.kind === kind && x.gender === g && norm(x.style) === norm(name));
 const warnings = { unknownAnchor: [], noParts: [], unknownSlot: [], unknownLayer: [] };
 const zOf = layer => {
   const i = zmap.indexOf(rules.zFallback[layer] ?? layer);
@@ -68,8 +81,16 @@ for (const s of skins) {
   const s2 = skins2.find(x => x.tone === s.tone);
   if (s2) s.parts2 = s2.parts.filter(p => p.key !== 'ear').map(p => ({ file: `sprites/skin2/${s.tone}/${p.key}.png`, layer: p.position, x: p.pos.x, y: p.pos.y, z: zOf(p.position) }));
 }
-const catalog = { skins, face: [], hair: [], wearables: {} };
+// What src/live.js needs to place a part the same way build-catalog does.
+const catalog = { skins, face: [], hair: [], wearables: {}, live: { zmap, zFallback: rules.zFallback, partHiddenBy: rules.partHiddenBy, priority: ANCHOR_PRIORITY, anchors: ANCHORS, anchors2: ANCHORS2 } };
 
+// The Classic id of a wearable: the henesys.gg cash shop id for its name. Where the name appears more than once, the id nearest
+// the sprite's own id in the same equipment group is used. Items henesys.gg does not list get none.
+const classicIdOf = w => {
+  const ids = shopIds.get(norm(w.name)); if (!ids) return null;
+  const group = Math.floor(w.id / 10000);
+  return ids.find(i => Math.floor(i / 10000) === group) ?? ids[0];
+};
 for (const w of wearables) {
   const dir = `sprites/wearable/${w.id}`;
   const slot = slotOf(w.id);
@@ -78,7 +99,7 @@ for (const w of wearables) {
   const meta = read(`public/${dir}/meta.json`);
   const parts = partsOf(meta, dir);
   if (!parts.length) { warnings.noParts.push(`${w.name} (${slot[2]})`); addWearablePlaceholder(slot[1], w.name, `Found (id ${w.id}) but it has no sprite in the standing pose`); continue; }
-  (catalog.wearables[slot[1]] ??= { label: slot[2], items: [] }).items.push({ id: w.id, name: w.name, ...(w.assumed && { check: w.assumed }), vslots: meta.vslots ?? [], ...(existsSync(`public/${dir}/icon.png`) && { icon: `${dir}/icon.png` }), ...(rules.stand2Only?.includes(w.id) && { pose: 'stand2' }), parts, ...(parts2Of(dir, w.name) && { parts2: parts2Of(dir, w.name) }) });
+  (catalog.wearables[slot[1]] ??= { label: slot[2], items: [] }).items.push({ id: w.id, name: w.name, ...(w.assumed && { check: w.assumed }), vslots: meta.vslots ?? [], ...(existsSync(`public/${dir}/icon.png`) && { icon: `${dir}/icon.png` }), ...(rules.stand2Only?.includes(w.id) && { pose: 'stand2' }), ...(classicIdOf(w) && { classicId: classicIdOf(w) }), parts, ...(parts2Of(dir, w.name) && { parts2: parts2Of(dir, w.name) }) });
 }
 
 // Name tag and chat bubble rings draw no sprite: the app builds them from UI pieces (see src/ring.js, data/rings.json).
@@ -99,6 +120,8 @@ for (const s of styles) {
   const variants = [];
   for (const c of s.colours) {
     const dir = `sprites/${s.kind}/${c.id}`;
+    // Datamine styles are not stored: the app fetches their sprites from maplestory.io when needed (src/live.js).
+    if (s.datamine) { variants.push({ id: c.id, colour: c.colour, label: COLOUR_NAMES[s.kind][c.colour] ?? `Colour ${c.colour + 1}`, live: true, version: s.version }); continue; }
     if (!existsSync(`public/${dir}/meta.json`)) continue;
     const parts = partsOf(read(`public/${dir}/meta.json`), dir);
     // The API names colour variants inconsistently (sometimes all the same), so use the game's standard colour order.
@@ -111,7 +134,11 @@ for (const s of styles) {
   if (rules.exclude?.some(x => x.kind === s.kind && x.gender === s.gender && x.style === s.style)) continue;
   if (multi && rules.useEarlierId?.includes(s.style) && s.key !== Math.min(...multi.keys)) continue;
   const check = guess ? `Guessed: the post says "${guess.pasted}", matched to "${guess.matchedAs}"` : multi && !rules.useEarlierId?.includes(s.style) ? `Several items share this name (${multi.keys.join(', ')}); check this is the right one` : undefined;
-  if (variants.length) catalog[s.kind].push({ style: s.style, gender: s.gender, key: s.key, ...(check && { check }), variants });
+  // henesys.gg lists the male pool and the collab styles (both genders); a female style of the same name is a different item.
+  const entry = salonByName[s.kind].get(norm(s.style));
+  const classic = s.classicId ?? (entry && (entry.gender === 'both' || entry.gender === s.gender) ? entry.id : undefined);
+  const note = check ?? s.note;
+  if (variants.length) catalog[s.kind].push({ style: s.style, gender: s.gender, key: s.key, ...(classic && { classicId: classic }), released: isReleased(s.kind, s.gender, s.style, { classicId: classic, datamine: s.datamine }), ...(note && { check: note }), variants });
 }
 
 for (const u of report.styleUnresolved) placeholders[u.kind].push({ name: u.style, gender: u.gender, reason: 'Name not found in the item database' });
@@ -120,16 +147,14 @@ for (const [slotKey, list] of Object.entries(placeholders.wearables)) {
   catalog.wearables[slotKey] ??= { label: slotLabel(slotKey), items: [] };
   catalog.wearables[slotKey].placeholders = list;
 }
+// Styles on henesys.gg that have no sprite we can draw (scripts/add-datamine.mjs): shown only under the Datamine switch.
+for (const p of read('data/datamine-placeholders.json').items) placeholders[p.kind].push({ name: p.style, gender: p.gender, classicId: p.classicId, released: isReleased(p.kind, p.gender, p.style), reason: p.reason });
 catalog.placeholders = { hair: placeholders.hair, face: placeholders.face };
 
-// Every list is shown lowest id first. Hair and face follow the Classic salon's ids (data/salon-order.json, matched by name);
-// styles the salon does not list (such as female hair) use their own item id, on the same scale.
+// Every list is shown lowest id first. Hair and face follow the Classic ids on henesys.gg (matched by name); styles it does not
+// list (such as female hair) use their own sprite id, on the same scale.
 const byId = (a, b) => a - b;
-const salon = read('data/salon-order.json');
-const norm = n => n.toLowerCase().replace(/ hair$/, '').replace(/[^a-z0-9]/g, '');
-const salonIds = Object.fromEntries(['hair', 'face'].map(k => [k, new Map(salon[k].map(([n, id]) => [norm(n), id]))]));
-// The salon lists male styles only, so female styles always use their own item id.
-const orderOf = (kind, s) => (s.gender === 'male' && salonIds[kind].get(norm(s.style))) || (kind === 'hair' ? s.key * 10 : s.key);
+const orderOf = (kind, s) => s.classicId ?? (kind === 'hair' ? s.key * 10 : s.key);
 catalog.skins.sort((a, b) => byId(a.tone, b.tone));
 for (const kind of ['face', 'hair']) catalog[kind].sort((a, b) => byId(orderOf(kind, a), orderOf(kind, b)) || byId(a.key, b.key));
 for (const slot of Object.values(catalog.wearables)) slot.items.sort((a, b) => byId(a.id, b.id));

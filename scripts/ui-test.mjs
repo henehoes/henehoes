@@ -179,9 +179,10 @@ await clickTab('Hair'); await settle();
 // Released / datamine switch (design only): on Face and Hair, not on wearables
 check('Face and Hair have a Released / All · Datamine switch, defaulting to Released', (await page.$$eval('#source .seg button', bs => bs.map(b => `${b.textContent}:${b.getAttribute('aria-pressed')}`))).join() === 'Released:true,All · Datamine:false');
 await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent.includes('Datamine')).click()); await settle();
-check('choosing Datamine shows the "not added yet" note and keeps the list', !!(await page.$('#content .datamine-note')) && (await page.$$('#content .card')).length > 5);
+check('choosing Datamine shows the note, more styles, and marks the unreleased ones', !!(await page.$('#content .datamine-note')) && (await page.$$('#content .card')).length > 20 && (await page.$$('#content .card .unreleased-badge')).length > 5);
+check('every unreleased card is marked DATAMINE and no released card is', await page.evaluate(() => [...document.querySelectorAll('#content .card:not(.placeholder)')].every(c => c.classList.contains('unreleased') === !!c.querySelector('.unreleased-badge'))));
 await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent === 'Released').click()); await settle();
-check('back to Released hides the note', !(await page.$('#content .datamine-note')));
+check('back to Released hides the note and every DATAMINE badge', !(await page.$('#content .datamine-note')) && (await page.$$('#content .card .unreleased-badge')).length === 0);
 await clickTab('Hat'); await settle();
 check('the switch is not on wearable tabs', !(await page.$('#source .seg')));
 await clickTab('Hair'); await settle();
@@ -208,6 +209,16 @@ await clickTab('Hair'); await settle();
 const ends = await page.evaluate(() => { const r = s => document.querySelector(s).getBoundingClientRect(); const n = r('.note'), a = r('.side'), c = r('.book'); return { equippedBottom: r('#colour').bottom, coverBottom: r('.cover').bottom, noteLeft: n.left, noteRight: n.right, appLeft: r('.app').left + 12, appRight: r('.app').right - 14 }; });
 check('Equipped and catalogue panels end on the same line', Math.abs(ends.equippedBottom - ends.coverBottom) < 0.6, JSON.stringify(ends));
 check('the credits line spans the whole bottom row', ends.noteLeft <= ends.appLeft + 4 && ends.noteRight >= ends.appRight - 4, JSON.stringify(ends));
+
+// Datamine view lists the whole henesys.gg salon (male, female and collab styles)
+await page.evaluate(() => [...document.querySelectorAll('#filters > .seg button')].find(b => b.textContent.endsWith('All')).click());
+await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent.includes('Datamine')).click()); await settle();
+const dmHair = await page.$$eval('#content .card', els => els.length);
+check('Datamine + All lists every hair on henesys.gg (about 180 cards, with placeholders for those with no sprite)', dmHair >= 170, `(${dmHair})`);
+await page.evaluate(() => [...document.querySelectorAll('#filters > .seg button')].find(b => b.textContent.endsWith('Female')).click()); await settle();
+check('Datamine + Female has far more styles than the 15 released', (await page.$$('#content .card.unreleased')).length > 60);
+await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent === 'Released').click());
+await page.evaluate(() => [...document.querySelectorAll('#filters > .seg button')].find(b => b.textContent.endsWith('Male') && !b.textContent.endsWith('Female')).click()); await settle();
 
 // Backdrop: the preview is drawn on the Henesys picture, so it has no transparent pixels
 const backdropPx = await page.evaluate(() => { const c = document.getElementById('preview'); const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; let clear = 0; for (let i = 3; i < d.length; i += 4) if (d[i] < 255) clear++; return { clear, total: d.length / 4 }; });
@@ -242,7 +253,8 @@ await (await page.$$('#content .grid .card:not(.placeholder)'))[2].click(); awai
 check('a card picked now comes in the list colour', (await pillText('hair')).includes('Purple'));
 await designPill('Hair'); await settle();
 const listNow = await thumbHash(), wornNow = await pixels();
-await (await page.$$('.colour-options .card'))[1].click(); await settle(); // Red, in the Equipped panel
+await settle();
+await (await page.$$('.colour-options .card'))[1].click(); await settle(); await settle(); // Red, in the Equipped panel
 check('changing colour in the Equipped panel recolours my hair', (await pixels()).h !== wornNow.h && (await pillText('hair')).includes('Red'));
 check('...but not the list', (await pressedSwatch()) === 'Purple');
 await clickTab('Face'); await settle();
@@ -263,24 +275,9 @@ await page.evaluate(() => [...document.querySelectorAll('.seg button')].find(b =
 const hairPh = await page.$$eval('#content .card.placeholder', els => els.length);
 check('no hair placeholders are left (Chestnut is now pinned by id)', hairPh === 0, `(${hairPh})`);
 check('Chestnut is listed under male hair', (await names()).includes('Chestnut'));
-await clickTab('Name tag'); await settle();
-check('Name tag tab has 3 rings, none a placeholder', (await page.$$('#content .card:not(.placeholder)')).length === 3 && (await page.$$('#content .card.placeholder')).length === 0);
-await clickTab('Chat bubble'); await settle();
-check('Chat bubble tab has 3 rings and no text fields in the catalogue (fields live in Equipped)', (await page.$$('#content .card:not(.placeholder)')).length === 3 && (await page.$$('.text-field input')).length === 0);
-const ringBefore = await pixels();
-await (await page.$$('#content .card:not(.placeholder)'))[0].click(); await settle(); // Kitty Chat Ring
-const bubbleOn = await pixels();
-check('wearing a chat bubble ring changes the preview (a bubble appears)', bubbleOn.h !== ringBefore.h);
-await page.$eval('#content ~ * .text-field input[data-key="chat"], .text-field input[data-key="chat"]', e => { e.value = 'Hello there, this is a long message that must wrap onto more lines'; e.dispatchEvent(new Event('input', { bubbles: true })); }); await settle();
-check('a longer message changes the bubble (it wraps onto more lines)', (await pixels()).h !== bubbleOn.h);
-await clickTab('Name tag'); await settle();
-await (await page.$$('#content .card:not(.placeholder)'))[0].click(); await settle(); // White Label Ring
-const tagOn = await pixels();
-await page.$eval('.text-field input[data-key="name"]', e => { e.value = 'Somebody'; e.dispatchEvent(new Event('input', { bubbles: true })); }); await settle();
-check('changing the name changes the preview', (await pixels()).h !== tagOn.h);
-check('the tab and Equipped panel name fields stay in step', await page.evaluate(() => [...document.querySelectorAll('.text-field input[data-key="name"]')].every(i => i.value === 'Somebody')));
-check('both rings show in the Equipped panel', await page.evaluate(() => ['name tag', 'chat bubble'].every(t => [...document.querySelectorAll('#colour .equipped .card')].some(c => c.dataset.slot.toLowerCase() === t))));
-await page.screenshot({ path: 'tmp/ui-ring.png' });
+// Name tag and chat bubble are switched off for now
+check('there are no Name Tag or Chat tabs', await page.evaluate(() => ![...document.querySelectorAll('.tab')].some(t => /name tag|chat/i.test(t.title))));
+check('no ring appears in the Equipped panel or the colour panel', await page.evaluate(() => ![...document.querySelectorAll('#colour .slot .card')].some(c => /name tag|chat/i.test(c.dataset.slot))) && (await page.$$('.text-field input')).length === 0);
 await clickTab('Top'); await settle();
 check('Beetle Long Sleeve is a drawn Top card, no badge', await page.evaluate(() => { const c = [...document.querySelectorAll('#content .card')].find(c => c.textContent.includes('Beetle Long Sleeve')); return !!c && !c.classList.contains('placeholder') && !c.querySelector('.badge'); }));
 

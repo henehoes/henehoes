@@ -216,3 +216,7 @@ input { font: inherit; border-radius: 0; }
   .side { display: flex; flex-direction: column; }
   .stage-box { width: 100%; }
 }
+
+/* Datamine-only styles (not released yet) */
+.card.unreleased { --c: oklch(60% .1 255); background: oklch(90% .03 250 / .55); }
+.badge.unreleased-badge { position: absolute; top: 4px; left: 4px; z-index: 1; background: oklch(52% .12 255); }

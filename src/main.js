@@ -4,11 +4,15 @@ import '@fontsource/silkscreen/400.css';
 import '@fontsource/nunito/400.css';
 import '@fontsource/nunito/700.css';
 import { adjustColour, composite } from './compose.js';
+import { configureLive, ensureParts } from './live.js';
 import { drawBalloon, drawNameTag, drawPlainTag } from './ring.js';
 
 const W = 160, H = 230;          // working canvas, in sprite pixels (tall: a chat bubble sits above the head, a name tag below the feet)
 const OX = 60, OY = 112;          // where the skin's top-left sits on that canvas
 
+// Switched off for now (not rendered cleanly enough yet): hidden from the tabs, the Equipped panel, the preview, Random and saved
+// defaults. The code, data and sprites stay, so turning them back on is removing the names from this set.
+const DISABLED_SLOTS = new Set(['nameTag', 'chatBalloon']);
 const WEAR_ORDER = ['cap', 'faceAcc', 'eyeAcc', 'earrings', 'longcoat', 'coat', 'pants', 'glove', 'shoes', 'cape', 'weapon', 'nameTag', 'chatBalloon'];
 
 // Sharpness: every sprite pixel is drawn as a whole number of DEVICE pixels, so on-screen pixels are all the same
@@ -47,7 +51,7 @@ function loadImg(file) {
         resolve(ctx.getImageData(0, 0, im.width, im.height));
       };
       im.onerror = () => reject(new Error(`failed to load ${file}`));
-      im.src = '/' + file;
+      im.src = file.startsWith('data:') ? file : '/' + file; // stored sprite, or a datamine one fetched live (src/live.js)
     }));
   }
   return imgCache.get(file);
@@ -79,7 +83,7 @@ const fresh = () => ({
 const initial = () => {
   const s = fresh();
   for (const kind of ['face', 'hair']) {
-    const i = catalog[kind].findIndex(x => x.gender === (gender === 'all' ? 'male' : gender)); // 'all' starts from the male defaults
+    const i = catalog[kind].findIndex(x => x.released && x.gender === (gender === 'all' ? 'male' : gender)); // released styles only; 'all' starts from the male defaults
     if (i >= 0) s[kind].style = i;
   }
   return s;
@@ -105,6 +109,7 @@ function loadSaved() {
       if (i >= 0) s[kind] = { style: i, colour: catalog[kind][i].variants.some(v => v.colour === d[kind].colour) ? d[kind].colour : catalog[kind][i].variants[0].colour };
     }
     for (const k of WEAR_ORDER) {
+      if (DISABLED_SLOTS.has(k)) continue; // a ring saved before they were switched off is not brought back
       const w = d.wear?.[k];
       if (w && (w.item == null || catalog.wearables[k]?.items.some(i => i.id === w.item))) s.wear[k] = { item: w.item, h: clamp(Math.round(+w.h || 0), 0, 359), c: clamp(Math.round(+w.c || 0), -99, 99), b: clamp(Math.round(+w.b || 0), -99, 99) };
     }
@@ -118,7 +123,9 @@ let gender = 'male'; // which styles the Face and Hair tabs list: 'all', 'male' 
 let state = fresh();
 let dirty = false; // true once the user has changed anything; until then the Male/Female switch swaps the default look
 let activeTab = 'skin';
-let source = 'released'; // Face/Hair lists: 'released' (in the game now) or 'datamine' (everything found in the game files). Design only for now: no datamine styles are loaded yet.
+let source = 'released'; // Face/Hair lists: 'released' (in the game now) or 'datamine' (everything found in the game files, released or not)
+const forGender = s => gender === 'all' || s.gender === 'both' || s.gender === gender; // 'both': collab styles listed for both genders
+const listed = s => source === 'datamine' || s.released !== false;
 let search = ''; // text typed in the catalogue's search box; cleared when the tab changes
 const matches = name => name.toLowerCase().includes(search.trim().toLowerCase());
 let configTarget = null; // which equipped item the Equipped panel (left) is editing: 'face', 'hair' or a wearable slot
@@ -147,7 +154,10 @@ async function buildLayers(sel) {
   for (const kind of ['face', 'hair']) {
     const st = sel[kind].style == null ? null : catalog[kind][sel[kind].style];
     const v = st && (st.variants.find(x => x.colour === sel[kind].colour) ?? st.variants[0]);
-    if (v) await add(partsFor(v));
+    if (v) {
+      if (v.live && !await ensureParts(v, kind) && !liveWarned) { liveWarned = true; note('Could not load some datamine sprites from maplestory.io. Check your connection and try again.'); }
+      if (partsFor(v)) await add(partsFor(v));
+    }
   }
   for (const slot of WEAR_ORDER) {
     const w = sel.wear[slot];
@@ -155,6 +165,7 @@ async function buildLayers(sel) {
     if (item) await add(partsFor(item), w.h, w.c, w.b);
   }
   for (const slot of RING_SLOTS) {
+    if (DISABLED_SLOTS.has(slot)) continue;
     const item = catalog.wearables[slot]?.items.find(i => i.id === sel.wear[slot].item);
     if (item) layers.push(await ringLayer(item.effect, sel.text));
   }
@@ -230,6 +241,7 @@ function paintFocus(canvas, boxW, boxH, n, focus, withBackdrop = false) {
 }
 
 let renderToken = 0;
+let liveWarned = false; // the "could not load datamine sprites" note is shown once
 async function renderPreview() {
   const token = ++renderToken;
   await withScene(state, buf => {
@@ -279,7 +291,7 @@ const CHAPTER_TITLES = { skin: 'Skin Tones', face: 'Faces', hair: 'Hairstyles', 
 
 function renderTabs() {
   const tabs = $('tabs');
-  const needsFix = new Set([...WEAR_ORDER.filter(s => catalog.wearables[s]?.placeholders?.length), ...['face', 'hair'].filter(k => catalog.placeholders[k].length)]);
+  const needsFix = new Set([...WEAR_ORDER.filter(s => catalog.wearables[s]?.placeholders?.length), ...['face', 'hair'].filter(k => catalog.placeholders[k].some(p => p.released !== false))]); // datamine placeholders are expected, so only released ones are flagged
   tabs.replaceChildren();
   const add = (key, label, active, group) => {
     const t = el('button', { className: `tab ${group}`, type: 'button', role: 'tab' }, el('span', { className: 'tab-name', textContent: TAB_NAMES[key] ?? label }));
@@ -293,7 +305,7 @@ function renderTabs() {
   add('skin', 'Skin', false, 'character');
   add('face', 'Face', state.face.style != null, 'character');
   add('hair', 'Hair', state.hair.style != null, 'character');
-  WEAR_ORDER.filter(s => catalog.wearables[s]).forEach((s, i) => add(s, catalog.wearables[s].label, state.wear[s].item != null, i === 0 ? 'wearable first' : 'wearable'));
+  WEAR_ORDER.filter(s => catalog.wearables[s] && !DISABLED_SLOTS.has(s)).forEach((s, i) => add(s, catalog.wearables[s].label, state.wear[s].item != null, i === 0 ? 'wearable first' : 'wearable'));
   $('chapter').textContent = CHAPTER_TITLES[activeTab] ?? catalog.wearables[activeTab]?.label ?? '';
 }
 
@@ -441,6 +453,7 @@ function equipped() {
     if (st) out.push({ key: kind, slot: kind === 'face' ? 'Face' : 'Hair', label: kind === 'face' ? 'Face' : 'Hair', name: st.style, colour: variantOf(kind).label });
   }
   for (const slot of WEAR_ORDER) {
+    if (DISABLED_SLOTS.has(slot)) continue;
     const id = state.wear[slot].item;
     const item = id != null && catalog.wearables[slot]?.items.find(i => i.id === id);
     if (item) out.push({ key: slot, slot: catalog.wearables[slot].label, label: SHORT_LABEL[slot] ?? catalog.wearables[slot].label, name: item.name, item });
@@ -529,14 +542,14 @@ function renderSkin(c) {
 
 function renderStyles(c, kind) {
   renderColourBar(kind);
-  if (source === 'datamine') c.append(el('p', { className: 'datamine-note', textContent: 'Datamine styles have not been added yet. This list still shows the released styles.' }));
+  if (source === 'datamine') c.append(el('p', { className: 'datamine-note', textContent: 'Showing everything in the game data. Styles marked DATAMINE are not released yet.' }));
   const grid = el('div', { className: 'grid' });
   catalog[kind].forEach((s, i) => {
-    if ((gender !== 'all' && s.gender !== gender) || !matches(s.style)) return;
+    if (!forGender(s) || !listed(s) || !matches(s.style)) return;
     // Same style name can exist as separate items; show the id to tell them apart.
     const dup = catalog[kind].filter(o => o.style === s.style && o.gender === s.gender).length > 1;
     const first = s.variants.find(v => v.colour === browse[kind]) ?? s.variants[0];
-    grid.append(optionCard(dup ? `${s.style} (#${s.key})` : s.style, state[kind].style === i, VIEW,
+    const card = optionCard(dup ? `${s.style} (#${s.classicId ?? s.key})` : s.style, state[kind].style === i, VIEW,
       // Preview the style on my current skin, with my current face (or hair) alongside.
       () => only(sel => { sel.face = { ...state.face }; sel.hair = { ...state.hair }; sel[kind] = { style: i, colour: first.colour }; return sel; }),
       // Clicking the selected style takes it off again.
@@ -545,9 +558,12 @@ function renderStyles(c, kind) {
         state[kind] = { style: on ? null : i, colour: on ? state[kind].colour : first.colour };
         if (!on) configTarget = kind;
         afterChange();
-      }, s.check));
+      }, s.check);
+    if (s.classicId) card.title = `${card.title} · Classic ${s.classicId}`;
+    if (s.released === false) { card.classList.add('unreleased'); card.append(el('span', { className: 'badge unreleased-badge', textContent: 'DATAMINE' })); }
+    grid.append(card);
   });
-  for (const p of catalog.placeholders[kind].filter(p => (gender === 'all' || p.gender === gender) && matches(p.name))) grid.append(placeholderCard(p));
+  for (const p of catalog.placeholders[kind].filter(p => (gender === 'all' || p.gender === 'both' || p.gender === gender) && (p.released !== false || source === 'datamine') && matches(p.name))) grid.append(placeholderCard(p));
   c.append(grid);
 }
 
@@ -556,7 +572,9 @@ function renderWearable(c, slot) {
   const w = state.wear[slot];
   const grid = el('div', { className: 'grid' });
   for (const item of data.items.filter(i => matches(i.name))) {
-    grid.append(item.effect ? ringCard(item, w.item === item.id, slot) : optionCard(item.name, w.item === item.id, null, null, () => select(slot, item.id), item.check, item.icon));
+    const card = item.effect ? ringCard(item, w.item === item.id, slot) : optionCard(item.name, w.item === item.id, null, null, () => select(slot, item.id), item.check, item.icon);
+    if (item.classicId) card.title = `${card.title} · Classic ${item.classicId}`;
+    grid.append(card);
   }
   for (const p of (data.placeholders ?? []).filter(p => matches(p.name))) grid.append(placeholderCard(p));
   c.append(grid);
@@ -636,13 +654,13 @@ function randomise() {
   const s = fresh();
   s.skin = pick(catalog.skins).tone;
   for (const kind of ['face', 'hair']) {
-    const options = catalog[kind].map((x, i) => [x, i]).filter(([x]) => gender === 'all' || x.gender === gender);
+    const options = catalog[kind].map((x, i) => [x, i]).filter(([x]) => forGender(x) && listed(x));
     const [style, i] = pick(options);
     s[kind] = { style: i, colour: pick(style.variants).colour };
   }
   // Each wearable has an even chance of being worn; an overall replaces the top and bottom. Rings are left alone.
   for (const k of WEAR_ORDER) {
-    if (RING_SLOTS.includes(k) || !catalog.wearables[k]?.items.length || Math.random() < 0.5) continue;
+    if (DISABLED_SLOTS.has(k) || RING_SLOTS.includes(k) || !catalog.wearables[k]?.items.length || Math.random() < 0.5) continue;
     s.wear[k].item = pick(catalog.wearables[k].items).id;
   }
   if (s.wear.longcoat.item != null) { if (Math.random() < 0.5) { s.wear.coat.item = null; s.wear.pants.item = null; } else s.wear.longcoat.item = null; }
@@ -705,6 +723,7 @@ async function loadBackdrop() {
 async function init() {
   const res = await fetch('/catalog.json');
   catalog = await res.json();
+  configureLive(catalog.live);
   previewButtons();
   loadBackdrop();
   const saved = loadSaved();

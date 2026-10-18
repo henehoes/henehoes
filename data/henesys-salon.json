@@ -1,0 +1,1580 @@
+{
+ "source": "https://henesys.gg/salon",
+ "fetched": "2026-10-18",
+ "hair": [
+  {
+   "id": 30000,
+   "name": "Toben Hair",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30010,
+   "name": "Zeta",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30020,
+   "name": "Unkempt Hair",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30030,
+   "name": "Shaved Hair",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30040,
+   "name": "Rockstar",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30050,
+   "name": "Metro",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30060,
+   "name": "Catalyst",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30070,
+   "name": "All Back",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30080,
+   "name": "Military Buzzcut",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30090,
+   "name": "Mohawk",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30100,
+   "name": "Fantasy",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30110,
+   "name": "Fireball",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30120,
+   "name": "Vincent",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30130,
+   "name": "Antagonist",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30140,
+   "name": "Topknot",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30150,
+   "name": "Medium Cornrows",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30160,
+   "name": "Trip Scratch",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30170,
+   "name": "Line Scratch Hair",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30180,
+   "name": "Mane",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30190,
+   "name": "Bowl Cut",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30200,
+   "name": "Wind",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30210,
+   "name": "Shaggy Wax",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30220,
+   "name": "Grooovy 'Do",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30230,
+   "name": "Foil Perm",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30240,
+   "name": "Chestnut",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30250,
+   "name": "Afro",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30260,
+   "name": "Metrosexual Hair",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30270,
+   "name": "with Bald Spot",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30280,
+   "name": "Mohecan Shaggy 'Do",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30290,
+   "name": "Old Man 'Do",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30300,
+   "name": "Romance",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30310,
+   "name": "Acorn",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30320,
+   "name": "Close-Cropped Afro",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30330,
+   "name": "Cabana Boy Hair",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30340,
+   "name": "Tristan Hair",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30350,
+   "name": "Astro",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30360,
+   "name": "Spiky Tail",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30370,
+   "name": "Shaggy Dragon",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30380,
+   "name": "Dragon Layered Hair",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30400,
+   "name": "Tribal Buzz",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30410,
+   "name": "Natural",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30420,
+   "name": "Cozy Amber",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30430,
+   "name": "Bald Head",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30440,
+   "name": "Fury",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30450,
+   "name": "Casanova",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30460,
+   "name": "Tornade Hair",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30470,
+   "name": "Slick Dean",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30480,
+   "name": "Babby Cut",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30490,
+   "name": "Messy Spikes",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30510,
+   "name": "Rockie",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30520,
+   "name": "Hontas",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30530,
+   "name": "Baldie",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30540,
+   "name": "Robot",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30550,
+   "name": "Kongfu Braids",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30560,
+   "name": "Grand Lionman",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30570,
+   "name": "Eternal Elegance",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30580,
+   "name": "Saturday Special",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30590,
+   "name": "Super Suave",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30600,
+   "name": "The Curl",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30610,
+   "name": "The Mo Rawk",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30620,
+   "name": "Bubba GoaTee",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30630,
+   "name": "Neon Cactus",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30640,
+   "name": "Urban Dragon",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30650,
+   "name": "Rise N Shine",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30660,
+   "name": "Fuzz",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30670,
+   "name": "Preppy Spike",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30680,
+   "name": "Hobo",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30690,
+   "name": "Metro Man",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30700,
+   "name": "Rising Rocker",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30710,
+   "name": "Puffy Fro",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30720,
+   "name": "Exotica",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30730,
+   "name": "Roving Rockstar",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30740,
+   "name": "Receding Hair",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30750,
+   "name": "Buddha Fire",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30760,
+   "name": "Bowling Ball",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30770,
+   "name": "Lucky Charms",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30780,
+   "name": "Dragon Tail",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30790,
+   "name": "Lion Hair",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30800,
+   "name": "Dreamcatcher",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30810,
+   "name": "Gruff & Tough",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30820,
+   "name": "Matinee Idol",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30830,
+   "name": "Bed Head Hair",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30840,
+   "name": "Prince Cut Hair",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30850,
+   "name": "Short Regent Cut",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30860,
+   "name": "Angelcakes Hair",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30870,
+   "name": "Super Tuft Hair",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30880,
+   "name": "Black Wild Tangles Hair",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30890,
+   "name": "Black Artist Hair",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 30900,
+   "name": "Sweet Kitty Hair",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 31000,
+   "name": "Cutie Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31010,
+   "name": "Veronica",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31020,
+   "name": "Francesca",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31030,
+   "name": "Polly",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31040,
+   "name": "Edgy",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31050,
+   "name": "Rockstar Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31060,
+   "name": "Annie",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31070,
+   "name": "Stella",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31080,
+   "name": "Parted Pomp",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31090,
+   "name": "Bridget",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31100,
+   "name": "Mary Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31110,
+   "name": "Monica Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31120,
+   "name": "Miru Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31130,
+   "name": "Jolie",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31140,
+   "name": "Pei Pei",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31150,
+   "name": "Angelica Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31160,
+   "name": "Lori",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31170,
+   "name": "Rastafari Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31180,
+   "name": "Cutie Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31190,
+   "name": "Celeb Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31200,
+   "name": "Holla' Back 'Do",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31210,
+   "name": "Perfect Stranger",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31220,
+   "name": "Caspia Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31230,
+   "name": "Rose",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31240,
+   "name": "Disheveled",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31250,
+   "name": "Bowl Cut",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31260,
+   "name": "Daisy Do Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31270,
+   "name": "Pigtails",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31280,
+   "name": "Ellie",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31290,
+   "name": "Naomi",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31300,
+   "name": "Chantelle Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31310,
+   "name": "Carla",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31320,
+   "name": "Roxy",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31330,
+   "name": "Penelope Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31340,
+   "name": "Rae",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31350,
+   "name": "Four Tail Braids",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31360,
+   "name": "Swooshy Ponytail Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31380,
+   "name": "Stylish Burst Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31400,
+   "name": "Boyish",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31410,
+   "name": "Paula",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31420,
+   "name": "Tucked Tresses",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31430,
+   "name": "Bald Head",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31440,
+   "name": "Ravishing Raven Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31450,
+   "name": "Fluffy Dolly Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31460,
+   "name": "Lady Mariko",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31470,
+   "name": "Ming Ming Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31480,
+   "name": "Classy Sass",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31490,
+   "name": "Cecelia Twist",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31510,
+   "name": "Minnie",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31520,
+   "name": "Curly Stream Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31530,
+   "name": "Zessica",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31540,
+   "name": "Jean Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31550,
+   "name": "Candy Heart",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31560,
+   "name": "Sunflower Power",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31570,
+   "name": "Maiden's Weave",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31580,
+   "name": "Victorian Wrap",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31590,
+   "name": "Ballroom Classic",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31600,
+   "name": "Tall Bun",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31610,
+   "name": "Darling Diva",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31620,
+   "name": "Desert Flower",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31630,
+   "name": "The Honeybun",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31640,
+   "name": "Sonara Wave",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31650,
+   "name": "Dashing Damsel",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31660,
+   "name": "Tighty Bun",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31670,
+   "name": "Grandma Ma' Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31680,
+   "name": "Lovely Ladyhawk",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31690,
+   "name": "Demolishing Diva",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31700,
+   "name": "Crazy Medusa",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31710,
+   "name": "Princess Warrior",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31720,
+   "name": "Streaky Siren",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31730,
+   "name": "Model's Ambition",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31740,
+   "name": "Frizzle Dizzle",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31750,
+   "name": "Super Diva",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31760,
+   "name": "Shaggy Dog",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31770,
+   "name": "Short Shaggy Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31780,
+   "name": "Oh So Windy",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31790,
+   "name": "Princessa",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31800,
+   "name": "Onna's Honor",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31810,
+   "name": "Ponytail-to-the-Side",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31820,
+   "name": "Vivacious Wavy Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31830,
+   "name": "Fluffy Pigtails",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31840,
+   "name": "Black Romantic Braid Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31850,
+   "name": "Grace Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31860,
+   "name": "Side Ponytail",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 31870,
+   "name": "Black Kitty Hair",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 32000,
+   "name": "Frieren Hair",
+   "gender": "both",
+   "group": "collab"
+  },
+  {
+   "id": 32010,
+   "name": "Frieren Hair (Ringlets)",
+   "gender": "both",
+   "group": "collab"
+  },
+  {
+   "id": 32020,
+   "name": "Frieren Hair (Sleep)",
+   "gender": "both",
+   "group": "collab"
+  },
+  {
+   "id": 32030,
+   "name": "Fern Hair",
+   "gender": "both",
+   "group": "collab"
+  },
+  {
+   "id": 32040,
+   "name": "Stark Hair",
+   "gender": "both",
+   "group": "collab"
+  },
+  {
+   "id": 32050,
+   "name": "Himmel Hair",
+   "gender": "both",
+   "group": "collab"
+  },
+  {
+   "id": 32060,
+   "name": "Übel Hair",
+   "gender": "both",
+   "group": "collab"
+  }
+ ],
+ "face": [
+  {
+   "id": 20000,
+   "name": "Defiant Face",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20001,
+   "name": "Confident Face",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20002,
+   "name": "Prudent Face",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20003,
+   "name": "Dramatic Face",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20004,
+   "name": "Rebel's Fire",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20005,
+   "name": "Alert Face",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20006,
+   "name": "Babyface Pout",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20007,
+   "name": "Sad Innocence",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20008,
+   "name": "Worrisome Glare",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20009,
+   "name": "Smart Aleck",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20010,
+   "name": "Wisdom Glance",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20011,
+   "name": "Cool Guy Gaze",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20012,
+   "name": "Curious Dog",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20013,
+   "name": "Insomniac Daze",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20014,
+   "name": "Look of Wonder",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20015,
+   "name": "Eye of the Lion",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20016,
+   "name": "Ghostface Stare",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20017,
+   "name": "Demure Poise",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20018,
+   "name": "Game Face",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20019,
+   "name": "Irritable Face",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20020,
+   "name": "Fierce Edge",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20021,
+   "name": "Overjoyed Smile",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20022,
+   "name": "Child's Play",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20023,
+   "name": "Hypnotized Look",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20024,
+   "name": "Intense Stare",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20025,
+   "name": "Edge of Emotion",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20026,
+   "name": "Innocent Gaze",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20027,
+   "name": "Distant Gaze",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20028,
+   "name": "Crystal Face",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20029,
+   "name": "Puppy Eyes Face",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20030,
+   "name": "Round-Eyed Face",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20031,
+   "name": "Mysterious Face",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20032,
+   "name": "Confused Look",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20033,
+   "name": "Oliver Face",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20034,
+   "name": "Almond Face",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 20035,
+   "name": "Moonlight Eyes",
+   "gender": "male",
+   "group": "salon"
+  },
+  {
+   "id": 21000,
+   "name": "Defiant Face",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21001,
+   "name": "Prudent Face",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21002,
+   "name": "Intelligent Face",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21003,
+   "name": "Strong Stare",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21004,
+   "name": "Angel Glow",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21005,
+   "name": "Babyface Pout",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21006,
+   "name": "Pucker Up Face",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21007,
+   "name": "Dollface Look",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21008,
+   "name": "Hopeless Gaze",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21009,
+   "name": "Look of Death",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21010,
+   "name": "Wisdom Glance",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21011,
+   "name": "Hypnotized Look",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21012,
+   "name": "Soul's Window",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21013,
+   "name": "Wide-eyed Girl",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21014,
+   "name": "Curious Look",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21015,
+   "name": "Smokey Eyes",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21016,
+   "name": "Beauty Stare",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21017,
+   "name": "Demure Poise Eyes",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21018,
+   "name": "Athena's Grace",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21019,
+   "name": "Hera's Radiance",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21020,
+   "name": "Gentle Glow",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21021,
+   "name": "Compassion Look",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21022,
+   "name": "Glitzy Face",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21023,
+   "name": "Innocent Look",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21024,
+   "name": "Lazy Look",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21025,
+   "name": "Shuteye",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21026,
+   "name": "Prim Face",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21027,
+   "name": "Posh Look",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21028,
+   "name": "Bulbous-Eyed Face",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21029,
+   "name": "Round Eyed Face",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21030,
+   "name": "Tender Love",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21031,
+   "name": "Pure Gaze",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21032,
+   "name": "Bright Eyes",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21033,
+   "name": "Existentially Tired Face",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21034,
+   "name": "Intelligent Eyes",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21035,
+   "name": "Odd Eye",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 21037,
+   "name": "Olivia Face",
+   "gender": "female",
+   "group": "salon"
+  },
+  {
+   "id": 22000,
+   "name": "Frieren Face",
+   "gender": "both",
+   "group": "collab"
+  },
+  {
+   "id": 22001,
+   "name": "Fern Face",
+   "gender": "both",
+   "group": "collab"
+  },
+  {
+   "id": 22002,
+   "name": "Stark Face",
+   "gender": "both",
+   "group": "collab"
+  },
+  {
+   "id": 22003,
+   "name": "Himmel Face",
+   "gender": "both",
+   "group": "collab"
+  },
+  {
+   "id": 22004,
+   "name": "Übel Face",
+   "gender": "both",
+   "group": "collab"
+  },
+  {
+   "id": 22005,
+   "name": "Aura Face",
+   "gender": "both",
+   "group": "collab"
+  },
+  {
+   "id": 22006,
+   "name": "Linie Face",
+   "gender": "both",
+   "group": "collab"
+  },
+  {
+   "id": 22007,
+   "name": "Lügner Face",
+   "gender": "both",
+   "group": "collab"
+  }
+ ]
+}

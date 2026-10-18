@@ -73,8 +73,7 @@ for (const s of skins) {
   const s2 = skins2.find(x => x.tone === s.tone);
   if (s2) s.parts2 = s2.parts.filter(p => p.key !== 'ear').map(p => ({ file: `sprites/skin2/${s.tone}/${p.key}.png`, layer: p.position, x: p.pos.x, y: p.pos.y, z: zOf(p.position) }));
 }
-// What src/live.js needs to place a part the same way build-catalog does.
-const catalog = { skins, face: [], hair: [], wearables: {}, live: { zmap, zFallback: rules.zFallback, partHiddenBy: rules.partHiddenBy, priority: ANCHOR_PRIORITY, anchors: ANCHORS, anchors2: ANCHORS2 } };
+const catalog = { skins, face: [], hair: [], wearables: {} };
 
 // The Classic id of a wearable: the henesys.gg cash shop id for its name. Where the name appears more than once, the id nearest
 // the sprite's own id in the same equipment group is used. Items henesys.gg does not list get none.
@@ -116,11 +115,7 @@ for (const s of styles) {
     const dir = spriteDirOf(s, c.id);
     // The API names colour variants inconsistently (sometimes all the same), so use the game's standard colour order.
     const label = COLOUR_NAMES[s.kind][c.colour] ?? `Colour ${c.colour + 1}`;
-    if (!existsSync(`public/${dir}/meta.json`)) {
-      // Not stored (a datamine style): the app fetches its sprites from the sprite API when needed (src/live.js).
-      if (s.region) variants.push({ id: c.id, colour: c.colour, label, live: true, region: s.region, version: s.version });
-      continue;
-    }
+    if (!existsSync(`public/${dir}/meta.json`)) continue; // no sprite data anywhere (see data/download-failed.json): that colour is left out
     const parts = partsOf(read(`public/${dir}/meta.json`), dir);
     if (parts.length) variants.push({ id: c.id, colour: c.colour, label, parts, ...(parts2Of(dir, label) && { parts2: parts2Of(dir, label) }) });
   }

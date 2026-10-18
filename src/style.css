@@ -109,9 +109,9 @@ input { font: inherit; border-radius: 0; }
 .slider { display: grid; grid-template-columns: 84px 1fr 54px; align-items: center; gap: 14px; padding: 0 4px; }
 .slider label { font: 14px var(--font-pixel); }
 .slider input[type=range] { width: 100%; margin: 0; height: 18px; appearance: none; -webkit-appearance: none; background: transparent; cursor: pointer; }
-.slider input[type=range]::-webkit-slider-runnable-track { height: 8px; background: var(--bench-deep); box-shadow: 0 -2px 0 0 var(--bench-line), 0 2px 0 0 var(--bench-line), -2px 0 0 0 var(--bench-line), 2px 0 0 0 var(--bench-line); }
-.slider input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 18px; margin-top: -5px; background: linear-gradient(to bottom, var(--brass-light), var(--brass)); box-shadow: 0 -2px 0 0 var(--bench-line), 0 2px 0 0 var(--bench-line), -2px 0 0 0 var(--bench-line), 2px 0 0 0 var(--bench-line); }
-.slider input[type=range]::-moz-range-track { height: 8px; background: var(--bench-deep); box-shadow: 0 -2px 0 0 var(--bench-line), 0 2px 0 0 var(--bench-line), -2px 0 0 0 var(--bench-line), 2px 0 0 0 var(--bench-line); }
+.slider input[type=range]::-webkit-slider-runnable-track { height: 10px; background: var(--bench-deep); box-shadow: 0 -2px 0 0 var(--bench-line), 0 2px 0 0 var(--bench-line), -2px 0 0 0 var(--bench-line), 2px 0 0 0 var(--bench-line); }
+.slider input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 18px; margin-top: -4px; background: linear-gradient(to bottom, var(--brass-light), var(--brass)); box-shadow: 0 -2px 0 0 var(--bench-line), 0 2px 0 0 var(--bench-line), -2px 0 0 0 var(--bench-line), 2px 0 0 0 var(--bench-line); }
+.slider input[type=range]::-moz-range-track { height: 10px; background: var(--bench-deep); box-shadow: 0 -2px 0 0 var(--bench-line), 0 2px 0 0 var(--bench-line), -2px 0 0 0 var(--bench-line), 2px 0 0 0 var(--bench-line); }
 .slider input[type=range]::-moz-range-thumb { width: 12px; height: 18px; border: 0; border-radius: 0; background: var(--brass); box-shadow: 0 -2px 0 0 var(--bench-line), 0 2px 0 0 var(--bench-line), -2px 0 0 0 var(--bench-line), 2px 0 0 0 var(--bench-line); }
 .slider .num { width: 54px; padding: 4px 6px; border: 0; background: var(--bench-deep); color: var(--bench-text); font: 12px var(--font-label); text-align: right; box-shadow: 0 -2px 0 0 var(--bench-line), 0 2px 0 0 var(--bench-line), -2px 0 0 0 var(--bench-line), 2px 0 0 0 var(--bench-line); }
 
@@ -229,3 +229,12 @@ input { font: inherit; border-radius: 0; }
 .empty-badge { flex: none; width: 22px; height: 22px; margin-top: 1px; display: grid; place-items: center; background: var(--head); color: #fff; font: 13px var(--font-label); }
 .dye-note p { margin: 0; color: var(--ink); font: 12.5px/1.4 var(--font-text); }
 .dye-badge { flex: none; width: 18px; height: 18px; margin-top: 1px; display: grid; place-items: center; background: oklch(70% .14 78); color: #fff; font: 11px var(--font-label); }
+
+/* The dye sliders show what they do, as the in-game palette does: tone sweeps the hues, chroma runs from grey to a vivid red,
+   brightness from black to white. The tracks are fixed pictures, not the item's own colours. */
+#s-Tone::-webkit-slider-runnable-track { background: linear-gradient(90deg, hsl(0 100% 50%), hsl(60 100% 50%), hsl(120 100% 50%), hsl(180 100% 50%), hsl(240 100% 50%), hsl(300 100% 50%), hsl(360 100% 50%)); }
+#s-Tone::-moz-range-track { background: linear-gradient(90deg, hsl(0 100% 50%), hsl(60 100% 50%), hsl(120 100% 50%), hsl(180 100% 50%), hsl(240 100% 50%), hsl(300 100% 50%), hsl(360 100% 50%)); }
+#s-Chroma::-webkit-slider-runnable-track { background: linear-gradient(90deg, hsl(0 0% 55%), hsl(0 100% 50%)); }
+#s-Chroma::-moz-range-track { background: linear-gradient(90deg, hsl(0 0% 55%), hsl(0 100% 50%)); }
+#s-Brightness::-webkit-slider-runnable-track { background: linear-gradient(90deg, #000, #fff); }
+#s-Brightness::-moz-range-track { background: linear-gradient(90deg, #000, #fff); }

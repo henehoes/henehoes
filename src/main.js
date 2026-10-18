@@ -4,7 +4,6 @@ import '@fontsource/silkscreen/400.css';
 import '@fontsource/nunito/400.css';
 import '@fontsource/nunito/700.css';
 import { adjustColour, composite } from './compose.js';
-import { configureLive, ensureParts } from './live.js';
 import { drawBalloon, drawNameTag, drawPlainTag } from './ring.js';
 
 const W = 160, H = 230;          // working canvas, in sprite pixels (tall: a chat bubble sits above the head, a name tag below the feet)
@@ -51,7 +50,7 @@ function loadImg(file) {
         resolve(ctx.getImageData(0, 0, im.width, im.height));
       };
       im.onerror = () => reject(new Error(`failed to load ${file}`));
-      im.src = file.startsWith('data:') ? file : '/' + file; // stored sprite, or a datamine one fetched live (src/live.js)
+      im.src = '/' + file;
     }));
   }
   return imgCache.get(file);
@@ -154,10 +153,7 @@ async function buildLayers(sel) {
   for (const kind of ['face', 'hair']) {
     const st = sel[kind].style == null ? null : catalog[kind][sel[kind].style];
     const v = st && (st.variants.find(x => x.colour === sel[kind].colour) ?? st.variants[0]);
-    if (v) {
-      if (v.live && !await ensureParts(v, kind) && !liveWarned) { liveWarned = true; note('Could not load some datamine sprites from maplestory.io. Check your connection and try again.'); }
-      if (partsFor(v)) await add(partsFor(v));
-    }
+    if (v && partsFor(v)) await add(partsFor(v));
   }
   for (const slot of WEAR_ORDER) {
     const w = sel.wear[slot];
@@ -241,7 +237,6 @@ function paintFocus(canvas, boxW, boxH, n, focus, withBackdrop = false) {
 }
 
 let renderToken = 0;
-let liveWarned = false; // the "could not load datamine sprites" note is shown once
 async function renderPreview() {
   const token = ++renderToken;
   await withScene(state, buf => {
@@ -726,7 +721,6 @@ async function loadBackdrop() {
 async function init() {
   const res = await fetch('/catalog.json');
   catalog = await res.json();
-  configureLive(catalog.live);
   previewButtons();
   loadBackdrop();
   const saved = loadSaved();

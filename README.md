@@ -10,6 +10,7 @@ Layer MapleStory character parts and recolour them. Sprites belong to Nexon.
     node scripts/build-manifest.mjs   # names in data/names.txt and data/hairface.txt -> data/items.json
     node scripts/download.mjs         # part sprites -> public/sprites (resumable)
     node scripts/download-skins.mjs   # body, arm and head parts per skin tone (raw WZ API)
+    node scripts/download-map.mjs     # Henesys preview backdrop -> public/maps/
     node scripts/place-skins.mjs      # positions each body part inside data/skin-renders/<tone>.png
     node scripts/download-icons.mjs   # wearable inventory icons (the card previews)
     node scripts/add-pinned.mjs       # hair and face styles pinned by id (data/pinned.json)
@@ -30,3 +31,6 @@ Layer MapleStory character parts and recolour them. Sprites belong to Nexon.
 
 Source: maplestory.io API (the data behind maplestory.wiki), GMS v110 with v210.1.1 as fallback.
 Placement: top-left = anchor - origin - mapOffset; anchors in skin-PNG pixels: brow 17,14 / navel 17,45 / hand 29,51.
+
+## Credits
+Unofficial fan project, not affiliated with Nexon. Sprites and map art belong to Nexon and are served by maplestory.io. Item names and ids were checked against henesys.gg, MeowDB and the Maple Classic Wiki. The dye behaviour was checked against meaegi.com's dressing room (the maths here is our own). Fonts: Pixelify Sans, Silkscreen and Nunito, under the SIL Open Font License. The look was styled from a Lovable mockup. The footer in `index.html` carries the same credits.

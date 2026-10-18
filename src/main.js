@@ -1,3 +1,8 @@
+import '@fontsource/pixelify-sans/400.css';
+import '@fontsource/pixelify-sans/600.css';
+import '@fontsource/silkscreen/400.css';
+import '@fontsource/nunito/400.css';
+import '@fontsource/nunito/700.css';
 import { adjustColour, composite } from './compose.js';
 import { drawBalloon, drawNameTag, drawPlainTag } from './ring.js';
 
@@ -113,6 +118,9 @@ let gender = 'male'; // which styles the Face and Hair tabs list: 'all', 'male' 
 let state = fresh();
 let dirty = false; // true once the user has changed anything; until then the Male/Female switch swaps the default look
 let activeTab = 'skin';
+let source = 'released'; // Face/Hair lists: 'released' (in the game now) or 'datamine' (everything found in the game files). Design only for now: no datamine styles are loaded yet.
+let search = ''; // text typed in the catalogue's search box; cleared when the tab changes
+const matches = name => name.toLowerCase().includes(search.trim().toLowerCase());
 let configTarget = null; // which equipped item the Equipped panel (left) is editing: 'face', 'hair' or a wearable slot
 // The colour the Face and Hair catalogues are shown in. Separate from the colour of the face/hair I am wearing.
 const browse = { face: 0, hair: 0 };
@@ -195,7 +203,18 @@ async function withScene(sel, paint) {
 
 // Sizes `canvas` to cover a boxW x boxH CSS box, drawing each sprite pixel as `n` whole device pixels, then paints
 // the part of the scene around `focus`. The canvas may overhang the box by under one sprite pixel; the box crops it.
-function paintFocus(canvas, boxW, boxH, n, focus) {
+// The Henesys backdrop (public/maps/henesys.png, made by scripts/download-map.mjs). The map's ground line is lined up with
+// the bottom of the character's feet, and it is drawn at the same whole-number zoom as the sprites so both share one pixel grid.
+const FOOT_EDGE = OY + 66; // the sprite row just under the feet
+let backdrop = null;
+function drawBackdrop(ctx, n, startX, startY, canvasW, canvasH) {
+  const { img, info } = backdrop;
+  const dx = (CENTRE_X - info.centreX - startX) * n, dy = (FOOT_EDGE - info.groundRow - startY) * n;
+  ctx.fillStyle = info.skyColour; ctx.fillRect(0, 0, canvasW, canvasH); // beyond the picture's top edge: carry on in the meadow's colour
+  ctx.fillStyle = info.groundColour; ctx.fillRect(0, Math.min(canvasH, dy + info.height * n), canvasW, canvasH);
+  ctx.drawImage(img, dx, dy, info.width * n, info.height * n);
+}
+function paintFocus(canvas, boxW, boxH, n, focus, withBackdrop = false) {
   const d = dpr();
   const sw = Math.ceil(boxW * d / n), sh = Math.ceil(boxH * d / n);
   canvas.width = sw * n; canvas.height = sh * n;
@@ -205,7 +224,9 @@ function paintFocus(canvas, boxW, boxH, n, focus) {
   const ctx = canvas.getContext('2d');
   ctx.imageSmoothingEnabled = false;
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.drawImage(scratch, Math.round(focus[0] - sw / 2), Math.round(focus[1] - sh / 2), sw, sh, 0, 0, canvas.width, canvas.height);
+  const startX = Math.round(focus[0] - sw / 2), startY = Math.round(focus[1] - sh / 2);
+  if (withBackdrop && backdrop) drawBackdrop(ctx, n, startX, startY, canvas.width, canvas.height);
+  ctx.drawImage(scratch, startX, startY, sw, sh, 0, 0, canvas.width, canvas.height);
 }
 
 let renderToken = 0;
@@ -224,7 +245,7 @@ async function renderPreview() {
       focus = [(x0 + x1) / 2, (y0 + y1) / 2];
     }
     const n = Math.max(1, Math.floor(side * dpr() / (view * 0.95))); // allow edges to crop by up to 5% to get a bigger whole-number scale
-    paintFocus($('preview'), box.width - 2, box.height - 2, n, focus);
+    paintFocus($('preview'), box.width - 2, box.height - 2, n, focus, true);
   });
 }
 
@@ -252,29 +273,65 @@ function only(patch) {
 // ---------- UI ----------
 const note = text => { $('ph-note').textContent = text; };
 
+// Chapter tabs down the right edge of the book. Short names keep the rail narrow; the chapter title shows the full one.
+const TAB_NAMES = { faceAcc: 'Face Acc.', eyeAcc: 'Eye Deco', longcoat: 'Overall', nameTag: 'Name Tag', chatBalloon: 'Chat' };
+const CHAPTER_TITLES = { skin: 'Skin Tones', face: 'Faces', hair: 'Hairstyles', cap: 'Hats', faceAcc: 'Face Accessories', eyeAcc: 'Eye Decorations', earrings: 'Earrings', longcoat: 'Overalls', coat: 'Tops', pants: 'Bottoms', glove: 'Gloves', shoes: 'Shoes', cape: 'Capes', weapon: 'Weapons', nameTag: 'Name Tag Rings', chatBalloon: 'Chat Bubble Rings' };
+
 function renderTabs() {
   const tabs = $('tabs');
   const needsFix = new Set([...WEAR_ORDER.filter(s => catalog.wearables[s]?.placeholders?.length), ...['face', 'hair'].filter(k => catalog.placeholders[k].length)]);
   tabs.replaceChildren();
-  const group = (title, entries) => {
-    const row = el('div', { className: 'tab-row' });
-    for (const [key, label, active] of entries) {
-      const t = el('button', { className: 'tab', type: 'button', role: 'tab', textContent: label });
-      t.setAttribute('aria-selected', String(activeTab === key));
-      if (active) t.append(el('span', { className: 'dot', title: 'Has a selection' }));
-      if (needsFix.has(key)) t.append(el('span', { className: 'fix', title: 'Has placeholders to fix', textContent: '!' }));
-      t.onclick = () => { activeTab = key; note(''); renderTabs(); renderContent(); };
-      row.append(t);
-    }
-    tabs.append(el('div', { className: 'tab-group' }, el('h2', { textContent: title }), row));
-    return row;
+  const add = (key, label, active, group) => {
+    const t = el('button', { className: `tab ${group}`, type: 'button', role: 'tab' }, el('span', { className: 'tab-name', textContent: TAB_NAMES[key] ?? label }));
+    t.setAttribute('aria-selected', String(activeTab === key));
+    t.title = label;
+    if (active) t.append(el('span', { className: 'tick', title: 'Equipped' }));
+    if (needsFix.has(key)) t.append(el('span', { className: 'fix', title: 'Has placeholders to fix', textContent: '!' }));
+    t.onclick = () => { activeTab = key; search = ''; note(''); renderTabs(); renderFilters(); renderContent(); };
+    tabs.append(t);
   };
-  group('Character', [
-    ['skin', 'Skin', false],
-    ['face', 'Face', state.face.style != null],
-    ['hair', 'Hair', state.hair.style != null],
-  ]);
-  group('Wearables', WEAR_ORDER.filter(s => catalog.wearables[s]).map(s => [s, catalog.wearables[s].label, state.wear[s].item != null]));
+  add('skin', 'Skin', false, 'character');
+  add('face', 'Face', state.face.style != null, 'character');
+  add('hair', 'Hair', state.hair.style != null, 'character');
+  WEAR_ORDER.filter(s => catalog.wearables[s]).forEach((s, i) => add(s, catalog.wearables[s].label, state.wear[s].item != null, i === 0 ? 'wearable first' : 'wearable'));
+  $('chapter').textContent = CHAPTER_TITLES[activeTab] ?? catalog.wearables[activeTab]?.label ?? '';
+}
+
+// The search box (every tab) and the All / Male / Female picker (Face and Hair), just above the cards.
+function renderFilters() {
+  const box = $('filters');
+  box.replaceChildren();
+  $('source').replaceChildren();
+  const input = el('input', { type: 'search', className: 'search-input', placeholder: 'Search entries…', value: search, autocomplete: 'off', spellcheck: false });
+  input.setAttribute('aria-label', 'Search this list');
+  input.oninput = () => { search = input.value; renderContent(true); };
+  box.append(el('label', { className: 'search' }, el('span', { className: 'glass', 'aria-hidden': 'true' }), input));
+  if (activeTab !== 'face' && activeTab !== 'hair') return;
+  const seg = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': 'Show styles for' });
+  for (const [g, label] of [['all', 'All'], ['male', '♂ Male'], ['female', '♀ Female']]) {
+    const btn = el('button', { type: 'button', role: 'radio', textContent: label });
+    btn.setAttribute('aria-pressed', String(gender === g));
+    btn.setAttribute('aria-checked', String(gender === g));
+    btn.onclick = () => {
+      gender = g;
+      if (!dirty) state = initial(); // untouched: show the new gender's defaults. Otherwise keep every selection.
+      afterChangeKeep(false);
+    };
+    seg.append(btn);
+  }
+  box.append(seg);
+  // Released / datamine switch (Face and Hair only). The datamine list is not loaded yet, so for now this only changes the note.
+  const src = $('source');
+  src.append(el('span', { className: 'source-label', textContent: 'Show' }));
+  const sw = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': 'Which styles to list' });
+  for (const [s, label] of [['released', 'Released'], ['datamine', 'All · Datamine']]) {
+    const btn = el('button', { type: 'button', role: 'radio', textContent: label, title: s === 'released' ? 'Styles that are in the game now' : 'Everything found in the game files, including styles not released yet' });
+    btn.setAttribute('aria-pressed', String(source === s));
+    btn.setAttribute('aria-checked', String(source === s));
+    btn.onclick = () => { source = s; renderFilters(); renderContent(true); };
+    sw.append(btn);
+  }
+  src.append(sw);
 }
 
 // A card for something that is on the list but could not be drawn. Clicking it explains why.
@@ -369,6 +426,13 @@ function equippedCard(e) {
   return b;
 }
 
+// Takes one worn thing off (the x on its Equipped tile).
+function removeEquipped(e) {
+  if (e.key === 'face' || e.key === 'hair') state[e.key] = { style: null, colour: state[e.key].colour };
+  else state.wear[e.key].item = null;
+  afterChange();
+}
+
 // What I am wearing, in the order the Equipped panel lists it.
 function equipped() {
   const out = [];
@@ -394,7 +458,13 @@ function renderColour() {
   c.append(el('h3', { textContent: 'Equipped' }));
   if (!list.length) return c.append(el('p', { className: 'hint', textContent: 'Nothing equipped yet. Pick a face, hair or wearable on the right, then select it here to change its colour.' }));
   const grid = el('div', { className: 'equipped grid' });
-  for (const e of list) grid.append(equippedCard(e));
+  for (const e of list) {
+    // Hovering (or tabbing to) a tile shows an x that takes the item off.
+    const x = el('button', { className: 'remove', type: 'button', title: `Remove ${e.name}` });
+    x.setAttribute('aria-label', `Remove ${e.name}`);
+    x.onclick = () => removeEquipped(e);
+    grid.append(el('div', { className: 'slot' }, equippedCard(e), x));
+  }
   c.append(grid);
   if (configTarget === 'face' || configTarget === 'hair') return c.append(el('h3', { textContent: `${configTarget === 'face' ? 'Face' : 'Hair'} colour` }), colourGrid(configTarget));
   const data = catalog.wearables[configTarget], w = state.wear[configTarget];
@@ -405,7 +475,14 @@ function renderColour() {
   const sliders = el('div', { className: 'sliders' }, slider('Tone', 'h', 0, 359), slider('Chroma', 'c', -99, 99), slider('Brightness', 'b', -99, 99));
   const reset = el('button', { className: 'small-btn', type: 'button', textContent: 'Reset colour' });
   reset.onclick = () => { Object.assign(w, { h: 0, c: 0, b: 0 }); dirty = true; renderColour(); renderPreview(); };
-  c.append(el('h3', { textContent: `${data.label} colour` }), sliders, reset);
+  // Random dye: any tone, with chroma and brightness kept to a range that still looks like a dyed item.
+  const random = el('button', { className: 'small-btn', type: 'button', textContent: 'Random dye' });
+  random.onclick = () => {
+    const between = (lo, hi) => lo + Math.floor(Math.random() * (hi - lo + 1));
+    Object.assign(w, { h: between(0, 359), c: between(-60, 60), b: between(-50, 50) });
+    dirty = true; renderColour(); renderPreview();
+  };
+  c.append(el('h3', { textContent: `${data.label} colour` }), sliders, el('div', { className: 'btn-row' }, random, reset));
 }
 
 // keepScroll: redraw in place (after a selection or colour change) instead of jumping back to the top of the list.
@@ -417,6 +494,7 @@ function renderContent(keepScroll = false) {
   if (activeTab === 'skin') renderSkin(c);
   else if (activeTab === 'face' || activeTab === 'hair') renderStyles(c, activeTab);
   else renderWearable(c, activeTab);
+  if (search && !c.querySelector('.card')) c.append(el('p', { className: 'empty', textContent: 'No entries match. Try another word.' }));
   c.scrollTop = keepScroll ? top : 0;
 }
 
@@ -440,7 +518,7 @@ function renderSkin(c) {
   const grid = el('div', { className: 'grid' });
   for (const s of catalog.skins) {
     const name = SKIN_NAMES[s.tone];
-    if (!name) continue;
+    if (!name || !matches(name)) continue;
     // Same crop as face and hair, on this skin wearing the current face and hair only.
     grid.append(optionCard(name, s.tone === state.skin, VIEW,
       () => { const sel = fresh(); sel.skin = s.tone; sel.face = { ...state.face }; sel.hair = { ...state.hair }; return sel; },
@@ -449,28 +527,12 @@ function renderSkin(c) {
   c.append(grid);
 }
 
-// Which styles the Face and Hair lists show: all, male or female. One setting for both lists.
-function renderGenderBar(c) {
-  const seg = el('div', { className: 'seg', role: 'group', 'aria-label': 'Show styles for' });
-  for (const g of ['all', 'male', 'female']) {
-    const btn = el('button', { type: 'button', textContent: g[0].toUpperCase() + g.slice(1) });
-    btn.setAttribute('aria-pressed', String(gender === g));
-    btn.onclick = () => {
-      gender = g;
-      if (!dirty) state = initial(); // untouched: show the new gender's defaults. Otherwise keep every selection.
-      afterChangeKeep(false);
-    };
-    seg.append(btn);
-  }
-  c.append(el('div', { className: 'gender-bar' }, seg));
-}
-
 function renderStyles(c, kind) {
   renderColourBar(kind);
-  renderGenderBar(c); // inside the list, under the divider line, right above the cards
+  if (source === 'datamine') c.append(el('p', { className: 'datamine-note', textContent: 'Datamine styles have not been added yet. This list still shows the released styles.' }));
   const grid = el('div', { className: 'grid' });
   catalog[kind].forEach((s, i) => {
-    if (gender !== 'all' && s.gender !== gender) return;
+    if ((gender !== 'all' && s.gender !== gender) || !matches(s.style)) return;
     // Same style name can exist as separate items; show the id to tell them apart.
     const dup = catalog[kind].filter(o => o.style === s.style && o.gender === s.gender).length > 1;
     const first = s.variants.find(v => v.colour === browse[kind]) ?? s.variants[0];
@@ -485,7 +547,7 @@ function renderStyles(c, kind) {
         afterChange();
       }, s.check));
   });
-  for (const p of catalog.placeholders[kind].filter(p => gender === 'all' || p.gender === gender)) grid.append(placeholderCard(p));
+  for (const p of catalog.placeholders[kind].filter(p => (gender === 'all' || p.gender === gender) && matches(p.name))) grid.append(placeholderCard(p));
   c.append(grid);
 }
 
@@ -493,10 +555,10 @@ function renderWearable(c, slot) {
   const data = catalog.wearables[slot];
   const w = state.wear[slot];
   const grid = el('div', { className: 'grid' });
-  for (const item of data.items) {
+  for (const item of data.items.filter(i => matches(i.name))) {
     grid.append(item.effect ? ringCard(item, w.item === item.id, slot) : optionCard(item.name, w.item === item.id, null, null, () => select(slot, item.id), item.check, item.icon));
   }
-  for (const p of data.placeholders ?? []) grid.append(placeholderCard(p));
+  for (const p of (data.placeholders ?? []).filter(p => matches(p.name))) grid.append(placeholderCard(p));
   c.append(grid);
 }
 
@@ -545,7 +607,7 @@ function select(slot, id) {
   afterChange();
 }
 
-function afterChangeKeep(keepScroll = true) { renderTabs(); renderContent(keepScroll); renderColour(); renderPreview(); }
+function afterChangeKeep(keepScroll = true) { renderTabs(); renderFilters(); renderContent(keepScroll); renderColour(); renderPreview(); }
 function afterChange() { dirty = true; afterChangeKeep(); }
 
 // ---------- export ----------
@@ -623,11 +685,28 @@ function previewButtons() {
     make('reset', 'Back to my default', resetToDefault));
 }
 
+// Loads the map picture, then redraws the preview. If it is missing the preview just has no backdrop.
+async function loadBackdrop() {
+  try {
+    const info = await (await fetch('/maps/henesys.json')).json();
+    const img = new Image();
+    img.src = '/maps/henesys.png';
+    await img.decode();
+    // Colours to continue the picture with: its top row (meadow) and bottom row (cobblestone).
+    const c = document.createElement('canvas'); c.width = img.width; c.height = img.height;
+    const x = c.getContext('2d'); x.drawImage(img, 0, 0);
+    const avg = y => { const d = x.getImageData(0, y, img.width, 1).data; let r = 0, g = 0, b = 0; for (let i = 0; i < d.length; i += 4) { r += d[i]; g += d[i + 1]; b += d[i + 2]; } const n = d.length / 4; return `rgb(${Math.round(r / n)},${Math.round(g / n)},${Math.round(b / n)})`; };
+    backdrop = { img, info: { ...info, skyColour: avg(0), groundColour: avg(img.height - 1) } };
+    renderPreview();
+  } catch { backdrop = null; }
+}
+
 // ---------- start ----------
 async function init() {
   const res = await fetch('/catalog.json');
   catalog = await res.json();
   previewButtons();
+  loadBackdrop();
   const saved = loadSaved();
   if (saved) { state = saved.state; gender = saved.gender; dirty = true; } else state = initial();
   afterChangeKeep();

@@ -12,7 +12,7 @@ await page.goto('http://localhost:5173/', { waitUntil: 'networkidle0' });
 
 const results = [];
 const check = (name, ok, detail = '') => results.push(`${ok ? 'PASS' : 'FAIL'} ${name} ${detail}`);
-const clickTab = label => page.evaluate(l => [...document.querySelectorAll('.tab')].find(t => t.textContent.startsWith(l)).click(), label);
+const clickTab = label => page.evaluate(l => [...document.querySelectorAll('.tab')].find(t => t.title.startsWith(l)).click(), label);
 const pixels = () => page.evaluate(() => { const c = document.getElementById('preview'); const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; let h = 0, n = 0; for (let i = 0; i < d.length; i += 4) if (d[i + 3]) { n++; h = (h * 31 + d[i] + d[i + 1] * 3 + d[i + 2] * 7) >>> 0; } return { n, h }; });
 const settle = () => new Promise(r => setTimeout(r, 700));
 
@@ -21,7 +21,7 @@ check('preview draws something', start.n > 500, `(${start.n} px)`);
 
 // Defaults: lowest-numbered face and hair for the chosen gender, until something is changed
 const selectedNames = async tab => { await clickTab(tab); await settle(); return page.$$eval('#content .grid .card[aria-pressed="true"] .label', els => els.map(e => e.textContent)); };
-const clickGender = async g => { await page.evaluate(g => [...document.querySelectorAll('.seg button')].find(b => b.textContent === g).click(), g); await settle(); };
+const clickGender = async g => { await page.evaluate(g => [...document.querySelectorAll('.seg button')].find(b => b.textContent.endsWith(g)).click(), g); await settle(); };
 const maleDefault = [await selectedNames('Face'), await selectedNames('Hair')];
 check('default is one face and one hair (male)', maleDefault.every(a => a.length === 1), JSON.stringify(maleDefault));
 await clickGender('Female');
@@ -99,6 +99,18 @@ await setSlider('#s-Chroma', 10);
 check('moving the slider updates the box', (await page.$eval('.slider .num[aria-label="Chroma value"]', i => i.value)) === '+10');
 await page.evaluate(() => [...document.querySelectorAll('.small-btn')].find(b => b.textContent.includes('Reset')).click()); await settle();
 
+// Random dye
+const dyeBefore = await pixels();
+await page.evaluate(() => [...document.querySelectorAll('.small-btn')].find(b => b.textContent === 'Random dye').click()); await settle();
+const dyed = await page.evaluate(() => ['Tone', 'Chroma', 'Brightness'].map(l => Number(document.querySelector(`#s-${l}`).value)));
+check('Random dye sets tone, chroma and brightness within range', dyed[0] >= 0 && dyed[0] <= 359 && Math.abs(dyed[1]) <= 60 && Math.abs(dyed[2]) <= 50, JSON.stringify(dyed));
+check('the number boxes show the random values', await page.evaluate(d => ['Tone', 'Chroma', 'Brightness'].every((l, i) => Number(document.querySelector(`.slider .num[aria-label="${l} value"]`).value) === d[i]), dyed));
+let varies = false;
+for (let i = 0; i < 6 && !varies; i++) { await page.evaluate(() => [...document.querySelectorAll('.small-btn')].find(b => b.textContent === 'Random dye').click()); const v = await page.evaluate(() => document.querySelector('#s-Tone').value); varies = String(dyed[0]) !== v; }
+check('Random dye gives different results', varies);
+await page.evaluate(() => [...document.querySelectorAll('.small-btn')].find(b => b.textContent.includes('Reset')).click()); await settle();
+check('Reset colour still returns the item to its own colours', (await pixels()).h === dyeBefore.h);
+
 // Chroma +100 on a muted item (the Beret) makes it more vivid
 await clickTab('Hat'); await settle();
 await page.evaluate(() => [...document.querySelectorAll('#content .card .label')].find(l => l.textContent === 'Beret').parentElement.click()); await settle();
@@ -111,7 +123,7 @@ await page.evaluate(() => [...document.querySelectorAll('#content .card .label')
 // Overall excludes top and bottom
 await clickTab('Top'); await settle();
 await (await page.$$('#content .grid .card:not(.none)'))[0].click(); await settle();
-const overallDot = await page.evaluate(() => [...document.querySelectorAll('.tab')].find(t => t.textContent.startsWith('Overall')).querySelector('.dot') !== null);
+const overallDot = await page.evaluate(() => [...document.querySelectorAll('.tab')].find(t => t.textContent.startsWith('Overall')).querySelector('.tick') !== null);
 check('choosing a top removes the overall', !overallDot);
 
 // Wearables show their icon, not an on-body drawing
@@ -144,12 +156,62 @@ await page.screenshot({ path: 'tmp/ui-face-thumbs.png' });
 
 // All / Male / Female lives in the Face and Hair tabs
 await clickTab('Hair'); await settle();
-check('the gender picker is All / Male / Female and sits in the list, under the divider', (await page.$$eval('#content .seg button', bs => bs.map(b => b.textContent))).join() === 'All,Male,Female' && (await page.$$('#tabs .seg')).length === 0);
+check('the gender picker is All / Male / Female and sits with the search box above the cards', (await page.$$eval('#filters > .seg button', bs => bs.map(b => b.textContent))).join() === 'All,♂ Male,♀ Female' && (await page.$$('#tabs .seg')).length === 0 && !!(await page.$('#filters .search-input')));
 const maleOnly = await page.$$eval('#content .grid .card .label', els => els.length);
-await page.evaluate(() => [...document.querySelectorAll('#content .seg button')].find(b => b.textContent === 'All').click()); await settle();
+await page.evaluate(() => [...document.querySelectorAll('#filters > .seg button')].find(b => b.textContent.endsWith('All')).click()); await settle();
 const allHair = await page.$$eval('#content .grid .card .label', els => els.length);
 check('All shows male and female styles together', allHair > maleOnly, `(${maleOnly} male, ${allHair} all)`);
-await page.evaluate(() => [...document.querySelectorAll('#content .seg button')].find(b => b.textContent === 'Male').click()); await settle();
+await page.evaluate(() => [...document.querySelectorAll('#filters > .seg button')].find(b => b.textContent.endsWith('Male') && !b.textContent.endsWith('Female')).click()); await settle();
+
+// Search box
+const typeSearch = async text => { const box = await page.$('#filters .search-input'); await box.click({ clickCount: 3 }); await page.keyboard.type(text); await settle(); };
+await typeSearch('bowl');
+const found = await page.$$eval('#content .grid .card .label', els => els.map(e => e.textContent));
+check('search narrows the list by name (case-insensitive)', found.length === 1 && found[0] === 'Bowl Cut', JSON.stringify(found));
+await typeSearch('zzzz');
+check('search with no match says so', (await page.$$('#content .card')).length === 0 && !!(await page.$('#content .empty')));
+await clickTab('Face'); await settle();
+check('changing tab clears the search', (await page.$eval('#filters .search-input', i => i.value)) === '' && (await page.$$('#content .card')).length > 5);
+await clickTab('Hat'); await settle();
+check('search is also on wearable tabs and the gender picker is not', !!(await page.$('#filters .search-input')) && (await page.$$('#filters .seg')).length === 0);
+await clickTab('Hair'); await settle();
+
+// Released / datamine switch (design only): on Face and Hair, not on wearables
+check('Face and Hair have a Released / All · Datamine switch, defaulting to Released', (await page.$$eval('#source .seg button', bs => bs.map(b => `${b.textContent}:${b.getAttribute('aria-pressed')}`))).join() === 'Released:true,All · Datamine:false');
+await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent.includes('Datamine')).click()); await settle();
+check('choosing Datamine shows the "not added yet" note and keeps the list', !!(await page.$('#content .datamine-note')) && (await page.$$('#content .card')).length > 5);
+await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent === 'Released').click()); await settle();
+check('back to Released hides the note', !(await page.$('#content .datamine-note')));
+await clickTab('Hat'); await settle();
+check('the switch is not on wearable tabs', !(await page.$('#source .seg')));
+await clickTab('Hair'); await settle();
+
+// Order inside the book on Face and Hair: Released/Datamine, then search and gender, then colours
+const order = await page.evaluate(() => ['source', 'filters', 'toolbar'].map(id => document.getElementById(id).getBoundingClientRect().top));
+check('Released/Datamine sits above search, and the colour picker sits below it', order[0] < order[1] && order[1] < order[2], JSON.stringify(order));
+// Selected card shows a check, not a letter
+const badge = await page.evaluate(() => { const c = document.querySelector('#content .card[aria-pressed="true"]'); const s = getComputedStyle(c, '::after'); return { content: s.content, image: s.backgroundImage.startsWith('url'), width: s.width }; });
+check('the selected card shows a check badge (no "E")', badge.content !== '"E"' && badge.image && badge.width === '16px', JSON.stringify(badge));
+// Equipped categories show a check, and the Equipped tiles can be removed with an x
+await clickTab('Hat'); await settle();
+await page.evaluate(() => document.querySelectorAll('#content .card:not(.placeholder)')[0].click()); await settle();
+check('a category with something equipped shows a check on its tab', await page.evaluate(() => ['Face', 'Hair', 'Hat'].every(n => !!([...document.querySelectorAll('.tab')].find(t => t.title === n)?.querySelector('.tick')))));
+const hatTile = await page.evaluateHandle(() => [...document.querySelectorAll('#colour .slot')].find(s => s.querySelector('.card').dataset.slot === 'Hat'));
+check('the x is hidden until you hover a tile', await page.evaluate(s => getComputedStyle(s.querySelector('.remove')).display === 'none', hatTile));
+await hatTile.hover(); await settle();
+check('hovering a tile shows an x', await page.evaluate(s => getComputedStyle(s.querySelector('.remove')).display !== 'none', hatTile));
+await (await hatTile.$('.remove')).click(); await settle();
+check('clicking the x takes the hat off and drops its check', !(await page.evaluate(() => [...document.querySelectorAll('#colour .slot .card')].some(c => c.dataset.slot === 'Hat'))) && !(await page.evaluate(() => !![...document.querySelectorAll('.tab')].find(t => t.title === 'Hat')?.querySelector('.tick'))));
+await clickTab('Hair'); await settle();
+
+// The Equipped panel and the book end on the same line, and the credits run along the whole bottom
+const ends = await page.evaluate(() => { const r = s => document.querySelector(s).getBoundingClientRect(); const n = r('.note'), a = r('.side'), c = r('.book'); return { equippedBottom: r('#colour').bottom, coverBottom: r('.cover').bottom, noteLeft: n.left, noteRight: n.right, appLeft: r('.app').left + 12, appRight: r('.app').right - 14 }; });
+check('Equipped and catalogue panels end on the same line', Math.abs(ends.equippedBottom - ends.coverBottom) < 0.6, JSON.stringify(ends));
+check('the credits line spans the whole bottom row', ends.noteLeft <= ends.appLeft + 4 && ends.noteRight >= ends.appRight - 4, JSON.stringify(ends));
+
+// Backdrop: the preview is drawn on the Henesys picture, so it has no transparent pixels
+const backdropPx = await page.evaluate(() => { const c = document.getElementById('preview'); const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; let clear = 0; for (let i = 3; i < d.length; i += 4) if (d[i] < 255) clear++; return { clear, total: d.length / 4 }; });
+check('the preview sits on the Henesys backdrop (no empty pixels)', backdropPx.clear === 0, JSON.stringify(backdropPx));
 
 // Gender split. After changes, the switch must not touch my selections.
 await clickTab('Hair'); await settle();
@@ -161,7 +223,7 @@ check('my hair is still selected after a gender round trip', JSON.stringify(awai
 await clickTab('Hair'); await settle();
 const names = () => page.evaluate(() => [...document.querySelectorAll('#content .grid .card:not(.none):not(.placeholder) span:last-child')].map(s => s.textContent));
 const maleHair = await names();
-await page.evaluate(() => [...document.querySelectorAll('.seg button')].find(b => b.textContent.startsWith('Female')).click()); await settle();
+await page.evaluate(() => [...document.querySelectorAll('.seg button')].find(b => b.textContent.endsWith('Female')).click()); await settle();
 const femaleHair = await names();
 check('hair is split by gender', maleHair.length > 5 && femaleHair.length > 5 && !maleHair.some(n => femaleHair.includes(n)), `(${maleHair.length} male, ${femaleHair.length} female)`);
 check('Bridget is female, Bowl Cut is male', femaleHair.includes('Bridget') && maleHair.some(n => n.startsWith('Bowl Cut')));
@@ -197,7 +259,7 @@ check('taking the hat off removes it from the Equipped panel', !(await page.eval
 
 // Placeholders
 await clickTab('Hair'); await settle();
-await page.evaluate(() => [...document.querySelectorAll('.seg button')].find(b => b.textContent.startsWith('Male')).click()); await settle();
+await page.evaluate(() => [...document.querySelectorAll('.seg button')].find(b => b.textContent.endsWith('Male') && !b.textContent.endsWith('Female')).click()); await settle();
 const hairPh = await page.$$eval('#content .card.placeholder', els => els.length);
 check('no hair placeholders are left (Chestnut is now pinned by id)', hairPh === 0, `(${hairPh})`);
 check('Chestnut is listed under male hair', (await names()).includes('Chestnut'));

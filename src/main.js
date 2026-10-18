@@ -536,10 +536,8 @@ function renderStyles(c, kind) {
   const grid = el('div', { className: 'grid' });
   catalog[kind].forEach((s, i) => {
     if (!forGender(s) || !listed(s) || !matches(s.style)) return;
-    // Same style name can exist as separate items; show the id to tell them apart.
-    const dup = catalog[kind].filter(o => o.style === s.style && o.gender === s.gender).length > 1;
     const first = s.variants.find(v => v.colour === browse[kind]) ?? s.variants[0];
-    const card = optionCard(dup ? `${s.style} (#${s.classicId ?? s.key})` : s.style, state[kind].style === i, VIEW,
+    const card = optionCard(s.style, state[kind].style === i, VIEW,
       // Preview the style on my current skin, with my current face (or hair) alongside.
       () => only(sel => { sel.face = { ...state.face }; sel.hair = { ...state.hair }; sel[kind] = { style: i, colour: first.colour }; return sel; }),
       // Clicking the selected style takes it off again.

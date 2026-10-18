@@ -5,11 +5,14 @@ import { API, getJson, decodeB64, sleep } from './lib.mjs';
 import { PNG } from 'pngjs';
 
 const limit = Number(process.argv[2] ?? Infinity);
+// Stored sprites: GMS ones in sprites/<kind>/<id>, other regions (MCW = Classic) in sprites/<region>/<kind>/<id>.
+const spriteDir = (region, kind, id) => !region || region === 'GMS' ? `sprites/${kind}/${id}` : `sprites/${region.toLowerCase()}/${kind}/${id}`;
 const { wearables, styles } = JSON.parse(readFileSync('data/items.json', 'utf8'));
 
 const jobs = [
   ...wearables.map(w => ({ kind: 'wearable', id: w.id, version: w.version, name: w.name })),
-  ...styles.flatMap(s => s.colours.map(c => ({ kind: s.kind, id: c.id, version: s.version, name: c.name }))),
+  // Only released styles are stored; datamine styles are fetched live by the app (src/live.js).
+  ...styles.filter(s => s.released !== false).flatMap(s => s.colours.map(c => ({ kind: s.kind, id: c.id, version: s.version, region: s.region, name: c.name }))),
 ].slice(0, limit);
 
 // Also fetches the two-handed pose (stand2) into pose2/, used when a weapon that has no standing pose is worn.
@@ -22,11 +25,11 @@ const pickFrame = (j, kind, stance) => {
 
 let done = 0, skipped = 0, failed = [];
 for (const job of jobs) {
-  const dir = `public/sprites/${job.kind}/${job.id}`;
+  const dir = `public/${spriteDir(job.region, job.kind, job.id)}`;
   const has1 = existsSync(`${dir}/meta.json`), has2 = existsSync(`${dir}/meta2.json`);
   if (has1 && has2) { skipped++; continue; }
   try {
-    const j = await getJson(`${API}/GMS/${job.version}/item/${job.id}`);
+    const j = await getJson(`${API}/${job.region ?? 'GMS'}/${job.version}/item/${job.id}`);
     if (!j) throw new Error('null item');
     mkdirSync(dir, { recursive: true });
     if (!has2) {

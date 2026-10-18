@@ -5,7 +5,7 @@
 let cfg = null;
 export const configureLive = c => { cfg = c; };
 
-const API = 'https://maplestory.io/api/GMS';
+const API = 'https://maplestory.io/api';
 const queue = [];
 let running = 0;
 const MAX_AT_ONCE = 4; // be polite to the API: a full list would otherwise fire a hundred requests together
@@ -47,7 +47,7 @@ export function ensureParts(variant, kind) {
   if (!variant.live || !cfg) return Promise.resolve(false);
   if (variant.loading) return variant.loading;
   variant.loading = limited(async () => {
-    const res = await fetch(`${API}/${variant.version}/item/${variant.id}`);
+    const res = await fetch(`${API}/${variant.region ?? 'GMS'}/${variant.version}/item/${variant.id}`);
     if (!res.ok) throw new Error(`${res.status}`);
     const book = (await res.json()).frameBooks ?? {};
     variant.parts = partsFrom(frameOf(book, kind), cfg.anchors);

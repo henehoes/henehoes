@@ -19,16 +19,25 @@ const settle = () => new Promise(r => setTimeout(r, 700));
 const start = await pixels();
 check('preview draws something', start.n > 500, `(${start.n} px)`);
 
-// Defaults: lowest-numbered face and hair for the chosen gender, until something is changed
+// Nothing is worn at the start: no face and no hair
 const selectedNames = async tab => { await clickTab(tab); await settle(); return page.$$eval('#content .grid .card[aria-pressed="true"] .label', els => els.map(e => e.textContent)); };
 const clickGender = async g => { await page.evaluate(g => [...document.querySelectorAll('.seg button')].find(b => b.textContent.endsWith(g)).click(), g); await settle(); };
-const maleDefault = [await selectedNames('Face'), await selectedNames('Hair')];
-check('default is one face and one hair (male)', maleDefault.every(a => a.length === 1), JSON.stringify(maleDefault));
+const startNames = [await selectedNames('Face'), await selectedNames('Hair')];
+check('no face and no hair are selected on a fresh page', startNames.every(a => a.length === 0), JSON.stringify(startNames));
+check('the Equipped panel shows the empty-state sentence in a box', (await page.$eval('#colour .empty-note p', e => e.textContent)) === 'Nothing equipped yet. Pick your face, hair and clothing items on the right. You can select them here to change their colour.' && (await page.$eval('#colour .empty-note p', e => parseFloat(getComputedStyle(e).fontSize))) >= 15);
+check('nothing is listed in the Equipped panel yet', (await page.$$('#colour .slot')).length === 0);
 await clickGender('Female');
-const femaleDefault = [await selectedNames('Face'), await selectedNames('Hair')];
-check('untouched: switching gender swaps to the female defaults', femaleDefault.every(a => a.length === 1) && femaleDefault[1][0] !== maleDefault[1][0], JSON.stringify(femaleDefault));
+check('the All / Male / Female picker only filters the list (still nothing selected)', (await selectedNames('Face')).length === 0 && (await selectedNames('Hair')).length === 0);
+const femaleHairShown = await page.$$eval('#content .grid .card:not(.placeholder) .label', els => els.length);
 await clickGender('Male');
-check('switching back restores the male defaults', JSON.stringify([await selectedNames('Face'), await selectedNames('Hair')]) === JSON.stringify(maleDefault));
+check('the picker still changes which hair is listed', femaleHairShown > 0);
+// The cards stay readable with nothing worn: hair thumbnails borrow a neutral face
+const borrowed = await page.evaluate(() => { const c = document.querySelector('#content .card canvas'); return c ? c.width > 0 : false; });
+check('hair cards still draw with no face worn', borrowed);
+// Equip the first face and the first hair, as the rest of this run expects a worn face and hair
+await clickTab('Face'); await settle(); await (await page.$$('#content .grid .card:not(.placeholder)'))[0].click(); await settle();
+await clickTab('Hair'); await settle(); await (await page.$$('#content .grid .card:not(.placeholder)'))[0].click(); await settle();
+check('picking a face and a hair equips them', (await page.$$('#colour .slot')).length === 2);
 
 const designPill = slot => page.evaluate(slot => [...document.querySelectorAll('#colour .equipped .card')].find(b => b.dataset.slot.toLowerCase() === slot.toLowerCase()).click(), slot);
 
@@ -62,6 +71,8 @@ await outfit[1].click(); await settle();
 const w0 = await pixels();
 const hue = await page.$('#s-Tone');
 check('tone slider appears after choosing an overall', !!hue);
+const dyeNote = await page.$eval('#colour .dye-note', e => ({ text: e.textContent.replace(/^!/, ''), below: e.getBoundingClientRect().top >= document.querySelector('#colour .btn-row').getBoundingClientRect().bottom }));
+check('the dye note sits below the dye buttons with the approved wording', dyeNote.below && dyeNote.text === "Some special effects keep their original colour in the game even when dyed. We can't tell which, so this preview dyes every part it can; some items may show little or no change.", JSON.stringify(dyeNote));
 const sliderState = id => page.$eval(id, i => ({ min: i.min, max: i.max, value: i.value }));
 const ranges = await Promise.all(['#s-Tone', '#s-Chroma', '#s-Brightness'].map(sliderState));
 check('tone runs 0 to 359, chroma and brightness -99 to +99, all start at 0', ranges[0].min === '0' && ranges[0].max === '359' && ranges.slice(1).every(r => r.min === '-99' && r.max === '99') && ranges.every(r => r.value === '0'), JSON.stringify(ranges));
@@ -266,6 +277,7 @@ await page.evaluate(() => [...document.querySelectorAll('#content .card .label')
 check('equipping a hat adds it to the Equipped panel and shows its sliders', (await page.$$('.colour .slider')).length === 3 && (await pillText('hat')).includes('Beret'));
 await designPill('Hair'); await settle();
 check('selecting Hair swaps the sliders for hair colours', (await page.$$('.colour .slider')).length === 0 && (await page.$$('.colour-options .card')).length === 8);
+check('face and hair colour panels have no dye note', (await page.$$('#colour .dye-note')).length === 0);
 await page.evaluate(() => [...document.querySelectorAll('#content .card .label')].find(l => l.textContent === 'Beret').parentElement.click()); await settle(); // take it off again
 check('taking the hat off removes it from the Equipped panel', !(await page.evaluate(() => [...document.querySelectorAll('#colour .equipped .card')].some(b => b.title.includes('Beret')))));
 

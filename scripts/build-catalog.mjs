@@ -23,17 +23,9 @@ const zmap = read('data/zmap.json');
 const rules = read('data/rules.json');
 // henesys.gg is the single source for Classic names and ids (data/henesys-salon.json, data/henesys-cashshop.json, fetched by
 // scripts/fetch-henesys.mjs). Sprite ids come from the sprite API; the Classic id is stored beside them as classicId.
-const salon = read('data/henesys-salon.json');
 const cashShop = read('data/henesys-cashshop.json').items;
-const released = read('data/released.json');
 const norm = n => n.toLowerCase().replace(/ (hair|face)$/, '').replace(/[^a-z0-9]/g, '');
 const shopIds = new Map(); for (const i of cashShop) { const k = norm(i.name); if (!shopIds.has(k)) shopIds.set(k, []); shopIds.get(k).push(i.id); }
-const salonByName = Object.fromEntries(['hair', 'face'].map(k => [k, new Map(salon[k].map(e => [norm(e.name), e]))]));
-// data/released.json lists names, or Classic ids (numbers) for the rare style whose name is shared with a released one.
-const genders = g => g === 'both' ? ['male', 'female'] : [g];
-const isReleased = (kind, gender, name, s) => genders(gender).some(g => released[kind]?.[g]?.some(n => typeof n === 'number' ? n === s?.classicId : norm(n) === norm(name) && !(s?.datamine && sharesName(kind, g, name))));
-const existingStyles = read('data/items.json').styles.filter(x => !x.datamine);
-const sharesName = (kind, g, name) => existingStyles.some(x => x.kind === kind && x.gender === g && norm(x.style) === norm(name));
 const warnings = { unknownAnchor: [], noParts: [], unknownSlot: [], unknownLayer: [] };
 const zOf = layer => {
   const i = zmap.indexOf(rules.zFallback[layer] ?? layer);
@@ -116,29 +108,23 @@ for (const r of read('data/rings.json').rings) {
   (catalog.wearables[r.kind] ??= { label: RING_LABELS[r.kind], items: [] }).items.push({ id: r.classicId, name: r.name, vslots: [], parts: [], effect, ...(r.check && { check: r.check }) });
 }
 
+const spriteDirOf = (s, id) => s.region && s.region !== 'GMS' ? `sprites/${s.region.toLowerCase()}/${s.kind}/${id}` : `sprites/${s.kind}/${id}`;
 for (const s of styles) {
+  if (rules.exclude?.some(x => x.kind === s.kind && x.gender === s.gender && x.style === s.style)) continue;
   const variants = [];
   for (const c of s.colours) {
-    const dir = `sprites/${s.kind}/${c.id}`;
-    // Datamine styles are not stored: the app fetches their sprites from maplestory.io when needed (src/live.js).
-    if (s.datamine) { variants.push({ id: c.id, colour: c.colour, label: COLOUR_NAMES[s.kind][c.colour] ?? `Colour ${c.colour + 1}`, live: true, version: s.version }); continue; }
-    if (!existsSync(`public/${dir}/meta.json`)) continue;
-    const parts = partsOf(read(`public/${dir}/meta.json`), dir);
+    const dir = spriteDirOf(s, c.id);
     // The API names colour variants inconsistently (sometimes all the same), so use the game's standard colour order.
     const label = COLOUR_NAMES[s.kind][c.colour] ?? `Colour ${c.colour + 1}`;
+    if (!existsSync(`public/${dir}/meta.json`)) {
+      // Not stored (a datamine style): the app fetches its sprites from the sprite API when needed (src/live.js).
+      if (s.region) variants.push({ id: c.id, colour: c.colour, label, live: true, region: s.region, version: s.version });
+      continue;
+    }
+    const parts = partsOf(read(`public/${dir}/meta.json`), dir);
     if (parts.length) variants.push({ id: c.id, colour: c.colour, label, parts, ...(parts2Of(dir, label) && { parts2: parts2Of(dir, label) }) });
   }
-  // Entries a person should double-check: a guessed name match, or a name shared by several items.
-  const guess = report.assumedMatches.find(a => a.pasted === s.style);
-  const multi = report.styleMultiple.find(m => m.style === s.style && m.gender === s.gender);
-  if (rules.exclude?.some(x => x.kind === s.kind && x.gender === s.gender && x.style === s.style)) continue;
-  if (multi && rules.useEarlierId?.includes(s.style) && s.key !== Math.min(...multi.keys)) continue;
-  const check = guess ? `Guessed: the post says "${guess.pasted}", matched to "${guess.matchedAs}"` : multi && !rules.useEarlierId?.includes(s.style) ? `Several items share this name (${multi.keys.join(', ')}); check this is the right one` : undefined;
-  // henesys.gg lists the male pool and the collab styles (both genders); a female style of the same name is a different item.
-  const entry = salonByName[s.kind].get(norm(s.style));
-  const classic = s.classicId ?? (entry && (entry.gender === 'both' || entry.gender === s.gender) ? entry.id : undefined);
-  const note = check ?? s.note;
-  if (variants.length) catalog[s.kind].push({ style: s.style, gender: s.gender, key: s.key, ...(classic && { classicId: classic }), released: isReleased(s.kind, s.gender, s.style, { classicId: classic, datamine: s.datamine }), ...(note && { check: note }), variants });
+  if (variants.length) catalog[s.kind].push({ style: s.style, gender: s.gender, key: s.key, ...(s.classicId && { classicId: s.classicId }), released: s.released !== false, ...(s.note && { check: s.note }), variants });
 }
 
 for (const u of report.styleUnresolved) placeholders[u.kind].push({ name: u.style, gender: u.gender, reason: 'Name not found in the item database' });
@@ -148,7 +134,7 @@ for (const [slotKey, list] of Object.entries(placeholders.wearables)) {
   catalog.wearables[slotKey].placeholders = list;
 }
 // Styles on henesys.gg that have no sprite we can draw (scripts/add-datamine.mjs): shown only under the Datamine switch.
-for (const p of read('data/datamine-placeholders.json').items) placeholders[p.kind].push({ name: p.style, gender: p.gender, classicId: p.classicId, released: isReleased(p.kind, p.gender, p.style), reason: p.reason });
+for (const p of read('data/datamine-placeholders.json').items) placeholders[p.kind].push({ name: p.style, gender: p.gender, classicId: p.classicId, released: false, reason: p.reason });
 catalog.placeholders = { hair: placeholders.hair, face: placeholders.face };
 
 // Every list is shown lowest id first. Hair and face follow the Classic ids on henesys.gg (matched by name); styles it does not

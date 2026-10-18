@@ -1,0 +1,1 @@
+{"id":20705,"name":"Alert Face","version":"1","kind":"face","equipGroup":"Face","vslots":["Fc"],"islots":["Fc"],"parts":[{"key":"face","w":25,"h":17,"origin":{"x":12,"y":8,"isEmpty":false},"maps":{"brow":{"x":-1,"y":-11,"isEmpty":false}},"position":"face"}]}

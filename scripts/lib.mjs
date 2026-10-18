@@ -13,7 +13,8 @@ export const decodeB64 = b64 => decodePng(Buffer.from(b64, 'base64'));
 
 export async function getJson(url, tries = 3) {
   for (let i = 0; i < tries; i++) {
-    const res = await fetch(url);
+    const res = await fetch(url, { signal: AbortSignal.timeout(60000) }).catch(() => null); // a hung request must not stall a long run
+    if (!res) { await sleep(500 * (i + 1)); continue; }
     if (res.ok) return res.json();
     await sleep(500 * (i + 1));
   }

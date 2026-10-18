@@ -79,15 +79,8 @@ const fresh = () => ({
   wear: Object.fromEntries(WEAR_ORDER.map(k => [k, { item: null, h: 0, c: 0, b: 0 }])), // the game's dye: tone 0..359 (h), chroma -99..99 (c), brightness -99..99 (b); all 0 = the item's own colours
   text: { name: 'Maple', chat: 'Hello!' }, // shown by a name tag ring and a chat bubble ring
 });
-// The default look for a gender: the lowest-numbered skin, face and hair, nothing worn.
-const initial = () => {
-  const s = fresh();
-  for (const kind of ['face', 'hair']) {
-    const i = catalog[kind].findIndex(x => x.released && x.gender === (gender === 'all' ? 'male' : gender)); // released styles only; 'all' starts from the male defaults
-    if (i >= 0) s[kind].style = i;
-  }
-  return s;
-};
+// The starting look: the lowest-numbered skin, no face, no hair and nothing worn.
+const initial = () => fresh();
 // ---------- saved default (kept in this browser, so it is still there when the page is reopened) ----------
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 const SAVE_KEY = 'maple-layers:default-v2'; // v2: colour values are the game's tone/chroma/brightness numbers
@@ -121,7 +114,6 @@ const hasSaved = () => { try { return localStorage.getItem(SAVE_KEY) != null; } 
 
 let gender = 'male'; // which styles the Face and Hair tabs list: 'all', 'male' or 'female'
 let state = fresh();
-let dirty = false; // true once the user has changed anything; until then the Male/Female switch swaps the default look
 let activeTab = 'skin';
 let source = 'released'; // Face/Hair lists: 'released' (in the game now) or 'datamine' (everything found in the game files, released or not)
 const forGender = s => gender === 'all' || s.gender === 'both' || s.gender === gender; // 'both': collab styles listed for both genders
@@ -132,6 +124,14 @@ let configTarget = null; // which equipped item the Equipped panel (left) is edi
 // The colour the Face and Hair catalogues are shown in. Separate from the colour of the face/hair I am wearing.
 const browse = { face: 0, hair: 0 };
 
+// Catalogue thumbnails show hair and skin on a face. With no face worn they borrow the first released one for the list being
+// shown, so the cards stay readable; the stage and the Equipped panel still show exactly what is worn.
+const previewFace = () => {
+  if (state.face.style != null) return { ...state.face };
+  const g = gender === 'all' ? 'male' : gender;
+  const i = catalog.face.findIndex(x => x.released && (x.gender === g || x.gender === 'both'));
+  return { style: i >= 0 ? i : null, colour: state.face.colour };
+};
 const styleOf = kind => state[kind].style == null ? null : catalog[kind][state[kind].style];
 const variantOf = kind => {
   const s = styleOf(kind);
@@ -326,7 +326,6 @@ function renderFilters() {
     btn.setAttribute('aria-checked', String(gender === g));
     btn.onclick = () => {
       gender = g;
-      if (!dirty) state = initial(); // untouched: show the new gender's defaults. Otherwise keep every selection.
       afterChangeKeep(false);
     };
     seg.append(btn);
@@ -390,7 +389,7 @@ function colourGrid(kind) {
   const st = styleOf(kind);
   for (const v of st.variants) {
     grid.append(optionCard(v.label, v.colour === variantOf(kind).colour, VIEW,
-      () => only(sel => { sel.face = { ...state.face }; sel.hair = { ...state.hair }; sel[kind] = { style: state[kind].style, colour: v.colour }; return sel; }),
+      () => only(sel => { sel.face = previewFace(); sel.hair = { ...state.hair }; sel[kind] = { style: state[kind].style, colour: v.colour }; return sel; }),
       () => { state[kind].colour = v.colour; afterChange(); }));
   }
   return grid;
@@ -469,7 +468,8 @@ function renderColour() {
   const list = equipped();
   if (!list.some(e => e.key === configTarget)) configTarget = list[0]?.key ?? null;
   c.append(el('h3', { textContent: 'Equipped' }));
-  if (!list.length) return c.append(el('p', { className: 'hint', textContent: 'Nothing equipped yet. Pick a face, hair or wearable on the right, then select it here to change its colour.' }));
+  if (!list.length) return c.append(el('div', { className: 'empty-note', role: 'note' }, el('span', { className: 'empty-badge', textContent: 'i', 'aria-hidden': 'true' }),
+    el('p', {}, el('strong', { textContent: 'Nothing equipped yet.' }), ' Pick your face, hair and clothing items on the right. You can select them here to change their colour.')));
   const grid = el('div', { className: 'equipped grid' });
   for (const e of list) {
     // Hovering (or tabbing to) a tile shows an x that takes the item off.
@@ -484,18 +484,21 @@ function renderColour() {
   if (RING_SLOTS.includes(configTarget)) return c.append(el('h3', { textContent: data.label }), textFields(configTarget), el('p', { className: 'hint', textContent: 'This ring has no colour settings. Its text is shown in the preview.' }));
   // The game's own numbers, all starting at 0 (the item's own colours): Tone 0 to 359, Chroma and Brightness -99 to +99.
   const signed = v => `${v > 0 ? '+' : ''}${v}`;
-  const slider = (label, key, min, max) => sliderRow(label, min, max, 1, w[key], signed, v => { w[key] = v; dirty = true; renderPreview(); });
+  const slider = (label, key, min, max) => sliderRow(label, min, max, 1, w[key], signed, v => { w[key] = v; renderPreview(); });
   const sliders = el('div', { className: 'sliders' }, slider('Tone', 'h', 0, 359), slider('Chroma', 'c', -99, 99), slider('Brightness', 'b', -99, 99));
   const reset = el('button', { className: 'small-btn', type: 'button', textContent: 'Reset colour' });
-  reset.onclick = () => { Object.assign(w, { h: 0, c: 0, b: 0 }); dirty = true; renderColour(); renderPreview(); };
+  reset.onclick = () => { Object.assign(w, { h: 0, c: 0, b: 0 }); renderColour(); renderPreview(); };
   // Random dye: any tone, with chroma and brightness kept to a range that still looks like a dyed item.
   const random = el('button', { className: 'small-btn', type: 'button', textContent: 'Random dye' });
   random.onclick = () => {
     const between = (lo, hi) => lo + Math.floor(Math.random() * (hi - lo + 1));
     Object.assign(w, { h: between(0, 359), c: between(-60, 60), b: between(-50, 50) });
-    dirty = true; renderColour(); renderPreview();
+    renderColour(); renderPreview();
   };
-  c.append(el('h3', { textContent: `${data.label} colour` }), sliders, el('div', { className: 'btn-row' }, random, reset));
+  // The game keeps some special effects in their own colour, and the sprite data does not say which, so this preview dyes every part it can.
+  const note = el('div', { className: 'dye-note', role: 'note' }, el('span', { className: 'dye-badge', textContent: '!', 'aria-hidden': 'true' }),
+    el('p', { textContent: "Some special effects keep their original colour in the game even when dyed. We can't tell which, so this preview dyes every part it can; some items may show little or no change." }));
+  c.append(el('h3', { textContent: `${data.label} colour` }), sliders, el('div', { className: 'btn-row' }, random, reset), note);
 }
 
 // keepScroll: redraw in place (after a selection or colour change) instead of jumping back to the top of the list.
@@ -534,7 +537,7 @@ function renderSkin(c) {
     if (!name || !matches(name)) continue;
     // Same crop as face and hair, on this skin wearing the current face and hair only.
     grid.append(optionCard(name, s.tone === state.skin, VIEW,
-      () => { const sel = fresh(); sel.skin = s.tone; sel.face = { ...state.face }; sel.hair = { ...state.hair }; return sel; },
+      () => { const sel = fresh(); sel.skin = s.tone; sel.face = previewFace(); sel.hair = { ...state.hair }; return sel; },
       () => { state.skin = s.tone; afterChange(); }));
   }
   c.append(grid);
@@ -551,7 +554,7 @@ function renderStyles(c, kind) {
     const first = s.variants.find(v => v.colour === browse[kind]) ?? s.variants[0];
     const card = optionCard(dup ? `${s.style} (#${s.classicId ?? s.key})` : s.style, state[kind].style === i, VIEW,
       // Preview the style on my current skin, with my current face (or hair) alongside.
-      () => only(sel => { sel.face = { ...state.face }; sel.hair = { ...state.hair }; sel[kind] = { style: i, colour: first.colour }; return sel; }),
+      () => only(sel => { sel.face = previewFace(); sel.hair = { ...state.hair }; sel[kind] = { style: i, colour: first.colour }; return sel; }),
       // Clicking the selected style takes it off again.
       () => {
         const on = state[kind].style === i;
@@ -607,7 +610,7 @@ function textFields(slot) {
     const input = el('input', { type: 'text', maxLength: max, value: state.text[key] });
     input.dataset.key = key;
     input.oninput = () => {
-      state.text[key] = input.value; dirty = true; renderPreview();
+      state.text[key] = input.value; renderPreview();
       // The same field can be on screen twice (the tab and the Equipped panel): keep them in step.
       for (const other of document.querySelectorAll(`.text-field input[data-key="${key}"]`)) if (other !== input) other.value = input.value;
     };
@@ -626,7 +629,7 @@ function select(slot, id) {
 }
 
 function afterChangeKeep(keepScroll = true) { renderTabs(); renderFilters(); renderContent(keepScroll); renderColour(); renderPreview(); }
-function afterChange() { dirty = true; afterChangeKeep(); }
+function afterChange() { afterChangeKeep(); }
 
 // ---------- export ----------
 // Saves the character as a PNG. Not wired to any button at the moment (the Download button was removed): call exportPng() to use it.
@@ -665,12 +668,12 @@ function randomise() {
   }
   if (s.wear.longcoat.item != null) { if (Math.random() < 0.5) { s.wear.coat.item = null; s.wear.pants.item = null; } else s.wear.longcoat.item = null; }
   s.text = state.text;
-  state = s; dirty = true;
+  state = s;
   afterChange();
 }
 function resetToDefault() {
   const saved = loadSaved();
-  if (saved) { state = saved.state; gender = saved.gender; dirty = true; } else { state = initial(); dirty = false; }
+  if (saved) { state = saved.state; gender = saved.gender; } else state = initial();
   configTarget = null;
   afterChangeKeep(false);
 }
@@ -727,7 +730,7 @@ async function init() {
   previewButtons();
   loadBackdrop();
   const saved = loadSaved();
-  if (saved) { state = saved.state; gender = saved.gender; dirty = true; } else state = initial();
+  if (saved) { state = saved.state; gender = saved.gender; } else state = initial();
   afterChangeKeep();
   // Redraw at the right pixel sizes when the window changes size or moves to another display.
   let timer;

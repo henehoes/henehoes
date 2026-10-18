@@ -226,7 +226,7 @@ input { font: inherit; border-radius: 0; }
 .empty-note { display: flex; gap: 12px; align-items: flex-start; margin: 4px 3px 3px; padding: 14px; background: oklch(99% .01 230); --c: var(--bench-line); box-shadow: 0 -2px 0 0 var(--c), 0 2px 0 0 var(--c), -2px 0 0 0 var(--c), 2px 0 0 0 var(--c); }
 .empty-note p { margin: 0; color: var(--ink); font: 15px/1.45 var(--font-text); }
 .empty-note strong { font-weight: 700; }
-.empty-badge { flex: none; width: 22px; height: 22px; margin-top: 1px; display: grid; place-items: center; background: var(--head); color: #fff; font: 13px var(--font-label); }
+.empty-badge { flex: none; width: 22px; height: 22px; margin-top: 1px; display: grid; place-items: center; background: var(--head); color: #fff; font: 600 17px/1 var(--font-pixel); }
 .dye-note p { margin: 0; color: var(--ink); font: 12.5px/1.4 var(--font-text); }
 .dye-badge { flex: none; width: 18px; height: 18px; margin-top: 1px; display: grid; place-items: center; background: oklch(70% .14 78); color: #fff; font: 11px var(--font-label); }
 
@@ -238,3 +238,14 @@ input { font: inherit; border-radius: 0; }
 #s-Chroma::-moz-range-track { background: linear-gradient(90deg, hsl(0 0% 55%), hsl(0 100% 50%)); }
 #s-Brightness::-webkit-slider-runnable-track { background: linear-gradient(90deg, #000, #fff); }
 #s-Brightness::-moz-range-track { background: linear-gradient(90deg, #000, #fff); }
+
+/* Search tab: brass tab with a magnifier, and headings between the groups of results */
+.tab.lookup[aria-selected="true"] { background: var(--maple); color: oklch(99% .01 90); }
+.tab.lookup { background: oklch(84% .15 92 / .85); color: var(--ink); margin-bottom: 8px; } /* the same small sticky as the others, in yellow, with a magnifier */
+.tab-glass { margin: 0 6px 3px 0; border-color: currentColor; }
+.tab-glass::after { background: currentColor; }
+.group-title { display: flex; align-items: center; gap: 8px; margin: 14px 0 10px; font: 400 17px var(--font-pixel); color: var(--sepia); }
+.group-title:first-child { margin-top: 2px; }
+.group-title::before { content: ""; width: 8px; height: 8px; background: var(--maple); transform: rotate(45deg); flex: none; }
+.group-title::after { content: ""; height: 2px; flex: 1; background: var(--paper-line); }
+.scroll > .empty-note { margin: 6px 3px 8px; }

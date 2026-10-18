@@ -231,6 +231,39 @@ check('Datamine + Female has far more styles than the 15 released', (await page.
 await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent === 'Released').click());
 await page.evaluate(() => [...document.querySelectorAll('#filters > .seg button')].find(b => b.textContent.endsWith('Male') && !b.textContent.endsWith('Female')).click()); await settle();
 
+// Search tab: one box for everything
+const searchBox = async text => { await page.$eval('#filters .search-input', (e, text) => { e.value = text; e.dispatchEvent(new Event('input', { bubbles: true })); }, text); await new Promise(r => setTimeout(r, 700)); };
+check('Search is the first tab', (await page.$eval('.tab', t => t.title)) === 'Search');
+await clickTab('Search'); await settle();
+check('opening Search shows the type-3-letters note and renders no cards', (await page.$eval('#content .empty-note p', e => e.textContent)) === 'Type at least 3 letters to search skins, faces, hairs and clothing.' && (await page.$$('#content .card')).length === 0);
+check('Search has no gender picker, release switch or colour bar', (await page.$$('#filters > .seg')).length === 0 && (await page.$$('#source .seg')).length === 0 && (await page.$$('#toolbar .swatch')).length === 0);
+await searchBox('to');
+check('two letters still show only the note', (await page.$$('#content .card')).length === 0 && !!(await page.$('#content .empty-note')));
+await searchBox('toben');
+const tobenGroups = await page.$$eval('#content .group-title', hs => hs.map(h => h.textContent));
+check('"toben" finds Toben Hair under Hairstyles', tobenGroups.some(g => g.startsWith('Hairstyles')) && (await page.$$eval('#content .card .label', els => els.map(e => e.textContent))).includes('Toben Hair'), JSON.stringify(tobenGroups));
+await searchBox('mohecan');
+check('punctuation and case do not matter ("mohecan" finds Mohecan Shaggy \'Do)', (await page.$$eval('#content .card .label', els => els.map(e => e.textContent))).some(n => n.startsWith('Mohecan')));
+await searchBox('rockstar');
+const rock = await page.evaluate(() => ({ cards: document.querySelectorAll('#content .card').length, datamine: document.querySelectorAll('#content .card .unreleased-badge').length }));
+check('"rockstar" returns both released and DATAMINE cards', rock.cards >= 2 && rock.datamine >= 1 && rock.datamine < rock.cards, JSON.stringify(rock));
+await searchBox('sailor');
+check('clothing shows up grouped by category', (await page.$$eval('#content .group-title', hs => hs.map(h => h.textContent))).some(g => /^(Overalls|Tops|Bottoms|Hats)/.test(g)));
+await searchBox('hair');
+const broad = await page.evaluate(() => ({ cards: document.querySelectorAll('#content .card').length, note: document.querySelector('#content .empty-note p')?.textContent ?? '' }));
+check('a broad search returns every match when there are fewer than 60 (the cap is only a safety net)', broad.cards > 30 && broad.cards <= 60 && broad.note === '', JSON.stringify(broad));
+await searchBox('zzzzzz');
+check('no match says so', !!(await page.$('#content .empty')) && (await page.$$('#content .card')).length === 0);
+await searchBox('sailor hat');
+await page.evaluate(() => [...document.querySelectorAll('#content .card')].find(c => c.textContent.includes('Sailor Hat')).click()); await settle();
+check('clicking a result equips it and stays on the Search tab', (await page.evaluate(() => [...document.querySelectorAll('#colour .slot .card')].some(c => c.dataset.slot === 'Hat'))) && (await page.$eval('.tab[aria-selected="true"]', t => t.title)) === 'Search');
+check('the category tab shows its tick and the box keeps what was typed', (await page.evaluate(() => !![...document.querySelectorAll('.tab')].find(t => t.title === 'Hat')?.querySelector('.tick'))) && (await page.$eval('#filters .search-input', i => i.value)) === 'sailor hat');
+await page.evaluate(() => [...document.querySelectorAll('#content .card')].find(c => c.textContent.includes('Sailor Hat')).click()); await settle(); // take it off again
+check('clicking the worn result takes it off', !(await page.evaluate(() => [...document.querySelectorAll('#colour .slot .card')].some(c => c.dataset.slot === 'Hat'))));
+await clickTab('Hair'); await settle();
+check('changing tab clears the search box', (await page.$eval('#filters .search-input', i => i.value)) === '');
+await clickTab('Hair'); await settle();
+
 // Backdrop: the preview is drawn on the Henesys picture, so it has no transparent pixels
 const backdropPx = await page.evaluate(() => { const c = document.getElementById('preview'); const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; let clear = 0; for (let i = 3; i < d.length; i += 4) if (d[i] < 255) clear++; return { clear, total: d.length / 4 }; });
 check('the preview sits on the Henesys backdrop (no empty pixels)', backdropPx.clear === 0, JSON.stringify(backdropPx));

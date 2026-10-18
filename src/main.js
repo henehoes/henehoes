@@ -273,15 +273,15 @@ function only(patch) {
 const note = text => { $('ph-note').textContent = text; };
 
 // Chapter tabs down the right edge of the book. Short names keep the rail narrow; the chapter title shows the full one.
-const TAB_NAMES = { faceAcc: 'Face Acc.', eyeAcc: 'Eye Deco', longcoat: 'Overall', nameTag: 'Name Tag', chatBalloon: 'Chat' };
-const CHAPTER_TITLES = { skin: 'Skin Tones', face: 'Faces', hair: 'Hairstyles', cap: 'Hats', faceAcc: 'Face Accessories', eyeAcc: 'Eye Decorations', earrings: 'Earrings', longcoat: 'Overalls', coat: 'Tops', pants: 'Bottoms', glove: 'Gloves', shoes: 'Shoes', cape: 'Capes', weapon: 'Weapons', nameTag: 'Name Tag Rings', chatBalloon: 'Chat Bubble Rings' };
+const TAB_NAMES = { search: 'Search', faceAcc: 'Face Acc.', eyeAcc: 'Eye Deco', longcoat: 'Overall', nameTag: 'Name Tag', chatBalloon: 'Chat' };
+const CHAPTER_TITLES = { search: 'Search Everything', skin: 'Skin Tones', face: 'Faces', hair: 'Hairstyles', cap: 'Hats', faceAcc: 'Face Accessories', eyeAcc: 'Eye Decorations', earrings: 'Earrings', longcoat: 'Overalls', coat: 'Tops', pants: 'Bottoms', glove: 'Gloves', shoes: 'Shoes', cape: 'Capes', weapon: 'Weapons', nameTag: 'Name Tag Rings', chatBalloon: 'Chat Bubble Rings' };
 
 function renderTabs() {
   const tabs = $('tabs');
   const needsFix = new Set([...WEAR_ORDER.filter(s => catalog.wearables[s]?.placeholders?.length), ...['face', 'hair'].filter(k => catalog.placeholders[k].some(p => p.released !== false))]); // datamine placeholders are expected, so only released ones are flagged
   tabs.replaceChildren();
   const add = (key, label, active, group) => {
-    const t = el('button', { className: `tab ${group}`, type: 'button', role: 'tab' }, el('span', { className: 'tab-name', textContent: TAB_NAMES[key] ?? label }));
+    const t = el('button', { className: `tab ${group}`, type: 'button', role: 'tab' }, key === 'search' ? el('span', { className: 'glass tab-glass', 'aria-hidden': 'true' }) : null, el('span', { className: 'tab-name', textContent: TAB_NAMES[key] ?? label }));
     t.setAttribute('aria-selected', String(activeTab === key));
     t.title = label;
     if (active) t.append(el('span', { className: 'tick', title: 'Equipped' }));
@@ -289,6 +289,7 @@ function renderTabs() {
     t.onclick = () => { activeTab = key; search = ''; note(''); renderTabs(); renderFilters(); renderContent(); };
     tabs.append(t);
   };
+  add('search', 'Search', false, 'lookup');
   add('skin', 'Skin', false, 'character');
   add('face', 'Face', state.face.style != null, 'character');
   add('hair', 'Hair', state.hair.style != null, 'character');
@@ -297,14 +298,18 @@ function renderTabs() {
 }
 
 // The search box (every tab) and the All / Male / Female picker (Face and Hair), just above the cards.
+let searchTimer;
 function renderFilters() {
   const box = $('filters');
   box.replaceChildren();
   $('source').replaceChildren();
-  const input = el('input', { type: 'search', className: 'search-input', placeholder: 'Search entries…', value: search, autocomplete: 'off', spellcheck: false });
-  input.setAttribute('aria-label', 'Search this list');
-  input.oninput = () => { search = input.value; renderContent(true); };
+  const everything = activeTab === 'search';
+  const input = el('input', { type: 'search', className: 'search-input', placeholder: everything ? 'Search everything…' : 'Search entries…', value: search, autocomplete: 'off', spellcheck: false });
+  input.setAttribute('aria-label', everything ? 'Search skins, faces, hairs and clothing' : 'Search this list');
+  // The Search tab waits a moment after the last keystroke, so fast typing does not rebuild the results on every letter.
+  input.oninput = () => { search = input.value; clearTimeout(searchTimer); if (everything) searchTimer = setTimeout(() => renderContent(false), 150); else renderContent(true); };
   box.append(el('label', { className: 'search' }, el('span', { className: 'glass', 'aria-hidden': 'true' }), input));
+  if (everything) { input.focus(); input.setSelectionRange(input.value.length, input.value.length); }
   if (activeTab !== 'face' && activeTab !== 'hair') return;
   const seg = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': 'Show styles for' });
   for (const [g, label] of [['all', 'All'], ['male', '♂ Male'], ['female', '♀ Female']]) {
@@ -455,8 +460,7 @@ function renderColour() {
   const list = equipped();
   if (!list.some(e => e.key === configTarget)) configTarget = list[0]?.key ?? null;
   c.append(el('h3', { textContent: 'Equipped' }));
-  if (!list.length) return c.append(el('div', { className: 'empty-note', role: 'note' }, el('span', { className: 'empty-badge', textContent: 'i', 'aria-hidden': 'true' }),
-    el('p', {}, el('strong', { textContent: 'Nothing equipped yet.' }), ' Pick your face, hair and clothing items on the right. You can select them here to change their colour.')));
+  if (!list.length) return c.append(infoNote(el('strong', { textContent: 'Nothing equipped yet.' }), ' Pick your face, hair and clothing items on the right. You can select them here to change their colour.'));
   const grid = el('div', { className: 'equipped grid' });
   for (const e of list) {
     // Hovering (or tabbing to) a tile shows an x that takes the item off.
@@ -494,10 +498,11 @@ function renderContent(keepScroll = false) {
   const top = c.scrollTop;
   c.replaceChildren();
   $('toolbar').replaceChildren();
-  if (activeTab === 'skin') renderSkin(c);
+  if (activeTab === 'search') renderSearch(c);
+  else if (activeTab === 'skin') renderSkin(c);
   else if (activeTab === 'face' || activeTab === 'hair') renderStyles(c, activeTab);
   else renderWearable(c, activeTab);
-  if (search && !c.querySelector('.card')) c.append(el('p', { className: 'empty', textContent: 'No entries match. Try another word.' }));
+  if (activeTab !== 'search' && search && !c.querySelector('.card')) c.append(el('p', { className: 'empty', textContent: 'No entries match. Try another word.' }));
   c.scrollTop = keepScroll ? top : 0;
 }
 
@@ -517,16 +522,41 @@ function renderColourBar(kind) {
   $('toolbar').append(el('div', { className: 'colour-bar' }, el('span', { className: 'bar-label', textContent: kind === 'face' ? 'Eye colour' : 'Hair colour' }), row));
 }
 
+// The card builders below are shared by the catalogue tabs and the Search tab, so a card behaves the same wherever it appears.
+function skinCard(s) {
+  // Same crop as face and hair, on this skin wearing the current face and hair only (a face only if one is worn).
+  return optionCard(SKIN_NAMES[s.tone], s.tone === state.skin, VIEW,
+    () => { const sel = fresh(); sel.skin = s.tone; sel.face = { ...state.face }; sel.hair = { ...state.hair }; return sel; },
+    () => { state.skin = s.tone; afterChange(); });
+}
+
+function styleCard(kind, s, i) {
+  const first = s.variants.find(v => v.colour === browse[kind]) ?? s.variants[0];
+  const card = optionCard(s.style, state[kind].style === i, VIEW,
+    // Preview the style on my current skin, with my current face (or hair) alongside.
+    () => only(sel => { sel.face = { ...state.face }; sel.hair = { ...state.hair }; sel[kind] = { style: i, colour: first.colour }; return sel; }),
+    // Clicking the selected style takes it off again.
+    () => {
+      const on = state[kind].style === i;
+      state[kind] = { style: on ? null : i, colour: on ? state[kind].colour : first.colour };
+      if (!on) configTarget = kind;
+      afterChange();
+    }, s.check);
+  if (s.classicId) card.title = `${card.title} · Classic ${s.classicId}`;
+  if (s.released === false) { card.classList.add('unreleased'); card.append(el('span', { className: 'badge unreleased-badge', textContent: 'DATAMINE' })); }
+  return card;
+}
+
+function wearableCard(slot, item) {
+  const selected = state.wear[slot].item === item.id;
+  const card = item.effect ? ringCard(item, selected, slot) : optionCard(item.name, selected, null, null, () => select(slot, item.id), item.check, item.icon);
+  if (item.classicId) card.title = `${card.title} · Classic ${item.classicId}`;
+  return card;
+}
+
 function renderSkin(c) {
   const grid = el('div', { className: 'grid' });
-  for (const s of catalog.skins) {
-    const name = SKIN_NAMES[s.tone];
-    if (!name || !matches(name)) continue;
-    // Same crop as face and hair, on this skin wearing the current face and hair only.
-    grid.append(optionCard(name, s.tone === state.skin, VIEW,
-      () => { const sel = fresh(); sel.skin = s.tone; sel.face = { ...state.face }; sel.hair = { ...state.hair }; return sel; },
-      () => { state.skin = s.tone; afterChange(); }));
-  }
+  for (const s of catalog.skins) if (SKIN_NAMES[s.tone] && matches(SKIN_NAMES[s.tone])) grid.append(skinCard(s));
   c.append(grid);
 }
 
@@ -534,38 +564,50 @@ function renderStyles(c, kind) {
   renderColourBar(kind);
   if (source === 'datamine') c.append(el('p', { className: 'datamine-note', textContent: 'Showing everything in the game data. Styles marked DATAMINE are not released yet.' }));
   const grid = el('div', { className: 'grid' });
-  catalog[kind].forEach((s, i) => {
-    if (!forGender(s) || !listed(s) || !matches(s.style)) return;
-    const first = s.variants.find(v => v.colour === browse[kind]) ?? s.variants[0];
-    const card = optionCard(s.style, state[kind].style === i, VIEW,
-      // Preview the style on my current skin, with my current face (or hair) alongside.
-      () => only(sel => { sel.face = { ...state.face }; sel.hair = { ...state.hair }; sel[kind] = { style: i, colour: first.colour }; return sel; }),
-      // Clicking the selected style takes it off again.
-      () => {
-        const on = state[kind].style === i;
-        state[kind] = { style: on ? null : i, colour: on ? state[kind].colour : first.colour };
-        if (!on) configTarget = kind;
-        afterChange();
-      }, s.check);
-    if (s.classicId) card.title = `${card.title} · Classic ${s.classicId}`;
-    if (s.released === false) { card.classList.add('unreleased'); card.append(el('span', { className: 'badge unreleased-badge', textContent: 'DATAMINE' })); }
-    grid.append(card);
-  });
+  catalog[kind].forEach((s, i) => { if (forGender(s) && listed(s) && matches(s.style)) grid.append(styleCard(kind, s, i)); });
   for (const p of catalog.placeholders[kind].filter(p => (gender === 'all' || p.gender === 'both' || p.gender === gender) && (p.released !== false || source === 'datamine') && matches(p.name))) grid.append(placeholderCard(p));
   c.append(grid);
 }
 
 function renderWearable(c, slot) {
   const data = catalog.wearables[slot];
-  const w = state.wear[slot];
   const grid = el('div', { className: 'grid' });
-  for (const item of data.items.filter(i => matches(i.name))) {
-    const card = item.effect ? ringCard(item, w.item === item.id, slot) : optionCard(item.name, w.item === item.id, null, null, () => select(slot, item.id), item.check, item.icon);
-    if (item.classicId) card.title = `${card.title} · Classic ${item.classicId}`;
-    grid.append(card);
-  }
+  for (const item of data.items.filter(i => matches(i.name))) grid.append(wearableCard(slot, item));
   for (const p of (data.placeholders ?? []).filter(p => matches(p.name))) grid.append(placeholderCard(p));
   c.append(grid);
+}
+
+// ---------- Search tab: one box for everything ----------
+const MIN_SEARCH = 3, MAX_RESULTS = 60;
+const flat = s => s.toLowerCase().replace(/[^a-z0-9]/g, ''); // case, spaces and punctuation do not matter
+// A framed information note (the same box as the Equipped panel's empty state).
+const infoNote = (...content) => el('div', { className: 'empty-note', role: 'note' }, el('span', { className: 'empty-badge', textContent: 'i', 'aria-hidden': 'true' }), el('p', {}, ...content));
+
+function renderSearch(c) {
+  const q = flat(search);
+  if (q.length < MIN_SEARCH) return c.append(infoNote(`Type at least ${MIN_SEARCH} letters to search skins, faces, hairs and clothing.`));
+  // Collect the matches first, grouped in tab order; cards are only built for the first MAX_RESULTS.
+  const groups = [];
+  const add = (title, entries) => { if (entries.length) groups.push({ title, entries }); };
+  add('Skin tones', catalog.skins.filter(s => SKIN_NAMES[s.tone] && flat(SKIN_NAMES[s.tone]).includes(q)).map(s => () => skinCard(s)));
+  for (const [kind, title] of [['face', 'Faces'], ['hair', 'Hairstyles']])
+    add(title, catalog[kind].flatMap((s, i) => flat(s.style).includes(q) ? [() => styleCard(kind, s, i)] : []));
+  for (const slot of WEAR_ORDER) {
+    if (DISABLED_SLOTS.has(slot) || !catalog.wearables[slot]) continue;
+    add(CHAPTER_TITLES[slot] ?? catalog.wearables[slot].label, catalog.wearables[slot].items.filter(it => !it.effect && flat(it.name).includes(q)).map(it => () => wearableCard(slot, it)));
+  }
+  const total = groups.reduce((n, g) => n + g.entries.length, 0);
+  if (!total) return c.append(el('p', { className: 'empty', textContent: 'No entries match. Try another word.' }));
+  let left = MAX_RESULTS;
+  for (const g of groups) {
+    if (left <= 0) break;
+    c.append(el('h3', { className: 'group-title', textContent: `${g.title} · ${g.entries.length}` }));
+    const grid = el('div', { className: 'grid' });
+    for (const build of g.entries.slice(0, left)) grid.append(build());
+    left -= Math.min(left, g.entries.length);
+    c.append(grid);
+  }
+  if (total > MAX_RESULTS) c.append(infoNote(`Showing the first ${MAX_RESULTS} of ${total} matches. Type more letters to narrow it down.`));
 }
 
 // A name tag or chat bubble ring: the card shows the tag or bubble itself with sample text (the real text is set in the text fields).

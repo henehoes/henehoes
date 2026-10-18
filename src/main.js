@@ -106,12 +106,12 @@ function loadSaved() {
       if (w && (w.item == null || catalog.wearables[k]?.items.some(i => i.id === w.item))) s.wear[k] = { item: w.item, h: clamp(Math.round(+w.h || 0), 0, 359), c: clamp(Math.round(+w.c || 0), -99, 99), b: clamp(Math.round(+w.b || 0), -99, 99) };
     }
     if (typeof d.text?.name === 'string') s.text = { name: d.text.name.slice(0, 12), chat: String(d.text.chat ?? '').slice(0, 60) };
-    return { state: s, gender: ['all', 'female'].includes(d.gender) ? d.gender : 'male' };
+    return { state: s, gender: ['male', 'female'].includes(d.gender) ? d.gender : 'all' };
   } catch { return null; } // storage blocked or the saved data is damaged: start from the normal default
 }
 const hasSaved = () => { try { return localStorage.getItem(SAVE_KEY) != null; } catch { return false; } };
 
-let gender = 'male'; // which styles the Face and Hair tabs list: 'all', 'male' or 'female'
+let gender = 'all'; // which styles the Face and Hair tabs list: 'all' (the default), 'male' or 'female'
 let state = fresh();
 let activeTab = 'skin';
 let source = 'released'; // Face/Hair lists: 'released' (in the game now) or 'datamine' (everything found in the game files, released or not)
@@ -123,14 +123,6 @@ let configTarget = null; // which equipped item the Equipped panel (left) is edi
 // The colour the Face and Hair catalogues are shown in. Separate from the colour of the face/hair I am wearing.
 const browse = { face: 0, hair: 0 };
 
-// Catalogue thumbnails show hair and skin on a face. With no face worn they borrow the first released one for the list being
-// shown, so the cards stay readable; the stage and the Equipped panel still show exactly what is worn.
-const previewFace = () => {
-  if (state.face.style != null) return { ...state.face };
-  const g = gender === 'all' ? 'male' : gender;
-  const i = catalog.face.findIndex(x => x.released && (x.gender === g || x.gender === 'both'));
-  return { style: i >= 0 ? i : null, colour: state.face.colour };
-};
 const styleOf = kind => state[kind].style == null ? null : catalog[kind][state[kind].style];
 const variantOf = kind => {
   const s = styleOf(kind);
@@ -384,7 +376,7 @@ function colourGrid(kind) {
   const st = styleOf(kind);
   for (const v of st.variants) {
     grid.append(optionCard(v.label, v.colour === variantOf(kind).colour, VIEW,
-      () => only(sel => { sel.face = previewFace(); sel.hair = { ...state.hair }; sel[kind] = { style: state[kind].style, colour: v.colour }; return sel; }),
+      () => only(sel => { sel.face = { ...state.face }; sel.hair = { ...state.hair }; sel[kind] = { style: state[kind].style, colour: v.colour }; return sel; }),
       () => { state[kind].colour = v.colour; afterChange(); }));
   }
   return grid;
@@ -532,7 +524,7 @@ function renderSkin(c) {
     if (!name || !matches(name)) continue;
     // Same crop as face and hair, on this skin wearing the current face and hair only.
     grid.append(optionCard(name, s.tone === state.skin, VIEW,
-      () => { const sel = fresh(); sel.skin = s.tone; sel.face = previewFace(); sel.hair = { ...state.hair }; return sel; },
+      () => { const sel = fresh(); sel.skin = s.tone; sel.face = { ...state.face }; sel.hair = { ...state.hair }; return sel; },
       () => { state.skin = s.tone; afterChange(); }));
   }
   c.append(grid);
@@ -549,7 +541,7 @@ function renderStyles(c, kind) {
     const first = s.variants.find(v => v.colour === browse[kind]) ?? s.variants[0];
     const card = optionCard(dup ? `${s.style} (#${s.classicId ?? s.key})` : s.style, state[kind].style === i, VIEW,
       // Preview the style on my current skin, with my current face (or hair) alongside.
-      () => only(sel => { sel.face = previewFace(); sel.hair = { ...state.hair }; sel[kind] = { style: i, colour: first.colour }; return sel; }),
+      () => only(sel => { sel.face = { ...state.face }; sel.hair = { ...state.hair }; sel[kind] = { style: i, colour: first.colour }; return sel; }),
       // Clicking the selected style takes it off again.
       () => {
         const on = state[kind].style === i;

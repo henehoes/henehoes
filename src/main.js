@@ -5,12 +5,18 @@ import '@fontsource/nunito/400.css';
 import '@fontsource/nunito/700.css';
 import { adjustColour, composite } from './compose.js';
 import { drawBalloon, drawNameTag, drawPlainTag } from './ring.js';
+import { inject } from '@vercel/analytics';
+
+// Vercel Web Analytics (page views only). Only in the production build: during development and tests it would load a debug script
+// from vercel-scripts.com and log to the console. On a deployment it needs Analytics switched on in the Vercel project settings.
+if (import.meta.env.PROD) inject();
 
 const W = 160, H = 230;          // working canvas, in sprite pixels (tall: a chat bubble sits above the head, a name tag below the feet)
 const OX = 60, OY = 112;          // where the skin's top-left sits on that canvas
 
 // Switched off for now (not rendered cleanly enough yet): hidden from the tabs, the Equipped panel, the preview, Random and saved
 // defaults. The code, data and sprites stay, so turning them back on is removing the names from this set.
+const narrowLayout = matchMedia('(max-width: 800px)'); // the one-column phone layout (see the media query in style.css)
 const DISABLED_SLOTS = new Set(['nameTag', 'chatBalloon']);
 const WEAR_ORDER = ['cap', 'faceAcc', 'eyeAcc', 'earrings', 'longcoat', 'coat', 'pants', 'glove', 'shoes', 'cape', 'weapon', 'nameTag', 'chatBalloon'];
 
@@ -278,6 +284,7 @@ const CHAPTER_TITLES = { search: 'Search Everything', skin: 'Skin Tones', face: 
 
 function renderTabs() {
   const tabs = $('tabs');
+  const scrolled = tabs.scrollLeft; // on a phone the tabs scroll sideways: rebuilding them must not send the strip back to the start
   const needsFix = new Set([...WEAR_ORDER.filter(s => catalog.wearables[s]?.placeholders?.length), ...['face', 'hair'].filter(k => catalog.placeholders[k].some(p => p.released !== false))]); // datamine placeholders are expected, so only released ones are flagged
   tabs.replaceChildren();
   const add = (key, label, active, group) => {
@@ -294,6 +301,7 @@ function renderTabs() {
   add('face', 'Face', state.face.style != null, 'character');
   add('hair', 'Hair', state.hair.style != null, 'character');
   WEAR_ORDER.filter(s => catalog.wearables[s] && !DISABLED_SLOTS.has(s)).forEach((s, i) => add(s, catalog.wearables[s].label, state.wear[s].item != null, i === 0 ? 'wearable first' : 'wearable'));
+  tabs.scrollLeft = scrolled;
   $('chapter').textContent = CHAPTER_TITLES[activeTab] ?? catalog.wearables[activeTab]?.label ?? '';
 }
 
@@ -460,7 +468,7 @@ function renderColour() {
   const list = equipped();
   if (!list.some(e => e.key === configTarget)) configTarget = list[0]?.key ?? null;
   c.append(el('h3', { textContent: 'Equipped' }));
-  if (!list.length) return c.append(infoNote(el('strong', { textContent: 'Nothing equipped yet.' }), ' Pick your face, hair and clothing items on the right. You can select them here to change their colour.'));
+  if (!list.length) return c.append(infoNote(el('strong', { textContent: 'Nothing equipped yet.' }), ` Pick your face, hair and clothing items ${narrowLayout.matches ? 'above' : 'on the right'}. You can select them here to change their colour.`));
   const grid = el('div', { className: 'equipped grid' });
   for (const e of list) {
     // Hovering (or tabbing to) a tile shows an x that takes the item off.
@@ -748,6 +756,9 @@ async function loadBackdrop() {
     renderPreview();
   } catch { backdrop = null; }
 }
+
+// On a phone the catalogue sits above the Equipped panel instead of beside it, so the empty-state text points the right way.
+narrowLayout.addEventListener?.('change', () => { if (catalog) renderColour(); });
 
 // ---------- start ----------
 async function init() {

@@ -330,6 +330,35 @@ check('Beetle Long Sleeve is a drawn Top card, no badge', await page.evaluate(()
 await clickTab('Weapon'); await settle();
 await (await page.$$('#content .grid .card:not(.none):not(.placeholder)'))[0].click(); await settle();
 await page.screenshot({ path: 'tmp/ui-final.png' });
+// Phone layout (390 wide): stage, then catalogue, then Equipped; nothing moves when you pick a card
+{
+  const phone = await browser.newPage();
+  await phone.setViewport({ width: 390, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
+  await phone.goto('http://localhost:5173/', { waitUntil: 'networkidle0' });
+  const wait = ms => new Promise(r => setTimeout(r, ms)); await wait(900);
+  const openTab = label => phone.evaluate(l => [...document.querySelectorAll('.tab')].find(t => t.title.startsWith(l)).click(), label);
+  await openTab('Hair'); await wait(900);
+  const layout = await phone.evaluate(() => { const top = s => document.querySelector(s).getBoundingClientRect().top; const cards = [...document.querySelectorAll('#content .card')].slice(0, 6).map(c => Math.round(c.getBoundingClientRect().top)); return { stage: top('#stage'), book: top('.book'), equipped: top('#colour'), overflow: document.documentElement.scrollWidth > innerWidth, perRow: cards.filter(y => y === cards[0]).length, width: Math.round(document.querySelector('#content .card').getBoundingClientRect().width) }; });
+  check('phone: the character, then the catalogue, then the Equipped panel, top to bottom', layout.stage < layout.book && layout.book < layout.equipped, JSON.stringify(layout));
+  check('phone: nothing overflows sideways and cards are full size, 3 per row', !layout.overflow && layout.perRow === 3 && layout.width >= 95, JSON.stringify(layout));
+  check('phone: the empty-state text says the catalogue is above', (await phone.$eval('#colour .empty-note p', e => e.textContent)).includes('items above.'));
+  await phone.evaluate(() => document.querySelector('#content .card').scrollIntoView({ block: 'center' })); await wait(300);
+  const probe = () => phone.evaluate(() => ({ y0: Math.round(document.querySelector('#content .card').getBoundingClientRect().top), y4: Math.round(document.querySelectorAll('#content .card')[4].getBoundingClientRect().top), scroll: Math.round(scrollY) }));
+  const before = await probe();
+  const pt = await phone.evaluate(() => { const r = document.querySelector('#content .card').getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; });
+  await phone.touchscreen.tap(pt.x, pt.y); await wait(700);
+  const after = await probe();
+  check('phone: picking a card does not shift the list under your finger', before.y0 === after.y0 && before.y4 === after.y4 && before.scroll === after.scroll, JSON.stringify([before, after]));
+  check('phone: that tap equipped the card tapped', (await phone.evaluate(() => [...document.querySelectorAll('#colour .slot .card')].some(c => c.dataset.slot === 'Hair'))));
+  await phone.evaluate(() => scrollTo(0, 0)); await wait(300); // the tab strip scrolls with the page: go back up to use it
+  await phone.evaluate(() => { const s = document.getElementById('tabs'); s.scrollLeft = [...s.children].find(t => t.title.startsWith('Overall')).offsetLeft - 60; }); await wait(300);
+  const strip = await phone.evaluate(() => document.getElementById('tabs').scrollLeft);
+  const tp = await phone.evaluate(() => { const r = [...document.querySelectorAll('.tab')].find(t => t.title.startsWith('Overall')).getBoundingClientRect(); return { x: r.left + r.width / 2, y: r.top + r.height / 2 }; });
+  await phone.touchscreen.tap(tp.x, tp.y); await wait(700);
+  check('phone: tapping a tab keeps the tab strip where it was', (await phone.evaluate(() => document.getElementById('tabs').scrollLeft)) === strip && (await phone.$eval('.tab[aria-selected="true"]', t => t.title)) === 'Overall', `strip ${strip}`);
+  await phone.close();
+}
+
 console.log(results.join('\n'));
 console.log('console/page errors:', errors.length ? errors : 'none');
 await browser.close();

@@ -209,12 +209,30 @@ input { font: inherit; border-radius: 0; }
 .swatch[aria-pressed="true"] i { border-color: var(--maple); box-shadow: 0 0 0 2px var(--maple); }
 
 /* Small screens: let the page scroll instead of squeezing everything. */
+/* Phones and narrow windows. One column, in the order: the character (kept on screen while you scroll), the catalogue, then the
+   Equipped panel. Equipped sits last on purpose: when it grows after a pick, nothing above it moves, so the card you are about to
+   tap stays where it was. The tabs run along the top of the book, the page scrolls as a whole (no list scrolling inside a page),
+   and cards are as wide as on a desktop (about 3 per row on a phone) so the art is not cropped. */
 @media (max-width: 800px) {
   body { overflow: auto; }
-  .app { grid-template-columns: 1fr; height: auto; }
-  .book { height: 80dvh; }
-  .side { display: flex; flex-direction: column; }
-  .stage-box { width: 100%; }
+  .app { display: flex; flex-direction: column; gap: 12px; height: auto; padding: 8px 10px 16px; }
+  .side { display: contents; }
+  .stage-box { order: 1; position: sticky; top: 0; z-index: 20; width: 100%; height: 190px; min-height: 0; }
+  .book { order: 2; display: flex; flex-direction: column; height: auto; padding: 3px 3px 9px; }
+  .chapters { order: 1; flex-direction: row; width: auto; margin: 0 0 -3px; padding: 0 0 8px; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+  .chapters::-webkit-scrollbar { display: none; }
+  .tab { flex: none; width: auto; min-width: 88px; padding-right: 18px; }
+  .tab:hover { transform: none; }
+  .tab[aria-selected="true"] { transform: translateY(-3px); }
+  .tab.first { margin-top: 0; margin-left: 10px; }
+  .tab.lookup { margin-bottom: 0; margin-right: 10px; }
+  .cover { order: 2; flex: none; }
+  .page { height: auto; }
+  .scroll { overflow: visible; }
+  .colour { order: 3; overflow: visible; }
+  .note { order: 4; }
+  .grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+  .slider { grid-template-columns: 70px 1fr 54px; gap: 10px; }
 }
 
 /* Datamine-only styles (not released yet) */

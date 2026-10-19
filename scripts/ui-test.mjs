@@ -264,6 +264,10 @@ await clickTab('Hair'); await settle();
 check('changing tab clears the search box', (await page.$eval('#filters .search-input', i => i.value)) === '');
 await clickTab('Hair'); await settle();
 
+// Browser tab: title and icon
+check('the page title is "classic henehoes"', (await page.title()) === 'classic henehoes');
+check('the Orange Cat Beanie icons are linked and served', await page.evaluate(async () => { const hrefs = [...document.querySelectorAll('link[rel~=icon], link[rel=apple-touch-icon]')].map(l => l.getAttribute('href')); return hrefs.length === 3 && (await Promise.all(hrefs.map(h => fetch(h).then(r => r.ok)))).every(Boolean); }));
+
 // Backdrop: the preview is drawn on the Henesys picture, so it has no transparent pixels
 const backdropPx = await page.evaluate(() => { const c = document.getElementById('preview'); const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; let clear = 0; for (let i = 3; i < d.length; i += 4) if (d[i] < 255) clear++; return { clear, total: d.length / 4 }; });
 check('the preview sits on the Henesys backdrop (no empty pixels)', backdropPx.clear === 0, JSON.stringify(backdropPx));

@@ -137,33 +137,35 @@ const variantOf = kind => {
 
 // ---------- rendering ----------
 async function buildLayers(sel) {
-  const layers = [];
+  // Every sprite file the look needs is requested at once (not one after another: on a phone each request waits for the network, so
+  // a look of 25 parts took seconds). Layers keep the order they were added in, which decides how same-height parts stack.
+  const jobs = [];
   // Worn items declare slot codes (e.g. a hat with H1); parts tied to a covered slot are hidden.
   const covered = new Set(WEAR_ORDER.flatMap(slot => catalog.wearables[slot]?.items.find(i => i.id === sel.wear[slot].item)?.vslots ?? []));
-  const add = async (parts, h = 0, c = 0, b = 0) => {
-    for (const p of parts.filter(p => !covered.has(p.hiddenBy))) layers.push({ img: await tinted(p.file, h, c, b), x: OX + p.x, y: OY + p.y, z: p.z });
+  const add = (parts, h = 0, c = 0, b = 0) => {
+    for (const p of parts.filter(p => !covered.has(p.hiddenBy))) jobs.push(tinted(p.file, h, c, b).then(img => ({ img, x: OX + p.x, y: OY + p.y, z: p.z })));
   };
   // A weapon with no standing pose (Orange Toy Hammer) puts the whole body in the two-handed pose.
   const twoHanded = catalog.wearables.weapon?.items.some(i => i.id === sel.wear.weapon.item && i.pose === 'stand2');
   const partsFor = x => (twoHanded && x.parts2) || x.parts;
   const skin = catalog.skins.find(s => s.tone === sel.skin);
-  await add(partsFor(skin));
+  add(partsFor(skin));
   for (const kind of ['face', 'hair']) {
     const st = sel[kind].style == null ? null : catalog[kind][sel[kind].style];
     const v = st && (st.variants.find(x => x.colour === sel[kind].colour) ?? st.variants[0]);
-    if (v && partsFor(v)) await add(partsFor(v));
+    if (v && partsFor(v)) add(partsFor(v));
   }
   for (const slot of WEAR_ORDER) {
     const w = sel.wear[slot];
     const item = catalog.wearables[slot]?.items.find(i => i.id === w.item);
-    if (item) await add(partsFor(item), w.h, w.c, w.b);
+    if (item) add(partsFor(item), w.h, w.c, w.b);
   }
   for (const slot of RING_SLOTS) {
     if (DISABLED_SLOTS.has(slot)) continue;
     const item = catalog.wearables[slot]?.items.find(i => i.id === sel.wear[slot].item);
-    if (item) layers.push(await ringLayer(item.effect, sel.text));
+    if (item) jobs.push(ringLayer(item.effect, sel.text));
   }
-  return layers;
+  return Promise.all(jobs);
 }
 
 // ---------- name tag and chat bubble rings ----------
@@ -196,14 +198,15 @@ async function ringLayer(effect, text) {
 }
 const ringWorn = sel => RING_SLOTS.some(slot => sel.wear[slot].item != null);
 
-const scratch = document.createElement('canvas');
-scratch.width = W; scratch.height = H;
-// Composes `sel` into the shared scratch canvas and runs `paint` in the same step. Painting must not be deferred:
-// other renders share the scratch canvas and would overwrite it.
+// Composes `sel` into a canvas of its own and runs `paint(buf, source)` in the same step. Every call gets a fresh canvas on purpose:
+// WebKit (the engine of every iPhone browser) reads a canvas late when it is drawn into another one, so with one shared canvas that
+// the next card then overwrote, each thumbnail showed its neighbour's picture.
 async function withScene(sel, paint) {
   const buf = composite(await buildLayers(sel), W, H);
-  scratch.getContext('2d').putImageData(new ImageData(buf.data, W, H), 0, 0);
-  return paint(buf);
+  const source = document.createElement('canvas');
+  source.width = W; source.height = H;
+  source.getContext('2d').putImageData(new ImageData(buf.data, W, H), 0, 0);
+  return paint(buf, source);
 }
 
 // Sizes `canvas` to cover a boxW x boxH CSS box, drawing each sprite pixel as `n` whole device pixels, then paints
@@ -219,7 +222,7 @@ function drawBackdrop(ctx, n, startX, startY, canvasW, canvasH) {
   ctx.fillStyle = info.groundColour; ctx.fillRect(0, Math.min(canvasH, dy + info.height * n), canvasW, canvasH);
   ctx.drawImage(img, dx, dy, info.width * n, info.height * n);
 }
-function paintFocus(canvas, boxW, boxH, n, focus, withBackdrop = false) {
+function paintFocus(canvas, boxW, boxH, n, focus, source, withBackdrop = false) {
   const d = dpr();
   const sw = Math.ceil(boxW * d / n), sh = Math.ceil(boxH * d / n);
   canvas.width = sw * n; canvas.height = sh * n;
@@ -231,13 +234,13 @@ function paintFocus(canvas, boxW, boxH, n, focus, withBackdrop = false) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   const startX = Math.round(focus[0] - sw / 2), startY = Math.round(focus[1] - sh / 2);
   if (withBackdrop && backdrop) drawBackdrop(ctx, n, startX, startY, canvas.width, canvas.height);
-  ctx.drawImage(scratch, startX, startY, sw, sh, 0, 0, canvas.width, canvas.height);
+  ctx.drawImage(source, startX, startY, sw, sh, 0, 0, canvas.width, canvas.height);
 }
 
 let renderToken = 0;
 async function renderPreview() {
   const token = ++renderToken;
-  await withScene(state, buf => {
+  await withScene(state, (buf, source) => {
     if (token !== renderToken) return; // a newer render has started
     const box = $('stage').getBoundingClientRect();
     const side = Math.min(box.width, box.height) - 2; // inside the border
@@ -250,12 +253,12 @@ async function renderPreview() {
       focus = [(x0 + x1) / 2, (y0 + y1) / 2];
     }
     const n = Math.max(1, Math.floor(side * dpr() / (view * 0.95))); // allow edges to crop by up to 5% to get a bigger whole-number scale
-    paintFocus($('preview'), box.width - 2, box.height - 2, n, focus, true);
+    paintFocus($('preview'), box.width - 2, box.height - 2, n, focus, source, true);
   });
 }
 
 async function drawThumb(canvas, boxEl, sel, view) {
-  await withScene(sel, buf => {
+  await withScene(sel, (buf, source) => {
     const box = boxEl.getBoundingClientRect();
     let focus = view.focus;
     if (view.centre) {
@@ -264,7 +267,7 @@ async function drawThumb(canvas, boxEl, sel, view) {
       for (let y = OY - 30; y <= OY + 36; y++) for (let x = 0; x < W; x++) if (buf.data[(y * W + x) * 4 + 3]) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
       if (x1 >= 0) focus = [(x0 + x1 + 1) / 2, (y0 + y1 + 1) / 2];
     }
-    paintFocus(canvas, box.width, box.height, Math.max(1, Math.round(view.scale * dpr())), focus);
+    paintFocus(canvas, box.width, box.height, Math.max(1, Math.round(view.scale * dpr())), focus, source);
   });
 }
 
@@ -669,14 +672,14 @@ function afterChange() { afterChangeKeep(); }
 // ---------- export ----------
 // Saves the character as a PNG. Not wired to any button at the moment (the Download button was removed): call exportPng() to use it.
 async function exportPng() {
-  const out = await withScene(state, buf => {
+  const out = await withScene(state, (buf, source) => {
     let x0 = W, y0 = H, x1 = 0, y1 = 0;
     for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (buf.data[(y * W + x) * 4 + 3]) { x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y); }
     const pad = 4, w = x1 - x0 + 1 + pad * 2, h = y1 - y0 + 1 + pad * 2;
     const c = el('canvas', { width: w * 4, height: h * 4 });
     const ctx = c.getContext('2d');
     ctx.imageSmoothingEnabled = false;
-    ctx.drawImage(scratch, x0 - pad, y0 - pad, w, h, 0, 0, w * 4, h * 4);
+    ctx.drawImage(source, x0 - pad, y0 - pad, w, h, 0, 0, w * 4, h * 4);
     return c;
   });
   out.toBlob(blob => {

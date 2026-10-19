@@ -723,7 +723,7 @@ function saveDefault() {
   catch { flash('Could not save: browser storage is blocked'); }
 }
 const ICONS = {
-  random: '<path d="M3 7h3.5c3 0 4 3 6 5s3 5 6 5H21M3 17h3.5c1.5 0 2.5-.7 3.5-1.7M13.5 8.7c1-.9 2-1.7 3.5-1.7H21M18.5 4.5 21 7l-2.5 2.5M18.5 14.5 21 17l-2.5 2.5"/>',
+  random: '<rect width="12" height="12" x="2" y="10" rx="2" ry="2"/><path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6"/><path stroke-width="3" d="M6 18h.01M10 14h.01M15 6h.01M18 9h.01"/>', // two dice (the Lucide "dices" icon, ISC licence, as in the mockup)
   save: '<path d="M5 3h11l3 3v15H5zM8 3v5h7V3M8 21v-7h8v7"/>',
   reset: '<path d="M4 12a8 8 0 1 0 2.6-5.9M4 4v4.5h4.5"/>',
 };

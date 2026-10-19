@@ -134,3 +134,4 @@ British English, SGD, DD/MM/YYYY. No secrets in code (none are used). Do not inv
 - **Tests:** `scripts/ui-test.mjs` ends with a 390x844 touch-device section (order of the three blocks, no sideways overflow, 3 cards per row, empty text, the list does not move after a pick, the tap equips the card tapped, tab strip keeps its scroll). Verified separately by tapping 55 cards across Hair, Face, Hat and Top: each equipped the card tapped.
 - **Known trade-off:** the tab strip scrolls away with the page (it is not sticky), so changing tab means scrolling back up; only the character panel is sticky.
 - Not tested on a real phone, only Chrome's emulation at 390x844 and a quick look at other widths.
+- **Randomise icon (19/10/2026):** the button in the preview corner shows two dice, the same Lucide "dices" icon (ISC licence) the Lovable mockup uses, instead of shuffle arrows (`ICONS.random` in src/main.js); behaviour unchanged.

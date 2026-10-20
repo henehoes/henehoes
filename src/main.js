@@ -490,11 +490,11 @@ function renderColour() {
   const sliders = el('div', { className: 'sliders' }, slider('Tone', 'h', 0, 359), slider('Chroma', 'c', -99, 99), slider('Brightness', 'b', -99, 99));
   const reset = el('button', { className: 'small-btn', type: 'button', textContent: 'Reset colour' });
   reset.onclick = () => { Object.assign(w, { h: 0, c: 0, b: 0 }); renderColour(); renderPreview(); };
-  // Random dye: any tone, with chroma and brightness kept to a range that still looks like a dyed item.
+  // Random dye: the full range of all three sliders.
   const random = el('button', { className: 'small-btn', type: 'button', textContent: 'Random dye' });
   random.onclick = () => {
     const between = (lo, hi) => lo + Math.floor(Math.random() * (hi - lo + 1));
-    Object.assign(w, { h: between(0, 359), c: between(-60, 60), b: between(-50, 50) });
+    Object.assign(w, { h: between(0, 359), c: between(-99, 99), b: between(-99, 99) });
     renderColour(); renderPreview();
   };
   // The game keeps some special effects in their own colour, and the sprite data does not say which, so this preview dyes every part it can.

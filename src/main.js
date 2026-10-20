@@ -419,6 +419,11 @@ function sliderRow(label, min, max, step, value, fmt, onInput) {
 
 // One small preview tile in the Equipped panel: the face or hair on the skin, or the item's own sprite, with its category
 // underneath. The full name (and the colour) is the tooltip.
+// A worn item counts as dyed once any of its tone, chroma or brightness is off 0 (face and hair have no dye, only colour styles).
+const isDyed = key => { const w = state.wear[key]; return !!w && (w.h !== 0 || w.c !== 0 || w.b !== 0); };
+// Shows or hides the palette icon on the Equipped tiles without redrawing them (the sliders are being dragged).
+const syncDyed = () => document.querySelectorAll('.equipped .card.mini[data-key]').forEach(b => b.classList.toggle('dyed', isDyed(b.dataset.key)));
+
 function equippedCard(e) {
   let b;
   const choose = () => { configTarget = e.key; renderColour(); };
@@ -434,6 +439,8 @@ function equippedCard(e) {
   }
   b.classList.add('mini');
   b.dataset.slot = e.slot;
+  b.dataset.key = e.key;
+  b.classList.toggle('dyed', isDyed(e.key));
   b.title = e.colour ? `${e.name} · ${e.colour}` : e.name;
   b.setAttribute('aria-label', b.title);
   b.setAttribute('aria-pressed', String(e.key === configTarget));
@@ -486,7 +493,7 @@ function renderColour() {
   if (RING_SLOTS.includes(configTarget)) return c.append(el('h3', { textContent: data.label }), textFields(configTarget), el('p', { className: 'hint', textContent: 'This ring has no colour settings. Its text is shown in the preview.' }));
   // The game's own numbers, all starting at 0 (the item's own colours): Tone 0 to 359, Chroma and Brightness -99 to +99.
   const signed = v => `${v > 0 ? '+' : ''}${v}`;
-  const slider = (label, key, min, max) => sliderRow(label, min, max, 1, w[key], signed, v => { w[key] = v; renderPreview(); });
+  const slider = (label, key, min, max) => sliderRow(label, min, max, 1, w[key], signed, v => { w[key] = v; syncDyed(); renderPreview(); });
   const sliders = el('div', { className: 'sliders' }, slider('Tone', 'h', 0, 359), slider('Chroma', 'c', -99, 99), slider('Brightness', 'b', -99, 99));
   const reset = el('button', { className: 'small-btn', type: 'button', textContent: 'Reset colour' });
   reset.onclick = () => { Object.assign(w, { h: 0, c: 0, b: 0 }); renderColour(); renderPreview(); };

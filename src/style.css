@@ -97,6 +97,9 @@ input { font: inherit; border-radius: 0; }
 .colour .card[aria-pressed="true"] { --c: var(--maple); background: oklch(97% .05 85); color: var(--maple-deep); }
 .equipped .card.mini[aria-pressed="true"]::after { content: none; }
 
+/* Palette on an Equipped tile whose item is dyed: the Lucide "palette" shape (ISC licence), filled, with four coloured paint dots */
+.equipped .card.mini.dyed::before { content: ""; position: absolute; top: 3px; left: 3px; z-index: 2; width: 14px; height: 14px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z' fill='%23fff0cf' stroke='%237a4a22' stroke-width='2.2' stroke-linejoin='round'/%3E%3Ccircle cx='8.5' cy='7.5' r='2' fill='%23e0364a'/%3E%3Ccircle cx='13.5' cy='6.5' r='2' fill='%23f08a1c'/%3E%3Ccircle cx='17.5' cy='10.5' r='2' fill='%233fb44a'/%3E%3Ccircle cx='6.5' cy='12.5' r='2' fill='%233a8fe0'/%3E%3C/svg%3E") center / contain no-repeat; pointer-events: none; }
+
 /* x on a hovered Equipped tile */
 .slot { position: relative; }
 .remove { position: absolute; top: -7px; right: -7px; z-index: 3; width: 18px; height: 18px; padding: 0; border: 0; background: var(--danger); display: none; box-shadow: 0 -2px 0 0 oklch(30% .12 28), 0 2px 0 0 oklch(30% .12 28), -2px 0 0 0 oklch(30% .12 28), 2px 0 0 0 oklch(30% .12 28); }

@@ -8,7 +8,7 @@ const failed = [];
 for (const w of wearables) {
   const dir = `public/sprites/wearable/${w.id}`;
   if (existsSync(`${dir}/icon.png`)) { had++; continue; }
-  const res = await fetch(`${API}/GMS/${w.version}/item/${w.id}/icon`);
+  const res = await fetch(`${API}/${w.region ?? 'GMS'}/${w.version}/item/${w.id}/icon`);
   const buf = Buffer.from(await res.arrayBuffer());
   if (!res.ok || buf.length < 60) { failed.push(`${w.name} (${w.id}): ${res.status}`); continue; }
   mkdirSync(dir, { recursive: true });

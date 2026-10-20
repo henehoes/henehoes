@@ -16,7 +16,14 @@
    "Dreamcatcher",
    "Bed Head Hair",
    "Prince Cut Hair",
-   "Short Regent Cut"
+   "Short Regent Cut",
+   32000,
+   32010,
+   32020,
+   32030,
+   32040,
+   32050,
+   32060
   ],
   "female": [
    "Cutie Hair",
@@ -33,7 +40,14 @@
    "Penelope Hair",
    "Lovely Ladyhawk",
    "Vivacious Wavy Hair",
-   "Ponytail-to-the-Side"
+   "Ponytail-to-the-Side",
+   32000,
+   32010,
+   32020,
+   32030,
+   32040,
+   32050,
+   32060
   ]
  },
  "face": {
@@ -52,7 +66,15 @@
    "Look of Wonder",
    "Overjoyed Smile",
    "Innocent Gaze",
-   "Distant Gaze"
+   "Distant Gaze",
+   22000,
+   22001,
+   22002,
+   22003,
+   22004,
+   22005,
+   22006,
+   22007
   ],
   "female": [
    "Defiant Face",
@@ -69,7 +91,15 @@
    "Prim Face",
    "Posh Look",
    "Bulbous-Eyed Face",
-   "Round Eyed Face"
+   "Round Eyed Face",
+   22000,
+   22001,
+   22002,
+   22003,
+   22004,
+   22005,
+   22006,
+   22007
   ]
  }
 }

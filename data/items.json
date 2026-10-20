@@ -558,6 +558,391 @@
       "version": "110",
       "category": "Armor",
       "subCategory": "Top"
+    },
+    {
+      "id": 1037001,
+      "name": "Frieren's Earrings",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Earring",
+      "ambiguous": false,
+      "classicId": 1037001,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1007123,
+      "name": "Aura Hair (Hat)",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": false,
+      "classicId": 1007123,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1007124,
+      "name": "Linie Hair (Hat)",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": false,
+      "classicId": 1007124,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1007125,
+      "name": "Lügner Hair (Hat)",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Hat",
+      "ambiguous": false,
+      "classicId": 1007125,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1057076,
+      "name": "Frieren's Clothes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false,
+      "classicId": 1057076,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1057077,
+      "name": "Frieren's Winter Clothes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false,
+      "classicId": 1057077,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1057078,
+      "name": "Frieren's Sleep Clothes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false,
+      "classicId": 1057078,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1057079,
+      "name": "Fern's Clothes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false,
+      "classicId": 1057079,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1057080,
+      "name": "Fern's Winter Clothes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false,
+      "classicId": 1057080,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1057081,
+      "name": "Stark's Clothes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false,
+      "classicId": 1057081,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1057082,
+      "name": "Stark's Winter Clothes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false,
+      "classicId": 1057082,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1057083,
+      "name": "Himmel's Clothes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false,
+      "classicId": 1057083,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1057084,
+      "name": "Übel's Clothes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false,
+      "classicId": 1057084,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1057085,
+      "name": "Aura's Clothes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false,
+      "classicId": 1057085,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1057086,
+      "name": "Linie's Clothes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false,
+      "classicId": 1057086,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1057087,
+      "name": "Lügner's Clothes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Overall",
+      "ambiguous": false,
+      "classicId": 1057087,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1077044,
+      "name": "Frieren's Shoes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Shoes",
+      "ambiguous": false,
+      "classicId": 1077044,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1077045,
+      "name": "Fern's Shoes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Shoes",
+      "ambiguous": false,
+      "classicId": 1077045,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1077046,
+      "name": "Stark's Shoes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Shoes",
+      "ambiguous": false,
+      "classicId": 1077046,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1077047,
+      "name": "Stark's Winter Shoes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Shoes",
+      "ambiguous": false,
+      "classicId": 1077047,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1077048,
+      "name": "Himmel's Shoes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Shoes",
+      "ambiguous": false,
+      "classicId": 1077048,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1077049,
+      "name": "Übel's Shoes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Shoes",
+      "ambiguous": false,
+      "classicId": 1077049,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1077050,
+      "name": "Aura's Shoes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Shoes",
+      "ambiguous": false,
+      "classicId": 1077050,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1077051,
+      "name": "Linie's Shoes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Shoes",
+      "ambiguous": false,
+      "classicId": 1077051,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1077052,
+      "name": "Lügner's Shoes",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Shoes",
+      "ambiguous": false,
+      "classicId": 1077052,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1087014,
+      "name": "Stark's Gloves",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Glove",
+      "ambiguous": false,
+      "classicId": 1087014,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1087015,
+      "name": "Stark's Winter Gloves",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Glove",
+      "ambiguous": false,
+      "classicId": 1087015,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1087016,
+      "name": "Übel's Gloves",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Glove",
+      "ambiguous": false,
+      "classicId": 1087016,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1087017,
+      "name": "Aura's Gloves",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Glove",
+      "ambiguous": false,
+      "classicId": 1087017,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1702030,
+      "name": "Frieren's Staff",
+      "region": "MCW",
+      "version": "1",
+      "category": "One-Handed Weapon",
+      "subCategory": "Weapon",
+      "ambiguous": false,
+      "classicId": 1702030,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1702031,
+      "name": "Fern's Staff",
+      "region": "MCW",
+      "version": "1",
+      "category": "One-Handed Weapon",
+      "subCategory": "Weapon",
+      "ambiguous": false,
+      "classicId": 1702031,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1702032,
+      "name": "Stark's Axe",
+      "region": "MCW",
+      "version": "1",
+      "category": "One-Handed Weapon",
+      "subCategory": "Weapon",
+      "ambiguous": false,
+      "classicId": 1702032,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1702033,
+      "name": "Himmel's Sword",
+      "region": "MCW",
+      "version": "1",
+      "category": "One-Handed Weapon",
+      "subCategory": "Weapon",
+      "ambiguous": false,
+      "classicId": 1702033,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1702034,
+      "name": "Übel's Staff",
+      "region": "MCW",
+      "version": "1",
+      "category": "One-Handed Weapon",
+      "subCategory": "Weapon",
+      "ambiguous": false,
+      "classicId": 1702034,
+      "collab": "Frieren"
+    },
+    {
+      "id": 1702035,
+      "name": "Aura's Scales of Obedience",
+      "region": "MCW",
+      "version": "1",
+      "category": "One-Handed Weapon",
+      "subCategory": "Weapon",
+      "ambiguous": false,
+      "classicId": 1702035,
+      "collab": "Frieren"
     }
   ],
   "styles": [
@@ -4804,7 +5189,8 @@
       "version": "1",
       "key": 22000,
       "classicId": 22000,
-      "released": false,
+      "released": true,
+      "collab": true,
       "colours": [
         {
           "id": 22000,
@@ -4857,7 +5243,8 @@
       "version": "1",
       "key": 22001,
       "classicId": 22001,
-      "released": false,
+      "released": true,
+      "collab": true,
       "colours": [
         {
           "id": 22001,
@@ -4910,7 +5297,8 @@
       "version": "1",
       "key": 22002,
       "classicId": 22002,
-      "released": false,
+      "released": true,
+      "collab": true,
       "colours": [
         {
           "id": 22002,
@@ -4963,7 +5351,8 @@
       "version": "1",
       "key": 22003,
       "classicId": 22003,
-      "released": false,
+      "released": true,
+      "collab": true,
       "colours": [
         {
           "id": 22003,
@@ -5016,7 +5405,8 @@
       "version": "1",
       "key": 22004,
       "classicId": 22004,
-      "released": false,
+      "released": true,
+      "collab": true,
       "colours": [
         {
           "id": 22004,
@@ -5069,7 +5459,8 @@
       "version": "1",
       "key": 22005,
       "classicId": 22005,
-      "released": false,
+      "released": true,
+      "collab": true,
       "colours": [
         {
           "id": 22005,
@@ -5122,7 +5513,8 @@
       "version": "1",
       "key": 22006,
       "classicId": 22006,
-      "released": false,
+      "released": true,
+      "collab": true,
       "colours": [
         {
           "id": 22006,
@@ -5175,7 +5567,8 @@
       "version": "1",
       "key": 22007,
       "classicId": 22007,
-      "released": false,
+      "released": true,
+      "collab": true,
       "colours": [
         {
           "id": 22007,
@@ -14331,7 +14724,8 @@
       "version": "1",
       "key": 3200,
       "classicId": 32000,
-      "released": false,
+      "released": true,
+      "collab": true,
       "colours": [
         {
           "id": 32000,
@@ -14384,7 +14778,8 @@
       "version": "444",
       "key": 4256,
       "classicId": 32010,
-      "released": false,
+      "released": true,
+      "collab": true,
       "note": "Not in the Classic game data; art from JMS 444",
       "colours": [
         {
@@ -14438,7 +14833,8 @@
       "version": "1",
       "key": 3202,
       "classicId": 32020,
-      "released": false,
+      "released": true,
+      "collab": true,
       "colours": [
         {
           "id": 32020,
@@ -14491,7 +14887,8 @@
       "version": "1",
       "key": 3203,
       "classicId": 32030,
-      "released": false,
+      "released": true,
+      "collab": true,
       "colours": [
         {
           "id": 32030,
@@ -14544,7 +14941,8 @@
       "version": "1",
       "key": 3204,
       "classicId": 32040,
-      "released": false,
+      "released": true,
+      "collab": true,
       "colours": [
         {
           "id": 32040,
@@ -14597,7 +14995,8 @@
       "version": "1",
       "key": 3205,
       "classicId": 32050,
-      "released": false,
+      "released": true,
+      "collab": true,
       "colours": [
         {
           "id": 32050,
@@ -14650,7 +15049,8 @@
       "version": "1",
       "key": 3206,
       "classicId": 32060,
-      "released": false,
+      "released": true,
+      "collab": true,
       "colours": [
         {
           "id": 32060,

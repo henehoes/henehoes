@@ -1,0 +1,1 @@
+{"id":1077046,"name":"Stark's Shoes","source":"MCW 1","version":"1","kind":"wearable","equipGroup":"Shoes","vslots":["So"],"islots":["So"],"parts":[{"key":"shoes","w":20,"h":8,"origin":{"x":7,"y":-14,"isEmpty":false},"maps":{"navel":{"x":0,"y":0,"isEmpty":true}},"position":"shoesOverPants"}]}

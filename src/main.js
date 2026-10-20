@@ -554,6 +554,7 @@ function styleCard(kind, s, i) {
       afterChange();
     }, s.check);
   if (s.classicId) card.title = `${card.title} · Classic ${s.classicId}`;
+  if (s.collab) card.append(el('span', { className: 'badge collab-badge', textContent: `${s.collab.toUpperCase()} COLLAB` }));
   if (s.released === false) { card.classList.add('unreleased'); card.append(el('span', { className: 'badge unreleased-badge', textContent: 'DATAMINE' })); }
   return card;
 }
@@ -562,6 +563,7 @@ function wearableCard(slot, item) {
   const selected = state.wear[slot].item === item.id;
   const card = item.effect ? ringCard(item, selected, slot) : optionCard(item.name, selected, null, null, () => select(slot, item.id), item.check, item.icon);
   if (item.classicId) card.title = `${card.title} · Classic ${item.classicId}`;
+  if (item.collab) card.append(el('span', { className: 'badge collab-badge', textContent: `${item.collab.toUpperCase()} COLLAB` }));
   return card;
 }
 

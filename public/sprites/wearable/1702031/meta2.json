@@ -1,0 +1,1 @@
+{"parts":[{"key":"effect","w":1,"h":1,"origin":{"x":-20,"y":51,"isEmpty":false},"maps":{"navel":{"x":0,"y":0,"isEmpty":true}},"position":"characterEnd"},{"key":"weapon","w":65,"h":70,"origin":{"x":20,"y":46,"isEmpty":false},"maps":{"navel":{"x":0,"y":0,"isEmpty":true}},"position":"weaponBelowArm"}]}

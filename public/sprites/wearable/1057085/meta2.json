@@ -1,0 +1,1 @@
+{"parts":[{"key":"mail","w":33,"h":30,"origin":{"x":9,"y":9,"isEmpty":false},"maps":{"navel":{"x":0,"y":0,"isEmpty":true}},"position":"mailChest"},{"key":"mailAcc","w":37,"h":30,"origin":{"x":13,"y":9,"isEmpty":false},"maps":{"navel":{"x":0,"y":0,"isEmpty":true}},"position":"mailChestBelowBody"}]}

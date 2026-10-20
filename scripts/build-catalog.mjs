@@ -90,7 +90,7 @@ for (const w of wearables) {
   const meta = read(`public/${dir}/meta.json`);
   const parts = partsOf(meta, dir);
   if (!parts.length) { warnings.noParts.push(`${w.name} (${slot[2]})`); addWearablePlaceholder(slot[1], w.name, `Found (id ${w.id}) but it has no sprite in the standing pose`); continue; }
-  (catalog.wearables[slot[1]] ??= { label: slot[2], items: [] }).items.push({ id: w.id, name: w.name, ...(w.assumed && { check: w.assumed }), vslots: meta.vslots ?? [], ...(existsSync(`public/${dir}/icon.png`) && { icon: `${dir}/icon.png` }), ...(rules.stand2Only?.includes(w.id) && { pose: 'stand2' }), ...(classicIdOf(w) && { classicId: classicIdOf(w) }), parts, ...(parts2Of(dir, w.name) && { parts2: parts2Of(dir, w.name) }) });
+  (catalog.wearables[slot[1]] ??= { label: slot[2], items: [] }).items.push({ id: w.id, name: w.name, ...(w.collab && { collab: w.collab }), ...(w.assumed && { check: w.assumed }), vslots: meta.vslots ?? [], ...(existsSync(`public/${dir}/icon.png`) && { icon: `${dir}/icon.png` }), ...(rules.stand2Only?.includes(w.id) && { pose: 'stand2' }), ...((w.classicId ?? classicIdOf(w)) && { classicId: w.classicId ?? classicIdOf(w) }), parts, ...(parts2Of(dir, w.name) && { parts2: parts2Of(dir, w.name) }) });
 }
 
 // Name tag and chat bubble rings draw no sprite: the app builds them from UI pieces (see src/ring.js, data/rings.json).
@@ -119,7 +119,7 @@ for (const s of styles) {
     const parts = partsOf(read(`public/${dir}/meta.json`), dir);
     if (parts.length) variants.push({ id: c.id, colour: c.colour, label, parts, ...(parts2Of(dir, label) && { parts2: parts2Of(dir, label) }) });
   }
-  if (variants.length) catalog[s.kind].push({ style: s.style, gender: s.gender, key: s.key, ...(s.classicId && { classicId: s.classicId }), released: s.released !== false, ...(s.note && { check: s.note }), variants });
+  if (variants.length) catalog[s.kind].push({ style: s.style, gender: s.gender, key: s.key, ...(s.classicId && { classicId: s.classicId }), released: s.released !== false, ...(s.collab && { collab: 'Frieren' }), ...(s.note && { check: s.note }), variants });
 }
 
 for (const u of report.styleUnresolved) placeholders[u.kind].push({ name: u.style, gender: u.gender, reason: 'Name not found in the item database' });

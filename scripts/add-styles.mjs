@@ -97,7 +97,7 @@ async function resolve(kind, e) {
   }
   if (!colours.length) { placeholders.push({ kind, style: e.name, gender: e.gender, classicId: e.id, reason: `Classic id ${e.id} is not in the Classic game data on the sprite API` }); console.log(`NO SPRITE  ${kind} ${e.name} (${e.id})`); return; }
   const rel = isReleased(kind, e);
-  styles.push({ style: e.name, matchedAs: e.name, kind, gender: e.gender, region: source.region, version: source.version, key: keyOf(kind, colours[0].id), classicId: e.id, released: rel, ...(how === 'name' && { note: `Not at Classic id ${e.id} in the Classic data; found by name` }), ...(source.region !== REGION && { note: `Not in the Classic game data; art from ${source.region} ${source.version}` }), colours });
+  styles.push({ style: e.name, matchedAs: e.name, kind, gender: e.gender, region: source.region, version: source.version, key: keyOf(kind, colours[0].id), classicId: e.id, released: rel, ...(e.group === 'collab' && { collab: true }), ...(how === 'name' && { note: `Not at Classic id ${e.id} in the Classic data; found by name` }), ...(source.region !== REGION && { note: `Not in the Classic game data; art from ${source.region} ${source.version}` }), colours });
   console.log(`${how === 'id' ? 'ok       ' : how === 'name' ? 'BY NAME  ' : 'OTHER    '} ${rel ? 'released ' : 'datamine '}${kind} ${e.name} (${e.id}): ${colours.length} colours`);
 }
 const queue = ['hair', 'face'].flatMap(kind => salon[kind].map(e => [kind, e]));

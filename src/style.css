@@ -221,7 +221,7 @@ input { font: inherit; border-radius: 0; }
   .book { order: 2; display: flex; flex-direction: column; height: auto; padding: 3px 3px 9px; }
   .chapters { order: 1; flex-direction: row; width: auto; margin: 0 0 -3px; padding: 0 0 8px; gap: 4px; overflow-x: auto; scrollbar-width: none; }
   .chapters::-webkit-scrollbar { display: none; }
-  .tab { flex: none; width: auto; min-width: 88px; padding-right: 18px; }
+  .tab { flex: none; width: auto; min-width: 88px; min-height: 36px; padding-right: 18px; }
   .tab:hover { transform: none; }
   .tab[aria-selected="true"] { transform: translateY(-3px); }
   .tab.first { margin-top: 0; margin-left: 10px; }
@@ -238,6 +238,7 @@ input { font: inherit; border-radius: 0; }
 /* Datamine-only styles (not released yet) */
 .card.unreleased { --c: oklch(60% .1 255); background: oklch(90% .03 250 / .55); }
 .badge.unreleased-badge { position: absolute; top: 4px; left: 4px; z-index: 1; background: oklch(52% .12 255); }
+.badge.collab-badge { position: absolute; top: 4px; left: 4px; z-index: 1; background: oklch(58% .14 160); }
 
 /* Note under the dye controls: some special effects keep their colour in the game */
 .dye-note { display: flex; gap: 10px; align-items: flex-start; margin: 14px 3px 3px; padding: 8px 10px; background: oklch(96% .05 90); --c: oklch(70% .14 78); box-shadow: 0 -2px 0 0 var(--c), 0 2px 0 0 var(--c), -2px 0 0 0 var(--c), 2px 0 0 0 var(--c); }
@@ -259,7 +260,8 @@ input { font: inherit; border-radius: 0; }
 
 /* Search tab: brass tab with a magnifier, and headings between the groups of results */
 .tab.lookup[aria-selected="true"] { background: var(--maple); color: oklch(99% .01 90); }
-.tab.lookup { background: oklch(84% .15 92 / .85); color: var(--ink); margin-bottom: 8px; } /* the same small sticky as the others, in yellow, with a magnifier */
+.tab.lookup { background: oklch(84% .15 92 / .85); color: var(--ink); } /* the same small sticky as the others, in yellow, with a magnifier */
+@media (min-width: 801px) { .tab.lookup { margin-bottom: 8px; } } /* a gap under it in the side column; on a phone it sits in the row and must stretch to the same height as the others */
 .tab-glass { margin: 0 6px 3px 0; border-color: currentColor; }
 .tab-glass::after { background: currentColor; }
 .group-title { display: flex; align-items: center; gap: 8px; margin: 14px 0 10px; font: 400 17px var(--font-pixel); color: var(--sepia); }

@@ -88,6 +88,7 @@ for (const { style, kind: listKind, gender } of readStyles('data/hairface.txt'))
   if (kept.length > 1) report.styleMultiple.push({ style, gender, keys: kept.map(([k]) => k) });
 }
 
+wearables.push(...JSON.parse(readFileSync('data/collab-wearables.json', 'utf8')).items); // MapleStory x Frieren, from the Classic (MCW) data
 writeFileSync('data/items.json', JSON.stringify({ wearables, styles }, null, 2));
 writeFileSync('data/report.json', JSON.stringify(report, null, 2));
 console.log(`wearables ${wearables.length}, styles ${styles.length}, colour variants ${styles.reduce((n, s) => n + s.colours.length, 0)}`);

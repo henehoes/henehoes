@@ -6,11 +6,11 @@ import { PNG } from 'pngjs';
 
 const limit = Number(process.argv[2] ?? Infinity);
 // Stored sprites: GMS ones in sprites/<kind>/<id>, other regions (MCW = Classic) in sprites/<region>/<kind>/<id>.
-const spriteDir = (region, kind, id) => !region || region === 'GMS' ? `sprites/${kind}/${id}` : `sprites/${region.toLowerCase()}/${kind}/${id}`;
+const spriteDir = (region, kind, id) => !region || region === 'GMS' || kind === 'wearable' ? `sprites/${kind}/${id}` : `sprites/${region.toLowerCase()}/${kind}/${id}`;
 const { wearables, styles } = JSON.parse(readFileSync('data/items.json', 'utf8'));
 
 const jobs = [
-  ...wearables.map(w => ({ kind: 'wearable', id: w.id, version: w.version, name: w.name })),
+  ...wearables.map(w => ({ kind: 'wearable', id: w.id, version: w.version, region: w.region, name: w.name })),
   // Every style is stored (released or datamine), so the app never needs the API while running.
   ...styles.flatMap(s => s.colours.map(c => ({ kind: s.kind, id: c.id, version: s.version, region: s.region, name: c.name }))),
 ].slice(0, limit);

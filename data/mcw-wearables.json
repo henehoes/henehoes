@@ -1,5 +1,5 @@
 {
- "_comment": "Wearables that are in the Classic game data (MCW) on the sprite API but not in GMS, added from newly released boxes. build-manifest.mjs appends them to data/items.json as they are. Ids are Classic ids; names are as written when the items were released. The Buddy Overall Jeans share one name in the data: 1057090 is the blue pair and 1057096 the red pair (checked from their inventory icons). Drop rates are deliberately not stored.",
+ "_comment": "Wearables that are in the Classic game data (MCW) on the sprite API but not in GMS, added from newly released boxes, plus the four starter undergarments (male: Blue Striped Undershirt 1040000, Blue-Striped Boxers 1060000; female: Pink Tank Top 1041000, Pink Cotton Boxers 1061000), which the user asked for. The app has no gender filter for clothing, so all four show in the Top and Bottom tabs. build-manifest.mjs appends them to data/items.json as they are. Ids are Classic ids; names are as written when the items were released. The Buddy Overall Jeans share one name in the data: 1057090 is the blue pair and 1057096 the red pair (checked from their inventory icons). Drop rates are deliberately not stored.",
  "items": [
   {
    "id": 1007056,
@@ -500,6 +500,46 @@
    "subCategory": "Weapon",
    "ambiguous": false,
    "classicId": 1702014
+  },
+  {
+   "id": 1040000,
+   "name": "Blue Striped Undershirt",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Top",
+   "ambiguous": false,
+   "classicId": 1040000
+  },
+  {
+   "id": 1060000,
+   "name": "Blue-Striped Boxers",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Bottom",
+   "ambiguous": false,
+   "classicId": 1060000
+  },
+  {
+   "id": 1041000,
+   "name": "Pink Tank Top",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Top",
+   "ambiguous": false,
+   "classicId": 1041000
+  },
+  {
+   "id": 1061000,
+   "name": "Pink Cotton Boxers",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Bottom",
+   "ambiguous": false,
+   "classicId": 1061000
   }
  ]
 }

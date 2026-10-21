@@ -138,7 +138,9 @@ const byId = (a, b) => a - b;
 const orderOf = (kind, s) => s.classicId ?? (kind === 'hair' ? s.key * 10 : s.key);
 catalog.skins.sort((a, b) => byId(a.tone, b.tone));
 for (const kind of ['face', 'hair']) catalog[kind].sort((a, b) => byId(orderOf(kind, a), orderOf(kind, b)) || byId(a.key, b.key));
-for (const slot of Object.values(catalog.wearables)) slot.items.sort((a, b) => byId(a.id, b.id));
+// rules.listFirst: ids shown at the top of their tab, in that order; everything else follows by sprite id.
+const firstRank = id => { const i = (rules.listFirst ?? []).indexOf(id); return i === -1 ? Infinity : i; };
+for (const slot of Object.values(catalog.wearables)) slot.items.sort((a, b) => firstRank(a.id) - firstRank(b.id) || byId(a.id, b.id));
 
 writeFileSync('public/catalog.json', JSON.stringify(catalog));
 console.log('placeholders:', JSON.stringify(Object.fromEntries(Object.entries(placeholders.wearables).map(([k, v]) => [k, v.map(p => p.name)]))), 'hair', placeholders.hair.map(p => p.name), 'face', placeholders.face.map(p => p.name));

@@ -1443,6 +1443,46 @@
       "subCategory": "Weapon",
       "ambiguous": false,
       "classicId": 1702014
+    },
+    {
+      "id": 1040000,
+      "name": "Blue Striped Undershirt",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Top",
+      "ambiguous": false,
+      "classicId": 1040000
+    },
+    {
+      "id": 1060000,
+      "name": "Blue-Striped Boxers",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Bottom",
+      "ambiguous": false,
+      "classicId": 1060000
+    },
+    {
+      "id": 1041000,
+      "name": "Pink Tank Top",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Top",
+      "ambiguous": false,
+      "classicId": 1041000
+    },
+    {
+      "id": 1061000,
+      "name": "Pink Cotton Boxers",
+      "region": "MCW",
+      "version": "1",
+      "category": "Armor",
+      "subCategory": "Bottom",
+      "ambiguous": false,
+      "classicId": 1061000
     }
   ],
   "styles": [

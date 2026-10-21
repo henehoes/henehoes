@@ -1,0 +1,505 @@
+{
+ "_comment": "Wearables that are in the Classic game data (MCW) on the sprite API but not in GMS, added from newly released boxes. build-manifest.mjs appends them to data/items.json as they are. Ids are Classic ids; names are as written when the items were released. The Buddy Overall Jeans share one name in the data: 1057090 is the blue pair and 1057096 the red pair (checked from their inventory icons). Drop rates are deliberately not stored.",
+ "items": [
+  {
+   "id": 1007056,
+   "name": "Starred Hunting Hat",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007056
+  },
+  {
+   "id": 1047042,
+   "name": "Black Blazer",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Top",
+   "ambiguous": false,
+   "classicId": 1047042
+  },
+  {
+   "id": 1047069,
+   "name": "Blue Frill Blouse",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Top",
+   "ambiguous": false,
+   "classicId": 1047069
+  },
+  {
+   "id": 1067052,
+   "name": "Blue Bell Dress",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Bottom",
+   "ambiguous": false,
+   "classicId": 1067052
+  },
+  {
+   "id": 1067030,
+   "name": "Black Suit Pants",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Bottom",
+   "ambiguous": false,
+   "classicId": 1067030
+  },
+  {
+   "id": 1027029,
+   "name": "Frameless Glasses",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Eye Decoration",
+   "ambiguous": false,
+   "classicId": 1027029
+  },
+  {
+   "id": 1017013,
+   "name": "Gentleman's Mustache",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Face Accessory",
+   "ambiguous": false,
+   "classicId": 1017013
+  },
+  {
+   "id": 1077000,
+   "name": "Black Dress Shoes",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Shoes",
+   "ambiguous": false,
+   "classicId": 1077000
+  },
+  {
+   "id": 1007140,
+   "name": "Cute Mouse Ears",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007140
+  },
+  {
+   "id": 1047096,
+   "name": "Superstar Hoodie",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Top",
+   "ambiguous": false,
+   "classicId": 1047096
+  },
+  {
+   "id": 1047097,
+   "name": "Black \"Hit Me\" Shirt",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Top",
+   "ambiguous": false,
+   "classicId": 1047097
+  },
+  {
+   "id": 1077054,
+   "name": "Black Classic Sneakers",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Shoes",
+   "ambiguous": false,
+   "classicId": 1077054
+  },
+  {
+   "id": 1007002,
+   "name": "Green Camping Hat",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007002
+  },
+  {
+   "id": 1047005,
+   "name": "Green Camping Shirt",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Top",
+   "ambiguous": false,
+   "classicId": 1047005
+  },
+  {
+   "id": 1067003,
+   "name": "Green Camping Shorts",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Bottom",
+   "ambiguous": false,
+   "classicId": 1067003
+  },
+  {
+   "id": 1077004,
+   "name": "Camping Boots",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Shoes",
+   "ambiguous": false,
+   "classicId": 1077004
+  },
+  {
+   "id": 1047060,
+   "name": "Ragged Top",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Top",
+   "ambiguous": false,
+   "classicId": 1047060
+  },
+  {
+   "id": 1067047,
+   "name": "Torn-up Jeans",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Bottom",
+   "ambiguous": false,
+   "classicId": 1067047
+  },
+  {
+   "id": 1047061,
+   "name": "Crusader T-Shirt",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Top",
+   "ambiguous": false,
+   "classicId": 1047061
+  },
+  {
+   "id": 1047092,
+   "name": "Black Cardigan Set",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Top",
+   "ambiguous": false,
+   "classicId": 1047092
+  },
+  {
+   "id": 1107014,
+   "name": "Heart Balloon",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Cape",
+   "ambiguous": false,
+   "classicId": 1107014
+  },
+  {
+   "id": 1007004,
+   "name": "Puffy Brown Hat",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007004
+  },
+  {
+   "id": 1047000,
+   "name": "Orange Hooded Vest",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Top",
+   "ambiguous": false,
+   "classicId": 1047000
+  },
+  {
+   "id": 1702003,
+   "name": "Plastic Slingshot",
+   "region": "MCW",
+   "version": "1",
+   "category": "One-Handed Weapon",
+   "subCategory": "Weapon",
+   "ambiguous": false,
+   "classicId": 1702003
+  },
+  {
+   "id": 1007073,
+   "name": "White Beanie",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007073
+  },
+  {
+   "id": 1047041,
+   "name": "White Casual Suit",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Top",
+   "ambiguous": false,
+   "classicId": 1047041
+  },
+  {
+   "id": 1067012,
+   "name": "Faded Bell-Bottom Jeans",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Bottom",
+   "ambiguous": false,
+   "classicId": 1067012
+  },
+  {
+   "id": 1067049,
+   "name": "Washed Jeans",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Bottom",
+   "ambiguous": false,
+   "classicId": 1067049
+  },
+  {
+   "id": 1007111,
+   "name": "Race Ace Cap",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007111
+  },
+  {
+   "id": 1057048,
+   "name": "Race Ace Suit",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Overall",
+   "ambiguous": false,
+   "classicId": 1057048
+  },
+  {
+   "id": 1057069,
+   "name": "Race Queen Uniform",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Overall",
+   "ambiguous": false,
+   "classicId": 1057069
+  },
+  {
+   "id": 1077040,
+   "name": "Race Queen Boots",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Shoes",
+   "ambiguous": false,
+   "classicId": 1077040
+  },
+  {
+   "id": 1007105,
+   "name": "Detective Hat",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007105
+  },
+  {
+   "id": 1057019,
+   "name": "Premium Trenchcoat",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Overall",
+   "ambiguous": false,
+   "classicId": 1057019
+  },
+  {
+   "id": 1067041,
+   "name": "Wild Pants",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Bottom",
+   "ambiguous": false,
+   "classicId": 1067041
+  },
+  {
+   "id": 1077100,
+   "name": "Brown Dress Shoes",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Shoes",
+   "ambiguous": false,
+   "classicId": 1077100
+  },
+  {
+   "id": 1007090,
+   "name": "Beige Checkered Hat",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007090
+  },
+  {
+   "id": 1007141,
+   "name": "Kitty Camping Hat",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007141
+  },
+  {
+   "id": 1057088,
+   "name": "Brown Casual Look",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Overall",
+   "ambiguous": false,
+   "classicId": 1057088
+  },
+  {
+   "id": 1027008,
+   "name": "Orange Hard-Rimmed Glasses",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Eye Decoration",
+   "ambiguous": false,
+   "classicId": 1027008
+  },
+  {
+   "id": 1107007,
+   "name": "Michael Wings",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Cape",
+   "ambiguous": false,
+   "classicId": 1107007
+  },
+  {
+   "id": 1037002,
+   "name": "Silver Earrings",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Earrings",
+   "ambiguous": false,
+   "classicId": 1037002
+  },
+  {
+   "id": 1007138,
+   "name": "Stylish Pink Cotton Cap",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007138
+  },
+  {
+   "id": 1047091,
+   "name": "Cherry Layered T",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Top",
+   "ambiguous": false,
+   "classicId": 1047091
+  },
+  {
+   "id": 1057090,
+   "name": "Buddy Overall Jeans (Blue)",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Overall",
+   "ambiguous": false,
+   "classicId": 1057090
+  },
+  {
+   "id": 1057096,
+   "name": "Buddy Overall Jeans (Red)",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Overall",
+   "ambiguous": false,
+   "classicId": 1057096
+  },
+  {
+   "id": 1067092,
+   "name": "Denim Wrinkled Skirt",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Bottom",
+   "ambiguous": false,
+   "classicId": 1067092
+  },
+  {
+   "id": 1057012,
+   "name": "Green Overall",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Overall",
+   "ambiguous": false,
+   "classicId": 1057012
+  },
+  {
+   "id": 1077055,
+   "name": "Velcro High Tops",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Shoes",
+   "ambiguous": false,
+   "classicId": 1077055
+  },
+  {
+   "id": 1702014,
+   "name": "Toy Rifle",
+   "region": "MCW",
+   "version": "1",
+   "category": "One-Handed Weapon",
+   "subCategory": "Weapon",
+   "ambiguous": false,
+   "classicId": 1702014
+  }
+ ]
+}

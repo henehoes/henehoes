@@ -1,0 +1,1 @@
+{"id":1067041,"name":"Wild Pants","source":"MCW 1","version":"1","kind":"wearable","equipGroup":"Pants","vslots":["Pn"],"islots":["Pn"],"parts":[{"key":"pants","w":16,"h":18,"origin":{"x":9,"y":6,"isEmpty":false},"maps":{"navel":{"x":-6,"y":-7,"isEmpty":false}},"position":"pantsBelowShoes"}]}

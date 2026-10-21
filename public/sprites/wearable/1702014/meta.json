@@ -1,0 +1,1 @@
+{"id":1702014,"name":"Toy Rifle","source":"MCW 1","version":"1","kind":"wearable","equipGroup":"Weapon","vslots":["Wp","Si"],"islots":["Wp","Si"],"parts":[{"key":"weapon","w":39,"h":50,"origin":{"x":10,"y":5,"isEmpty":false},"maps":{"navel":{"x":0,"y":25,"isEmpty":false}},"position":"weaponOverArm"}]}

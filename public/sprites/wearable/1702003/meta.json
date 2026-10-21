@@ -1,0 +1,1 @@
+{"id":1702003,"name":"Plastic Slingshot","source":"MCW 1","version":"1","kind":"wearable","equipGroup":"Weapon","vslots":["Wp","Si"],"islots":["Wp","Si"],"parts":[{"key":"weapon","w":17,"h":26,"origin":{"x":8,"y":-1,"isEmpty":false},"maps":{"navel":{"x":0,"y":0,"isEmpty":true}},"position":"weapon"}]}

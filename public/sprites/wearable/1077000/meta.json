@@ -1,0 +1,1 @@
+{"id":1077000,"name":"Black Dress Shoes","source":"MCW 1","version":"1","kind":"wearable","equipGroup":"Shoes","vslots":["So"],"islots":["So"],"parts":[{"key":"shoes","w":20,"h":5,"origin":{"x":10,"y":5,"isEmpty":false},"maps":{"navel":{"x":-3,"y":-21,"isEmpty":false}},"position":"shoesTop"}]}

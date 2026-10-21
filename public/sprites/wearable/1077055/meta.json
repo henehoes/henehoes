@@ -1,0 +1,1 @@
+{"id":1077055,"name":"Velcro High Tops","source":"MCW 1","version":"1","kind":"wearable","equipGroup":"Shoes","vslots":["So"],"islots":["So"],"parts":[{"key":"shoes","w":21,"h":7,"origin":{"x":8,"y":-14,"isEmpty":false},"maps":{"navel":{"x":0,"y":0,"isEmpty":true}},"position":"shoesOverPants"}]}

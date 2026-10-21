@@ -1,0 +1,1 @@
+{"id":1057069,"name":"Race Queen Uniform","source":"MCW 1","version":"1","kind":"wearable","equipGroup":"Longcoat","vslots":["Ma","Pn"],"islots":["Ma","Pn"],"parts":[{"key":"mail","w":14,"h":12,"origin":{"x":11,"y":9,"isEmpty":false},"maps":{"navel":{"x":-8,"y":-4,"isEmpty":false}},"position":"mailChestOverPants"}]}

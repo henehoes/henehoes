@@ -49,7 +49,7 @@ input { font: inherit; border-radius: 0; }
 
 /* One screen: nothing scrolls except the card grid and, if the window is very short, the left column. */
 .app {
-  display: grid; grid-template-rows: minmax(0, 1fr) auto; gap: 8px 10px; height: 100dvh; max-width: 1560px; margin: 0 auto; padding: 12px 14px 12px 12px;
+  display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 8px 10px; height: 100dvh; max-width: 1560px; margin: 0 auto; padding: 12px 14px 12px 12px;
   grid-template-columns: minmax(0, calc(50% - 5px - var(--book-extra) / 2)) minmax(0, calc(50% - 5px + var(--book-extra) / 2));
 }
 /* Left half: the preview across the full width, then the Equipped panel. */
@@ -58,7 +58,7 @@ input { font: inherit; border-radius: 0; }
 /* ---- Preview ---- */
 .stage-box { position: relative; width: 100%; height: min(240px, calc(100dvh - 400px)); min-height: 160px; grid-column: 1; grid-row: 1; flex-shrink: 0; overflow: hidden; background: var(--bench-deep); --c: var(--bench-line); box-shadow: 0 -3px 0 0 var(--c), 0 3px 0 0 var(--c), -3px 0 0 0 var(--c), 3px 0 0 0 var(--c), 6px 6px 0 0 var(--drop); }
 #preview { display: block; position: absolute; image-rendering: pixelated; }
-.note { grid-column: 1 / -1; grid-row: 2; margin: 0; padding: 0 3px; color: var(--bench-dim); font: 12px/1.4 var(--font-text); }
+.note { margin: 0; padding: 0 3px 3px; color: var(--bench-dim); font: 12px/1.4 var(--font-text); text-align: right; }
 .note a { color: var(--head); text-decoration: underline; text-underline-offset: 2px; }
 .note a:hover { color: var(--maple-deep); }
 
@@ -229,11 +229,12 @@ input { font: inherit; border-radius: 0; }
   .tab[aria-selected="true"] { transform: translateY(-3px); }
   .tab.first { margin-top: 0; margin-left: 10px; }
   .tab.lookup { margin-bottom: 0; margin-right: 10px; }
+  .topbar { order: 0; }
   .cover { order: 2; flex: none; }
   .page { height: auto; }
   .scroll { overflow: visible; }
   .colour { order: 3; overflow: visible; }
-  .note { order: 4; }
+  .note { text-align: left; }
   .grid { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
   .slider { grid-template-columns: 70px 1fr 54px; gap: 10px; }
 }
@@ -272,3 +273,38 @@ input { font: inherit; border-radius: 0; }
 .group-title::before { content: ""; width: 8px; height: 8px; background: var(--maple); transform: rotate(45deg); flex: none; }
 .group-title::after { content: ""; height: 2px; flex: 1; background: var(--paper-line); }
 .scroll > .empty-note { margin: 6px 3px 8px; }
+
+/* Housing book */
+.side, .book { grid-row: 2; }
+/* The two books, as tabs along the top of the page */
+.topbar { grid-column: 1 / -1; grid-row: 1; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 2px 14px; }
+.books { display: flex; align-items: flex-end; gap: 5px; padding: 0 4px; }
+.bk { border: 0; padding: 5px 19px; font: 15px/1 var(--font-pixel); color: var(--ink); background: oklch(80% .08 245 / .9); cursor: pointer; clip-path: polygon(0 100%, 0 32%, 7px 0, calc(100% - 7px) 0, 100% 32%, 100% 100%); }
+.bk:hover { filter: brightness(1.06); }
+.bk[aria-selected="true"] { background: var(--maple); color: oklch(99% .01 90); padding-bottom: 8px; }
+.bk:focus-visible { outline: 2px solid var(--maple-deep); outline-offset: -3px; }
+/* Housing: a wide stage (sized by housing.js to the home's shape), a narrower catalogue, and a Placed panel two rows tall */
+.app.housing { grid-template-columns: minmax(0, var(--left, 62%)) minmax(0, 1fr); }
+.app.housing .side { grid-template-rows: minmax(0, 1fr) auto; }
+.app.housing .stage-box { justify-self: center; align-self: start; min-height: 0; }
+@media (min-width: 801px) { .app.housing .colour { height: 200px; overflow: auto; } }
+.app.housing #content .grid:not(.homes) { grid-template-columns: repeat(auto-fill, minmax(92px, 1fr)); }
+#housing { position: absolute; left: 1px; top: 1px; display: block; touch-action: none; outline: none; }
+#housing.dragging { cursor: grabbing; }
+#housing:focus-visible { box-shadow: inset 0 0 0 2px var(--maple); }
+.grid.homes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.home-card .art-box { height: 110px; overflow: hidden; }
+.home-thumb { width: 100%; height: 100%; object-fit: cover; display: block; }
+.card:disabled { opacity: .45; cursor: not-allowed; }
+.hint.full { color: var(--maple-deep); font-weight: 700; }
+/* Mirror (top left) and remove (top right) buttons riding on the selected piece, and the piece counter */
+.item-btn { position: absolute; z-index: 3; width: 22px; height: 22px; padding: 0; border: 0; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 0 2px var(--bench-line); }
+.item-btn[hidden] { display: none; }
+.item-flip { color: var(--ink); background: linear-gradient(to bottom, var(--brass-light), var(--brass)); }
+.item-del { color: #fff; background: var(--danger); }
+.item-btn:hover { filter: brightness(1.12); }
+.item-btn:focus-visible { outline: 2px solid #fff; outline-offset: 1px; }
+.house-count { position: absolute; top: 12px; right: 12px; z-index: 2; padding: 3px 8px; font: 11px var(--font-label); color: #fff; background: oklch(30% .05 255 / .8); pointer-events: none; }
+.house-count.full { background: var(--danger); }
+.hint { color: var(--sepia); font: 12px/1.4 var(--font-text); margin: 6px 2px 8px; }
+.small-btn:disabled { opacity: .45; cursor: default; }

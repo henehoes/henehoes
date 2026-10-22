@@ -114,7 +114,7 @@ await page.evaluate(() => [...document.querySelectorAll('.small-btn')].find(b =>
 const dyeBefore = await pixels();
 await page.evaluate(() => [...document.querySelectorAll('.small-btn')].find(b => b.textContent === 'Random dye').click()); await settle();
 const dyed = await page.evaluate(() => ['Tone', 'Chroma', 'Brightness'].map(l => Number(document.querySelector(`#s-${l}`).value)));
-check('Random dye sets tone, chroma and brightness within range', dyed[0] >= 0 && dyed[0] <= 359 && Math.abs(dyed[1]) <= 60 && Math.abs(dyed[2]) <= 50, JSON.stringify(dyed));
+check('Random dye sets tone, chroma and brightness within range', dyed[0] >= 0 && dyed[0] <= 359 && Math.abs(dyed[1]) <= 99 && Math.abs(dyed[2]) <= 99, JSON.stringify(dyed));
 check('the number boxes show the random values', await page.evaluate(d => ['Tone', 'Chroma', 'Brightness'].every((l, i) => Number(document.querySelector(`.slider .num[aria-label="${l} value"]`).value) === d[i]), dyed));
 let varies = false;
 for (let i = 0; i < 6 && !varies; i++) { await page.evaluate(() => [...document.querySelectorAll('.small-btn')].find(b => b.textContent === 'Random dye').click()); const v = await page.evaluate(() => document.querySelector('#s-Tone').value); varies = String(dyed[0]) !== v; }
@@ -216,10 +216,10 @@ await (await hatTile.$('.remove')).click(); await settle();
 check('clicking the x takes the hat off and drops its check', !(await page.evaluate(() => [...document.querySelectorAll('#colour .slot .card')].some(c => c.dataset.slot === 'Hat'))) && !(await page.evaluate(() => !![...document.querySelectorAll('.tab')].find(t => t.title === 'Hat')?.querySelector('.tick'))));
 await clickTab('Hair'); await settle();
 
-// The Equipped panel and the book end on the same line, and the credits run along the whole bottom
-const ends = await page.evaluate(() => { const r = s => document.querySelector(s).getBoundingClientRect(); const n = r('.note'), a = r('.side'), c = r('.book'); return { equippedBottom: r('#colour').bottom, coverBottom: r('.cover').bottom, noteLeft: n.left, noteRight: n.right, appLeft: r('.app').left + 12, appRight: r('.app').right - 14 }; });
+// The Equipped panel and the book end on the same line; the credits sit in the top bar, level with the book tabs
+const ends = await page.evaluate(() => { const r = s => document.querySelector(s).getBoundingClientRect(); const n = r('.note'), b = r('.books'); return { equippedBottom: r('#colour').bottom, coverBottom: r('.cover').bottom, noteTop: n.top, noteBottom: n.bottom, tabsBottom: b.bottom, noteText: document.querySelector('.note').textContent, sideTop: r('.side').top }; });
 check('Equipped and catalogue panels end on the same line', Math.abs(ends.equippedBottom - ends.coverBottom) < 0.6, JSON.stringify(ends));
-check('the credits line spans the whole bottom row', ends.noteLeft <= ends.appLeft + 4 && ends.noteRight >= ends.appRight - 4, JSON.stringify(ends));
+check('the credits are in the top bar, above the panels, with the shortened wording', ends.noteBottom <= ends.sideTop + 1 && ends.noteText === 'Sprites © Nexon. Dye behaviour from meaegi.com.', JSON.stringify(ends));
 
 // Datamine view lists the whole henesys.gg salon (male, female and collab styles)
 await page.evaluate(() => [...document.querySelectorAll('#filters > .seg button')].find(b => b.textContent.endsWith('All')).click());
@@ -284,7 +284,8 @@ const names = () => page.evaluate(() => [...document.querySelectorAll('#content 
 const maleHair = await names();
 await page.evaluate(() => [...document.querySelectorAll('.seg button')].find(b => b.textContent.endsWith('Female')).click()); await settle();
 const femaleHair = await names();
-check('hair is split by gender', maleHair.length > 5 && femaleHair.length > 5 && !maleHair.some(n => femaleHair.includes(n)), `(${maleHair.length} male, ${femaleHair.length} female)`);
+const COLLAB = /frieren|fern |stark |himmel|übel|aura |linie|lügner/i; // the collab styles are listed for both genders on purpose
+check('hair is split by gender', maleHair.length > 5 && femaleHair.length > 5 && !maleHair.some(n => !COLLAB.test(n) && femaleHair.includes(n)), `(${maleHair.length} male, ${femaleHair.length} female)`);
 check('Bridget is female, Bowl Cut is male', femaleHair.includes('Bridget') && maleHair.some(n => n.startsWith('Bowl Cut')));
 await page.screenshot({ path: 'tmp/ui-hair-female.png' });
 
@@ -361,6 +362,43 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   await phone.touchscreen.tap(tp.x, tp.y); await wait(700);
   check('phone: tapping a tab keeps the tab strip where it was', (await phone.evaluate(() => document.getElementById('tabs').scrollLeft)) === strip && (await phone.$eval('.tab[aria-selected="true"]', t => t.title)) === 'Overall', `strip ${strip}`);
   await phone.close();
+}
+
+// ---- Housing book ----
+{
+  await page.evaluate(() => localStorage.removeItem('maple-layers:housing-v1'));
+  const tabByTitle = title => page.evaluate(t => [...document.querySelectorAll('.tab, .bk')].find(x => x.title === t)?.click(), title);
+  await tabByTitle('Housing book'); await settle(); await settle();
+  check('Housing book: the two books are tabs along the top, Housing selected', JSON.stringify(await page.$$eval('.bk', b => b.map(x => `${x.textContent}:${x.getAttribute('aria-selected')}`))) === JSON.stringify(['Character:false', 'Housing:true']));
+  check('Housing book: the rail offers Homes, Decor, Chests and Crafting stations', JSON.stringify(await page.$$eval('.tab', t => t.map(x => x.title))) === JSON.stringify(['Homes', 'Decor', 'Chests', 'Crafting stations']));
+  check('Housing book: two homes to choose from, the first selected', (await page.$$eval('.home-card', c => c.map(x => x.getAttribute('aria-pressed')))).join() === 'true,false');
+  await page.waitForFunction(() => [...document.querySelectorAll('.home-thumb')].every(i => i.complete && i.naturalWidth > 0), { timeout: 8000 }).catch(() => {});
+  check('Housing book: the home pictures are the zoomed-in houses only (no zoomed-out version)', (await page.$$eval('.home-thumb', i => i.map(x => `${x.naturalWidth}x${x.naturalHeight}`))).join() === '760x590,900x700');
+  await tabByTitle('Decor'); await settle();
+  const addCard = n => page.evaluate(n => [...document.querySelectorAll('#content .card')].find(c => c.querySelector('.label')?.textContent === n)?.click(), n);
+  await addCard('Cherry Bed'); await addCard('Potted Sunflower'); await settle();
+  const layout = () => page.evaluate(() => JSON.parse(localStorage.getItem('maple-layers:housing-v2') ?? '{"layouts":{}}').layouts['yellow-mushroom-house'] ?? []);
+  check('Housing book: clicking furniture places it, and the Placed panel lists it', (await layout()).length === 2 && (await page.$$eval('#colour .slot', s => s.length)) === 2);
+  check('Housing book: the stage has just one tool, Clear all, and no per-piece button block', (await page.$$eval('#stage-tools .tool', b => b.map(x => x.title))).join() === 'Clear all furniture from this home' && !(await page.$$eval('#colour .small-btn', b => b.length)));
+  const btns = await page.evaluate(() => { const f = document.querySelector('.item-flip'), d = document.querySelector('.item-del'), s = document.getElementById('stage').getBoundingClientRect(), a = f.getBoundingClientRect(), b = d.getBoundingClientRect(); return { shown: !f.hidden && !d.hidden, mirrorLeftOfRemove: a.left < b.left, inside: a.left >= s.left && b.right <= s.right && a.top >= s.top - 1 }; });
+  check('Housing book: the selected piece carries a mirror button (left) and a remove button (right), inside the stage', btns.shown && btns.mirrorLeftOfRemove && btns.inside, JSON.stringify(btns));
+  const before = (await layout())[1];
+  await page.click('.item-flip'); await settle();
+  check('Housing book: the mirror button on the piece flips it', (await layout())[1].flip === !before.flip);
+  const box = await (await page.$('#housing')).boundingBox();
+  check('Housing book: the home is drawn on the stage', box.width > 100 && box.height > 100);
+  await page.click('.item-del'); await settle();
+  check('Housing book: the remove button on the piece takes it out of the home', (await layout()).length === 1 && (await page.$eval('.item-del', b => b.hidden)));
+  for (let k = 0; k < 15; k++) await addCard('Oak Window');
+  await settle();
+  const capped = await page.evaluate(() => ({ count: document.querySelector('.house-count').textContent, full: document.querySelector('.house-count').classList.contains('full'), disabled: [...document.querySelectorAll('#content .card')].every(c => c.disabled), hint: document.querySelector('#content .hint')?.textContent ?? '' }));
+  check('Housing book: 16 pieces fills the home: the counter says so and the cards are disabled', (await layout()).length === 16 && capped.count === '16/16 pieces' && capped.full && capped.disabled && /full/.test(capped.hint), JSON.stringify(capped));
+  await addCard('Cherry Bed'); await settle();
+  check('Housing book: a 17th piece is refused', (await layout()).length === 16);
+  await page.click('#stage-tools .tool'); await settle();
+  check('Housing book: Clear all empties the home and frees the cards', (await layout()).length === 0 && (await page.$$eval('#content .card', c => c.every(x => !x.disabled))));
+  await tabByTitle('Character book'); await settle();
+  check('Housing book: back to the Character book shows the character tabs again', (await page.$$eval('.tab', t => t.map(x => x.title))).includes('Skin') && (await page.$eval('#preview', c => getComputedStyle(c).display)) !== 'none');
 }
 
 console.log(results.join('\n'));

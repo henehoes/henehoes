@@ -5,11 +5,13 @@ import '@fontsource/nunito/400.css';
 import '@fontsource/nunito/700.css';
 import { adjustColour, composite } from './compose.js';
 import { drawBalloon, drawNameTag, drawPlainTag } from './ring.js';
-import { inject } from '@vercel/analytics';
+import * as housing from './housing.js';
 
 // Vercel Web Analytics (page views only). Only in the production build: during development and tests it would load a debug script
 // from vercel-scripts.com and log to the console. On a deployment it needs Analytics switched on in the Vercel project settings.
-if (import.meta.env.PROD) inject();
+// Loaded on the side and allowed to fail: an ad or tracker blocker that blocks anything called "analytics" must not stop the app
+// (as a plain import it did: the whole page stayed empty).
+if (import.meta.env.PROD) import('@vercel/analytics').then(m => m.inject()).catch(() => {});
 
 const W = 160, H = 230;          // working canvas, in sprite pixels (tall: a chat bubble sits above the head, a name tag below the feet)
 const OX = 60, OY = 112;          // where the skin's top-left sits on that canvas
@@ -120,6 +122,8 @@ const hasSaved = () => { try { return localStorage.getItem(SAVE_KEY) != null; } 
 let gender = 'all'; // which styles the Face and Hair tabs list: 'all' (the default), 'male' or 'female'
 let state = fresh();
 let activeTab = 'skin';
+let mode = 'character'; // which book is open: 'character' (the dress-up catalogue) or 'housing' (src/housing.js)
+const lastTab = { character: 'skin', housing: 'homes' }; // the tab each book was on when it was left
 let source = 'released'; // Face/Hair lists: 'released' (in the game now) or 'datamine' (everything found in the game files, released or not)
 const forGender = s => gender === 'all' || s.gender === 'both' || s.gender === gender; // 'both': collab styles listed for both genders
 const listed = s => source === 'datamine' || s.released !== false;
@@ -239,6 +243,7 @@ function paintFocus(canvas, boxW, boxH, n, focus, source, withBackdrop = false) 
 
 let renderToken = 0;
 async function renderPreview() {
+  if (mode === 'housing') return housing.renderStage();
   const token = ++renderToken;
   await withScene(state, (buf, source) => {
     if (token !== renderToken) return; // a newer render has started
@@ -290,6 +295,18 @@ function renderTabs() {
   const scrolled = tabs.scrollLeft; // on a phone the tabs scroll sideways: rebuilding them must not send the strip back to the start
   const needsFix = new Set([...WEAR_ORDER.filter(s => catalog.wearables[s]?.placeholders?.length), ...['face', 'hair'].filter(k => catalog.placeholders[k].some(p => p.released !== false))]); // datamine placeholders are expected, so only released ones are flagged
   tabs.replaceChildren();
+  if (mode === 'housing') {
+    for (const tb of housing.tabs()) {
+      const b = el('button', { className: `tab ${tb.key === 'homes' ? 'character' : 'wearable'}`, type: 'button', role: 'tab' }, el('span', { className: 'tab-name', textContent: tb.label }));
+      b.setAttribute('aria-selected', String(activeTab === tb.key)); b.title = tb.label;
+      if (tb.count) b.append(el('span', { className: 'tick', title: 'Placed' }));
+      b.onclick = () => { activeTab = tb.key; lastTab.housing = tb.key; search = ''; note(''); renderTabs(); renderFilters(); renderContent(); };
+      tabs.append(b);
+    }
+    tabs.scrollLeft = scrolled;
+    $('chapter').textContent = housing.chapterTitle(activeTab);
+    return;
+  }
   const add = (key, label, active, group) => {
     const t = el('button', { className: `tab ${group}`, type: 'button', role: 'tab' }, key === 'search' ? el('span', { className: 'glass tab-glass', 'aria-hidden': 'true' }) : null, el('span', { className: 'tab-name', textContent: TAB_NAMES[key] ?? label }));
     t.setAttribute('aria-selected', String(activeTab === key));
@@ -475,6 +492,7 @@ function equipped() {
 function renderColour() {
   const c = $('colour');
   c.replaceChildren();
+  if (mode === 'housing') return housing.renderPanel(c, () => { renderTabs(); renderColour(); housing.draw(); });
   const list = equipped();
   if (!list.some(e => e.key === configTarget)) configTarget = list[0]?.key ?? null;
   c.append(el('h3', { textContent: 'Equipped' }));
@@ -516,6 +534,7 @@ function renderContent(keepScroll = false) {
   const top = c.scrollTop;
   c.replaceChildren();
   $('toolbar').replaceChildren();
+  if (mode === 'housing') { housing.renderContent(c, activeTab, matches, () => afterChangeKeep(true)); c.scrollTop = keepScroll ? top : 0; return; }
   if (activeTab === 'search') renderSearch(c);
   else if (activeTab === 'skin') renderSkin(c);
   else if (activeTab === 'face' || activeTab === 'hair') renderStyles(c, activeTab);
@@ -738,8 +757,9 @@ const ICONS = {
   random: '<rect width="12" height="12" x="2" y="10" rx="2" ry="2"/><path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6"/><path stroke-width="3" d="M6 18h.01M10 14h.01M15 6h.01M18 9h.01"/>', // two dice (the Lucide "dices" icon, ISC licence, as in the mockup)
   save: '<path d="M5 3h11l3 3v15H5zM8 3v5h7V3M8 21v-7h8v7"/>',
   reset: '<path d="M4 12a8 8 0 1 0 2.6-5.9M4 4v4.5h4.5"/>',
+  trash: '<path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/>', // Lucide "trash-2" (ISC licence)
 };
-function previewButtons() {
+function stageTools() {
   const make = (icon, label, onClick) => {
     const b = el('button', { className: 'tool', type: 'button', title: label });
     b.setAttribute('aria-label', label);
@@ -747,10 +767,38 @@ function previewButtons() {
     b.onclick = onClick;
     return b;
   };
-  $('stage-tools').append(
+  $('stage-tools').replaceChildren(...(mode === 'housing' ? [
+    make('trash', 'Clear all furniture from this home', () => { housing.clearAll(); afterChangeKeep(true); })]
+  : [
     make('random', 'Randomise look', randomise),
     make('save', 'Save as my default', saveDefault),
-    make('reset', 'Back to my default', resetToDefault));
+    make('reset', 'Back to my default', resetToDefault)]));
+}
+
+// The two books, as tabs along the top of the page: dressing up a character, and decorating a home.
+function renderBooks() {
+  $('books').replaceChildren(...[['character', 'Character'], ['housing', 'Housing']].map(([m, label]) => {
+    const b = el('button', { className: 'bk', type: 'button', role: 'tab', textContent: label });
+    b.setAttribute('aria-selected', String(mode === m)); b.title = `${label} book`;
+    b.onclick = () => setMode(m);
+    return b;
+  }));
+}
+
+// Opens the Character or Housing book. The Housing data is fetched the first time.
+async function setMode(m) {
+  if (m === mode) return;
+  if (m === 'housing') {
+    try { await housing.load({ el, $, iconBox, flash, refresh: () => { renderTabs(); renderContent(true); renderColour(); } }); }
+    catch { flash('Could not load the housing data'); return; }
+  }
+  lastTab[mode] = activeTab; mode = m; activeTab = lastTab[m]; search = ''; note('');
+  document.querySelector('.app').classList.toggle('housing', m === 'housing');
+  renderBooks();
+  $('preview').style.display = m === 'housing' ? 'none' : '';
+  if (m === 'housing') housing.showStage(); else housing.hideStage();
+  stageTools();
+  afterChangeKeep(false);
 }
 
 // Loads the map picture, then redraws the preview. If it is missing the preview just has no backdrop.
@@ -776,7 +824,8 @@ narrowLayout.addEventListener?.('change', () => { if (catalog) renderColour(); }
 async function init() {
   const res = await fetch('/catalog.json');
   catalog = await res.json();
-  previewButtons();
+  stageTools();
+  renderBooks();
   loadBackdrop();
   const saved = loadSaved();
   if (saved) { state = saved.state; gender = saved.gender; } else state = initial();

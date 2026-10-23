@@ -1,0 +1,34 @@
+{
+ "id": 1007144,
+ "name": "White Choco Bunny",
+ "source": "game files",
+ "kind": "wearable",
+ "equipGroup": "Cap",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 31,
+   "h": 34,
+   "origin": {
+    "x": 14,
+    "y": 37,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

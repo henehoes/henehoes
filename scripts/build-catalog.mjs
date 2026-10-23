@@ -90,7 +90,7 @@ for (const w of wearables) {
   const meta = read(`public/${dir}/meta.json`);
   const parts = partsOf(meta, dir);
   if (!parts.length) { warnings.noParts.push(`${w.name} (${slot[2]})`); addWearablePlaceholder(slot[1], w.name, `Found (id ${w.id}) but it has no sprite in the standing pose`); continue; }
-  (catalog.wearables[slot[1]] ??= { label: slot[2], items: [] }).items.push({ id: w.id, name: w.name, ...(w.collab && { collab: w.collab }), ...(w.assumed && { check: w.assumed }), vslots: meta.vslots ?? [], ...(existsSync(`public/${dir}/icon.png`) && { icon: `${dir}/icon.png` }), ...(rules.stand2Only?.includes(w.id) && { pose: 'stand2' }), ...((w.classicId ?? classicIdOf(w)) && { classicId: w.classicId ?? classicIdOf(w) }), parts, ...(parts2Of(dir, w.name) && { parts2: parts2Of(dir, w.name) }) });
+  (catalog.wearables[slot[1]] ??= { label: slot[2], items: [] }).items.push({ id: w.id, name: w.name, ...(w.collab && { collab: w.collab }), ...(rules.holds?.includes(w.id) && { holds: true }), ...(w.assumed && { check: w.assumed }), vslots: meta.vslots ?? [], ...(existsSync(`public/${dir}/icon.png`) && { icon: `${dir}/icon.png` }), ...(rules.stand2Only?.includes(w.id) && { pose: 'stand2' }), ...((w.classicId ?? classicIdOf(w)) && { classicId: w.classicId ?? classicIdOf(w) }), parts, ...(parts2Of(dir, w.name) && { parts2: parts2Of(dir, w.name) }) });
 }
 
 // Name tag and chat bubble rings draw no sprite: the app builds them from UI pieces (see src/ring.js, data/rings.json).

@@ -1,1 +1,35 @@
-{"id":1007002,"name":"Green Camping Hat","source":"MCW 1","version":"1","kind":"wearable","equipGroup":"Cap","vslots":["Cp","H1","H5"],"islots":["Cp"],"parts":[{"key":"default","w":46,"h":26,"origin":{"x":15,"y":25,"isEmpty":false},"maps":{"brow":{"x":4,"y":-8,"isEmpty":false}},"position":"cap"}]}
+{
+ "id": 1007002,
+ "name": "Green Camping Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "equipGroup": "Cap",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 46,
+   "h": 26,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 4,
+     "y": -8,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

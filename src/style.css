@@ -296,6 +296,7 @@ input { font: inherit; border-radius: 0; }
 .home-card .art-box { height: 110px; overflow: hidden; }
 .home-thumb { width: 100%; height: 100%; object-fit: cover; display: block; }
 .card:disabled { opacity: .45; cursor: not-allowed; }
+.hold-row { display: flex; align-items: center; gap: 10px; margin: 2px 0 12px; }
 .hint.full { color: var(--maple-deep); font-weight: 700; }
 /* Mirror (top left) and remove (top right) buttons riding on the selected piece, and the piece counter */
 .item-btn { position: absolute; z-index: 3; width: 22px; height: 22px; padding: 0; border: 0; display: inline-flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 0 0 2px var(--bench-line); }

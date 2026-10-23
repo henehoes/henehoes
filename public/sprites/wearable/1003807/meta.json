@@ -1,1 +1,0 @@
-{"id":1003807,"name":"Heart Sunglasses","version":"210.1.1","kind":"wearable","equipGroup":"Cap","vslots":["Cp","H5"],"islots":["Cp"],"parts":[{"key":"default","w":41,"h":18,"origin":{"x":20,"y":13,"isEmpty":false},"maps":{"brow":{"x":0,"y":0,"isEmpty":true}},"position":"capOverHair"}]}

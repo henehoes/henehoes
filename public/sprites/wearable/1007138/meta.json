@@ -1,1 +1,35 @@
-{"id":1007138,"name":"Stylish Pink Cotton Cap","source":"MCW 1","version":"1","kind":"wearable","equipGroup":"Cap","vslots":["Cp","H1","H5"],"islots":["Cp"],"parts":[{"key":"default","w":48,"h":27,"origin":{"x":23,"y":17,"isEmpty":false},"maps":{"brow":{"x":0,"y":0,"isEmpty":true}},"position":"cap"}]}
+{
+ "id": 1007138,
+ "name": "Stylish Pink Cotton Cap",
+ "source": "game files",
+ "kind": "wearable",
+ "equipGroup": "Cap",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 48,
+   "h": 27,
+   "origin": {
+    "x": 23,
+    "y": 17,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

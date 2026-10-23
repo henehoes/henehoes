@@ -1,1 +1,35 @@
-{"id":1007141,"name":"Kitty Camping Hat","source":"MCW 1","version":"1","kind":"wearable","equipGroup":"Cap","vslots":["Cp","H1","H5"],"islots":["Cp"],"parts":[{"key":"default","w":48,"h":51,"origin":{"x":21,"y":41,"isEmpty":false},"maps":{"brow":{"x":0,"y":0,"isEmpty":true}},"position":"capOverHair"}]}
+{
+ "id": 1007141,
+ "name": "Kitty Camping Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "equipGroup": "Cap",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 48,
+   "h": 51,
+   "origin": {
+    "x": 21,
+    "y": 41,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

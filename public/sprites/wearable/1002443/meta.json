@@ -1,1 +1,0 @@
-{"id":1002443,"name":"Patissier Hat","version":"110","kind":"wearable","equipGroup":"Cap","vslots":["Cp","H1","H5"],"islots":["Cp"],"parts":[{"key":"default","w":54,"h":33,"origin":{"x":15,"y":25,"isEmpty":false},"maps":{"brow":{"x":7,"y":0,"isEmpty":false}},"position":"cap"}]}

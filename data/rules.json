@@ -1,8 +1,9 @@
 {
-  "_comment": "Hand-maintained rules. partHiddenBy: a part with this layer name is hidden when any worn item declares that slot code. zFallback: layer names missing from the game's zmap, drawn as the named layer instead. useEarlierId: when a hair/face name matches several items, keep only the one with the lowest id. listFirst: wearable ids shown first in their tab, in this order (Blue Striped Undershirt, Pink Tank Top). stand2Only: weapons with no standing pose, drawn with the whole body in the two-handed pose. exclude: styles left out of the catalogue.",
+  "_comment": "Hand-maintained rules. partHiddenBy: a part with this layer name is hidden when any worn item declares that slot code. zFallback: layer names missing from the game's zmap, drawn as the named layer instead. useEarlierId: when a hair/face name matches several items, keep only the one with the lowest id. listFirst: wearable ids shown first in their tab, in this order (Blue Striped Undershirt, Pink Tank Top). holds: weapons that have both a one-handed and a two-handed hold in the game files (the hammer and the slingshot, class 30), so the colour panel offers a Hold choice. stand2Only: weapons with no standing pose, drawn with the whole body in the two-handed pose. exclude: styles left out of the catalogue.",
   "partHiddenBy": { "hairOverHead": "H1", "hair": "H2", "hairBelowBody": "H6" },
   "zFallback": { "capBelowBody": "backCap", "mailChestBelowBody": "backMailChest" },
-  "stand2Only": [1702010, 1702014],
+  "stand2Only": [1702014],
+  "holds": [1702010, 1702003],
   "listFirst": [1040000, 1041000],
   "exclude": [{ "kind": "hair", "gender": "male", "style": "Zeta" }],
   "useEarlierId": ["Bed Head Hair", "Prince Cut Hair", "Bowl Cut"]

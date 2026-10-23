@@ -1,0 +1,33 @@
+{
+ "id": 1007136,
+ "name": "Bunny Earmuffs",
+ "source": "game files",
+ "kind": "wearable",
+ "equipGroup": "Cap",
+ "vslots": [
+  "Cp"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 55,
+   "h": 25,
+   "origin": {
+    "x": 48,
+    "y": -4,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -26,
+     "y": 8,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

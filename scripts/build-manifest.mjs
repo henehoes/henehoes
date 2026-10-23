@@ -31,8 +31,9 @@ async function search(version, q) {
 
 const report = { wearablesUnresolved: [], styleUnresolved: [], styleMultiple: [], assumedMatches: [], skipped: [...SKIP] };
 const wearables = [];
+const gameNames = new Set(JSON.parse(readFileSync('data/game-wearables.json', 'utf8')).items.map(i => norm(i.name))); // read from the game files (scripts/extract-wearables.mjs)
 for (const name of read('data/names.txt')) {
-  if (SKIP.has(name)) continue;
+  if (SKIP.has(name) || gameNames.has(norm(name))) continue;
   if (STAND_INS[name]) { wearables.push({ name, ...STAND_INS[name] }); continue; }
   let found = null;
   for (const v of VERSIONS) {
@@ -89,6 +90,7 @@ for (const { style, kind: listKind, gender } of readStyles('data/hairface.txt'))
 }
 
 wearables.push(...JSON.parse(readFileSync('data/collab-wearables.json', 'utf8')).items); // MapleStory x Frieren, from the Classic (MCW) data
+wearables.push(...JSON.parse(readFileSync('data/game-wearables.json', 'utf8')).items); // read from the game files, in-game ids and names
 wearables.push(...JSON.parse(readFileSync('data/mcw-wearables.json', 'utf8')).items); // newly released items that are only in the Classic (MCW) data
 writeFileSync('data/items.json', JSON.stringify({ wearables, styles }, null, 2));
 writeFileSync('data/report.json', JSON.stringify(report, null, 2));

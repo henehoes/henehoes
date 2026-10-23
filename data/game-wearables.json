@@ -1,0 +1,298 @@
+{
+ "_comment": "Wearables read from the game files by scripts/extract-wearables.mjs (slot: cap), with in-game ids and names. build-manifest.mjs appends these to data/items.json and skips the same names in names.txt.",
+ "items": [
+  {
+   "id": 1007002,
+   "name": "Green Camping Hat",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007002
+  },
+  {
+   "id": 1007003,
+   "name": "Cat Hat",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007003
+  },
+  {
+   "id": 1007004,
+   "name": "Puffy Brown Hat",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007004
+  },
+  {
+   "id": 1007046,
+   "name": "Blue Cap",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007046
+  },
+  {
+   "id": 1007056,
+   "name": "Starred Hunting Hat",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007056
+  },
+  {
+   "id": 1007061,
+   "name": "Blue Bucket Hat",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007061
+  },
+  {
+   "id": 1007073,
+   "name": "White Beanie",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007073
+  },
+  {
+   "id": 1007077,
+   "name": "Angel Halo",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007077
+  },
+  {
+   "id": 1007090,
+   "name": "Beige Checkered Hat",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007090
+  },
+  {
+   "id": 1007091,
+   "name": "Meshcap",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007091
+  },
+  {
+   "id": 1007096,
+   "name": "Patissier Hat",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007096
+  },
+  {
+   "id": 1007105,
+   "name": "Detective Hat",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007105
+  },
+  {
+   "id": 1007111,
+   "name": "Race Ace Cap",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007111
+  },
+  {
+   "id": 1007116,
+   "name": "Beret",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007116
+  },
+  {
+   "id": 1007123,
+   "name": "Aura Hair (Hat)",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007123,
+   "collab": "Frieren"
+  },
+  {
+   "id": 1007124,
+   "name": "Linie Hair (Hat)",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007124,
+   "collab": "Frieren"
+  },
+  {
+   "id": 1007125,
+   "name": "Lügner Hair (Hat)",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007125,
+   "collab": "Frieren"
+  },
+  {
+   "id": 1007134,
+   "name": "Reggae Hat",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007134
+  },
+  {
+   "id": 1007136,
+   "name": "Bunny Earmuffs",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007136
+  },
+  {
+   "id": 1007138,
+   "name": "Stylish Pink Cotton Cap",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007138
+  },
+  {
+   "id": 1007139,
+   "name": "Sailor Hat",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007139
+  },
+  {
+   "id": 1007140,
+   "name": "Cute Mouse Ears",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007140
+  },
+  {
+   "id": 1007141,
+   "name": "Kitty Camping Hat",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007141
+  },
+  {
+   "id": 1007142,
+   "name": "Bunny Ears",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007142
+  },
+  {
+   "id": 1007143,
+   "name": "Heart Sunglasses",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007143
+  },
+  {
+   "id": 1007144,
+   "name": "White Choco Bunny",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007144
+  },
+  {
+   "id": 1007145,
+   "name": "Black Cat Beanie",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007145
+  },
+  {
+   "id": 1007146,
+   "name": "Sky Blue Cat Beanie",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007146
+  },
+  {
+   "id": 1007147,
+   "name": "Orange Cat Beanie",
+   "region": "MCW",
+   "version": "1",
+   "category": "Armor",
+   "subCategory": "Hat",
+   "ambiguous": false,
+   "classicId": 1007147
+  }
+ ]
+}

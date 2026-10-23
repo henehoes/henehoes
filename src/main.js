@@ -79,11 +79,17 @@ const EYE_COLOURS = { Black: '#515356', Blue: '#4898f7', Red: '#ea4448', Green: 
 
 // ---------- state ----------
 let catalog;
+// Two-handed pose: a weapon with no one-handed picture (Orange Toy Hammer used to be one, now the Toy Rifle) always puts the whole
+// character in it; a weapon with both holds (`holds`: Toy Hammer, Plastic Slingshot) follows the Hold choice in its colour panel.
+function isTwoHanded(sel) {
+  const item = catalog.wearables.weapon?.items.find(i => i.id === sel.wear.weapon.item);
+  return !!item && (item.pose === 'stand2' || (!!item.holds && !!sel.wear.weapon.two));
+}
 const fresh = () => ({
   skin: 0,
   face: { style: null, colour: 0 },
   hair: { style: null, colour: 0 },
-  wear: Object.fromEntries(WEAR_ORDER.map(k => [k, { item: null, h: 0, c: 0, b: 0 }])), // the game's dye: tone 0..359 (h), chroma -99..99 (c), brightness -99..99 (b); all 0 = the item's own colours
+  wear: Object.fromEntries(WEAR_ORDER.map(k => [k, { item: null, h: 0, c: 0, b: 0, two: false }])), // the game's dye: tone 0..359 (h), chroma -99..99 (c), brightness -99..99 (b); all 0 = the item's own colours
   text: { name: 'Maple', chat: 'Hello!' }, // shown by a name tag ring and a chat bubble ring
 });
 // The starting look: the lowest-numbered skin, no face, no hair and nothing worn.
@@ -111,7 +117,7 @@ function loadSaved() {
     for (const k of WEAR_ORDER) {
       if (DISABLED_SLOTS.has(k)) continue; // a ring saved before they were switched off is not brought back
       const w = d.wear?.[k];
-      if (w && (w.item == null || catalog.wearables[k]?.items.some(i => i.id === w.item))) s.wear[k] = { item: w.item, h: clamp(Math.round(+w.h || 0), 0, 359), c: clamp(Math.round(+w.c || 0), -99, 99), b: clamp(Math.round(+w.b || 0), -99, 99) };
+      if (w && (w.item == null || catalog.wearables[k]?.items.some(i => i.id === w.item))) s.wear[k] = { item: w.item, two: !!w.two, h: clamp(Math.round(+w.h || 0), 0, 359), c: clamp(Math.round(+w.c || 0), -99, 99), b: clamp(Math.round(+w.b || 0), -99, 99) };
     }
     if (typeof d.text?.name === 'string') s.text = { name: d.text.name.slice(0, 12), chat: String(d.text.chat ?? '').slice(0, 60) };
     return { state: s, gender: ['male', 'female'].includes(d.gender) ? d.gender : 'all' };
@@ -128,6 +134,15 @@ let source = 'released'; // Face/Hair lists: 'released' (in the game now) or 'da
 const forGender = s => gender === 'all' || s.gender === 'both' || s.gender === gender; // 'both': collab styles listed for both genders
 const listed = s => source === 'datamine' || s.released !== false;
 let search = ''; // text typed in the catalogue's search box; cleared when the tab changes
+// Hat tab filter ("Fit"): how a hat treats the worn hair, from the covered-slot codes (vslots) it carries, the same ones buildLayers
+// acts on (H1 hides the hair over the top of the head, H2 hides the rest). The names are ours: the game has no player-facing term.
+let hatFit = 'all'; // 'all', 'topper', 'cap' or 'helmet'
+const hairEffectOf = item => item.vslots?.includes('H2') ? 'helmet' : item.vslots?.includes('H1') ? 'cap' : 'topper';
+const HAT_FITS = [
+  ['topper', 'Topper', 'Sits on top of your hair, which stays as it is'],
+  ['cap', 'Cap', 'Fits snugly: the hair over the top of your head is flattened'],
+  ['helmet', 'Helmet', 'Hides your hair completely (helmets, and Hair (Hat) items, which bring their own hair)'],
+];
 const matches = name => name.toLowerCase().includes(search.trim().toLowerCase());
 let configTarget = null; // which equipped item the Equipped panel (left) is editing: 'face', 'hair' or a wearable slot
 // The colour the Face and Hair catalogues are shown in. Separate from the colour of the face/hair I am wearing.
@@ -150,7 +165,7 @@ async function buildLayers(sel) {
     for (const p of parts.filter(p => !covered.has(p.hiddenBy))) jobs.push(tinted(p.file, h, c, b).then(img => ({ img, x: OX + p.x, y: OY + p.y, z: p.z })));
   };
   // A weapon with no standing pose (Orange Toy Hammer) puts the whole body in the two-handed pose.
-  const twoHanded = catalog.wearables.weapon?.items.some(i => i.id === sel.wear.weapon.item && i.pose === 'stand2');
+  const twoHanded = isTwoHanded(sel);
   const partsFor = x => (twoHanded && x.parts2) || x.parts;
   const skin = catalog.skins.find(s => s.tone === sel.skin);
   add(partsFor(skin));
@@ -338,6 +353,7 @@ function renderFilters() {
   input.oninput = () => { search = input.value; clearTimeout(searchTimer); if (everything) searchTimer = setTimeout(() => renderContent(false), 150); else renderContent(true); };
   box.append(el('label', { className: 'search' }, el('span', { className: 'glass', 'aria-hidden': 'true' }), input));
   if (everything) { input.focus(); input.setSelectionRange(input.value.length, input.value.length); }
+  if (activeTab === 'cap') return renderFit();
   if (activeTab !== 'face' && activeTab !== 'hair') return;
   const seg = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': 'Show styles for' });
   for (const [g, label] of [['all', 'All'], ['male', '♂ Male'], ['female', '♀ Female']]) {
@@ -360,6 +376,21 @@ function renderFilters() {
     btn.setAttribute('aria-pressed', String(source === s));
     btn.setAttribute('aria-checked', String(source === s));
     btn.onclick = () => { source = s; renderFilters(); renderContent(true); };
+    sw.append(btn);
+  }
+  src.append(sw);
+}
+
+// The Hat tab's "Fit" picker, in the row above the search box: All, Topper, Cap, Helmet, each with how many hats it holds.
+function renderFit() {
+  const hats = catalog.wearables.cap.items, src = $('source');
+  src.append(el('span', { className: 'source-label', textContent: 'Fit' }));
+  const sw = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': 'How the hat treats your hair' });
+  for (const [v, label, tip] of [['all', 'All', 'Every hat'], ...HAT_FITS]) {
+    const n = v === 'all' ? hats.length : hats.filter(i => hairEffectOf(i) === v).length;
+    const btn = el('button', { type: 'button', role: 'radio', textContent: `${label} (${n})`, title: tip });
+    btn.setAttribute('aria-pressed', String(hatFit === v)); btn.setAttribute('aria-checked', String(hatFit === v));
+    btn.onclick = () => { hatFit = v; renderFilters(); renderContent(true); };
     sw.append(btn);
   }
   src.append(sw);
@@ -525,7 +556,21 @@ function renderColour() {
   // The game keeps some special effects in their own colour, and the sprite data does not say which, so this preview dyes every part it can.
   const note = el('div', { className: 'dye-note', role: 'note' }, el('span', { className: 'dye-badge', textContent: '!', 'aria-hidden': 'true' }),
     el('p', { textContent: "Some special effects keep their original colour in the game even when dyed. We can't tell which, so this preview dyes every part it can; some items may show little or no change." }));
-  c.append(el('h3', { textContent: `${data.label} colour` }), sliders, el('div', { className: 'btn-row' }, random, reset), note);
+  // A weapon with both a one-handed and a two-handed hold lets you pick which one the character stands in.
+  const wornItem = data.items.find(i => i.id === w.item);
+  let holdPicker = null;
+  if (wornItem?.holds) {
+    holdPicker = el('div', { className: 'hold-row' }, el('span', { className: 'source-label', textContent: 'Hold' }));
+    const seg = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': 'How the weapon is held' });
+    for (const [two, label] of [[false, 'One-handed'], [true, 'Two-handed']]) {
+      const b = el('button', { type: 'button', role: 'radio', textContent: label });
+      b.setAttribute('aria-pressed', String(!!w.two === two)); b.setAttribute('aria-checked', String(!!w.two === two));
+      b.onclick = () => { w.two = two; renderColour(); renderPreview(); };
+      seg.append(b);
+    }
+    holdPicker.append(seg);
+  }
+  c.append(el('h3', { textContent: `${data.label} colour` }), ...(holdPicker ? [holdPicker] : []), sliders, el('div', { className: 'btn-row' }, random, reset), note);
 }
 
 // keepScroll: redraw in place (after a selection or colour change) instead of jumping back to the top of the list.
@@ -611,7 +656,7 @@ function renderStyles(c, kind) {
 function renderWearable(c, slot) {
   const data = catalog.wearables[slot];
   const grid = el('div', { className: 'grid' });
-  for (const item of data.items.filter(i => matches(i.name))) grid.append(wearableCard(slot, item));
+  for (const item of data.items.filter(i => matches(i.name) && (slot !== 'cap' || hatFit === 'all' || hairEffectOf(i) === hatFit))) grid.append(wearableCard(slot, item));
   for (const p of (data.placeholders ?? []).filter(p => matches(p.name))) grid.append(placeholderCard(p));
   c.append(grid);
 }
@@ -688,6 +733,7 @@ function textFields(slot) {
 // Equipping an overall removes the top and bottom, and the reverse, as in the game.
 function select(slot, id) {
   state.wear[slot].item = state.wear[slot].item === id ? null : id; // clicking the worn item takes it off
+  if (slot === 'weapon') state.wear.weapon.two = false; // a newly picked weapon starts in its one-handed hold
   if (state.wear[slot].item != null) configTarget = slot;
   if (slot === 'longcoat' && state.wear[slot].item != null) { state.wear.coat.item = null; state.wear.pants.item = null; }
   if ((slot === 'coat' || slot === 'pants') && state.wear[slot].item != null) state.wear.longcoat.item = null;

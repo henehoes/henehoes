@@ -2,16 +2,6 @@
  "_comment": "Wearables that are in the Classic game data (MCW) on the sprite API but not in GMS, added from newly released boxes, plus the four starter undergarments (male: Blue Striped Undershirt 1040000, Blue-Striped Boxers 1060000; female: Pink Tank Top 1041000, Pink Cotton Boxers 1061000), which the user asked for. The app has no gender filter for clothing, so all four show in the Top and Bottom tabs. build-manifest.mjs appends them to data/items.json as they are. Ids are Classic ids; names are as written when the items were released. The Buddy Overall Jeans share one name in the data: 1057090 is the blue pair and 1057096 the red pair (checked from their inventory icons). Drop rates are deliberately not stored.",
  "items": [
   {
-   "id": 1007056,
-   "name": "Starred Hunting Hat",
-   "region": "MCW",
-   "version": "1",
-   "category": "Armor",
-   "subCategory": "Hat",
-   "ambiguous": false,
-   "classicId": 1007056
-  },
-  {
    "id": 1047042,
    "name": "Black Blazer",
    "region": "MCW",
@@ -82,16 +72,6 @@
    "classicId": 1077000
   },
   {
-   "id": 1007140,
-   "name": "Cute Mouse Ears",
-   "region": "MCW",
-   "version": "1",
-   "category": "Armor",
-   "subCategory": "Hat",
-   "ambiguous": false,
-   "classicId": 1007140
-  },
-  {
    "id": 1047096,
    "name": "Superstar Hoodie",
    "region": "MCW",
@@ -120,16 +100,6 @@
    "subCategory": "Shoes",
    "ambiguous": false,
    "classicId": 1077054
-  },
-  {
-   "id": 1007002,
-   "name": "Green Camping Hat",
-   "region": "MCW",
-   "version": "1",
-   "category": "Armor",
-   "subCategory": "Hat",
-   "ambiguous": false,
-   "classicId": 1007002
   },
   {
    "id": 1047005,
@@ -212,16 +182,6 @@
    "classicId": 1107014
   },
   {
-   "id": 1007004,
-   "name": "Puffy Brown Hat",
-   "region": "MCW",
-   "version": "1",
-   "category": "Armor",
-   "subCategory": "Hat",
-   "ambiguous": false,
-   "classicId": 1007004
-  },
-  {
    "id": 1047000,
    "name": "Orange Hooded Vest",
    "region": "MCW",
@@ -240,16 +200,6 @@
    "subCategory": "Weapon",
    "ambiguous": false,
    "classicId": 1702003
-  },
-  {
-   "id": 1007073,
-   "name": "White Beanie",
-   "region": "MCW",
-   "version": "1",
-   "category": "Armor",
-   "subCategory": "Hat",
-   "ambiguous": false,
-   "classicId": 1007073
   },
   {
    "id": 1047041,
@@ -282,16 +232,6 @@
    "classicId": 1067049
   },
   {
-   "id": 1007111,
-   "name": "Race Ace Cap",
-   "region": "MCW",
-   "version": "1",
-   "category": "Armor",
-   "subCategory": "Hat",
-   "ambiguous": false,
-   "classicId": 1007111
-  },
-  {
    "id": 1057048,
    "name": "Race Ace Suit",
    "region": "MCW",
@@ -322,16 +262,6 @@
    "classicId": 1077040
   },
   {
-   "id": 1007105,
-   "name": "Detective Hat",
-   "region": "MCW",
-   "version": "1",
-   "category": "Armor",
-   "subCategory": "Hat",
-   "ambiguous": false,
-   "classicId": 1007105
-  },
-  {
    "id": 1057019,
    "name": "Premium Trenchcoat",
    "region": "MCW",
@@ -360,26 +290,6 @@
    "subCategory": "Shoes",
    "ambiguous": false,
    "classicId": 1077100
-  },
-  {
-   "id": 1007090,
-   "name": "Beige Checkered Hat",
-   "region": "MCW",
-   "version": "1",
-   "category": "Armor",
-   "subCategory": "Hat",
-   "ambiguous": false,
-   "classicId": 1007090
-  },
-  {
-   "id": 1007141,
-   "name": "Kitty Camping Hat",
-   "region": "MCW",
-   "version": "1",
-   "category": "Armor",
-   "subCategory": "Hat",
-   "ambiguous": false,
-   "classicId": 1007141
   },
   {
    "id": 1057088,
@@ -420,16 +330,6 @@
    "subCategory": "Earrings",
    "ambiguous": false,
    "classicId": 1037002
-  },
-  {
-   "id": 1007138,
-   "name": "Stylish Pink Cotton Cap",
-   "region": "MCW",
-   "version": "1",
-   "category": "Armor",
-   "subCategory": "Hat",
-   "ambiguous": false,
-   "classicId": 1007138
   },
   {
    "id": 1047091,

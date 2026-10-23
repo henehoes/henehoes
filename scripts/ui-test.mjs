@@ -195,7 +195,7 @@ check('every unreleased card is marked DATAMINE and no released card is', await 
 await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent === 'Released').click()); await settle();
 check('back to Released hides the note and every DATAMINE badge', !(await page.$('#content .datamine-note')) && (await page.$$('#content .card .unreleased-badge')).length === 0);
 await clickTab('Hat'); await settle();
-check('the switch is not on wearable tabs', !(await page.$('#source .seg')));
+check('the Released/Datamine switch is not on wearable tabs (the Hat tab has its own Fit row)', !(await page.$$eval('#source .seg button', b => b.some(x => /Released|Datamine/.test(x.textContent)))));
 await clickTab('Hair'); await settle();
 
 // Order inside the book on Face and Hair: Released/Datamine, then search and gender, then colours
@@ -362,6 +362,28 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   await phone.touchscreen.tap(tp.x, tp.y); await wait(700);
   check('phone: tapping a tab keeps the tab strip where it was', (await phone.evaluate(() => document.getElementById('tabs').scrollLeft)) === strip && (await phone.$eval('.tab[aria-selected="true"]', t => t.title)) === 'Overall', `strip ${strip}`);
   await phone.close();
+}
+
+// ---- Hat tab: the Fit filter ----
+{
+  const clickTab = async l => { await page.evaluate(l => [...document.querySelectorAll('.tab')].find(t => t.title === l)?.click(), l); await settle(); };
+  const fitBtn = label => page.evaluate(l => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent.startsWith(l))?.click(), label);
+  const cards = () => page.$$eval('#content .card .label', e => e.map(x => x.textContent));
+  await clickTab('Hat');
+  check('Fit filter: the Hat tab has All, Topper, Cap and Helmet with counts', JSON.stringify(await page.$$eval('#source .seg button', b => b.map(x => x.textContent))) === JSON.stringify(['All (29)', 'Topper (6)', 'Cap (20)', 'Helmet (3)']));
+  await fitBtn('Helmet'); await settle(); const helmets = await cards();
+  check('Fit filter: Helmet leaves the three Hair (Hat) hats', helmets.length === 3 && helmets.every(n => /Hair \(Hat\)/.test(n)), helmets.join(', '));
+  await fitBtn('Topper'); await settle(); const toppers = await cards();
+  check('Fit filter: Topper leaves the six hats that do not flatten hair', toppers.length === 6 && toppers.includes('Angel Halo') && toppers.includes('Bunny Ears') && !toppers.includes('Cat Hat'), toppers.join(', '));
+  await fitBtn('Cap'); await settle();
+  check('Fit filter: Cap leaves the 20 ordinary caps', (await cards()).length === 20 && (await cards()).includes('Cat Hat'));
+  await page.type('.search-input', 'beanie'); await settle();
+  check('Fit filter: it combines with the search box (the four beanies are all caps)', (await cards()).length === 4 && (await cards()).every(n => /Beanie/.test(n)), (await cards()).join(', '));
+  await page.$eval('.search-input', i => { i.value = ''; i.dispatchEvent(new Event('input', { bubbles: true })); }); await settle();
+  await fitBtn('All'); await settle();
+  check('Fit filter: All shows every hat again', (await cards()).length === 29);
+  await clickTab('Top');
+  check('Fit filter: the row is only on the Hat tab', (await page.$$eval('#source .seg button', b => b.length)) === 0);
 }
 
 // ---- Housing book ----

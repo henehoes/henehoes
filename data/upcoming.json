@@ -1,0 +1,579 @@
+{
+ "_comment": "Dyeable equipment in the game files that is not in the catalogue. UNCONFIRMED: dyeable may hint at items for an upcoming release, nothing more. Written by scripts/extract-upcoming.mjs.",
+ "items": [
+  {
+   "id": 1007013,
+   "name": "Blue Chinese Undead Hat",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007028,
+   "name": "Zorro Hat",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007033,
+   "name": "Tiger Mask",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007043,
+   "name": "Starry Sky Blue Beanie",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007053,
+   "name": "Bunny Hat",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007058,
+   "name": "Blue Pajama Hat",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007072,
+   "name": "Olive Beanie",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007074,
+   "name": "Woodsman Hat",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007102,
+   "name": "Scream Mask",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007103,
+   "name": "Old School Uniform Hat",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007104,
+   "name": "Hat of Death",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007115,
+   "name": "Witch Hat",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007132,
+   "name": "Grey Visor Beanie",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007133,
+   "name": "Teddy Bear Headgear",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007135,
+   "name": "Mummy Hat",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007137,
+   "name": "Superstar Headphones",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007274,
+   "name": "Pink Knitted Gumball",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007287,
+   "name": "Devilish Horns",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007362,
+   "name": "Pumpkin Headgear",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007367,
+   "name": "Demon Goblin",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007368,
+   "name": "Maple-Stein Head",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007374,
+   "name": "Skull Beanie",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007465,
+   "name": "Pumpkin Hat",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007467,
+   "name": "Golden Fox Ears",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007489,
+   "name": "Iljimae Mask",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007525,
+   "name": "Devil Horns",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007706,
+   "name": "Dark Devil Hat",
+   "folder": "Cap"
+  },
+  {
+   "id": 1007756,
+   "name": "Romance Rose",
+   "folder": "Cap"
+  },
+  {
+   "id": 1017000,
+   "name": "Battle Scar",
+   "folder": "Accessory"
+  },
+  {
+   "id": 1017015,
+   "name": "Bandage Strip",
+   "folder": "Accessory"
+  },
+  {
+   "id": 1017021,
+   "name": "Mummy Mask",
+   "folder": "Accessory"
+  },
+  {
+   "id": 1017074,
+   "name": "Maple-Stein Face",
+   "folder": "Accessory"
+  },
+  {
+   "id": 1017088,
+   "name": "Ice Cold Red",
+   "folder": "Accessory"
+  },
+  {
+   "id": 1027019,
+   "name": "Skull Patch",
+   "folder": "Accessory"
+  },
+  {
+   "id": 1027022,
+   "name": "Medical Eye Patch",
+   "folder": "Accessory"
+  },
+  {
+   "id": 1027028,
+   "name": "Green Sports Goggles",
+   "folder": "Accessory"
+  },
+  {
+   "id": 1047015,
+   "name": "Pink Snowboard Top",
+   "folder": "Coat"
+  },
+  {
+   "id": 1047021,
+   "name": "Blue Polka-Dot Pajama Top",
+   "folder": "Coat"
+  },
+  {
+   "id": 1047023,
+   "name": "Prisoner Top",
+   "folder": "Coat"
+  },
+  {
+   "id": 1047044,
+   "name": "Old School Blazer",
+   "folder": "Coat"
+  },
+  {
+   "id": 1047058,
+   "name": "Skull T-Shirt",
+   "folder": "Coat"
+  },
+  {
+   "id": 1047075,
+   "name": "Old School Uniform Top",
+   "folder": "Coat"
+  },
+  {
+   "id": 1047089,
+   "name": "Pink Down Parka",
+   "folder": "Coat"
+  },
+  {
+   "id": 1047094,
+   "name": "Pelvis Hoodie",
+   "folder": "Coat"
+  },
+  {
+   "id": 1047095,
+   "name": "Red Hooded Coat",
+   "folder": "Coat"
+  },
+  {
+   "id": 1047135,
+   "name": "Bomber Jacket",
+   "folder": "Coat"
+  },
+  {
+   "id": 1047193,
+   "name": "Yellow Longsleeve with Bunny Bag",
+   "folder": "Coat"
+  },
+  {
+   "id": 1047207,
+   "name": "Slick Agent Top",
+   "folder": "Coat"
+  },
+  {
+   "id": 1057003,
+   "name": "Blue Chinese Undead Costume",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057024,
+   "name": "Grey Skull Overall",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057025,
+   "name": "Red Skull Overall",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057026,
+   "name": "Green Skull Overall",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057027,
+   "name": "Blue Skull Overall",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057028,
+   "name": "Orange Skull Overall",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057036,
+   "name": "Dark Suit",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057037,
+   "name": "Ghost Costume",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057040,
+   "name": "Black Coat of Death",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057052,
+   "name": "Dark Enamel Suit",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057053,
+   "name": "Witch Clothes",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057057,
+   "name": "Bunny Costume",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057058,
+   "name": "Ghost Suit",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057089,
+   "name": "Blue Kitty Hood",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057094,
+   "name": "Black Fur Wrap Coat",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057095,
+   "name": "Kitty Hoodie",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057099,
+   "name": "Teddy Bear Costume",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057100,
+   "name": "Mummy Suit",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057128,
+   "name": "Blue Snow Flower Wear",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057154,
+   "name": "Baby Doll Puka",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057203,
+   "name": "Strawberry Milk Dress",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057261,
+   "name": "Baby Doll Linka",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057346,
+   "name": "Pumpkin Suit",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1057354,
+   "name": "Stealth Suit",
+   "folder": "Longcoat"
+  },
+  {
+   "id": 1067013,
+   "name": "Pink Snowboard Pants",
+   "folder": "Pants"
+  },
+  {
+   "id": 1067018,
+   "name": "Blue Polka-Dot Pajama Pants",
+   "folder": "Pants"
+  },
+  {
+   "id": 1067020,
+   "name": "Prisoner Pants",
+   "folder": "Pants"
+  },
+  {
+   "id": 1067045,
+   "name": "Old School Uniform Pants",
+   "folder": "Pants"
+  },
+  {
+   "id": 1067065,
+   "name": "Old School Uniform Skirt",
+   "folder": "Pants"
+  },
+  {
+   "id": 1067078,
+   "name": "Amorian Pink Skirt",
+   "folder": "Pants"
+  },
+  {
+   "id": 1067079,
+   "name": "Bunny-Padded Snowboard Pants",
+   "folder": "Pants"
+  },
+  {
+   "id": 1067166,
+   "name": "Bone Buckled Slacks",
+   "folder": "Pants"
+  },
+  {
+   "id": 1067174,
+   "name": "Patched Denim Jeans",
+   "folder": "Pants"
+  },
+  {
+   "id": 1077014,
+   "name": "Black Leather Boots",
+   "folder": "Shoes"
+  },
+  {
+   "id": 1077018,
+   "name": "Blue Marble Slippers",
+   "folder": "Shoes"
+  },
+  {
+   "id": 1077020,
+   "name": "Bunny Slippers",
+   "folder": "Shoes"
+  },
+  {
+   "id": 1077023,
+   "name": "Pink Galoshes",
+   "folder": "Shoes"
+  },
+  {
+   "id": 1077030,
+   "name": "Big Rabbit Feet",
+   "folder": "Shoes"
+  },
+  {
+   "id": 1077034,
+   "name": "Black Shoes of Death",
+   "folder": "Shoes"
+  },
+  {
+   "id": 1077053,
+   "name": "Teddy Bear Shoes",
+   "folder": "Shoes"
+  },
+  {
+   "id": 1077058,
+   "name": "Mix-n-Match Sneakers",
+   "folder": "Shoes"
+  },
+  {
+   "id": 1077087,
+   "name": "White High Top",
+   "folder": "Shoes"
+  },
+  {
+   "id": 1077099,
+   "name": "Ragged Gomushin",
+   "folder": "Shoes"
+  },
+  {
+   "id": 1077245,
+   "name": "Star Winkle",
+   "folder": "Shoes"
+  },
+  {
+   "id": 1087005,
+   "name": "Brown Bandage",
+   "folder": "Glove"
+  },
+  {
+   "id": 1087006,
+   "name": "Black Bandage",
+   "folder": "Glove"
+  },
+  {
+   "id": 1087018,
+   "name": "White Bandage",
+   "folder": "Glove"
+  },
+  {
+   "id": 1087019,
+   "name": "Teddy Bear Gloves",
+   "folder": "Glove"
+  },
+  {
+   "id": 1087036,
+   "name": "Skull Gloves",
+   "folder": "Glove"
+  },
+  {
+   "id": 1087084,
+   "name": "Fairy Spark",
+   "folder": "Glove"
+  },
+  {
+   "id": 1107006,
+   "name": "Gargoyle Wings",
+   "folder": "Cape"
+  },
+  {
+   "id": 1107012,
+   "name": "Devil Wings",
+   "folder": "Cape"
+  },
+  {
+   "id": 1107013,
+   "name": "Cuddle Bear",
+   "folder": "Cape"
+  },
+  {
+   "id": 1107016,
+   "name": "My Buddy Rex",
+   "folder": "Cape"
+  },
+  {
+   "id": 1107052,
+   "name": "Coffin of Gloom",
+   "folder": "Cape"
+  },
+  {
+   "id": 1107065,
+   "name": "Count Dracula Cape",
+   "folder": "Cape"
+  },
+  {
+   "id": 1702013,
+   "name": "Teddy Bear",
+   "folder": "Weapon",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702017,
+   "name": "Pink Rabbit Puppet",
+   "folder": "Weapon",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702019,
+   "name": "Pillow",
+   "folder": "Weapon",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702026,
+   "name": "White Rabbit's Foot",
+   "folder": "Weapon",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702036,
+   "name": "Witch's Broomstick",
+   "folder": "Weapon",
+   "weaponClass": 43
+  },
+  {
+   "id": 1702096,
+   "name": "Glowing Pumpkin Basket",
+   "folder": "Weapon",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702313,
+   "name": "Fairy Pico",
+   "folder": "Weapon",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702325,
+   "name": "Evil Skull",
+   "folder": "Weapon",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702326,
+   "name": "Cat Soul",
+   "folder": "Weapon",
+   "weaponClass": 30
+  }
+ ]
+}

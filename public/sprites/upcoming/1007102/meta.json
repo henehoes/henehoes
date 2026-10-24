@@ -1,0 +1,46 @@
+{
+ "id": 1007102,
+ "name": "Scream Mask",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "Hd",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "H5",
+  "Hf",
+  "Hs",
+  "Fc",
+  "Af",
+  "Ay",
+  "As",
+  "Af",
+  "Ae"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 44,
+   "h": 42,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": -8,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

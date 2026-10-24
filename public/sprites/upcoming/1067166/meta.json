@@ -1,0 +1,32 @@
+{
+ "id": 1067166,
+ "name": "Bone Buckled Slacks",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Pn"
+ ],
+ "islots": [
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "pants",
+   "w": 15,
+   "h": 18,
+   "origin": {
+    "x": 9,
+    "y": 6,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -6,
+     "y": -6,
+     "isEmpty": false
+    }
+   },
+   "position": "pants"
+  }
+ ]
+}

@@ -1,0 +1,1890 @@
+{
+ "_comment": "Weapon types each cash weapon goes over, parsed from the game descriptions by scripts/extract-weapon-types.mjs. Classic id -> list; [\"weapon\"] means any weapon.",
+ "types": {
+  "1702000": [
+   "dagger"
+  ],
+  "1702001": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger"
+  ],
+  "1702002": [
+   "bow"
+  ],
+  "1702003": [
+   "weapon"
+  ],
+  "1702004": [
+   "weapon"
+  ],
+  "1702005": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "wand",
+   "staff"
+  ],
+  "1702006": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "wand",
+   "staff"
+  ],
+  "1702007": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "wand",
+   "staff"
+  ],
+  "1702008": [
+   "two-handed axe",
+   "two-handed blunt weapon"
+  ],
+  "1702009": [
+   "claw"
+  ],
+  "1702010": [
+   "weapon"
+  ],
+  "1702011": [
+   "two-handed sword"
+  ],
+  "1702012": [
+   "weapon"
+  ],
+  "1702013": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "wand",
+   "staff"
+  ],
+  "1702014": [
+   "crossbow"
+  ],
+  "1702015": [
+   "spear"
+  ],
+  "1702016": [
+   "dagger"
+  ],
+  "1702017": [
+   "claw"
+  ],
+  "1702018": [
+   "dagger",
+   "wand",
+   "staff"
+  ],
+  "1702019": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon"
+  ],
+  "1702020": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "wand",
+   "staff"
+  ],
+  "1702021": [
+   "bow"
+  ],
+  "1702022": [
+   "bow"
+  ],
+  "1702023": [
+   "crossbow"
+  ],
+  "1702024": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "wand",
+   "staff"
+  ],
+  "1702025": [
+   "claw"
+  ],
+  "1702026": [
+   "claw"
+  ],
+  "1702027": [
+   "weapon"
+  ],
+  "1702028": [
+   "weapon"
+  ],
+  "1702029": [
+   "weapon"
+  ],
+  "1702030": [
+   "weapon"
+  ],
+  "1702031": [
+   "weapon"
+  ],
+  "1702032": [
+   "weapon"
+  ],
+  "1702033": [
+   "weapon"
+  ],
+  "1702034": [
+   "weapon"
+  ],
+  "1702035": [
+   "weapon"
+  ],
+  "1702036": [
+   "spear",
+   "polearm"
+  ],
+  "1702037": [
+   "weapon"
+  ],
+  "1702044": [
+   "polearm"
+  ],
+  "1702046": [
+   "weapon"
+  ],
+  "1702047": [
+   "weapon"
+  ],
+  "1702048": [
+   "weapon"
+  ],
+  "1702052": [
+   "weapon"
+  ],
+  "1702053": [
+   "claw",
+   "Psy-limiter"
+  ],
+  "1702054": [
+   "weapon except cane",
+   "wand",
+   "staff",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt",
+   "spear",
+   "polearm",
+   "bow",
+   "crossbow",
+   "claw",
+   "knuckle",
+   "gun",
+   "Dual Bowgun",
+   "Hand Cannon",
+   "Long Swords",
+   "Heavy Swords",
+   "and Scepter"
+  ],
+  "1702055": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Wand",
+   "Staff",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702056": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Wand",
+   "Staff",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702057": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Wand",
+   "Staff",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702058": [
+   "claw"
+  ],
+  "1702059": [
+   "weapon"
+  ],
+  "1702060": [
+   "two-handed sword",
+   "axe",
+   "blunt weapon"
+  ],
+  "1702061": [
+   "two-handed sword",
+   "axe",
+   "blunt weapon"
+  ],
+  "1702062": [
+   "claw",
+   "Psy-limiter"
+  ],
+  "1702063": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "ritual fan",
+   "bladecaster"
+  ],
+  "1702064": [
+   "weapon except one-handed sword",
+   "one-handed axe",
+   "one-handed blunt",
+   "dagger",
+   "cane",
+   "wand",
+   "staff",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt",
+   "spear",
+   "polearm",
+   "crossbow",
+   "claw",
+   "knuckle",
+   "gun",
+   "Dual Bowgun",
+   "Hand Cannon",
+   "Long Swords",
+   "Heavy Swords",
+   "and Scepter"
+  ],
+  "1702065": [
+   "claw",
+   "Psy-limiter"
+  ],
+  "1702066": [
+   "Claw",
+   "Psy-limiter"
+  ],
+  "1702067": [
+   "two-handed sword",
+   "axe",
+   "blunt weapon"
+  ],
+  "1702068": [
+   "two-handed sword",
+   "axe",
+   "blunt weapon"
+  ],
+  "1702069": [
+   "two-handed sword",
+   "axe",
+   "blunt weapon"
+  ],
+  "1702070": [
+   "weapon"
+  ],
+  "1702071": [
+   "weapon except cane",
+   "wand",
+   "staff",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt",
+   "spear",
+   "polearm",
+   "bow",
+   "crossbow",
+   "claw",
+   "knuckle",
+   "gun",
+   "Dual Bowgun",
+   "Hand Cannon",
+   "Long Swords",
+   "Heavy Swords",
+   "and Scepter"
+  ],
+  "1702072": [
+   "weapon except cane",
+   "wand",
+   "staff",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt",
+   "spear",
+   "polearm",
+   "bow",
+   "crossbow",
+   "claw",
+   "knuckle",
+   "gun",
+   "Dual Bowgun",
+   "Hand Cannon",
+   "Long Swords",
+   "Heavy Swords",
+   "and Scepter"
+  ],
+  "1702073": [
+   "weapon except cane",
+   "wand",
+   "staff",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt",
+   "spear",
+   "polearm",
+   "bow",
+   "crossbow",
+   "claw",
+   "knuckle",
+   "gun",
+   "Dual Bowgun",
+   "Hand Cannon",
+   "Long Swords",
+   "Heavy Swords",
+   "and Scepter"
+  ],
+  "1702074": [
+   "claw",
+   "Psy-limiter"
+  ],
+  "1702075": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Wand",
+   "Staff",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702076": [
+   "weapon"
+  ],
+  "1702077": [
+   "weapon except one-handed sword",
+   "one-handed axe",
+   "one-handed blunt",
+   "dagger",
+   "cane",
+   "wand",
+   "staff",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt",
+   "spear",
+   "polearm",
+   "bow",
+   "claw",
+   "knuckle",
+   "gun",
+   "Dual Bowgun",
+   "Hand Cannon",
+   "Long Swords",
+   "Heavy Swords",
+   "Soul Shooter",
+   "and Scepter"
+  ],
+  "1702078": [
+   "weapon except one-handed sword",
+   "one-handed axe",
+   "one-handed blunt",
+   "dagger",
+   "cane",
+   "wand",
+   "staff",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt",
+   "spear",
+   "polearm",
+   "bow",
+   "claw",
+   "knuckle",
+   "gun",
+   "Dual Bowgun",
+   "Hand Cannon",
+   "Long Swords",
+   "Heavy Swords",
+   "and Scepter"
+  ],
+  "1702079": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Wand",
+   "Staff",
+   "Chain Sword",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702080": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Wand",
+   "Staff",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702081": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Wand",
+   "Staff",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702082": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "wand",
+   "staff",
+   "ritual fan",
+   "bladecaster"
+  ],
+  "1702083": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "wand",
+   "staff",
+   "ritual fan",
+   "bladecaster"
+  ],
+  "1702084": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "wand",
+   "staff",
+   "ritual fan",
+   "bladecaster"
+  ],
+  "1702085": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "wand",
+   "staff",
+   "ritual fan",
+   "bladecaster"
+  ],
+  "1702086": [
+   "bow"
+  ],
+  "1702087": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw",
+   "arm cannon",
+   "ancient bow",
+   "ritual fan",
+   "bladecaster",
+   "Whispershot"
+  ],
+  "1702088": [
+   "weapon"
+  ],
+  "1702089": [
+   "claw",
+   "Psy-limiter"
+  ],
+  "1702090": [
+   "weapon"
+  ],
+  "1702091": [
+   "weapon"
+  ],
+  "1702092": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "wand",
+   "staff",
+   "claw",
+   "psy-limiter",
+   "ritual fan",
+   "bladecaster"
+  ],
+  "1702093": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Wand",
+   "Staff",
+   "Cane",
+   "Shining Rod",
+   "Psy-limiter",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702094": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "wand",
+   "staff",
+   "ritual fan",
+   "bladecaster"
+  ],
+  "1702095": [
+   "weapon except one-handed sword",
+   "one-handed axe",
+   "one-handed blunt",
+   "dagger",
+   "cane",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw",
+   "knuckle",
+   "gun",
+   "Dual Bowgun",
+   "Hand Cannon",
+   "Long Swords",
+   "Heavy Swords",
+   "and Scepter"
+  ],
+  "1702096": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw"
+  ],
+  "1702097": [
+   "weapon"
+  ],
+  "1702098": [
+   "Claw"
+  ],
+  "1702099": [
+   "Claw"
+  ],
+  "1702100": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "wand",
+   "staff",
+   "claw",
+   "psy-limiter",
+   "ritual fan",
+   "bladecaster"
+  ],
+  "1702101": [
+   "One-Handed Sword",
+   "Two-Handed Sword",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702102": [
+   "Crossbows"
+  ],
+  "1702103": [
+   "Claw",
+   "Psy-limiter"
+  ],
+  "1702104": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw",
+   "arm cannon",
+   "ancient bow",
+   "ritual fan",
+   "bladecaster",
+   "Whispershot"
+  ],
+  "1702105": [
+   "Crossbow"
+  ],
+  "1702106": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Wand",
+   "Staff",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702107": [
+   "bow"
+  ],
+  "1702108": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Wand",
+   "Staff",
+   "Two-Handed Sword",
+   "Two-Handed Axe",
+   "Two-Handed Blunt Weapon",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702109": [
+   "Wand",
+   "Staff",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702110": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "wand",
+   "staff",
+   "claw",
+   "psy-limiter",
+   "ritual fan",
+   "bladecaster"
+  ],
+  "1702111": [
+   "two-handed sword",
+   "axe",
+   "blunt weapon"
+  ],
+  "1702112": [
+   "weapon"
+  ],
+  "1702113": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Two-Handed Sword",
+   "Two-Handed Axe",
+   "Two-Handed Blunt Weapon",
+   "Spear",
+   "Polearm",
+   "Wand",
+   "Staff",
+   "Bow",
+   "Crossbow",
+   "Claw",
+   "Arm Cannon",
+   "Chain",
+   "Lucent Gauntlet",
+   "Ancient Bow",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Bladecaster",
+   "Whispershot"
+  ],
+  "1702115": [
+   "weapon"
+  ],
+  "1702116": [
+   "weapon"
+  ],
+  "1702117": [
+   "weapon"
+  ],
+  "1702118": [
+   "weapon"
+  ],
+  "1702119": [
+   "weapon"
+  ],
+  "1702121": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Two-Handed Sword",
+   "Two-Handed Axe",
+   "Two-Handed Blunt Weapon",
+   "Spear",
+   "Polearm",
+   "Wand",
+   "Staff",
+   "Bow",
+   "Crossbow",
+   "Claw",
+   "Arm Cannon",
+   "Chain",
+   "Lucent Gauntlet",
+   "Ancient Bow",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Bladecaster",
+   "Whispershot"
+  ],
+  "1702122": [
+   "weapon"
+  ],
+  "1702123": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "wand",
+   "staff",
+   "ritual fan",
+   "bladecaster"
+  ],
+  "1702124": [
+   "bow"
+  ],
+  "1702125": [
+   "crossbow"
+  ],
+  "1702126": [
+   "bow"
+  ],
+  "1702127": [
+   "bow"
+  ],
+  "1702128": [
+   "bow"
+  ],
+  "1702129": [
+   "claw"
+  ],
+  "1702130": [
+   "weapon"
+  ],
+  "1702131": [
+   "claw",
+   "Psy-limiter"
+  ],
+  "1702132": [
+   "Wand",
+   "Staff"
+  ],
+  "1702133": [
+   "Claw"
+  ],
+  "1702134": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw",
+   "arm cannon",
+   "ancient bow",
+   "ritual fan",
+   "bladecaster",
+   "Whispershot"
+  ],
+  "1702135": [
+   "one-handed blunt weapon"
+  ],
+  "1702136": [
+   "Claw"
+  ],
+  "1702137": [
+   "weapon"
+  ],
+  "1702138": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw",
+   "arm cannon",
+   "ancient bow",
+   "ritual fan",
+   "bladecaster",
+   "Whispershot"
+  ],
+  "1702139": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw",
+   "arm cannon",
+   "ancient bow",
+   "ritual fan",
+   "bladecaster",
+   "Whispershot"
+  ],
+  "1702140": [
+   "weapon"
+  ],
+  "1702141": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "ritual fan",
+   "bladecaster"
+  ],
+  "1702142": [
+   "claw",
+   "Psy-limiter"
+  ],
+  "1702143": [
+   "wand",
+   "staff",
+   "scepter"
+  ],
+  "1702144": [
+   "two-handed axe"
+  ],
+  "1702145": [
+   "Two-handed Sword",
+   "Two-handed Axe",
+   "Two-handed Blunt Weapon",
+   "Spear",
+   "Polearm"
+  ],
+  "1702146": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw",
+   "arm cannon",
+   "ancient bow",
+   "katana",
+   "ritual fan",
+   "bladecaster",
+   "Whispershot"
+  ],
+  "1702147": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw",
+   "arm cannon",
+   "ancient bow",
+   "ritual fan",
+   "bladecaster",
+   "Whispershot"
+  ],
+  "1702148": [
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "staff"
+  ],
+  "1702149": [
+   "Two-handed Sword",
+   "Two-handed Axe",
+   "Two-handed Blunt Weapon"
+  ],
+  "1702150": [
+   "weapon"
+  ],
+  "1702151": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw",
+   "arm cannon",
+   "ancient bow",
+   "ritual fan",
+   "bladecaster",
+   "Whispershot"
+  ],
+  "1702152": [
+   "weapon"
+  ],
+  "1702153": [
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt",
+   "staff",
+   "spear",
+   "polearm"
+  ],
+  "1702154": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Wand",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702155": [
+   "weapon"
+  ],
+  "1702156": [
+   "knuckle"
+  ],
+  "1702157": [
+   "knuckle"
+  ],
+  "1702158": [
+   "Claw"
+  ],
+  "1702159": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Two-Handed Sword",
+   "Two-Handed Axe",
+   "Two-Handed Blunt Weapon",
+   "Spear",
+   "Polearm",
+   "Wand",
+   "Staff",
+   "Bow",
+   "Crossbow",
+   "Claw",
+   "Arm Cannon",
+   "Ancient Bow",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Bladecaster",
+   "Whispershot"
+  ],
+  "1702160": [
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt",
+   "spear",
+   "polearm"
+  ],
+  "1702161": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Wand",
+   "Staff",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702162": [
+   "weapon"
+  ],
+  "1702163": [
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm"
+  ],
+  "1702164": [
+   "Guns"
+  ],
+  "1702165": [
+   "weapon"
+  ],
+  "1702166": [
+   "weapon"
+  ],
+  "1702167": [
+   "Knuckles"
+  ],
+  "1702168": [
+   "Bow",
+   "Crossbow"
+  ],
+  "1702169": [
+   "weapon"
+  ],
+  "1702170": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw",
+   "arm cannon",
+   "ancient bow",
+   "ritual fan",
+   "bladecaster",
+   "Whispershot"
+  ],
+  "1702171": [
+   "weapon"
+  ],
+  "1702172": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Wand",
+   "Staff",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702173": [
+   "gun"
+  ],
+  "1702174": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw",
+   "arm cannon",
+   "ancient bow",
+   "ritual fan",
+   "bladecaster",
+   "Whispershot"
+  ],
+  "1702175": [
+   "weapon"
+  ],
+  "1702176": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw",
+   "arm cannon",
+   "ancient bow",
+   "ritual fan",
+   "bladecaster",
+   "Whispershot"
+  ],
+  "1702177": [
+   "weapon"
+  ],
+  "1702178": [
+   "weapon"
+  ],
+  "1702179": [
+   "weapon"
+  ],
+  "1702180": [
+   "weapon"
+  ],
+  "1702181": [
+   "weapon"
+  ],
+  "1702182": [
+   "weapon"
+  ],
+  "1702183": [
+   "weapon"
+  ],
+  "1702184": [
+   "Knuckle-type weapon"
+  ],
+  "1702185": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw",
+   "arm cannon",
+   "ancient bow",
+   "ritual fan",
+   "bladecaster",
+   "Whispershot"
+  ],
+  "1702186": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Wand",
+   "Staff",
+   "Katana",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702187": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw",
+   "knuckle",
+   "gun",
+   "arm cannon",
+   "ancient bow",
+   "ritual fan",
+   "bladecaster",
+   "Whispershot"
+  ],
+  "1702188": [
+   "polearm"
+  ],
+  "1702189": [
+   "polearm"
+  ],
+  "1702190": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Cane",
+   "Memorial Staff",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Katana"
+  ],
+  "1702191": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw",
+   "knuckle",
+   "gun",
+   "arm cannon",
+   "ancient bow",
+   "ritual fan",
+   "bladecaster",
+   "Whispershot"
+  ],
+  "1702192": [
+   "weapon"
+  ],
+  "1702193": [
+   "One-Handed Sword",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702194": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw",
+   "knuckle",
+   "gun",
+   "arm cannon",
+   "ancient bow",
+   "ritual fan",
+   "bladecaster",
+   "Whispershot"
+  ],
+  "1702195": [
+   "weapon"
+  ],
+  "1702196": [
+   "weapon"
+  ],
+  "1702197": [
+   "weapon"
+  ],
+  "1702198": [
+   "weapon"
+  ],
+  "1702199": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw",
+   "knuckle",
+   "gun",
+   "arm cannon",
+   "ancient bow",
+   "ritual fan",
+   "bladecaster",
+   "Whispershot"
+  ],
+  "1702200": [
+   "Wand",
+   "Staff",
+   "Two-handed Sword",
+   "Two-handed Axe",
+   "Two-handed Blunt Weapon",
+   "Polearm"
+  ],
+  "1702201": [
+   "weapon"
+  ],
+  "1702202": [
+   "weapon"
+  ],
+  "1702203": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702204": [
+   "Claw"
+  ],
+  "1702205": [
+   "Wand-type weapon"
+  ],
+  "1702206": [
+   "weapon"
+  ],
+  "1702207": [
+   "two-handed sword",
+   "axe",
+   "blunt weapon",
+   "spear",
+   "polearm"
+  ],
+  "1702208": [
+   "two-handed sword",
+   "axe",
+   "blunt weapon",
+   "spear",
+   "polearm"
+  ],
+  "1702209": [
+   "Two-handed Sword",
+   "Two-handed Axe",
+   "Two-handed Blunt Weapon",
+   "Spear",
+   "Polearm"
+  ],
+  "1702210": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Claw",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702211": [
+   "weapon"
+  ],
+  "1702212": [
+   "weapon"
+  ],
+  "1702213": [
+   "weapon"
+  ],
+  "1702214": [
+   "one-handed sword",
+   "one-handed axe",
+   "one-handed blunt weapon",
+   "dagger",
+   "two-handed sword",
+   "two-handed axe",
+   "two-handed blunt weapon",
+   "spear",
+   "polearm",
+   "wand",
+   "staff",
+   "bow",
+   "crossbow",
+   "claw",
+   "knuckle",
+   "gun",
+   "arm cannon",
+   "ancient bow",
+   "ritual fan",
+   "bladecaster",
+   "Whispershot"
+  ],
+  "1702215": [
+   "weapon"
+  ],
+  "1702216": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Two-Handed Sword",
+   "Two-Handed Axe",
+   "Two-Handed Blunt Weapon",
+   "Spear",
+   "Polearm",
+   "Wand",
+   "Staff",
+   "Bow",
+   "Crossbow",
+   "Claw",
+   "Arm Cannon",
+   "Ancient Bow",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Bladecaster",
+   "Whispershot"
+  ],
+  "1702217": [
+   "weapon"
+  ],
+  "1702218": [
+   "weapon"
+  ],
+  "1702219": [
+   "weapon"
+  ],
+  "1702220": [
+   "weapon"
+  ],
+  "1702221": [
+   "weapon"
+  ],
+  "1702222": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Wand",
+   "Staff",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702223": [
+   "claw"
+  ],
+  "1702224": [
+   "weapon"
+  ],
+  "1702225": [
+   "weapon"
+  ],
+  "1702226": [
+   "weapon"
+  ],
+  "1702227": [
+   "weapon"
+  ],
+  "1702228": [
+   "bow",
+   "crossbow"
+  ],
+  "1702229": [
+   "weapon"
+  ],
+  "1702230": [
+   "weapon"
+  ],
+  "1702231": [
+   "weapon"
+  ],
+  "1702232": [
+   "weapon"
+  ],
+  "1702235": [
+   "weapon"
+  ],
+  "1702237": [
+   "weapon"
+  ],
+  "1702238": [
+   "weapon"
+  ],
+  "1702239": [
+   "weapon"
+  ],
+  "1702240": [
+   "weapon"
+  ],
+  "1702241": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Wand",
+   "Staff",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Cane",
+   "Shining Rod",
+   "Psy-limiter",
+   "Memorial Staff"
+  ],
+  "1702242": [
+   "weapon"
+  ],
+  "1702243": [
+   "weapon"
+  ],
+  "1702244": [
+   "weapon"
+  ],
+  "1702245": [
+   "weapon"
+  ],
+  "1702246": [
+   "weapon"
+  ],
+  "1702247": [
+   "weapon"
+  ],
+  "1702248": [
+   "weapon"
+  ],
+  "1702249": [
+   "weapon"
+  ],
+  "1702250": [
+   "weapon"
+  ],
+  "1702251": [
+   "weapon"
+  ],
+  "1702252": [
+   "weapon"
+  ],
+  "1702253": [
+   "weapon"
+  ],
+  "1702254": [
+   "weapon"
+  ],
+  "1702255": [
+   "weapon"
+  ],
+  "1702256": [
+   "weapon"
+  ],
+  "1702257": [
+   "weapon"
+  ],
+  "1702258": [
+   "weapon"
+  ],
+  "1702259": [
+   "weapon"
+  ],
+  "1702260": [
+   "weapon"
+  ],
+  "1702261": [
+   "weapon"
+  ],
+  "1702262": [
+   "weapon"
+  ],
+  "1702263": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Dagger",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702264": [
+   "weapon"
+  ],
+  "1702265": [
+   "weapon"
+  ],
+  "1702266": [
+   "weapon"
+  ],
+  "1702267": [
+   "weapon"
+  ],
+  "1702268": [
+   "weapon"
+  ],
+  "1702270": [
+   "Hand Cannons"
+  ],
+  "1702271": [
+   "Hand Cannons"
+  ],
+  "1702272": [
+   "weapon"
+  ],
+  "1702273": [
+   "weapon"
+  ],
+  "1702274": [
+   "weapon"
+  ],
+  "1702275": [
+   "weapon"
+  ],
+  "1702276": [
+   "weapon"
+  ],
+  "1702277": [
+   "weapon"
+  ],
+  "1702278": [
+   "weapon"
+  ],
+  "1702279": [
+   "weapon"
+  ],
+  "1702280": [
+   "weapon"
+  ],
+  "1702281": [
+   "weapon"
+  ],
+  "1702282": [
+   "weapon"
+  ],
+  "1702283": [
+   "weapon"
+  ],
+  "1702284": [
+   "weapon"
+  ],
+  "1702285": [
+   "weapon"
+  ],
+  "1702286": [
+   "weapon"
+  ],
+  "1702287": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Katana",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Memorial Staff"
+  ],
+  "1702288": [
+   "weapon"
+  ],
+  "1702289": [
+   "One-Handed Sword",
+   "One-Handed Axe",
+   "One-Handed Blunt Weapon",
+   "Ritual Fan",
+   "Spirit Walker Fan",
+   "Desperado",
+   "Chain Sword",
+   "Memorial Staff",
+   "Katana"
+  ],
+  "1702290": [
+   "weapon"
+  ],
+  "1702291": [
+   "weapon"
+  ],
+  "1702292": [
+   "weapon"
+  ],
+  "1702293": [
+   "weapon"
+  ],
+  "1702294": [
+   "weapon"
+  ],
+  "1702295": [
+   "weapon"
+  ],
+  "1702296": [
+   "weapon"
+  ],
+  "1702297": [
+   "weapon"
+  ],
+  "1702298": [
+   "weapon"
+  ],
+  "1702299": [
+   "weapon"
+  ],
+  "1702300": [
+   "weapon"
+  ],
+  "1702301": [
+   "weapon"
+  ],
+  "1702302": [
+   "weapon"
+  ],
+  "1702303": [
+   "any weapon"
+  ],
+  "1702304": [
+   "weapon"
+  ],
+  "1702305": [
+   "weapon"
+  ],
+  "1702307": [
+   "weapon"
+  ],
+  "1702310": [
+   "weapon"
+  ],
+  "1702311": [
+   "weapon"
+  ],
+  "1702312": [
+   "weapon"
+  ],
+  "1702313": [
+   "weapon"
+  ],
+  "1702314": [
+   "weapon"
+  ],
+  "1702315": [
+   "weapon"
+  ],
+  "1702316": [
+   "weapon"
+  ],
+  "1702317": [
+   "weapon"
+  ],
+  "1702318": [
+   "weapon"
+  ],
+  "1702319": [
+   "weapon"
+  ],
+  "1702320": [
+   "weapon"
+  ],
+  "1702321": [
+   "weapon"
+  ],
+  "1702322": [
+   "weapon"
+  ],
+  "1702323": [
+   "weapon"
+  ],
+  "1702324": [
+   "weapon"
+  ],
+  "1702325": [
+   "weapon"
+  ],
+  "1702326": [
+   "weapon"
+  ],
+  "1702327": [
+   "weapon"
+  ],
+  "1702328": [
+   "weapon"
+  ]
+ }
+}

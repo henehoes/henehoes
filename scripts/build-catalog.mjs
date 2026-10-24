@@ -135,6 +135,37 @@ const byId = (a, b) => a - b;
 const orderOf = (kind, s) => s.classicId ?? (kind === 'hair' ? s.key * 10 : s.key);
 catalog.skins.sort((a, b) => byId(a.tone, b.tone));
 for (const kind of ['face', 'hair']) catalog[kind].sort((a, b) => byId(orderOf(kind, a), orderOf(kind, b)) || byId(a.key, b.key));
+// Dyeing: the game marks the items it lets you dye (data/game-dye.json, scripts/extract-dyeable.mjs). A catalogue item the game has and
+// does not mark gets `dyeable: false` (no colour sliders in the app); an item the game files do not list is left alone.
+const gameDye = read('data/game-dye.json'), knownIds = new Set(gameDye.known), dyeIds = new Set(gameDye.dyeable);
+warnings.dyeUnknown = [];
+for (const [slotKey, slot] of Object.entries(catalog.wearables)) for (const it of slot.items) {
+  if (it.effect) continue; // rings have no colour settings at all
+  const cid = it.classicId ?? it.id;
+  if (!knownIds.has(cid)) warnings.dyeUnknown.push(`${it.name} (${slotKey} ${cid})`);
+  else if (!dyeIds.has(cid)) it.dyeable = false;
+}
+// Possible upcoming items (data/upcoming.json, scripts/extract-upcoming.mjs): dyeable in the game files, not in the catalogue. They join
+// their slot's list flagged `upcoming: true`; the app lists them only in the Upcoming tab. UNCONFIRMED: dyeable is only a hint.
+for (const u of read('data/upcoming.json').items) {
+  const dir = `sprites/upcoming/${u.id}`, slot = slotOf(u.id);
+  if (!slot) { warnings.unknownSlot.push(`${u.name}:${u.id}`); continue; }
+  const meta = read(`public/${dir}/meta.json`), parts = partsOf(meta, dir);
+  if (!parts.length) { warnings.noParts.push(`${u.name} (upcoming ${slot[2]})`); continue; }
+  const p2 = parts2Of(dir, u.name);
+  (catalog.wearables[slot[1]] ??= { label: slot[2], items: [] }).items.push({ id: u.id, name: u.name, classicId: u.id, upcoming: true, vslots: meta.vslots ?? [], ...(existsSync(`public/${dir}/icon.png`) && { icon: `${dir}/icon.png` }), ...(u.weaponClass && { weaponClass: u.weaponClass }), parts, ...(p2 && { parts2: p2 }) });
+}
+// Which weapon types a cash weapon goes over, from the game's own descriptions (data/weapon-types.json, scripts/extract-weapon-types.mjs).
+const weaponTypes = read('data/weapon-types.json').types;
+for (const it of catalog.wearables.weapon?.items ?? []) { const t = weaponTypes[it.classicId ?? it.id]; if (t) it.worksWith = t; else warnings.noWeaponTypes = [...(warnings.noWeaponTypes ?? []), it.name]; }
+// rules.baseBody: the starter undergarments are part of the body (drawn by gender unless a top, bottom or overall replaces them), so they
+// leave the Top and Bottom lists and go to catalog.base[gender][slot].
+catalog.base = {};
+for (const [g, slots] of Object.entries(rules.baseBody ?? {})) for (const [slot, id] of Object.entries(slots)) {
+  const list = catalog.wearables[slot].items, i = list.findIndex(x => x.id === id);
+  if (i < 0) throw new Error(`baseBody: ${g} ${slot} ${id} is not in the catalogue`);
+  (catalog.base[g] ??= {})[slot] = list.splice(i, 1)[0];
+}
 // rules.listFirst: ids shown at the top of their tab, in that order; everything else follows by sprite id.
 const firstRank = id => { const i = (rules.listFirst ?? []).indexOf(id); return i === -1 ? Infinity : i; };
 for (const slot of Object.values(catalog.wearables)) slot.items.sort((a, b) => firstRank(a.id) - firstRank(b.id) || byId(a.id, b.id));

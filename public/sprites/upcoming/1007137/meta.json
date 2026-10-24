@@ -1,0 +1,51 @@
+{
+ "id": 1007137,
+ "name": "Superstar Headphones",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 51,
+   "h": 23,
+   "origin": {
+    "x": 20,
+    "y": 3,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  },
+  {
+   "key": "defalutAc",
+   "w": 24,
+   "h": 14,
+   "origin": {
+    "x": -7,
+    "y": 5,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capBelowBody"
+  }
+ ]
+}

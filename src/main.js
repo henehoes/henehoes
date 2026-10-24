@@ -19,6 +19,8 @@ const OX = 60, OY = 112;          // where the skin's top-left sits on that canv
 
 // A slot named in DISABLED_SLOTS is hidden from the tabs, the Equipped panel, the preview, Random and saved defaults (code and data stay).
 const narrowLayout = matchMedia('(max-width: 800px)'); // the one-column phone layout (see the media query in style.css)
+// The possible-upcoming items (Next Crate tab, Released | Upcoming switches) are hidden while this is false; code and data stay.
+const SHOW_UPCOMING = false;
 const DISABLED_SLOTS = new Set(); // a slot named here is hidden everywhere (the code and data stay); empty now that the rings are rebuilt from the game files
 const WEAR_ORDER = ['cap', 'faceAcc', 'eyeAcc', 'earrings', 'longcoat', 'coat', 'pants', 'glove', 'shoes', 'cape', 'weapon', 'nameTag', 'chatBalloon'];
 
@@ -91,19 +93,20 @@ function isTwoHanded(sel) {
 }
 const fresh = () => ({
   text: { name: DEFAULT_NAME }, // shown by a name tag ring (the name can be edited in the Equipped panel)
+  sex: 'male', // the body's gender: decides which undergarments are worn when no top or bottom is
   skin: 0,
   face: { style: null, colour: 0 },
   hair: { style: null, colour: 0 },
   wear: Object.fromEntries(WEAR_ORDER.map(k => [k, { item: null, h: 0, c: 0, b: 0, two: false }])), // the game's dye: tone 0..359 (h), chroma -99..99 (c), brightness -99..99 (b); all 0 = the item's own colours
 });
-// The starting look: the lowest-numbered skin, no face, no hair and nothing worn.
+// The starting look: a male body in the lowest-numbered skin, no face, no hair and nothing worn.
 const initial = () => fresh();
 // ---------- saved default (kept in this browser, so it is still there when the page is reopened) ----------
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
 const SAVE_KEY = 'maple-layers:default-v2'; // v2: colour values are the game's tone/chroma/brightness numbers
 // Styles are stored by their key, not their list position, so a catalogue update cannot shift them.
 const pack = () => ({
-  gender, skin: state.skin, text: state.text,
+  gender, sex: state.sex, skin: state.skin, text: state.text,
   face: { key: styleOf('face')?.key ?? null, colour: state.face.colour },
   hair: { key: styleOf('hair')?.key ?? null, colour: state.hair.colour },
   wear: Object.fromEntries(WEAR_ORDER.map(k => [k, { ...state.wear[k] }])),
@@ -114,6 +117,7 @@ function loadSaved() {
     if (!d) return null;
     const s = fresh();
     if (catalog.skins.some(x => x.tone === d.skin)) s.skin = d.skin;
+    if (d.sex === 'male' || d.sex === 'female') s.sex = d.sex;
     for (const kind of ['face', 'hair']) {
       const i = catalog[kind].findIndex(x => x.key === d[kind]?.key);
       if (i >= 0) s[kind] = { style: i, colour: catalog[kind][i].variants.some(v => v.colour === d[kind].colour) ? d[kind].colour : catalog[kind][i].variants[0].colour };
@@ -121,7 +125,7 @@ function loadSaved() {
     for (const k of WEAR_ORDER) {
       if (DISABLED_SLOTS.has(k)) continue; // a ring saved before they were switched off is not brought back
       const w = d.wear?.[k];
-      if (w && (w.item == null || catalog.wearables[k]?.items.some(i => i.id === w.item))) s.wear[k] = { item: w.item, two: !!w.two, h: clamp(Math.round(+w.h || 0), 0, 359), c: clamp(Math.round(+w.c || 0), -99, 99), b: clamp(Math.round(+w.b || 0), -99, 99) };
+      if (w && (w.item == null || catalog.wearables[k]?.items.some(i => i.id === w.item && (SHOW_UPCOMING || !i.upcoming)))) s.wear[k] = { item: w.item, two: !!w.two, h: clamp(Math.round(+w.h || 0), 0, 359), c: clamp(Math.round(+w.c || 0), -99, 99), b: clamp(Math.round(+w.b || 0), -99, 99) };
     }
     // A look saved before the placeholder became "henehoe" carries the old placeholder "Maple": show the new one instead.
     if (typeof d.text?.name === 'string') s.text = { name: d.text.name === 'Maple' ? DEFAULT_NAME : d.text.name.slice(0, 12) };
@@ -132,11 +136,17 @@ const hasSaved = () => { try { return localStorage.getItem(SAVE_KEY) != null; } 
 
 let gender = 'all'; // which styles the Face and Hair tabs list: 'all' (the default), 'male' or 'female'
 let state = fresh();
-let activeTab = 'skin';
+let activeTab = 'body';
 let mode = 'character'; // which book is open: 'character' (the dress-up catalogue) or 'housing' (src/housing.js)
-const lastTab = { character: 'skin', housing: 'homes' }; // the tab each book was on when it was left
+const lastTab = { character: 'body', housing: 'homes' }; // the tab each book was on when it was left
 let source = 'released'; // Face/Hair lists: 'released' (in the game now) or 'datamine' (everything found in the game files, released or not)
 const forGender = s => gender === 'all' || s.gender === 'both' || s.gender === gender; // 'both': collab styles listed for both genders
+const regular = slot => catalog.wearables[slot].items.filter(i => !i.upcoming); // a slot's own items: the possible upcoming ones (Upcoming tab) are left out
+// Category tabs that have possible upcoming items (the Next Crate tab's items, by slot) get a Released | Upcoming switch.
+let crate = 'released'; // 'released' or 'upcoming': which items those tabs list (shared between them, like `source`)
+const hasUpcoming = slot => SHOW_UPCOMING && !!catalog.wearables[slot]?.items.some(i => i.upcoming);
+const inView = (slot, item) => !!item.upcoming === (hasUpcoming(slot) && crate === 'upcoming');
+const dyeOf = (item, w) => item.dyeable === false ? [0, 0, 0] : [w.h, w.c, w.b]; // the game does not let you dye some items: their colour settings do nothing
 const listed = s => source === 'datamine' || s.released !== false;
 let search = ''; // text typed in the catalogue's search box; cleared when the tab changes
 // Hat tab filter ("Fit"): how a hat treats the worn hair, from the covered-slot codes (vslots) it carries, the same ones buildLayers
@@ -160,12 +170,19 @@ const variantOf = kind => {
 };
 
 // ---------- rendering ----------
+// The body's undergarments (catalog.base, by gender): the top unless a top or an overall is worn, the bottom unless a bottom or an overall is.
+// They are not an equipped item: no tab, no Equipped tile, no colour settings.
+function baseOf(sel) {
+  const b = catalog.base[sel.sex], w = sel.wear, overall = w.longcoat.item != null;
+  return [!overall && w.coat.item == null && b.coat, !overall && w.pants.item == null && b.pants].filter(Boolean);
+}
 async function buildLayers(sel) {
   // Every sprite file the look needs is requested at once (not one after another: on a phone each request waits for the network, so
   // a look of 25 parts took seconds). Layers keep the order they were added in, which decides how same-height parts stack.
   const jobs = [];
   // Worn items declare slot codes (e.g. a hat with H1); parts tied to a covered slot are hidden.
-  const covered = new Set(WEAR_ORDER.flatMap(slot => catalog.wearables[slot]?.items.find(i => i.id === sel.wear[slot].item)?.vslots ?? []));
+  const base = baseOf(sel);
+  const covered = new Set([...WEAR_ORDER.flatMap(slot => catalog.wearables[slot]?.items.find(i => i.id === sel.wear[slot].item)?.vslots ?? []), ...base.flatMap(i => i.vslots ?? [])]);
   const add = (parts, h = 0, c = 0, b = 0) => {
     for (const p of parts.filter(p => !covered.has(p.hiddenBy))) jobs.push(tinted(p.file, h, c, b).then(img => ({ img, x: OX + p.x, y: OY + p.y, z: p.z })));
   };
@@ -179,10 +196,11 @@ async function buildLayers(sel) {
     const v = st && (st.variants.find(x => x.colour === sel[kind].colour) ?? st.variants[0]);
     if (v && partsFor(v)) add(partsFor(v));
   }
+  for (const item of base) add(partsFor(item)); // the undergarments, drawn as part of the body
   for (const slot of WEAR_ORDER) {
     const w = sel.wear[slot];
     const item = catalog.wearables[slot]?.items.find(i => i.id === w.item);
-    if (item) add(partsFor(item), w.h, w.c, w.b);
+    if (item) add(partsFor(item), ...dyeOf(item, w));
   }
   for (const slot of RING_SLOTS) {
     if (DISABLED_SLOTS.has(slot)) continue;
@@ -315,7 +333,7 @@ async function drawThumb(canvas, boxEl, sel, view) {
 // A selection that shows only the skin plus one thing.
 function only(patch) {
   const sel = fresh();
-  sel.skin = state.skin;
+  sel.skin = state.skin; sel.sex = state.sex;
   return patch(sel);
 }
 
@@ -323,8 +341,8 @@ function only(patch) {
 const note = text => { $('ph-note').textContent = text; };
 
 // Chapter tabs down the right edge of the book. Short names keep the rail narrow; the chapter title shows the full one.
-const TAB_NAMES = { search: 'Search', faceAcc: 'Face Acc.', eyeAcc: 'Eye Deco', longcoat: 'Overall', nameTag: 'Name Ring', chatBalloon: 'Chat Ring' };
-const CHAPTER_TITLES = { search: 'Search Everything', skin: 'Skin Tones', face: 'Faces', hair: 'Hairstyles', cap: 'Hats', faceAcc: 'Face Accessories', eyeAcc: 'Eye Decorations', earrings: 'Earrings', longcoat: 'Overalls', coat: 'Tops', pants: 'Bottoms', glove: 'Gloves', shoes: 'Shoes', cape: 'Capes', weapon: 'Weapons', nameTag: 'Name Rings', chatBalloon: 'Chat Rings' };
+const TAB_NAMES = { search: 'All', faceAcc: 'Face Acc.', eyeAcc: 'Eye Deco', longcoat: 'Overall', nameTag: 'Name Ring', chatBalloon: 'Chat Ring', upcoming: 'Next Crate' };
+const CHAPTER_TITLES = { upcoming: 'Possible Upcoming Crates', search: 'Search Everything', body: 'Body', face: 'Faces', hair: 'Hairstyles', cap: 'Hats', faceAcc: 'Face Accessories', eyeAcc: 'Eye Decorations', earrings: 'Earrings', longcoat: 'Overalls', coat: 'Tops', pants: 'Bottoms', glove: 'Gloves', shoes: 'Shoes', cape: 'Capes', weapon: 'Weapons', nameTag: 'Name Rings', chatBalloon: 'Chat Rings' };
 
 function renderTabs() {
   const tabs = $('tabs');
@@ -353,10 +371,11 @@ function renderTabs() {
     tabs.append(t);
   };
   add('search', 'Search', false, 'lookup');
-  add('skin', 'Skin', false, 'character');
+  add('body', 'Body', false, 'character');
   add('face', 'Face', state.face.style != null, 'character');
   add('hair', 'Hair', state.hair.style != null, 'character');
   WEAR_ORDER.filter(s => catalog.wearables[s] && !DISABLED_SLOTS.has(s)).forEach((s, i) => add(s, catalog.wearables[s].label, state.wear[s].item != null, i === 0 ? 'wearable first' : 'wearable'));
+  if (SHOW_UPCOMING) add('upcoming', 'Possible items for the next Mystery Fashion Crates (unconfirmed)', upcomingWorn(), 'wearable upcoming');
   tabs.scrollLeft = scrolled;
   $('chapter').textContent = CHAPTER_TITLES[activeTab] ?? catalog.wearables[activeTab]?.label ?? '';
 }
@@ -369,11 +388,13 @@ function renderFilters() {
   $('source').replaceChildren();
   const everything = activeTab === 'search';
   const input = el('input', { type: 'search', className: 'search-input', placeholder: everything ? 'Search everything…' : 'Search entries…', value: search, autocomplete: 'off', spellcheck: false });
-  input.setAttribute('aria-label', everything ? 'Search skins, faces, hairs and clothing' : 'Search this list');
+  input.setAttribute('aria-label', everything ? 'Search body, faces, hairs and clothing' : 'Search this list');
   // The Search tab waits a moment after the last keystroke, so fast typing does not rebuild the results on every letter.
   input.oninput = () => { search = input.value; clearTimeout(searchTimer); if (everything) searchTimer = setTimeout(() => renderContent(false), 150); else renderContent(true); };
   box.append(el('label', { className: 'search' }, el('span', { className: 'glass', 'aria-hidden': 'true' }), input));
   if (everything) { input.focus(); input.setSelectionRange(input.value.length, input.value.length); }
+  if (activeTab === 'body') return renderSexPicker();
+  if (WEAR_ORDER.includes(activeTab) && hasUpcoming(activeTab)) renderCrateSwitch();
   if (activeTab === 'cap') return renderFit();
   if (RING_SLOTS.includes(activeTab)) return renderSourceSwitch(activeTab === 'nameTag' ? 'Which name tags to list' : 'Which chat bubbles to list', 'Rings');
   if (activeTab !== 'face' && activeTab !== 'hair') return;
@@ -407,10 +428,39 @@ function renderSourceSwitch(label, what) {
   src.append(sw);
 }
 
+// The Body tab's gender picker, in the row above the search box: it decides the undergarments the body wears.
+function renderSexPicker() {
+  const src = $('source');
+  src.append(el('span', { className: 'source-label', textContent: 'Gender' }));
+  const sw = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': 'Body gender' });
+  for (const [g, label, tip] of [['male', '♂ Male', 'Blue striped undershirt and boxers'], ['female', '♀ Female', 'Pink tank top and cotton boxers']]) {
+    const btn = el('button', { type: 'button', role: 'radio', textContent: label, title: `${tip} when no top or bottom is worn` });
+    btn.setAttribute('aria-pressed', String(state.sex === g)); btn.setAttribute('aria-checked', String(state.sex === g));
+    btn.onclick = () => { state.sex = g; afterChangeKeep(true); };
+    sw.append(btn);
+  }
+  src.append(sw);
+}
+
+// The Released | Upcoming switch on a category tab that has possible upcoming items. The question-mark icon says "unconfirmed".
+function renderCrateSwitch() {
+  const src = $('source'), group = el('div', { className: 'source-group' });
+  group.append(el('span', { className: 'source-label', textContent: 'Show' }));
+  const sw = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': 'Released items or possible upcoming items' });
+  for (const [v, text] of [['released', 'Released'], ['upcoming', 'Upcoming']]) {
+    const btn = el('button', { type: 'button', role: 'radio', title: v === 'released' ? 'Items that are in the game now' : 'Possible items for the next Mystery Fashion Crates (unconfirmed)' }, text);
+    if (v === 'upcoming') { btn.append(el('i', { className: 'q-icon', 'aria-hidden': 'true' })); btn.setAttribute('aria-label', 'Upcoming, unconfirmed'); }
+    btn.setAttribute('aria-pressed', String(crate === v)); btn.setAttribute('aria-checked', String(crate === v));
+    btn.onclick = () => { crate = v; renderFilters(); renderContent(true); };
+    sw.append(btn);
+  }
+  group.append(sw); src.append(group);
+}
+
 // The Hat tab's "Fit" picker, in the row above the search box: All, Topper, Cap, Helmet, each with how many hats it holds.
 function renderFit() {
-  const hats = catalog.wearables.cap.items, src = $('source');
-  src.append(el('span', { className: 'source-label', textContent: 'Fit' }));
+  const hats = catalog.wearables.cap.items.filter(i => inView('cap', i)), src = $('source');
+  const group = el('div', { className: 'source-group' }, el('span', { className: 'source-label', textContent: 'Fit' }));
   const sw = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': 'How the hat treats your hair' });
   for (const [v, label, tip] of [['all', 'All', 'Every hat'], ...HAT_FITS]) {
     const n = v === 'all' ? hats.length : hats.filter(i => hairEffectOf(i) === v).length;
@@ -419,7 +469,7 @@ function renderFit() {
     btn.onclick = () => { hatFit = v; renderFilters(); renderContent(true); };
     sw.append(btn);
   }
-  src.append(sw);
+  group.append(sw); src.append(group);
 }
 
 // A card for something that is on the list but could not be drawn. Clicking it explains why.
@@ -494,7 +544,10 @@ function sliderRow(label, min, max, step, value, fmt, onInput) {
 // One small preview tile in the Equipped panel: the face or hair on the skin, or the item's own sprite, with its category
 // underneath. The full name (and the colour) is the tooltip.
 // A worn item counts as dyed once any of its tone, chroma or brightness is off 0 (face and hair have no dye, only colour styles).
-const isDyed = key => { const w = state.wear[key]; return !!w && (w.h !== 0 || w.c !== 0 || w.b !== 0); };
+const isDyed = key => {
+  const w = state.wear[key], item = w && catalog.wearables[key]?.items.find(i => i.id === w.item);
+  return !!item && item.dyeable !== false && (w.h !== 0 || w.c !== 0 || w.b !== 0);
+};
 // Shows or hides the palette icon on the Equipped tiles without redrawing them (the sliders are being dragged).
 const syncDyed = () => document.querySelectorAll('.equipped .card.mini[data-key]').forEach(b => b.classList.toggle('dyed', isDyed(b.dataset.key)));
 
@@ -503,7 +556,7 @@ function equippedCard(e) {
   const choose = () => { configTarget = e.key; renderColour(); };
   if (e.key === 'face' || e.key === 'hair') {
     // The face alone on the skin, or the hair alone, so the two tiles look different.
-    b = optionCard(e.label, false, MINI_VIEW, () => { const sel = fresh(); sel.skin = state.skin; sel[e.key] = { ...state[e.key] }; return sel; }, choose);
+    b = optionCard(e.label, false, MINI_VIEW, () => { const sel = fresh(); sel.skin = state.skin; sel.sex = state.sex; sel[e.key] = { ...state[e.key] }; return sel; }, choose);
   } else if (RING_SLOTS.includes(e.key)) {
     b = ringCard(e.item, false, e.key, true);
     b.querySelector('.label').textContent = e.label;
@@ -544,6 +597,10 @@ function equipped() {
   return out;
 }
 
+// The Equipped panel's headings: the category and the name of what is worn, then sections with small-caps subheadings.
+const panelHeading = (label, name) => el('h3', {}, label, name ? el('span', { className: 'item-name', textContent: name }) : null);
+const panelSection = (title, ...kids) => el('section', { className: 'panel-section' }, el('h4', { className: 'sub', textContent: title }), ...kids);
+
 // The Equipped panel (left): what I am wearing as sprites, and the colour settings of the one I select.
 // Face and hair show every colour of the chosen style; a wearable shows hue, chroma and brightness.
 function renderColour() {
@@ -563,12 +620,20 @@ function renderColour() {
     grid.append(el('div', { className: 'slot' }, equippedCard(e), x));
   }
   c.append(grid);
-  if (configTarget === 'face' || configTarget === 'hair') return c.append(el('h3', { textContent: `${configTarget === 'face' ? 'Face' : 'Hair'} colour` }), colourGrid(configTarget));
+  if (configTarget === 'face' || configTarget === 'hair') return c.append(panelHeading(configTarget === 'face' ? 'Face' : 'Hair', styleOf(configTarget)?.style), panelSection(configTarget === 'face' ? 'Eye colour' : 'Hair colour', colourGrid(configTarget)));
   const data = catalog.wearables[configTarget], w = state.wear[configTarget];
+  // Every worn item's panel starts with its category and name; then sections with small-caps subheadings.
+  const worn = data.items.find(i => i.id === w.item), isWeapon = configTarget === 'weapon' && !!worn;
+  const section = panelSection, heading = panelHeading(data.label, worn?.name);
   if (RING_SLOTS.includes(configTarget)) {
-    const fx = data.items.find(i => i.id === w.item)?.effect, editable = configTarget === 'nameTag' && !!(fx?.tag || fx?.plain);
-    return c.append(el('h3', { textContent: data.label }), ...(editable ? [textFields()] : []), el('p', { className: 'hint', textContent: editable ? 'This ring has no colour settings. Type the name it shows.' : 'This ring has no colour settings: it is shown as it looks in the game (its text cannot be changed).' }));
+    const fx = worn?.effect, editable = configTarget === 'nameTag' && !!(fx?.tag || fx?.plain);
+    return c.append(heading, ...(editable ? [textFields()] : []), el('p', { className: 'hint', textContent: editable ? 'This ring has no colour settings. Type the name it shows.' : 'This ring has no colour settings: it is shown as it looks in the game (its text cannot be changed).' }));
   }
+  // A weapon also says which weapon types it goes over (the game's own description) and, for two of them, offers a hold choice.
+  const types = worn?.worksWith?.[0] === 'weapon' ? ['any weapon'] : worn?.worksWith ?? [];
+  const worksWith = isWeapon && types.length ? [section('Works with', el('div', { className: 'chips' }, ...types.map(t => el('span', { className: 'chip', textContent: t[0].toUpperCase() + t.slice(1) }))))] : [];
+  // The game does not let you dye some items (no dye flag in its files): no sliders, just a note.
+  if (worn?.dyeable === false) { const hint = el('p', { className: 'hint', textContent: "This item can't be dyed in the game." }); return c.append(heading, ...worksWith, isWeapon ? section('Dye', hint) : hint); }
   // The game's own numbers, all starting at 0 (the item's own colours): Tone 0 to 359, Chroma and Brightness -99 to +99.
   const signed = v => `${v > 0 ? '+' : ''}${v}`;
   const slider = (label, key, min, max) => sliderRow(label, min, max, 1, w[key], signed, v => { w[key] = v; syncDyed(); renderPreview(); });
@@ -586,20 +651,20 @@ function renderColour() {
   const note = el('div', { className: 'dye-note', role: 'note' }, el('span', { className: 'dye-badge', textContent: '!', 'aria-hidden': 'true' }),
     el('p', { textContent: "Some special effects keep their original colour in the game even when dyed. We can't tell which, so this preview dyes every part it can; some items may show little or no change." }));
   // A weapon with both a one-handed and a two-handed hold lets you pick which one the character stands in.
-  const wornItem = data.items.find(i => i.id === w.item);
-  let holdPicker = null;
-  if (wornItem?.holds) {
-    holdPicker = el('div', { className: 'hold-row' }, el('span', { className: 'source-label', textContent: 'Hold' }));
-    const seg = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': 'How the weapon is held' });
+  let holdSeg = null;
+  if (worn?.holds) {
+    holdSeg = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': 'How the weapon is held' });
     for (const [two, label] of [[false, 'One-handed'], [true, 'Two-handed']]) {
       const b = el('button', { type: 'button', role: 'radio', textContent: label });
       b.setAttribute('aria-pressed', String(!!w.two === two)); b.setAttribute('aria-checked', String(!!w.two === two));
       b.onclick = () => { w.two = two; renderColour(); renderPreview(); };
-      seg.append(b);
+      holdSeg.append(b);
     }
-    holdPicker.append(seg);
   }
-  c.append(el('h3', { textContent: `${data.label} colour` }), ...(holdPicker ? [holdPicker] : []), sliders, el('div', { className: 'btn-row' }, random, reset), note);
+  const buttons = el('div', { className: 'btn-row' }, random, reset);
+  // Only a weapon has more than dye (Works with, Hold), so only a weapon labels its Dye section.
+  if (isWeapon) return c.append(heading, ...worksWith, ...(holdSeg ? [section('Hold', holdSeg)] : []), section('Dye', sliders, buttons, note));
+  c.append(heading, sliders, buttons, note);
 }
 
 // keepScroll: redraw in place (after a selection or colour change) instead of jumping back to the top of the list.
@@ -610,7 +675,8 @@ function renderContent(keepScroll = false) {
   $('toolbar').replaceChildren();
   if (mode === 'housing') { housing.renderContent(c, activeTab, matches, () => afterChangeKeep(true)); c.scrollTop = keepScroll ? top : 0; return; }
   if (activeTab === 'search') renderSearch(c);
-  else if (activeTab === 'skin') renderSkin(c);
+  else if (activeTab === 'body') renderBody(c)
+  else if (activeTab === 'upcoming') renderUpcoming(c);
   else if (activeTab === 'face' || activeTab === 'hair') renderStyles(c, activeTab);
   else renderWearable(c, activeTab);
   if (activeTab !== 'search' && search && !c.querySelector('.card')) c.append(el('p', { className: 'empty', textContent: 'No entries match. Try another word.' }));
@@ -637,7 +703,7 @@ function renderColourBar(kind) {
 function skinCard(s) {
   // Same crop as face and hair, on this skin wearing the current face and hair only (a face only if one is worn).
   return optionCard(SKIN_NAMES[s.tone], s.tone === state.skin, VIEW,
-    () => { const sel = fresh(); sel.skin = s.tone; sel.face = { ...state.face }; sel.hair = { ...state.hair }; return sel; },
+    () => { const sel = fresh(); sel.skin = s.tone; sel.sex = state.sex; sel.face = { ...state.face }; sel.hair = { ...state.hair }; return sel; },
     () => { state.skin = s.tone; afterChange(); });
 }
 
@@ -665,10 +731,11 @@ function wearableCard(slot, item) {
   if (item.classicId) card.title = `${card.title} · Classic ${item.classicId}`;
   if (item.collab) card.append(el('span', { className: 'badge collab-badge', textContent: `${item.collab.toUpperCase()} COLLAB` }));
   if (item.released === false) { card.classList.add('unreleased'); card.append(el('span', { className: 'badge unreleased-badge', textContent: 'DATAMINE' })); }
+  if (item.upcoming) { card.classList.add('unreleased'); card.append(el('span', { className: 'badge unreleased-badge', textContent: 'CRATE?' })); }
   return card;
 }
 
-function renderSkin(c) {
+function renderBody(c) {
   const grid = el('div', { className: 'grid' });
   for (const s of catalog.skins) if (SKIN_NAMES[s.tone] && matches(SKIN_NAMES[s.tone])) grid.append(skinCard(s));
   c.append(grid);
@@ -683,11 +750,30 @@ function renderStyles(c, kind) {
   c.append(grid);
 }
 
+// The Upcoming tab: equipment the game files mark as dyeable that is not in the catalogue. UNCONFIRMED, and the page says so.
+const upcomingWorn = () => WEAR_ORDER.some(slot => catalog.wearables[slot]?.items.some(i => i.upcoming && i.id === state.wear[slot].item));
+// The disclaimer shown on the Next Crate tab and above the Upcoming view of a category tab.
+const unconfirmedNote = () => el('div', { className: 'empty-note unconfirmed', role: 'note' }, el('span', { className: 'empty-badge', textContent: '?', 'aria-hidden': 'true' }), el('p', {},
+  el('strong', { textContent: 'Unconfirmed guess. ' }),
+  "These are the only unreleased items from the datamine that are marked as \"dyeable\". They may point to the next two seasons of Mystery Fashion Crates: Halloween (skulls, pumpkins, witches, mummies) and then winter (snowboard gear, parkas, beanies)."));
+function renderUpcoming(c) {
+  c.append(unconfirmedNote());
+  for (const slot of WEAR_ORDER) {
+    const items = (catalog.wearables[slot]?.items ?? []).filter(i => i.upcoming && matches(i.name));
+    if (!items.length) continue;
+    c.append(el('h3', { className: 'group-title', textContent: `${CHAPTER_TITLES[slot] ?? catalog.wearables[slot].label} · ${items.length}` }));
+    const grid = el('div', { className: 'grid' });
+    for (const item of items) grid.append(wearableCard(slot, item));
+    c.append(grid);
+  }
+}
+
 function renderWearable(c, slot) {
   const data = catalog.wearables[slot];
   const grid = el('div', { className: 'grid' });
   if (RING_SLOTS.includes(slot) && source === 'datamine') c.append(el('p', { className: 'datamine-note', textContent: 'Showing everything in the game data. Rings marked DATAMINE are not released yet.' }));
-  for (const item of data.items.filter(i => matches(i.name) && (RING_SLOTS.includes(slot) ? listed(i) : true) && (slot !== 'cap' || hatFit === 'all' || hairEffectOf(i) === hatFit))) grid.append(wearableCard(slot, item));
+  if (hasUpcoming(slot) && crate === 'upcoming') c.append(unconfirmedNote());
+  for (const item of data.items.filter(i => inView(slot, i) && matches(i.name) && (RING_SLOTS.includes(slot) ? listed(i) : true) && (slot !== 'cap' || hatFit === 'all' || hairEffectOf(i) === hatFit))) grid.append(wearableCard(slot, item));
   for (const p of (data.placeholders ?? []).filter(p => matches(p.name))) grid.append(placeholderCard(p));
   c.append(grid);
 }
@@ -700,16 +786,16 @@ const infoNote = (...content) => el('div', { className: 'empty-note', role: 'not
 
 function renderSearch(c) {
   const q = flat(search);
-  if (q.length < MIN_SEARCH) return c.append(infoNote(`Type at least ${MIN_SEARCH} letters to search skins, faces, hairs and clothing.`));
+  if (q.length < MIN_SEARCH) return c.append(infoNote(`Type at least ${MIN_SEARCH} letters to search body, faces, hairs and clothing.`));
   // Collect the matches first, grouped in tab order; cards are only built for the first MAX_RESULTS.
   const groups = [];
   const add = (title, entries) => { if (entries.length) groups.push({ title, entries }); };
-  add('Skin tones', catalog.skins.filter(s => SKIN_NAMES[s.tone] && flat(SKIN_NAMES[s.tone]).includes(q)).map(s => () => skinCard(s)));
+  add('Body', catalog.skins.filter(s => SKIN_NAMES[s.tone] && flat(SKIN_NAMES[s.tone]).includes(q)).map(s => () => skinCard(s)));
   for (const [kind, title] of [['face', 'Faces'], ['hair', 'Hairstyles']])
     add(title, catalog[kind].flatMap((s, i) => flat(s.style).includes(q) ? [() => styleCard(kind, s, i)] : []));
   for (const slot of WEAR_ORDER) {
     if (DISABLED_SLOTS.has(slot) || !catalog.wearables[slot]) continue;
-    add(CHAPTER_TITLES[slot] ?? catalog.wearables[slot].label, catalog.wearables[slot].items.filter(it => !it.effect && flat(it.name).includes(q)).map(it => () => wearableCard(slot, it)));
+    add(CHAPTER_TITLES[slot] ?? catalog.wearables[slot].label, catalog.wearables[slot].items.filter(it => !it.effect && !it.upcoming && flat(it.name).includes(q)).map(it => () => wearableCard(slot, it)));
   }
   const total = groups.reduce((n, g) => n + g.entries.length, 0);
   if (!total) return c.append(el('p', { className: 'empty', textContent: 'No entries match. Try another word.' }));
@@ -792,6 +878,7 @@ const pick = list => list[Math.floor(Math.random() * list.length)];
 function randomise() {
   const s = fresh();
   s.text = state.text;
+  s.sex = state.sex; // the body's gender is kept
   s.skin = pick(catalog.skins).tone;
   for (const kind of ['face', 'hair']) {
     const options = catalog[kind].map((x, i) => [x, i]).filter(([x]) => forGender(x) && listed(x));
@@ -800,8 +887,8 @@ function randomise() {
   }
   // Each wearable has an even chance of being worn; an overall replaces the top and bottom. Rings are left alone.
   for (const k of WEAR_ORDER) {
-    if (DISABLED_SLOTS.has(k) || RING_SLOTS.includes(k) || !catalog.wearables[k]?.items.length || Math.random() < 0.5) continue;
-    s.wear[k].item = pick(catalog.wearables[k].items).id;
+    if (DISABLED_SLOTS.has(k) || RING_SLOTS.includes(k) || !regular(k).length || Math.random() < 0.5) continue;
+    s.wear[k].item = pick(regular(k)).id;
   }
   if (s.wear.longcoat.item != null) { if (Math.random() < 0.5) { s.wear.coat.item = null; s.wear.pants.item = null; } else s.wear.longcoat.item = null; }
   state = s;

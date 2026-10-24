@@ -1,0 +1,50 @@
+{
+ "id": 1107052,
+ "name": "Coffin of Gloom",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Sr"
+ ],
+ "islots": [
+  "Sr"
+ ],
+ "parts": [
+  {
+   "key": "cape",
+   "w": 32,
+   "h": 48,
+   "origin": {
+    "x": 1,
+    "y": 32,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capeBelowBody"
+  },
+  {
+   "key": "capeArm",
+   "w": 8,
+   "h": 14,
+   "origin": {
+    "x": -8,
+    "y": 12,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "cape"
+  }
+ ]
+}

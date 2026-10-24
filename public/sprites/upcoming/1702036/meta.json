@@ -1,0 +1,32 @@
+{
+ "id": 1702036,
+ "name": "Witch's Broomstick",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 100,
+   "h": 47,
+   "origin": {
+    "x": 25,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 52,
+     "y": 6,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

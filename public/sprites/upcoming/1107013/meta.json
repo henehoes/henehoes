@@ -1,0 +1,32 @@
+{
+ "id": 1107013,
+ "name": "Cuddle Bear",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Sr"
+ ],
+ "islots": [
+  "Sr"
+ ],
+ "parts": [
+  {
+   "key": "cape",
+   "w": 42,
+   "h": 58,
+   "origin": {
+    "x": 4,
+    "y": 40,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "backWing"
+  }
+ ]
+}

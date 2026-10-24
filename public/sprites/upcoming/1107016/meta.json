@@ -1,0 +1,32 @@
+{
+ "id": 1107016,
+ "name": "My Buddy Rex",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Sr"
+ ],
+ "islots": [
+  "Sr"
+ ],
+ "parts": [
+  {
+   "key": "cape",
+   "w": 42,
+   "h": 45,
+   "origin": {
+    "x": 4,
+    "y": 29,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "backWing"
+  }
+ ]
+}

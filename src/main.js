@@ -29,6 +29,8 @@ const WEAR_ORDER = ['cap', 'faceAcc', 'eyeAcc', 'earrings', 'longcoat', 'coat', 
 const ART_H = 84;                                // card art height, CSS px
 const VIEW = { scale: 1.5, focus: [OX + 20, OY + 15] };  // shared crop for every skin, face and hair card, in the catalogue and the Equipped panel: head and chest
 // The Equipped panel's small preview tiles: the whole head and a little chest at 1 css px per sprite px (a whole-number zoom, so still crisp).
+// The Body tab's cards show the whole body (undergarments, plus the worn face and hair) in a taller art box (`.art-box.tall`, 120px), at the same 1.5x.
+const BODY_VIEW = { scale: 1.5, focus: [OX + 21, OY + 27] };
 const MINI_VIEW = { scale: 1, focus: [OX + 21, OY + 15], centre: true }; // centre: put whatever is drawn in the middle of the tile
 const MINI_ART = 44;                              // art height of a small Equipped tile, CSS px
 const SHORT_LABEL = { faceAcc: 'Face', eyeAcc: 'Eye' }; // category names shortened for the small tiles
@@ -85,11 +87,11 @@ const EYE_COLOURS = { Black: '#515356', Blue: '#4898f7', Red: '#ea4448', Green: 
 // ---------- state ----------
 let catalog;
 const DEFAULT_NAME = 'henehoe'; // the placeholder name on a name tag (also what an emptied Name box falls back to)
-// Two-handed pose: a weapon with no one-handed picture (Orange Toy Hammer used to be one, now the Toy Rifle) always puts the whole
-// character in it; a weapon with both holds (`holds`: Toy Hammer, Plastic Slingshot) follows the Hold choice in its colour panel.
+// Two-handed pose: a weapon with no one-handed picture (the Toy Rifle) always puts the whole character in it. Every other weapon is shown
+// in its default one-handed hold: there is no Hold choice (a cash weapon is drawn from the class of what is held, so the real hold varies).
 function isTwoHanded(sel) {
   const item = catalog.wearables.weapon?.items.find(i => i.id === sel.wear.weapon.item);
-  return !!item && (item.pose === 'stand2' || (!!item.holds && !!sel.wear.weapon.two));
+  return !!item && item.pose === 'stand2';
 }
 const fresh = () => ({
   text: { name: DEFAULT_NAME }, // shown by a name tag ring (the name can be edited in the Equipped panel)
@@ -629,7 +631,7 @@ function renderColour() {
     const fx = worn?.effect, editable = configTarget === 'nameTag' && !!(fx?.tag || fx?.plain);
     return c.append(heading, ...(editable ? [textFields()] : []), el('p', { className: 'hint', textContent: editable ? 'This ring has no colour settings. Type the name it shows.' : 'This ring has no colour settings: it is shown as it looks in the game (its text cannot be changed).' }));
   }
-  // A weapon also says which weapon types it goes over (the game's own description) and, for two of them, offers a hold choice.
+  // A weapon also says which weapon types it goes over (the game's own description).
   const types = worn?.worksWith?.[0] === 'weapon' ? ['any weapon'] : worn?.worksWith ?? [];
   const worksWith = isWeapon && types.length ? [section('Works with', el('div', { className: 'chips' }, ...types.map(t => el('span', { className: 'chip', textContent: t[0].toUpperCase() + t.slice(1) }))))] : [];
   // The game does not let you dye some items (no dye flag in its files): no sliders, just a note.
@@ -650,20 +652,9 @@ function renderColour() {
   // The game keeps some special effects in their own colour, and the sprite data does not say which, so this preview dyes every part it can.
   const note = el('div', { className: 'dye-note', role: 'note' }, el('span', { className: 'dye-badge', textContent: '!', 'aria-hidden': 'true' }),
     el('p', { textContent: "Some special effects keep their original colour in the game even when dyed. We can't tell which, so this preview dyes every part it can; some items may show little or no change." }));
-  // A weapon with both a one-handed and a two-handed hold lets you pick which one the character stands in.
-  let holdSeg = null;
-  if (worn?.holds) {
-    holdSeg = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': 'How the weapon is held' });
-    for (const [two, label] of [[false, 'One-handed'], [true, 'Two-handed']]) {
-      const b = el('button', { type: 'button', role: 'radio', textContent: label });
-      b.setAttribute('aria-pressed', String(!!w.two === two)); b.setAttribute('aria-checked', String(!!w.two === two));
-      b.onclick = () => { w.two = two; renderColour(); renderPreview(); };
-      holdSeg.append(b);
-    }
-  }
   const buttons = el('div', { className: 'btn-row' }, random, reset);
-  // Only a weapon has more than dye (Works with, Hold), so only a weapon labels its Dye section.
-  if (isWeapon) return c.append(heading, ...worksWith, ...(holdSeg ? [section('Hold', holdSeg)] : []), section('Dye', sliders, buttons, note));
+  // Only a weapon has more than dye (Works with), so only a weapon labels its Dye section.
+  if (isWeapon) return c.append(heading, ...worksWith, section('Dye', sliders, buttons, note));
   c.append(heading, sliders, buttons, note);
 }
 
@@ -701,10 +692,12 @@ function renderColourBar(kind) {
 
 // The card builders below are shared by the catalogue tabs and the Search tab, so a card behaves the same wherever it appears.
 function skinCard(s) {
-  // Same crop as face and hair, on this skin wearing the current face and hair only (a face only if one is worn).
-  return optionCard(SKIN_NAMES[s.tone], s.tone === state.skin, VIEW,
+  // The whole body in this skin with its undergarments (the body's gender), plus the face and hair I wear; no other clothing.
+  const card = optionCard(SKIN_NAMES[s.tone], s.tone === state.skin, BODY_VIEW,
     () => { const sel = fresh(); sel.skin = s.tone; sel.sex = state.sex; sel.face = { ...state.face }; sel.hair = { ...state.hair }; return sel; },
     () => { state.skin = s.tone; afterChange(); });
+  card.querySelector('.art-box').classList.add('tall');
+  return card;
 }
 
 function styleCard(kind, s, i) {
@@ -843,7 +836,6 @@ function textFields() {
 // Equipping an overall removes the top and bottom, and the reverse, as in the game.
 function select(slot, id) {
   state.wear[slot].item = state.wear[slot].item === id ? null : id; // clicking the worn item takes it off
-  if (slot === 'weapon') state.wear.weapon.two = false; // a newly picked weapon starts in its one-handed hold
   if (state.wear[slot].item != null) configTarget = slot;
   if (slot === 'longcoat' && state.wear[slot].item != null) { state.wear.coat.item = null; state.wear.pants.item = null; }
   if ((slot === 'coat' || slot === 'pants') && state.wear[slot].item != null) state.wear.longcoat.item = null;

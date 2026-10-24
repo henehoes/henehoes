@@ -204,6 +204,7 @@ input { font: inherit; border-radius: 0; }
 .card[aria-pressed="true"] { --c: var(--maple); background: oklch(82% .14 85 / .4); color: var(--maple-deep); }
 .card[aria-pressed="true"]::after { content: ""; position: absolute; top: -6px; right: -6px; width: 16px; height: 16px; background: var(--maple) var(--check-white) center / 10px 8px no-repeat; z-index: 2; }
 .art-box { position: relative; height: 84px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.art-box.tall { height: 120px; } /* the Body tab's cards show the whole body */
 .art-box canvas { display: block; position: absolute; top: 0; image-rendering: pixelated; }
 .icon { image-rendering: pixelated; height: auto; }
 .card .label { padding: 4px 4px 0; margin-bottom: 5px; height: calc(1.2em + 4px); display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; } /* one line, so every card is the same size and no space is wasted; a longer name is cut off with an ellipsis (the full name is the tooltip) */

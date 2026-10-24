@@ -1,8 +1,19 @@
 {
   "_comment": "Styles whose sprites are not in the Classic game data (MCW) on the sprite API, so they come from another region/version instead. Key: kind:ClassicId. 'id' is the sprite id when it differs from the Classic id. Checked 18/10/2026: these have sprite data there and nowhere else.",
-  "hair:30580": { "region": "TWMS", "version": "256" },
-  "hair:31270": { "region": "GMS", "version": "270" },
-  "hair:31580": { "region": "TWMS", "version": "256" },
-  "hair:31600": { "region": "JMS", "version": "444" },
-  "hair:32010": { "region": "JMS", "version": "444", "id": 42560 }
+  "hair:30580": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "hair:31270": {
+    "region": "GMS",
+    "version": "270"
+  },
+  "hair:31580": {
+    "region": "TWMS",
+    "version": "256"
+  },
+  "hair:31600": {
+    "region": "JMS",
+    "version": "444"
+  }
 }

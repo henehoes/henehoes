@@ -16,7 +16,8 @@ Layer MapleStory character parts and recolour them. Sprites belong to Nexon.
     node scripts/place-skins.mjs      # positions each body part inside data/skin-renders/<tone>.png
     node scripts/download-icons.mjs   # wearable inventory icons (the card previews)
     node scripts/add-pinned.mjs       # hair and face styles pinned by id (data/pinned.json)
-    node scripts/download-rings.mjs   # name tag and chat bubble pieces (data/rings.json)
+    # from the game's own files (needs the game installed; see scripts/lib-wz.mjs): the name tag and chat bubble rings
+    WZ_DATA=".../maplestorycw/appdata/Data" node scripts/extract-rings.mjs
     node scripts/build-catalog.mjs    # -> public/catalog.json, the only file the app reads
 
 ## Files you edit by hand

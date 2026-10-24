@@ -325,9 +325,52 @@ await page.evaluate(() => [...document.querySelectorAll('.seg button')].find(b =
 const hairPh = await page.$$eval('#content .card.placeholder', els => els.length);
 check('no hair placeholders are left (Chestnut is now pinned by id)', hairPh === 0, `(${hairPh})`);
 check('Chestnut is listed under male hair', (await names()).includes('Chestnut'));
-// Name tag and chat bubble are switched off for now
-check('there are no Name Tag or Chat tabs', await page.evaluate(() => ![...document.querySelectorAll('.tab')].some(t => /name tag|chat/i.test(t.title))));
-check('no ring appears in the Equipped panel or the colour panel', await page.evaluate(() => ![...document.querySelectorAll('#colour .slot .card')].some(c => /name tag|chat/i.test(c.dataset.slot))) && (await page.$$('.text-field input')).length === 0);
+// Name tag and chat bubble rings (rebuilt from the game files)
+{
+  check('the Name tag and Chat bubble tabs are back', await page.evaluate(() => ['Name Ring', 'Chat Ring'].every(l => [...document.querySelectorAll('.tab')].some(t => t.title === l))));
+  await clickTab('Name Ring'); await settle();
+  const showSource = async label => { await page.evaluate(l => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent === l).click(), label); await settle(); };
+  const labels = () => page.$$eval('#content .card .label', e => e.map(x => x.textContent));
+  const tagCards = await labels();
+  check('Name tag, Released: the six released tags, White Label Ring first and only once', JSON.stringify(tagCards) === JSON.stringify(['White Label Ring', 'Classic Beginnings Label Ring', 'MapleStory Fest 2026 Label Ring', "Founder's Label Ring", 'Chocolate Label Ring', 'Ink-and-Wash Painting Name Tag Ring']), tagCards.join(', '));
+  check('Name tag: the Released / All · Datamine switch is above the search box', await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].map(b => b.textContent).join('|')) === 'Released|All · Datamine');
+  await showSource('All · Datamine');
+  const allTags = await labels();
+  check('Name tag, All · Datamine: every tag in the game files (76), with the DATAMINE badge on the unreleased ones', allTags.length === 76 && (await page.$$('#content .card .unreleased-badge')).length === 70 && !!(await page.$('#content .datamine-note')), String(allTags.length));
+  // editable name: the Name box, the tag redrawn for each ring including Rainbow (cut from its sample) and White Label (plain box); every one of the 76 tags works the same way (a few datamine ones are tried here)
+  for (const ring of ['Chocolate Label Ring', 'Rainbow Label Ring', 'Pink Candy Label Ring', 'White Cloud Label Ring', 'Beach Label Ring', 'Ink-and-Wash Painting Name Tag Ring', 'White Label Ring', 'Red Cloud Label Ring', 'White Puppy Label Ring', 'Meadow Sheep Label Ring', 'Honey Bee Label Ring']) {
+    await page.evaluate(r => [...document.querySelectorAll('#content .card')].find(c => c.querySelector('.label')?.textContent === r).click(), ring); await settle(); await settle();
+    const nameBox = await page.evaluate(() => { const i = document.querySelector('#colour .text-field input'); return i ? i.value : null; });
+    const drawn = async () => page.evaluate(() => { const c = document.getElementById('preview'); const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; let h = 0; for (let i = 3; i < d.length; i += 4) if (d[i]) h++; return [...d].reduce((a, v, k) => (k % 4 === 0 ? (a * 31 + v) % 1000003 : a), 7); });
+    const before = await drawn();
+    await page.evaluate(() => { const i = document.querySelector('#colour .text-field input'); i.value = 'Liam Long Name'.slice(0, 12); i.dispatchEvent(new Event('input', { bubbles: true })); }); await settle(); await settle();
+    check(`name tag: ${ring} has a Name box and changing the name redraws the tag`, nameBox === 'henehoe' && (await drawn()) !== before, String(nameBox));
+    await page.evaluate(() => { const i = document.querySelector('#colour .text-field input'); i.value = 'henehoe'; i.dispatchEvent(new Event('input', { bubbles: true })); }); await settle();
+  }
+  await showSource('Released');
+  await clickTab('Chat Ring'); await settle();
+  const chatCards = await labels();
+  check('Chat bubble, Released: the six released bubbles', JSON.stringify(chatCards) === JSON.stringify(['Kitty Chat Ring', 'Classic Beginnings Chat Ring', 'MapleStory Fest 2026 Chat Ring', "Founder's Chat Ring", 'Ink-and-Wash Thought Bubble Ring', 'Chocolate Chat Ring']), chatCards.join(', '));
+  await showSource('All · Datamine');
+  check('Chat bubble, All · Datamine: all 81 bubbles', (await labels()).length === 81 && (await page.$$('#content .card .unreleased-badge')).length === 75, String((await labels()).length));
+  await showSource('Released');
+  await page.evaluate(() => [...document.querySelectorAll('#content .card')].find(c => c.querySelector('.label')?.textContent === 'Kitty Chat Ring').click()); await settle(); await settle();
+  check('wearing a chat ring puts it in the Equipped panel, with no text boxes (it is shown as in the game)', await page.evaluate(() => [...document.querySelectorAll('#colour .slot .card')].some(c => c.dataset.slot === 'Chat Ring') && !document.querySelector('#colour .text-field, #colour input[type="text"]')));
+  const bubble = await page.evaluate(() => { const c = document.getElementById('preview'); const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; let gold = 0; for (let i = 0; i < d.length; i += 4) if (d[i] > 230 && d[i + 1] > 170 && d[i + 1] < 215 && d[i + 2] < 60) gold++; return gold; });
+  check('the Kitty bubble is drawn on the preview (its gold frame)', bubble > 50, String(bubble));
+  await clickTab('Chat Ring'); await settle();
+  await page.evaluate(() => [...document.querySelectorAll('#content .card')].find(c => c.querySelector('.label')?.textContent === 'Kitty Chat Ring').click()); await settle(); // take it off again
+  check('clicking the worn ring takes it off', !(await page.evaluate(() => [...document.querySelectorAll('#colour .slot .card')].some(c => c.dataset.slot === 'Chat Ring'))));
+  // a look saved with the old placeholder "Maple" opens with "henehoe"; an emptied Name box falls back to it too
+  await page.evaluate(() => localStorage.setItem('maple-layers:default-v2', JSON.stringify({ skin: 0, face: { key: null }, hair: { key: null }, wear: {}, text: { name: 'Maple' } })));
+  await page.reload({ waitUntil: 'networkidle0' }); await settle();
+  await clickTab('Name Ring'); await settle();
+  await page.evaluate(() => [...document.querySelectorAll('#content .card')].find(c => c.querySelector('.label')?.textContent === 'Chocolate Label Ring').click()); await settle(); await settle();
+  check('Name box: a look saved with the old "Maple" opens with "henehoe"', await page.evaluate(() => document.querySelector('#colour .text-field input')?.value) === 'henehoe');
+  check('Name box: its placeholder is "henehoe"', await page.evaluate(() => document.querySelector('#colour .text-field input')?.placeholder) === 'henehoe');
+  await page.evaluate(() => localStorage.removeItem('maple-layers:default-v2')); await page.reload({ waitUntil: 'networkidle0' }); await settle();
+  await clickTab('Name Ring'); await settle();
+}
 await clickTab('Top'); await settle();
 check('Beetle Long Sleeve is a drawn Top card, no badge', await page.evaluate(() => { const c = [...document.querySelectorAll('#content .card')].find(c => c.textContent.includes('Beetle Long Sleeve')); return !!c && !c.classList.contains('placeholder') && !c.querySelector('.badge'); }));
 

@@ -1,0 +1,170 @@
+{
+ "_comment": "Hair and face styles read from the game files by scripts/extract-styles.mjs (in-game ids and names). add-styles.mjs appends these to data/items.json, replacing a style with the same kind and Classic id.",
+ "items": [
+  {
+   "style": "Zeta",
+   "matchedAs": "Zeta",
+   "kind": "hair",
+   "gender": "male",
+   "region": "MCW",
+   "version": "1",
+   "key": 3001,
+   "classicId": 30010,
+   "released": false,
+   "colours": [
+    {
+     "id": 30010,
+     "name": "Zeta",
+     "colour": 0
+    },
+    {
+     "id": 30011,
+     "name": "Zeta",
+     "colour": 1
+    },
+    {
+     "id": 30012,
+     "name": "Zeta",
+     "colour": 2
+    },
+    {
+     "id": 30013,
+     "name": "Zeta",
+     "colour": 3
+    },
+    {
+     "id": 30014,
+     "name": "Zeta",
+     "colour": 4
+    },
+    {
+     "id": 30015,
+     "name": "Zeta",
+     "colour": 5
+    },
+    {
+     "id": 30016,
+     "name": "Zeta",
+     "colour": 6
+    },
+    {
+     "id": 30017,
+     "name": "Zeta",
+     "colour": 7
+    }
+   ]
+  },
+  {
+   "style": "Frieren Hair (Ringlets)",
+   "matchedAs": "Frieren Hair (Ringlets)",
+   "kind": "hair",
+   "gender": "both",
+   "region": "MCW",
+   "version": "1",
+   "key": 3201,
+   "classicId": 32010,
+   "released": true,
+   "collab": true,
+   "colours": [
+    {
+     "id": 32010,
+     "name": "Frieren Hair (Ringlets)",
+     "colour": 0
+    },
+    {
+     "id": 32011,
+     "name": "Frieren Hair (Ringlets)",
+     "colour": 1
+    },
+    {
+     "id": 32012,
+     "name": "Frieren Hair (Ringlets)",
+     "colour": 2
+    },
+    {
+     "id": 32013,
+     "name": "Frieren Hair (Ringlets)",
+     "colour": 3
+    },
+    {
+     "id": 32014,
+     "name": "Frieren Hair (Ringlets)",
+     "colour": 4
+    },
+    {
+     "id": 32015,
+     "name": "Frieren Hair (Ringlets)",
+     "colour": 5
+    },
+    {
+     "id": 32016,
+     "name": "Frieren Hair (Ringlets)",
+     "colour": 6
+    },
+    {
+     "id": 32017,
+     "name": "Frieren Hair (Ringlets)",
+     "colour": 7
+    }
+   ]
+  },
+  {
+   "style": "Confused Look",
+   "matchedAs": "Confused Look",
+   "kind": "face",
+   "gender": "female",
+   "region": "MCW",
+   "version": "1",
+   "key": 21036,
+   "classicId": 21036,
+   "released": false,
+   "colours": [
+    {
+     "id": 21036,
+     "name": "Confused Look",
+     "colour": 0
+    },
+    {
+     "id": 21136,
+     "name": "Confused Look",
+     "colour": 1
+    },
+    {
+     "id": 21236,
+     "name": "Confused Look",
+     "colour": 2
+    },
+    {
+     "id": 21336,
+     "name": "Confused Look",
+     "colour": 3
+    },
+    {
+     "id": 21436,
+     "name": "Confused Look",
+     "colour": 4
+    },
+    {
+     "id": 21536,
+     "name": "Confused Look",
+     "colour": 5
+    },
+    {
+     "id": 21636,
+     "name": "Confused Look",
+     "colour": 6
+    },
+    {
+     "id": 21736,
+     "name": "Confused Look",
+     "colour": 7
+    },
+    {
+     "id": 21836,
+     "name": "Confused Look",
+     "colour": 8
+    }
+   ]
+  }
+ ]
+}

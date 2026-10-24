@@ -5,7 +5,7 @@
 //
 // Replaces any hair/face the older name-matching steps put in items.json (build-manifest.mjs, add-pinned.mjs).
 // Styles missing at their id are searched for by name in MCW; anything still missing goes to data/datamine-placeholders.json.
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { API, sleep } from './lib.mjs';
 
 const REGION = 'MCW', VERSION = '1';
@@ -103,7 +103,10 @@ async function resolve(kind, e) {
 const queue = ['hair', 'face'].flatMap(kind => salon[kind].map(e => [kind, e]));
 await Promise.all(Array.from({ length: 12 }, async () => { for (let job; (job = queue.shift());) await resolve(...job); }));
 
-items.styles = [...styles.sort((a, b) => a.kind.localeCompare(b.kind) || a.classicId - b.classicId)];
+// Styles read straight from the game files (scripts/extract-styles.mjs) replace a style with the same kind and Classic id.
+const fromGame = existsSync('data/game-styles.json') ? read('data/game-styles.json').items : [];
+const merged = [...styles.filter(s => !fromGame.some(g => g.kind === s.kind && g.classicId === s.classicId)), ...fromGame];
+items.styles = [...merged.sort((a, b) => a.kind.localeCompare(b.kind) || a.classicId - b.classicId)];
 writeFileSync('data/items.json', JSON.stringify(items, null, 2));
 writeFileSync('data/datamine-placeholders.json', JSON.stringify({ _comment: 'Styles on henesys.gg with no sprite in the Classic data. Written by scripts/add-styles.mjs; shown as placeholders under the Datamine switch.', items: placeholders.sort((a, b) => a.classicId - b.classicId) }, null, 1));
 const rel = styles.filter(s => s.released).length;

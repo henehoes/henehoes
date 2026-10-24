@@ -1,11 +1,3575 @@
 {
-  "_comment": "Name tag and chat bubble rings. They draw no avatar sprite; the game builds them from UI pieces (UI/NameTag.img/<code>: w, c, e; UI/ChatBalloon.img/<code>: nw, n, ne, w, c, e, sw, s, se, arrow, optional head) plus a text colour (clr). Names and Classic ids are from henesys.gg/cashshop. The codes are NOT in that data: they were matched by eye against meowdb.com's in-game previews (ring-previews/<id>.png) and the KMS names on maplestudio.app, so each ring carries a note. White Label Ring has no pieces (the client draws a plain box). Applied by scripts/download-rings.mjs then scripts/build-catalog.mjs.",
-  "rings": [
-    { "name": "White Label Ring", "kind": "nameTag", "classicId": 1112100, "plain": true },
-    { "name": "Chocolate Label Ring", "kind": "nameTag", "classicId": 1112113, "code": 15 },
-    { "name": "Ink-and-Wash Painting Name Tag Ring", "kind": "nameTag", "classicId": 1112223, "code": 59 },
-    { "name": "Kitty Chat Ring", "kind": "chatBalloon", "classicId": 1112215, "code": 18 },
-    { "name": "Chocolate Chat Ring", "kind": "chatBalloon", "classicId": 1112231, "code": 26 },
-    { "name": "Ink-and-Wash Thought Bubble Ring", "kind": "chatBalloon", "classicId": 1112227, "code": 59 }
-  ]
+ "_comment": "Name tag and chat bubble rings, written by scripts/extract-rings.mjs from the game files: each is the ring item's own `sample` picture (file, w, h), shown as it is, with the in-game name. `design` is the UI design number the item points at (not used: several rings share a design that is not theirs). Applied by scripts/build-catalog.mjs.",
+ "rings": [
+  {
+   "name": "Pink Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112200,
+   "file": "sprites/ring/1112200.png",
+   "w": 60,
+   "h": 47,
+   "design": 1,
+   "released": false
+  },
+  {
+   "name": "Pink Heart Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112201,
+   "file": "sprites/ring/1112201.png",
+   "w": 84,
+   "h": 53,
+   "design": 3,
+   "released": false
+  },
+  {
+   "name": "Blue Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112202,
+   "file": "sprites/ring/1112202.png",
+   "w": 60,
+   "h": 47,
+   "design": 2,
+   "released": false
+  },
+  {
+   "name": "Pink Flower Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112203,
+   "file": "sprites/ring/1112203.png",
+   "w": 64,
+   "h": 56,
+   "design": 6,
+   "released": false
+  },
+  {
+   "name": "Blue Flower Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112204,
+   "file": "sprites/ring/1112204.png",
+   "w": 64,
+   "h": 56,
+   "design": 7,
+   "released": false
+  },
+  {
+   "name": "Pink Ribbon Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112205,
+   "file": "sprites/ring/1112205.png",
+   "w": 64,
+   "h": 56,
+   "design": 8,
+   "released": false
+  },
+  {
+   "name": "Blue Ribbon Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112206,
+   "file": "sprites/ring/1112206.png",
+   "w": 64,
+   "h": 56,
+   "design": 9,
+   "released": false
+  },
+  {
+   "name": "Skull Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112207,
+   "file": "sprites/ring/1112207.png",
+   "w": 76,
+   "h": 54,
+   "design": 10,
+   "released": false
+  },
+  {
+   "name": "Blue Heart Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112208,
+   "file": "sprites/ring/1112208.png",
+   "w": 60,
+   "h": 48,
+   "design": 11,
+   "released": false
+  },
+  {
+   "name": "Gold-Yellow Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112209,
+   "file": "sprites/ring/1112209.png",
+   "w": 86,
+   "h": 55,
+   "design": 12,
+   "released": false
+  },
+  {
+   "name": "Pink Lady Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112210,
+   "file": "sprites/ring/1112210.png",
+   "w": 86,
+   "h": 55,
+   "design": 13,
+   "released": false
+  },
+  {
+   "name": "Silver-Blue Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112211,
+   "file": "sprites/ring/1112211.png",
+   "w": 86,
+   "h": 55,
+   "design": 14,
+   "released": false
+  },
+  {
+   "name": "Gold-Yellow Chat Ring 2",
+   "kind": "chatBalloon",
+   "classicId": 1112212,
+   "file": "sprites/ring/1112212.png",
+   "w": 64,
+   "h": 48,
+   "design": 15,
+   "released": false
+  },
+  {
+   "name": "Pink Lady Chat Ring 2",
+   "kind": "chatBalloon",
+   "classicId": 1112213,
+   "file": "sprites/ring/1112213.png",
+   "w": 70,
+   "h": 48,
+   "design": 16,
+   "released": false
+  },
+  {
+   "name": "Blue Marine Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112214,
+   "file": "sprites/ring/1112214.png",
+   "w": 64,
+   "h": 48,
+   "design": 17,
+   "released": false
+  },
+  {
+   "name": "Kitty Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112215,
+   "file": "sprites/ring/1112215.png",
+   "w": 66,
+   "h": 42,
+   "design": 18
+  },
+  {
+   "name": "Paw-Print Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112216,
+   "file": "sprites/ring/1112216.png",
+   "w": 76,
+   "h": 45,
+   "design": 19,
+   "released": false
+  },
+  {
+   "name": "Teddy Bear Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112217,
+   "file": "sprites/ring/1112217.png",
+   "w": 64,
+   "h": 46,
+   "design": 20,
+   "released": false
+  },
+  {
+   "name": "Scoreboard Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112218,
+   "file": "sprites/ring/1112218.png",
+   "w": 50,
+   "h": 42,
+   "design": 21,
+   "released": false
+  },
+  {
+   "name": "Classic Beginnings Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112219,
+   "file": "sprites/ring/1112219.png",
+   "w": 96,
+   "h": 65,
+   "design": 25
+  },
+  {
+   "name": "MapleStory Fest 2026 Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112220,
+   "file": "sprites/ring/1112220.png",
+   "w": 121,
+   "h": 70,
+   "design": 26
+  },
+  {
+   "name": "Founder's Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112221,
+   "file": "sprites/ring/1112221.png",
+   "w": 104,
+   "h": 49,
+   "design": 27
+  },
+  {
+   "name": "MapleStory Community VIP Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112224,
+   "file": "sprites/ring/1112224.png",
+   "w": 87,
+   "h": 58,
+   "design": 23,
+   "released": false
+  },
+  {
+   "name": "Ink-and-Wash Thought Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112227,
+   "file": "sprites/ring/1112227.png",
+   "w": 91,
+   "h": 60,
+   "design": 28,
+   "text": {
+    "value": "Maple",
+    "colour": "#ffffff",
+    "x": 45,
+    "y": 28
+   }
+  },
+  {
+   "name": "Kitty Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112228,
+   "file": "sprites/ring/1112228.png",
+   "w": 52,
+   "h": 48,
+   "design": 114,
+   "released": false
+  },
+  {
+   "name": "Chocolate Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112231,
+   "file": "sprites/ring/1112231.png",
+   "w": 64,
+   "h": 41,
+   "design": 29
+  },
+  {
+   "name": "Pink Candy Quote Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112232,
+   "file": "sprites/ring/1112232.png",
+   "w": 65,
+   "h": 41,
+   "design": 27,
+   "released": false
+  },
+  {
+   "name": "White Cloud Quote Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112233,
+   "file": "sprites/ring/1112233.png",
+   "w": 74,
+   "h": 58,
+   "design": 28,
+   "released": false
+  },
+  {
+   "name": "Rainbow Quote Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112234,
+   "file": "sprites/ring/1112234.png",
+   "w": 72,
+   "h": 51,
+   "design": 29,
+   "released": false
+  },
+  {
+   "name": "Gingerman Quote Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112238,
+   "file": "sprites/ring/1112238.png",
+   "w": 60,
+   "h": 47,
+   "design": 34,
+   "released": false
+  },
+  {
+   "name": "Deluxe Rainbow Quote Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112239,
+   "file": "sprites/ring/1112239.png",
+   "w": 72,
+   "h": 44,
+   "design": 35,
+   "released": false
+  },
+  {
+   "name": "Red Notebook Quote Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112240,
+   "file": "sprites/ring/1112240.png",
+   "w": 60,
+   "h": 44,
+   "design": 36,
+   "released": false
+  },
+  {
+   "name": "Blue Notebook Quote Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112241,
+   "file": "sprites/ring/1112241.png",
+   "w": 60,
+   "h": 44,
+   "design": 37,
+   "released": false
+  },
+  {
+   "name": "Green Notebook Quote Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112242,
+   "file": "sprites/ring/1112242.png",
+   "w": 60,
+   "h": 44,
+   "design": 38,
+   "released": false
+  },
+  {
+   "name": "Brown Teddy Quote Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112243,
+   "file": "sprites/ring/1112243.png",
+   "w": 57,
+   "h": 45,
+   "design": 39,
+   "released": false
+  },
+  {
+   "name": "Bamboo Thought Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112244,
+   "file": "sprites/ring/1112244.png",
+   "w": 115,
+   "h": 85,
+   "design": 58,
+   "released": false
+  },
+  {
+   "name": "Red Rose Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112246,
+   "file": "sprites/ring/1112246.png",
+   "w": 86,
+   "h": 66,
+   "design": 47,
+   "released": false
+  },
+  {
+   "name": "Mummy Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112247,
+   "file": "sprites/ring/1112247.png",
+   "w": 100,
+   "h": 78,
+   "design": 48,
+   "released": false
+  },
+  {
+   "name": "Luxury Pearl Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112248,
+   "file": "sprites/ring/1112248.png",
+   "w": 91,
+   "h": 54,
+   "design": 113,
+   "released": false
+  },
+  {
+   "name": "Romantic Lace Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112249,
+   "file": "sprites/ring/1112249.png",
+   "w": 74,
+   "h": 68,
+   "design": 49,
+   "released": false
+  },
+  {
+   "name": "Green Apple Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112250,
+   "file": "sprites/ring/1112250.png",
+   "w": 72,
+   "h": 65,
+   "design": 50,
+   "released": false
+  },
+  {
+   "name": "Mister Mustache Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112251,
+   "file": "sprites/ring/1112251.png",
+   "w": 55,
+   "h": 47,
+   "design": 115,
+   "released": false
+  },
+  {
+   "name": "Angel Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112254,
+   "file": "sprites/ring/1112254.png",
+   "w": 133,
+   "h": 86,
+   "design": 118,
+   "released": false
+  },
+  {
+   "name": "Strawberry Cake Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112255,
+   "file": "sprites/ring/1112255.png",
+   "w": 99,
+   "h": 82,
+   "design": 119,
+   "released": false
+  },
+  {
+   "name": "Blue Strawberry Basket Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112256,
+   "file": "sprites/ring/1112256.png",
+   "w": 109,
+   "h": 76,
+   "design": 120,
+   "released": false
+  },
+  {
+   "name": "Red Strawberry Basket Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112257,
+   "file": "sprites/ring/1112257.png",
+   "w": 109,
+   "h": 77,
+   "design": 121,
+   "released": false
+  },
+  {
+   "name": "Moon Bunny Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112258,
+   "file": "sprites/ring/1112258.png",
+   "w": 108,
+   "h": 65,
+   "design": 122,
+   "released": false
+  },
+  {
+   "name": "Frog Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112259,
+   "file": "sprites/ring/1112259.png",
+   "w": 89,
+   "h": 61,
+   "design": 123,
+   "released": false
+  },
+  {
+   "name": "Oink Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112260,
+   "file": "sprites/ring/1112260.png",
+   "w": 95,
+   "h": 62,
+   "design": 124,
+   "released": false
+  },
+  {
+   "name": "Blue Beard Quote Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112261,
+   "file": "sprites/ring/1112261.png",
+   "w": 67,
+   "h": 57,
+   "design": 125,
+   "released": false
+  },
+  {
+   "name": "Diamond Quote Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112262,
+   "file": "sprites/ring/1112262.png",
+   "w": 82,
+   "h": 74,
+   "design": 127,
+   "released": false
+  },
+  {
+   "name": "Watermelon Chat Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112263,
+   "file": "sprites/ring/1112263.png",
+   "w": 89,
+   "h": 38,
+   "design": 128,
+   "released": false
+  },
+  {
+   "name": "Quack Quack Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112264,
+   "file": "sprites/ring/1112264.png",
+   "w": 83,
+   "h": 63,
+   "design": 129,
+   "released": false
+  },
+  {
+   "name": "Island Travel Speech Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112265,
+   "file": "sprites/ring/1112265.png",
+   "w": 150,
+   "h": 57,
+   "design": 130,
+   "released": false
+  },
+  {
+   "name": "Me From the Star Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112266,
+   "file": "sprites/ring/1112266.png",
+   "w": 74,
+   "h": 69,
+   "design": 131,
+   "released": false
+  },
+  {
+   "name": "Sweet Summer Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112267,
+   "file": "sprites/ring/1112267.png",
+   "w": 105,
+   "h": 75,
+   "design": 132,
+   "released": false
+  },
+  {
+   "name": "Green Forest Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112268,
+   "file": "sprites/ring/1112268.png",
+   "w": 123,
+   "h": 67,
+   "design": 133,
+   "released": false
+  },
+  {
+   "name": "Baby Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112269,
+   "file": "sprites/ring/1112269.png",
+   "w": 133,
+   "h": 79,
+   "design": 134,
+   "released": false
+  },
+  {
+   "name": "Star Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112270,
+   "file": "sprites/ring/1112270.png",
+   "w": 46,
+   "h": 39,
+   "design": 138,
+   "released": false
+  },
+  {
+   "name": "White Puppy Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112271,
+   "file": "sprites/ring/1112271.png",
+   "w": 84,
+   "h": 32,
+   "design": 139,
+   "released": false
+  },
+  {
+   "name": "Brown Puppy Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112272,
+   "file": "sprites/ring/1112272.png",
+   "w": 84,
+   "h": 32,
+   "design": 140,
+   "released": false
+  },
+  {
+   "name": "Bunny Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112273,
+   "file": "sprites/ring/1112273.png",
+   "w": 77,
+   "h": 64,
+   "design": 145,
+   "released": false
+  },
+  {
+   "name": "G Clef Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112274,
+   "file": "sprites/ring/1112274.png",
+   "w": 100,
+   "h": 73,
+   "design": 148,
+   "released": false
+  },
+  {
+   "name": "Snow Day Dream Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112276,
+   "file": "sprites/ring/1112276.png",
+   "w": 134,
+   "h": 109,
+   "design": 150,
+   "released": false
+  },
+  {
+   "name": "Snowy Christmas Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112277,
+   "file": "sprites/ring/1112277.png",
+   "w": 112,
+   "h": 86,
+   "design": 151,
+   "released": false
+  },
+  {
+   "name": "Sheep Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112280,
+   "file": "sprites/ring/1112280.png",
+   "w": 104,
+   "h": 84,
+   "design": 154,
+   "released": false
+  },
+  {
+   "name": "Baby Word Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112281,
+   "file": "sprites/ring/1112281.png",
+   "w": 133,
+   "h": 79,
+   "design": 155,
+   "released": false
+  },
+  {
+   "name": "Meadow Sheep Chat Bubble Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112282,
+   "file": "sprites/ring/1112282.png",
+   "w": 115,
+   "h": 74,
+   "design": 157,
+   "released": false
+  },
+  {
+   "name": "Carrot Rabbit Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112283,
+   "file": "sprites/ring/1112283.png",
+   "w": 127,
+   "h": 77,
+   "design": 165,
+   "released": false
+  },
+  {
+   "name": "Honey Bee Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112284,
+   "file": "sprites/ring/1112284.png",
+   "w": 117,
+   "h": 80,
+   "design": 166,
+   "released": false
+  },
+  {
+   "name": "Pineapple Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112285,
+   "file": "sprites/ring/1112285.png",
+   "w": 145,
+   "h": 99,
+   "design": 167,
+   "released": false
+  },
+  {
+   "name": "Princess Diary Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112286,
+   "file": "sprites/ring/1112286.png",
+   "w": 155,
+   "h": 133,
+   "design": 168,
+   "released": false
+  },
+  {
+   "name": "Black Hat Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112287,
+   "file": "sprites/ring/1112287.png",
+   "w": 76,
+   "h": 71,
+   "design": 169,
+   "released": false
+  },
+  {
+   "name": "Green Hat Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112288,
+   "file": "sprites/ring/1112288.png",
+   "w": 76,
+   "h": 66,
+   "design": 170,
+   "released": false
+  },
+  {
+   "name": "Blue Hat Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112289,
+   "file": "sprites/ring/1112289.png",
+   "w": 90,
+   "h": 69,
+   "design": 171,
+   "released": false
+  },
+  {
+   "name": "Good Night Monster Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112290,
+   "file": "sprites/ring/1112290.png",
+   "w": 143,
+   "h": 82,
+   "design": 172,
+   "released": false
+  },
+  {
+   "name": "Rascally Monster Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112291,
+   "file": "sprites/ring/1112291.png",
+   "w": 132,
+   "h": 83,
+   "design": 173,
+   "released": false
+  },
+  {
+   "name": "Snowman's Red Scarf Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112295,
+   "file": "sprites/ring/1112295.png",
+   "w": 125,
+   "h": 81,
+   "design": 177,
+   "released": false
+  },
+  {
+   "name": "Christmas Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112297,
+   "file": "sprites/ring/1112297.png",
+   "w": 56,
+   "h": 35,
+   "design": 180,
+   "released": false
+  },
+  {
+   "name": "Mighty Banana Chat Ring",
+   "kind": "chatBalloon",
+   "classicId": 1112298,
+   "file": "sprites/ring/1112298.png",
+   "w": 127,
+   "h": 85,
+   "design": 179,
+   "released": false
+  },
+  {
+   "name": "Ring 1112299",
+   "kind": "chatBalloon",
+   "classicId": 1112299,
+   "file": "sprites/ring/1112299.png",
+   "w": 98,
+   "h": 64,
+   "design": 181,
+   "released": false
+  },
+  {
+   "name": "White Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112100,
+   "file": "sprites/ring/1112100.png",
+   "w": 79,
+   "h": 17,
+   "design": 1,
+   "plain": {
+    "edge": "#2288aa",
+    "fill": "#ffffff",
+    "fillAlpha": 0.73,
+    "text": "#000000",
+    "h": 17
+   }
+  },
+  {
+   "name": "Blue Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112101,
+   "file": "sprites/ring/1112101.png",
+   "w": 84,
+   "h": 18,
+   "design": 3,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112101",
+    "source": "game design 3",
+    "colour": "#ffffff",
+    "pieces": {
+     "w": {
+      "w": 7,
+      "h": 18,
+      "ox": 7,
+      "oy": 4
+     },
+     "c": {
+      "w": 4,
+      "h": 18,
+      "ox": 0,
+      "oy": 4
+     },
+     "e": {
+      "w": 7,
+      "h": 18,
+      "ox": 0,
+      "oy": 4
+     }
+    }
+   }
+  },
+  {
+   "name": "Blue Label Ring 2",
+   "kind": "nameTag",
+   "classicId": 1112102,
+   "file": "sprites/ring/1112102.png",
+   "w": 88,
+   "h": 17,
+   "design": 4,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112102",
+    "source": "game design 4",
+    "colour": "#ffffff",
+    "pieces": {
+     "w": {
+      "w": 8,
+      "h": 17,
+      "ox": 8,
+      "oy": 3
+     },
+     "c": {
+      "w": 4,
+      "h": 17,
+      "ox": 0,
+      "oy": 3
+     },
+     "e": {
+      "w": 8,
+      "h": 17,
+      "ox": 0,
+      "oy": 3
+     }
+    }
+   }
+  },
+  {
+   "name": "Pink Ribbon Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112103,
+   "file": "sprites/ring/1112103.png",
+   "w": 109,
+   "h": 21,
+   "design": 8,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112103",
+    "source": "game design 8",
+    "colour": "#000000",
+    "pieces": {
+     "w": {
+      "w": 22,
+      "h": 21,
+      "ox": 22,
+      "oy": 5
+     },
+     "c": {
+      "w": 4,
+      "h": 21,
+      "ox": 0,
+      "oy": 5
+     },
+     "e": {
+      "w": 22,
+      "h": 21,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Blue Ribbon Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112104,
+   "file": "sprites/ring/1112104.png",
+   "w": 109,
+   "h": 21,
+   "design": 9,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112104",
+    "source": "game design 9",
+    "colour": "#000000",
+    "pieces": {
+     "w": {
+      "w": 22,
+      "h": 21,
+      "ox": 22,
+      "oy": 5
+     },
+     "c": {
+      "w": 4,
+      "h": 21,
+      "ox": 0,
+      "oy": 5
+     },
+     "e": {
+      "w": 22,
+      "h": 21,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Skull Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112105,
+   "file": "sprites/ring/1112105.png",
+   "w": 90,
+   "h": 23,
+   "design": 7,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112105",
+    "source": "game design 7",
+    "colour": "#ffffff",
+    "pieces": {
+     "w": {
+      "w": 19,
+      "h": 23,
+      "ox": 19,
+      "oy": 7
+     },
+     "c": {
+      "w": 4,
+      "h": 23,
+      "ox": 0,
+      "oy": 7
+     },
+     "e": {
+      "w": 19,
+      "h": 23,
+      "ox": 0,
+      "oy": 7
+     }
+    }
+   }
+  },
+  {
+   "name": "Butterfly Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112106,
+   "file": "sprites/ring/1112106.png",
+   "w": 103,
+   "h": 23,
+   "design": 10,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112106",
+    "source": "game design 10",
+    "colour": "#ffffff",
+    "pieces": {
+     "w": {
+      "w": 20,
+      "h": 23,
+      "ox": 20,
+      "oy": 8
+     },
+     "c": {
+      "w": 4,
+      "h": 23,
+      "ox": 0,
+      "oy": 8
+     },
+     "e": {
+      "w": 20,
+      "h": 23,
+      "ox": 0,
+      "oy": 8
+     }
+    }
+   }
+  },
+  {
+   "name": "Scoreboard Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112107,
+   "file": "sprites/ring/1112107.png",
+   "w": 79,
+   "h": 22,
+   "design": 11,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112107",
+    "source": "game design 11",
+    "colour": "#fffc00",
+    "pieces": {
+     "w": {
+      "w": 8,
+      "h": 22,
+      "ox": 8,
+      "oy": 5
+     },
+     "c": {
+      "w": 4,
+      "h": 20,
+      "ox": 4,
+      "oy": 4
+     },
+     "e": {
+      "w": 8,
+      "h": 22,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Classic Beginnings Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112108,
+   "file": "sprites/ring/1112108.png",
+   "w": 96,
+   "h": 26,
+   "design": 14,
+   "tag": {
+    "dir": "sprites/ring/tag/1112108",
+    "source": "game design 14",
+    "colour": "#ffad2b",
+    "pieces": {
+     "w": {
+      "w": 26,
+      "h": 26,
+      "ox": 26,
+      "oy": 9
+     },
+     "c": {
+      "w": 1,
+      "h": 20,
+      "ox": 0,
+      "oy": 4
+     },
+     "e": {
+      "w": 7,
+      "h": 20,
+      "ox": 0,
+      "oy": 4
+     }
+    }
+   }
+  },
+  {
+   "name": "MapleStory Fest 2026 Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112109,
+   "file": "sprites/ring/1112109.png",
+   "w": 157,
+   "h": 26,
+   "design": 15,
+   "tag": {
+    "dir": "sprites/ring/tag/1112109",
+    "source": "game design 15",
+    "colour": "#ffffff",
+    "pieces": {
+     "w": {
+      "w": 33,
+      "h": 26,
+      "ox": 33,
+      "oy": 8
+     },
+     "c": {
+      "w": 1,
+      "h": 26,
+      "ox": 0,
+      "oy": 8
+     },
+     "e": {
+      "w": 35,
+      "h": 26,
+      "ox": 0,
+      "oy": 8
+     }
+    }
+   }
+  },
+  {
+   "name": "Founder's Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112110,
+   "file": "sprites/ring/1112110.png",
+   "w": 115,
+   "h": 27,
+   "design": 16,
+   "tag": {
+    "dir": "sprites/ring/tag/1112110",
+    "source": "game design 16",
+    "colour": "#ffffff",
+    "pieces": {
+     "w": {
+      "w": 23,
+      "h": 26,
+      "ox": 23,
+      "oy": 8
+     },
+     "c": {
+      "w": 2,
+      "h": 21,
+      "ox": 0,
+      "oy": 4
+     },
+     "e": {
+      "w": 21,
+      "h": 26,
+      "ox": 0,
+      "oy": 8
+     }
+    }
+   }
+  },
+  {
+   "name": "MapleStory Community VIP Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112111,
+   "file": "sprites/ring/1112111.png",
+   "w": 89,
+   "h": 22,
+   "design": 13,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112111",
+    "source": "game design 13",
+    "colour": "#ffffff",
+    "pieces": {
+     "w": {
+      "w": 12,
+      "h": 22,
+      "ox": 12,
+      "oy": 7
+     },
+     "c": {
+      "w": 1,
+      "h": 20,
+      "ox": 0,
+      "oy": 5
+     },
+     "e": {
+      "w": 7,
+      "h": 20,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Beach Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112112,
+   "file": "sprites/ring/1112112.png",
+   "w": 99,
+   "h": 21,
+   "design": 14,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112112",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 5,
+    "pieces": {
+     "w": {
+      "w": 15,
+      "h": 21,
+      "ox": 15,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 21,
+      "ox": 1,
+      "oy": 5,
+      "textY": 10
+     },
+     "e": {
+      "w": 15,
+      "h": 21,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Chocolate Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112113,
+   "file": "sprites/ring/1112113.png",
+   "w": 89,
+   "h": 21,
+   "design": 18,
+   "tag": {
+    "dir": "sprites/ring/tag/1112113",
+    "source": "game design 18",
+    "colour": "#ffffff",
+    "pieces": {
+     "w": {
+      "w": 15,
+      "h": 21,
+      "ox": 15,
+      "oy": 5
+     },
+     "c": {
+      "w": 4,
+      "h": 21,
+      "ox": 4,
+      "oy": 5
+     },
+     "e": {
+      "w": 15,
+      "h": 21,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Pink Candy Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112114,
+   "file": "sprites/ring/1112114.png",
+   "w": 95,
+   "h": 21,
+   "design": 16,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112114",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 14,
+      "h": 21,
+      "ox": 14,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 21,
+      "ox": 1,
+      "oy": 5,
+      "textY": 10
+     },
+     "e": {
+      "w": 14,
+      "h": 21,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "MapleBowl Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112115,
+   "file": "sprites/ring/1112115.png",
+   "w": 89,
+   "h": 25,
+   "design": 20,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112115",
+    "source": "cut from the sample picture",
+    "colour": "#ffcc22",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 13,
+      "h": 25,
+      "ox": 13,
+      "oy": 8
+     },
+     "c": {
+      "w": 1,
+      "h": 25,
+      "ox": 1,
+      "oy": 8,
+      "textY": 13.5
+     },
+     "e": {
+      "w": 3,
+      "h": 25,
+      "ox": 0,
+      "oy": 8
+     }
+    }
+   }
+  },
+  {
+   "name": "White Cloud Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112116,
+   "file": "sprites/ring/1112116.png",
+   "w": 87,
+   "h": 19,
+   "design": 17,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112116",
+    "source": "cut from the sample picture",
+    "colour": "#002255",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 10,
+      "h": 19,
+      "ox": 10,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 19,
+      "ox": 1,
+      "oy": 5,
+      "textY": 9
+     },
+     "e": {
+      "w": 10,
+      "h": 19,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Rainbow Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112117,
+   "file": "sprites/ring/1112117.png",
+   "w": 83,
+   "h": 19,
+   "design": 18,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112117",
+    "source": "cut from the sample picture",
+    "colour": "#002255",
+    "pad": 6,
+    "pieces": {
+     "w": {
+      "w": 7,
+      "h": 19,
+      "ox": 7,
+      "oy": 6
+     },
+     "c": {
+      "w": 1,
+      "h": 19,
+      "ox": 1,
+      "oy": 6,
+      "textY": 9
+     },
+     "e": {
+      "w": 7,
+      "h": 19,
+      "ox": 0,
+      "oy": 6
+     }
+    }
+   }
+  },
+  {
+   "name": "Cat-ger Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112118,
+   "file": "sprites/ring/1112118.png",
+   "w": 97,
+   "h": 21,
+   "design": 113,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112118",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 7,
+      "h": 21,
+      "ox": 7,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 21,
+      "ox": 1,
+      "oy": 5,
+      "textY": 10
+     },
+     "e": {
+      "w": 7,
+      "h": 21,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Gingerman Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112121,
+   "file": "sprites/ring/1112121.png",
+   "w": 95,
+   "h": 21,
+   "design": 23,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112121",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 17,
+      "h": 21,
+      "ox": 17,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 21,
+      "ox": 1,
+      "oy": 5,
+      "textY": 10
+     },
+     "e": {
+      "w": 14,
+      "h": 21,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Deluxe Rainbow Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112122,
+   "file": "sprites/ring/1112122.png",
+   "w": 104,
+   "h": 22,
+   "design": 24,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112122",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 13,
+      "h": 22,
+      "ox": 13,
+      "oy": 6
+     },
+     "c": {
+      "w": 1,
+      "h": 22,
+      "ox": 1,
+      "oy": 6,
+      "textY": 11
+     },
+     "e": {
+      "w": 12,
+      "h": 22,
+      "ox": 0,
+      "oy": 6
+     }
+    }
+   }
+  },
+  {
+   "name": "Red Pencil Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112123,
+   "file": "sprites/ring/1112123.png",
+   "w": 93,
+   "h": 21,
+   "design": 25,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112123",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 9,
+      "h": 21,
+      "ox": 9,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 21,
+      "ox": 1,
+      "oy": 5,
+      "textY": 10
+     },
+     "e": {
+      "w": 5,
+      "h": 21,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Blue Pencil Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112124,
+   "file": "sprites/ring/1112124.png",
+   "w": 93,
+   "h": 21,
+   "design": 26,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112124",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 9,
+      "h": 21,
+      "ox": 9,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 21,
+      "ox": 1,
+      "oy": 5,
+      "textY": 10
+     },
+     "e": {
+      "w": 5,
+      "h": 21,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Green Pencil Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112125,
+   "file": "sprites/ring/1112125.png",
+   "w": 93,
+   "h": 21,
+   "design": 27,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112125",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 9,
+      "h": 21,
+      "ox": 9,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 21,
+      "ox": 1,
+      "oy": 5,
+      "textY": 10
+     },
+     "e": {
+      "w": 5,
+      "h": 21,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Brown Teddy Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112126,
+   "file": "sprites/ring/1112126.png",
+   "w": 99,
+   "h": 21,
+   "design": 28,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112126",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 8,
+      "h": 21,
+      "ox": 8,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 21,
+      "ox": 1,
+      "oy": 5,
+      "textY": 10
+     },
+     "e": {
+      "w": 8,
+      "h": 21,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "German Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112127,
+   "file": "sprites/ring/1112127.png",
+   "w": 97,
+   "h": 19,
+   "design": 31,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112127",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 25,
+      "h": 19,
+      "ox": 25,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 19,
+      "ox": 1,
+      "oy": 5,
+      "textY": 9
+     },
+     "e": {
+      "w": 14,
+      "h": 19,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Dutch Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112128,
+   "file": "sprites/ring/1112128.png",
+   "w": 97,
+   "h": 19,
+   "design": 32,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112128",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 25,
+      "h": 19,
+      "ox": 25,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 19,
+      "ox": 1,
+      "oy": 5,
+      "textY": 9
+     },
+     "e": {
+      "w": 14,
+      "h": 19,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "French Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112129,
+   "file": "sprites/ring/1112129.png",
+   "w": 97,
+   "h": 19,
+   "design": 33,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112129",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 25,
+      "h": 19,
+      "ox": 25,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 19,
+      "ox": 1,
+      "oy": 5,
+      "textY": 9
+     },
+     "e": {
+      "w": 14,
+      "h": 19,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "British Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112130,
+   "file": "sprites/ring/1112130.png",
+   "w": 97,
+   "h": 19,
+   "design": 34,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112130",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 25,
+      "h": 19,
+      "ox": 25,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 19,
+      "ox": 1,
+      "oy": 5,
+      "textY": 9
+     },
+     "e": {
+      "w": 14,
+      "h": 19,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Red Rose Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112132,
+   "file": "sprites/ring/1112132.png",
+   "w": 86,
+   "h": 34,
+   "design": 40,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112132",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 20,
+      "h": 34,
+      "ox": 20,
+      "oy": 14
+     },
+     "c": {
+      "w": 1,
+      "h": 34,
+      "ox": 1,
+      "oy": 14,
+      "textY": 18
+     },
+     "e": {
+      "w": 21,
+      "h": 34,
+      "ox": 0,
+      "oy": 14
+     }
+    }
+   }
+  },
+  {
+   "name": "Mummy Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112133,
+   "file": "sprites/ring/1112133.png",
+   "w": 88,
+   "h": 25,
+   "design": 41,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112133",
+    "source": "cut from the sample picture",
+    "colour": "#444455",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 26,
+      "h": 25,
+      "ox": 26,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 25,
+      "ox": 1,
+      "oy": 5,
+      "textY": 10
+     },
+     "e": {
+      "w": 1,
+      "h": 25,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Luxury Pearl Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112134,
+   "file": "sprites/ring/1112134.png",
+   "w": 83,
+   "h": 28,
+   "design": 112,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112134",
+    "source": "cut from the sample picture",
+    "colour": "#003344",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 18,
+      "h": 28,
+      "ox": 18,
+      "oy": 11
+     },
+     "c": {
+      "w": 1,
+      "h": 28,
+      "ox": 1,
+      "oy": 11,
+      "textY": 16
+     },
+     "e": {
+      "w": 11,
+      "h": 28,
+      "ox": 0,
+      "oy": 11
+     }
+    }
+   }
+  },
+  {
+   "name": "Romantic Lace Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112135,
+   "file": "sprites/ring/1112135.png",
+   "w": 51,
+   "h": 29,
+   "design": 42,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112135",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 6,
+      "h": 29,
+      "ox": 6,
+      "oy": 7
+     },
+     "c": {
+      "w": 1,
+      "h": 29,
+      "ox": 1,
+      "oy": 7,
+      "textY": 14
+     },
+     "e": {
+      "w": 6,
+      "h": 29,
+      "ox": 0,
+      "oy": 7
+     }
+    }
+   }
+  },
+  {
+   "name": "Green Apple Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112136,
+   "file": "sprites/ring/1112136.png",
+   "w": 66,
+   "h": 24,
+   "design": 43,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112136",
+    "source": "cut from the sample picture",
+    "colour": "#aa5500",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 20,
+      "h": 24,
+      "ox": 20,
+      "oy": 9
+     },
+     "c": {
+      "w": 1,
+      "h": 24,
+      "ox": 1,
+      "oy": 9,
+      "textY": 13.5
+     },
+     "e": {
+      "w": 6,
+      "h": 24,
+      "ox": 0,
+      "oy": 9
+     }
+    }
+   }
+  },
+  {
+   "name": "Mister Mustache Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112137,
+   "file": "sprites/ring/1112137.png",
+   "w": 82,
+   "h": 21,
+   "design": 115,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112137",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 15,
+      "h": 21,
+      "ox": 15,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 21,
+      "ox": 1,
+      "oy": 5,
+      "textY": 10
+     },
+     "e": {
+      "w": 2,
+      "h": 21,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Angel Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112139,
+   "file": "sprites/ring/1112139.png",
+   "w": 106,
+   "h": 33,
+   "design": 117,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112139",
+    "source": "cut from the sample picture",
+    "colour": "#ffffee",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 18,
+      "h": 33,
+      "ox": 18,
+      "oy": 14
+     },
+     "c": {
+      "w": 1,
+      "h": 33,
+      "ox": 1,
+      "oy": 14,
+      "textY": 18.5
+     },
+     "e": {
+      "w": 31,
+      "h": 33,
+      "ox": 0,
+      "oy": 14
+     }
+    }
+   }
+  },
+  {
+   "name": "Strawberry Cake Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112140,
+   "file": "sprites/ring/1112140.png",
+   "w": 96,
+   "h": 31,
+   "design": 118,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112140",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 14,
+      "h": 31,
+      "ox": 14,
+      "oy": 14
+     },
+     "c": {
+      "w": 1,
+      "h": 31,
+      "ox": 1,
+      "oy": 14,
+      "textY": 19.5
+     },
+     "e": {
+      "w": 7,
+      "h": 31,
+      "ox": 0,
+      "oy": 14
+     }
+    }
+   }
+  },
+  {
+   "name": "Blue Strawberry Basket Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112141,
+   "file": "sprites/ring/1112141.png",
+   "w": 87,
+   "h": 26,
+   "design": 119,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112141",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 18,
+      "h": 26,
+      "ox": 18,
+      "oy": 10
+     },
+     "c": {
+      "w": 1,
+      "h": 26,
+      "ox": 1,
+      "oy": 10,
+      "textY": 15
+     },
+     "e": {
+      "w": 3,
+      "h": 26,
+      "ox": 0,
+      "oy": 10
+     }
+    }
+   }
+  },
+  {
+   "name": "Strawberry Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112142,
+   "file": "sprites/ring/1112142.png",
+   "w": 87,
+   "h": 26,
+   "design": 120,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112142",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 18,
+      "h": 26,
+      "ox": 18,
+      "oy": 10
+     },
+     "c": {
+      "w": 1,
+      "h": 26,
+      "ox": 1,
+      "oy": 10,
+      "textY": 15
+     },
+     "e": {
+      "w": 3,
+      "h": 26,
+      "ox": 0,
+      "oy": 10
+     }
+    }
+   }
+  },
+  {
+   "name": "Moon Bunny Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112143,
+   "file": "sprites/ring/1112143.png",
+   "w": 63,
+   "h": 21,
+   "design": 121,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112143",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 2,
+    "pieces": {
+     "w": {
+      "w": 20,
+      "h": 21,
+      "ox": 20,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 21,
+      "ox": 1,
+      "oy": 5,
+      "textY": 10
+     },
+     "e": {
+      "w": 9,
+      "h": 21,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Frog Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112144,
+   "file": "sprites/ring/1112144.png",
+   "w": 88,
+   "h": 25,
+   "design": 122,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112144",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 29,
+      "h": 25,
+      "ox": 29,
+      "oy": 8
+     },
+     "c": {
+      "w": 1,
+      "h": 25,
+      "ox": 1,
+      "oy": 8,
+      "textY": 12.5
+     },
+     "e": {
+      "w": 5,
+      "h": 25,
+      "ox": 0,
+      "oy": 8
+     }
+    }
+   }
+  },
+  {
+   "name": "Oink Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112145,
+   "file": "sprites/ring/1112145.png",
+   "w": 93,
+   "h": 25,
+   "design": 123,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112145",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 28,
+      "h": 25,
+      "ox": 28,
+      "oy": 8
+     },
+     "c": {
+      "w": 1,
+      "h": 25,
+      "ox": 1,
+      "oy": 8,
+      "textY": 12.5
+     },
+     "e": {
+      "w": 10,
+      "h": 25,
+      "ox": 0,
+      "oy": 8
+     }
+    }
+   }
+  },
+  {
+   "name": "Blue Beard Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112146,
+   "file": "sprites/ring/1112146.png",
+   "w": 94,
+   "h": 21,
+   "design": 124,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112146",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 21,
+      "h": 21,
+      "ox": 21,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 21,
+      "ox": 1,
+      "oy": 5,
+      "textY": 10
+     },
+     "e": {
+      "w": 6,
+      "h": 21,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Diamond Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112147,
+   "file": "sprites/ring/1112147.png",
+   "w": 93,
+   "h": 33,
+   "design": 126,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112147",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 28,
+      "h": 33,
+      "ox": 28,
+      "oy": 10
+     },
+     "c": {
+      "w": 1,
+      "h": 33,
+      "ox": 1,
+      "oy": 10,
+      "textY": 17.5
+     },
+     "e": {
+      "w": 17,
+      "h": 33,
+      "ox": 0,
+      "oy": 10
+     }
+    }
+   }
+  },
+  {
+   "name": "Watermelon Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112148,
+   "file": "sprites/ring/1112148.png",
+   "w": 77,
+   "h": 20,
+   "design": 127,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112148",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 15,
+      "h": 20,
+      "ox": 15,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 20,
+      "ox": 1,
+      "oy": 5,
+      "textY": 9.5
+     },
+     "e": {
+      "w": 8,
+      "h": 20,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Quack Quack Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112149,
+   "file": "sprites/ring/1112149.png",
+   "w": 94,
+   "h": 31,
+   "design": 128,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112149",
+    "source": "cut from the sample picture",
+    "colour": "#2299ee",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 11,
+      "h": 31,
+      "ox": 11,
+      "oy": 18
+     },
+     "c": {
+      "w": 1,
+      "h": 31,
+      "ox": 1,
+      "oy": 18,
+      "textY": 21.5
+     },
+     "e": {
+      "w": 9,
+      "h": 31,
+      "ox": 0,
+      "oy": 18
+     }
+    }
+   }
+  },
+  {
+   "name": "Starring Me Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112150,
+   "file": "sprites/ring/1112150.png",
+   "w": 88,
+   "h": 29,
+   "design": 130,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112150",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 32,
+      "h": 29,
+      "ox": 32,
+      "oy": 6
+     },
+     "c": {
+      "w": 1,
+      "h": 29,
+      "ox": 1,
+      "oy": 6,
+      "textY": 14
+     },
+     "e": {
+      "w": 5,
+      "h": 29,
+      "ox": 0,
+      "oy": 6
+     }
+    }
+   }
+  },
+  {
+   "name": "Sweet Summer Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112151,
+   "file": "sprites/ring/1112151.png",
+   "w": 101,
+   "h": 31,
+   "design": 131,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112151",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 25,
+      "h": 31,
+      "ox": 25,
+      "oy": 8
+     },
+     "c": {
+      "w": 1,
+      "h": 31,
+      "ox": 1,
+      "oy": 8,
+      "textY": 14
+     },
+     "e": {
+      "w": 19,
+      "h": 31,
+      "ox": 0,
+      "oy": 8
+     }
+    }
+   }
+  },
+  {
+   "name": "Green Forest Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112152,
+   "file": "sprites/ring/1112152.png",
+   "w": 91,
+   "h": 30,
+   "design": 137,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112152",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 22,
+      "h": 30,
+      "ox": 22,
+      "oy": 6
+     },
+     "c": {
+      "w": 1,
+      "h": 30,
+      "ox": 1,
+      "oy": 6,
+      "textY": 12
+     },
+     "e": {
+      "w": 15,
+      "h": 30,
+      "ox": 0,
+      "oy": 6
+     }
+    }
+   }
+  },
+  {
+   "name": "Baby Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112153,
+   "file": "sprites/ring/1112153.png",
+   "w": 103,
+   "h": 39,
+   "design": 138,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112153",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 21,
+      "h": 39,
+      "ox": 21,
+      "oy": 13
+     },
+     "c": {
+      "w": 1,
+      "h": 39,
+      "ox": 1,
+      "oy": 13,
+      "textY": 20.5
+     },
+     "e": {
+      "w": 15,
+      "h": 39,
+      "ox": 0,
+      "oy": 13
+     }
+    }
+   }
+  },
+  {
+   "name": "Star Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112154,
+   "file": "sprites/ring/1112154.png",
+   "w": 43,
+   "h": 22,
+   "design": 142,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112154",
+    "source": "cut from the sample picture",
+    "colour": "#ffff00",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 7,
+      "h": 22,
+      "ox": 7,
+      "oy": 7
+     },
+     "c": {
+      "w": 1,
+      "h": 22,
+      "ox": 1,
+      "oy": 7,
+      "textY": 11.5
+     },
+     "e": {
+      "w": 2,
+      "h": 22,
+      "ox": 0,
+      "oy": 7
+     }
+    }
+   }
+  },
+  {
+   "name": "White Puppy Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112155,
+   "file": "sprites/ring/1112155.png",
+   "w": 99,
+   "h": 27,
+   "design": 143,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112155",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 28,
+      "h": 27,
+      "ox": 28,
+      "oy": 11
+     },
+     "c": {
+      "w": 1,
+      "h": 27,
+      "ox": 1,
+      "oy": 11,
+      "textY": 14
+     },
+     "e": {
+      "w": 30,
+      "h": 27,
+      "ox": 0,
+      "oy": 11
+     }
+    }
+   }
+  },
+  {
+   "name": "Brown Puppy Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112156,
+   "file": "sprites/ring/1112156.png",
+   "w": 97,
+   "h": 27,
+   "design": 144,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112156",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 28,
+      "h": 27,
+      "ox": 28,
+      "oy": 11
+     },
+     "c": {
+      "w": 1,
+      "h": 27,
+      "ox": 1,
+      "oy": 11,
+      "textY": 14
+     },
+     "e": {
+      "w": 30,
+      "h": 27,
+      "ox": 0,
+      "oy": 11
+     }
+    }
+   }
+  },
+  {
+   "name": "Bunny Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112157,
+   "file": "sprites/ring/1112157.png",
+   "w": 91,
+   "h": 31,
+   "design": 145,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112157",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 24,
+      "h": 31,
+      "ox": 24,
+      "oy": 14
+     },
+     "c": {
+      "w": 1,
+      "h": 31,
+      "ox": 1,
+      "oy": 14,
+      "textY": 18.5
+     },
+     "e": {
+      "w": 11,
+      "h": 31,
+      "ox": 0,
+      "oy": 14
+     }
+    }
+   }
+  },
+  {
+   "name": "G Clef Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112158,
+   "file": "sprites/ring/1112158.png",
+   "w": 85,
+   "h": 31,
+   "design": 148,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112158",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 16,
+      "h": 31,
+      "ox": 16,
+      "oy": 11
+     },
+     "c": {
+      "w": 1,
+      "h": 31,
+      "ox": 1,
+      "oy": 11,
+      "textY": 16
+     },
+     "e": {
+      "w": 21,
+      "h": 31,
+      "ox": 0,
+      "oy": 11
+     }
+    }
+   }
+  },
+  {
+   "name": "Snow Day Dream Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112160,
+   "file": "sprites/ring/1112160.png",
+   "w": 120,
+   "h": 41,
+   "design": 150,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112160",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 36,
+      "h": 41,
+      "ox": 36,
+      "oy": 15
+     },
+     "c": {
+      "w": 1,
+      "h": 41,
+      "ox": 1,
+      "oy": 15,
+      "textY": 21.5
+     },
+     "e": {
+      "w": 29,
+      "h": 41,
+      "ox": 0,
+      "oy": 15
+     }
+    }
+   }
+  },
+  {
+   "name": "Snowy Christmas Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112161,
+   "file": "sprites/ring/1112161.png",
+   "w": 143,
+   "h": 30,
+   "design": 151,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112161",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 24,
+      "h": 30,
+      "ox": 24,
+      "oy": 11
+     },
+     "c": {
+      "w": 1,
+      "h": 30,
+      "ox": 1,
+      "oy": 11,
+      "textY": 16.5
+     },
+     "e": {
+      "w": 39,
+      "h": 30,
+      "ox": 0,
+      "oy": 11
+     }
+    }
+   }
+  },
+  {
+   "name": "Sheep Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112163,
+   "file": "sprites/ring/1112163.png",
+   "w": 93,
+   "h": 48,
+   "design": 155,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112163",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 26,
+      "h": 48,
+      "ox": 26,
+      "oy": 17
+     },
+     "c": {
+      "w": 1,
+      "h": 48,
+      "ox": 1,
+      "oy": 17,
+      "textY": 29.5
+     },
+     "e": {
+      "w": 10,
+      "h": 48,
+      "ox": 0,
+      "oy": 17
+     }
+    }
+   }
+  },
+  {
+   "name": "Meadow Sheep Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112164,
+   "file": "sprites/ring/1112164.png",
+   "w": 119,
+   "h": 48,
+   "design": 158,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112164",
+    "source": "cut from the sample picture",
+    "colour": "#442211",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 34,
+      "h": 48,
+      "ox": 34,
+      "oy": 17
+     },
+     "c": {
+      "w": 1,
+      "h": 48,
+      "ox": 1,
+      "oy": 17,
+      "textY": 27.5
+     },
+     "e": {
+      "w": 14,
+      "h": 48,
+      "ox": 0,
+      "oy": 17
+     }
+    }
+   }
+  },
+  {
+   "name": "Carrot Rabbit Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112166,
+   "file": "sprites/ring/1112166.png",
+   "w": 109,
+   "h": 39,
+   "design": 165,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112166",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 35,
+      "h": 39,
+      "ox": 35,
+      "oy": 13
+     },
+     "c": {
+      "w": 1,
+      "h": 39,
+      "ox": 1,
+      "oy": 13,
+      "textY": 22
+     },
+     "e": {
+      "w": 33,
+      "h": 39,
+      "ox": 0,
+      "oy": 13
+     }
+    }
+   }
+  },
+  {
+   "name": "Honey Bee Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112167,
+   "file": "sprites/ring/1112167.png",
+   "w": 96,
+   "h": 43,
+   "design": 166,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112167",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 27,
+      "h": 43,
+      "ox": 27,
+      "oy": 13
+     },
+     "c": {
+      "w": 1,
+      "h": 43,
+      "ox": 1,
+      "oy": 13,
+      "textY": 23.5
+     },
+     "e": {
+      "w": 20,
+      "h": 43,
+      "ox": 0,
+      "oy": 13
+     }
+    }
+   }
+  },
+  {
+   "name": "Pineapple Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112168,
+   "file": "sprites/ring/1112168.png",
+   "w": 99,
+   "h": 30,
+   "design": 167,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112168",
+    "source": "cut from the sample picture",
+    "colour": "#aa4400",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 31,
+      "h": 30,
+      "ox": 31,
+      "oy": 6
+     },
+     "c": {
+      "w": 1,
+      "h": 30,
+      "ox": 1,
+      "oy": 6,
+      "textY": 13
+     },
+     "e": {
+      "w": 9,
+      "h": 30,
+      "ox": 0,
+      "oy": 6
+     }
+    }
+   }
+  },
+  {
+   "name": "Princess Diary Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112169,
+   "file": "sprites/ring/1112169.png",
+   "w": 120,
+   "h": 35,
+   "design": 168,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112169",
+    "source": "cut from the sample picture",
+    "colour": "#882244",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 4,
+      "h": 35,
+      "ox": 4,
+      "oy": 12
+     },
+     "c": {
+      "w": 1,
+      "h": 35,
+      "ox": 1,
+      "oy": 12,
+      "textY": 17
+     },
+     "e": {
+      "w": 24,
+      "h": 35,
+      "ox": 0,
+      "oy": 12
+     }
+    }
+   }
+  },
+  {
+   "name": "Black Hat Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112170,
+   "file": "sprites/ring/1112170.png",
+   "w": 70,
+   "h": 28,
+   "design": 169,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112170",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 6,
+      "h": 28,
+      "ox": 6,
+      "oy": 11
+     },
+     "c": {
+      "w": 1,
+      "h": 28,
+      "ox": 1,
+      "oy": 11,
+      "textY": 16.5
+     },
+     "e": {
+      "w": 11,
+      "h": 28,
+      "ox": 0,
+      "oy": 11
+     }
+    }
+   }
+  },
+  {
+   "name": "Green Hat Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112171,
+   "file": "sprites/ring/1112171.png",
+   "w": 80,
+   "h": 26,
+   "design": 170,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112171",
+    "source": "cut from the sample picture",
+    "colour": "#440033",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 5,
+      "h": 26,
+      "ox": 5,
+      "oy": 8
+     },
+     "c": {
+      "w": 1,
+      "h": 26,
+      "ox": 1,
+      "oy": 8,
+      "textY": 14
+     },
+     "e": {
+      "w": 5,
+      "h": 26,
+      "ox": 0,
+      "oy": 8
+     }
+    }
+   }
+  },
+  {
+   "name": "Blue Hat Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112172,
+   "file": "sprites/ring/1112172.png",
+   "w": 84,
+   "h": 29,
+   "design": 171,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112172",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 11,
+      "h": 29,
+      "ox": 11,
+      "oy": 12
+     },
+     "c": {
+      "w": 1,
+      "h": 29,
+      "ox": 1,
+      "oy": 12,
+      "textY": 17.5
+     },
+     "e": {
+      "w": 16,
+      "h": 29,
+      "ox": 0,
+      "oy": 12
+     }
+    }
+   }
+  },
+  {
+   "name": "Good Night Monster Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112173,
+   "file": "sprites/ring/1112173.png",
+   "w": 101,
+   "h": 25,
+   "design": 172,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112173",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 38,
+      "h": 25,
+      "ox": 38,
+      "oy": 8
+     },
+     "c": {
+      "w": 1,
+      "h": 25,
+      "ox": 1,
+      "oy": 8,
+      "textY": 13.5
+     },
+     "e": {
+      "w": 16,
+      "h": 25,
+      "ox": 0,
+      "oy": 8
+     }
+    }
+   }
+  },
+  {
+   "name": "Rascally Monster Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112174,
+   "file": "sprites/ring/1112174.png",
+   "w": 101,
+   "h": 25,
+   "design": 173,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112174",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 38,
+      "h": 25,
+      "ox": 38,
+      "oy": 8
+     },
+     "c": {
+      "w": 1,
+      "h": 25,
+      "ox": 1,
+      "oy": 8,
+      "textY": 13.5
+     },
+     "e": {
+      "w": 16,
+      "h": 25,
+      "ox": 0,
+      "oy": 8
+     }
+    }
+   }
+  },
+  {
+   "name": "Snowman's Red Scarf Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112175,
+   "file": "sprites/ring/1112175.png",
+   "w": 114,
+   "h": 32,
+   "design": 177,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112175",
+    "source": "cut from the sample picture",
+    "colour": "#ffffff",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 19,
+      "h": 32,
+      "ox": 19,
+      "oy": 12
+     },
+     "c": {
+      "w": 1,
+      "h": 32,
+      "ox": 1,
+      "oy": 12,
+      "textY": 17.5
+     },
+     "e": {
+      "w": 7,
+      "h": 32,
+      "ox": 0,
+      "oy": 12
+     }
+    }
+   }
+  },
+  {
+   "name": "Christmas Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112180,
+   "file": "sprites/ring/1112180.png",
+   "w": 59,
+   "h": 20,
+   "design": 180,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112180",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 2,
+      "h": 20,
+      "ox": 2,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 20,
+      "ox": 1,
+      "oy": 5,
+      "textY": 9.5
+     },
+     "e": {
+      "w": 5,
+      "h": 20,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Mighty Banana Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112181,
+   "file": "sprites/ring/1112181.png",
+   "w": 146,
+   "h": 30,
+   "design": 179,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112181",
+    "source": "cut from the sample picture",
+    "colour": "#bb6600",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 28,
+      "h": 30,
+      "ox": 28,
+      "oy": 6
+     },
+     "c": {
+      "w": 1,
+      "h": 30,
+      "ox": 1,
+      "oy": 6,
+      "textY": 15
+     },
+     "e": {
+      "w": 23,
+      "h": 30,
+      "ox": 0,
+      "oy": 6
+     }
+    }
+   }
+  },
+  {
+   "name": "Surprised Bunny Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112185,
+   "file": "sprites/ring/1112185.png",
+   "w": 112,
+   "h": 51,
+   "design": 186,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112185",
+    "source": "cut from the sample picture",
+    "colour": "#0a2a55",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 10,
+      "h": 51,
+      "ox": 10,
+      "oy": 26
+     },
+     "c": {
+      "w": 1,
+      "h": 51,
+      "ox": 1,
+      "oy": 26,
+      "textY": 34
+     },
+     "e": {
+      "w": 24,
+      "h": 51,
+      "ox": 0,
+      "oy": 26
+     }
+    }
+   }
+  },
+  {
+   "name": "Sunshine Ranch Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112186,
+   "file": "sprites/ring/1112186.png",
+   "w": 98,
+   "h": 40,
+   "design": 187,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112186",
+    "source": "cut from the sample picture",
+    "colour": "#003300",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 21,
+      "h": 40,
+      "ox": 21,
+      "oy": 14
+     },
+     "c": {
+      "w": 1,
+      "h": 40,
+      "ox": 1,
+      "oy": 14,
+      "textY": 20.5
+     },
+     "e": {
+      "w": 32,
+      "h": 40,
+      "ox": 0,
+      "oy": 14
+     }
+    }
+   }
+  },
+  {
+   "name": "Cat Skein Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112189,
+   "file": "sprites/ring/1112189.png",
+   "w": 80,
+   "h": 26,
+   "design": 190,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112189",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 28,
+      "h": 26,
+      "ox": 28,
+      "oy": 8
+     },
+     "c": {
+      "w": 1,
+      "h": 26,
+      "ox": 1,
+      "oy": 8,
+      "textY": 13.5
+     },
+     "e": {
+      "w": 6,
+      "h": 26,
+      "ox": 0,
+      "oy": 8
+     }
+    }
+   }
+  },
+  {
+   "name": "Red Cloud Label Ring",
+   "kind": "nameTag",
+   "classicId": 1112190,
+   "file": "sprites/ring/1112190.png",
+   "w": 84,
+   "h": 22,
+   "design": 191,
+   "released": false,
+   "tag": {
+    "dir": "sprites/ring/tag/1112190",
+    "source": "cut from the sample picture",
+    "colour": "#000000",
+    "pad": 3,
+    "pieces": {
+     "w": {
+      "w": 11,
+      "h": 22,
+      "ox": 11,
+      "oy": 5
+     },
+     "c": {
+      "w": 1,
+      "h": 22,
+      "ox": 1,
+      "oy": 5,
+      "textY": 10.5
+     },
+     "e": {
+      "w": 13,
+      "h": 22,
+      "ox": 0,
+      "oy": 5
+     }
+    }
+   }
+  },
+  {
+   "name": "Ink-and-Wash Painting Name Tag Ring",
+   "kind": "nameTag",
+   "classicId": 1112223,
+   "file": "sprites/ring/1112223.png",
+   "w": 95,
+   "h": 25,
+   "design": 17,
+   "tag": {
+    "dir": "sprites/ring/tag/1112223",
+    "source": "game design 17",
+    "colour": "#ffffff",
+    "pieces": {
+     "w": {
+      "w": 28,
+      "h": 25,
+      "ox": 28,
+      "oy": 7
+     },
+     "c": {
+      "w": 1,
+      "h": 25,
+      "ox": 0,
+      "oy": 7
+     },
+     "e": {
+      "w": 31,
+      "h": 25,
+      "ox": 0,
+      "oy": 7
+     }
+    }
+   }
+  }
+ ]
 }

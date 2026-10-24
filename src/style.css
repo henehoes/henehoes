@@ -56,7 +56,7 @@ input { font: inherit; border-radius: 0; }
 .side { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); gap: 14px; min-height: 0; overflow: auto; padding: 3px 8px 8px 3px; }
 
 /* ---- Preview ---- */
-.stage-box { position: relative; width: 100%; height: min(240px, calc(100dvh - 400px)); min-height: 160px; grid-column: 1; grid-row: 1; flex-shrink: 0; overflow: hidden; background: var(--bench-deep); --c: var(--bench-line); box-shadow: 0 -3px 0 0 var(--c), 0 3px 0 0 var(--c), -3px 0 0 0 var(--c), 3px 0 0 0 var(--c), 6px 6px 0 0 var(--drop); }
+.stage-box { position: relative; width: 100%; height: min(300px, calc(100dvh - 340px)); min-height: 200px; grid-column: 1; grid-row: 1; flex-shrink: 0; overflow: hidden; background: var(--bench-deep); --c: var(--bench-line); box-shadow: 0 -3px 0 0 var(--c), 0 3px 0 0 var(--c), -3px 0 0 0 var(--c), 3px 0 0 0 var(--c), 6px 6px 0 0 var(--drop); }
 #preview { display: block; position: absolute; image-rendering: pixelated; }
 .note { margin: 0; padding: 0 3px 3px; color: var(--bench-dim); font: 12px/1.4 var(--font-text); text-align: right; }
 .note a { color: var(--head); text-decoration: underline; text-underline-offset: 2px; }
@@ -118,9 +118,6 @@ input { font: inherit; border-radius: 0; }
 .slider input[type=range]::-moz-range-thumb { width: 12px; height: 18px; border: 0; border-radius: 0; background: var(--brass); box-shadow: 0 -2px 0 0 var(--bench-line), 0 2px 0 0 var(--bench-line), -2px 0 0 0 var(--bench-line), 2px 0 0 0 var(--bench-line); }
 .slider .num { width: 54px; padding: 4px 6px; border: 0; background: var(--bench-deep); color: var(--bench-text); font: 12px var(--font-label); text-align: right; box-shadow: 0 -2px 0 0 var(--bench-line), 0 2px 0 0 var(--bench-line), -2px 0 0 0 var(--bench-line), 2px 0 0 0 var(--bench-line); }
 
-.text-fields { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin-bottom: 8px; padding: 3px; }
-.text-field { display: flex; align-items: center; gap: 8px; font: 13px var(--font-pixel); color: var(--bench-dim); }
-.text-field input { padding: 5px 8px; border: 0; background: var(--bench-deep); color: var(--bench-text); min-width: 0; width: 170px; box-shadow: 0 -2px 0 0 var(--bench-line), 0 2px 0 0 var(--bench-line), -2px 0 0 0 var(--bench-line), 2px 0 0 0 var(--bench-line); }
 
 /* ---- The book ---- */
 .book { display: flex; min-height: 0; min-width: 0; padding: 3px 0 8px 3px; }
@@ -220,7 +217,7 @@ input { font: inherit; border-radius: 0; }
   body { overflow: auto; }
   .app { display: flex; flex-direction: column; gap: 12px; height: auto; padding: 8px 10px 16px; }
   .side { display: contents; }
-  .stage-box { order: 1; position: sticky; top: 0; z-index: 20; width: 100%; height: 190px; min-height: 0; }
+  .stage-box { order: 1; position: sticky; top: 0; z-index: 20; width: 100%; height: 235px; min-height: 0; }
   .book { order: 2; display: flex; flex-direction: column; height: auto; padding: 3px 3px 9px; }
   .chapters { order: 1; flex-direction: row; width: auto; margin: 0 0 -3px; padding: 0 0 8px; gap: 4px; overflow-x: auto; scrollbar-width: none; }
   .chapters::-webkit-scrollbar { display: none; }
@@ -296,6 +293,9 @@ input { font: inherit; border-radius: 0; }
 .home-card .art-box { height: 110px; overflow: hidden; }
 .home-thumb { width: 100%; height: 100%; object-fit: cover; display: block; }
 .card:disabled { opacity: .45; cursor: not-allowed; }
+.text-fields { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; margin-bottom: 8px; padding: 3px; }
+.text-field { display: flex; align-items: center; gap: 8px; font: 13px var(--font-pixel); color: var(--bench-dim); }
+.text-field input { padding: 5px 8px; border: 0; background: var(--bench-deep); color: var(--bench-text); min-width: 0; width: 170px; box-shadow: 0 -2px 0 0 var(--bench-line), 0 2px 0 0 var(--bench-line), -2px 0 0 0 var(--bench-line), 2px 0 0 0 var(--bench-line); }
 .hold-row { display: flex; align-items: center; gap: 10px; margin: 2px 0 12px; }
 .hint.full { color: var(--maple-deep); font-weight: 700; }
 /* Mirror (top left) and remove (top right) buttons riding on the selected piece, and the piece counter */

@@ -93,18 +93,15 @@ for (const w of wearables) {
   (catalog.wearables[slot[1]] ??= { label: slot[2], items: [] }).items.push({ id: w.id, name: w.name, ...(w.collab && { collab: w.collab }), ...(rules.holds?.includes(w.id) && { holds: true }), ...(w.assumed && { check: w.assumed }), vslots: meta.vslots ?? [], ...(existsSync(`public/${dir}/icon.png`) && { icon: `${dir}/icon.png` }), ...(rules.stand2Only?.includes(w.id) && { pose: 'stand2' }), ...((w.classicId ?? classicIdOf(w)) && { classicId: w.classicId ?? classicIdOf(w) }), parts, ...(parts2Of(dir, w.name) && { parts2: parts2Of(dir, w.name) }) });
 }
 
-// Name tag and chat bubble rings draw no sprite: the app builds them from UI pieces (see src/ring.js, data/rings.json).
-const RING_LABELS = { nameTag: 'Name tag', chatBalloon: 'Chat bubble' };
+// Name tag and chat bubble rings draw no avatar sprite: each is a finished sample picture shown under the feet or over the head (data/rings.json).
+const RING_LABELS = { nameTag: 'Name Ring', chatBalloon: 'Chat Ring' };
 for (const r of read('data/rings.json').rings) {
-  let effect;
-  if (r.plain) effect = { kind: r.kind, plain: true };
-  else {
-    const dir = `sprites/ring/${r.kind}/${r.code}`;
-    if (!existsSync(`public/${dir}/meta.json`)) { addWearablePlaceholder(r.kind, r.name, `Classic id ${r.classicId}: its ${r.kind} pieces (code ${r.code}) could not be downloaded`); continue; }
-    const meta = read(`public/${dir}/meta.json`);
-    effect = { kind: r.kind, colour: meta.colour, pieces: Object.fromEntries(Object.entries(meta.pieces).map(([k, p]) => [k, { file: `${dir}/${k}.png`, w: p.w, h: p.h, ox: p.ox, oy: p.oy }])) };
-  }
-  (catalog.wearables[r.kind] ??= { label: RING_LABELS[r.kind], items: [] }).items.push({ id: r.classicId, name: r.name, vslots: [], parts: [], effect, ...(r.check && { check: r.check }) });
+  // each ring is its own finished sample picture (scripts/extract-rings.mjs)
+  if (!existsSync(`public/${r.file}`)) { addWearablePlaceholder(r.kind, r.name, `Classic id ${r.classicId}: its sample picture is missing (run scripts/extract-rings.mjs)`); continue; }
+  if (r.tag && !existsSync(`public/${r.tag.dir}/w.png`)) { addWearablePlaceholder(r.kind, r.name, `Classic id ${r.classicId}: its tag pieces are missing (run scripts/extract-rings.mjs)`); continue; }
+  // chat bubbles: the sample picture as it is; name tags: pieces (or a plain box) with the name drawn in, the sample is only the fallback
+  const effect = { kind: r.kind, file: r.file, w: r.w, h: r.h, ...(r.text && { text: r.text }), ...(r.tag && { tag: r.tag }), ...(r.plain && { plain: r.plain }) };
+  (catalog.wearables[r.kind] ??= { label: RING_LABELS[r.kind], items: [] }).items.push({ id: r.classicId, name: r.name, vslots: [], parts: [], effect, ...(r.released === false && { released: false }), ...(r.check && { check: r.check }) });
 }
 
 const spriteDirOf = (s, id) => s.region && s.region !== 'GMS' ? `sprites/${s.region.toLowerCase()}/${s.kind}/${id}` : `sprites/${s.kind}/${id}`;

@@ -5,6 +5,6 @@
   "stand2Only": [1702014],
   "holds": [1702010, 1702003],
   "listFirst": [1040000, 1041000],
-  "exclude": [{ "kind": "hair", "gender": "male", "style": "Zeta" }],
+  "exclude": [],
   "useEarlierId": ["Bed Head Hair", "Prince Cut Hair", "Bowl Cut"]
 }

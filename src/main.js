@@ -1,10 +1,11 @@
+import '@fontsource/noto-sans-kr/latin-500.css'; // the game's own text font (its client embeds Noto Sans KR Medium), for the text drawn on the Ink-and-Wash rings
 import '@fontsource/pixelify-sans/400.css';
 import '@fontsource/pixelify-sans/600.css';
 import '@fontsource/silkscreen/400.css';
 import '@fontsource/nunito/400.css';
 import '@fontsource/nunito/700.css';
 import { adjustColour, composite } from './compose.js';
-import { drawBalloon, drawNameTag, drawPlainTag } from './ring.js';
+import { drawNameTag, drawPlainTag, loadFont } from './ring.js';
 import * as housing from './housing.js';
 
 // Vercel Web Analytics (page views only). Only in the production build: during development and tests it would load a debug script
@@ -16,10 +17,9 @@ if (import.meta.env.PROD) import('@vercel/analytics').then(m => m.inject()).catc
 const W = 160, H = 230;          // working canvas, in sprite pixels (tall: a chat bubble sits above the head, a name tag below the feet)
 const OX = 60, OY = 112;          // where the skin's top-left sits on that canvas
 
-// Switched off for now (not rendered cleanly enough yet): hidden from the tabs, the Equipped panel, the preview, Random and saved
-// defaults. The code, data and sprites stay, so turning them back on is removing the names from this set.
+// A slot named in DISABLED_SLOTS is hidden from the tabs, the Equipped panel, the preview, Random and saved defaults (code and data stay).
 const narrowLayout = matchMedia('(max-width: 800px)'); // the one-column phone layout (see the media query in style.css)
-const DISABLED_SLOTS = new Set(['nameTag', 'chatBalloon']);
+const DISABLED_SLOTS = new Set(); // a slot named here is hidden everywhere (the code and data stay); empty now that the rings are rebuilt from the game files
 const WEAR_ORDER = ['cap', 'faceAcc', 'eyeAcc', 'earrings', 'longcoat', 'coat', 'pants', 'glove', 'shoes', 'cape', 'weapon', 'nameTag', 'chatBalloon'];
 
 // Sharpness: every sprite pixel is drawn as a whole number of DEVICE pixels, so on-screen pixels are all the same
@@ -30,7 +30,10 @@ const VIEW = { scale: 1.5, focus: [OX + 20, OY + 15] };  // shared crop for ever
 const MINI_VIEW = { scale: 1, focus: [OX + 21, OY + 15], centre: true }; // centre: put whatever is drawn in the middle of the tile
 const MINI_ART = 44;                              // art height of a small Equipped tile, CSS px
 const SHORT_LABEL = { faceAcc: 'Face', eyeAcc: 'Eye' }; // category names shortened for the small tiles
-const PREVIEW_VIEW = 120;                        // sprite pixels the main preview aims to show across
+// Sprite pixels the main preview aims to show across. 150 with a preview 25% taller than before (300 px, 235 px on a phone) keeps the
+// character the same size as when it was 120 in 240 px, and leaves room above the head for a chat bubble up to about 64 px tall, so
+// wearing most rings no longer makes the preview zoom out.
+const PREVIEW_VIEW = 150;
 const PREVIEW_FOCUS = [OX + 22, OY + 30];
 
 // In-game skin names (MeowDB, MapleStory Classic skin tones). Ids not listed here are not in Classic, so they are hidden.
@@ -79,6 +82,7 @@ const EYE_COLOURS = { Black: '#515356', Blue: '#4898f7', Red: '#ea4448', Green: 
 
 // ---------- state ----------
 let catalog;
+const DEFAULT_NAME = 'henehoe'; // the placeholder name on a name tag (also what an emptied Name box falls back to)
 // Two-handed pose: a weapon with no one-handed picture (Orange Toy Hammer used to be one, now the Toy Rifle) always puts the whole
 // character in it; a weapon with both holds (`holds`: Toy Hammer, Plastic Slingshot) follows the Hold choice in its colour panel.
 function isTwoHanded(sel) {
@@ -86,11 +90,11 @@ function isTwoHanded(sel) {
   return !!item && (item.pose === 'stand2' || (!!item.holds && !!sel.wear.weapon.two));
 }
 const fresh = () => ({
+  text: { name: DEFAULT_NAME }, // shown by a name tag ring (the name can be edited in the Equipped panel)
   skin: 0,
   face: { style: null, colour: 0 },
   hair: { style: null, colour: 0 },
   wear: Object.fromEntries(WEAR_ORDER.map(k => [k, { item: null, h: 0, c: 0, b: 0, two: false }])), // the game's dye: tone 0..359 (h), chroma -99..99 (c), brightness -99..99 (b); all 0 = the item's own colours
-  text: { name: 'Maple', chat: 'Hello!' }, // shown by a name tag ring and a chat bubble ring
 });
 // The starting look: the lowest-numbered skin, no face, no hair and nothing worn.
 const initial = () => fresh();
@@ -119,7 +123,8 @@ function loadSaved() {
       const w = d.wear?.[k];
       if (w && (w.item == null || catalog.wearables[k]?.items.some(i => i.id === w.item))) s.wear[k] = { item: w.item, two: !!w.two, h: clamp(Math.round(+w.h || 0), 0, 359), c: clamp(Math.round(+w.c || 0), -99, 99), b: clamp(Math.round(+w.b || 0), -99, 99) };
     }
-    if (typeof d.text?.name === 'string') s.text = { name: d.text.name.slice(0, 12), chat: String(d.text.chat ?? '').slice(0, 60) };
+    // A look saved before the placeholder became "henehoe" carries the old placeholder "Maple": show the new one instead.
+    if (typeof d.text?.name === 'string') s.text = { name: d.text.name === 'Maple' ? DEFAULT_NAME : d.text.name.slice(0, 12) };
     return { state: s, gender: ['male', 'female'].includes(d.gender) ? d.gender : 'all' };
   } catch { return null; } // storage blocked or the saved data is damaged: start from the normal default
 }
@@ -191,29 +196,44 @@ async function buildLayers(sel) {
 const RING_SLOTS = ['nameTag', 'chatBalloon'];
 const CENTRE_X = OX + 21, FEET_Y = OY + 68, HEAD_Y = OY - 6; // where a tag hangs under the feet and a bubble sits over the head
 
-const canvasOf = im => {
-  const c = document.createElement('canvas');
-  c.width = im.width; c.height = im.height;
-  c.getContext('2d').putImageData(im, 0, 0);
-  return c;
-};
-async function ringPieces(effect) {
+// A chat bubble is a finished picture (the ring item's own sample, from the game files), shown as it is just over the head. A name tag is
+// built from pieces (or a plain box) with the name drawn in (src/ring.js), just under the feet. Both are centred on the character.
+const canvasOf = im => { const c = document.createElement('canvas'); c.width = im.width; c.height = im.height; c.getContext('2d').putImageData(im, 0, 0); return c; };
+async function tagPieces(effect) {
   const pieces = {};
-  for (const [key, p] of Object.entries(effect.pieces)) pieces[key] = { ...p, cv: canvasOf(await loadImg(p.file)) };
+  for (const [key, p] of Object.entries(effect.tag.pieces)) pieces[key] = { ...p, cv: canvasOf(await loadImg(`${effect.tag.dir}/${key}.png`)) };
   return pieces;
 }
-// Draws the ring's tag or bubble for `text`: returns { canvas, ax, ay } as ring.js does.
-async function drawRing(effect, text) {
-  if (effect.plain) return drawPlainTag(text.name);
-  const pieces = await ringPieces(effect);
-  return effect.kind === 'nameTag' ? drawNameTag(pieces, effect.colour, text.name) : drawBalloon(pieces, effect.colour, `${text.name} : ${text.chat}`);
+// The name tag for `name`: { canvas, ax, ay } as ring.js returns it.
+async function drawTag(effect, name) {
+  await loadFont(name); // canvas text needs the web font loaded first
+  return effect.plain ? drawPlainTag(name, effect.plain) : drawNameTag(await tagPieces(effect), effect.tag.colour, name, effect.tag.pad);
+}
+const RING_FONT = '500 11px "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif';
+async function ringImage(effect) {
+  const im = await loadImg(effect.file); // loadImg gives the picture as ImageData
+  const c = document.createElement('canvas'); c.width = im.width; c.height = im.height;
+  const ctx = c.getContext('2d');
+  ctx.putImageData(im, 0, 0);
+  if (effect.text) { // a sample with no text in it (Ink-and-Wash): the client draws white text on the ink
+    await document.fonts.load(RING_FONT, effect.text.value).catch(() => {});
+    ctx.font = RING_FONT; ctx.fillStyle = effect.text.colour; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(effect.text.value, effect.text.x, effect.text.y + 1);
+  }
+  return c;
 }
 async function ringLayer(effect, text) {
-  const { canvas, ax, ay } = await drawRing(effect, text);
+  if (effect.kind === 'nameTag' && (effect.tag || effect.plain)) {
+    const { canvas, ax, ay } = await drawTag(effect, text.name.trim() || DEFAULT_NAME); // an emptied box shows the placeholder
+    const img = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
+    // the tag's layout line sits just under the feet
+    return { img, x: Math.round(CENTRE_X - ax), y: Math.round(FEET_Y + (effect.plain ? 3 : 5) - ay), z: 9999 };
+  }
+  // a chat bubble, or a name tag that only exists as a picture (a datamine ring): the picture as it is
+  const canvas = await ringImage(effect);
   const img = canvas.getContext('2d').getImageData(0, 0, canvas.width, canvas.height);
-  // Tag: its layout line sits just under the feet. Bubble: the bottom of the arrow sits just over the head.
-  const y = effect.kind === 'nameTag' ? FEET_Y + (effect.plain ? 3 : 5) - ay : HEAD_Y - canvas.height;
-  return { img, x: Math.round(CENTRE_X - ax), y: Math.round(y), z: 9999 };
+  const y = effect.kind === 'nameTag' ? FEET_Y + 3 : HEAD_Y - canvas.height;
+  return { img, x: Math.round(CENTRE_X - canvas.width / 2), y: Math.round(y), z: 9999 };
 }
 const ringWorn = sel => RING_SLOTS.some(slot => sel.wear[slot].item != null);
 
@@ -274,6 +294,7 @@ async function renderPreview() {
     }
     const n = Math.max(1, Math.floor(side * dpr() / (view * 0.95))); // allow edges to crop by up to 5% to get a bigger whole-number scale
     paintFocus($('preview'), box.width - 2, box.height - 2, n, focus, source, true);
+    $('preview').dataset.zoom = n; // device pixels per sprite pixel (read by the tests)
   });
 }
 
@@ -302,8 +323,8 @@ function only(patch) {
 const note = text => { $('ph-note').textContent = text; };
 
 // Chapter tabs down the right edge of the book. Short names keep the rail narrow; the chapter title shows the full one.
-const TAB_NAMES = { search: 'Search', faceAcc: 'Face Acc.', eyeAcc: 'Eye Deco', longcoat: 'Overall', nameTag: 'Name Tag', chatBalloon: 'Chat' };
-const CHAPTER_TITLES = { search: 'Search Everything', skin: 'Skin Tones', face: 'Faces', hair: 'Hairstyles', cap: 'Hats', faceAcc: 'Face Accessories', eyeAcc: 'Eye Decorations', earrings: 'Earrings', longcoat: 'Overalls', coat: 'Tops', pants: 'Bottoms', glove: 'Gloves', shoes: 'Shoes', cape: 'Capes', weapon: 'Weapons', nameTag: 'Name Tag Rings', chatBalloon: 'Chat Bubble Rings' };
+const TAB_NAMES = { search: 'Search', faceAcc: 'Face Acc.', eyeAcc: 'Eye Deco', longcoat: 'Overall', nameTag: 'Name Ring', chatBalloon: 'Chat Ring' };
+const CHAPTER_TITLES = { search: 'Search Everything', skin: 'Skin Tones', face: 'Faces', hair: 'Hairstyles', cap: 'Hats', faceAcc: 'Face Accessories', eyeAcc: 'Eye Decorations', earrings: 'Earrings', longcoat: 'Overalls', coat: 'Tops', pants: 'Bottoms', glove: 'Gloves', shoes: 'Shoes', cape: 'Capes', weapon: 'Weapons', nameTag: 'Name Rings', chatBalloon: 'Chat Rings' };
 
 function renderTabs() {
   const tabs = $('tabs');
@@ -354,6 +375,7 @@ function renderFilters() {
   box.append(el('label', { className: 'search' }, el('span', { className: 'glass', 'aria-hidden': 'true' }), input));
   if (everything) { input.focus(); input.setSelectionRange(input.value.length, input.value.length); }
   if (activeTab === 'cap') return renderFit();
+  if (RING_SLOTS.includes(activeTab)) return renderSourceSwitch(activeTab === 'nameTag' ? 'Which name tags to list' : 'Which chat bubbles to list', 'Rings');
   if (activeTab !== 'face' && activeTab !== 'hair') return;
   const seg = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': 'Show styles for' });
   for (const [g, label] of [['all', 'All'], ['male', '♂ Male'], ['female', '♀ Female']]) {
@@ -367,12 +389,16 @@ function renderFilters() {
     seg.append(btn);
   }
   box.append(seg);
-  // Released / datamine switch (Face and Hair only). The datamine list is not loaded yet, so for now this only changes the note.
+  renderSourceSwitch('Which styles to list', 'Styles');
+}
+
+// The Released / All · Datamine switch (Face, Hair and the two ring tabs), in the row above the search box. `what` names the things listed.
+function renderSourceSwitch(label, what) {
   const src = $('source');
   src.append(el('span', { className: 'source-label', textContent: 'Show' }));
-  const sw = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': 'Which styles to list' });
-  for (const [s, label] of [['released', 'Released'], ['datamine', 'All · Datamine']]) {
-    const btn = el('button', { type: 'button', role: 'radio', textContent: label, title: s === 'released' ? 'Styles that are in the game now' : 'Everything found in the game files, including styles not released yet' });
+  const sw = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': label });
+  for (const [s, text] of [['released', 'Released'], ['datamine', 'All · Datamine']]) {
+    const btn = el('button', { type: 'button', role: 'radio', textContent: text, title: s === 'released' ? `${what} that are in the game now` : `Everything found in the game files, including ${what.toLowerCase()} not released yet` });
     btn.setAttribute('aria-pressed', String(source === s));
     btn.setAttribute('aria-checked', String(source === s));
     btn.onclick = () => { source = s; renderFilters(); renderContent(true); };
@@ -539,7 +565,10 @@ function renderColour() {
   c.append(grid);
   if (configTarget === 'face' || configTarget === 'hair') return c.append(el('h3', { textContent: `${configTarget === 'face' ? 'Face' : 'Hair'} colour` }), colourGrid(configTarget));
   const data = catalog.wearables[configTarget], w = state.wear[configTarget];
-  if (RING_SLOTS.includes(configTarget)) return c.append(el('h3', { textContent: data.label }), textFields(configTarget), el('p', { className: 'hint', textContent: 'This ring has no colour settings. Its text is shown in the preview.' }));
+  if (RING_SLOTS.includes(configTarget)) {
+    const fx = data.items.find(i => i.id === w.item)?.effect, editable = configTarget === 'nameTag' && !!(fx?.tag || fx?.plain);
+    return c.append(el('h3', { textContent: data.label }), ...(editable ? [textFields()] : []), el('p', { className: 'hint', textContent: editable ? 'This ring has no colour settings. Type the name it shows.' : 'This ring has no colour settings: it is shown as it looks in the game (its text cannot be changed).' }));
+  }
   // The game's own numbers, all starting at 0 (the item's own colours): Tone 0 to 359, Chroma and Brightness -99 to +99.
   const signed = v => `${v > 0 ? '+' : ''}${v}`;
   const slider = (label, key, min, max) => sliderRow(label, min, max, 1, w[key], signed, v => { w[key] = v; syncDyed(); renderPreview(); });
@@ -635,6 +664,7 @@ function wearableCard(slot, item) {
   const card = item.effect ? ringCard(item, selected, slot) : optionCard(item.name, selected, null, null, () => select(slot, item.id), item.check, item.icon);
   if (item.classicId) card.title = `${card.title} · Classic ${item.classicId}`;
   if (item.collab) card.append(el('span', { className: 'badge collab-badge', textContent: `${item.collab.toUpperCase()} COLLAB` }));
+  if (item.released === false) { card.classList.add('unreleased'); card.append(el('span', { className: 'badge unreleased-badge', textContent: 'DATAMINE' })); }
   return card;
 }
 
@@ -656,7 +686,8 @@ function renderStyles(c, kind) {
 function renderWearable(c, slot) {
   const data = catalog.wearables[slot];
   const grid = el('div', { className: 'grid' });
-  for (const item of data.items.filter(i => matches(i.name) && (slot !== 'cap' || hatFit === 'all' || hairEffectOf(i) === hatFit))) grid.append(wearableCard(slot, item));
+  if (RING_SLOTS.includes(slot) && source === 'datamine') c.append(el('p', { className: 'datamine-note', textContent: 'Showing everything in the game data. Rings marked DATAMINE are not released yet.' }));
+  for (const item of data.items.filter(i => matches(i.name) && (RING_SLOTS.includes(slot) ? listed(i) : true) && (slot !== 'cap' || hatFit === 'all' || hairEffectOf(i) === hatFit))) grid.append(wearableCard(slot, item));
   for (const p of (data.placeholders ?? []).filter(p => matches(p.name))) grid.append(placeholderCard(p));
   c.append(grid);
 }
@@ -702,7 +733,7 @@ function ringCard(item, selected, slot, compact = false) {
   b.title = item.check ?? item.name;
   b.setAttribute('aria-pressed', String(selected));
   b.onclick = () => select(slot, item.id);
-  drawRing(item.effect, { name: 'Maple', chat: 'Hello!' }).then(({ canvas: art }) => {
+  ringImage(item.effect).then(art => { // the card shows the game's own preview picture as it is; the name only shows once the ring is worn
     // Whole-number scale so the pixels stay crisp; shrink to fit the card.
     const k = compact ? 1 : Math.max(1, Math.min(3, Math.floor(76 / art.height), Math.floor(98 / art.width)));
     canvas.width = art.width * k; canvas.height = art.height * k;
@@ -715,19 +746,12 @@ function ringCard(item, selected, slot, compact = false) {
   return b;
 }
 
-// Text inputs for the name tag (name) and the chat bubble (name and message).
-function textFields(slot) {
-  const field = (label, key, max) => {
-    const input = el('input', { type: 'text', maxLength: max, value: state.text[key] });
-    input.dataset.key = key;
-    input.oninput = () => {
-      state.text[key] = input.value; renderPreview();
-      // The same field can be on screen twice (the tab and the Equipped panel): keep them in step.
-      for (const other of document.querySelectorAll(`.text-field input[data-key="${key}"]`)) if (other !== input) other.value = input.value;
-    };
-    return el('label', { className: 'text-field' }, el('span', { textContent: label }), input);
-  };
-  return el('div', { className: 'text-fields' }, slot === 'chatBalloon' ? field('Message', 'chat', 60) : field('Name', 'name', 12));
+// The name box for the name tag ring (the chat bubble is not editable).
+function textFields() {
+  const input = el('input', { type: 'text', maxLength: 12, value: state.text.name, placeholder: DEFAULT_NAME });
+  input.setAttribute('aria-label', 'Name on the tag');
+  input.oninput = () => { state.text.name = input.value; renderPreview(); };
+  return el('div', { className: 'text-fields' }, el('label', { className: 'text-field' }, el('span', { textContent: 'Name' }), input));
 }
 
 // Equipping an overall removes the top and bottom, and the reverse, as in the game.
@@ -767,6 +791,7 @@ async function exportPng() {
 const pick = list => list[Math.floor(Math.random() * list.length)];
 function randomise() {
   const s = fresh();
+  s.text = state.text;
   s.skin = pick(catalog.skins).tone;
   for (const kind of ['face', 'hair']) {
     const options = catalog[kind].map((x, i) => [x, i]).filter(([x]) => forGender(x) && listed(x));
@@ -779,7 +804,6 @@ function randomise() {
     s.wear[k].item = pick(catalog.wearables[k].items).id;
   }
   if (s.wear.longcoat.item != null) { if (Math.random() < 0.5) { s.wear.coat.item = null; s.wear.pants.item = null; } else s.wear.longcoat.item = null; }
-  s.text = state.text;
   state = s;
   afterChange();
 }

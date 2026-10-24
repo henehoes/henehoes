@@ -21,23 +21,34 @@ const ringStrings = at(image('String', 'Eqp.img'), 'ClassicWorld/Ring');
 // twin); it becomes a space.
 const nameOf = id => { const n = ringStrings.getFromPath(String(id)); return ((n ? str(n, 'name') : null) ?? `Ring ${id}`).replace(/�/g, ' ').replace(/\s+/g, ' ').trim(); };
 
-// The two Ink-and-Wash rings (name tag 1112223, bubble 1112227) have a sample with no text in it: the client draws white text on the
-// black ink. The app does the same, so the script finds the middle of the black area (the tag strip beside the flower; the bubble
-// body without its arrow) and writes where the text goes.
 // The client lists two identical White Label Rings (1112100 and 1112222); only the first is kept.
 const SKIP = new Set([1112222]);
 // The rings that are released in Classic: White Label, MapleStory Fest, Classic Beginnings, Founder's, Chocolate, Ink-and-Wash (tags) and
 // Kitty, Classic Beginnings, MapleStory Fest, Founder's, Ink-and-Wash, Chocolate (chat bubbles). Everything else is datamine.
 const RELEASED = new Set([1112100, 1112109, 1112108, 1112110, 1112113, 1112223, 1112215, 1112219, 1112220, 1112221, 1112227, 1112231]);
-const INK = { 1112227: 'Maple' }; // only the bubble: the Ink-and-Wash name tag is drawn from its own pieces, with the editable name
-function inkText(id, file) {
+// Chat bubbles whose sample picture has no text in it (found by looking at all 81 pictures): the client draws the text on top. The app does
+// the same only where the game records the text colour (`clr`) of the bubble's UI design: that is the case for the Ink-and-Wash bubble
+// alone (design 28, white). The other blank bubbles point at designs the client does not have, so their colour is unknown and they are
+// left without text rather than guessing a colour. Where the text goes is the middle of the bubble's inside (the colour that fills most of
+// the picture, bounded by the rows and columns where it is at least half as common as at its peak, so the arrow and ornaments are left out).
+const BLANK_BUBBLES = new Set([1112227, 1112244, 1112246, 1112247, 1112248, 1112249, 1112250, 1112254, 1112255, 1112256, 1112257, 1112258, 1112259, 1112260, 1112261, 1112262, 1112263, 1112264, 1112265, 1112266, 1112267, 1112268, 1112269, 1112271, 1112272, 1112273, 1112274, 1112276, 1112277, 1112281, 1112282, 1112283, 1112284, 1112285, 1112286, 1112287, 1112288, 1112289, 1112290, 1112291, 1112295, 1112297, 1112298, 1112299]);
+// The text colour the game records for a chat bubble design (UI/ChatBalloon.img/<design>/clr), as #rrggbb, or null when the client has no such design.
+const chatDesigns = image('UI', 'ChatBalloon.img');
+function recordedColour(kind, code) {
+  const c = kind === 'chatBalloon' ? chatDesigns.getFromPath(code)?.getChildByName('clr') : null;
+  return c ? hex((val(c) >>> 16) & 255, (val(c) >>> 8) & 255, val(c) & 255) : null;
+}
+function blankText(file, colour) {
   const { width: w, height: h, data } = PNG.sync.read(readFileSync(file));
-  const dark = (x, y) => { const i = (y * w + x) * 4; return data[i + 3] > 200 && data[i] < 50 && data[i + 1] < 50 && data[i + 2] < 50; };
-  const rows = Array.from({ length: h }, (_, y) => { let n = 0; for (let x = 0; x < w; x++) if (dark(x, y)) n++; return n; });
-  const cols = Array.from({ length: w }, (_, x) => { let n = 0; for (let y = 0; y < h; y++) if (dark(x, y)) n++; return n; });
-  const span = (a, keep) => { const max = Math.max(...a), ix = a.map((v, i) => v >= max * keep ? i : -1).filter(i => i >= 0); return [ix[0], ix[ix.length - 1]]; };
-  const [y0, y1] = span(rows, 0.6), [x0, x1] = span(cols, id === 1112223 ? 0.55 : 0.6); // the tag's strip is the tall columns (the flower's are shorter)
-  return { value: INK[id], colour: '#ffffff', x: Math.round((x0 + x1) / 2), y: Math.round((y0 + y1) / 2) };
+  const key = i => `${data[i]},${data[i + 1]},${data[i + 2]}`, cnt = new Map();
+  for (let i = 0; i < data.length; i += 4) if (data[i + 3] > 100) cnt.set(key(i), (cnt.get(key(i)) ?? 0) + 1);
+  const dk = [...cnt].sort((a, b) => b[1] - a[1])[0][0];
+  const isD = i => data[i + 3] > 100 && key(i) === dk;
+  const rows = Array.from({ length: h }, (_, y) => { let n = 0; for (let x = 0; x < w; x++) if (isD((y * w + x) * 4)) n++; return n; });
+  const cols = Array.from({ length: w }, (_, x) => { let n = 0; for (let y = 0; y < h; y++) if (isD((y * w + x) * 4)) n++; return n; });
+  const span = a => { const max = Math.max(...a), ix = a.map((v, i) => v >= max * 0.5 ? i : -1).filter(i => i >= 0); return [ix[0], ix[ix.length - 1]]; };
+  const [y0, y1] = span(rows), [x0, x1] = span(cols);
+  return { value: 'Maple', colour, x: Math.round((x0 + x1) / 2), y: Math.round((y0 + y1) / 2) };
 }
 // Name tags with no usable game pieces are cut from their sample picture into a left end (w), a one-column middle (c) and a right end (e).
 // Automatic: the edge rows of a tag (top two and bottom two) are never touched by the text, so the longest run of columns whose edge rows
@@ -118,7 +129,7 @@ for (const file of readdirSync(`${DATA}/Character/Ring`).filter(n => /_\d{3}\.wz
     const code = String(val(info.getChildByName(kind)));
     const pic = png(info.getFromPath('sample')); if (!pic) { skipped.push(`${id} ${nameOf(id)}`); continue; }
     pic.saveToFile(`public/sprites/ring/${id}.png`);
-    const row = { name: nameOf(id), kind, classicId: id, file: `sprites/ring/${id}.png`, w: pic.getWidth(), h: pic.getHeight(), design: Number(code), ...(!RELEASED.has(id) && { released: false }), ...(INK[id] && { text: inkText(id, `public/sprites/ring/${id}.png`) }) };
+    const row = { name: nameOf(id), kind, classicId: id, file: `sprites/ring/${id}.png`, w: pic.getWidth(), h: pic.getHeight(), design: Number(code), ...(!RELEASED.has(id) && { released: false }), ...(BLANK_BUBBLES.has(id) && recordedColour(kind, code) && { text: blankText(`public/sprites/ring/${id}.png`, recordedColour(kind, code)) }) };
     if (kind === 'nameTag') { // editable name tags: pieces (the game's, or cut from the sample) or a plain box
       const dir = `public/sprites/ring/tag/${id}`;
       if (code === '1') row.plain = plainTag(`public/sprites/ring/${id}.png`);

@@ -23,7 +23,13 @@
    32030,
    32040,
    32050,
-   32060
+   32060,
+   "Angelcakes Hair",
+   "Super Tuft Hair",
+   30880,
+   "Natural",
+   "Casanova",
+   "Roving Rockstar"
   ],
   "female": [
    "Cutie Hair",
@@ -47,7 +53,12 @@
    32030,
    32040,
    32050,
-   32060
+   32060,
+   "Fluffy Pigtails",
+   31840,
+   "Grace Hair",
+   "Onna's Honor",
+   "Francesca"
   ]
  },
  "face": {
@@ -74,7 +85,13 @@
    22004,
    22005,
    22006,
-   22007
+   22007,
+   "Crystal Face",
+   "Puppy Eyes Face",
+   "Curious Dog",
+   "Dramatic Face",
+   "Ghostface Stare",
+   "Sad Innocence"
   ],
   "female": [
    "Defiant Face",
@@ -99,7 +116,13 @@
    22004,
    22005,
    22006,
-   22007
+   22007,
+   "Tender Love",
+   "Pure Gaze",
+   "Bright Eyes",
+   "Existentially Tired Face",
+   "Lazy Look",
+   "Innocent Look"
   ]
  }
 }

@@ -221,6 +221,8 @@ input { font: inherit; border-radius: 0; }
 .swatches { display: flex; flex-wrap: wrap; gap: 6px 8px; padding: 3px; }
 .swatch { display: flex; flex-direction: column; align-items: center; background: none; border: 0; padding: 2px; }
 .swatch i { width: 26px; height: 22px; border: 2px solid var(--bench-line); display: block; } /* rectangular, like the game's colour picker */
+.swatch.warn { position: relative; }
+.swatch.warn::after { content: "!"; position: absolute; top: -3px; right: -3px; width: 13px; height: 13px; display: grid; place-items: center; background: var(--danger); color: #fff; font: 9px var(--font-label); } /* White eyes: the coupon cannot set them */
 .swatch:hover i { transform: translateY(-1px); }
 .swatch[aria-pressed="true"] i { border-color: var(--maple); box-shadow: 0 0 0 2px var(--maple); }
 
@@ -256,6 +258,10 @@ input { font: inherit; border-radius: 0; }
 /* Datamine-only styles (not released yet) */
 .card.unreleased { --c: oklch(60% .1 255); background: oklch(90% .03 250 / .55); }
 .badge.unreleased-badge { position: absolute; top: 4px; left: 4px; z-index: 1; background: oklch(52% .12 255); }
+.card.upcoming-card { --c: oklch(60% .2 305); background: oklch(92% .04 305 / .6); } /* possible upcoming item: violet, like the Next Crate tab; unlike the blue DATAMINE look */
+.badge.upcoming-badge { position: absolute; top: 4px; left: 4px; z-index: 1; display: inline-flex; align-items: center; background: oklch(55% .2 305); }
+.badge.upcoming-badge .q-icon { width: 8px; height: 8px; margin-left: 3px; vertical-align: 0; }
+.badge.unreleased-badge ~ .badge.upcoming-badge { top: 20px; } /* a datamined item that is also a possible upcoming one: the two badges stack */
 .badge.collab-badge { position: absolute; top: 4px; left: 4px; z-index: 1; background: oklch(58% .14 160); }
 
 /* Note under the dye controls: some special effects keep their colour in the game */
@@ -265,6 +271,9 @@ input { font: inherit; border-radius: 0; }
 .empty-note strong { font-weight: 700; }
 .empty-badge { flex: none; width: 22px; height: 22px; margin-top: 1px; display: grid; place-items: center; background: var(--head); color: #fff; font: 600 17px/1 var(--font-pixel); }
 .dye-note p { margin: 0; color: var(--ink); font: 12.5px/1.4 var(--font-text); }
+.warn-note { margin: 0 3px 12px; }
+.badge.warn-badge { position: absolute; top: 4px; left: 4px; z-index: 1; background: var(--danger); }
+.card.mini .fix { position: absolute; top: 3px; right: 3px; z-index: 2; }
 .dye-badge { flex: none; width: 18px; height: 18px; margin-top: 1px; display: grid; place-items: center; background: oklch(70% .14 78); color: #fff; font: 11px var(--font-label); }
 
 /* The dye sliders show what they do, as the in-game palette does: tone sweeps the hues, chroma runs from grey to a vivid red,
@@ -287,6 +296,14 @@ input { font: inherit; border-radius: 0; }
 .group-title::before { content: ""; width: 8px; height: 8px; background: var(--maple); transform: rotate(45deg); flex: none; }
 .group-title::after { content: ""; height: 2px; flex: 1; background: var(--paper-line); }
 .scroll > .empty-note { margin: 6px 3px 8px; }
+.note-main { min-width: 0; }
+.note-main .note-text { margin: 0; }
+.note-text.collapsed { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; } /* three lines until Read more */
+.note-text .note-para { display: inline; }
+.note-text:not(.collapsed) .note-para { display: block; margin-top: 8px; }
+.note-toggle { margin-top: 6px; padding: 0; border: 0; background: none; color: var(--bench-line); font: 700 13px var(--font-text); text-decoration: underline; cursor: pointer; }
+.scroll > .empty-note.unconfirmed { margin-bottom: 24px; } /* the Unconfirmed guess note: as much room below it as above */
+.empty-note.unconfirmed + .group-title { margin-top: 0; }
 
 /* Housing book */
 .side, .book { grid-row: 2; }

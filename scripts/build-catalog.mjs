@@ -146,14 +146,15 @@ for (const [slotKey, slot] of Object.entries(catalog.wearables)) for (const it o
   else if (!dyeIds.has(cid)) it.dyeable = false;
 }
 // Possible upcoming items (data/upcoming.json, scripts/extract-upcoming.mjs): dyeable in the game files, not in the catalogue. They join
-// their slot's list flagged `upcoming: true`; the app lists them only in the Upcoming tab. UNCONFIRMED: dyeable is only a hint.
+// their slot's list flagged `upcoming: true`; the app lists them only in the Upcoming tab. An item the file marks `released: true` (it has come out)
+// joins its slot's list as an ordinary released item. UNCONFIRMED: dyeable is only a hint.
 for (const u of read('data/upcoming.json').items) {
   const dir = `sprites/upcoming/${u.id}`, slot = slotOf(u.id);
   if (!slot) { warnings.unknownSlot.push(`${u.name}:${u.id}`); continue; }
   const meta = read(`public/${dir}/meta.json`), parts = partsOf(meta, dir);
   if (!parts.length) { warnings.noParts.push(`${u.name} (upcoming ${slot[2]})`); continue; }
   const p2 = parts2Of(dir, u.name);
-  (catalog.wearables[slot[1]] ??= { label: slot[2], items: [] }).items.push({ id: u.id, name: u.name, classicId: u.id, upcoming: true, vslots: meta.vslots ?? [], ...(existsSync(`public/${dir}/icon.png`) && { icon: `${dir}/icon.png` }), ...(u.weaponClass && { weaponClass: u.weaponClass }), parts, ...(p2 && { parts2: p2 }) });
+  (catalog.wearables[slot[1]] ??= { label: slot[2], items: [] }).items.push({ id: u.id, name: u.name, classicId: u.id, ...(!u.released && { upcoming: true }), vslots: meta.vslots ?? [], ...(existsSync(`public/${dir}/icon.png`) && { icon: `${dir}/icon.png` }), ...(u.weaponClass && { weaponClass: u.weaponClass }), parts, ...(p2 && { parts2: p2 }) });
 }
 // Which weapon types a cash weapon goes over, from the game's own descriptions (data/weapon-types.json, scripts/extract-weapon-types.mjs).
 const weaponTypes = read('data/weapon-types.json').types;

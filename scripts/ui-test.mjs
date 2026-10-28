@@ -11,6 +11,12 @@ page.on('pageerror', e => errors.push(e.message));
 page.on('console', m => m.type() === 'error' && errors.push(m.text()));
 await page.goto('http://localhost:5173/', { waitUntil: 'networkidle0' });
 
+// Counts come from the built catalogue, so the checks follow the data (items move from upcoming to released as boxes come out)
+const CAT = JSON.parse(readFileSync('public/catalog.json', 'utf8')).wearables;
+const released = slot => CAT[slot].items.filter(i => !i.upcoming), upcoming = slot => CAT[slot].items.filter(i => i.upcoming);
+const fitOf = i => i.vslots?.includes('H2') ? 'helmet' : i.vslots?.includes('H1') ? 'cap' : 'topper';
+const HATS = released('cap'), FIT = f => HATS.filter(i => fitOf(i) === f).length;
+const UPCOMING_TOTAL = Object.keys(CAT).reduce((n, k) => n + upcoming(k).length, 0);
 const results = [];
 const check = (name, ok, detail = '') => results.push(`${ok ? 'PASS' : 'FAIL'} ${name} ${detail}`);
 const clickTab = label => page.evaluate(l => [...document.querySelectorAll('.tab')].find(t => t.title.startsWith(l)).click(), label);
@@ -50,7 +56,7 @@ const femaleBody = await pixels();
 check('switching to Female changes the undergarments drawn on the body', femaleBody.h !== maleBody.h && femaleBody.n > 500, `${maleBody.h} -> ${femaleBody.h}`);
 check('the undergarments are not shown in the Equipped panel', (await page.$$('#colour .slot')).length === 2);
 const undies = ['Blue Striped Undershirt', 'Blue-Striped Boxers', 'Pink Tank Top', 'Pink Cotton Boxers'];
-for (const [tab, n] of [['Top', 24], ['Bottom', 18]]) {
+for (const [tab, n] of [['Top', released('coat').length], ['Bottom', released('pants').length]]) {
   await clickTab(tab); await settle();
   const names = await page.$$eval('#content .grid .card .label', els => els.map(e => e.textContent));
   check(`${tab} tab lists no undergarments`, names.length === n && !names.some(x => undies.includes(x)), `${names.length} items`);
@@ -62,6 +68,20 @@ await (await page.$$('#content .grid .card'))[0].click(); await settle();
 check('taking the top off brings the undershirt back', (await pixels()).h === femaleBody.h);
 await clickTab('Body'); await settle();
 await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent.endsWith('Male') && !b.textContent.includes('Fe')).click()); await settle();
+
+// White eyes: the Singapore eye colour coupon cannot set them, so the catalogue and the Equipped panel warn
+await clickTab('Face'); await settle();
+check('Face colour bar: the White swatch carries a warning marker', await page.$$eval('.swatch.warn', s => s.length === 1 && /coupon/i.test(s[0].title)));
+check('no warning while the list is shown in a normal eye colour', !(await page.$('#content .warn-note')));
+await page.evaluate(() => document.querySelector('.swatch.warn').click()); await settle();
+check('browsing the list in White shows the coupon warning', /coupon/i.test(await page.$eval('#content .warn-note', e => e.textContent)));
+await (await page.$$('#content .grid .card:not(.placeholder)'))[1].click(); await settle(); // wear a (different) face in White: the first one is already worn and a second click would take it off
+check('wearing White eyes marks the Equipped tile and warns in the Face panel', !!(await page.$('#colour .equipped .card.mini[data-key="face"] .fix')) && !!(await page.$('#colour .warn-note')));
+check('the White colour preview in the Face panel has a warning badge', await page.$$eval('#colour .colour-options .warn-badge', b => b.length === 1 && b[0].textContent.trim().length > 0));
+await page.evaluate(() => document.querySelector('#colour .colour-options .card').click()); await settle(); // first colour: Black
+check('picking a normal eye colour clears the Equipped warnings', !(await page.$('#colour .warn-note')) && !(await page.$('#colour .equipped .card.mini[data-key="face"] .fix')));
+await page.evaluate(() => document.querySelector('.swatch').click()); await settle(); // list back to Black
+await (await page.$$('#content .grid .card:not(.placeholder)'))[0].click(); await settle(); // the first face again, as the rest of the run expects
 
 // Dyeing is off for items the game does not let you dye; the Upcoming tab lists dyeable items that are not in the catalogue (unconfirmed)
 const slotsNow = async () => (await page.$$('#colour .slot')).length, slidersNow = async () => (await page.$$('#colour .slider')).length;
@@ -78,16 +98,24 @@ await (await page.$$('#content .grid .card'))[0].click(); await settle();
 if (SHOW_UPCOMING) {
 await clickTab('Possible'); await settle();
 const note = await page.$eval('#content .empty-note p', e => e.textContent);
-check('Upcoming tab opens with an "Unconfirmed" note', /^Unconfirmed guess\./.test(note) && /may point to/.test(note));
+check('Upcoming tab opens with an "Unconfirmed" note', /speculative/.test(note) && /no guarantee/.test(note));
+check('the note is three lines until Read more, then shows the whole explanation', await (async () => {
+  const lines = () => page.$eval('#content .note-text', e => Math.round(e.getBoundingClientRect().height / parseFloat(getComputedStyle(e).lineHeight)));
+  const collapsed = await lines(); await page.click('#content .note-toggle'); await settle();
+  const open = await lines(), label = await page.$eval('#content .note-toggle', e => e.textContent + e.getAttribute('aria-expanded'));
+  const full = await page.$eval('#content .note-text', e => /Aurora/.test(e.textContent) && /already been marked dyeable/.test(e.textContent));
+  await page.click('#content .note-toggle'); await settle();
+  return collapsed === 3 && open > 3 && label === 'Show lesstrue' && full;
+})());
 const upCards = await page.$$eval('#content .grid .card', cs => cs.map(c => c.textContent));
-check('Upcoming tab lists the 113 dyeable items not in the catalogue, each badged CRATE?', upCards.length === 113 && upCards.every(t => t.includes('CRATE?')), `${upCards.length} cards`);
+check('Upcoming tab lists the dyeable items not in the catalogue, each badged UPCOMING', upCards.length === UPCOMING_TOTAL && upCards.every(t => t.includes('UPCOMING')), `${upCards.length} cards`);
 await (await page.$$('#content .grid .card'))[0].click(); await settle();
 check('an upcoming item can be tried on (equipped, dyeable, tab shows it)', await slotsNow() === worn0 + 1 && await slidersNow() === 3);
 await (await page.$$('#content .grid .card'))[0].click(); await settle();
 await clickTab('Hat'); await settle();
-check('upcoming items are not mixed into the normal Hat tab', (await page.$$('#content .grid .card')).length === 29);
+check('upcoming items are not mixed into the normal Hat tab', (await page.$$('#content .grid .card')).length === HATS.length);
 await clickTab('Search'); await settle(); await page.type('.search-input', 'pumpkin'); await settle();
-check('and not in Search either', !(await page.$$eval('#content .card', cs => cs.some(c => c.textContent.includes('CRATE?')))));
+check('and not in Search either', !(await page.$$eval('#content .card', cs => cs.some(c => c.textContent.includes('UPCOMING')))));
 await page.$eval('.search-input', e => { e.value = ''; e.dispatchEvent(new Event('input')); }); await clickTab('Body'); await settle();
 } else {
 check('Next Crate: no Next Crate tab while upcoming items are hidden', !(await page.$$eval('.tab', t => t.some(x => /Next Crate|Possible/.test(x.title + x.textContent)))));
@@ -467,18 +495,18 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   const fitBtn = label => page.evaluate(l => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent.startsWith(l))?.click(), label);
   const cards = () => page.$$eval('#content .card .label', e => e.map(x => x.textContent));
   await clickTab('Hat');
-  check('Fit filter: the Hat tab has All, Topper, Cap and Helmet with counts', JSON.stringify(await page.$$eval('#source .source-group:last-child .seg button', b => b.map(x => x.textContent))) === JSON.stringify(['All (29)', 'Topper (6)', 'Cap (20)', 'Helmet (3)']));
+  check('Fit filter: the Hat tab has All, Topper, Cap and Helmet with counts', JSON.stringify(await page.$$eval('#source .source-group:last-child .seg button', b => b.map(x => x.textContent))) === JSON.stringify([`All (${HATS.length})`, `Topper (${FIT('topper')})`, `Cap (${FIT('cap')})`, `Helmet (${FIT('helmet')})`]));
   await fitBtn('Helmet'); await settle(); const helmets = await cards();
-  check('Fit filter: Helmet leaves the three Hair (Hat) hats', helmets.length === 3 && helmets.every(n => /Hair \(Hat\)/.test(n)), helmets.join(', '));
+  check('Fit filter: Helmet leaves the helmets, including the three Hair (Hat) hats', helmets.length === FIT('helmet') && ['Aura Hair (Hat)', 'Linie Hair (Hat)'].every(n => helmets.includes(n)), helmets.join(', '));
   await fitBtn('Topper'); await settle(); const toppers = await cards();
-  check('Fit filter: Topper leaves the six hats that do not flatten hair', toppers.length === 6 && toppers.includes('Angel Halo') && toppers.includes('Bunny Ears') && !toppers.includes('Cat Hat'), toppers.join(', '));
+  check('Fit filter: Topper leaves the hats that do not flatten hair', toppers.length === FIT('topper') && toppers.includes('Angel Halo') && toppers.includes('Bunny Ears') && !toppers.includes('Cat Hat'), toppers.join(', '));
   await fitBtn('Cap'); await settle();
-  check('Fit filter: Cap leaves the 20 ordinary caps', (await cards()).length === 20 && (await cards()).includes('Cat Hat'));
+  check('Fit filter: Cap leaves the ordinary caps', (await cards()).length === FIT('cap') && (await cards()).includes('Cat Hat'));
   await page.type('.search-input', 'beanie'); await settle();
-  check('Fit filter: it combines with the search box (the four beanies are all caps)', (await cards()).length === 4 && (await cards()).every(n => /Beanie/.test(n)), (await cards()).join(', '));
+  check('Fit filter: it combines with the search box (the beanies that are caps)', (await cards()).length === HATS.filter(i => fitOf(i) === 'cap' && /beanie/i.test(i.name)).length && (await cards()).every(n => /Beanie/.test(n)), (await cards()).join(', '));
   await page.$eval('.search-input', i => { i.value = ''; i.dispatchEvent(new Event('input', { bubbles: true })); }); await settle();
   await fitBtn('All'); await settle();
-  check('Fit filter: All shows every hat again', (await cards()).length === 29);
+  check('Fit filter: All shows every hat again', (await cards()).length === HATS.length);
   await clickTab('Top');
   check('Fit filter: the row is only on the Hat tab', (await page.$$eval('#source .seg button', b => b.filter(x => /^All \(/.test(x.textContent)).length)) === 0);
   if (SHOW_UPCOMING) {
@@ -489,18 +517,18 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   check('Hat tab has a Released | Upcoming switch, the ? is an icon and not text', JSON.stringify(await segTexts()) === JSON.stringify(['Released', 'Upcoming']) && (await page.$$('#source .q-icon')).length === 1);
   await crateBtn('Upcoming'); await settle();
   const upHats = await page.$$eval('#content .card', cs => cs.map(c => c.textContent));
-  check('Upcoming view lists the 28 upcoming hats, each badged CRATE?, under the Unconfirmed note', upHats.length === 28 && upHats.every(t => t.includes('CRATE?')) && /^Unconfirmed guess\./.test(await page.$eval('#content .empty-note p', e => e.textContent)), `${upHats.length} cards`);
-  check('Fit counts follow the view (28 upcoming hats)', (await page.$eval('#source .source-group:last-child .seg button', b => b.textContent)) === 'All (28)');
+  check('Upcoming view lists the upcoming hats, each badged UPCOMING, under the Unconfirmed note', upHats.length === upcoming('cap').length && upHats.every(t => t.includes('UPCOMING')) && /speculative/.test(await page.$eval('#content .empty-note p', e => e.textContent)), `${upHats.length} cards`);
+  check('Fit counts follow the view (the upcoming hats)', (await page.$eval('#source .source-group:last-child .seg button', b => b.textContent)) === `All (${upcoming('cap').length})`);
   await crateBtn('Released'); await settle();
-  check('Released view: 29 hats, no note, no CRATE? badges', (await cards()).length === 29 && !(await page.$('#content .empty-note')) && !(await page.$$eval('#content .card', cs => cs.some(c => c.textContent.includes('CRATE?')))));
-  for (const [tab, n] of [['Top', 12], ['Overall', 24], ['Bottom', 9], ['Shoes', 11], ['Gloves', 6], ['Cape', 6], ['Weapon', 9], ['Face accessory', 5], ['Eye decoration', 3]]) {
+  check('Released view: every released hat, no note, no UPCOMING badges', (await cards()).length === HATS.length && !(await page.$('#content .empty-note')) && !(await page.$$eval('#content .card', cs => cs.some(c => c.textContent.includes('UPCOMING')))));
+  for (const [tab, n] of [['Top', 'coat'], ['Overall', 'longcoat'], ['Bottom', 'pants'], ['Shoes', 'shoes'], ['Gloves', 'glove'], ['Cape', 'cape'], ['Weapon', 'weapon'], ['Face accessory', 'faceAcc'], ['Eye decoration', 'eyeAcc']].map(([t, k]) => [t, upcoming(k).length])) {
     await clickTab(tab); await crateBtn('Upcoming'); await settle();
     check(`${tab} tab: Upcoming view lists ${n} items`, (await cards()).length === n, `${(await cards()).length}`);
     await crateBtn('Released'); await settle();
   }
   } else {
   await clickTab('Hat');
-  check('Next Crate: no Released | Upcoming switch on the Hat tab, and still 29 hats', (await page.$$eval('#source .seg button', b => b.filter(x => x.textContent === 'Upcoming').length)) === 0 && (await cards()).length === 29);
+  check('Next Crate: no Released | Upcoming switch on the Hat tab, and still every released hat', (await page.$$eval('#source .seg button', b => b.filter(x => x.textContent === 'Upcoming').length)) === 0 && (await cards()).length === HATS.length);
   }
   await clickTab('Earrings');
   check('Earrings (nothing upcoming) has no Released | Upcoming switch', (await page.$$eval('#source .seg button', b => b.filter(x => x.textContent === 'Upcoming').length)) === 0);

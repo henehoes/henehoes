@@ -20,7 +20,7 @@ const OX = 60, OY = 112;          // where the skin's top-left sits on that canv
 // A slot named in DISABLED_SLOTS is hidden from the tabs, the Equipped panel, the preview, Random and saved defaults (code and data stay).
 const narrowLayout = matchMedia('(max-width: 800px)'); // the one-column phone layout (see the media query in style.css)
 // The possible-upcoming items (Next Crate tab, Released | Upcoming switches) are hidden while this is false; code and data stay.
-const SHOW_UPCOMING = false;
+const SHOW_UPCOMING = true;
 const DISABLED_SLOTS = new Set(); // a slot named here is hidden everywhere (the code and data stay); empty now that the rings are rebuilt from the game files
 const WEAR_ORDER = ['cap', 'faceAcc', 'eyeAcc', 'earrings', 'longcoat', 'coat', 'pants', 'glove', 'shoes', 'cape', 'weapon', 'nameTag', 'chatBalloon'];
 
@@ -343,7 +343,7 @@ function only(patch) {
 const note = text => { $('ph-note').textContent = text; };
 
 // Chapter tabs down the right edge of the book. Short names keep the rail narrow; the chapter title shows the full one.
-const TAB_NAMES = { search: 'All', faceAcc: 'Face Acc.', eyeAcc: 'Eye Deco', longcoat: 'Overall', nameTag: 'Name Ring', chatBalloon: 'Chat Ring', upcoming: 'Next Crate' };
+const TAB_NAMES = { search: 'All', faceAcc: 'Face Acc.', eyeAcc: 'Eye Deco', longcoat: 'Overall', nameTag: 'Name Ring', chatBalloon: 'Chat Ring', upcoming: 'Upcoming' };
 const CHAPTER_TITLES = { upcoming: 'Possible Upcoming Crates', search: 'Search Everything', body: 'Body', face: 'Faces', hair: 'Hairstyles', cap: 'Hats', faceAcc: 'Face Accessories', eyeAcc: 'Eye Decorations', earrings: 'Earrings', longcoat: 'Overalls', coat: 'Tops', pants: 'Bottoms', glove: 'Gloves', shoes: 'Shoes', cape: 'Capes', weapon: 'Weapons', nameTag: 'Name Rings', chatBalloon: 'Chat Rings' };
 
 function renderTabs() {
@@ -520,6 +520,7 @@ function colourGrid(kind) {
     grid.append(optionCard(v.label, v.colour === variantOf(kind).colour, VIEW,
       () => only(sel => { sel.face = { ...state.face }; sel.hair = { ...state.hair }; sel[kind] = { style: state[kind].style, colour: v.colour }; return sel; }),
       () => { state[kind].colour = v.colour; afterChange(); }));
+    if (kind === 'face' && v.label === NO_COUPON_EYES) { const card = grid.lastChild; card.title = NO_COUPON_TIP; card.append(el('span', { className: 'badge warn-badge', textContent: 'NOT SELECTABLE' })); }
   }
   return grid;
 }
@@ -573,6 +574,7 @@ function equippedCard(e) {
   b.title = e.colour ? `${e.name} · ${e.colour}` : e.name;
   b.setAttribute('aria-label', b.title);
   b.setAttribute('aria-pressed', String(e.key === configTarget));
+  if (e.key === 'face' && e.colour === NO_COUPON_EYES) { b.title += ` · ${NO_COUPON_TIP}`; b.setAttribute('aria-label', b.title); b.append(el('span', { className: 'fix', title: NO_COUPON_TIP, textContent: '!' })); }
   return b;
 }
 
@@ -599,6 +601,15 @@ function equipped() {
   return out;
 }
 
+// White eyes show in the game's preview, but the Signature eye colour coupon's description lists every colour except white, so you cannot
+// actually change to it. Anything that shows or selects White eyes warns about it.
+const NO_COUPON_EYES = 'White';
+const NO_COUPON_TIP = "White can't be set with the Signature Eye Colour Coupon";
+const whiteEyesWorn = () => state.face.style != null && variantOf('face')?.label === NO_COUPON_EYES;
+const eyeWhiteNote = () => el('div', { className: 'dye-note warn-note', role: 'note' }, el('span', { className: 'dye-badge', textContent: '!', 'aria-hidden': 'true' }), el('p', {},
+  el('strong', { textContent: "White eyes can't be set in the game. " }),
+  "White eyes can be previewed in the cash shop, but cannot be selected with the Signature Eye Colour Coupon. The coupon allows you to select every eye colour aside from white."));
+
 // The Equipped panel's headings: the category and the name of what is worn, then sections with small-caps subheadings.
 const panelHeading = (label, name) => el('h3', {}, label, name ? el('span', { className: 'item-name', textContent: name }) : null);
 const panelSection = (title, ...kids) => el('section', { className: 'panel-section' }, el('h4', { className: 'sub', textContent: title }), ...kids);
@@ -622,7 +633,7 @@ function renderColour() {
     grid.append(el('div', { className: 'slot' }, equippedCard(e), x));
   }
   c.append(grid);
-  if (configTarget === 'face' || configTarget === 'hair') return c.append(panelHeading(configTarget === 'face' ? 'Face' : 'Hair', styleOf(configTarget)?.style), panelSection(configTarget === 'face' ? 'Eye colour' : 'Hair colour', colourGrid(configTarget)));
+  if (configTarget === 'face' || configTarget === 'hair') return c.append(panelHeading(configTarget === 'face' ? 'Face' : 'Hair', styleOf(configTarget)?.style), ...(configTarget === 'face' && whiteEyesWorn() ? [eyeWhiteNote()] : []), panelSection(configTarget === 'face' ? 'Eye colour' : 'Hair colour', colourGrid(configTarget)));
   const data = catalog.wearables[configTarget], w = state.wear[configTarget];
   // Every worn item's panel starts with its category and name; then sections with small-caps subheadings.
   const worn = data.items.find(i => i.id === w.item), isWeapon = configTarget === 'weapon' && !!worn;
@@ -685,6 +696,7 @@ function renderColourBar(kind) {
     b.setAttribute('aria-pressed', String(browse[kind] === v.colour));
     b.onclick = () => { browse[kind] = v.colour; renderContent(true); };
     dot.style.background = (kind === 'face' ? EYE_COLOURS : HAIR_COLOURS)[v.label] ?? '#888';
+    if (kind === 'face' && v.label === NO_COUPON_EYES) { b.classList.add('warn'); b.title = NO_COUPON_TIP; b.setAttribute('aria-label', `${v.label}: ${NO_COUPON_TIP}`); }
     row.append(b);
   }
   $('toolbar').append(el('div', { className: 'colour-bar' }, el('span', { className: 'bar-label', textContent: kind === 'face' ? 'Eye colour' : 'Hair colour' }), row));
@@ -724,7 +736,8 @@ function wearableCard(slot, item) {
   if (item.classicId) card.title = `${card.title} · Classic ${item.classicId}`;
   if (item.collab) card.append(el('span', { className: 'badge collab-badge', textContent: `${item.collab.toUpperCase()} COLLAB` }));
   if (item.released === false) { card.classList.add('unreleased'); card.append(el('span', { className: 'badge unreleased-badge', textContent: 'DATAMINE' })); }
-  if (item.upcoming) { card.classList.add('unreleased'); card.append(el('span', { className: 'badge unreleased-badge', textContent: 'CRATE?' })); }
+  // A possible upcoming item has its own violet look (the Next Crate tab's colour), apart from the blue DATAMINE one, so a card can carry both.
+  if (item.upcoming) { card.classList.add('upcoming-card'); card.append(el('span', { className: 'badge upcoming-badge', title: 'Possible item for a coming Mystery Fashion Crate (unconfirmed)' }, 'UPCOMING', el('i', { className: 'q-icon', 'aria-hidden': 'true' }))); }
   return card;
 }
 
@@ -736,6 +749,7 @@ function renderBody(c) {
 
 function renderStyles(c, kind) {
   renderColourBar(kind);
+  if (kind === 'face' && catalog.face.some(s => s.variants.some(v => v.colour === browse.face && v.label === NO_COUPON_EYES))) c.append(eyeWhiteNote()); // the list is shown in White
   if (source === 'datamine') c.append(el('p', { className: 'datamine-note', textContent: 'Showing everything in the game data. Styles marked DATAMINE are not released yet.' }));
   const grid = el('div', { className: 'grid' });
   catalog[kind].forEach((s, i) => { if (forGender(s) && listed(s) && matches(s.style)) grid.append(styleCard(kind, s, i)); });
@@ -746,9 +760,18 @@ function renderStyles(c, kind) {
 // The Upcoming tab: equipment the game files mark as dyeable that is not in the catalogue. UNCONFIRMED, and the page says so.
 const upcomingWorn = () => WEAR_ORDER.some(slot => catalog.wearables[slot]?.items.some(i => i.upcoming && i.id === state.wear[slot].item));
 // The disclaimer shown on the Next Crate tab and above the Upcoming view of a category tab.
-const unconfirmedNote = () => el('div', { className: 'empty-note unconfirmed', role: 'note' }, el('span', { className: 'empty-badge', textContent: '?', 'aria-hidden': 'true' }), el('p', {},
-  el('strong', { textContent: 'Unconfirmed guess. ' }),
-  "These are the only unreleased items from the datamine that are marked as \"dyeable\". They may point to the next two seasons of Mystery Fashion Crates: Halloween (skulls, pumpkins, witches, mummies) and then winter (snowboard gear, parkas, beanies)."));
+let noteOpen = false; // whether the explanation is expanded (kept while the lists redraw)
+const unconfirmedNote = () => {
+  // Three lines when collapsed (Read more opens the rest); one paragraph of inline text so the line clamp counts the whole thing.
+  const text = el('p', { className: `note-text${noteOpen ? '' : ' collapsed'}` },
+    el('strong', { textContent: 'Upcoming items are speculative and based on datamined info. ' }),
+    el('span', { className: 'note-para', textContent: 'These are the only datamined items marked as dyeable that are not in the shop yet. They seem to fit cleanly into two new seasons plus one new Aurora season: Halloween (now released), winter (snowboard gear, parkas, beanies) and Aurora (fairy outfits such as Romance Rose, Baby Doll Puka, Baby Doll Linka and Fairy Pico). ' }),
+    el('span', { className: 'note-para', textContent: 'The Halloween release backed this up - every item in the new Halloween Mystery Fashion Crate had already been marked dyeable in the datamine. The same logic might carry through to the next crates, but there is no guarantee.' }));
+  const toggle = el('button', { className: 'note-toggle', type: 'button', textContent: noteOpen ? 'Show less' : 'Read more' });
+  toggle.setAttribute('aria-expanded', String(noteOpen));
+  toggle.onclick = () => { noteOpen = !noteOpen; text.classList.toggle('collapsed', !noteOpen); toggle.textContent = noteOpen ? 'Show less' : 'Read more'; toggle.setAttribute('aria-expanded', String(noteOpen)); };
+  return el('div', { className: 'empty-note unconfirmed', role: 'note' }, el('span', { className: 'empty-badge', textContent: '?', 'aria-hidden': 'true' }), el('div', { className: 'note-main' }, text, toggle));
+};
 function renderUpcoming(c) {
   c.append(unconfirmedNote());
   for (const slot of WEAR_ORDER) {

@@ -1,10 +1,11 @@
 {
- "_comment": "Dyeable equipment in the game files that is not in the catalogue. UNCONFIRMED: dyeable may hint at items for an upcoming release, nothing more. Written by scripts/extract-upcoming.mjs.",
+ "_comment": "Dyeable equipment in the game files that is not in the catalogue (the possible-upcoming list). UNCONFIRMED: dyeable may hint at items for an upcoming release, nothing more. `released: true` marks items that have since come out (the Halloween box, 28/10/2026): build-catalog.mjs lists them as ordinary released items. Written by scripts/extract-upcoming.mjs, which keeps the `released` flags.",
  "items": [
   {
    "id": 1007013,
    "name": "Blue Chinese Undead Hat",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007028,
@@ -14,7 +15,8 @@
   {
    "id": 1007033,
    "name": "Tiger Mask",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007043,
@@ -44,7 +46,8 @@
   {
    "id": 1007102,
    "name": "Scream Mask",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007103,
@@ -54,12 +57,14 @@
   {
    "id": 1007104,
    "name": "Hat of Death",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007115,
    "name": "Witch Hat",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007132,
@@ -74,7 +79,8 @@
   {
    "id": 1007135,
    "name": "Mummy Hat",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007137,
@@ -89,32 +95,38 @@
   {
    "id": 1007287,
    "name": "Devilish Horns",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007362,
    "name": "Pumpkin Headgear",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007367,
    "name": "Demon Goblin",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007368,
    "name": "Maple-Stein Head",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007374,
    "name": "Skull Beanie",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007465,
    "name": "Pumpkin Hat",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007467,
@@ -124,17 +136,20 @@
   {
    "id": 1007489,
    "name": "Iljimae Mask",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007525,
    "name": "Devil Horns",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007706,
    "name": "Dark Devil Hat",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007756,
@@ -144,7 +159,8 @@
   {
    "id": 1017000,
    "name": "Battle Scar",
-   "folder": "Accessory"
+   "folder": "Accessory",
+   "released": true
   },
   {
    "id": 1017015,
@@ -154,12 +170,14 @@
   {
    "id": 1017021,
    "name": "Mummy Mask",
-   "folder": "Accessory"
+   "folder": "Accessory",
+   "released": true
   },
   {
    "id": 1017074,
    "name": "Maple-Stein Face",
-   "folder": "Accessory"
+   "folder": "Accessory",
+   "released": true
   },
   {
    "id": 1017088,
@@ -169,7 +187,8 @@
   {
    "id": 1027019,
    "name": "Skull Patch",
-   "folder": "Accessory"
+   "folder": "Accessory",
+   "released": true
   },
   {
    "id": 1027022,
@@ -194,7 +213,8 @@
   {
    "id": 1047023,
    "name": "Prisoner Top",
-   "folder": "Coat"
+   "folder": "Coat",
+   "released": true
   },
   {
    "id": 1047044,
@@ -204,7 +224,8 @@
   {
    "id": 1047058,
    "name": "Skull T-Shirt",
-   "folder": "Coat"
+   "folder": "Coat",
+   "released": true
   },
   {
    "id": 1047075,
@@ -244,57 +265,50 @@
   {
    "id": 1057003,
    "name": "Blue Chinese Undead Costume",
-   "folder": "Longcoat"
+   "folder": "Longcoat",
+   "released": true
   },
   {
    "id": 1057024,
    "name": "Grey Skull Overall",
-   "folder": "Longcoat"
+   "folder": "Longcoat",
+   "released": true
   },
   {
    "id": 1057025,
    "name": "Red Skull Overall",
-   "folder": "Longcoat"
-  },
-  {
-   "id": 1057026,
-   "name": "Green Skull Overall",
-   "folder": "Longcoat"
-  },
-  {
-   "id": 1057027,
-   "name": "Blue Skull Overall",
-   "folder": "Longcoat"
-  },
-  {
-   "id": 1057028,
-   "name": "Orange Skull Overall",
-   "folder": "Longcoat"
+   "folder": "Longcoat",
+   "released": true
   },
   {
    "id": 1057036,
    "name": "Dark Suit",
-   "folder": "Longcoat"
+   "folder": "Longcoat",
+   "released": true
   },
   {
    "id": 1057037,
    "name": "Ghost Costume",
-   "folder": "Longcoat"
+   "folder": "Longcoat",
+   "released": true
   },
   {
    "id": 1057040,
    "name": "Black Coat of Death",
-   "folder": "Longcoat"
+   "folder": "Longcoat",
+   "released": true
   },
   {
    "id": 1057052,
    "name": "Dark Enamel Suit",
-   "folder": "Longcoat"
+   "folder": "Longcoat",
+   "released": true
   },
   {
    "id": 1057053,
    "name": "Witch Clothes",
-   "folder": "Longcoat"
+   "folder": "Longcoat",
+   "released": true
   },
   {
    "id": 1057057,
@@ -304,7 +318,8 @@
   {
    "id": 1057058,
    "name": "Ghost Suit",
-   "folder": "Longcoat"
+   "folder": "Longcoat",
+   "released": true
   },
   {
    "id": 1057089,
@@ -329,7 +344,8 @@
   {
    "id": 1057100,
    "name": "Mummy Suit",
-   "folder": "Longcoat"
+   "folder": "Longcoat",
+   "released": true
   },
   {
    "id": 1057128,
@@ -354,12 +370,14 @@
   {
    "id": 1057346,
    "name": "Pumpkin Suit",
-   "folder": "Longcoat"
+   "folder": "Longcoat",
+   "released": true
   },
   {
    "id": 1057354,
    "name": "Stealth Suit",
-   "folder": "Longcoat"
+   "folder": "Longcoat",
+   "released": true
   },
   {
    "id": 1067013,
@@ -374,7 +392,8 @@
   {
    "id": 1067020,
    "name": "Prisoner Pants",
-   "folder": "Pants"
+   "folder": "Pants",
+   "released": true
   },
   {
    "id": 1067045,
@@ -399,7 +418,8 @@
   {
    "id": 1067166,
    "name": "Bone Buckled Slacks",
-   "folder": "Pants"
+   "folder": "Pants",
+   "released": true
   },
   {
    "id": 1067174,
@@ -409,7 +429,8 @@
   {
    "id": 1077014,
    "name": "Black Leather Boots",
-   "folder": "Shoes"
+   "folder": "Shoes",
+   "released": true
   },
   {
    "id": 1077018,
@@ -434,7 +455,8 @@
   {
    "id": 1077034,
    "name": "Black Shoes of Death",
-   "folder": "Shoes"
+   "folder": "Shoes",
+   "released": true
   },
   {
    "id": 1077053,
@@ -454,7 +476,8 @@
   {
    "id": 1077099,
    "name": "Ragged Gomushin",
-   "folder": "Shoes"
+   "folder": "Shoes",
+   "released": true
   },
   {
    "id": 1077245,
@@ -464,17 +487,20 @@
   {
    "id": 1087005,
    "name": "Brown Bandage",
-   "folder": "Glove"
+   "folder": "Glove",
+   "released": true
   },
   {
    "id": 1087006,
    "name": "Black Bandage",
-   "folder": "Glove"
+   "folder": "Glove",
+   "released": true
   },
   {
    "id": 1087018,
    "name": "White Bandage",
-   "folder": "Glove"
+   "folder": "Glove",
+   "released": true
   },
   {
    "id": 1087019,
@@ -484,7 +510,8 @@
   {
    "id": 1087036,
    "name": "Skull Gloves",
-   "folder": "Glove"
+   "folder": "Glove",
+   "released": true
   },
   {
    "id": 1087084,
@@ -494,12 +521,14 @@
   {
    "id": 1107006,
    "name": "Gargoyle Wings",
-   "folder": "Cape"
+   "folder": "Cape",
+   "released": true
   },
   {
    "id": 1107012,
    "name": "Devil Wings",
-   "folder": "Cape"
+   "folder": "Cape",
+   "released": true
   },
   {
    "id": 1107013,
@@ -514,12 +543,14 @@
   {
    "id": 1107052,
    "name": "Coffin of Gloom",
-   "folder": "Cape"
+   "folder": "Cape",
+   "released": true
   },
   {
    "id": 1107065,
    "name": "Count Dracula Cape",
-   "folder": "Cape"
+   "folder": "Cape",
+   "released": true
   },
   {
    "id": 1702013,
@@ -549,13 +580,15 @@
    "id": 1702036,
    "name": "Witch's Broomstick",
    "folder": "Weapon",
-   "weaponClass": 43
+   "weaponClass": 43,
+   "released": true
   },
   {
    "id": 1702096,
    "name": "Glowing Pumpkin Basket",
    "folder": "Weapon",
-   "weaponClass": 30
+   "weaponClass": 30,
+   "released": true
   },
   {
    "id": 1702313,
@@ -567,13 +600,15 @@
    "id": 1702325,
    "name": "Evil Skull",
    "folder": "Weapon",
-   "weaponClass": 30
+   "weaponClass": 30,
+   "released": true
   },
   {
    "id": 1702326,
    "name": "Cat Soul",
    "folder": "Weapon",
-   "weaponClass": 30
+   "weaponClass": 30,
+   "released": true
   }
  ]
 }

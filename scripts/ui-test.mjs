@@ -25,6 +25,8 @@ const settle = () => new Promise(r => setTimeout(r, 700));
 
 const start = await pixels();
 check('preview draws something', start.n > 500, `(${start.n} px)`);
+check('on load the Released tab is open, on Mystery Fashion and its newest box (Halloween)', (await page.$eval('.tab[aria-selected="true"]', e => e.title)).startsWith('Released') && (await page.$eval('#content .past-tab[aria-selected="true"]', e => e.textContent)) === 'Mystery Fashion' && (await page.$eval('#content .pill[aria-pressed="true"]', e => e.textContent)) === 'Oct 28 – Nov 4 · Halloween');
+check('Released and Upcoming close the rail, below Chat Ring, and never carry a checkmark', await page.$$eval('.tab', ts => { const t = ts.map(x => x.title); const n = t.length; return t[n - 2].startsWith('Released') && t[n - 1].startsWith('Possible') && t[n - 3] === 'Chat Ring' && !ts[n - 2].querySelector('.tick') && !ts[n - 1].querySelector('.tick'); }));
 
 // Nothing is worn at the start: no face and no hair
 const selectedNames = async tab => { await clickTab(tab); await settle(); return page.$$eval('#content .grid .card[aria-pressed="true"] .label', els => els.map(e => e.textContent)); };
@@ -110,7 +112,7 @@ check('the note is three lines until Read more, then shows the whole explanation
 const upCards = await page.$$eval('#content .grid .card', cs => cs.map(c => c.textContent));
 check('Upcoming tab lists the dyeable items not in the catalogue, each badged UPCOMING', upCards.length === UPCOMING_TOTAL && upCards.every(t => t.includes('UPCOMING')), `${upCards.length} cards`);
 await (await page.$$('#content .grid .card'))[0].click(); await settle();
-check('an upcoming item can be tried on (equipped, dyeable, tab shows it)', await slotsNow() === worn0 + 1 && await slidersNow() === 3);
+check('an upcoming item can be tried on (equipped and dyeable)', await slotsNow() === worn0 + 1 && await slidersNow() === 3);
 await (await page.$$('#content .grid .card'))[0].click(); await settle();
 await clickTab('Hat'); await settle();
 check('upcoming items are not mixed into the normal Hat tab', (await page.$$('#content .grid .card')).length === HATS.length);
@@ -543,7 +545,53 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   check('an undyeable weapon shows both what it works with and that it cannot be dyed', (await worksWithText()) === 'Any weapon' && (await page.$eval('#colour .hint', e => e.textContent)) === "This item can't be dyed in the game.");
   await wearByName('Top', 'Pink');
   check('the Works with section is only for weapons', (await worksWithText()) === null);
-  await page.$eval('.search-input', i => { i.value = ''; i.dispatchEvent(new Event('input', { bubbles: true })); }); await settle();
+  // Hat slot codes hide what the game says they hide: the Scream Mask covers earrings (Ae), the Demon Goblin does not
+  await wearByName('Hat', 'Scream Mask'); const maskAlone = await pixels();
+  await wearByName('Earrings', 'Slime'); const maskEarrings = await pixels();
+  check('the Scream Mask hides worn earrings (the game says it covers Ae)', maskEarrings.h === maskAlone.h);
+  await wearByName('Hat', 'Scream Mask'); const earringsAlone = await pixels();
+  await wearByName('Hat', 'Demon Goblin'); const goblinEarrings = await pixels();
+  await wearByName('Earrings', 'Slime'); const goblinAlone = await pixels();
+  check('the Demon Goblin does not hide earrings (it does not declare Ae)', goblinEarrings.h !== goblinAlone.h && earringsAlone.h !== maskAlone.h);
+  await wearByName('Hat', 'Demon Goblin');
+  // Past tab: every past crate and box, grouped; the Halloween crate holds its 50 items with their listed rates
+  await clickTab('Released crates and boxes, and what each held'); await settle();
+  const groups = await page.$$eval('#content .past-tab', g => g.map(x => x.textContent));
+  check('Released tab: category tabs Mystery Fashion, Mystery Styles and Aurora, the first selected', JSON.stringify(groups) === JSON.stringify(['Mystery Fashion', 'Mystery Styles', 'Aurora']) && (await page.$eval('#content .past-tab[aria-selected="true"]', e => e.textContent)) === 'Mystery Fashion', groups.join(' | '));
+  const pillsOf = () => page.$$eval('#content .pill', p => p.map(x => x.textContent));
+  const pickTab = async l => { await page.evaluate(l => [...document.querySelectorAll('#content .past-tab')].find(t => t.textContent === l).click(), l); await settle(); };
+  const pills = [await pillsOf()]; await pickTab('Mystery Styles'); pills.push(await pillsOf()); const stylesOpen = await page.$eval('#content .pill[aria-pressed="true"]', e => e.textContent);
+  await pickTab('Aurora'); pills.push(await pillsOf()); await pickTab('Mystery Fashion');
+  check('Released tab: each category shows only its own pills, date first, newest last', JSON.stringify(pills) === JSON.stringify([["Oct 6 – Oct 28 · Founder's", 'Oct 21 – Nov 4', 'Oct 28 – Nov 4 · Halloween'], ['Oct 6 – Oct 28', 'Oct 28 – Nov 11'], ['Season 1']]) && stylesOpen === 'Oct 28 – Nov 11', JSON.stringify(pills));
+  check('Past tab: the Halloween crate is selected at first and its 50 items are drawn below all the categories', (await page.$$eval('#content .pill[aria-pressed="true"]', p => p.map(x => x.textContent))).join() === 'Oct 28 – Nov 4 · Halloween' && (await page.$$('#content .past-title ~ .grid .card')).length === 50 && (await page.$$('#content .past-title ~ .grid .rate-badge')).length === 0 && (await page.$$eval('#content .past-title ~ .grid .card', c => c.filter(x => /\d%$/.test(x.title)).length)) === 50);
+  const catOf = { "Oct 6 – Oct 28 · Founder's": 'Mystery Fashion', 'Oct 21 – Nov 4': 'Mystery Fashion', 'Oct 6 – Oct 28': 'Mystery Styles', 'Oct 28 – Nov 11': 'Mystery Styles', 'Season 1': 'Aurora', 'Oct 28 – Nov 4 · Halloween': 'Mystery Fashion' };
+  const pickPill = async label => { await pickTab(catOf[label]); await page.evaluate(l => [...document.querySelectorAll('#content .pill')].find(p => p.textContent === l).click(), label); await settle(); };
+  const shown = () => page.$$('#content .past-title ~ .grid .card').then(c => c.length);
+  const expected = { "Oct 6 – Oct 28 · Founder's": 50, 'Oct 21 – Nov 4': 50, 'Oct 6 – Oct 28': 24, 'Oct 28 – Nov 11': 24, 'Season 1': 26 };
+  const got = {}; for (const [label] of Object.entries(expected)) { await pickPill(label); got[label] = await shown(); }
+  check('Past tab: each box shows the items from the saved Nexon pages (Founder\'s 50, Oct 21 crate 50, Mystery Styles 24 and 24, Aurora 26)', JSON.stringify(got) === JSON.stringify(expected), JSON.stringify(got));
+  await pickPill('Season 1');
+  check('Past tab: the Aurora box says it is the Aurora Mystery Fashion Crate and leaves the palette coupons out', /Aurora Mystery Fashion Crate/.test(await page.$eval('#content .past-title ~ .hint', e => e.textContent)));
+  await pickPill('Oct 28 – Nov 11');
+  const female = await page.$$eval('#content .past-title ~ .grid .card .label', l => l.map(x => x.textContent));
+  check('Past tab: the Oct 28 Mystery Styles has Cecelia Twist (not Rockstar Hair), as the post corrected', female.includes('Cecelia Twist') && !female.includes('Rockstar Hair'));
+  const sections = await page.$$eval('#content .past-title ~ .past-section', h => h.map(x => x.textContent));
+  const subs = await page.$$eval('#content .past-title ~ .group-title.sub', h => h.map(x => x.textContent));
+  check('Mystery Styles: big Hairstyles and Faces headings, each with Male and Female lists of six', JSON.stringify(sections) === JSON.stringify(['Hairstyles', 'Faces']) && JSON.stringify(subs) === JSON.stringify(['Male · 6', 'Female · 6', 'Male · 6', 'Female · 6']), sections.join(' | ') + ' // ' + subs.join(' | '));
+  check('Mystery Styles: each colour bar sits right under its heading (hair colour under Hairstyles, eye colour under Faces)', await page.$$eval('#content .past-section', h => h.map(x => x.nextElementSibling?.className === 'colour-bar' && x.nextElementSibling.textContent.startsWith(x.textContent.startsWith('Hair') ? 'Hair' : 'Eye')).join()) === 'true,true');
+  const cardPixels = () => page.$eval('#content .past-title ~ .grid canvas', c => { const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; let h = 0; for (let i = 0; i < d.length; i += 4) h = (h * 31 + d[i] + d[i + 1] * 3 + d[i + 2] * 7 + d[i + 3]) | 0; return h; });
+  const hairBefore = await cardPixels();
+  await page.evaluate(() => document.querySelectorAll('.colour-bar')[0].querySelectorAll('.swatch')[1].click()); await settle();
+  check('picking a hair colour redraws the hair cards in that colour', (await cardPixels()) !== hairBefore);
+  await page.evaluate(() => document.querySelectorAll('.colour-bar')[0].querySelectorAll('.swatch')[0].click()); await settle();
+  await page.evaluate(() => document.querySelectorAll('.colour-bar')[1].querySelectorAll('.swatch.warn')[0].click()); await settle();
+  check('browsing the faces in White shows the coupon warning here too', !!(await page.$('#content .warn-note')));
+  await page.evaluate(() => document.querySelectorAll('.colour-bar')[1].querySelectorAll('.swatch')[0].click()); await settle();
+  await pickPill('Oct 28 – Nov 4 · Halloween');
+  await (await page.$$('#content .past-title ~ .grid .card'))[0].click(); await settle();
+  check('Past tab: a card can be tried on like any other', (await page.$$('#colour .slot')).length >= 1);
+  await (await page.$$('#content .past-title ~ .grid .card'))[0].click(); await settle();
+  check('Released and Upcoming have no search bar', !(await page.$('.search-input')));
 }
 
 // ---- Housing book ----

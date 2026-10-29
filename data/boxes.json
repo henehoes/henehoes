@@ -1,0 +1,893 @@
+{
+ "_comment": "Past crates and boxes and what each held, for the Past tab. Hand-maintained: names (matched to catalogue items by name) and the listed drop rates, as supplied by the user. `items: []` with `pending: true` means the contents have not been added yet (a placeholder, not an empty box). A hair/face entry needs `kind` and `gender`. build-catalog.mjs resolves the names into catalog.boxes and warns about any it cannot find. `pill` is the short name shown on the box's pill (omit it for an unnamed box: the pill then shows just the dates); `name` is the full name shown above the contents. Sources (saved Nexon cash shop update pages, 29/10/2026): Founder's crate, Aurora crate and the Oct 6 Mystery Styles from the Grand Launch page; Mystery Fashion Crate (Oct 21) and Halloween crate and the Oct 28 Mystery Styles from the Oct 28 page. Only these boxes are listed: pets, packs, megaphones, 10-day equip covers, Signature coupons and other shop items are not. Rates are only known for the Halloween crate (supplied by the user); the pages link to the rates but do not print them. The post corrected the female Oct 28 hair list: Cecelia Twist, not Rockstar Hair. `match` on an item is the catalogue name to look for when the box's name differs (the game's hair names carry a colour prefix: Black Wild Tangles Hair, Black Romantic Braid Hair). `latest: true` marks the newest box, which the Released tab always opens on. A group's `tab` is the short label on its tab (the Released tab shows tabs, not the long `title`).",
+ "groups": [
+  {
+   "id": "mystery-crates",
+   "title": "Mystery Fashion Crates",
+   "tab": "Mystery Fashion",
+   "boxes": [
+    {
+     "id": "founders-crate",
+     "name": "Founder's Mystery Fashion Crate",
+     "pill": "Founder's",
+     "dates": "Oct 6 – Oct 28",
+     "items": [
+      {
+       "name": "Angel Halo"
+      },
+      {
+       "name": "Toga"
+      },
+      {
+       "name": "Baby Angel Wings"
+      },
+      {
+       "name": "Angel Wand"
+      },
+      {
+       "name": "Blue Bucket Hat"
+      },
+      {
+       "name": "Tourist T"
+      },
+      {
+       "name": "White Jeans"
+      },
+      {
+       "name": "Black Sunglasses"
+      },
+      {
+       "name": "Cherub's Bow"
+      },
+      {
+       "name": "Blue Cap"
+      },
+      {
+       "name": "Orange Baseball Jacket"
+      },
+      {
+       "name": "Ripped Jeans"
+      },
+      {
+       "name": "Orange Toy Hammer"
+      },
+      {
+       "name": "Rainbow Knit"
+      },
+      {
+       "name": "Cat Hat"
+      },
+      {
+       "name": "Cat Suit"
+      },
+      {
+       "name": "Gold Kitty Slippers"
+      },
+      {
+       "name": "Kitty Chat Ring"
+      },
+      {
+       "name": "White Label Ring"
+      },
+      {
+       "name": "Meshcap"
+      },
+      {
+       "name": "Pink Allstar"
+      },
+      {
+       "name": "Jean Shorts"
+      },
+      {
+       "name": "Bunny Ears"
+      },
+      {
+       "name": "Orange Mushroom Balloon"
+      },
+      {
+       "name": "Blue Watch"
+      },
+      {
+       "name": "Red Trainer Jacket"
+      },
+      {
+       "name": "Red Trainer Pants"
+      },
+      {
+       "name": "Yellow Rainbow Sneaks"
+      },
+      {
+       "name": "Bunny Earmuffs"
+      },
+      {
+       "name": "Beret"
+      },
+      {
+       "name": "Red Sailor Shirt"
+      },
+      {
+       "name": "Red Sailor Skirt"
+      },
+      {
+       "name": "Black Enamel Shoes"
+      },
+      {
+       "name": "Patissier Hat"
+      },
+      {
+       "name": "Patissier Uniform"
+      },
+      {
+       "name": "Yellow Spatula"
+      },
+      {
+       "name": "Dollish Pink"
+      },
+      {
+       "name": "Purple Dorothy Dress"
+      },
+      {
+       "name": "Sailor Hat"
+      },
+      {
+       "name": "Sailor Outfit"
+      },
+      {
+       "name": "White Ribboned Sailor Dress"
+      },
+      {
+       "name": "Slime T-Shirt"
+      },
+      {
+       "name": "Slime Slippers"
+      },
+      {
+       "name": "Slime Earrings"
+      },
+      {
+       "name": "Lined Hip-Hop Pants"
+      },
+      {
+       "name": "Reggae Hat"
+      },
+      {
+       "name": "Orange Hooded Shirt"
+      },
+      {
+       "name": "Butterfly Skirt"
+      },
+      {
+       "name": "White Hooded Vest"
+      },
+      {
+       "name": "Beetle Long Sleeve"
+      }
+     ]
+    },
+    {
+     "id": "mystery-crate-oct21",
+     "name": "Mystery Fashion Crate",
+     "dates": "Oct 21 – Nov 4",
+     "items": [
+      {
+       "name": "Starred Hunting Hat"
+      },
+      {
+       "name": "Black Blazer"
+      },
+      {
+       "name": "Black Suit Pants"
+      },
+      {
+       "name": "Gentleman's Mustache"
+      },
+      {
+       "name": "Black Dress Shoes"
+      },
+      {
+       "name": "Toy Rifle"
+      },
+      {
+       "name": "Blue Frill Blouse"
+      },
+      {
+       "name": "Blue Bell Dress"
+      },
+      {
+       "name": "Frameless Glasses"
+      },
+      {
+       "name": "Cute Mouse Ears"
+      },
+      {
+       "name": "Superstar Hoodie"
+      },
+      {
+       "name": "Washed Jeans"
+      },
+      {
+       "name": "Black Classic Sneakers"
+      },
+      {
+       "name": "Plastic Slingshot"
+      },
+      {
+       "name": "Black \"Hit Me\" Shirt"
+      },
+      {
+       "name": "Green Camping Hat"
+      },
+      {
+       "name": "Green Camping Shirt"
+      },
+      {
+       "name": "Green Camping Shorts"
+      },
+      {
+       "name": "Camping Boots"
+      },
+      {
+       "name": "Ragged Top"
+      },
+      {
+       "name": "Torn-up Jeans"
+      },
+      {
+       "name": "Heart Balloon"
+      },
+      {
+       "name": "Puffy Brown Hat"
+      },
+      {
+       "name": "White Beanie"
+      },
+      {
+       "name": "Orange Hooded Vest"
+      },
+      {
+       "name": "Faded Bell-Bottom Jeans"
+      },
+      {
+       "name": "White Casual Suit"
+      },
+      {
+       "name": "Race Ace Cap"
+      },
+      {
+       "name": "Race Ace Suit"
+      },
+      {
+       "name": "Race Queen Boots"
+      },
+      {
+       "name": "Race Queen Uniform"
+      },
+      {
+       "name": "Detective Hat"
+      },
+      {
+       "name": "Premium Trenchcoat"
+      },
+      {
+       "name": "Brown Dress Shoes"
+      },
+      {
+       "name": "Michael Wings"
+      },
+      {
+       "name": "Silver Earrings"
+      },
+      {
+       "name": "Beige Checkered Hat"
+      },
+      {
+       "name": "Brown Casual Look"
+      },
+      {
+       "name": "Orange Hard-Rimmed Glasses"
+      },
+      {
+       "name": "Stylish Pink Cotton Cap"
+      },
+      {
+       "name": "Buddy Overall Jeans (Blue)"
+      },
+      {
+       "name": "Buddy Overall Jeans (Red)"
+      },
+      {
+       "name": "Velcro High Tops"
+      },
+      {
+       "name": "Kitty Camping Hat"
+      },
+      {
+       "name": "Crusader T-Shirt"
+      },
+      {
+       "name": "Wild Pants"
+      },
+      {
+       "name": "Black Cardigan Set"
+      },
+      {
+       "name": "Denim Wrinkled Skirt"
+      },
+      {
+       "name": "Green Overall"
+      },
+      {
+       "name": "Cherry Layered T"
+      }
+     ]
+    },
+    {
+     "id": "halloween-crate",
+     "name": "Halloween Mystery Fashion Crate",
+     "pill": "Halloween",
+     "dates": "Oct 28 – Nov 4",
+     "items": [
+      {
+       "name": "Tiger Mask",
+       "rate": 2.0
+      },
+      {
+       "name": "Prisoner Top",
+       "rate": 2.0
+      },
+      {
+       "name": "Prisoner Pants",
+       "rate": 2.0
+      },
+      {
+       "name": "Brown Bandage",
+       "rate": 2.0
+      },
+      {
+       "name": "Scream Mask",
+       "rate": 3.0
+      },
+      {
+       "name": "Skull T-Shirt",
+       "rate": 2.0
+      },
+      {
+       "name": "Bone Buckled Slacks",
+       "rate": 3.0
+      },
+      {
+       "name": "Skull Beanie",
+       "rate": 3.0
+      },
+      {
+       "name": "Dark Suit",
+       "rate": 3.0
+      },
+      {
+       "name": "Dark Enamel Suit",
+       "rate": 3.0
+      },
+      {
+       "name": "Black Leather Boots",
+       "rate": 3.0
+      },
+      {
+       "name": "Black Bandage",
+       "rate": 2.0
+      },
+      {
+       "name": "Skull Patch",
+       "rate": 1.0
+      },
+      {
+       "name": "Grey Skull Overall",
+       "rate": 2.5
+      },
+      {
+       "name": "Red Skull Overall",
+       "rate": 2.5
+      },
+      {
+       "name": "Skull Gloves",
+       "rate": 2.0
+      },
+      {
+       "name": "Black Coat of Death",
+       "rate": 2.0
+      },
+      {
+       "name": "Ghost Suit",
+       "rate": 2.0
+      },
+      {
+       "name": "Black Shoes of Death",
+       "rate": 3.0
+      },
+      {
+       "name": "Hat of Death",
+       "rate": 2.0
+      },
+      {
+       "name": "Ragged Gomushin",
+       "rate": 2.0
+      },
+      {
+       "name": "Witch Hat",
+       "rate": 2.0
+      },
+      {
+       "name": "Ghost Costume",
+       "rate": 3.0
+      },
+      {
+       "name": "Witch Clothes",
+       "rate": 2.0
+      },
+      {
+       "name": "Witch's Broomstick",
+       "rate": 1.0
+      },
+      {
+       "name": "Gargoyle Wings",
+       "rate": 1.0
+      },
+      {
+       "name": "Battle Scar",
+       "rate": 1.0
+      },
+      {
+       "name": "Mummy Hat",
+       "rate": 2.0
+      },
+      {
+       "name": "Mummy Suit",
+       "rate": 2.0
+      },
+      {
+       "name": "Mummy Mask",
+       "rate": 2.0
+      },
+      {
+       "name": "White Bandage",
+       "rate": 2.0
+      },
+      {
+       "name": "Devil Wings",
+       "rate": 1.0
+      },
+      {
+       "name": "Blue Chinese Undead Hat",
+       "rate": 2.0
+      },
+      {
+       "name": "Blue Chinese Undead Costume",
+       "rate": 2.0
+      },
+      {
+       "name": "Maple-Stein Head",
+       "rate": 2.0
+      },
+      {
+       "name": "Maple-Stein Face",
+       "rate": 2.0
+      },
+      {
+       "name": "Demon Goblin",
+       "rate": 1.0
+      },
+      {
+       "name": "Pumpkin Hat",
+       "rate": 2.0
+      },
+      {
+       "name": "Pumpkin Headgear",
+       "rate": 2.0
+      },
+      {
+       "name": "Pumpkin Suit",
+       "rate": 2.0
+      },
+      {
+       "name": "Glowing Pumpkin Basket",
+       "rate": 2.0
+      },
+      {
+       "name": "Evil Skull",
+       "rate": 1.0
+      },
+      {
+       "name": "Cat Soul",
+       "rate": 1.0
+      },
+      {
+       "name": "Devilish Horns",
+       "rate": 2.0
+      },
+      {
+       "name": "Devil Horns",
+       "rate": 2.0
+      },
+      {
+       "name": "Dark Devil Hat",
+       "rate": 2.0
+      },
+      {
+       "name": "Coffin of Gloom",
+       "rate": 2.0
+      },
+      {
+       "name": "Count Dracula Cape",
+       "rate": 1.0
+      },
+      {
+       "name": "Iljimae Mask",
+       "rate": 2.0
+      },
+      {
+       "name": "Stealth Suit",
+       "rate": 2.0
+      }
+     ],
+     "latest": true
+    }
+   ]
+  },
+  {
+   "id": "mystery-styles",
+   "title": "Mystery Styles",
+   "tab": "Mystery Styles",
+   "boxes": [
+    {
+     "id": "mystery-styles-oct6",
+     "name": "Mystery Styles",
+     "dates": "Oct 6 – Oct 28",
+     "items": [
+      {
+       "kind": "hair",
+       "gender": "male",
+       "name": "Bed Head Hair"
+      },
+      {
+       "kind": "hair",
+       "gender": "male",
+       "name": "Prince Cut Hair"
+      },
+      {
+       "kind": "hair",
+       "gender": "male",
+       "name": "Short Regent Cut"
+      },
+      {
+       "kind": "hair",
+       "gender": "male",
+       "name": "Dreamcatcher"
+      },
+      {
+       "kind": "hair",
+       "gender": "male",
+       "name": "Metrosexual Hair"
+      },
+      {
+       "kind": "hair",
+       "gender": "male",
+       "name": "Antagonist"
+      },
+      {
+       "kind": "hair",
+       "gender": "female",
+       "name": "Lovely Ladyhawk"
+      },
+      {
+       "kind": "hair",
+       "gender": "female",
+       "name": "Ponytail-to-the-Side"
+      },
+      {
+       "kind": "hair",
+       "gender": "female",
+       "name": "Vivacious Wavy Hair"
+      },
+      {
+       "kind": "hair",
+       "gender": "female",
+       "name": "Angelica Hair"
+      },
+      {
+       "kind": "hair",
+       "gender": "female",
+       "name": "Caspia Hair"
+      },
+      {
+       "kind": "hair",
+       "gender": "female",
+       "name": "Rose"
+      },
+      {
+       "kind": "face",
+       "gender": "male",
+       "name": "Innocent Gaze"
+      },
+      {
+       "kind": "face",
+       "gender": "male",
+       "name": "Distant Gaze"
+      },
+      {
+       "kind": "face",
+       "gender": "male",
+       "name": "Rebel's Fire"
+      },
+      {
+       "kind": "face",
+       "gender": "male",
+       "name": "Worrisome Glare"
+      },
+      {
+       "kind": "face",
+       "gender": "male",
+       "name": "Alert Face"
+      },
+      {
+       "kind": "face",
+       "gender": "male",
+       "name": "Overjoyed Smile"
+      },
+      {
+       "kind": "face",
+       "gender": "female",
+       "name": "Prim Face"
+      },
+      {
+       "kind": "face",
+       "gender": "female",
+       "name": "Posh Look"
+      },
+      {
+       "kind": "face",
+       "gender": "female",
+       "name": "Bulbous-Eyed Face"
+      },
+      {
+       "kind": "face",
+       "gender": "female",
+       "name": "Round Eyed Face"
+      },
+      {
+       "kind": "face",
+       "gender": "female",
+       "name": "Beauty Stare"
+      },
+      {
+       "kind": "face",
+       "gender": "female",
+       "name": "Strong Stare"
+      }
+     ]
+    },
+    {
+     "id": "mystery-styles-oct28",
+     "name": "Mystery Styles",
+     "dates": "Oct 28 – Nov 11",
+     "items": [
+      {
+       "kind": "hair",
+       "gender": "male",
+       "name": "Angelcakes Hair"
+      },
+      {
+       "kind": "hair",
+       "gender": "male",
+       "name": "Super Tuft Hair"
+      },
+      {
+       "kind": "hair",
+       "gender": "male",
+       "name": "Wild Tangles Hair",
+       "match": "Black Wild Tangles Hair"
+      },
+      {
+       "kind": "hair",
+       "gender": "male",
+       "name": "Natural"
+      },
+      {
+       "kind": "hair",
+       "gender": "male",
+       "name": "Casanova"
+      },
+      {
+       "kind": "hair",
+       "gender": "male",
+       "name": "Roving Rockstar"
+      },
+      {
+       "kind": "hair",
+       "gender": "female",
+       "name": "Fluffy Pigtails"
+      },
+      {
+       "kind": "hair",
+       "gender": "female",
+       "name": "Romantic Braid Hair",
+       "match": "Black Romantic Braid Hair"
+      },
+      {
+       "kind": "hair",
+       "gender": "female",
+       "name": "Grace Hair"
+      },
+      {
+       "kind": "hair",
+       "gender": "female",
+       "name": "Onna's Honor"
+      },
+      {
+       "kind": "hair",
+       "gender": "female",
+       "name": "Francesca"
+      },
+      {
+       "kind": "hair",
+       "gender": "female",
+       "name": "Cecelia Twist"
+      },
+      {
+       "kind": "face",
+       "gender": "male",
+       "name": "Crystal Face"
+      },
+      {
+       "kind": "face",
+       "gender": "male",
+       "name": "Puppy Eyes Face"
+      },
+      {
+       "kind": "face",
+       "gender": "male",
+       "name": "Curious Dog"
+      },
+      {
+       "kind": "face",
+       "gender": "male",
+       "name": "Dramatic Face"
+      },
+      {
+       "kind": "face",
+       "gender": "male",
+       "name": "Ghostface Stare"
+      },
+      {
+       "kind": "face",
+       "gender": "male",
+       "name": "Sad Innocence"
+      },
+      {
+       "kind": "face",
+       "gender": "female",
+       "name": "Tender Love"
+      },
+      {
+       "kind": "face",
+       "gender": "female",
+       "name": "Pure Gaze"
+      },
+      {
+       "kind": "face",
+       "gender": "female",
+       "name": "Bright Eyes"
+      },
+      {
+       "kind": "face",
+       "gender": "female",
+       "name": "Existentially Tired Face"
+      },
+      {
+       "kind": "face",
+       "gender": "female",
+       "name": "Lazy Look"
+      },
+      {
+       "kind": "face",
+       "gender": "female",
+       "name": "Innocent Look"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "aurora",
+   "title": "Aurora Stamp Shop",
+   "tab": "Aurora",
+   "boxes": [
+    {
+     "id": "aurora-season-1",
+     "name": "Aurora Stamp Shop Season 1",
+     "pill": "Season 1",
+     "items": [
+      {
+       "name": "White Choco Bunny"
+      },
+      {
+       "name": "Splash Choco Boy"
+      },
+      {
+       "name": "Splash Choco Girl"
+      },
+      {
+       "name": "Cacao Bear Shoes"
+      },
+      {
+       "name": "Chocolate Ribbon"
+      },
+      {
+       "name": "Soft Chocolate Fondue Scepter"
+      },
+      {
+       "name": "Choco Candy Cookie"
+      },
+      {
+       "name": "Ink-and-Wash Thought Bubble Ring"
+      },
+      {
+       "name": "Ink-and-Wash Painting Name Tag Ring"
+      },
+      {
+       "name": "Black Cat Beanie"
+      },
+      {
+       "name": "Red Check Rider"
+      },
+      {
+       "name": "Violet Dot Jeans"
+      },
+      {
+       "name": "Blank Eye Patch"
+      },
+      {
+       "name": "Chocolate Label Ring"
+      },
+      {
+       "name": "Chocolate Chat Ring"
+      },
+      {
+       "name": "Sky Blue Cat Beanie"
+      },
+      {
+       "name": "Pink Bunny Sweater"
+      },
+      {
+       "name": "Hearts Tights"
+      },
+      {
+       "name": "Pink Elephant Slippers"
+      },
+      {
+       "name": "Heartbreaker Lips"
+      },
+      {
+       "name": "Orange Cat Beanie"
+      },
+      {
+       "name": "Loose Fit Sweater"
+      },
+      {
+       "name": "Stocking Shorts"
+      },
+      {
+       "name": "Detective Glass"
+      },
+      {
+       "name": "Heart Sunglasses"
+      },
+      {
+       "name": "Starlight Heart Scepter"
+      }
+     ],
+     "range": "Oct 6 – Jan 13",
+     "note": "The Aurora Mystery Fashion Crate, bought with Aurora Stamps. The Aurora Stamp Shop's other items (palette coupons) are left out."
+    }
+   ]
+  }
+ ]
+}

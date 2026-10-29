@@ -65,13 +65,13 @@ for (const p of read('data/placeholders.json').wearables) addWearablePlaceholder
 // Skin parts are placed by where they sit in the API's skin render (scripts/place-skins.mjs).
 const skins = read('data/skins.json').map(s => ({
   tone: s.tone,
-  parts: s.parts.map(p => ({ file: `sprites/skin/${s.tone}/${p.key}.png`, layer: p.position, x: p.pos.x, y: p.pos.y, z: zOf(p.position) })),
+  parts: s.parts.map(p => ({ file: `sprites/skin/${s.tone}/${p.key}.png`, layer: p.position, x: p.pos.x, y: p.pos.y, z: zOf(p.position), ...(rules.partHiddenBy[p.position] && { hiddenBy: rules.partHiddenBy[p.position] }) })),
 }));
 // Skin parts for the two-handed pose. The ear is not visible in the API's render, so it is left out.
 const skins2 = existsSync('data/skins2.json') ? read('data/skins2.json') : [];
 for (const s of skins) {
   const s2 = skins2.find(x => x.tone === s.tone);
-  if (s2) s.parts2 = s2.parts.filter(p => p.key !== 'ear').map(p => ({ file: `sprites/skin2/${s.tone}/${p.key}.png`, layer: p.position, x: p.pos.x, y: p.pos.y, z: zOf(p.position) }));
+  if (s2) s.parts2 = s2.parts.filter(p => p.key !== 'ear').map(p => ({ file: `sprites/skin2/${s.tone}/${p.key}.png`, layer: p.position, x: p.pos.x, y: p.pos.y, z: zOf(p.position), ...(rules.partHiddenBy[p.position] && { hiddenBy: rules.partHiddenBy[p.position] }) }));
 }
 const catalog = { skins, face: [], hair: [], wearables: {} };
 
@@ -170,6 +170,22 @@ for (const [g, slots] of Object.entries(rules.baseBody ?? {})) for (const [slot,
 // rules.listFirst: ids shown at the top of their tab, in that order; everything else follows by sprite id.
 const firstRank = id => { const i = (rules.listFirst ?? []).indexOf(id); return i === -1 ? Infinity : i; };
 for (const slot of Object.values(catalog.wearables)) slot.items.sort((a, b) => firstRank(a.id) - firstRank(b.id) || byId(a.id, b.id));
+
+// Past crates and boxes (data/boxes.json, hand-maintained): each listed name is matched to a catalogue item so the Past tab can draw its card.
+const nameKey = n => n.toLowerCase().replace(/[^a-z0-9]/g, '');
+warnings.boxUnresolved = [];
+catalog.boxes = read('data/boxes.json').groups.map(g => ({ id: g.id, title: g.title, ...(g.tab && { tab: g.tab }), boxes: g.boxes.map(b => ({
+  id: b.id, name: b.name, ...(b.pill && { pill: b.pill }), ...(b.dates && { dates: b.dates }), ...(b.range && { range: b.range }), ...(b.latest && { latest: true }), ...(b.note && { note: b.note }), ...(b.pending && { pending: true }),
+  items: (b.items ?? []).flatMap(it => {
+    const rate = it.rate != null ? { rate: it.rate } : {};
+    if (it.kind === 'hair' || it.kind === 'face') {
+      const st = catalog[it.kind].find(x => nameKey(x.style) === nameKey(it.match ?? it.name) && (x.gender === it.gender || x.gender === 'both'));
+      if (!st) { warnings.boxUnresolved.push(`${b.name}: ${it.kind} ${it.name}`); return []; }
+      return [{ kind: it.kind, key: st.key, gender: st.gender, sex: it.gender, ...rate }]; // sex: the list the box puts it in (male or female)
+    }
+    for (const [slot, data] of Object.entries(catalog.wearables)) { const w = data.items.find(i => nameKey(i.name) === nameKey(it.match ?? it.name)); if (w) return [{ kind: 'wearable', slot, id: w.id, ...rate }]; }
+    warnings.boxUnresolved.push(`${b.name}: ${it.name}`); return [];
+  }) })) }));
 
 writeFileSync('public/catalog.json', JSON.stringify(catalog));
 console.log('placeholders:', JSON.stringify(Object.fromEntries(Object.entries(placeholders.wearables).map(([k, v]) => [k, v.map(p => p.name)]))), 'hair', placeholders.hair.map(p => p.name), 'face', placeholders.face.map(p => p.name));

@@ -150,6 +150,7 @@ input { font: inherit; border-radius: 0; }
 
 .toolbar { flex-shrink: 0; }
 .toolbar:not(:empty) { margin-bottom: 12px; }
+.filters:empty { display: none; }
 .filters { flex: none; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin-bottom: 12px; padding: 3px; }
 .search { flex: 1 1 150px; min-width: 0; display: flex; align-items: center; gap: 8px; padding: 6px 8px; background: var(--popover); --c: var(--paper-line); box-shadow: 0 -2px 0 0 var(--c), 0 2px 0 0 var(--c), -2px 0 0 0 var(--c), 2px 0 0 0 var(--c); }
 .search-input { flex: 1; min-width: 0; padding: 0; border: 0; outline: 0; background: transparent; color: var(--ink); font: 14px var(--font-pixel); }
@@ -183,9 +184,12 @@ input { font: inherit; border-radius: 0; }
 .tab.character { background: oklch(72% .17 140 / .85); color: var(--ink); }
 .tab.wearable { background: var(--paper-deep); color: var(--sepia); }
 .tab.first { margin-top: 10px; }
+.tab.past { margin-top: 12px; } /* Released and Upcoming close the rail, a little apart from the item tabs */
+/* Released and Upcoming: one lighter purple, semi-transparent like the green character tabs; deeper and solid when selected. */
+.tab.past, .tab.upcoming { background: oklch(76% .13 305 / .85); color: var(--ink); }
+.tab.past[aria-selected="true"], .tab.upcoming[aria-selected="true"] { background: oklch(50% .19 305); color: oklch(99% .01 305); }
 /* The Upcoming tab stands apart: a gap above it and its own colour (violet), so it is not mistaken for a normal category. */
-.tab.upcoming { margin-top: 12px; background: oklch(60% .2 305); color: oklch(98% .02 305); }
-.tab.upcoming[aria-selected="true"] { background: oklch(46% .21 305); color: oklch(99% .01 305); }
+
 .tab:hover { transform: translateX(2px); }
 .tab[aria-selected="true"] { transform: translateX(5px); background: var(--maple); color: oklch(99% .01 90); }
 .tab-name { overflow: hidden; text-overflow: ellipsis; }
@@ -243,8 +247,8 @@ input { font: inherit; border-radius: 0; }
   .tab:hover { transform: none; }
   .tab[aria-selected="true"] { transform: translateY(-3px); }
   .tab.first { margin-top: 0; margin-left: 10px; }
-  .tab.upcoming { margin-top: 0; margin-left: 10px; }
   .tab.lookup { margin-bottom: 0; margin-right: 10px; }
+  .tab.past { margin-top: 0; margin-left: 10px; }
   .topbar { order: 0; }
   .cover { order: 2; flex: none; }
   .page { height: auto; }
@@ -343,3 +347,32 @@ input { font: inherit; border-radius: 0; }
 .house-count.full { background: var(--danger); }
 .hint { color: var(--sepia); font: 12px/1.4 var(--font-text); margin: 6px 2px 8px; }
 .small-btn:disabled { opacity: .45; cursor: default; }
+
+/* ---- Past tab ---- */
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 3px 4px; }
+.pill { padding: 5px 11px; border: 2px solid var(--sepia); background: var(--paper); color: var(--sepia); font: 11px var(--font-label); letter-spacing: .03em; cursor: pointer; }
+.pill:hover { background: var(--paper-deep); }
+.pill[aria-pressed="true"] { background: var(--sepia); color: var(--paper); }
+
+/* The selected box's title on the Released tab: the name, then dates and size. */
+.past-title { margin: 24px 3px 6px; text-align: center; }
+.past-title h2 { margin: 0; font: 400 24px/1.15 var(--font-pixel); color: var(--sepia); }
+.past-meta { margin: 6px 0 4px; font: 700 12px var(--font-label); letter-spacing: .08em; text-transform: uppercase; color: var(--maple-deep); }
+.past-meta .dot { margin: 0 8px; color: var(--sepia); }
+
+/* The Released tab's category tabs (Mystery Fashion Crates / Mystery Styles / Aurora Stamp Shop): file tabs like the Character / Housing ones at
+   the top of the page (same cut corners), in the Released / Upcoming purples, on a purple rule that the selected tab joins, so they read apart from the box pills below. */
+.past-tabs { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 5px; margin: 4px 3px 10px; padding: 0 6px; border-bottom: 5px solid oklch(50% .19 305); }
+.past-tab { border: 0; padding: 7px 12px 6px; font: 13px/1 var(--font-pixel); color: var(--ink); background: oklch(76% .13 305 / .85); cursor: pointer; clip-path: polygon(0 100%, 0 32%, 7px 0, calc(100% - 7px) 0, 100% 32%, 100% 100%); }
+.past-tab:hover { filter: brightness(1.06); }
+.past-tab[aria-selected="true"] { background: oklch(50% .19 305); color: oklch(99% .01 305); padding-bottom: 9px; margin-bottom: -1px; }
+.past-tab:focus-visible { outline: 2px solid var(--maple-deep); outline-offset: -3px; }
+
+.past-title ~ .colour-bar { margin: 6px 3px 6px; }
+
+/* Hairstyles / Faces on the Released tab: a big heading, the colour options right under it, then Male and Female lists with smaller headings. */
+.past-section { display: flex; align-items: center; gap: 10px; margin: 24px 3px 10px; font: 600 21px var(--font-pixel); color: var(--maple-deep); }
+.past-section::after { content: ""; height: 4px; flex: 1; background: var(--paper-line); }
+.past-title ~ .past-section ~ .colour-bar { margin: 6px 3px 4px; }
+.group-title.sub { margin: 14px 0 8px; font-size: 15px; }
+.group-title.sub::before { width: 6px; height: 6px; }

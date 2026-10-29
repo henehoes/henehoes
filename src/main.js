@@ -138,9 +138,9 @@ const hasSaved = () => { try { return localStorage.getItem(SAVE_KEY) != null; } 
 
 let gender = 'all'; // which styles the Face and Hair tabs list: 'all' (the default), 'male' or 'female'
 let state = fresh();
-let activeTab = 'body';
+let activeTab = 'past'; // the page opens on the Released tab (its newest box: see latestBox)
 let mode = 'character'; // which book is open: 'character' (the dress-up catalogue) or 'housing' (src/housing.js)
-const lastTab = { character: 'body', housing: 'homes' }; // the tab each book was on when it was left
+const lastTab = { character: 'past', housing: 'homes' }; // the tab each book was on when it was left
 let source = 'released'; // Face/Hair lists: 'released' (in the game now) or 'datamine' (everything found in the game files, released or not)
 const forGender = s => gender === 'all' || s.gender === 'both' || s.gender === gender; // 'both': collab styles listed for both genders
 const regular = slot => catalog.wearables[slot].items.filter(i => !i.upcoming); // a slot's own items: the possible upcoming ones (Upcoming tab) are left out
@@ -182,10 +182,13 @@ async function buildLayers(sel) {
   // Every sprite file the look needs is requested at once (not one after another: on a phone each request waits for the network, so
   // a look of 25 parts took seconds). Layers keep the order they were added in, which decides how same-height parts stack.
   const jobs = [];
-  // Worn items declare slot codes (e.g. a hat with H1); parts tied to a covered slot are hidden.
+  // Worn items declare slot codes (e.g. a hat with H1, Ae); a part tied to a slot that ANOTHER worn item covers is hidden. An item never
+  // hides its own parts (earrings declare Ae themselves), so each owner is told apart: 'body' for the skin, face and hair.
   const base = baseOf(sel);
-  const covered = new Set([...WEAR_ORDER.flatMap(slot => catalog.wearables[slot]?.items.find(i => i.id === sel.wear[slot].item)?.vslots ?? []), ...base.flatMap(i => i.vslots ?? [])]);
-  const add = (parts, h = 0, c = 0, b = 0) => {
+  const covering = [...WEAR_ORDER.flatMap(slot => { const it = catalog.wearables[slot]?.items.find(i => i.id === sel.wear[slot].item); return it ? [{ owner: slot, codes: it.vslots ?? [] }] : []; }),
+    ...base.map((it, n) => ({ owner: `base${n}`, codes: it.vslots ?? [] }))];
+  const add = (parts, h = 0, c = 0, b = 0, owner = 'body') => {
+    const covered = new Set(covering.filter(e => e.owner !== owner).flatMap(e => e.codes));
     for (const p of parts.filter(p => !covered.has(p.hiddenBy))) jobs.push(tinted(p.file, h, c, b).then(img => ({ img, x: OX + p.x, y: OY + p.y, z: p.z })));
   };
   // A weapon with no standing pose (Orange Toy Hammer) puts the whole body in the two-handed pose.
@@ -198,11 +201,11 @@ async function buildLayers(sel) {
     const v = st && (st.variants.find(x => x.colour === sel[kind].colour) ?? st.variants[0]);
     if (v && partsFor(v)) add(partsFor(v));
   }
-  for (const item of base) add(partsFor(item)); // the undergarments, drawn as part of the body
+  base.forEach((item, n) => add(partsFor(item), 0, 0, 0, `base${n}`)); // the undergarments, drawn as part of the body
   for (const slot of WEAR_ORDER) {
     const w = sel.wear[slot];
     const item = catalog.wearables[slot]?.items.find(i => i.id === w.item);
-    if (item) add(partsFor(item), ...dyeOf(item, w));
+    if (item) add(partsFor(item), ...dyeOf(item, w), slot);
   }
   for (const slot of RING_SLOTS) {
     if (DISABLED_SLOTS.has(slot)) continue;
@@ -343,8 +346,8 @@ function only(patch) {
 const note = text => { $('ph-note').textContent = text; };
 
 // Chapter tabs down the right edge of the book. Short names keep the rail narrow; the chapter title shows the full one.
-const TAB_NAMES = { search: 'All', faceAcc: 'Face Acc.', eyeAcc: 'Eye Deco', longcoat: 'Overall', nameTag: 'Name Ring', chatBalloon: 'Chat Ring', upcoming: 'Upcoming' };
-const CHAPTER_TITLES = { upcoming: 'Possible Upcoming Crates', search: 'Search Everything', body: 'Body', face: 'Faces', hair: 'Hairstyles', cap: 'Hats', faceAcc: 'Face Accessories', eyeAcc: 'Eye Decorations', earrings: 'Earrings', longcoat: 'Overalls', coat: 'Tops', pants: 'Bottoms', glove: 'Gloves', shoes: 'Shoes', cape: 'Capes', weapon: 'Weapons', nameTag: 'Name Rings', chatBalloon: 'Chat Rings' };
+const TAB_NAMES = { search: 'All', faceAcc: 'Face Acc.', eyeAcc: 'Eye Deco', longcoat: 'Overall', nameTag: 'Name Ring', chatBalloon: 'Chat Ring', upcoming: 'Upcoming', past: 'Released' };
+const CHAPTER_TITLES = { past: 'Released Crates & Styles', upcoming: 'Possible Upcoming Crates', search: 'Search Everything', body: 'Body', face: 'Faces', hair: 'Hairstyles', cap: 'Hats', faceAcc: 'Face Accessories', eyeAcc: 'Eye Decorations', earrings: 'Earrings', longcoat: 'Overalls', coat: 'Tops', pants: 'Bottoms', glove: 'Gloves', shoes: 'Shoes', cape: 'Capes', weapon: 'Weapons', nameTag: 'Name Rings', chatBalloon: 'Chat Rings' };
 
 function renderTabs() {
   const tabs = $('tabs');
@@ -369,7 +372,7 @@ function renderTabs() {
     t.title = label;
     if (active) t.append(el('span', { className: 'tick', title: 'Equipped' }));
     if (needsFix.has(key)) t.append(el('span', { className: 'fix', title: 'Has placeholders to fix', textContent: '!' }));
-    t.onclick = () => { activeTab = key; search = ''; note(''); renderTabs(); renderFilters(); renderContent(); };
+    t.onclick = () => { activeTab = key; if (key === 'past') pastBox = latestBox().id; search = ''; note(''); renderTabs(); renderFilters(); renderContent(); };
     tabs.append(t);
   };
   add('search', 'Search', false, 'lookup');
@@ -377,7 +380,9 @@ function renderTabs() {
   add('face', 'Face', state.face.style != null, 'character');
   add('hair', 'Hair', state.hair.style != null, 'character');
   WEAR_ORDER.filter(s => catalog.wearables[s] && !DISABLED_SLOTS.has(s)).forEach((s, i) => add(s, catalog.wearables[s].label, state.wear[s].item != null, i === 0 ? 'wearable first' : 'wearable'));
-  if (SHOW_UPCOMING) add('upcoming', 'Possible items for the next Mystery Fashion Crates (unconfirmed)', upcomingWorn(), 'wearable upcoming');
+  // Released (every crate and box so far, newest first) and Upcoming (a guess) close the rail, below Chat Ring.
+  add('past', 'Released crates and boxes, and what each held', false, 'wearable past');
+  if (SHOW_UPCOMING) add('upcoming', 'Possible items for the next Mystery Fashion Crates (unconfirmed)', false, 'wearable upcoming'); // never a checkmark: it is not something you wear
   tabs.scrollLeft = scrolled;
   $('chapter').textContent = CHAPTER_TITLES[activeTab] ?? catalog.wearables[activeTab]?.label ?? '';
 }
@@ -388,6 +393,7 @@ function renderFilters() {
   const box = $('filters');
   box.replaceChildren();
   $('source').replaceChildren();
+  if (activeTab === 'past' || activeTab === 'upcoming') return; // Released and Upcoming are browsed by category and box, so they have no search bar
   const everything = activeTab === 'search';
   const input = el('input', { type: 'search', className: 'search-input', placeholder: everything ? 'Search everything…' : 'Search entries…', value: search, autocomplete: 'off', spellcheck: false });
   input.setAttribute('aria-label', everything ? 'Search body, faces, hairs and clothing' : 'Search this list');
@@ -678,7 +684,8 @@ function renderContent(keepScroll = false) {
   if (mode === 'housing') { housing.renderContent(c, activeTab, matches, () => afterChangeKeep(true)); c.scrollTop = keepScroll ? top : 0; return; }
   if (activeTab === 'search') renderSearch(c);
   else if (activeTab === 'body') renderBody(c)
-  else if (activeTab === 'upcoming') renderUpcoming(c);
+  else if (activeTab === 'upcoming') renderUpcoming(c)
+  else if (activeTab === 'past') renderPast(c);
   else if (activeTab === 'face' || activeTab === 'hair') renderStyles(c, activeTab);
   else renderWearable(c, activeTab);
   if (activeTab !== 'search' && search && !c.querySelector('.card')) c.append(el('p', { className: 'empty', textContent: 'No entries match. Try another word.' }));
@@ -758,7 +765,6 @@ function renderStyles(c, kind) {
 }
 
 // The Upcoming tab: equipment the game files mark as dyeable that is not in the catalogue. UNCONFIRMED, and the page says so.
-const upcomingWorn = () => WEAR_ORDER.some(slot => catalog.wearables[slot]?.items.some(i => i.upcoming && i.id === state.wear[slot].item));
 // The disclaimer shown on the Next Crate tab and above the Upcoming view of a category tab.
 let noteOpen = false; // whether the explanation is expanded (kept while the lists redraw)
 const unconfirmedNote = () => {
@@ -772,6 +778,89 @@ const unconfirmedNote = () => {
   toggle.onclick = () => { noteOpen = !noteOpen; text.classList.toggle('collapsed', !noteOpen); toggle.textContent = noteOpen ? 'Show less' : 'Read more'; toggle.setAttribute('aria-expanded', String(noteOpen)); };
   return el('div', { className: 'empty-note unconfirmed', role: 'note' }, el('span', { className: 'empty-badge', textContent: '?', 'aria-hidden': 'true' }), el('div', { className: 'note-main' }, text, toggle));
 };
+// ---------- Past tab: every past crate and box and what it held ----------
+const pct = r => `${+r.toFixed(2)}%`; // 2 -> "2%", 2.5 -> "2.5%", 16.67 -> "16.67%"
+function boxCards(box) {
+  // The box's items as the usual cards, grouped like the Next Crate tab: by slot, then hairs, then faces. `matches` filters by name.
+  const groups = new Map(); // title -> [card builders]
+  const put = (title, name, build) => { if (matches(name)) (groups.get(title) ?? groups.set(title, []).get(title)).push(build); };
+  const rated = (card, it) => { if (it.rate != null) card.title += ` · ${pct(it.rate)}`; return card; }; // the rate is in the hover text only: as a badge it was too small to read
+  for (const slot of WEAR_ORDER) for (const it of box.items.filter(x => x.kind === 'wearable' && x.slot === slot)) {
+    const item = catalog.wearables[slot].items.find(i => i.id === it.id);
+    if (item) put(CHAPTER_TITLES[slot] ?? catalog.wearables[slot].label, item.name, () => rated(wearableCard(slot, item), it));
+  }
+  // Hair and faces come out as sections (Hairstyles, Faces), each split by the gender list the box puts them in (Male, Female).
+  const styles = [];
+  for (const [kind, title] of [['hair', 'Hairstyles'], ['face', 'Faces']]) {
+    const subs = [];
+    for (const [sex, label] of [['male', 'Male'], ['female', 'Female']]) {
+      const builders = [];
+      for (const it of box.items.filter(x => x.kind === kind && (x.sex ?? x.gender) === sex)) {
+        const i = catalog[kind].findIndex(x => x.key === it.key && x.gender === it.gender);
+        if (i >= 0 && matches(catalog[kind][i].style)) builders.push(() => rated(styleCard(kind, catalog[kind][i], i), it));
+      }
+      if (builders.length) subs.push({ title: label, builders });
+    }
+    if (subs.length) styles.push({ kind, title, subs });
+  }
+  return { groups, styles };
+}
+let pastBox = null; // the box shown below the pills; set to the latest box whenever the Released tab is opened
+const pillLabel = b => b.pill && b.dates ? `${b.dates} · ${b.pill}` : (b.dates ?? b.pill); // date first, then the name where there is one
+const allBoxes = () => catalog.boxes.flatMap(g => g.boxes);
+const latestBox = () => allBoxes().find(b => b.latest) ?? allBoxes()[0]; // the Released tab always opens on the newest box
+const groupOf = box => catalog.boxes.find(g => g.boxes.some(x => x.id === box.id));
+function renderPast(c) {
+  // A tab per category (Mystery Fashion Crates, Mystery Styles, Aurora Stamp Shop); the selected category's boxes are pills, in date order,
+  // and the selected box's title and items are drawn below. Picking a category opens its newest box (the last pill).
+  const all = allBoxes();
+  if (!all.some(b => b.id === pastBox)) pastBox = latestBox().id;
+  const current = groupOf(all.find(b => b.id === pastBox));
+  const tabs = el('div', { className: 'past-tabs', role: 'tablist' });
+  for (const g of catalog.boxes) {
+    const t = el('button', { className: 'past-tab', type: 'button', role: 'tab', textContent: g.tab ?? g.title, title: g.title });
+    t.setAttribute('aria-selected', String(g.id === current.id));
+    t.onclick = () => { pastBox = (g.boxes.find(b => b.latest) ?? g.boxes[g.boxes.length - 1]).id; renderContent(true); };
+    tabs.append(t);
+  }
+  c.append(tabs);
+  const row = el('div', { className: 'pills', role: 'radiogroup', 'aria-label': current.title });
+  for (const box of current.boxes) {
+    const btn = el('button', { className: 'pill', type: 'button', role: 'radio', textContent: pillLabel(box), title: box.name + (box.dates ? ` (${box.dates})` : '') });
+    btn.setAttribute('aria-pressed', String(box.id === pastBox)); btn.setAttribute('aria-checked', String(box.id === pastBox));
+    btn.onclick = () => { pastBox = box.id; renderContent(true); };
+    row.append(btn);
+  }
+  c.append(row);
+  const box = all.find(b => b.id === pastBox), { groups, styles } = boxCards(box);
+  const count = [...groups.values()].reduce((n, l) => n + l.length, 0) + styles.reduce((n, sec) => n + sec.subs.reduce((m, sub) => m + sub.builders.length, 0), 0);
+  // The selected box's title: the name large, then its dates and size. Not an alert box.
+  c.append(el('div', { className: 'past-title' }, el('h2', { textContent: box.name }),
+    el('p', { className: 'past-meta' }, ...[box.dates ?? box.range, box.pending ? 'contents not added yet' : `${count} item${count === 1 ? '' : 's'}`].filter(Boolean).flatMap((t, i) => i ? [el('span', { className: 'dot', textContent: '·', 'aria-hidden': 'true' }), t] : [t]))));
+  if (box.pending) c.append(infoNote('The contents of this one have not been added yet.'));
+  if (box.note) c.append(el('p', { className: 'hint', textContent: box.note }));
+  for (const [title, builders] of groups) {
+    c.append(el('h3', { className: 'group-title', textContent: `${title} · ${builders.length}` }));
+    const grid = el('div', { className: 'grid' });
+    for (const build of builders) grid.append(build());
+    c.append(grid);
+  }
+  // Hairs and faces (Mystery Styles): a big heading per kind, its colour options right under it (renderColourBar draws into the toolbar above
+  // the list, so the bar is moved down into the content), then the Male and Female lists. The cards are drawn in the chosen colour.
+  for (const sec of styles) {
+    c.append(el('h3', { className: 'past-section', textContent: sec.title }));
+    renderColourBar(sec.kind);
+    c.append(...$('toolbar').children);
+    if (sec.kind === 'face' && catalog.face.some(st => st.variants.some(v => v.colour === browse.face && v.label === NO_COUPON_EYES))) c.append(eyeWhiteNote());
+    for (const sub of sec.subs) {
+      c.append(el('h4', { className: 'group-title sub', textContent: `${sub.title} · ${sub.builders.length}` }));
+      const grid = el('div', { className: 'grid' });
+      for (const build of sub.builders) grid.append(build());
+      c.append(grid);
+    }
+  }
+}
+
 function renderUpcoming(c) {
   c.append(unconfirmedNote());
   for (const slot of WEAR_ORDER) {

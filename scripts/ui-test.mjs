@@ -654,6 +654,19 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   await wide.close();
 }
 
+// An ultrawide screen: the page stops at 2400px and sits in the middle, with the checked background on both sides
+{
+  const ultra = await browser.newPage();
+  await ultra.setViewport({ width: 3440, height: 1440, deviceScaleFactor: 1 });
+  await ultra.goto('http://localhost:5173/', { waitUntil: 'networkidle0' }); await new Promise(r => setTimeout(r, 1200));
+  const m = await ultra.evaluate(() => { const a = document.querySelector('.app').getBoundingClientRect(), s = document.querySelector('.stage-box').getBoundingClientRect(); return { left: Math.round(a.left), width: Math.round(a.width), right: Math.round(innerWidth - a.right), stage: Math.round(s.width), zoom: document.querySelector('#preview').dataset.zoom, scrollW: document.documentElement.scrollWidth, perRow: (() => { const c = [...document.querySelectorAll('#content .card')]; return c.length ? c.filter(x => x.offsetTop === c[0].offsetTop).length : 0; })() }; });
+  check('ultrawide 3440px: the page is capped at 2400px and centred', m.width === 2400 && Math.abs(m.left - m.right) <= 1 && m.scrollW <= 3440, JSON.stringify(m));
+  check('ultrawide 3440px: the preview is still drawn zoomed in (2x or more)', Number(m.zoom) >= 2, JSON.stringify(m));
+  check('ultrawide 3440px: at most 10 cards per row', m.perRow >= 9 && m.perRow <= 10, JSON.stringify(m));
+  await ultra.screenshot({ path: '/private/tmp/claude-501/-Users-hannah-Projects/cc6e1d70-a595-4f36-be81-e85faff457f1/scratchpad/ultra.png' });
+  await ultra.close();
+}
+
 console.log(results.join('\n'));
 console.log('console/page errors:', errors.length ? errors : 'none');
 await browser.close();

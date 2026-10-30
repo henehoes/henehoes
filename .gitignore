@@ -2,3 +2,7 @@ node_modules
 dist
 tmp
 .DS_Store
+
+# Saved Nexon cash shop pages (third-party, not for the repo)
+*_Cash_Shop.html
+*_Cash_Shop_files/

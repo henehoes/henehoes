@@ -1106,6 +1106,11 @@ async function init() {
   afterChangeKeep();
   // Redraw at the right pixel sizes when the window changes size or moves to another display.
   let timer;
-  window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(() => { setStageHeight(); renderContent(true); renderPreview(); }, 150); });
+  const redraw = () => { clearTimeout(timer); timer = setTimeout(() => { setStageHeight(); renderContent(true); renderColour(); renderPreview(); }, 150); };
+  window.addEventListener('resize', redraw);
+  // Zooming the page (or dragging it to a screen with another pixel density) changes the device pixel ratio, and not every browser sends a
+  // resize for that. Check the ratio itself twice a second, so the thumbnails and the preview are redrawn and re-centred either way.
+  let seenRatio = dpr();
+  setInterval(() => { if (dpr() !== seenRatio) { seenRatio = dpr(); redraw(); } }, 500);
 }
 init().catch(err => { $('content').textContent = `Could not load the catalogue: ${err.message}`; });

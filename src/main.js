@@ -50,6 +50,10 @@ const el = (tag, props = {}, ...kids) => {
   return n;
 };
 const dpr = () => window.devicePixelRatio || 1;
+// The preview stage is 330 CSS px tall, and taller when the browser is zoomed out (a pixel ratio below 1, where a sprite pixel is one device
+// pixel at most): that is what lets the character be drawn at 2x, with the name tag and a chat bubble both in frame, instead of shrinking to 1x.
+function setStageHeight() { document.documentElement.style.setProperty('--stage-h', `${Math.min(480, Math.ceil(330 / Math.min(1, dpr())))}px`); }
+setStageHeight();
 
 // ---------- images ----------
 const imgCache = new Map();
@@ -279,10 +283,18 @@ const FOOT_EDGE = OY + 66; // the sprite row just under the feet
 let backdrop = null;
 function drawBackdrop(ctx, n, startX, startY, canvasW, canvasH) {
   const { img, info } = backdrop;
+  const w = info.width * n, h = info.height * n;
   const dx = (CENTRE_X - info.centreX - startX) * n, dy = (FOOT_EDGE - info.groundRow - startY) * n;
   ctx.fillStyle = info.skyColour; ctx.fillRect(0, 0, canvasW, canvasH); // beyond the picture's top edge: carry on in the meadow's colour
-  ctx.fillStyle = info.groundColour; ctx.fillRect(0, Math.min(canvasH, dy + info.height * n), canvasW, canvasH);
-  ctx.drawImage(img, dx, dy, info.width * n, info.height * n);
+  // The picture is only 800 sprite pixels wide, so a wide stage (a big monitor, or a browser zoomed out, where a sprite pixel is one device
+  // pixel or less) is wider than it. Carry the picture on to the left and right, and below the ground, as mirrored copies: the edges meet
+  // seamlessly and the stage is always full. The copy at (0, 0) is the picture itself, drawn as before.
+  const tile = (x, y, flipX, flipY) => {
+    ctx.save(); ctx.translate(flipX ? x + w : x, flipY ? y + h : y); ctx.scale(flipX ? -1 : 1, flipY ? -1 : 1);
+    ctx.drawImage(img, 0, 0, w, h); ctx.restore();
+  };
+  const rows = Math.max(1, Math.ceil((canvasH - dy) / h)), first = Math.floor(-dx / w), last = Math.floor((canvasW - dx) / w);
+  for (let iy = 0; iy < rows; iy++) for (let ix = first; ix <= last; ix++) tile(dx + ix * w, dy + iy * h, Math.abs(ix) % 2 === 1, iy % 2 === 1);
 }
 function paintFocus(canvas, boxW, boxH, n, focus, source, withBackdrop = false) {
   const d = dpr();
@@ -306,17 +318,18 @@ async function renderPreview() {
   await withScene(state, (buf, source) => {
     if (token !== renderToken) return; // a newer render has started
     const box = $('stage').getBoundingClientRect();
-    const side = Math.min(box.width, box.height) - 2; // inside the border
     // Normally a fixed frame on the character. With a tag or bubble worn, widen it to fit them.
-    let view = PREVIEW_VIEW, focus = PREVIEW_FOCUS;
+    let viewW = PREVIEW_VIEW, viewH = PREVIEW_VIEW, focus = PREVIEW_FOCUS;
     if (ringWorn(state)) {
       let x0 = CENTRE_X - 28, x1 = CENTRE_X + 28, y0 = OY - 15, y1 = OY + 72;
       for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (buf.data[(y * W + x) * 4 + 3]) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
-      view = Math.max(PREVIEW_VIEW, y1 - y0 + 8, x1 - x0 + 8);
+      viewH = Math.max(PREVIEW_VIEW, y1 - y0 + 8); viewW = Math.max(PREVIEW_VIEW, x1 - x0 + 8); // each axis on its own: a wide bubble must not shrink a stage that is wide anyway
       focus = [(x0 + x1) / 2, (y0 + y1) / 2];
     }
-    const n = Math.max(1, Math.floor(side * dpr() / (view * 0.95))); // allow edges to crop by up to 5% to get a bigger whole-number scale
+    // The biggest whole-number scale that fits both ways, allowing the edges to crop by up to 5%.
+    const n = Math.max(1, Math.floor(Math.min((box.width - 2) / viewW, (box.height - 2) / viewH) * dpr() / 0.95));
     paintFocus($('preview'), box.width - 2, box.height - 2, n, focus, source, true);
+    $('preview').dataset.view = `${viewW}x${viewH}`; // the frame in sprite pixels (read by the tests)
     $('preview').dataset.zoom = n; // device pixels per sprite pixel (read by the tests)
   });
 }
@@ -1093,6 +1106,6 @@ async function init() {
   afterChangeKeep();
   // Redraw at the right pixel sizes when the window changes size or moves to another display.
   let timer;
-  window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(() => { renderContent(true); renderPreview(); }, 150); });
+  window.addEventListener('resize', () => { clearTimeout(timer); timer = setTimeout(() => { setStageHeight(); renderContent(true); renderPreview(); }, 150); });
 }
 init().catch(err => { $('content').textContent = `Could not load the catalogue: ${err.message}`; });

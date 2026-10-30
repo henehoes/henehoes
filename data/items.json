@@ -5843,6 +5843,11 @@
           "colour": 3
         },
         {
+          "id": 22400,
+          "name": "Frieren Face",
+          "colour": 4
+        },
+        {
           "id": 22500,
           "name": "Frieren Face",
           "colour": 5
@@ -5895,6 +5900,11 @@
           "id": 22301,
           "name": "Fern Face",
           "colour": 3
+        },
+        {
+          "id": 22401,
+          "name": "Fern Face",
+          "colour": 4
         },
         {
           "id": 22501,
@@ -5951,6 +5961,11 @@
           "colour": 3
         },
         {
+          "id": 22402,
+          "name": "Stark Face",
+          "colour": 4
+        },
+        {
           "id": 22502,
           "name": "Stark Face",
           "colour": 5
@@ -6003,6 +6018,11 @@
           "id": 22303,
           "name": "Himmel Face",
           "colour": 3
+        },
+        {
+          "id": 22403,
+          "name": "Himmel Face",
+          "colour": 4
         },
         {
           "id": 22503,
@@ -6059,6 +6079,11 @@
           "colour": 3
         },
         {
+          "id": 22404,
+          "name": "Übel Face",
+          "colour": 4
+        },
+        {
           "id": 22504,
           "name": "Übel Face",
           "colour": 5
@@ -6111,6 +6136,11 @@
           "id": 22305,
           "name": "Aura Face",
           "colour": 3
+        },
+        {
+          "id": 22405,
+          "name": "Aura Face",
+          "colour": 4
         },
         {
           "id": 22505,
@@ -6167,6 +6197,11 @@
           "colour": 3
         },
         {
+          "id": 22406,
+          "name": "Linie Face",
+          "colour": 4
+        },
+        {
           "id": 22506,
           "name": "Linie Face",
           "colour": 5
@@ -6219,6 +6254,11 @@
           "id": 22307,
           "name": "Lügner Face",
           "colour": 3
+        },
+        {
+          "id": 22407,
+          "name": "Lügner Face",
+          "colour": 4
         },
         {
           "id": 22507,
@@ -9215,12 +9255,11 @@
       "matchedAs": "Saturday Special",
       "kind": "hair",
       "gender": "male",
-      "region": "TWMS",
-      "version": "256",
+      "region": "MCW",
+      "version": "1",
       "key": 3058,
       "classicId": 30580,
       "released": false,
-      "note": "Not in the Classic game data; art from TWMS 256",
       "colours": [
         {
           "id": 30580,
@@ -9231,6 +9270,21 @@
           "id": 30581,
           "name": "Saturday Special",
           "colour": 1
+        },
+        {
+          "id": 30582,
+          "name": "Saturday Special",
+          "colour": 2
+        },
+        {
+          "id": 30583,
+          "name": "Saturday Special",
+          "colour": 3
+        },
+        {
+          "id": 30584,
+          "name": "Saturday Special",
+          "colour": 4
         },
         {
           "id": 30585,
@@ -10768,6 +10822,11 @@
           "id": 30874,
           "name": "Super Tuft Hair",
           "colour": 4
+        },
+        {
+          "id": 30875,
+          "name": "Super Tuft Hair",
+          "colour": 5
         },
         {
           "id": 30876,
@@ -12376,12 +12435,11 @@
       "matchedAs": "Pigtails",
       "kind": "hair",
       "gender": "female",
-      "region": "GMS",
-      "version": "270",
+      "region": "MCW",
+      "version": "1",
       "key": 3127,
       "classicId": 31270,
       "released": false,
-      "note": "Not in the Classic game data; art from GMS 270",
       "colours": [
         {
           "id": 31270,
@@ -12397,6 +12455,11 @@
           "id": 31272,
           "name": "Pigtails",
           "colour": 2
+        },
+        {
+          "id": 31273,
+          "name": "Pigtails",
+          "colour": 3
         },
         {
           "id": 31274,
@@ -13856,12 +13919,11 @@
       "matchedAs": "Victorian Wrap",
       "kind": "hair",
       "gender": "female",
-      "region": "TWMS",
-      "version": "256",
+      "region": "MCW",
+      "version": "1",
       "key": 3158,
       "classicId": 31580,
       "released": false,
-      "note": "Not in the Classic game data; art from TWMS 256",
       "colours": [
         {
           "id": 31580,
@@ -13879,6 +13941,11 @@
           "colour": 2
         },
         {
+          "id": 31583,
+          "name": "Victorian Wrap",
+          "colour": 3
+        },
+        {
           "id": 31584,
           "name": "Victorian Wrap",
           "colour": 4
@@ -13887,6 +13954,11 @@
           "id": 31585,
           "name": "Victorian Wrap",
           "colour": 5
+        },
+        {
+          "id": 31586,
+          "name": "Victorian Wrap",
+          "colour": 6
         },
         {
           "id": 31587,
@@ -13953,17 +14025,51 @@
       "matchedAs": "Tall Bun",
       "kind": "hair",
       "gender": "female",
-      "region": "JMS",
-      "version": "444",
+      "region": "MCW",
+      "version": "1",
       "key": 3160,
       "classicId": 31600,
       "released": false,
-      "note": "Not in the Classic game data; art from JMS 444",
       "colours": [
         {
           "id": 31600,
           "name": "Tall Bun",
           "colour": 0
+        },
+        {
+          "id": 31601,
+          "name": "Tall Bun",
+          "colour": 1
+        },
+        {
+          "id": 31602,
+          "name": "Tall Bun",
+          "colour": 2
+        },
+        {
+          "id": 31603,
+          "name": "Tall Bun",
+          "colour": 3
+        },
+        {
+          "id": 31604,
+          "name": "Tall Bun",
+          "colour": 4
+        },
+        {
+          "id": 31605,
+          "name": "Tall Bun",
+          "colour": 5
+        },
+        {
+          "id": 31606,
+          "name": "Tall Bun",
+          "colour": 6
+        },
+        {
+          "id": 31607,
+          "name": "Tall Bun",
+          "colour": 7
         }
       ]
     },

@@ -1,1 +1,1 @@
-{"id":22605,"name":"Aura Face","version":"1","kind":"face","equipGroup":"Face","vslots":["Fc"],"islots":["Fc"],"parts":[{"key":"face","w":26,"h":15,"origin":{"x":12,"y":-5,"isEmpty":false},"maps":{"brow":{"x":0,"y":0,"isEmpty":true}},"position":"face"}]}
+{"id":22605,"name":"Aura Face","version":"1","kind":"face","equipGroup":"Face","vslots":["Fc"],"islots":["Fc"],"parts":[{"key":"face","w":26,"h":15,"origin":{"x":12,"y":-5,"isEmpty":false},"maps":{"brow":{"x":0,"y":0,"isEmpty":false}},"position":"face"}]}

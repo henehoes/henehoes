@@ -631,6 +631,29 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   check('Housing book: back to the Character book shows the character tabs again', (await page.$$eval('.tab', t => t.map(x => x.title))).includes('Body') && (await page.$eval('#preview', c => getComputedStyle(c).display)) !== 'none');
 }
 
+// A zoomed-out browser (device pixel ratio below 1) on a big monitor: the Henesys picture is narrower than the stage, so its edges are
+// carried on as mirrored copies. The old fill left flat sky-blue bands at the sides and a grey band underneath.
+{
+  const wide = await browser.newPage();
+  await wide.setViewport({ width: 2400, height: 1100, deviceScaleFactor: 0.8 });
+  await wide.goto('http://localhost:5173/', { waitUntil: 'networkidle0' }); await new Promise(r => setTimeout(r, 1200));
+  const colours = await wide.$eval('#preview', c => {
+    const g = c.getContext('2d'), seen = new Set(), edge = 8;
+    for (const x0 of [0, c.width - edge]) { const d = g.getImageData(x0, 0, edge, c.height).data; for (let i = 0; i < d.length; i += 4) seen.add(`${d[i]},${d[i + 1]},${d[i + 2]}`); }
+    const bottom = g.getImageData(0, c.height - 6, c.width, 6).data, row = new Set(); for (let i = 0; i < bottom.length; i += 4) row.add(`${bottom[i]},${bottom[i + 1]},${bottom[i + 2]}`);
+    return { edges: seen.size, bottom: row.size, zoom: c.dataset.zoom };
+  });
+  check('zoomed-out wide stage: the backdrop reaches both side edges and the bottom (no flat bands)', colours.edges > 100 && colours.bottom > 40, JSON.stringify(colours));
+  // With a name tag and a chat bubble both worn, the character is still drawn at 2x (it used to drop to 1x, half the size) in frame
+  const wtab = async l => { await wide.evaluate(l => [...document.querySelectorAll('.tab')].find(x => x.title === l).click(), l); await new Promise(r => setTimeout(r, 500)); };
+  await wtab('Name Ring'); await wide.evaluate(() => document.querySelector('#content .card').click()); await new Promise(r => setTimeout(r, 500));
+  await wtab('Chat Ring'); await wide.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent.includes('Datamine'))?.click()); await new Promise(r => setTimeout(r, 500));
+  await wide.$eval('.search-input', i => { i.value = 'Frog'; i.dispatchEvent(new Event('input', { bubbles: true })); }); await new Promise(r => setTimeout(r, 500));
+  await wide.evaluate(() => document.querySelector('#content .card').click()); await new Promise(r => setTimeout(r, 700));
+  check('zoomed-out browser, name tag and chat bubble worn: the character is drawn at 2x, not 1x', (await wide.$eval('#preview', c => c.dataset.zoom)) === '2');
+  await wide.close();
+}
+
 console.log(results.join('\n'));
 console.log('console/page errors:', errors.length ? errors : 'none');
 await browser.close();

@@ -165,6 +165,743 @@
      "colour": 8
     }
    ]
+  },
+  {
+   "style": "Saturday Special",
+   "matchedAs": "Saturday Special",
+   "kind": "hair",
+   "gender": "male",
+   "region": "MCW",
+   "version": "1",
+   "key": 3058,
+   "classicId": 30580,
+   "released": false,
+   "colours": [
+    {
+     "id": 30580,
+     "name": "Saturday Special",
+     "colour": 0
+    },
+    {
+     "id": 30581,
+     "name": "Saturday Special",
+     "colour": 1
+    },
+    {
+     "id": 30582,
+     "name": "Saturday Special",
+     "colour": 2
+    },
+    {
+     "id": 30583,
+     "name": "Saturday Special",
+     "colour": 3
+    },
+    {
+     "id": 30584,
+     "name": "Saturday Special",
+     "colour": 4
+    },
+    {
+     "id": 30585,
+     "name": "Saturday Special",
+     "colour": 5
+    },
+    {
+     "id": 30586,
+     "name": "Saturday Special",
+     "colour": 6
+    },
+    {
+     "id": 30587,
+     "name": "Saturday Special",
+     "colour": 7
+    }
+   ]
+  },
+  {
+   "style": "Super Tuft Hair",
+   "matchedAs": "Super Tuft Hair",
+   "kind": "hair",
+   "gender": "male",
+   "region": "MCW",
+   "version": "1",
+   "key": 3087,
+   "classicId": 30870,
+   "released": true,
+   "colours": [
+    {
+     "id": 30870,
+     "name": "Super Tuft Hair",
+     "colour": 0
+    },
+    {
+     "id": 30871,
+     "name": "Super Tuft Hair",
+     "colour": 1
+    },
+    {
+     "id": 30872,
+     "name": "Super Tuft Hair",
+     "colour": 2
+    },
+    {
+     "id": 30873,
+     "name": "Super Tuft Hair",
+     "colour": 3
+    },
+    {
+     "id": 30874,
+     "name": "Super Tuft Hair",
+     "colour": 4
+    },
+    {
+     "id": 30875,
+     "name": "Super Tuft Hair",
+     "colour": 5
+    },
+    {
+     "id": 30876,
+     "name": "Super Tuft Hair",
+     "colour": 6
+    },
+    {
+     "id": 30877,
+     "name": "Super Tuft Hair",
+     "colour": 7
+    }
+   ]
+  },
+  {
+   "style": "Pigtails",
+   "matchedAs": "Pigtails",
+   "kind": "hair",
+   "gender": "female",
+   "region": "MCW",
+   "version": "1",
+   "key": 3127,
+   "classicId": 31270,
+   "released": false,
+   "colours": [
+    {
+     "id": 31270,
+     "name": "Pigtails",
+     "colour": 0
+    },
+    {
+     "id": 31271,
+     "name": "Pigtails",
+     "colour": 1
+    },
+    {
+     "id": 31272,
+     "name": "Pigtails",
+     "colour": 2
+    },
+    {
+     "id": 31273,
+     "name": "Pigtails",
+     "colour": 3
+    },
+    {
+     "id": 31274,
+     "name": "Pigtails",
+     "colour": 4
+    },
+    {
+     "id": 31275,
+     "name": "Pigtails",
+     "colour": 5
+    },
+    {
+     "id": 31276,
+     "name": "Pigtails",
+     "colour": 6
+    },
+    {
+     "id": 31277,
+     "name": "Pigtails",
+     "colour": 7
+    }
+   ]
+  },
+  {
+   "style": "Victorian Wrap",
+   "matchedAs": "Victorian Wrap",
+   "kind": "hair",
+   "gender": "female",
+   "region": "MCW",
+   "version": "1",
+   "key": 3158,
+   "classicId": 31580,
+   "released": false,
+   "colours": [
+    {
+     "id": 31580,
+     "name": "Victorian Wrap",
+     "colour": 0
+    },
+    {
+     "id": 31581,
+     "name": "Victorian Wrap",
+     "colour": 1
+    },
+    {
+     "id": 31582,
+     "name": "Victorian Wrap",
+     "colour": 2
+    },
+    {
+     "id": 31583,
+     "name": "Victorian Wrap",
+     "colour": 3
+    },
+    {
+     "id": 31584,
+     "name": "Victorian Wrap",
+     "colour": 4
+    },
+    {
+     "id": 31585,
+     "name": "Victorian Wrap",
+     "colour": 5
+    },
+    {
+     "id": 31586,
+     "name": "Victorian Wrap",
+     "colour": 6
+    },
+    {
+     "id": 31587,
+     "name": "Victorian Wrap",
+     "colour": 7
+    }
+   ]
+  },
+  {
+   "style": "Tall Bun",
+   "matchedAs": "Tall Bun",
+   "kind": "hair",
+   "gender": "female",
+   "region": "MCW",
+   "version": "1",
+   "key": 3160,
+   "classicId": 31600,
+   "released": false,
+   "colours": [
+    {
+     "id": 31600,
+     "name": "Tall Bun",
+     "colour": 0
+    },
+    {
+     "id": 31601,
+     "name": "Tall Bun",
+     "colour": 1
+    },
+    {
+     "id": 31602,
+     "name": "Tall Bun",
+     "colour": 2
+    },
+    {
+     "id": 31603,
+     "name": "Tall Bun",
+     "colour": 3
+    },
+    {
+     "id": 31604,
+     "name": "Tall Bun",
+     "colour": 4
+    },
+    {
+     "id": 31605,
+     "name": "Tall Bun",
+     "colour": 5
+    },
+    {
+     "id": 31606,
+     "name": "Tall Bun",
+     "colour": 6
+    },
+    {
+     "id": 31607,
+     "name": "Tall Bun",
+     "colour": 7
+    }
+   ]
+  },
+  {
+   "style": "Frieren Face",
+   "matchedAs": "Frieren Face",
+   "kind": "face",
+   "gender": "both",
+   "region": "MCW",
+   "version": "1",
+   "key": 22000,
+   "classicId": 22000,
+   "released": true,
+   "collab": true,
+   "colours": [
+    {
+     "id": 22000,
+     "name": "Frieren Face",
+     "colour": 0
+    },
+    {
+     "id": 22100,
+     "name": "Frieren Face",
+     "colour": 1
+    },
+    {
+     "id": 22200,
+     "name": "Frieren Face",
+     "colour": 2
+    },
+    {
+     "id": 22300,
+     "name": "Frieren Face",
+     "colour": 3
+    },
+    {
+     "id": 22400,
+     "name": "Frieren Face",
+     "colour": 4
+    },
+    {
+     "id": 22500,
+     "name": "Frieren Face",
+     "colour": 5
+    },
+    {
+     "id": 22600,
+     "name": "Frieren Face",
+     "colour": 6
+    },
+    {
+     "id": 22700,
+     "name": "Frieren Face",
+     "colour": 7
+    },
+    {
+     "id": 22800,
+     "name": "Frieren Face",
+     "colour": 8
+    }
+   ]
+  },
+  {
+   "style": "Fern Face",
+   "matchedAs": "Fern Face",
+   "kind": "face",
+   "gender": "both",
+   "region": "MCW",
+   "version": "1",
+   "key": 22001,
+   "classicId": 22001,
+   "released": true,
+   "collab": true,
+   "colours": [
+    {
+     "id": 22001,
+     "name": "Fern Face",
+     "colour": 0
+    },
+    {
+     "id": 22101,
+     "name": "Fern Face",
+     "colour": 1
+    },
+    {
+     "id": 22201,
+     "name": "Fern Face",
+     "colour": 2
+    },
+    {
+     "id": 22301,
+     "name": "Fern Face",
+     "colour": 3
+    },
+    {
+     "id": 22401,
+     "name": "Fern Face",
+     "colour": 4
+    },
+    {
+     "id": 22501,
+     "name": "Fern Face",
+     "colour": 5
+    },
+    {
+     "id": 22601,
+     "name": "Fern Face",
+     "colour": 6
+    },
+    {
+     "id": 22701,
+     "name": "Fern Face",
+     "colour": 7
+    },
+    {
+     "id": 22801,
+     "name": "Fern Face",
+     "colour": 8
+    }
+   ]
+  },
+  {
+   "style": "Stark Face",
+   "matchedAs": "Stark Face",
+   "kind": "face",
+   "gender": "both",
+   "region": "MCW",
+   "version": "1",
+   "key": 22002,
+   "classicId": 22002,
+   "released": true,
+   "collab": true,
+   "colours": [
+    {
+     "id": 22002,
+     "name": "Stark Face",
+     "colour": 0
+    },
+    {
+     "id": 22102,
+     "name": "Stark Face",
+     "colour": 1
+    },
+    {
+     "id": 22202,
+     "name": "Stark Face",
+     "colour": 2
+    },
+    {
+     "id": 22302,
+     "name": "Stark Face",
+     "colour": 3
+    },
+    {
+     "id": 22402,
+     "name": "Stark Face",
+     "colour": 4
+    },
+    {
+     "id": 22502,
+     "name": "Stark Face",
+     "colour": 5
+    },
+    {
+     "id": 22602,
+     "name": "Stark Face",
+     "colour": 6
+    },
+    {
+     "id": 22702,
+     "name": "Stark Face",
+     "colour": 7
+    },
+    {
+     "id": 22802,
+     "name": "Stark Face",
+     "colour": 8
+    }
+   ]
+  },
+  {
+   "style": "Himmel Face",
+   "matchedAs": "Himmel Face",
+   "kind": "face",
+   "gender": "both",
+   "region": "MCW",
+   "version": "1",
+   "key": 22003,
+   "classicId": 22003,
+   "released": true,
+   "collab": true,
+   "colours": [
+    {
+     "id": 22003,
+     "name": "Himmel Face",
+     "colour": 0
+    },
+    {
+     "id": 22103,
+     "name": "Himmel Face",
+     "colour": 1
+    },
+    {
+     "id": 22203,
+     "name": "Himmel Face",
+     "colour": 2
+    },
+    {
+     "id": 22303,
+     "name": "Himmel Face",
+     "colour": 3
+    },
+    {
+     "id": 22403,
+     "name": "Himmel Face",
+     "colour": 4
+    },
+    {
+     "id": 22503,
+     "name": "Himmel Face",
+     "colour": 5
+    },
+    {
+     "id": 22603,
+     "name": "Himmel Face",
+     "colour": 6
+    },
+    {
+     "id": 22703,
+     "name": "Himmel Face",
+     "colour": 7
+    },
+    {
+     "id": 22803,
+     "name": "Himmel Face",
+     "colour": 8
+    }
+   ]
+  },
+  {
+   "style": "Übel Face",
+   "matchedAs": "Übel Face",
+   "kind": "face",
+   "gender": "both",
+   "region": "MCW",
+   "version": "1",
+   "key": 22004,
+   "classicId": 22004,
+   "released": true,
+   "collab": true,
+   "colours": [
+    {
+     "id": 22004,
+     "name": "Übel Face",
+     "colour": 0
+    },
+    {
+     "id": 22104,
+     "name": "Übel Face",
+     "colour": 1
+    },
+    {
+     "id": 22204,
+     "name": "Übel Face",
+     "colour": 2
+    },
+    {
+     "id": 22304,
+     "name": "Übel Face",
+     "colour": 3
+    },
+    {
+     "id": 22404,
+     "name": "Übel Face",
+     "colour": 4
+    },
+    {
+     "id": 22504,
+     "name": "Übel Face",
+     "colour": 5
+    },
+    {
+     "id": 22604,
+     "name": "Übel Face",
+     "colour": 6
+    },
+    {
+     "id": 22704,
+     "name": "Übel Face",
+     "colour": 7
+    },
+    {
+     "id": 22804,
+     "name": "Übel Face",
+     "colour": 8
+    }
+   ]
+  },
+  {
+   "style": "Aura Face",
+   "matchedAs": "Aura Face",
+   "kind": "face",
+   "gender": "both",
+   "region": "MCW",
+   "version": "1",
+   "key": 22005,
+   "classicId": 22005,
+   "released": true,
+   "collab": true,
+   "colours": [
+    {
+     "id": 22005,
+     "name": "Aura Face",
+     "colour": 0
+    },
+    {
+     "id": 22105,
+     "name": "Aura Face",
+     "colour": 1
+    },
+    {
+     "id": 22205,
+     "name": "Aura Face",
+     "colour": 2
+    },
+    {
+     "id": 22305,
+     "name": "Aura Face",
+     "colour": 3
+    },
+    {
+     "id": 22405,
+     "name": "Aura Face",
+     "colour": 4
+    },
+    {
+     "id": 22505,
+     "name": "Aura Face",
+     "colour": 5
+    },
+    {
+     "id": 22605,
+     "name": "Aura Face",
+     "colour": 6
+    },
+    {
+     "id": 22705,
+     "name": "Aura Face",
+     "colour": 7
+    },
+    {
+     "id": 22805,
+     "name": "Aura Face",
+     "colour": 8
+    }
+   ]
+  },
+  {
+   "style": "Linie Face",
+   "matchedAs": "Linie Face",
+   "kind": "face",
+   "gender": "both",
+   "region": "MCW",
+   "version": "1",
+   "key": 22006,
+   "classicId": 22006,
+   "released": true,
+   "collab": true,
+   "colours": [
+    {
+     "id": 22006,
+     "name": "Linie Face",
+     "colour": 0
+    },
+    {
+     "id": 22106,
+     "name": "Linie Face",
+     "colour": 1
+    },
+    {
+     "id": 22206,
+     "name": "Linie Face",
+     "colour": 2
+    },
+    {
+     "id": 22306,
+     "name": "Linie Face",
+     "colour": 3
+    },
+    {
+     "id": 22406,
+     "name": "Linie Face",
+     "colour": 4
+    },
+    {
+     "id": 22506,
+     "name": "Linie Face",
+     "colour": 5
+    },
+    {
+     "id": 22606,
+     "name": "Linie Face",
+     "colour": 6
+    },
+    {
+     "id": 22706,
+     "name": "Linie Face",
+     "colour": 7
+    },
+    {
+     "id": 22806,
+     "name": "Linie Face",
+     "colour": 8
+    }
+   ]
+  },
+  {
+   "style": "Lügner Face",
+   "matchedAs": "Lügner Face",
+   "kind": "face",
+   "gender": "both",
+   "region": "MCW",
+   "version": "1",
+   "key": 22007,
+   "classicId": 22007,
+   "released": true,
+   "collab": true,
+   "colours": [
+    {
+     "id": 22007,
+     "name": "Lügner Face",
+     "colour": 0
+    },
+    {
+     "id": 22107,
+     "name": "Lügner Face",
+     "colour": 1
+    },
+    {
+     "id": 22207,
+     "name": "Lügner Face",
+     "colour": 2
+    },
+    {
+     "id": 22307,
+     "name": "Lügner Face",
+     "colour": 3
+    },
+    {
+     "id": 22407,
+     "name": "Lügner Face",
+     "colour": 4
+    },
+    {
+     "id": 22507,
+     "name": "Lügner Face",
+     "colour": 5
+    },
+    {
+     "id": 22607,
+     "name": "Lügner Face",
+     "colour": 6
+    },
+    {
+     "id": 22707,
+     "name": "Lügner Face",
+     "colour": 7
+    },
+    {
+     "id": 22807,
+     "name": "Lügner Face",
+     "colour": 8
+    }
+   ]
   }
  ]
 }

@@ -1,1 +1,1 @@
-{"id":22501,"name":"Fern Face","version":"1","kind":"face","equipGroup":"Face","vslots":["Fc"],"islots":["Fc"],"parts":[{"key":"face","w":27,"h":17,"origin":{"x":12,"y":-3,"isEmpty":false},"maps":{"brow":{"x":0,"y":0,"isEmpty":true}},"position":"face"}]}
+{"id":22501,"name":"Fern Face","version":"1","kind":"face","equipGroup":"Face","vslots":["Fc"],"islots":["Fc"],"parts":[{"key":"face","w":27,"h":17,"origin":{"x":12,"y":-3,"isEmpty":false},"maps":{"brow":{"x":0,"y":0,"isEmpty":false}},"position":"face"}]}

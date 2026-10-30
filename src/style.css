@@ -57,7 +57,7 @@ input { font: inherit; border-radius: 0; }
 .side { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); gap: 14px; min-height: 0; overflow: auto; padding: 3px 8px 8px 3px; }
 
 /* ---- Preview ---- */
-.stage-box { position: relative; width: 100%; height: min(300px, calc(100dvh - 340px)); min-height: 200px; grid-column: 1; grid-row: 1; flex-shrink: 0; overflow: hidden; background: var(--bench-deep); --c: var(--bench-line); box-shadow: 0 -3px 0 0 var(--c), 0 3px 0 0 var(--c), -3px 0 0 0 var(--c), 3px 0 0 0 var(--c), 6px 6px 0 0 var(--drop); }
+.stage-box { position: relative; width: 100%; height: min(var(--stage-h, 330px), calc(100dvh - 340px)); min-height: 200px; grid-column: 1; grid-row: 1; flex-shrink: 0; overflow: hidden; background: var(--bench-deep); --c: var(--bench-line); box-shadow: 0 -3px 0 0 var(--c), 0 3px 0 0 var(--c), -3px 0 0 0 var(--c), 3px 0 0 0 var(--c), 6px 6px 0 0 var(--drop); }
 #preview { display: block; position: absolute; image-rendering: pixelated; }
 .note { margin: 0; padding: 0 3px 3px; color: var(--bench-dim); font: 12px/1.4 var(--font-text); text-align: right; }
 .note a { color: var(--head); text-decoration: underline; text-underline-offset: 2px; }

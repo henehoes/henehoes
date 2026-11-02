@@ -272,7 +272,7 @@ check('search is also on wearable tabs and the gender picker is not', !!(await p
 await clickTab('Hair'); await settle();
 
 // Released / datamine switch (design only): on Face and Hair, not on wearables
-check('Face and Hair have a Released / All · Datamine switch, defaulting to Released', (await page.$$eval('#source .seg button', bs => bs.map(b => `${b.textContent}:${b.getAttribute('aria-pressed')}`))).join() === 'Released:true,All · Datamine:false');
+check('Face and Hair have a Released / Mystery Rotation / All · Datamine switch, defaulting to Released', (await page.$$eval('#source .seg button', bs => bs.map(b => `${b.textContent}:${b.getAttribute('aria-pressed')}`))).join() === 'Released:true,Mystery Rotation:false,All · Datamine:false');
 await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent.includes('Datamine')).click()); await settle();
 check('choosing Datamine shows the note, more styles, and marks the unreleased ones', !!(await page.$('#content .datamine-note')) && (await page.$$('#content .card')).length > 20 && (await page.$$('#content .card .unreleased-badge')).length > 5);
 check('every unreleased card is marked DATAMINE and no released card is', await page.evaluate(() => [...document.querySelectorAll('#content .card:not(.placeholder)')].every(c => c.classList.contains('unreleased') === !!c.querySelector('.unreleased-badge'))));
@@ -594,24 +594,29 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   await (await page.$$('#content .past-title ~ .grid .card'))[0].click(); await settle();
   check('Released and Upcoming have no search bar', !(await page.$('.search-input')));
 
-  // Current Mystery Styles: the styles in a live Mystery Styles box come first on Hair and Face (Released view only); the clock is pinned
+  // Mystery Rotation view on Hair and Face: only the styles in a live Mystery Styles box, with the time left; the clock is pinned
   const clock = async iso => { await page.evaluate(iso => { window.__now ??= Date.now; const t = Date.parse(iso); Date.now = () => t; }, iso); };
-  const section = async tab => { await clickTab(tab); await settle(); return page.evaluate(() => ({ heads: [...document.querySelectorAll('#content .group-title')].map(h => h.textContent), line: document.querySelector('#content .rotation-line')?.textContent ?? '', top: document.querySelector('#content .rotation-line + .grid')?.querySelectorAll('.card').length ?? 0, rest: document.querySelector('#content .rotation-line + .grid + .group-title + .grid')?.querySelectorAll('.card').length ?? 0 })); };
+  const showView = async v => { await page.evaluate(v => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent.includes(v)).click(), v); await settle(); };
+  const view = async (tab, v) => { await clickTab(tab); await settle(); await showView(v); return page.evaluate(() => ({ line: document.querySelector('#content .rotation-line')?.textContent ?? '', cards: document.querySelectorAll('#content .grid .card').length, headings: document.querySelectorAll('#content .group-title').length })); };
   await clock('2026-11-03T20:00:00Z');
-  let sec = await section('Hair');
-  check('Hair: Current Mystery Hairstyles first (the Oct 28 set), then Other Released Hairstyles with its count', /^Current Mystery Hairstyles · \d+$/.test(sec.heads[0]) && /^Other Released Hairstyles · \d+$/.test(sec.heads[1]) && sec.top >= 12 && +sec.heads[1].split(' · ')[1] === sec.rest, JSON.stringify(sec));
-  check('Hair: the line gives the end (Nov 11) and days left', /Ends .*11.* · 7 days left$/.test(sec.line) || /Ends .*11.* · 8 days left$/.test(sec.line), sec.line);
+  await clickTab('Hair'); await settle(); await showView('Released');
+  const releasedCount = await page.$$eval('#content .grid .card', c => c.length);
+  let v = await view('Hair', 'Mystery Rotation');
+  check('Hair: Mystery Rotation lists only the 12 Oct 28 styles per gender view, a clean list with no headings', v.cards >= 6 && v.cards < releasedCount && v.headings === 0, JSON.stringify(v));
+  check('Hair: the line gives the end (Nov 11) and days left', /Ends .*11.* · [78] days left$/.test(v.line), v.line);
   await clock('2026-11-11T05:00:00Z');
-  check('Hair: Last day with hours left on the final day', /Last day · \d+ hours? left$/.test((await section('Hair')).line));
+  check('Hair: Last day with hours left on the final day', /Last day · \d+ hours? left$/.test((await view('Hair', 'Mystery Rotation')).line));
   await clock('2026-11-11T08:00:00Z');
-  sec = await section('Hair');
-  check('Hair: nothing on rotation, so no section at all', sec.heads.length === 0, JSON.stringify(sec));
+  v = await view('Hair', 'Mystery Rotation');
+  check('Hair: nothing on rotation says so and lists no cards', v.cards === 0 && /No Mystery Style Coupon rotation/.test(v.line), JSON.stringify(v));
   await clock('2026-11-03T20:00:00Z');
-  await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent.includes('Datamine')).click()); await settle();
-  check('Hair: Datamine view has no Current Mystery Styles section', (await page.$$eval('#content .group-title', h => h.length)) === 0);
-  await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent === 'Released').click()); await settle();
-  sec = await section('Face');
-  check('Face: Current Mystery Faces first as well', /^Current Mystery Faces · \d+$/.test(sec.heads[0]) && /^Other Released Faces · \d+$/.test(sec.heads[1]) && sec.top >= 12, JSON.stringify(sec));
+  await showView('Released');
+  check('Hair: Released is still the full list, with no section headings or labels', (await page.$$eval('#content .grid .card', c => c.length)) === releasedCount && (await page.$$eval('#content .group-title, #content .rotation-line', h => h.length)) === 0);
+  v = await view('Face', 'Mystery Rotation');
+  check('Face: Mystery Rotation lists its styles too', v.cards >= 6 && /Ends/.test(v.line), JSON.stringify(v));
+  await showView('Released');
+  await clickTab('Name Ring'); await settle();
+  check('a ring tab keeps its two options and shows Released when Mystery Rotation was picked on Face', (await page.$$eval('#source .seg button', bs => bs.map(b => `${b.textContent}:${b.getAttribute('aria-pressed')}`))).join() === 'Released:true,All · Datamine:false');
   await page.evaluate(() => { Date.now = window.__now; });
 }
 

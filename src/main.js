@@ -145,7 +145,7 @@ let state = fresh();
 let activeTab = 'past'; // the page opens on the Released tab (its newest box: see latestBox)
 let mode = 'character'; // which book is open: 'character' (the dress-up catalogue) or 'housing' (src/housing.js)
 const lastTab = { character: 'past', housing: 'homes' }; // the tab each book was on when it was left
-let source = 'released'; // Face/Hair lists: 'released' (in the game now) or 'datamine' (everything found in the game files, released or not)
+let source = 'released'; // Face/Hair lists: 'released' (in the game now), 'rotation' (what the Mystery Style Coupon gives right now) or 'datamine' (everything found in the game files, released or not)
 const forGender = s => gender === 'all' || s.gender === 'both' || s.gender === gender; // 'both': collab styles listed for both genders
 const regular = slot => catalog.wearables[slot].items.filter(i => !i.upcoming); // a slot's own items: the possible upcoming ones (Upcoming tab) are left out
 // Category tabs that have possible upcoming items (the Next Crate tab's items, by slot) get a Released | Upcoming switch.
@@ -432,18 +432,21 @@ function renderFilters() {
     seg.append(btn);
   }
   box.append(seg);
-  renderSourceSwitch('Which styles to list', 'Styles');
+  renderSourceSwitch('Which styles to list', 'Styles', true);
 }
 
 // The Released / All · Datamine switch (Face, Hair and the two ring tabs), in the row above the search box. `what` names the things listed.
-function renderSourceSwitch(label, what) {
+function renderSourceSwitch(label, what, withRotation = false) {
   const src = $('source');
   src.append(el('span', { className: 'source-label', textContent: 'Show' }));
   const sw = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': label });
-  for (const [s, text] of [['released', 'Released'], ['datamine', 'All · Datamine']]) {
-    const btn = el('button', { type: 'button', role: 'radio', textContent: text, title: s === 'released' ? `${what} that are in the game now` : `Everything found in the game files, including ${what.toLowerCase()} not released yet` });
-    btn.setAttribute('aria-pressed', String(source === s));
-    btn.setAttribute('aria-checked', String(source === s));
+  const options = [['released', 'Released'], ...(withRotation ? [['rotation', 'Mystery Rotation']] : []), ['datamine', 'All · Datamine']];
+  const shown = options.some(([s]) => s === source) ? source : 'released'; // the ring tabs have no rotation view
+  const tips = { released: `${what} that are in the game now`, rotation: `${what} the Mystery Style Coupon can give right now`, datamine: `Everything found in the game files, including ${what.toLowerCase()} not released yet` };
+  for (const [s, text] of options) {
+    const btn = el('button', { type: 'button', role: 'radio', textContent: text, title: tips[s] });
+    btn.setAttribute('aria-pressed', String(shown === s));
+    btn.setAttribute('aria-checked', String(shown === s));
     btn.onclick = () => { source = s; renderFilters(); renderContent(true); };
     sw.append(btn);
   }
@@ -779,27 +782,21 @@ function renderStyles(c, kind) {
   renderColourBar(kind);
   if (kind === 'face' && catalog.face.some(s => s.variants.some(v => v.colour === browse.face && v.label === NO_COUPON_EYES))) c.append(eyeWhiteNote()); // the list is shown in White
   if (source === 'datamine') c.append(el('p', { className: 'datamine-note', textContent: 'Showing everything in the game data. Styles marked DATAMINE are not released yet.' }));
-  // Released view: the styles in a Mystery Styles box that is on rotation now (the coupon can still give them) come first, under their own heading
-  // and the time left; everything else follows. The section is left out when none of them match the search or gender.
-  const live = source === 'released' ? liveStyleBoxes() : [];
+  // Mystery Rotation view: only the styles a live Mystery Styles box can give right now, with the end and the time left.
+  const live = source === 'rotation' ? liveStyleBoxes() : [];
   const inRotation = s => live.some(b => b.items.some(it => it.kind === kind && it.key === s.key && it.gender === s.gender));
-  const current = [], rest = [];
-  const extra = catalog.placeholders[kind].filter(p => (gender === 'all' || p.gender === 'both' || p.gender === gender) && (p.released !== false || source === 'datamine') && matches(p.name));
-  catalog[kind].forEach((s, i) => { if (forGender(s) && listed(s) && matches(s.style)) (inRotation(s) ? current : rest).push([s, i]); });
-  if (current.length) {
-    const ends = Math.min(...live.map(b => Date.parse(b.end) + 6e4)), left = ends - Date.now();
-    const days = Math.ceil(left / DAY), hours = Math.ceil(left / 36e5);
-    const timeLeft = left <= DAY ? `Last day · ${hours <= 1 ? 'under an hour' : `${hours} hours`} left` : `${days} days left`;
-    const endText = new Date(ends).toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
-    c.append(el('h3', { className: 'group-title', textContent: `Current Mystery ${kind === 'face' ? 'Faces' : 'Hairstyles'} · ${current.length}` }),
-      el('p', { className: 'hint rotation-line', textContent: `Mystery Style Coupon rotation. Ends ${endText} · ${timeLeft}` }));
-    const top = el('div', { className: 'grid' });
-    for (const [s, i] of current) top.append(styleCard(kind, s, i));
-    c.append(top, el('h3', { className: 'group-title', textContent: `Other Released ${kind === 'face' ? 'Faces' : 'Hairstyles'} · ${rest.length + extra.length}` }));
+  if (source === 'rotation') {
+    if (live.length) {
+      const ends = Math.min(...live.map(b => Date.parse(b.end) + 6e4)), left = ends - Date.now();
+      const days = Math.ceil(left / DAY), hours = Math.ceil(left / 36e5);
+      const timeLeft = left <= DAY ? `Last day · ${hours <= 1 ? 'under an hour' : `${hours} hours`} left` : `${days} days left`;
+      const endText = new Date(ends).toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
+      c.append(el('p', { className: 'hint rotation-line', textContent: `Mystery Style Coupon rotation. Ends ${endText} · ${timeLeft}` }));
+    } else c.append(el('p', { className: 'hint rotation-line', textContent: 'No Mystery Style Coupon rotation is running right now.' }));
   }
   const grid = el('div', { className: 'grid' });
-  for (const [s, i] of rest) grid.append(styleCard(kind, s, i));
-  for (const p of extra) grid.append(placeholderCard(p));
+  catalog[kind].forEach((s, i) => { if (forGender(s) && listed(s) && matches(s.style) && (source !== 'rotation' || inRotation(s))) grid.append(styleCard(kind, s, i)); });
+  if (source !== 'rotation') for (const p of catalog.placeholders[kind].filter(p => (gender === 'all' || p.gender === 'both' || p.gender === gender) && (p.released !== false || source === 'datamine') && matches(p.name))) grid.append(placeholderCard(p));
   c.append(grid);
 }
 

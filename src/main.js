@@ -768,13 +768,38 @@ function renderBody(c) {
   c.append(grid);
 }
 
+// Mystery Styles boxes (hair and faces from the coupon) on rotation now, by the start and end in data/boxes.json (UTC). The end is the last minute sold, so it runs
+// to the end of that minute; a start with no time is a date only.
+const DAY = 864e5;
+const liveStyleBoxes = () => {
+  const now = Date.now();
+  return (catalog.boxes.find(g => g.id === 'mystery-styles')?.boxes ?? []).filter(b => b.end && now >= Date.parse(b.start ?? b.end) && now < Date.parse(b.end) + 6e4);
+};
 function renderStyles(c, kind) {
   renderColourBar(kind);
   if (kind === 'face' && catalog.face.some(s => s.variants.some(v => v.colour === browse.face && v.label === NO_COUPON_EYES))) c.append(eyeWhiteNote()); // the list is shown in White
   if (source === 'datamine') c.append(el('p', { className: 'datamine-note', textContent: 'Showing everything in the game data. Styles marked DATAMINE are not released yet.' }));
+  // Released view: the styles in a Mystery Styles box that is on rotation now (the coupon can still give them) come first, under their own heading
+  // and the time left; everything else follows. The section is left out when none of them match the search or gender.
+  const live = source === 'released' ? liveStyleBoxes() : [];
+  const inRotation = s => live.some(b => b.items.some(it => it.kind === kind && it.key === s.key && it.gender === s.gender));
+  const current = [], rest = [];
+  const extra = catalog.placeholders[kind].filter(p => (gender === 'all' || p.gender === 'both' || p.gender === gender) && (p.released !== false || source === 'datamine') && matches(p.name));
+  catalog[kind].forEach((s, i) => { if (forGender(s) && listed(s) && matches(s.style)) (inRotation(s) ? current : rest).push([s, i]); });
+  if (current.length) {
+    const ends = Math.min(...live.map(b => Date.parse(b.end) + 6e4)), left = ends - Date.now();
+    const days = Math.ceil(left / DAY), hours = Math.ceil(left / 36e5);
+    const timeLeft = left <= DAY ? `Last day · ${hours <= 1 ? 'under an hour' : `${hours} hours`} left` : `${days} days left`;
+    const endText = new Date(ends).toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
+    c.append(el('h3', { className: 'group-title', textContent: `Current Mystery ${kind === 'face' ? 'Faces' : 'Hairstyles'} · ${current.length}` }),
+      el('p', { className: 'hint rotation-line', textContent: `Mystery Style Coupon rotation. Ends ${endText} · ${timeLeft}` }));
+    const top = el('div', { className: 'grid' });
+    for (const [s, i] of current) top.append(styleCard(kind, s, i));
+    c.append(top, el('h3', { className: 'group-title', textContent: `Other Released ${kind === 'face' ? 'Faces' : 'Hairstyles'} · ${rest.length + extra.length}` }));
+  }
   const grid = el('div', { className: 'grid' });
-  catalog[kind].forEach((s, i) => { if (forGender(s) && listed(s) && matches(s.style)) grid.append(styleCard(kind, s, i)); });
-  for (const p of catalog.placeholders[kind].filter(p => (gender === 'all' || p.gender === 'both' || p.gender === gender) && (p.released !== false || source === 'datamine') && matches(p.name))) grid.append(placeholderCard(p));
+  for (const [s, i] of rest) grid.append(styleCard(kind, s, i));
+  for (const p of extra) grid.append(placeholderCard(p));
   c.append(grid);
 }
 

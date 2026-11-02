@@ -593,6 +593,26 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   check('Past tab: a card can be tried on like any other', (await page.$$('#colour .slot')).length >= 1);
   await (await page.$$('#content .past-title ~ .grid .card'))[0].click(); await settle();
   check('Released and Upcoming have no search bar', !(await page.$('.search-input')));
+
+  // Current Mystery Styles: the styles in a live Mystery Styles box come first on Hair and Face (Released view only); the clock is pinned
+  const clock = async iso => { await page.evaluate(iso => { window.__now ??= Date.now; const t = Date.parse(iso); Date.now = () => t; }, iso); };
+  const section = async tab => { await clickTab(tab); await settle(); return page.evaluate(() => ({ heads: [...document.querySelectorAll('#content .group-title')].map(h => h.textContent), line: document.querySelector('#content .rotation-line')?.textContent ?? '', top: document.querySelector('#content .rotation-line + .grid')?.querySelectorAll('.card').length ?? 0, rest: document.querySelector('#content .rotation-line + .grid + .group-title + .grid')?.querySelectorAll('.card').length ?? 0 })); };
+  await clock('2026-11-03T20:00:00Z');
+  let sec = await section('Hair');
+  check('Hair: Current Mystery Hairstyles first (the Oct 28 set), then Other Released Hairstyles with its count', /^Current Mystery Hairstyles · \d+$/.test(sec.heads[0]) && /^Other Released Hairstyles · \d+$/.test(sec.heads[1]) && sec.top >= 12 && +sec.heads[1].split(' · ')[1] === sec.rest, JSON.stringify(sec));
+  check('Hair: the line gives the end (Nov 11) and days left', /Ends .*11.* · 7 days left$/.test(sec.line) || /Ends .*11.* · 8 days left$/.test(sec.line), sec.line);
+  await clock('2026-11-11T05:00:00Z');
+  check('Hair: Last day with hours left on the final day', /Last day · \d+ hours? left$/.test((await section('Hair')).line));
+  await clock('2026-11-11T08:00:00Z');
+  sec = await section('Hair');
+  check('Hair: nothing on rotation, so no section at all', sec.heads.length === 0, JSON.stringify(sec));
+  await clock('2026-11-03T20:00:00Z');
+  await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent.includes('Datamine')).click()); await settle();
+  check('Hair: Datamine view has no Current Mystery Styles section', (await page.$$eval('#content .group-title', h => h.length)) === 0);
+  await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent === 'Released').click()); await settle();
+  sec = await section('Face');
+  check('Face: Current Mystery Faces first as well', /^Current Mystery Faces · \d+$/.test(sec.heads[0]) && /^Other Released Faces · \d+$/.test(sec.heads[1]) && sec.top >= 12, JSON.stringify(sec));
+  await page.evaluate(() => { Date.now = window.__now; });
 }
 
 // ---- Housing book ----

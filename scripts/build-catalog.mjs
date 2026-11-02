@@ -176,7 +176,7 @@ for (const slot of Object.values(catalog.wearables)) slot.items.sort((a, b) => f
 const nameKey = n => n.toLowerCase().replace(/[^a-z0-9]/g, '');
 warnings.boxUnresolved = [];
 catalog.boxes = read('data/boxes.json').groups.map(g => ({ id: g.id, title: g.title, ...(g.tab && { tab: g.tab }), boxes: g.boxes.map(b => ({
-  id: b.id, name: b.name, ...(b.pill && { pill: b.pill }), ...(b.dates && { dates: b.dates }), ...(b.range && { range: b.range }), ...(b.latest && { latest: true }), ...(b.note && { note: b.note }), ...(b.pending && { pending: true }),
+  id: b.id, name: b.name, ...(b.pill && { pill: b.pill }), ...(b.dates && { dates: b.dates }), ...(b.range && { range: b.range }), ...(b.start && { start: b.start }), ...(b.end && { end: b.end }), ...(b.latest && { latest: true }), ...(b.note && { note: b.note }), ...(b.pending && { pending: true }),
   items: (b.items ?? []).flatMap(it => {
     const rate = it.rate != null ? { rate: it.rate } : {};
     if (it.kind === 'hair' || it.kind === 'face') {

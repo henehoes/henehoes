@@ -40,7 +40,8 @@ for (const base of argIds.map(Number)) {
       const [ox, oy] = originOf(p), maps = {};
       for (const m of p.getFromPath('map')?.wzProperties() ?? []) { const v = val(m); if (Array.isArray(v)) maps[m.getName()] = { x: v[0], y: v[1], isEmpty: false }; }
       if (!maps.brow) maps.brow = { x: 0, y: 0, isEmpty: true };
-      pic.saveToFile(`${dir}/${key}.png`); pic.saveToFile(`${dir}/${key}.2.png`); // hair and face are the same in the standing and two-handed poses
+      pic.saveToFile(`${dir}/${key}.png`);
+      if (!extra.shared) pic.saveToFile(`${dir}/${key}.2.png`); // hair and face are the same in the standing and two-handed poses (a `shared` part is one file for both)
       parts.push({ key, w: pic.getWidth(), h: pic.getHeight(), origin: { x: ox, y: oy, isEmpty: false }, maps, position: str(p, 'z') ?? p.getName(), ...extra });
     };
     for (const p of img.getFromPath('default').wzProperties()) if (p.getName() !== 'hairShade' && !/Prone$/.test(p.getName())) addPart(p, p.getName()); // hair, hairOverHead, hairBelowBody; face
@@ -58,7 +59,7 @@ for (const base of argIds.map(Number)) {
         if (!byPic.has(n.getName())) byPic.set(n.getName(), { node: n, tones: [] });
         byPic.get(n.getName()).tones.push(tone);
       }
-      for (const [name, { node, tones }] of byPic) addPart(node, `hairShade${name}`, { position: 'hairShade', tones });
+      for (const [name, { node, tones }] of byPic) addPart(node, `hairShade${name}`, { position: 'hairShade', tones, shared: true });
     }
     if (!parts.length) throw new Error(`${kind} ${id} has no picture`);
     const info = img.getFromPath('info'), name = nameOf(id) ?? nameOf(base);

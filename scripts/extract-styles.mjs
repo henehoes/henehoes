@@ -1,5 +1,5 @@
 // Reads hair and face styles straight from the game's own files, with in-game ids and names, and puts them in the catalogue data: the
-// pictures, offsets, layer names and covered-slot lists (Character/Hair, Character/Face) in the layout download.mjs uses, written to
+// pictures (the front-view hair layers and the hair shade), offsets, layer names and covered-slot lists (Character/Hair, Character/Face) in the layout download.mjs uses, written to
 // public/sprites/mcw/<kind>/<colour id>/ (meta.json, meta2.json, <part>.png, <part>.2.png), plus an entry per style in
 // data/game-styles.json and data/items.json. add-styles.mjs appends data/game-styles.json (replacing a style with the same Classic id),
 // so a rebuild of the styles keeps these.
@@ -21,6 +21,7 @@ const read = f => JSON.parse(readFileSync(f, 'utf8'));
 const strings = image('String', 'Eqp.img');
 const nameOf = id => { const n = at(strings, `ClassicWorld/${FOLDER}/${id}`); return n ? str(n, 'name') : null; };
 const genderOf = base => kind === 'hair' ? (base >= 30000 && base < 31000 ? 'male' : base >= 31000 && base < 32000 ? 'female' : 'both') : (base >= 20000 && base < 21000 ? 'male' : base >= 21000 && base < 22000 ? 'female' : 'both');
+const SKIN_TONES = [0, 1, 2, 3, 4, 5, 9, 10, 11, 12, 13]; // the skin tones the app has (catalog.skins[].tone)
 const pairs = s => (s ?? '').match(/.{1,2}/g) ?? [];
 
 const items = read('data/items.json');
@@ -33,13 +34,31 @@ for (const base of argIds.map(Number)) {
     if (!img) { if (c === 0) throw new Error(`${kind} ${base} is not in the game files`); continue; }
     const dir = `public/sprites/mcw/${kind}/${id}`; rmSync(dir, { recursive: true, force: true }); mkdirSync(dir, { recursive: true });
     const parts = [];
-    for (const p of img.getFromPath('default').wzProperties()) { // hair, hairOverHead, hairBelowBody (the sub-property hairShade has no picture of its own); face
-      const pic = p.getPropertyType() === 7 ? null : png(p); if (!pic) continue;
+    // One picture of a style: the file, the part's origin, its attachment points (maps) and the layer it sits on (its z name in the game).
+    const addPart = (p, key, extra = {}) => {
+      const pic = p.getPropertyType() === 7 ? null : png(p); if (!pic) return;
       const [ox, oy] = originOf(p), maps = {};
       for (const m of p.getFromPath('map')?.wzProperties() ?? []) { const v = val(m); if (Array.isArray(v)) maps[m.getName()] = { x: v[0], y: v[1], isEmpty: false }; }
       if (!maps.brow) maps.brow = { x: 0, y: 0, isEmpty: true };
-      pic.saveToFile(`${dir}/${p.getName()}.png`); pic.saveToFile(`${dir}/${p.getName()}.2.png`); // hair and face are the same in the standing and two-handed poses
-      parts.push({ key: p.getName(), w: pic.getWidth(), h: pic.getHeight(), origin: { x: ox, y: oy, isEmpty: false }, maps, position: str(p, 'z') ?? p.getName() });
+      pic.saveToFile(`${dir}/${key}.png`); pic.saveToFile(`${dir}/${key}.2.png`); // hair and face are the same in the standing and two-handed poses
+      parts.push({ key, w: pic.getWidth(), h: pic.getHeight(), origin: { x: ox, y: oy, isEmpty: false }, maps, position: str(p, 'z') ?? p.getName(), ...extra });
+    };
+    for (const p of img.getFromPath('default').wzProperties()) if (p.getName() !== 'hairShade' && !/Prone$/.test(p.getName())) addPart(p, p.getName()); // hair, hairOverHead, hairBelowBody; face
+    // Not taken: backDefault (backHair, backHairBelowCap, ...). Those are the back view, drawn when the character faces away (ladders, ropes),
+    // not extra hair for the front view; drawing them stacks a second, back-facing hair on the front one.
+    // hairShade: the hair's shadow on the face, one picture per skin tone (a tone with no picture of its own links to another, or uses 0).
+    // The pictures are saved once each, with the skin tones that use them.
+    const shade = kind === 'hair' ? img.getFromPath('default/hairShade') : null;
+    if (shade) {
+      const byPic = new Map();
+      for (const tone of SKIN_TONES) {
+        let n = shade.getFromPath(String(tone)) ?? shade.getFromPath('0');
+        for (let hop = 0; n && n.getPropertyType() === 13 && hop < 4; hop++) n = shade.getFromPath(String(n.getValue()));
+        if (!n || n.getPropertyType() === 13) continue;
+        if (!byPic.has(n.getName())) byPic.set(n.getName(), { node: n, tones: [] });
+        byPic.get(n.getName()).tones.push(tone);
+      }
+      for (const [name, { node, tones }] of byPic) addPart(node, `hairShade${name}`, { position: 'hairShade', tones });
     }
     if (!parts.length) throw new Error(`${kind} ${id} has no picture`);
     const info = img.getFromPath('info'), name = nameOf(id) ?? nameOf(base);

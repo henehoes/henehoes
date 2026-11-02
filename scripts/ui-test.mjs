@@ -14,7 +14,7 @@ await page.goto('http://localhost:5173/', { waitUntil: 'networkidle0' });
 // Counts come from the built catalogue, so the checks follow the data (items move from upcoming to released as boxes come out)
 const CAT = JSON.parse(readFileSync('public/catalog.json', 'utf8')).wearables;
 const released = slot => CAT[slot].items.filter(i => !i.upcoming), upcoming = slot => CAT[slot].items.filter(i => i.upcoming);
-const fitOf = i => i.vslots?.includes('H2') ? 'helmet' : i.vslots?.includes('H1') ? 'cap' : 'topper';
+const fitOf = i => i.fit ?? (i.vslots?.includes('H2') ? 'helmet' : i.vslots?.includes('H1') ? 'cap' : 'topper');
 const HATS = released('cap'), FIT = f => HATS.filter(i => fitOf(i) === f).length;
 const UPCOMING_TOTAL = Object.keys(CAT).reduce((n, k) => n + upcoming(k).length, 0);
 const results = [];
@@ -501,6 +501,7 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   await fitBtn('Helmet'); await settle(); const helmets = await cards();
   check('Fit filter: Helmet leaves the helmets, including the three Hair (Hat) hats', helmets.length === FIT('helmet') && ['Aura Hair (Hat)', 'Linie Hair (Hat)'].every(n => helmets.includes(n)), helmets.join(', '));
   await fitBtn('Topper'); await settle(); const toppers = await cards();
+  check('Fit filter: Demon Goblin and Iljimae Mask are in Helmet (put there by hand), not in Cap', ['Demon Goblin', 'Iljimae Mask'].every(n => helmets.includes(n)));
   check('Fit filter: Topper leaves the hats that do not flatten hair', toppers.length === FIT('topper') && toppers.includes('Angel Halo') && toppers.includes('Bunny Ears') && !toppers.includes('Cat Hat'), toppers.join(', '));
   await fitBtn('Cap'); await settle();
   check('Fit filter: Cap leaves the ordinary caps', (await cards()).length === FIT('cap') && (await cards()).includes('Cat Hat'));
@@ -667,6 +668,14 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   await ultra.close();
 }
 
+// Hair is the front view only (no backDefault layers: those are the back-facing pose) plus the hair shade, one picture per skin tone
+{
+  const FULL = JSON.parse(readFileSync('public/catalog.json', 'utf8'));
+  const layers = new Set(FULL.hair.flatMap(h => h.variants.flatMap(v => v.parts.map(p => p.layer))));
+  check('hair: only the front-view layers and the hair shade are in the catalogue (no back-view layers)', [...layers].every(l => ['hair', 'hairOverHead', 'hairBelowBody', 'hairShade'].includes(l)) && layers.has('hairShade'), [...layers].join());
+  const shade = FULL.hair.flatMap(h => h.variants.flatMap(v => v.parts.filter(p => p.layer === 'hairShade')));
+  check('hair shade: each picture lists the skin tones it is for, and every skin tone is covered', shade.length > 0 && shade.every(p => Array.isArray(p.tones)) && FULL.skins.every(sk => FULL.hair[0].variants[0].parts.filter(p => p.layer === 'hairShade').some(p => p.tones.includes(sk.tone))));
+}
 console.log(results.join('\n'));
 console.log('console/page errors:', errors.length ? errors : 'none');
 await browser.close();

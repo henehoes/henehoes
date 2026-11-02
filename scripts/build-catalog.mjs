@@ -43,6 +43,7 @@ function partsOf(meta, dir, priority = ANCHOR_PRIORITY, pose2 = false) {
       file: `${dir}/${p.key}${pose2 ? '.2' : ''}.png`, layer: p.position,
       x: anchors[map][0] - p.origin.x - v.x, y: anchors[map][1] - p.origin.y - v.y,
       z: zOf(p.position), ...(rules.partHiddenBy[p.position] && { hiddenBy: rules.partHiddenBy[p.position] }),
+      ...(p.tones && { tones: p.tones }), // the hair shade: only drawn on these skin tones
     });
   }
   return out;
@@ -187,6 +188,8 @@ catalog.boxes = read('data/boxes.json').groups.map(g => ({ id: g.id, title: g.ti
     warnings.boxUnresolved.push(`${b.name}: ${it.name}`); return [];
   }) })) }));
 
+// Hats the Fit filter files as Helmet by hand (they cover the face or most of the head although their slot codes do not hide the hair).
+for (const it of catalog.wearables.cap?.items ?? []) if (rules.fitHelmet?.includes(it.id)) it.fit = 'helmet';
 writeFileSync('public/catalog.json', JSON.stringify(catalog));
 console.log('placeholders:', JSON.stringify(Object.fromEntries(Object.entries(placeholders.wearables).map(([k, v]) => [k, v.map(p => p.name)]))), 'hair', placeholders.hair.map(p => p.name), 'face', placeholders.face.map(p => p.name));
 console.log(`skins ${catalog.skins.length}, faces ${catalog.face.length}, hairs ${catalog.hair.length}, wearable slots`, Object.fromEntries(Object.entries(catalog.wearables).map(([k, v]) => [k, v.items.length])));

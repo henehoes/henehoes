@@ -157,12 +157,13 @@ const listed = s => source === 'datamine' || s.released !== false;
 let search = ''; // text typed in the catalogue's search box; cleared when the tab changes
 // Hat tab filter ("Fit"): how a hat treats the worn hair, from the covered-slot codes (vslots) it carries, the same ones buildLayers
 // acts on (H1 hides the hair over the top of the head, H2 hides the rest). The names are ours: the game has no player-facing term.
+// A few hats are put in Helmet by hand (rules.json fitHelmet: Demon Goblin, Iljimae Mask): they hide the face or most of the head.
 let hatFit = 'all'; // 'all', 'topper', 'cap' or 'helmet'
-const hairEffectOf = item => item.vslots?.includes('H2') ? 'helmet' : item.vslots?.includes('H1') ? 'cap' : 'topper';
+const hairEffectOf = item => item.fit ?? (item.vslots?.includes('H2') ? 'helmet' : item.vslots?.includes('H1') ? 'cap' : 'topper');
 const HAT_FITS = [
-  ['topper', 'Topper', 'Sits on top of your hair, which stays as it is'],
-  ['cap', 'Cap', 'Fits snugly: the hair over the top of your head is flattened'],
-  ['helmet', 'Helmet', 'Hides your hair completely (helmets, and Hair (Hat) items, which bring their own hair)'],
+  ['topper', 'Topper', 'Sits on your head without changing your hair'],
+  ['cap', 'Cap', 'Flattens your hair but leaves most of it visible'],
+  ['helmet', 'Helmet', 'Replaces your hair or hides most of your face (helmets, masks, and Hair (Hat) items, which bring their own hair)'],
 ];
 const matches = name => name.toLowerCase().includes(search.trim().toLowerCase());
 let configTarget = null; // which equipped item the Equipped panel (left) is editing: 'face', 'hair' or a wearable slot
@@ -193,7 +194,7 @@ async function buildLayers(sel) {
     ...base.map((it, n) => ({ owner: `base${n}`, codes: it.vslots ?? [] }))];
   const add = (parts, h = 0, c = 0, b = 0, owner = 'body') => {
     const covered = new Set(covering.filter(e => e.owner !== owner).flatMap(e => e.codes));
-    for (const p of parts.filter(p => !covered.has(p.hiddenBy))) jobs.push(tinted(p.file, h, c, b).then(img => ({ img, x: OX + p.x, y: OY + p.y, z: p.z })));
+    for (const p of parts.filter(p => !covered.has(p.hiddenBy) && (!p.tones || p.tones.includes(sel.skin)))) jobs.push(tinted(p.file, h, c, b).then(img => ({ img, x: OX + p.x, y: OY + p.y, z: p.z })));
   };
   // A weapon with no standing pose (Orange Toy Hammer) puts the whole body in the two-handed pose.
   const twoHanded = isTwoHanded(sel);

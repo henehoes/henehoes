@@ -780,20 +780,56 @@ const liveStyleBoxes = () => {
 };
 // "Ends Wed 4 Nov · 4:00 PM GMT+8 · 21 hours left": when the soonest of these boxes ends, in the viewer's timezone on a 12-hour clock, and the time left. A box's end
 // is the last minute it is sold, so it runs to the end of that minute. Null when every box has already ended.
-function endsLine(boxes, className = '') {
-  const ends = Math.min(...boxes.filter(b => b.end).map(b => Date.parse(b.end) + 6e4).filter(e => e > Date.now())), left = ends - Date.now();
-  if (!Number.isFinite(ends)) return null;
+function endsText(ends) {
+  const left = ends - Date.now();
   const date = new Intl.DateTimeFormat(undefined, { weekday: 'short', day: 'numeric', month: 'short' }).format(ends).replace(',', '');
   const time = new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit', hour12: true, timeZoneName: 'short' }).format(ends).replace(/\b([ap])m\b/i, (_, x) => `${x.toUpperCase()}M`);
   const hours = Math.ceil(left / 36e5), timeLeft = left <= DAY ? (hours <= 1 ? 'less than an hour left' : `${hours} hours left`) : `${Math.ceil(left / DAY)} days left`;
-  return el('p', { className: `ends-line ${className}`.trim() }, el('i', { className: 'ends-dot', 'aria-hidden': 'true' }), el('span', { textContent: `Ends ${date} · ${time} · ${timeLeft}` }));
+  return `Ends ${date} · ${time} · ${timeLeft}`;
 }
+function endsLine(boxes, className = '') {
+  const ends = Math.min(...boxes.filter(b => b.end).map(b => Date.parse(b.end) + 6e4).filter(e => e > Date.now()));
+  if (!Number.isFinite(ends)) return null;
+  const line = el('p', { className: `ends-line ${className}`.trim() }, el('i', { className: 'ends-dot', 'aria-hidden': 'true' }), el('span', { textContent: endsText(ends) }));
+  line.dataset.ends = ends;
+  wakeAt(nextChange(ends));
+  return line;
+}
+// Keeps the countdown current without a refresh. It wakes only when the words would change (on the hour when under a day is left, on the day otherwise, at the
+// end of the box), and again as soon as the page is shown (a sleeping laptop, a background tab). A line whose box has ended, or a Mystery Rotation list whose boxes
+// have changed, redraws the page instead.
+let rotationSeen = ''; // the live Mystery Styles boxes the rotation view was drawn for
+let tickTimer = null, tickAt = Infinity;
+const nextChange = ends => { const left = ends - Date.now(), unit = left > DAY ? DAY : 36e5; return ends - (Math.ceil(left / unit) - 1) * unit; };
+function wakeAt(ms) {
+  ms = Math.max(ms + 500, Date.now() + 1000); // a moment past the change; the timer is capped (6 h) and simply sets itself again
+  if (ms >= tickAt) return;
+  clearTimeout(tickTimer); tickAt = ms;
+  tickTimer = setTimeout(() => { tickAt = Infinity; tickEnds(); }, Math.min(ms - Date.now(), 216e5));
+}
+const mysteryBoundary = () => Math.min(...(catalog.boxes.find(g => g.id === 'mystery-styles')?.boxes ?? []).flatMap(b => [b.start && Date.parse(b.start), b.end && Date.parse(b.end) + 6e4]).filter(x => x > Date.now()));
+function tickEnds() {
+  clearTimeout(tickTimer); tickAt = Infinity; // set again below from what is on the page now, so an old wake-up can never block a new one
+  if (mode === 'housing') return;
+  let redraw = false;
+  for (const line of document.querySelectorAll('.ends-line')) {
+    const ends = +line.dataset.ends;
+    if (ends <= Date.now()) redraw = true; else { line.querySelector('span').textContent = endsText(ends); wakeAt(nextChange(ends)); }
+  }
+  const rotating = source === 'rotation' && (activeTab === 'hair' || activeTab === 'face');
+  if (rotating && liveStyleBoxes().map(b => b.id).join() !== rotationSeen) redraw = true;
+  if (redraw) renderContent(true);
+  else if (rotating && Number.isFinite(mysteryBoundary())) wakeAt(mysteryBoundary());
+}
+document.addEventListener('visibilitychange', () => { if (!document.hidden) tickEnds(); });
 function renderStyles(c, kind) {
   renderColourBar(kind);
   if (kind === 'face' && catalog.face.some(s => s.variants.some(v => v.colour === browse.face && v.label === NO_COUPON_EYES))) c.append(eyeWhiteNote()); // the list is shown in White
   if (source === 'datamine') c.append(el('p', { className: 'datamine-note', textContent: 'Showing everything in the game data. Styles marked DATAMINE are not released yet.' }));
   // Mystery Rotation view: only the styles a live Mystery Styles box can give right now, with the end and the time left.
   const live = source === 'rotation' ? liveStyleBoxes() : [];
+  rotationSeen = live.map(b => b.id).join();
+  if (source === 'rotation' && Number.isFinite(mysteryBoundary())) wakeAt(mysteryBoundary());
   const inRotation = s => live.some(b => b.items.some(it => it.kind === kind && it.key === s.key && it.gender === s.gender));
   if (source === 'rotation') {
     const line = live.length && endsLine(live, 'rotation-line');

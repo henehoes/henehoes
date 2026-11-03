@@ -622,6 +622,28 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   const halloween = await endsOf('Halloween'), founders = await endsOf("Founder's");
   check('Released tab: a box that is on rotation says when it ends (12-hour clock) and the time left', /^Ends .*(AM|PM) [^·]* · \d+ hours? left$/.test(halloween ?? '') && !/Last day/.test(halloween ?? ''), String(halloween));
   check('Released tab: a box that has ended has no such line', founders === null, String(founders));
+  // The countdown ticks by itself (every 30 s and when the page is shown again): move the clock and fire the page-shown event, with no re-render for a live box
+  await clock('2026-11-03T20:00:00Z');
+  await clickTab('Released crates and boxes, and what each held'); await settle(); await pickTab('Mystery Fashion');
+  await page.evaluate(() => [...document.querySelectorAll('#content .pill')].find(p => p.textContent.includes('Halloween')).click()); await settle();
+  // It sleeps until the words would change: 12.5 hours left (13 hours) wakes in 30 minutes, when it turns to 12 hours, not every 30 seconds
+  await clock('2026-11-03T19:30:00Z');
+  await page.evaluate(() => { window.__delays = []; window.__st ??= window.setTimeout; window.setTimeout = (f, d, ...a) => { if (d > 1000) window.__delays.push(d); return window.__st(f, d, ...a); }; });
+  await page.evaluate(() => document.dispatchEvent(new Event('visibilitychange')));
+  const delays = await page.evaluate(() => { window.setTimeout = window.__st; return window.__delays; });
+  check('the countdown wakes when the words change (in 30 minutes from 12.5 hours left), not on a fixed short timer', delays.some(d => d >= 1.7e6 && d <= 1.9e6), JSON.stringify(delays));
+  await clock('2026-11-03T20:00:00Z');
+  await page.evaluate(() => [...document.querySelectorAll('#content .pill')].find(p => p.textContent.includes('Oct 21')).click()); await settle();
+  await page.evaluate(() => [...document.querySelectorAll('#content .pill')].find(p => p.textContent.includes('Halloween')).click()); await settle();
+  const endsText = () => page.$eval('#content .ends-line span', e => e.textContent).catch(() => null);
+  const before = await endsText();
+  await page.$eval('#content .ends-line', e => { e.dataset.same = '1'; });
+  await clock('2026-11-04T05:00:00Z'); await page.evaluate(() => document.dispatchEvent(new Event('visibilitychange')));
+  const during = await endsText();
+  check('the countdown updates itself when the clock moves (12 hours, then 3 hours left), in the same element', /12 hours left$/.test(before ?? '') && /3 hours left$/.test(during ?? '') && (await page.$eval('#content .ends-line', e => e.dataset.same)) === '1', `${before} -> ${during}`);
+  await clock('2026-11-04T08:00:00Z'); await page.evaluate(() => document.dispatchEvent(new Event('visibilitychange'))); await settle();
+  check('...and the line goes away by itself once the box has ended', (await endsText()) === null);
+  await page.evaluate(() => { Date.now = window.__now; });
   await clickTab('Hair'); await settle();
   await clickTab('Name Ring'); await settle();
   check('a ring tab keeps its two options and shows Released when Mystery Rotation was picked on Face', (await page.$$eval('#source .seg button', bs => bs.map(b => `${b.textContent}:${b.getAttribute('aria-pressed')}`))).join() === 'Released:true,All · Datamine:false');

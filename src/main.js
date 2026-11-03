@@ -778,6 +778,16 @@ const liveStyleBoxes = () => {
   const now = Date.now();
   return (catalog.boxes.find(g => g.id === 'mystery-styles')?.boxes ?? []).filter(b => b.end && now >= Date.parse(b.start ?? b.end) && now < Date.parse(b.end) + 6e4);
 };
+// "Ends Wed 11 Nov, 4:00 PM GMT+8 · 8 days left": when the soonest of these boxes ends, in the viewer's timezone on a 12-hour clock, and the time left. A box's end
+// is the last minute it is sold, so it runs to the end of that minute. Null when every box has already ended.
+function endsLine(boxes, className = '') {
+  const ends = Math.min(...boxes.filter(b => b.end).map(b => Date.parse(b.end) + 6e4).filter(e => e > Date.now())), left = ends - Date.now();
+  if (!Number.isFinite(ends)) return null;
+  const date = new Intl.DateTimeFormat(undefined, { weekday: 'short', day: 'numeric', month: 'short' }).format(ends).replace(',', '');
+  const time = new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit', hour12: true, timeZoneName: 'short' }).format(ends).replace(/\b([ap])m\b/i, (_, x) => `${x.toUpperCase()}M`);
+  const hours = Math.ceil(left / 36e5), timeLeft = left <= DAY ? `Last day · ${hours <= 1 ? 'under an hour' : `${hours} hours`} left` : `${Math.ceil(left / DAY)} days left`;
+  return el('p', { className: `ends-line ${className}`.trim() }, el('i', { className: 'ends-dot', 'aria-hidden': 'true' }), el('span', { textContent: `Ends ${date}, ${time}` }), el('span', { className: 'dot', textContent: '·', 'aria-hidden': 'true' }), el('strong', { textContent: timeLeft }));
+}
 function renderStyles(c, kind) {
   renderColourBar(kind);
   if (kind === 'face' && catalog.face.some(s => s.variants.some(v => v.colour === browse.face && v.label === NO_COUPON_EYES))) c.append(eyeWhiteNote()); // the list is shown in White
@@ -786,13 +796,9 @@ function renderStyles(c, kind) {
   const live = source === 'rotation' ? liveStyleBoxes() : [];
   const inRotation = s => live.some(b => b.items.some(it => it.kind === kind && it.key === s.key && it.gender === s.gender));
   if (source === 'rotation') {
-    if (live.length) {
-      const ends = Math.min(...live.map(b => Date.parse(b.end) + 6e4)), left = ends - Date.now();
-      const days = Math.ceil(left / DAY), hours = Math.ceil(left / 36e5);
-      const timeLeft = left <= DAY ? `Last day · ${hours <= 1 ? 'under an hour' : `${hours} hours`} left` : `${days} days left`;
-      const endText = new Date(ends).toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: 'numeric', minute: '2-digit', timeZoneName: 'short' });
-      c.append(el('p', { className: 'hint rotation-line', textContent: `Mystery Style Coupon rotation. Ends ${endText} · ${timeLeft}` }));
-    } else c.append(el('p', { className: 'hint rotation-line', textContent: 'No Mystery Style Coupon rotation is running right now.' }));
+    const line = live.length && endsLine(live, 'rotation-line');
+    if (line) c.append(line);
+    else c.append(el('p', { className: 'hint rotation-line', textContent: 'No Mystery Style Coupon rotation is running right now.' }));
   }
   const grid = el('div', { className: 'grid' });
   catalog[kind].forEach((s, i) => { if (forGender(s) && listed(s) && matches(s.style) && (source !== 'rotation' || inRotation(s))) grid.append(styleCard(kind, s, i)); });
@@ -873,6 +879,8 @@ function renderPast(c) {
   // The selected box's title: the name large, then its dates and size. Not an alert box.
   c.append(el('div', { className: 'past-title' }, el('h2', { textContent: box.name }),
     el('p', { className: 'past-meta' }, ...[box.dates ?? box.range, box.pending ? 'contents not added yet' : `${count} item${count === 1 ? '' : 's'}`].filter(Boolean).flatMap((t, i) => i ? [el('span', { className: 'dot', textContent: '·', 'aria-hidden': 'true' }), t] : [t]))));
+  const endsIn = endsLine([box]); // only for a box that has not ended
+  if (endsIn) c.append(endsIn);
   if (box.pending) c.append(infoNote('The contents of this one have not been added yet.'));
   if (box.note) c.append(el('p', { className: 'hint', textContent: box.note }));
   for (const [title, builders] of groups) {

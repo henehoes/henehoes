@@ -369,6 +369,12 @@ input { font: inherit; border-radius: 0; }
 .past-tab[aria-selected="true"] { background: oklch(50% .19 305); color: oklch(99% .01 305); padding-bottom: 9px; margin-bottom: -1px; }
 .past-tab:focus-visible { outline: 2px solid var(--maple-deep); outline-offset: -3px; }
 
+.ends-line { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0 8px; margin: 4px 3px 10px; font: 12px var(--font-label); letter-spacing: .04em; color: var(--sepia); }
+.ends-line strong { font-weight: 700; color: oklch(42% .13 150); }
+.ends-line .dot { color: var(--paper-line); }
+.ends-dot { width: 8px; height: 8px; background: oklch(55% .15 150); box-shadow: 0 0 0 2px oklch(55% .15 150 / .25); }
+.ends-line.rotation-line { justify-content: flex-start; }
+
 .past-title ~ .colour-bar { margin: 6px 3px 6px; }
 
 /* Hairstyles / Faces on the Released tab: a big heading, the colour options right under it, then Male and Female lists with smaller headings. */

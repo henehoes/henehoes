@@ -778,15 +778,15 @@ const liveStyleBoxes = () => {
   const now = Date.now();
   return (catalog.boxes.find(g => g.id === 'mystery-styles')?.boxes ?? []).filter(b => b.end && now >= Date.parse(b.start ?? b.end) && now < Date.parse(b.end) + 6e4);
 };
-// "Ends Wed 11 Nov, 4:00 PM GMT+8 · 8 days left": when the soonest of these boxes ends, in the viewer's timezone on a 12-hour clock, and the time left. A box's end
+// "Ends Wed 4 Nov · 4:00 PM GMT+8 · 21 hours left": when the soonest of these boxes ends, in the viewer's timezone on a 12-hour clock, and the time left. A box's end
 // is the last minute it is sold, so it runs to the end of that minute. Null when every box has already ended.
 function endsLine(boxes, className = '') {
   const ends = Math.min(...boxes.filter(b => b.end).map(b => Date.parse(b.end) + 6e4).filter(e => e > Date.now())), left = ends - Date.now();
   if (!Number.isFinite(ends)) return null;
   const date = new Intl.DateTimeFormat(undefined, { weekday: 'short', day: 'numeric', month: 'short' }).format(ends).replace(',', '');
   const time = new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit', hour12: true, timeZoneName: 'short' }).format(ends).replace(/\b([ap])m\b/i, (_, x) => `${x.toUpperCase()}M`);
-  const hours = Math.ceil(left / 36e5), timeLeft = left <= DAY ? `Last day · ${hours <= 1 ? 'under an hour' : `${hours} hours`} left` : `${Math.ceil(left / DAY)} days left`;
-  return el('p', { className: `ends-line ${className}`.trim() }, el('i', { className: 'ends-dot', 'aria-hidden': 'true' }), el('span', { textContent: `Ends ${date}, ${time}` }), el('span', { className: 'dot', textContent: '·', 'aria-hidden': 'true' }), el('strong', { textContent: timeLeft }));
+  const hours = Math.ceil(left / 36e5), timeLeft = left <= DAY ? (hours <= 1 ? 'less than an hour left' : `${hours} hours left`) : `${Math.ceil(left / DAY)} days left`;
+  return el('p', { className: `ends-line ${className}`.trim() }, el('i', { className: 'ends-dot', 'aria-hidden': 'true' }), el('span', { textContent: `Ends ${date} · ${time} · ${timeLeft}` }));
 }
 function renderStyles(c, kind) {
   renderColourBar(kind);

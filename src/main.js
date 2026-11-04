@@ -782,10 +782,27 @@ const liveStyleBoxes = () => {
 // is the last minute it is sold, so it runs to the end of that minute. Null when every box has already ended.
 function endsText(ends) {
   const left = ends - Date.now();
+  if (left <= 0) return endedText(ends);
   const date = new Intl.DateTimeFormat(undefined, { weekday: 'short', day: 'numeric', month: 'short' }).format(ends).replace(',', '');
   const time = new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit', hour12: true, timeZoneName: 'short' }).format(ends).replace(/\b([ap])m\b/i, (_, x) => `${x.toUpperCase()}M`);
   const hours = Math.ceil(left / 36e5), timeLeft = left <= DAY ? (hours <= 1 ? 'less than an hour left' : `${hours} hours left`) : `${Math.ceil(left / DAY)} days left`;
   return `Ends ${date} · ${time} · ${timeLeft}`;
+}
+// "Ended Wed 28 Oct · 3 days ago": the same line for a box that is over, in grey (the date only, no time).
+function endedText(ends) {
+  const ago = Date.now() - ends, hours = Math.floor(ago / 36e5), days = Math.floor(ago / DAY);
+  const when = ago < 36e5 ? 'less than an hour ago' : ago < DAY ? `${hours} hour${hours === 1 ? '' : 's'} ago` : `${days} day${days === 1 ? '' : 's'} ago`;
+  const date = new Intl.DateTimeFormat(undefined, { weekday: 'short', day: 'numeric', month: 'short' }).format(ends).replace(',', '');
+  return `Ended ${date} · ${when}`;
+}
+const nextAgoChange = ends => { const ago = Date.now() - ends, unit = ago < DAY ? 36e5 : DAY; return ends + (Math.floor(ago / unit) + 1) * unit; };
+function endedLine(box) {
+  if (!box.end || Date.parse(box.end) + 6e4 > Date.now()) return null;
+  const ends = Date.parse(box.end) + 6e4;
+  const line = el('p', { className: 'ends-line ended' }, el('i', { className: 'ends-dot', 'aria-hidden': 'true' }), el('span', { textContent: endedText(ends) }));
+  line.dataset.ended = ends;
+  wakeAt(nextAgoChange(ends));
+  return line;
 }
 function endsLine(boxes, className = '') {
   const ends = Math.min(...boxes.filter(b => b.end).map(b => Date.parse(b.end) + 6e4).filter(e => e > Date.now()));
@@ -817,6 +834,7 @@ function tickEnds() {
   if (mode === 'housing') return;
   let redraw = false;
   for (const line of document.querySelectorAll('.ends-line')) {
+    if (line.dataset.ended) { const ended = +line.dataset.ended; line.querySelector('span').textContent = endedText(ended); wakeAt(nextAgoChange(ended)); continue; }
     const ends = +line.dataset.ends;
     if (ends <= Date.now()) redraw = true; else { line.querySelector('span').textContent = endsText(ends); wakeAt(nextChange(ends)); }
   }
@@ -927,7 +945,7 @@ function renderPast(c) {
   // The selected box's title: the name large, then its dates and size. Not an alert box.
   c.append(el('div', { className: 'past-title' }, el('h2', { textContent: box.name }),
     el('p', { className: 'past-meta' }, ...[box.dates ?? box.range, box.pending ? 'contents not added yet' : `${count} item${count === 1 ? '' : 's'}`].filter(Boolean).flatMap((t, i) => i ? [el('span', { className: 'dot', textContent: '·', 'aria-hidden': 'true' }), t] : [t]))));
-  const endsIn = endsLine([box]); // only for a box that has not ended
+  const endsIn = endsLine([box]) ?? endedLine(box); // green "Ends…" while on sale, grey "Ended… ago" once over
   if (endsIn) c.append(endsIn);
   if (box.pending) c.append(infoNote('The contents of this one have not been added yet.'));
   if (box.note) c.append(el('p', { className: 'hint', textContent: box.note }));

@@ -374,6 +374,8 @@ input { font: inherit; border-radius: 0; }
 
 .ends-line { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0 8px; margin: 4px 3px 10px; font: 12px var(--font-label); letter-spacing: .04em; color: var(--ends-blue); --ends-blue: oklch(48% .16 255); }
 .ends-dot { width: 8px; height: 8px; border-radius: 50%; background: #2fa24f; box-shadow: 0 0 0 2px #2fa24f40; } /* the same green as a pill's on-sale dot; the words stay blue */
+.ends-line.ended { color: oklch(48% .01 80); }
+.ends-line.ended .ends-dot { background: #b3aca0; box-shadow: 0 0 0 2px #b3aca040; }
 .ends-line.rotation-line { justify-content: flex-start; }
 
 .past-title ~ .colour-bar { margin: 6px 3px 6px; }

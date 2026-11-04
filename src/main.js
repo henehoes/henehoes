@@ -808,6 +808,10 @@ function wakeAt(ms) {
   tickTimer = setTimeout(() => { tickAt = Infinity; tickEnds(); }, Math.min(ms - Date.now(), 216e5));
 }
 const mysteryBoundary = () => Math.min(...(catalog.boxes.find(g => g.id === 'mystery-styles')?.boxes ?? []).flatMap(b => [b.start && Date.parse(b.start), b.end && Date.parse(b.end) + 6e4]).filter(x => x > Date.now()));
+function paintSaleDot(dot, on) {
+  dot.classList.toggle('on', on);
+  dot.closest('.pill').title = dot.closest('.pill').title.replace(/ · (on sale|off sale)$/, '') + (on ? ' · on sale' : ' · off sale');
+}
 function tickEnds() {
   clearTimeout(tickTimer); tickAt = Infinity; // set again below from what is on the page now, so an old wake-up can never block a new one
   if (mode === 'housing') return;
@@ -815,6 +819,9 @@ function tickEnds() {
   for (const line of document.querySelectorAll('.ends-line')) {
     const ends = +line.dataset.ends;
     if (ends <= Date.now()) redraw = true; else { line.querySelector('span').textContent = endsText(ends); wakeAt(nextChange(ends)); }
+  }
+  for (const dot of document.querySelectorAll('.sale-dot')) {
+    if (+dot.dataset.end <= Date.now()) { if (dot.classList.contains('on')) paintSaleDot(dot, false); } else wakeAt(+dot.dataset.end);
   }
   const rotating = source === 'rotation' && (activeTab === 'hair' || activeTab === 'face');
   if (rotating && liveStyleBoxes().map(b => b.id).join() !== rotationSeen) redraw = true;
@@ -888,6 +895,9 @@ const pillLabel = b => b.pill && b.dates ? `${b.dates} · ${b.pill}` : (b.dates 
 const allBoxes = () => catalog.boxes.flatMap(g => g.boxes);
 const latestBox = () => allBoxes().find(b => b.latest) ?? allBoxes()[0]; // the Released tab always opens on the newest box
 const groupOf = box => catalog.boxes.find(g => g.boxes.some(x => x.id === box.id));
+// A box is on sale from its start until the end of its last minute; no `end` means it has not been given one, so it still is.
+const saleEnd = box => box.end ? Date.parse(box.end) + 6e4 : Infinity;
+const onSale = box => Date.now() >= Date.parse(box.start ?? 0) && Date.now() < saleEnd(box);
 function renderPast(c) {
   // A tab per category (Mystery Fashion Crates, Mystery Styles, Aurora Stamp Shop); the selected category's boxes are pills, in date order,
   // and the selected box's title and items are drawn below. Picking a category opens its newest box (the last pill).
@@ -904,7 +914,9 @@ function renderPast(c) {
   c.append(tabs);
   const row = el('div', { className: 'pills', role: 'radiogroup', 'aria-label': current.title });
   for (const box of current.boxes) {
-    const btn = el('button', { className: 'pill', type: 'button', role: 'radio', textContent: pillLabel(box), title: box.name + (box.dates ? ` (${box.dates})` : '') });
+    const btn = el('button', { className: 'pill', type: 'button', role: 'radio', title: box.name + (box.dates ? ` (${box.dates})` : '') }, el('span', { className: 'sale-dot', 'aria-hidden': 'true' }), pillLabel(box));
+    const dot = btn.firstChild; dot.dataset.end = saleEnd(box); paintSaleDot(dot, onSale(box)); // grey once the box is off sale, green while it is on sale
+    if (saleEnd(box) > Date.now()) wakeAt(saleEnd(box));
     btn.setAttribute('aria-pressed', String(box.id === pastBox)); btn.setAttribute('aria-checked', String(box.id === pastBox));
     btn.onclick = () => { pastBox = box.id; renderContent(true); };
     row.append(btn);

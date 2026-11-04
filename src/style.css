@@ -352,6 +352,9 @@ input { font: inherit; border-radius: 0; }
 /* ---- Past tab ---- */
 .pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 3px 4px; }
 .pill { padding: 5px 11px; border: 2px solid var(--sepia); background: var(--paper); color: var(--sepia); font: 11px var(--font-label); letter-spacing: .03em; cursor: pointer; }
+.pill { display: inline-flex; align-items: center; gap: 7px; }
+.sale-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: #b3aca0; box-shadow: 0 0 0 1px var(--paper); }
+.sale-dot.on { background: #2fa24f; }
 .pill:hover { background: var(--paper-deep); }
 .pill[aria-pressed="true"] { background: var(--sepia); color: var(--paper); }
 

@@ -624,6 +624,11 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   const halloween = await endsOf('Halloween'), founders = await endsOf("Founder's");
   check('Released tab: a box that is on rotation says when it ends (12-hour clock) and the time left', /^Ends .*(AM|PM) [^·]* · \d+ hours? left$/.test(halloween ?? '') && !/Last day/.test(halloween ?? ''), String(halloween));
   check('Released tab: a box that has ended has no such line', founders === null, String(founders));
+  // A dot on each pill: green while the box is on sale, grey when it is off sale (ended, or not started); a box without an end stays green
+  const dots = async iso => { await clock(iso); await clickTab('Released crates and boxes, and what each held'); await settle(); await pickTab('Mystery Fashion'); return page.$$eval('#content .pill', p => p.map(x => x.querySelector('.sale-dot').classList.contains('on') ? 'on' : 'off').join()); };
+  check('Released tab: pill dots, Nov 3 evening (Halloween and Oct 21 on sale)', (await dots('2026-11-03T20:00:00Z')) === 'off,on,on,off');
+  check('Released tab: pill dots, Nov 5 (only the Nov 4 crate, which has no end, is on sale)', (await dots('2026-11-05T00:00:00Z')) === 'off,off,off,on');
+  check('Released tab: pill dots, Dec 1 (the Nov 4 crate still on sale: no end time)', (await dots('2026-12-01T00:00:00Z')) === 'off,off,off,on');
   // The countdown ticks by itself (every 30 s and when the page is shown again): move the clock and fire the page-shown event, with no re-render for a live box
   await clock('2026-11-03T20:00:00Z');
   await clickTab('Released crates and boxes, and what each held'); await settle(); await pickTab('Mystery Fashion');

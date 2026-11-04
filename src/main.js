@@ -639,7 +639,28 @@ const panelSection = (title, ...kids) => el('section', { className: 'panel-secti
 
 // The Equipped panel (left): what I am wearing as sprites, and the colour settings of the one I select.
 // Face and hair show every colour of the chosen style; a wearable shows hue, chroma and brightness.
+// The Availability section of a worn item's panel: whether it is in a box on sale now, or when it was last available, from the boxes in data/boxes.json.
+// The box's group names what it was ("Mystery Face", "Mystery Hair", "Mystery Fashion Crate"). An item in no box we know of says so, and one that is not released says that.
+const BOX_NOUN = { 'mystery-crates': () => 'Mystery Fashion Crate', aurora: () => 'Aurora Stamp Shop', 'mystery-styles': kind => kind === 'face' ? 'Mystery Face' : 'Mystery Hair' };
+function availability(target) {
+  const kind = target === 'face' || target === 'hair' ? target : 'wearable';
+  const item = kind === 'wearable' ? catalog.wearables[target]?.items.find(i => i.id === state.wear[target].item) : styleOf(kind);
+  if (!item) return null;
+  const same = it => kind === 'wearable' ? it.kind === 'wearable' && it.id === item.id : it.kind === kind && it.key === item.key && it.gender === item.gender;
+  const found = catalog.boxes.flatMap(g => g.boxes.filter(b => b.items.some(same)).map(b => ({ b, noun: BOX_NOUN[g.id]?.(kind) ?? g.title })));
+  const line = (dot, text) => el('p', { className: `ends-line avail${dot ? '' : ' ended'}` }, el('i', { className: 'ends-dot', 'aria-hidden': 'true' }), el('span', { textContent: text }));
+  const now = found.find(f => onSale(f.b));
+  if (now) return line(true, `Available now${now.b.end ? ` · ${leftText(saleEnd(now.b) - Date.now())}` : ''} · ${now.noun}`);
+  const last = found.sort((x, y) => saleEnd(y.b) - saleEnd(x.b))[0];
+  if (last) return line(false, `Last available ${agoText(Date.now() - saleEnd(last.b))} · ${last.noun}`);
+  return line(false, item.released === false || item.upcoming ? 'Not released yet' : 'Not in any Mystery box on record');
+}
 function renderColour() {
+  renderColourPanel();
+  const c = $('colour'), target = mode === 'housing' ? null : equipped().find(e => e.key === configTarget)?.key, avail = target && availability(target);
+  if (avail) c.append(panelSection('Availability', avail));
+}
+function renderColourPanel() {
   const c = $('colour');
   c.replaceChildren();
   if (mode === 'housing') return housing.renderPanel(c, () => { renderTabs(); renderColour(); housing.draw(); });
@@ -780,18 +801,18 @@ const liveStyleBoxes = () => {
 };
 // "Ends Wed 4 Nov · 4:00 PM GMT+8 · 21 hours left": when the soonest of these boxes ends, in the viewer's timezone on a 12-hour clock, and the time left. A box's end
 // is the last minute it is sold, so it runs to the end of that minute. Null when every box has already ended.
+const leftText = left => { const hours = Math.ceil(left / 36e5); return left <= DAY ? (hours <= 1 ? 'less than an hour left' : `${hours} hours left`) : `${Math.ceil(left / DAY)} days left`; };
 function endsText(ends) {
   const left = ends - Date.now();
   if (left <= 0) return endedText(ends);
   const date = new Intl.DateTimeFormat(undefined, { weekday: 'short', day: 'numeric', month: 'short' }).format(ends).replace(',', '');
   const time = new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit', hour12: true, timeZoneName: 'short' }).format(ends).replace(/\b([ap])m\b/i, (_, x) => `${x.toUpperCase()}M`);
-  const hours = Math.ceil(left / 36e5), timeLeft = left <= DAY ? (hours <= 1 ? 'less than an hour left' : `${hours} hours left`) : `${Math.ceil(left / DAY)} days left`;
-  return `Ends ${date} · ${time} · ${timeLeft}`;
+  return `Ends ${date} · ${time} · ${leftText(left)}`;
 }
 // "Ended Wed 28 Oct · 3 days ago": the same line for a box that is over, in grey (the date only, no time).
+const agoText = ago => { const hours = Math.floor(ago / 36e5), days = Math.floor(ago / DAY); return ago < 36e5 ? 'less than an hour ago' : ago < DAY ? `${hours} hour${hours === 1 ? '' : 's'} ago` : `${days} day${days === 1 ? '' : 's'} ago`; };
 function endedText(ends) {
-  const ago = Date.now() - ends, hours = Math.floor(ago / 36e5), days = Math.floor(ago / DAY);
-  const when = ago < 36e5 ? 'less than an hour ago' : ago < DAY ? `${hours} hour${hours === 1 ? '' : 's'} ago` : `${days} day${days === 1 ? '' : 's'} ago`;
+  const when = agoText(Date.now() - ends);
   const date = new Intl.DateTimeFormat(undefined, { weekday: 'short', day: 'numeric', month: 'short' }).format(ends).replace(',', '');
   return `Ended ${date} · ${when}`;
 }
@@ -833,7 +854,7 @@ function tickEnds() {
   clearTimeout(tickTimer); tickAt = Infinity; // set again below from what is on the page now, so an old wake-up can never block a new one
   if (mode === 'housing') return;
   let redraw = false;
-  for (const line of document.querySelectorAll('.ends-line')) {
+  for (const line of document.querySelectorAll('.ends-line[data-ends], .ends-line[data-ended]')) { // not the Availability line in the Equipped panel, which is drawn once
     if (line.dataset.ended) { const ended = +line.dataset.ended; line.querySelector('span').textContent = endedText(ended); wakeAt(nextAgoChange(ended)); continue; }
     const ends = +line.dataset.ends;
     if (ends <= Date.now()) redraw = true; else { line.querySelector('span').textContent = endsText(ends); wakeAt(nextChange(ends)); }

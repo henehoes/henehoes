@@ -653,6 +653,14 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   await clock('2026-11-04T11:00:00Z'); await page.evaluate(() => document.dispatchEvent(new Event('visibilitychange')));
   await clock('2026-11-06T11:00:00Z'); await page.evaluate(() => document.dispatchEvent(new Event('visibilitychange')));
   check('...and its "ago" keeps counting (2 days ago two days later)', /· 2 days ago$/.test((await endsText()) ?? ''), String(await endsText()));
+  // Equipped panel: an Availability section says if the worn item is in a box on sale now, or when it was last available (Bright Eyes: the Oct 28 Mystery Face coupon, to Nov 11)
+  const wearBright = async iso => { await clock(iso); await clickTab('Face'); await settle(); await page.evaluate(() => [...document.querySelectorAll('#content .card')].find(c => c.querySelector('.label')?.textContent === 'Bright Eyes').click()); await settle(); return page.$$eval('#colour .panel-section', ss => ss.map(x => x.textContent).find(t => t.startsWith('Availability')) ?? null); };
+  const availNow = await wearBright('2026-11-05T00:00:00Z');
+  check('Equipped panel: Availability says a worn face on sale now is available now, as a Mystery Face, with the time left', /^AvailabilityAvailable now · \d+ days left · Mystery Face$/.test(availNow ?? ''), String(availNow));
+  await page.evaluate(() => [...document.querySelectorAll('#colour .slot .remove')].forEach(b => b.click())); await settle();
+  const availLast = await wearBright('2026-11-12T12:00:00Z');
+  check('Equipped panel: Availability says when a face was last available, as what', /^AvailabilityLast available 1 day ago · Mystery Face$/.test(availLast ?? ''), String(availLast));
+  await page.evaluate(() => [...document.querySelectorAll('#colour .slot .remove')].forEach(b => b.click())); await settle();
   await page.evaluate(() => { Date.now = window.__now; });
   await clickTab('Hair'); await settle();
   await clickTab('Name Ring'); await settle();

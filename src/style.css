@@ -376,7 +376,7 @@ input { font: inherit; border-radius: 0; }
 .ends-dot { width: 8px; height: 8px; border-radius: 50%; background: #2fa24f; box-shadow: 0 0 0 2px #2fa24f40; } /* the same green as a pill's on-sale dot; the words stay blue */
 .ends-line.ended { color: oklch(48% .01 80); }
 .ends-line.ended .ends-dot { background: #b3aca0; box-shadow: 0 0 0 2px #b3aca040; }
-.ends-line.avail { justify-content: flex-start; margin: 0; }
+.ends-line.avail { justify-content: flex-start; margin: 4px 3px; padding: 6px 10px; background: var(--bench-deep); box-shadow: 0 -2px 0 0 var(--bench-line), 0 2px 0 0 var(--bench-line), -2px 0 0 0 var(--bench-line), 2px 0 0 0 var(--bench-line); } /* boxed like a chip, so it does not float in the panel */
 .ends-line.rotation-line { justify-content: flex-start; }
 
 .past-title ~ .colour-bar { margin: 6px 3px 6px; }

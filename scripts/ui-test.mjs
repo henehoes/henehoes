@@ -628,7 +628,11 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   const dots = async iso => { await clock(iso); await clickTab('Released crates and boxes, and what each held'); await settle(); await pickTab('Mystery Fashion'); return page.$$eval('#content .pill', p => p.map(x => x.querySelector('.sale-dot').classList.contains('on') ? 'on' : 'off').join()); };
   check('Released tab: pill dots, Nov 3 evening (Halloween and Oct 21 on sale)', (await dots('2026-11-03T20:00:00Z')) === 'off,on,on,off');
   check('Released tab: pill dots, Nov 5 (only the Nov 4 crate, which has no end, is on sale)', (await dots('2026-11-05T00:00:00Z')) === 'off,off,off,on');
-  check('Released tab: pill dots, Dec 1 (the Nov 4 crate still on sale: no end time)', (await dots('2026-12-01T00:00:00Z')) === 'off,off,off,on');
+  const lineOf = () => page.$eval('#content .past-title ~ .ends-line', e => `${e.textContent}|${e.classList.contains('ended')}`).catch(() => null);
+  const novLine = iso => dots(iso).then(lineOf);
+  check('Released tab: the Nov 4 crate (end is a date, no time) says Ends date and days left, no hour', (await novLine('2026-11-05T00:00:00Z')) === 'Ends Wed 18 Nov · 14 days left|false', String(await lineOf()));
+  check('Released tab: the Nov 4 crate is on sale to the end of the UTC day (1 day left on the 18th)', (await novLine('2026-11-18T23:00:00Z')) === 'Ends Wed 18 Nov · 1 day left|false', String(await lineOf()));
+  check('Released tab: after that day it is grey, Ended date and days ago, and its dot is grey', (await dots('2026-11-20T10:00:00Z')) === 'off,off,off,off' && (await lineOf()) === 'Ended Wed 18 Nov · 1 day ago|true', String(await lineOf()));
   // The countdown ticks by itself (every 30 s and when the page is shown again): move the clock and fire the page-shown event, with no re-render for a live box
   await clock('2026-11-03T20:00:00Z');
   await clickTab('Released crates and boxes, and what each held'); await settle(); await pickTab('Mystery Fashion');

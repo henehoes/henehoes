@@ -650,9 +650,9 @@ function availability(target) {
   const found = catalog.boxes.flatMap(g => g.boxes.filter(b => b.items.some(same)).map(b => ({ b, noun: BOX_NOUN[g.id]?.(kind) ?? g.title })));
   const line = (dot, text) => el('p', { className: `ends-line avail${dot ? '' : ' ended'}` }, el('i', { className: 'ends-dot', 'aria-hidden': 'true' }), el('span', { textContent: text }));
   const now = found.find(f => onSale(f.b));
-  if (now) return line(true, `Available now${now.b.end ? ` · ${leftText(saleEnd(now.b) - Date.now())}` : ''} · ${now.noun}`);
+  if (now) return line(true, `Available now${now.b.end ? ` · ${leftText(saleEnd(now.b) - Date.now(), isDay(now.b.end))}` : ''} · ${now.noun}`);
   const last = found.sort((x, y) => saleEnd(y.b) - saleEnd(x.b))[0];
-  if (last) return line(false, `Last available ${agoText(Date.now() - saleEnd(last.b))} · ${last.noun}`);
+  if (last) return line(false, `Last available ${agoText(Date.now() - saleEnd(last.b), isDay(last.b.end))} · ${last.noun}`);
   return line(false, item.released === false || item.upcoming ? 'Not released yet' : 'Not in any Mystery box on record');
 }
 function renderColour() {
@@ -795,42 +795,49 @@ function renderBody(c) {
 // Mystery Styles boxes (hair and faces from the coupon) on rotation now, by the start and end in data/boxes.json (UTC). The end is the last minute sold, so it runs
 // to the end of that minute; a start with no time is a date only.
 const DAY = 864e5;
+// An `end` with no time ("2026-11-18") is a whole UTC day: the box is on sale to the end of that day, and its line gives the date and the days left, never an hour.
+const isDay = end => typeof end === 'string' && end.length <= 10;
+const endMs = b => b.end ? Date.parse(b.end) + (isDay(b.end) ? DAY : 6e4) : Infinity;
 const liveStyleBoxes = () => {
   const now = Date.now();
-  return (catalog.boxes.find(g => g.id === 'mystery-styles')?.boxes ?? []).filter(b => b.end && now >= Date.parse(b.start ?? b.end) && now < Date.parse(b.end) + 6e4);
+  return (catalog.boxes.find(g => g.id === 'mystery-styles')?.boxes ?? []).filter(b => b.end && now >= Date.parse(b.start ?? b.end) && now < endMs(b));
 };
 // "Ends Wed 4 Nov · 4:00 PM GMT+8 · 21 hours left": when the soonest of these boxes ends, in the viewer's timezone on a 12-hour clock, and the time left. A box's end
 // is the last minute it is sold, so it runs to the end of that minute. Null when every box has already ended.
-const leftText = left => { const hours = Math.ceil(left / 36e5); return left <= DAY ? (hours <= 1 ? 'less than an hour left' : `${hours} hours left`) : `${Math.ceil(left / DAY)} days left`; };
-function endsText(ends) {
+const leftText = (left, day) => { if (day) { const days = Math.max(1, Math.ceil(left / DAY)); return `${days} day${days === 1 ? '' : 's'} left`; } const hours = Math.ceil(left / 36e5); return left <= DAY ? (hours <= 1 ? 'less than an hour left' : `${hours} hours left`) : `${Math.ceil(left / DAY)} days left`; };
+function endsText(ends, day = false) {
   const left = ends - Date.now();
-  if (left <= 0) return endedText(ends);
+  if (left <= 0) return endedText(ends, day);
+  if (day) return `Ends ${dayName(ends)} · ${leftText(left, true)}`;
   const date = new Intl.DateTimeFormat(undefined, { weekday: 'short', day: 'numeric', month: 'short' }).format(ends).replace(',', '');
   const time = new Intl.DateTimeFormat(undefined, { hour: 'numeric', minute: '2-digit', hour12: true, timeZoneName: 'short' }).format(ends).replace(/\b([ap])m\b/i, (_, x) => `${x.toUpperCase()}M`);
   return `Ends ${date} · ${time} · ${leftText(left)}`;
 }
 // "Ended Wed 28 Oct · 3 days ago": the same line for a box that is over, in grey (the date only, no time).
-const agoText = ago => { const hours = Math.floor(ago / 36e5), days = Math.floor(ago / DAY); return ago < 36e5 ? 'less than an hour ago' : ago < DAY ? `${hours} hour${hours === 1 ? '' : 's'} ago` : `${days} day${days === 1 ? '' : 's'} ago`; };
-function endedText(ends) {
-  const when = agoText(Date.now() - ends);
+const dayName = ends => new Intl.DateTimeFormat(undefined, { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' }).format(ends - 1).replace(',', ''); // the last UTC day
+const agoText = (ago, day = false) => { if (day) { const days = Math.floor(ago / DAY); return days < 1 ? 'today' : `${days} day${days === 1 ? '' : 's'} ago`; } const hours = Math.floor(ago / 36e5), days = Math.floor(ago / DAY); return ago < 36e5 ? 'less than an hour ago' : ago < DAY ? `${hours} hour${hours === 1 ? '' : 's'} ago` : `${days} day${days === 1 ? '' : 's'} ago`; };
+function endedText(ends, day = false) {
+  const when = agoText(Date.now() - ends, day);
+  if (day) return `Ended ${dayName(ends)} · ${when}`;
   const date = new Intl.DateTimeFormat(undefined, { weekday: 'short', day: 'numeric', month: 'short' }).format(ends).replace(',', '');
   return `Ended ${date} · ${when}`;
 }
-const nextAgoChange = ends => { const ago = Date.now() - ends, unit = ago < DAY ? 36e5 : DAY; return ends + (Math.floor(ago / unit) + 1) * unit; };
+const nextAgoChange = (ends, day = false) => { const ago = Date.now() - ends, unit = day || ago >= DAY ? DAY : 36e5; return ends + (Math.floor(ago / unit) + 1) * unit; };
 function endedLine(box) {
-  if (!box.end || Date.parse(box.end) + 6e4 > Date.now()) return null;
-  const ends = Date.parse(box.end) + 6e4;
-  const line = el('p', { className: 'ends-line ended' }, el('i', { className: 'ends-dot', 'aria-hidden': 'true' }), el('span', { textContent: endedText(ends) }));
-  line.dataset.ended = ends;
-  wakeAt(nextAgoChange(ends));
+  if (!box.end || endMs(box) > Date.now()) return null;
+  const ends = endMs(box), day = isDay(box.end);
+  const line = el('p', { className: 'ends-line ended' }, el('i', { className: 'ends-dot', 'aria-hidden': 'true' }), el('span', { textContent: endedText(ends, day) }));
+  line.dataset.ended = ends; if (day) line.dataset.day = '1';
+  wakeAt(nextAgoChange(ends, day));
   return line;
 }
 function endsLine(boxes, className = '') {
-  const ends = Math.min(...boxes.filter(b => b.end).map(b => Date.parse(b.end) + 6e4).filter(e => e > Date.now()));
-  if (!Number.isFinite(ends)) return null;
-  const line = el('p', { className: `ends-line ${className}`.trim() }, el('i', { className: 'ends-dot', 'aria-hidden': 'true' }), el('span', { textContent: endsText(ends) }));
-  line.dataset.ends = ends;
-  wakeAt(nextChange(ends));
+  const next = boxes.filter(b => b.end && endMs(b) > Date.now()).sort((x, y) => endMs(x) - endMs(y))[0];
+  if (!next) return null;
+  const ends = endMs(next), day = isDay(next.end);
+  const line = el('p', { className: `ends-line ${className}`.trim() }, el('i', { className: 'ends-dot', 'aria-hidden': 'true' }), el('span', { textContent: endsText(ends, day) }));
+  line.dataset.ends = ends; if (day) line.dataset.day = '1';
+  wakeAt(nextChange(ends, day));
   return line;
 }
 // Keeps the countdown current without a refresh. It wakes only when the words would change (on the hour when under a day is left, on the day otherwise, at the
@@ -838,14 +845,14 @@ function endsLine(boxes, className = '') {
 // have changed, redraws the page instead.
 let rotationSeen = ''; // the live Mystery Styles boxes the rotation view was drawn for
 let tickTimer = null, tickAt = Infinity;
-const nextChange = ends => { const left = ends - Date.now(), unit = left > DAY ? DAY : 36e5; return ends - (Math.ceil(left / unit) - 1) * unit; };
+const nextChange = (ends, day = false) => { const left = ends - Date.now(), unit = day || left > DAY ? DAY : 36e5; return ends - (Math.ceil(left / unit) - 1) * unit; };
 function wakeAt(ms) {
   ms = Math.max(ms + 500, Date.now() + 1000); // a moment past the change; the timer is capped (6 h) and simply sets itself again
   if (ms >= tickAt) return;
   clearTimeout(tickTimer); tickAt = ms;
   tickTimer = setTimeout(() => { tickAt = Infinity; tickEnds(); }, Math.min(ms - Date.now(), 216e5));
 }
-const mysteryBoundary = () => Math.min(...(catalog.boxes.find(g => g.id === 'mystery-styles')?.boxes ?? []).flatMap(b => [b.start && Date.parse(b.start), b.end && Date.parse(b.end) + 6e4]).filter(x => x > Date.now()));
+const mysteryBoundary = () => Math.min(...(catalog.boxes.find(g => g.id === 'mystery-styles')?.boxes ?? []).flatMap(b => [b.start && Date.parse(b.start), b.end && endMs(b)]).filter(x => x > Date.now()));
 function paintSaleDot(dot, on) {
   dot.classList.toggle('on', on);
   dot.closest('.pill').title = dot.closest('.pill').title.replace(/ · (on sale|off sale)$/, '') + (on ? ' · on sale' : ' · off sale');
@@ -855,9 +862,10 @@ function tickEnds() {
   if (mode === 'housing') return;
   let redraw = false;
   for (const line of document.querySelectorAll('.ends-line[data-ends], .ends-line[data-ended]')) { // not the Availability line in the Equipped panel, which is drawn once
-    if (line.dataset.ended) { const ended = +line.dataset.ended; line.querySelector('span').textContent = endedText(ended); wakeAt(nextAgoChange(ended)); continue; }
+    const day = !!line.dataset.day;
+    if (line.dataset.ended) { const ended = +line.dataset.ended; line.querySelector('span').textContent = endedText(ended, day); wakeAt(nextAgoChange(ended, day)); continue; }
     const ends = +line.dataset.ends;
-    if (ends <= Date.now()) redraw = true; else { line.querySelector('span').textContent = endsText(ends); wakeAt(nextChange(ends)); }
+    if (ends <= Date.now()) redraw = true; else { line.querySelector('span').textContent = endsText(ends, day); wakeAt(nextChange(ends, day)); }
   }
   for (const dot of document.querySelectorAll('.sale-dot')) {
     if (+dot.dataset.end <= Date.now()) { if (dot.classList.contains('on')) paintSaleDot(dot, false); } else wakeAt(+dot.dataset.end);
@@ -935,7 +943,7 @@ const allBoxes = () => catalog.boxes.flatMap(g => g.boxes);
 const latestBox = () => allBoxes().find(b => b.latest) ?? allBoxes()[0]; // the Released tab always opens on the newest box
 const groupOf = box => catalog.boxes.find(g => g.boxes.some(x => x.id === box.id));
 // A box is on sale from its start until the end of its last minute; no `end` means it has not been given one, so it still is.
-const saleEnd = box => box.end ? Date.parse(box.end) + 6e4 : Infinity;
+const saleEnd = endMs;
 const onSale = box => Date.now() >= Date.parse(box.start ?? 0) && Date.now() < saleEnd(box);
 function renderPast(c) {
   // A tab per category (Mystery Fashion Crates, Mystery Styles, Aurora Stamp Shop); the selected category's boxes are pills, in date order,

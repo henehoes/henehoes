@@ -672,6 +672,25 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   await page.evaluate(() => { Date.now = window.__now; });
 }
 
+// ---- Pose buttons on the stage: Stand, Attack (plays once), Ladder and Rope (loop), each a little silhouette icon ----
+{
+  const poseOf = () => page.$eval('#preview', e => e.dataset.pose);
+  const pressed = () => page.$$eval('#pose-tools .tool', b => b.filter(x => x.getAttribute('aria-pressed') === 'true').map(x => x.dataset.pose).join());
+  check('pose buttons: Stand, Attack, Ladder and Rope, each with a silhouette icon, Stand pressed', (await page.$$eval('#pose-tools .tool', b => b.map(x => x.dataset.pose + (x.querySelector('svg rect') ? '' : '!')).join())) === 'stand,attack,ladder,rope' && (await pressed()) === 'stand');
+  await settle(); const still = JSON.stringify(await pixels());
+  await page.click('#pose-tools [data-pose="ladder"]'); await settle(); await settle();
+  const l1 = await poseOf(), lp = JSON.stringify(await pixels()); await new Promise(r => setTimeout(r, 300)); const l2 = await poseOf();
+  check('Ladder: the preview climbs (back view, frames go round) and the button is pressed', /^ladder:ladder:\d$/.test(l1) && l1 !== l2 && lp !== still && (await pressed()) === 'ladder', `${l1} -> ${l2}`);
+  await page.click('#pose-tools [data-pose="rope"]'); await settle();
+  check('Rope: switches to the rope', /^rope:rope:\d$/.test(await poseOf()) && (await pressed()) === 'rope');
+  await page.click('#pose-tools [data-pose="attack"]');
+  let seen = new Set(); for (let i = 0; i < 40 && (await poseOf()) !== 'stand' || !seen.size; i++) { const v = await poseOf(); if (v !== 'stand') seen.add(v); await new Promise(r => setTimeout(r, 60)); }
+  check('Attack: plays the attack frames once, then stands again', [...seen].some(v => v.startsWith('attack:')) && (await poseOf()) === 'stand' && (await pressed()) === 'stand', [...seen].join(' '));
+  await page.click('#pose-tools [data-pose="ladder"]'); await settle();
+  await page.click('#pose-tools [data-pose="stand"]'); await settle();
+  const back = JSON.stringify(await pixels()); check('Stand: back to the standing picture', (await poseOf()) === 'stand' && back === still, `${await poseOf()} ${back} vs ${still}`);
+}
+
 // ---- Housing book ----
 {
   await page.evaluate(() => localStorage.removeItem('maple-layers:housing-v1'));
@@ -679,6 +698,7 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   await tabByTitle('Housing book'); await settle(); await settle();
   check('Housing book: the two books are tabs along the top, Housing selected', JSON.stringify(await page.$$eval('.bk', b => b.map(x => `${x.textContent}:${x.getAttribute('aria-selected')}`))) === JSON.stringify(['Character:false', 'Housing:true']));
   check('Housing book: the rail offers Homes, Decor, Chests and Crafting stations', JSON.stringify(await page.$$eval('.tab', t => t.map(x => x.title))) === JSON.stringify(['Homes', 'Decor', 'Chests', 'Crafting stations']));
+  check('Housing book: no pose buttons', (await page.$$('#pose-tools .tool')).length === 0);
   check('Housing book: two homes to choose from, the first selected', (await page.$$eval('.home-card', c => c.map(x => x.getAttribute('aria-pressed')))).join() === 'true,false');
   await page.waitForFunction(() => [...document.querySelectorAll('.home-thumb')].every(i => i.complete && i.naturalWidth > 0), { timeout: 8000 }).catch(() => {});
   check('Housing book: the home pictures are the zoomed-in houses only (no zoomed-out version)', (await page.$$eval('.home-thumb', i => i.map(x => `${x.naturalWidth}x${x.naturalHeight}`))).join() === '760x590,900x700');

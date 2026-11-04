@@ -75,6 +75,9 @@ input { font: inherit; border-radius: 0; }
 .tool:active, .small-btn:active { transform: translateY(2px); box-shadow: 0 -3px 0 0 var(--bench-line), 0 3px 0 0 var(--bench-line), -3px 0 0 0 var(--bench-line), 3px 0 0 0 var(--bench-line), inset 0 2px 0 0 var(--brass-dark); }
 .stage-tools { position: absolute; top: 12px; left: 12px; display: flex; gap: 10px; z-index: 2; }
 .tool { width: 30px; height: 30px; padding: 0; }
+.pose-tools { position: absolute; left: 12px; bottom: 12px; display: flex; gap: 10px; z-index: 2; }
+.tool.pose { color: oklch(20% .02 60); }
+.tool.pose[aria-pressed="true"] { background: linear-gradient(to bottom, var(--brass), var(--brass-dark)); box-shadow: 0 -3px 0 0 var(--bench-line), 0 3px 0 0 var(--bench-line), -3px 0 0 0 var(--bench-line), 3px 0 0 0 var(--bench-line), inset 0 2px 0 0 var(--brass-dark); }
 .small-btn { padding: 5px 12px; font: 11px var(--font-label); }
 .btn-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 14px; padding: 3px; }
 .stage-note { position: absolute; top: 18px; left: 140px; z-index: 2; font: 11px var(--font-label); color: #fff; text-shadow: 1px 1px 0 oklch(25% .05 255); opacity: 0; transition: opacity .2s; pointer-events: none; }

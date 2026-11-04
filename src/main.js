@@ -183,7 +183,33 @@ function baseOf(sel) {
   const b = catalog.base[sel.sex], w = sel.wear, overall = w.longcoat.item != null;
   return [!overall && w.coat.item == null && b.coat, !overall && w.pants.item == null && b.pants].filter(Boolean);
 }
-async function buildLayers(sel) {
+// ---------- poses (the pose buttons on the stage) ----------
+// Standing uses the catalogue's own pictures. Attack, ladder and rope come from public/poses (scripts/extract-poses.mjs), fetched the
+// first time they are needed: the body per action and frame (with the points everything hangs on), and each worn item's and hair
+// colour's parts, already placed. A face is the standing one moved with the brow, and is left out when the frame turns the face away.
+const poseFiles = new Map();
+const fetchPose = path => { if (!poseFiles.has(path)) poseFiles.set(path, fetch(path).then(r => r.ok ? r.json() : null).catch(() => null)); return poseFiles.get(path); };
+let pose = { name: 'stand' }; // what the preview shows: { name, act, frame } while posing
+const weaponWorn = sel => sel.wear.weapon.item != null && catalog.wearables.weapon?.items.find(i => i.id === sel.wear.weapon.item);
+// The attack a look does: its weapon's (by the real weapon type the cash weapon is drawn for), else the one-handed swing.
+async function attackOf(sel) { const w = weaponWorn(sel); return (w && (await fetchPose(`poses/w/${w.id}.json`))?.attack) || 'swingO1'; }
+// The parts of one pose frame for `sel`, or null when the pose data cannot be had (the standing pictures are drawn instead).
+async function posed(sel, act, i) {
+  const body = await fetchPose('poses/body.json'), bf = body?.actions[act]?.[i];
+  if (!bf) return null;
+  const items = WEAR_ORDER.map(slot => catalog.wearables[slot]?.items.find(x => x.id === sel.wear[slot].item)).filter(Boolean);
+  const hairV = sel.hair.style == null ? null : (catalog.hair[sel.hair.style]?.variants.find(x => x.colour === sel.hair.colour) ?? catalog.hair[sel.hair.style]?.variants[0]);
+  const paths = [...items, ...baseOf(sel)].map(x => `poses/w/${x.id}.json`).concat(hairV && !hairV.live ? [`poses/hair/${hairV.id}.json`] : []);
+  const files = new Map(await Promise.all(paths.map(async p => [p, await fetchPose(p)])));
+  const shift = [bf.points.brow[0] - body.stand.brow[0], bf.points.brow[1] - body.stand.brow[1]];
+  const moved = parts => parts.map(p => ({ ...p, x: p.x + shift[0], y: p.y + shift[1] }));
+  // An item with pose data draws what this frame has of it (nothing, for a weapon on a ladder); one without is moved with the brow.
+  const of = (path, fallback) => { const f = files.get(path); return f ? (f.actions[act]?.[i] ?? []).map(p => ({ ...p, file: p.f })) : moved(fallback ?? []); };
+  return { face: bf.face, skin: bf.parts.filter(p => p.files[sel.skin]).map(p => ({ ...p, file: p.files[sel.skin] })), moved, of }; // a body part placed differently for another tone is its own entry
+}
+
+async function buildLayers(sel, view = null) {
+  const P = view && view.name !== 'stand' ? await posed(sel, view.act, view.frame) : null;
   // Every sprite file the look needs is requested at once (not one after another: on a phone each request waits for the network, so
   // a look of 25 parts took seconds). Layers keep the order they were added in, which decides how same-height parts stack.
   const jobs = [];
@@ -200,17 +226,22 @@ async function buildLayers(sel) {
   const twoHanded = isTwoHanded(sel);
   const partsFor = x => (twoHanded && x.parts2) || x.parts;
   const skin = catalog.skins.find(s => s.tone === sel.skin);
-  add(partsFor(skin));
+  add(P ? P.skin : partsFor(skin));
   for (const kind of ['face', 'hair']) {
     const st = sel[kind].style == null ? null : catalog[kind][sel[kind].style];
     const v = st && (st.variants.find(x => x.colour === sel[kind].colour) ?? st.variants[0]);
-    if (v && partsFor(v)) add(partsFor(v));
+    if (!v || !partsFor(v)) continue;
+    if (!P) add(partsFor(v));
+    else if (kind === 'face') { if (P.face) add(P.moved(v.parts)); }
+    else add(v.live ? P.moved(v.parts) : P.of(`poses/hair/${v.id}.json`, v.parts));
   }
-  base.forEach((item, n) => add(partsFor(item), 0, 0, 0, `base${n}`)); // the undergarments, drawn as part of the body
+  base.forEach((item, n) => add(P ? P.of(`poses/w/${item.id}.json`, item.parts) : partsFor(item), 0, 0, 0, `base${n}`)); // the undergarments, drawn as part of the body
   for (const slot of WEAR_ORDER) {
     const w = sel.wear[slot];
     const item = catalog.wearables[slot]?.items.find(i => i.id === w.item);
-    if (item) add(partsFor(item), ...dyeOf(item, w), slot);
+    if (!item) continue;
+    if (P && !P.face && (slot === 'faceAcc' || slot === 'eyeAcc')) continue; // the face is turned away (ladder, rope)
+    add(P ? P.of(`poses/w/${item.id}.json`, item.parts) : partsFor(item), ...dyeOf(item, w), slot);
   }
   for (const slot of RING_SLOTS) {
     if (DISABLED_SLOTS.has(slot)) continue;
@@ -268,8 +299,8 @@ const ringWorn = sel => RING_SLOTS.some(slot => sel.wear[slot].item != null);
 // Composes `sel` into a canvas of its own and runs `paint(buf, source)` in the same step. Every call gets a fresh canvas on purpose:
 // WebKit (the engine of every iPhone browser) reads a canvas late when it is drawn into another one, so with one shared canvas that
 // the next card then overwrote, each thumbnail showed its neighbour's picture.
-async function withScene(sel, paint) {
-  const buf = composite(await buildLayers(sel), W, H);
+async function withScene(sel, paint, view = null) {
+  const buf = composite(await buildLayers(sel, view), W, H);
   const source = document.createElement('canvas');
   source.width = W; source.height = H;
   source.getContext('2d').putImageData(new ImageData(buf.data, W, H), 0, 0);
@@ -332,7 +363,8 @@ async function renderPreview() {
     paintFocus($('preview'), box.width - 2, box.height - 2, n, focus, source, true);
     $('preview').dataset.view = `${viewW}x${viewH}`; // the frame in sprite pixels (read by the tests)
     $('preview').dataset.zoom = n; // device pixels per sprite pixel (read by the tests)
-  });
+    $('preview').dataset.pose = pose.name === 'stand' ? 'stand' : `${pose.name}:${pose.act}:${pose.frame}`; // read by the tests
+  }, pose);
 }
 
 async function drawThumb(canvas, boxEl, sel, view) {
@@ -1153,6 +1185,49 @@ function saveDefault() {
   try { localStorage.setItem(SAVE_KEY, JSON.stringify(pack())); flash('Saved as your default'); }
   catch { flash('Could not save: browser storage is blocked'); }
 }
+// Plays a pose: the attack once and back to standing, the ladder and rope over and over until another button is pressed. Every frame is
+// built once before it starts (fetching its pictures), so the motion does not stutter.
+let poseRun = 0;
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+async function playPose(name) {
+  const run = ++poseRun;
+  if (name === 'stand') { pose = { name }; poseButtons(); return renderPreview(); }
+  const body = await fetchPose('poses/body.json');
+  if (!body) { flash('Could not load the poses'); return; }
+  const act = name === 'attack' ? await attackOf(state) : name, frames = body.actions[act];
+  await Promise.all(frames.map((_, frame) => buildLayers(state, { name, act, frame })));
+  if (run !== poseRun) return;
+  for (let i = 0; ; i = (i + 1) % frames.length) {
+    pose = { name, act, frame: i }; poseButtons();
+    await renderPreview();
+    await sleep(frames[i].delay);
+    if (run !== poseRun) return;
+    if (name === 'attack' && i === frames.length - 1) { pose = { name: 'stand' }; poseButtons(); return renderPreview(); }
+  }
+}
+const stopPose = () => { poseRun++; pose = { name: 'stand' }; };
+// The pose buttons' icons: little black silhouettes of each motion, drawn on a 16 x 16 pixel grid like the sprites.
+const POSE_ICONS = {
+  stand: ['', '......####', '......####', '......####', '.......##', '.....######', '....#.####.#', '....#.####.#', '....#.####.#', '......####', '......#..#', '......#..#', '......#..#', '.....##..##'],
+  attack: ['..............##', '.............##', '......####..##', '......####.##', '......####.#', '.......##.#', '.....######', '....#.####', '...#..####', '......####', '......#..#', '.....#....#', '....#......#', '...##......##'],
+  ladder: ['..#..........#', '..############', '..#.#......#.#', '..#.#.####.#.#', '..#.#.####.#.#', '..####.##.####', '..#..######..#', '..#...####...#', '..#####..#####', '..#...####...#', '..#...#..#...#', '..#...#..#...#', '..####.##.####', '..#..........#', '..#..........#'],
+  rope: ['.......##', '.......##', '......####', '.....#.##.#', '.....######', '.....######', '......####', '.......##', '.....######', '.....######', '......####', '......####', '.....#.##.#', '....##.##.##', '.......##', '.......##'],
+};
+const POSES = [['stand', 'Stand'], ['attack', 'Attack (plays once)'], ['ladder', 'Climb a ladder'], ['rope', 'Climb a rope']];
+const poseSvg = rows => `<svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">${rows.flatMap((r, y) => [...r].map((c, x) => c === '#' ? `<rect x="${x}" y="${y}" width="1" height="1"/>` : '')).join('')}</svg>`;
+function poseButtons() {
+  const box = $('pose-tools');
+  if (!box) return;
+  if (mode === 'housing') return box.replaceChildren();
+  if (!box.children.length) box.append(...POSES.map(([name, label]) => {
+    const b = el('button', { className: 'tool pose', type: 'button', title: label });
+    b.setAttribute('aria-label', label); b.dataset.pose = name;
+    b.innerHTML = poseSvg(POSE_ICONS[name]);
+    b.onclick = () => playPose(name);
+    return b;
+  }));
+  for (const b of box.children) b.setAttribute('aria-pressed', String(b.dataset.pose === pose.name));
+}
 const ICONS = {
   random: '<rect width="12" height="12" x="2" y="10" rx="2" ry="2"/><path d="m17.92 14 3.5-3.5a2.24 2.24 0 0 0 0-3l-5-4.92a2.24 2.24 0 0 0-3 0L10 6"/><path stroke-width="3" d="M6 18h.01M10 14h.01M15 6h.01M18 9h.01"/>', // two dice (the Lucide "dices" icon, ISC licence, as in the mockup)
   save: '<path d="M5 3h11l3 3v15H5zM8 3v5h7V3M8 21v-7h8v7"/>',
@@ -1172,7 +1247,7 @@ function stageTools() {
   : [
     make('random', 'Randomise look', randomise),
     make('save', 'Save as my default', saveDefault),
-    make('reset', 'Back to my default', resetToDefault)]));
+    make('reset', 'Back to my default', resetToDefault)]));  poseButtons();
 }
 
 // The two books, as tabs along the top of the page: dressing up a character, and decorating a home.
@@ -1192,6 +1267,7 @@ async function setMode(m) {
     try { await housing.load({ el, $, iconBox, flash, refresh: () => { renderTabs(); renderContent(true); renderColour(); } }); }
     catch { flash('Could not load the housing data'); return; }
   }
+  stopPose();
   lastTab[mode] = activeTab; mode = m; activeTab = lastTab[m]; search = ''; note('');
   document.querySelector('.app').classList.toggle('housing', m === 'housing');
   renderBooks();

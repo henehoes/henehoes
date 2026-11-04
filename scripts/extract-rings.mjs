@@ -24,8 +24,8 @@ const nameOf = id => { const n = ringStrings.getFromPath(String(id)); return ((n
 // The client lists two identical White Label Rings (1112100 and 1112222); only the first is kept.
 const SKIP = new Set([1112222]);
 // The rings that are released in Classic: White Label, MapleStory Fest, Classic Beginnings, Founder's, Chocolate, Ink-and-Wash (tags) and
-// Kitty, Classic Beginnings, MapleStory Fest, Founder's, Ink-and-Wash, Chocolate (chat bubbles). Everything else is datamine.
-const RELEASED = new Set([1112100, 1112109, 1112108, 1112110, 1112113, 1112223, 1112215, 1112219, 1112220, 1112221, 1112227, 1112231]);
+// Kitty, Classic Beginnings, MapleStory Fest, Founder's, Ink-and-Wash, Chocolate (chat bubbles), and the Teddy Bear chat bubble (Mystery Fashion Crate, 04/11/2026). Everything else is datamine.
+const RELEASED = new Set([1112100, 1112109, 1112108, 1112110, 1112113, 1112223, 1112215, 1112219, 1112220, 1112221, 1112227, 1112231, 1112217]);
 // Chat bubbles whose sample picture has no text in it (found by looking at all 81 pictures): the client draws the text on top. The app does
 // the same only where the game records the text colour (`clr`) of the bubble's UI design: that is the case for the Ink-and-Wash bubble
 // alone (design 28, white). The other blank bubbles point at designs the client does not have, so their colour is unknown and they are

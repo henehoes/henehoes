@@ -25,7 +25,7 @@ const settle = () => new Promise(r => setTimeout(r, 700));
 
 const start = await pixels();
 check('preview draws something', start.n > 500, `(${start.n} px)`);
-check('on load the Released tab is open, on Mystery Fashion and its newest box (Halloween)', (await page.$eval('.tab[aria-selected="true"]', e => e.title)).startsWith('Released') && (await page.$eval('#content .past-tab[aria-selected="true"]', e => e.textContent)) === 'Mystery Fashion' && (await page.$eval('#content .pill[aria-pressed="true"]', e => e.textContent)) === 'Oct 28 – Nov 4 · Halloween');
+check('on load the Released tab is open, on Mystery Fashion and its newest box (Nov 4)', (await page.$eval('.tab[aria-selected="true"]', e => e.title)).startsWith('Released') && (await page.$eval('#content .past-tab[aria-selected="true"]', e => e.textContent)) === 'Mystery Fashion' && (await page.$eval('#content .pill[aria-pressed="true"]', e => e.textContent)) === 'Nov 4 – Nov 18');
 check('Released and Upcoming close the rail, below Chat Ring, and never carry a checkmark', await page.$$eval('.tab', ts => { const t = ts.map(x => x.title); const n = t.length; return t[n - 2].startsWith('Released') && t[n - 1].startsWith('Possible') && t[n - 3] === 'Chat Ring' && !ts[n - 2].querySelector('.tick') && !ts[n - 1].querySelector('.tick'); }));
 
 // Nothing is worn at the start: no face and no hair
@@ -434,9 +434,9 @@ check('Chestnut is listed under male hair', (await names()).includes('Chestnut')
   await showSource('Released');
   await clickTab('Chat Ring'); await settle();
   const chatCards = await labels();
-  check('Chat bubble, Released: the six released bubbles', JSON.stringify(chatCards) === JSON.stringify(['Kitty Chat Ring', 'Classic Beginnings Chat Ring', 'MapleStory Fest 2026 Chat Ring', "Founder's Chat Ring", 'Ink-and-Wash Thought Bubble Ring', 'Chocolate Chat Ring']), chatCards.join(', '));
+  check('Chat bubble, Released: the seven released bubbles', JSON.stringify(chatCards) === JSON.stringify(['Kitty Chat Ring', 'Teddy Bear Chat Ring', 'Classic Beginnings Chat Ring', 'MapleStory Fest 2026 Chat Ring', "Founder's Chat Ring", 'Ink-and-Wash Thought Bubble Ring', 'Chocolate Chat Ring']), chatCards.join(', '));
   await showSource('All · Datamine');
-  check('Chat bubble, All · Datamine: all 81 bubbles', (await labels()).length === 81 && (await page.$$('#content .card .unreleased-badge')).length === 75, String((await labels()).length));
+  check('Chat bubble, All · Datamine: all 81 bubbles', (await labels()).length === 81 && (await page.$$('#content .card .unreleased-badge')).length === 74, String((await labels()).length));
   await showSource('Released');
   await page.evaluate(() => [...document.querySelectorAll('#content .card')].find(c => c.querySelector('.label')?.textContent === 'Kitty Chat Ring').click()); await settle(); await settle();
   check('wearing a chat ring puts it in the Equipped panel, with no text boxes (it is shown as in the game)', await page.evaluate(() => [...document.querySelectorAll('#colour .slot .card')].some(c => c.dataset.slot === 'Chat Ring') && !document.querySelector('#colour .text-field, #colour input[type="text"]')));
@@ -524,7 +524,7 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   check('Fit counts follow the view (the upcoming hats)', (await page.$eval('#source .source-group:last-child .seg button', b => b.textContent)) === `All (${upcoming('cap').length})`);
   await crateBtn('Released'); await settle();
   check('Released view: every released hat, no note, no UPCOMING badges', (await cards()).length === HATS.length && !(await page.$('#content .empty-note')) && !(await page.$$eval('#content .card', cs => cs.some(c => c.textContent.includes('UPCOMING')))));
-  for (const [tab, n] of [['Top', 'coat'], ['Overall', 'longcoat'], ['Bottom', 'pants'], ['Shoes', 'shoes'], ['Gloves', 'glove'], ['Cape', 'cape'], ['Weapon', 'weapon'], ['Face accessory', 'faceAcc'], ['Eye decoration', 'eyeAcc']].map(([t, k]) => [t, upcoming(k).length])) {
+  for (const [tab, n] of [['Top', 'coat'], ['Overall', 'longcoat'], ['Bottom', 'pants'], ['Shoes', 'shoes'], ['Gloves', 'glove'], ['Cape', 'cape'], ['Weapon', 'weapon'], ['Face accessory', 'faceAcc'], ['Eye decoration', 'eyeAcc']].map(([t, k]) => [t, upcoming(k).length]).filter(([, n]) => n)) { // slots with no upcoming item left have no Upcoming view to check
     await clickTab(tab); await crateBtn('Upcoming'); await settle();
     check(`${tab} tab: Upcoming view lists ${n} items`, (await cards()).length === n, `${(await cards()).length}`);
     await crateBtn('Released'); await settle();
@@ -563,10 +563,12 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   const pickTab = async l => { await page.evaluate(l => [...document.querySelectorAll('#content .past-tab')].find(t => t.textContent === l).click(), l); await settle(); };
   const pills = [await pillsOf()]; await pickTab('Mystery Styles'); pills.push(await pillsOf()); const stylesOpen = await page.$eval('#content .pill[aria-pressed="true"]', e => e.textContent);
   await pickTab('Aurora'); pills.push(await pillsOf()); await pickTab('Mystery Fashion');
-  check('Released tab: each category shows only its own pills, date first, newest last', JSON.stringify(pills) === JSON.stringify([["Oct 6 – Oct 28 · Founder's", 'Oct 21 – Nov 4', 'Oct 28 – Nov 4 · Halloween'], ['Oct 6 – Oct 28', 'Oct 28 – Nov 11'], ['Season 1']]) && stylesOpen === 'Oct 28 – Nov 11', JSON.stringify(pills));
-  check('Past tab: the Halloween crate is selected at first and its 50 items are drawn below all the categories', (await page.$$eval('#content .pill[aria-pressed="true"]', p => p.map(x => x.textContent))).join() === 'Oct 28 – Nov 4 · Halloween' && (await page.$$('#content .past-title ~ .grid .card')).length === 50 && (await page.$$('#content .past-title ~ .grid .rate-badge')).length === 0 && (await page.$$eval('#content .past-title ~ .grid .card', c => c.filter(x => /\d%$/.test(x.title)).length)) === 50);
-  const catOf = { "Oct 6 – Oct 28 · Founder's": 'Mystery Fashion', 'Oct 21 – Nov 4': 'Mystery Fashion', 'Oct 6 – Oct 28': 'Mystery Styles', 'Oct 28 – Nov 11': 'Mystery Styles', 'Season 1': 'Aurora', 'Oct 28 – Nov 4 · Halloween': 'Mystery Fashion' };
+  check('Released tab: each category shows only its own pills, date first, newest last', JSON.stringify(pills) === JSON.stringify([["Oct 6 – Oct 28 · Founder's", 'Oct 21 – Nov 4', 'Oct 28 – Nov 4 · Halloween', 'Nov 4 – Nov 18'], ['Oct 6 – Oct 28', 'Oct 28 – Nov 11'], ['Season 1']]) && stylesOpen === 'Oct 28 – Nov 11', JSON.stringify(pills));
+  check('Past tab: the Nov 4 crate is selected at first and its 50 items are drawn below all the categories, with no rates (the page prints none)', (await page.$$eval('#content .pill[aria-pressed="true"]', p => p.map(x => x.textContent))).join() === 'Nov 4 – Nov 18' && (await page.$$('#content .past-title ~ .grid .card')).length === 50 && (await page.$$('#content .past-title ~ .grid .rate-badge')).length === 0 && (await page.$$eval('#content .past-title ~ .grid .card', c => c.filter(x => /\d%$/.test(x.title)).length)) === 0);
+  const catOf = { "Oct 6 – Oct 28 · Founder's": 'Mystery Fashion', 'Oct 21 – Nov 4': 'Mystery Fashion', 'Oct 6 – Oct 28': 'Mystery Styles', 'Oct 28 – Nov 11': 'Mystery Styles', 'Season 1': 'Aurora', 'Oct 28 – Nov 4 · Halloween': 'Mystery Fashion', 'Nov 4 – Nov 18': 'Mystery Fashion' };
   const pickPill = async label => { await pickTab(catOf[label]); await page.evaluate(l => [...document.querySelectorAll('#content .pill')].find(p => p.textContent === l).click(), label); await settle(); };
+  await pickPill('Oct 28 – Nov 4 · Halloween');
+  check('Past tab: the Halloween crate holds its 50 items with their listed rates', (await page.$$('#content .past-title ~ .grid .card')).length === 50 && (await page.$$eval('#content .past-title ~ .grid .card', c => c.filter(x => /\d%$/.test(x.title)).length)) === 50);
   const shown = () => page.$$('#content .past-title ~ .grid .card').then(c => c.length);
   const expected = { "Oct 6 – Oct 28 · Founder's": 50, 'Oct 21 – Nov 4': 50, 'Oct 6 – Oct 28': 24, 'Oct 28 – Nov 11': 24, 'Season 1': 26 };
   const got = {}; for (const [label] of Object.entries(expected)) { await pickPill(label); got[label] = await shown(); }

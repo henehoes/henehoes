@@ -177,8 +177,7 @@
    "file": "sprites/ring/1112217.png",
    "w": 64,
    "h": 46,
-   "design": 20,
-   "released": false
+   "design": 20
   },
   {
    "name": "Scoreboard Chat Ring",

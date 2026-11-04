@@ -1,5 +1,5 @@
 {
- "_comment": "Dyeable equipment in the game files that is not in the catalogue (the possible-upcoming list). UNCONFIRMED: dyeable may hint at items for an upcoming release, nothing more. `released: true` marks items that have since come out (the Halloween box, 28/10/2026): build-catalog.mjs lists them as ordinary released items. Written by scripts/extract-upcoming.mjs, which keeps the `released` flags.",
+ "_comment": "Dyeable equipment in the game files that is not in the catalogue (the possible-upcoming list). UNCONFIRMED: dyeable may hint at items for an upcoming release, nothing more. `released: true` marks items that have since come out (the Halloween box, 28/10/2026, and the Nov 4 Mystery Fashion Crate, 04/11/2026): build-catalog.mjs lists them as ordinary released items. Written by scripts/extract-upcoming.mjs, which keeps the `released` flags.",
  "items": [
   {
    "id": 1007013,
@@ -21,27 +21,32 @@
   {
    "id": 1007043,
    "name": "Starry Sky Blue Beanie",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007053,
    "name": "Bunny Hat",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007058,
    "name": "Blue Pajama Hat",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007072,
    "name": "Olive Beanie",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007074,
    "name": "Woodsman Hat",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007102,
@@ -52,7 +57,8 @@
   {
    "id": 1007103,
    "name": "Old School Uniform Hat",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007104,
@@ -69,12 +75,14 @@
   {
    "id": 1007132,
    "name": "Grey Visor Beanie",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007133,
    "name": "Teddy Bear Headgear",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007135,
@@ -85,12 +93,14 @@
   {
    "id": 1007137,
    "name": "Superstar Headphones",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007274,
    "name": "Pink Knitted Gumball",
-   "folder": "Cap"
+   "folder": "Cap",
+   "released": true
   },
   {
    "id": 1007287,
@@ -165,7 +175,8 @@
   {
    "id": 1017015,
    "name": "Bandage Strip",
-   "folder": "Accessory"
+   "folder": "Accessory",
+   "released": true
   },
   {
    "id": 1017021,
@@ -182,7 +193,8 @@
   {
    "id": 1017088,
    "name": "Ice Cold Red",
-   "folder": "Accessory"
+   "folder": "Accessory",
+   "released": true
   },
   {
    "id": 1027019,
@@ -193,22 +205,26 @@
   {
    "id": 1027022,
    "name": "Medical Eye Patch",
-   "folder": "Accessory"
+   "folder": "Accessory",
+   "released": true
   },
   {
    "id": 1027028,
    "name": "Green Sports Goggles",
-   "folder": "Accessory"
+   "folder": "Accessory",
+   "released": true
   },
   {
    "id": 1047015,
    "name": "Pink Snowboard Top",
-   "folder": "Coat"
+   "folder": "Coat",
+   "released": true
   },
   {
    "id": 1047021,
    "name": "Blue Polka-Dot Pajama Top",
-   "folder": "Coat"
+   "folder": "Coat",
+   "released": true
   },
   {
    "id": 1047023,
@@ -219,7 +235,8 @@
   {
    "id": 1047044,
    "name": "Old School Blazer",
-   "folder": "Coat"
+   "folder": "Coat",
+   "released": true
   },
   {
    "id": 1047058,
@@ -230,27 +247,32 @@
   {
    "id": 1047075,
    "name": "Old School Uniform Top",
-   "folder": "Coat"
+   "folder": "Coat",
+   "released": true
   },
   {
    "id": 1047089,
    "name": "Pink Down Parka",
-   "folder": "Coat"
+   "folder": "Coat",
+   "released": true
   },
   {
    "id": 1047094,
    "name": "Pelvis Hoodie",
-   "folder": "Coat"
+   "folder": "Coat",
+   "released": true
   },
   {
    "id": 1047095,
    "name": "Red Hooded Coat",
-   "folder": "Coat"
+   "folder": "Coat",
+   "released": true
   },
   {
    "id": 1047135,
    "name": "Bomber Jacket",
-   "folder": "Coat"
+   "folder": "Coat",
+   "released": true
   },
   {
    "id": 1047193,
@@ -313,7 +335,8 @@
   {
    "id": 1057057,
    "name": "Bunny Costume",
-   "folder": "Longcoat"
+   "folder": "Longcoat",
+   "released": true
   },
   {
    "id": 1057058,
@@ -324,22 +347,26 @@
   {
    "id": 1057089,
    "name": "Blue Kitty Hood",
-   "folder": "Longcoat"
+   "folder": "Longcoat",
+   "released": true
   },
   {
    "id": 1057094,
    "name": "Black Fur Wrap Coat",
-   "folder": "Longcoat"
+   "folder": "Longcoat",
+   "released": true
   },
   {
    "id": 1057095,
    "name": "Kitty Hoodie",
-   "folder": "Longcoat"
+   "folder": "Longcoat",
+   "released": true
   },
   {
    "id": 1057099,
    "name": "Teddy Bear Costume",
-   "folder": "Longcoat"
+   "folder": "Longcoat",
+   "released": true
   },
   {
    "id": 1057100,
@@ -350,7 +377,8 @@
   {
    "id": 1057128,
    "name": "Blue Snow Flower Wear",
-   "folder": "Longcoat"
+   "folder": "Longcoat",
+   "released": true
   },
   {
    "id": 1057154,
@@ -382,12 +410,14 @@
   {
    "id": 1067013,
    "name": "Pink Snowboard Pants",
-   "folder": "Pants"
+   "folder": "Pants",
+   "released": true
   },
   {
    "id": 1067018,
    "name": "Blue Polka-Dot Pajama Pants",
-   "folder": "Pants"
+   "folder": "Pants",
+   "released": true
   },
   {
    "id": 1067020,
@@ -398,22 +428,26 @@
   {
    "id": 1067045,
    "name": "Old School Uniform Pants",
-   "folder": "Pants"
+   "folder": "Pants",
+   "released": true
   },
   {
    "id": 1067065,
    "name": "Old School Uniform Skirt",
-   "folder": "Pants"
+   "folder": "Pants",
+   "released": true
   },
   {
    "id": 1067078,
    "name": "Amorian Pink Skirt",
-   "folder": "Pants"
+   "folder": "Pants",
+   "released": true
   },
   {
    "id": 1067079,
    "name": "Bunny-Padded Snowboard Pants",
-   "folder": "Pants"
+   "folder": "Pants",
+   "released": true
   },
   {
    "id": 1067166,
@@ -424,7 +458,8 @@
   {
    "id": 1067174,
    "name": "Patched Denim Jeans",
-   "folder": "Pants"
+   "folder": "Pants",
+   "released": true
   },
   {
    "id": 1077014,
@@ -435,22 +470,26 @@
   {
    "id": 1077018,
    "name": "Blue Marble Slippers",
-   "folder": "Shoes"
+   "folder": "Shoes",
+   "released": true
   },
   {
    "id": 1077020,
    "name": "Bunny Slippers",
-   "folder": "Shoes"
+   "folder": "Shoes",
+   "released": true
   },
   {
    "id": 1077023,
    "name": "Pink Galoshes",
-   "folder": "Shoes"
+   "folder": "Shoes",
+   "released": true
   },
   {
    "id": 1077030,
    "name": "Big Rabbit Feet",
-   "folder": "Shoes"
+   "folder": "Shoes",
+   "released": true
   },
   {
    "id": 1077034,
@@ -461,17 +500,20 @@
   {
    "id": 1077053,
    "name": "Teddy Bear Shoes",
-   "folder": "Shoes"
+   "folder": "Shoes",
+   "released": true
   },
   {
    "id": 1077058,
    "name": "Mix-n-Match Sneakers",
-   "folder": "Shoes"
+   "folder": "Shoes",
+   "released": true
   },
   {
    "id": 1077087,
    "name": "White High Top",
-   "folder": "Shoes"
+   "folder": "Shoes",
+   "released": true
   },
   {
    "id": 1077099,
@@ -505,7 +547,8 @@
   {
    "id": 1087019,
    "name": "Teddy Bear Gloves",
-   "folder": "Glove"
+   "folder": "Glove",
+   "released": true
   },
   {
    "id": 1087036,
@@ -533,12 +576,14 @@
   {
    "id": 1107013,
    "name": "Cuddle Bear",
-   "folder": "Cape"
+   "folder": "Cape",
+   "released": true
   },
   {
    "id": 1107016,
    "name": "My Buddy Rex",
-   "folder": "Cape"
+   "folder": "Cape",
+   "released": true
   },
   {
    "id": 1107052,
@@ -556,25 +601,29 @@
    "id": 1702013,
    "name": "Teddy Bear",
    "folder": "Weapon",
-   "weaponClass": 30
+   "weaponClass": 30,
+   "released": true
   },
   {
    "id": 1702017,
    "name": "Pink Rabbit Puppet",
    "folder": "Weapon",
-   "weaponClass": 47
+   "weaponClass": 47,
+   "released": true
   },
   {
    "id": 1702019,
    "name": "Pillow",
    "folder": "Weapon",
-   "weaponClass": 30
+   "weaponClass": 30,
+   "released": true
   },
   {
    "id": 1702026,
    "name": "White Rabbit's Foot",
    "folder": "Weapon",
-   "weaponClass": 47
+   "weaponClass": 47,
+   "released": true
   },
   {
    "id": 1702036,

@@ -1,5 +1,5 @@
 {
- "_comment": "Past crates and boxes and what each held, for the Past tab. Hand-maintained: names (matched to catalogue items by name) and the listed drop rates, as supplied by the user. `items: []` with `pending: true` means the contents have not been added yet (a placeholder, not an empty box). A hair/face entry needs `kind` and `gender`. build-catalog.mjs resolves the names into catalog.boxes and warns about any it cannot find. `pill` is the short name shown on the box's pill (omit it for an unnamed box: the pill then shows just the dates); `name` is the full name shown above the contents. Sources (saved Nexon cash shop update pages, 29/10/2026): Founder's crate, Aurora crate and the Oct 6 Mystery Styles from the Grand Launch page; Mystery Fashion Crate (Oct 21) and Halloween crate and the Oct 28 Mystery Styles from the Oct 28 page. Only these boxes are listed: pets, packs, megaphones, 10-day equip covers, Signature coupons and other shop items are not. Rates are only known for the Halloween crate (supplied by the user); the pages link to the rates but do not print them. The post corrected the female Oct 28 hair list: Cecelia Twist, not Rockstar Hair. `match` on an item is the catalogue name to look for when the box's name differs (the game's hair names carry a colour prefix: Black Wild Tangles Hair, Black Romantic Braid Hair). `latest: true` marks the newest box, which the Released tab always opens on. A group's `tab` is the short label on its tab (the Released tab shows tabs, not the long `title`). `start` and `end` (UTC, ISO) are the times the Nexon update pages print for each box: the pages print the last minute (7:59 AM), so the box is on rotation up to and including that minute. A start with no time (2026-10-06, 2026-10-21) is a date only: the pages say \"End of Maintenance\" and \"Start of Grand Launch\" without a time. The page uses them for the On rotation / Out of rotation labels.",
+ "_comment": "Past crates and boxes and what each held, for the Past tab. Hand-maintained: names (matched to catalogue items by name) and the listed drop rates, as supplied by the user. `items: []` with `pending: true` means the contents have not been added yet (a placeholder, not an empty box). A hair/face entry needs `kind` and `gender`. build-catalog.mjs resolves the names into catalog.boxes and warns about any it cannot find. `pill` is the short name shown on the box's pill (omit it for an unnamed box: the pill then shows just the dates); `name` is the full name shown above the contents. Sources (saved Nexon cash shop update pages, 29/10/2026 and 04/11/2026): Founder's crate, Aurora crate and the Oct 6 Mystery Styles from the Grand Launch page; Mystery Fashion Crate (Oct 21) and Halloween crate and the Oct 28 Mystery Styles from the Oct 28 page; Mystery Fashion Crate (Nov 4) from the Nov 4 page. The Nov 4 crate has no `end`: the page says it runs to \"Wednesday, November 18 (Start of Maintenance)\" without a time, so no end time or countdown is shown until it is known. Only these boxes are listed: pets, packs, megaphones, 10-day equip covers, Signature coupons and other shop items are not. Rates are only known for the Halloween crate (supplied by the user); the pages link to the rates but do not print them. The post corrected the female Oct 28 hair list: Cecelia Twist, not Rockstar Hair. `match` on an item is the catalogue name to look for when the box's name differs (the game's hair names carry a colour prefix: Black Wild Tangles Hair, Black Romantic Braid Hair). `latest: true` marks the newest box, which the Released tab always opens on. A group's `tab` is the short label on its tab (the Released tab shows tabs, not the long `title`). `start` and `end` (UTC, ISO) are the times the Nexon update pages print for each box: the pages print the last minute (7:59 AM), so the box is on rotation up to and including that minute. A start with no time (2026-10-06, 2026-10-21) is a date only: the pages say \"End of Maintenance\" and \"Start of Grand Launch\" without a time. The page uses them for the On rotation / Out of rotation labels.",
  "groups": [
   {
    "id": "mystery-crates",
@@ -533,8 +533,166 @@
        "name": "Stealth Suit",
        "rate": 2.0
       }
-     ],
-     "latest": true
+     ]
+    },
+    {
+     "id": "mystery-crate-nov4",
+     "name": "Mystery Fashion Crate",
+     "dates": "Nov 4 – Nov 18",
+     "start": "2026-11-04T08:00Z",
+     "latest": true,
+     "items": [
+      {
+       "name": "Teddy Bear Headgear"
+      },
+      {
+       "name": "Teddy Bear Costume"
+      },
+      {
+       "name": "Teddy Bear Gloves"
+      },
+      {
+       "name": "Teddy Bear Shoes"
+      },
+      {
+       "name": "Cuddle Bear"
+      },
+      {
+       "name": "Teddy Bear"
+      },
+      {
+       "name": "Teddy Bear Chat Ring"
+      },
+      {
+       "name": "Woodsman Hat"
+      },
+      {
+       "name": "Bomber Jacket"
+      },
+      {
+       "name": "Patched Denim Jeans"
+      },
+      {
+       "name": "Green Sports Goggles"
+      },
+      {
+       "name": "Pillow"
+      },
+      {
+       "name": "Olive Beanie"
+      },
+      {
+       "name": "Blue Kitty Hood"
+      },
+      {
+       "name": "Mix-n-Match Sneakers"
+      },
+      {
+       "name": "Bandage Strip"
+      },
+      {
+       "name": "Starry Sky Blue Beanie"
+      },
+      {
+       "name": "Pelvis Hoodie"
+      },
+      {
+       "name": "Big Rabbit Feet"
+      },
+      {
+       "name": "Bunny-Padded Snowboard Pants"
+      },
+      {
+       "name": "White Rabbit's Foot"
+      },
+      {
+       "name": "Grey Visor Beanie"
+      },
+      {
+       "name": "Black Fur Wrap Coat"
+      },
+      {
+       "name": "Pink Knitted Gumball"
+      },
+      {
+       "name": "Pink Snowboard Top"
+      },
+      {
+       "name": "Pink Snowboard Pants"
+      },
+      {
+       "name": "Pink Galoshes"
+      },
+      {
+       "name": "Blue Pajama Hat"
+      },
+      {
+       "name": "Blue Polka-Dot Pajama Top"
+      },
+      {
+       "name": "Blue Polka-Dot Pajama Pants"
+      },
+      {
+       "name": "Blue Marble Slippers"
+      },
+      {
+       "name": "Bunny Hat"
+      },
+      {
+       "name": "Bunny Costume"
+      },
+      {
+       "name": "Bunny Slippers"
+      },
+      {
+       "name": "Pink Rabbit Puppet"
+      },
+      {
+       "name": "Old School Uniform Hat"
+      },
+      {
+       "name": "Old School Blazer"
+      },
+      {
+       "name": "Old School Uniform Pants"
+      },
+      {
+       "name": "White High Top"
+      },
+      {
+       "name": "Medical Eye Patch"
+      },
+      {
+       "name": "My Buddy Rex"
+      },
+      {
+       "name": "Old School Uniform Top"
+      },
+      {
+       "name": "Old School Uniform Skirt"
+      },
+      {
+       "name": "Superstar Headphones"
+      },
+      {
+       "name": "Blue Snow Flower Wear"
+      },
+      {
+       "name": "Ice Cold Red"
+      },
+      {
+       "name": "Kitty Hoodie"
+      },
+      {
+       "name": "Pink Down Parka"
+      },
+      {
+       "name": "Amorian Pink Skirt"
+      },
+      {
+       "name": "Red Hooded Coat"
+      }
+     ]
     }
    ]
   },

@@ -254,7 +254,7 @@ input { font: inherit; border-radius: 0; }
   .tab:hover { transform: none; }
   .tab[aria-selected="true"] { transform: translateY(-3px); }
   .tab.first { margin-top: 0; margin-left: 10px; }
-  .tab.lookup { margin-bottom: 0; margin-right: 10px; }
+  .tab.lookup, .tab.looks { margin-bottom: 0; margin-right: 10px; }
   .tab.past { margin-top: 0; margin-left: 10px; }
   .topbar { order: 0; }
   .cover { order: 2; flex: none; }
@@ -297,9 +297,10 @@ input { font: inherit; border-radius: 0; }
 #s-Brightness::-moz-range-track { background: linear-gradient(90deg, #000, #fff); }
 
 /* Search tab: brass tab with a magnifier, and headings between the groups of results */
-.tab.lookup[aria-selected="true"] { background: var(--maple); color: oklch(99% .01 90); }
+.tab.lookup[aria-selected="true"], .tab.looks[aria-selected="true"] { background: var(--maple); color: oklch(99% .01 90); }
+.tab.looks { background: oklch(82% .1 350 / .85); color: var(--ink); } /* the Look Book: a pink sticky under Search */
 .tab.lookup { background: oklch(84% .15 92 / .85); color: var(--ink); } /* the same small sticky as the others, in yellow, with a magnifier */
-@media (min-width: 801px) { .tab.lookup { margin-bottom: 8px; } } /* a gap under it in the side column; on a phone it sits in the row and must stretch to the same height as the others */
+@media (min-width: 801px) { .tab.lookup, .tab.looks { margin-bottom: 8px; } } /* a gap under it in the side column; on a phone it sits in the row and must stretch to the same height as the others */
 .tab-glass { margin: 0 6px 3px 0; border-color: currentColor; }
 .tab-glass::after { background: currentColor; }
 .group-title { display: flex; align-items: center; gap: 8px; margin: 14px 0 10px; font: 400 17px var(--font-pixel); color: var(--sepia); }

@@ -445,13 +445,14 @@ check('Chestnut is listed under male hair', (await names()).includes('Chestnut')
   await page.evaluate(() => [...document.querySelectorAll('#content .card')].find(c => c.querySelector('.label')?.textContent === 'Kitty Chat Ring').click()); await settle(); // take it off again
   check('clicking the worn ring takes it off', !(await page.evaluate(() => [...document.querySelectorAll('#colour .slot .card')].some(c => c.dataset.slot === 'Chat Ring'))));
   // a look saved with the old placeholder "Maple" opens with "henehoe"; an emptied Name box falls back to it too
-  await page.evaluate(() => localStorage.setItem('maple-layers:default-v2', JSON.stringify({ skin: 0, face: { key: null }, hair: { key: null }, wear: {}, text: { name: 'Maple' } })));
+  await page.evaluate(() => { localStorage.removeItem('maple-layers:looks-v1'); localStorage.setItem('maple-layers:default-v2', JSON.stringify({ skin: 0, face: { key: null }, hair: { key: null }, wear: {}, text: { name: 'Maple' } })); }); // an old saved default: it becomes the Look Book's first look
   await page.reload({ waitUntil: 'networkidle0' }); await settle();
   await clickTab('Name Ring'); await settle();
   await page.evaluate(() => [...document.querySelectorAll('#content .card')].find(c => c.querySelector('.label')?.textContent === 'Chocolate Label Ring').click()); await settle(); await settle();
   check('Name box: a look saved with the old "Maple" opens with "henehoe"', await page.evaluate(() => document.querySelector('#colour .text-field input')?.value) === 'henehoe');
   check('Name box: its placeholder is "henehoe"', await page.evaluate(() => document.querySelector('#colour .text-field input')?.placeholder) === 'henehoe');
-  await page.evaluate(() => localStorage.removeItem('maple-layers:default-v2')); await page.reload({ waitUntil: 'networkidle0' }); await settle();
+  check('Look Book: the old saved default became its first look', await page.evaluate(() => JSON.parse(localStorage.getItem('maple-layers:looks-v1')).map(x => x.id).join()) === 'look-1');
+  await page.evaluate(() => { localStorage.removeItem('maple-layers:default-v2'); localStorage.removeItem('maple-layers:looks-v1'); }); await page.reload({ waitUntil: 'networkidle0' }); await settle();
   await clickTab('Name Ring'); await settle();
 }
 await clickTab('Top'); await settle();
@@ -703,6 +704,37 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
     const t2 = await play('twoHanded');
     check('Two-handed swing: the ladder in between keeps the count (swing 2 next)', acts(t2).join() === 'swingT2', JSON.stringify(t2));
   }
+}
+
+// ---- Look Book: saving adds a look each time; opening the tab changes nothing; a card wears its look; its x deletes it ----
+{
+  const looks = () => page.evaluate(() => JSON.parse(localStorage.getItem('maple-layers:looks-v1') ?? '[]').map(x => x.id).join());
+  const shot = () => page.$eval('#preview', c => c.toDataURL());
+  const save = async () => { await page.click('#stage-tools [title^="Save to the Look Book"]'); await settle(); };
+  const before = await looks();
+  await save(); const first = await shot();
+  await clickTab('Hat'); await settle();
+  await page.evaluate(() => [...document.querySelectorAll('#content .grid .card:not(.none)')].find(c => c.getAttribute('aria-pressed') !== 'true').click()); await settle();
+  await save();
+  const ids = (await looks()).split(',');
+  check('Look Book: each save adds a new look (never overwrites)', ids.length === (before ? before.split(',').length : 0) + 2 && new Set(ids).size === ids.length, ids.join());
+  await clickTab('Hat'); await settle();
+  await page.evaluate(() => [...document.querySelectorAll('#content .grid .card:not(.none)')].find(c => c.getAttribute('aria-pressed') !== 'true').click()); await settle();
+  const working = await shot();
+  await clickTab('Look Book'); await settle(); await settle();
+  check('Look Book: opening the tab does not change the character', (await shot()) === working);
+  const labels = await page.$$eval('#content .looks .card', c => c.map(x => x.querySelector('.label').textContent));
+  check('Look Book: newest first, numbered, each with a hover x', /^Look \d+ · /.test(labels[0]) && labels.length === ids.length && (await page.$$('#content .looks .slot .remove')).length === labels.length, labels.join(' | '));
+  await page.evaluate(() => document.querySelectorAll('#content .looks .card')[1].click()); await settle(); await settle();
+  check('Look Book: clicking a card wears that look and stays on the tab', (await shot()) === first && (await page.$eval('#chapter', e => e.textContent)) === 'Look Book');
+  await clickTab('Hat'); await settle();
+  await page.evaluate(() => [...document.querySelectorAll('#content .grid .card:not(.none)')].find(c => c.getAttribute('aria-pressed') !== 'true').click()); await settle();
+  await page.click('#stage-tools [title^="Undo changes"]'); await settle(); await settle();
+  check('Undo: goes back to the look last loaded from the book', (await shot()) === first);
+  await clickTab('Look Book'); await settle();
+  await page.hover('#content .looks .slot'); await page.click('#content .looks .slot .remove'); await settle();
+  check('Look Book: the x deletes that look', (await looks()).split(',').length === ids.length - 1 && (await page.$$('#content .looks .card')).length === ids.length - 1);
+  await page.evaluate(() => localStorage.removeItem('maple-layers:looks-v1'));
 }
 
 // ---- Housing book ----

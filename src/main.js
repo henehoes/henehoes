@@ -107,9 +107,10 @@ const fresh = () => ({
 });
 // The starting look: a male body in the lowest-numbered skin, no face, no hair and nothing worn.
 const initial = () => fresh();
-// ---------- saved default (kept in this browser, so it is still there when the page is reopened) ----------
+// ---------- the Look Book: saved looks (kept in this browser, so they are still there when the page is reopened) ----------
 const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
-const SAVE_KEY = 'maple-layers:default-v2'; // v2: colour values are the game's tone/chroma/brightness numbers
+const SAVE_KEY = 'maple-layers:default-v2'; // the single saved default from before the Look Book: it becomes the book's first look
+const LOOKS_KEY = 'maple-layers:looks-v1'; // [{ id, saved (ISO time), look (pack()) }], oldest first
 // Styles are stored by their key, not their list position, so a catalogue update cannot shift them.
 const pack = () => ({
   gender, sex: state.sex, skin: state.skin, text: state.text,
@@ -117,9 +118,9 @@ const pack = () => ({
   hair: { key: styleOf('hair')?.key ?? null, colour: state.hair.colour },
   wear: Object.fromEntries(WEAR_ORDER.map(k => [k, { ...state.wear[k] }])),
 });
-function loadSaved() {
+// A packed look back as a state (anything no longer in the catalogue is left off), or null when it cannot be read.
+function unpack(d) {
   try {
-    const d = JSON.parse(localStorage.getItem(SAVE_KEY));
     if (!d) return null;
     const s = fresh();
     if (catalog.skins.some(x => x.tone === d.skin)) s.skin = d.skin;
@@ -136,9 +137,22 @@ function loadSaved() {
     // A look saved before the placeholder became "henehoe" carries the old placeholder "Maple": show the new one instead.
     if (typeof d.text?.name === 'string') s.text = { name: d.text.name === 'Maple' ? DEFAULT_NAME : d.text.name.slice(0, 12) };
     return { state: s, gender: ['male', 'female'].includes(d.gender) ? d.gender : 'all' };
-  } catch { return null; } // storage blocked or the saved data is damaged: start from the normal default
+  } catch { return null; } // the saved data is damaged: start from the normal default
 }
-const hasSaved = () => { try { return localStorage.getItem(SAVE_KEY) != null; } catch { return false; } };
+// The saved looks, oldest first. The first time, a default saved before the Look Book existed becomes its first look.
+function readLooks() {
+  try {
+    const raw = localStorage.getItem(LOOKS_KEY);
+    if (raw) return JSON.parse(raw).filter(x => x && x.id && x.look);
+    const old = JSON.parse(localStorage.getItem(SAVE_KEY));
+    const looks = old ? [{ id: 'look-1', saved: new Date().toISOString(), look: old }] : [];
+    localStorage.setItem(LOOKS_KEY, JSON.stringify(looks));
+    return looks;
+  } catch { return []; } // storage blocked or damaged
+}
+const writeLooks = looks => localStorage.setItem(LOOKS_KEY, JSON.stringify(looks));
+// The look last loaded from the book or saved into it: the stage's undo button goes back to it. null: a blank character.
+let baseline = null; // { id, look }
 
 let gender = 'all'; // which styles the Face and Hair tabs list: 'all' (the default), 'male' or 'female'
 let state = fresh();
@@ -406,8 +420,8 @@ function only(patch) {
 const note = text => { $('ph-note').textContent = text; };
 
 // Chapter tabs down the right edge of the book. Short names keep the rail narrow; the chapter title shows the full one.
-const TAB_NAMES = { search: 'All', faceAcc: 'Face Acc.', eyeAcc: 'Eye Deco', longcoat: 'Overall', nameTag: 'Name Ring', chatBalloon: 'Chat Ring', upcoming: 'Upcoming', past: 'Released' };
-const CHAPTER_TITLES = { past: 'Released Crates & Styles', upcoming: 'Possible Upcoming Crates', search: 'Search Everything', body: 'Body', face: 'Faces', hair: 'Hairstyles', cap: 'Hats', faceAcc: 'Face Accessories', eyeAcc: 'Eye Decorations', earrings: 'Earrings', longcoat: 'Overalls', coat: 'Tops', pants: 'Bottoms', glove: 'Gloves', shoes: 'Shoes', cape: 'Capes', weapon: 'Weapons', nameTag: 'Name Rings', chatBalloon: 'Chat Rings' };
+const TAB_NAMES = { looks: 'Look Book', search: 'All', faceAcc: 'Face Acc.', eyeAcc: 'Eye Deco', longcoat: 'Overall', nameTag: 'Name Ring', chatBalloon: 'Chat Ring', upcoming: 'Upcoming', past: 'Released' };
+const CHAPTER_TITLES = { looks: 'Look Book', past: 'Released Crates & Styles', upcoming: 'Possible Upcoming Crates', search: 'Search Everything', body: 'Body', face: 'Faces', hair: 'Hairstyles', cap: 'Hats', faceAcc: 'Face Accessories', eyeAcc: 'Eye Decorations', earrings: 'Earrings', longcoat: 'Overalls', coat: 'Tops', pants: 'Bottoms', glove: 'Gloves', shoes: 'Shoes', cape: 'Capes', weapon: 'Weapons', nameTag: 'Name Rings', chatBalloon: 'Chat Rings' };
 
 function renderTabs() {
   const tabs = $('tabs');
@@ -436,6 +450,7 @@ function renderTabs() {
     tabs.append(t);
   };
   add('search', 'Search', false, 'lookup');
+  add('looks', 'Look Book: your saved looks', false, 'looks');
   add('body', 'Body', false, 'character');
   add('face', 'Face', state.face.style != null, 'character');
   add('hair', 'Hair', state.hair.style != null, 'character');
@@ -453,7 +468,7 @@ function renderFilters() {
   const box = $('filters');
   box.replaceChildren();
   $('source').replaceChildren();
-  if (activeTab === 'past' || activeTab === 'upcoming') return; // Released and Upcoming are browsed by category and box, so they have no search bar
+  if (activeTab === 'past' || activeTab === 'upcoming' || activeTab === 'looks') return; // browsed by category, box or date, so no search bar
   const everything = activeTab === 'search';
   const input = el('input', { type: 'search', className: 'search-input', placeholder: everything ? 'Search everything…' : 'Search entries…', value: search, autocomplete: 'off', spellcheck: false });
   input.setAttribute('aria-label', everything ? 'Search body, faces, hairs and clothing' : 'Search this list');
@@ -763,6 +778,7 @@ function renderContent(keepScroll = false) {
   $('toolbar').replaceChildren();
   if (mode === 'housing') { housing.renderContent(c, activeTab, matches, () => afterChangeKeep(true)); c.scrollTop = keepScroll ? top : 0; return; }
   if (activeTab === 'search') renderSearch(c);
+  else if (activeTab === 'looks') renderLooks(c);
   else if (activeTab === 'body') renderBody(c)
   else if (activeTab === 'upcoming') renderUpcoming(c)
   else if (activeTab === 'past') renderPast(c);
@@ -1179,21 +1195,51 @@ function randomise() {
   state = s;
   afterChange();
 }
-function resetToDefault() {
-  const saved = loadSaved();
+// Loads a packed look into the stage (and remembers it for the undo button).
+function wearLook(entry) {
+  const saved = entry && unpack(entry.look);
   if (saved) { state = saved.state; gender = saved.gender; } else state = initial();
+  baseline = saved ? { id: entry.id, look: entry.look } : null;
   configTarget = null;
-  afterChangeKeep(false);
 }
+// The undo button: back to the look last loaded or saved, dropping the changes since.
+function undoChanges() { wearLook(baseline); afterChangeKeep(true); }
 function flash(message) {
   const note = $('stage-note');
   note.textContent = message; note.classList.add('show');
   clearTimeout(flash.timer);
   flash.timer = setTimeout(() => note.classList.remove('show'), 1600);
 }
-function saveDefault() {
-  try { localStorage.setItem(SAVE_KEY, JSON.stringify(pack())); flash('Saved as your default'); }
-  catch { flash('Could not save: browser storage is blocked'); }
+// Saving always adds a new look to the book; it never overwrites the one you started from.
+function saveLook() {
+  try {
+    const looks = readLooks(), n = Math.max(0, ...looks.map(x => Number(x.id.split('-')[1]) || 0)) + 1;
+    const entry = { id: `look-${n}`, saved: new Date().toISOString(), look: pack() };
+    writeLooks([...looks, entry]);
+    baseline = { id: entry.id, look: entry.look };
+    flash('Saved to your Look Book');
+    if (activeTab === 'looks') renderContent(true);
+    renderTabs();
+  } catch { flash('Could not save: browser storage is blocked'); }
+}
+// The Look Book tab: every saved look, newest first, as a whole-body card. Opening it changes nothing; clicking a card wears that look.
+// Hovering (or tabbing to) a card shows an x that deletes it, as on the Equipped tiles.
+const lookDate = iso => { const d = new Date(iso); return isNaN(d) ? 'Saved look' : d.toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }); };
+function renderLooks(c) {
+  const looks = readLooks().reverse();
+  if (!looks.length) return c.append(infoNote(el('strong', { textContent: 'No saved looks yet.' }), ' Press the save button on the stage to add the look you are wearing. Every save adds a new look here.'));
+  const grid = el('div', { className: 'grid looks' });
+  for (const entry of looks) {
+    const label = `Look ${entry.id.split('-')[1]} · ${lookDate(entry.saved)}`; // numbered: two looks saved in one minute stay apart
+    const card = optionCard(label, baseline?.id === entry.id, BODY_VIEW, () => unpack(entry.look)?.state ?? initial(), () => { wearLook(entry); afterChangeKeep(true); });
+    card.querySelector('.art-box').classList.add('tall');
+    card.title = `${label}: click to wear this look`;
+    const x = el('button', { className: 'remove', type: 'button', title: `Delete ${label}` });
+    x.setAttribute('aria-label', x.title);
+    x.onclick = () => { try { writeLooks(readLooks().filter(l => l.id !== entry.id)); } catch { flash('Could not delete: browser storage is blocked'); } renderContent(true); };
+    grid.append(el('div', { className: 'slot' }, card, x));
+  }
+  c.append(grid);
 }
 // Plays a pose. An attack motion plays its next action once (each click the next: swing 1, 2, 3, 1, ...) and then rests in the motion's
 // stance; the ladder climbs twice and goes back to the stance it left (`resting`). Every frame is built once before it starts (fetching
@@ -1287,8 +1333,8 @@ function stageTools() {
     make('trash', 'Clear all furniture from this home', () => { housing.clearAll(); afterChangeKeep(true); })]
   : [
     make('random', 'Randomise look', randomise),
-    make('save', 'Save as my default', saveDefault),
-    make('reset', 'Back to my default', resetToDefault)]));  poseButtons();
+    make('save', 'Save to the Look Book (adds a new look)', saveLook),
+    make('reset', 'Undo changes since the look was loaded or saved', undoChanges)]));  poseButtons();
 }
 
 // The two books, as tabs along the top of the page: dressing up a character, and decorating a home.
@@ -1344,8 +1390,7 @@ async function init() {
   stageTools();
   renderBooks();
   loadBackdrop();
-  const saved = loadSaved();
-  if (saved) { state = saved.state; gender = saved.gender; } else state = initial();
+  wearLook(readLooks().at(-1)); // the page opens on the newest saved look (a blank character when there is none)
   afterChangeKeep();
   // Redraw at the right pixel sizes when the window changes size or moves to another display.
   let timer;

@@ -103,6 +103,7 @@ input { font: inherit; border-radius: 0; }
 .colour .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .colour .chip { padding: 3px 9px; background: var(--bench-deep); box-shadow: 0 -2px 0 0 var(--bench-line), 0 2px 0 0 var(--bench-line), -2px 0 0 0 var(--bench-line), 2px 0 0 0 var(--bench-line); color: var(--bench-text); font: 13px/1.3 var(--font-text); }
 .panel-section .btn-row { margin-top: 12px; }
+.btn-row + .panel-section { margin-top: 16px; } /* the dye buttons of a non-weapon item, then Availability: the same gap as after a section */
 .colour .hint { margin: 0; color: var(--bench-dim); font: 13px var(--font-text); }
 .colour .equipped.grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; padding: 3px; }
 .equipped .card.mini { width: 68px; }

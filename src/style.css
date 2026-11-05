@@ -218,6 +218,8 @@ input { font: inherit; border-radius: 0; }
 .card[aria-pressed="true"]::after { content: ""; position: absolute; top: -6px; right: -6px; width: 16px; height: 16px; background: var(--maple) var(--check-white) center / 10px 8px no-repeat; z-index: 2; }
 .art-box { position: relative; height: 84px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
 .art-box.tall { height: 128px; } /* the Body tab's and Look Book's cards: the whole body, feet at the bottom (the top where it was at 120px) */
+.art-box.tall:has(+ .label) { height: 122px; } /* a Body card: drawn to just under the feet, so feet to name and name to the bottom are the same gap */
+.art-box.tall + .label { padding-top: 5px; height: calc(1.2em + 5px); }
 .art-box canvas { display: block; position: absolute; top: 0; image-rendering: pixelated; }
 .icon { image-rendering: pixelated; height: auto; }
 .card .label { padding: 4px 4px 0; margin-bottom: 5px; height: calc(1.2em + 4px); display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; } /* one line, so every card is the same size and no space is wasted; a longer name is cut off with an ellipsis (the full name is the tooltip) */

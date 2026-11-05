@@ -30,7 +30,8 @@ const ART_H = 84;                                // card art height, CSS px
 const VIEW = { scale: 1.5, focus: [OX + 20, OY + 15] };  // shared crop for every skin, face and hair card, in the catalogue and the Equipped panel: head and chest
 // The Equipped panel's small preview tiles: the whole head and a little chest at 1 css px per sprite px (a whole-number zoom, so still crisp).
 // The Body tab's cards show the whole body (undergarments, plus the worn face and hair) in a taller art box (`.art-box.tall`, 120px), at the same 1.5x.
-const BODY_VIEW = { scale: 1.5, focus: [OX + 21, OY + 27], feet: OY + 70 }; // feet: the scene row kept at the bottom edge, so the feet always fit (a tall hat may run off the top)
+const BODY_VIEW = { scale: 1.5, focus: [OX + 21, OY + 27], feet: OY + 66 }; // feet: the scene row kept at the bottom edge (here just under the feet: the skin name follows), so the feet always fit
+const LOOK_VIEW = { ...BODY_VIEW, feet: OY + 70 }; // a Look Book card has no name under it: a little room below the feet
 const MINI_VIEW = { scale: 1, focus: [OX + 21, OY + 15], centre: true }; // centre: put whatever is drawn in the middle of the tile
 const MINI_ART = 44;                              // art height of a small Equipped tile, CSS px
 const SHORT_LABEL = { faceAcc: 'Face', eyeAcc: 'Eye' }; // category names shortened for the small tiles
@@ -1242,7 +1243,7 @@ function renderLooks(c) {
   const grid = el('div', { className: 'grid looks' });
   for (const entry of looks) {
     const label = `Look ${entry.id.split('-')[1]} · ${lookDate(entry.saved)}`; // numbered, so two looks saved in one minute stay apart
-    const card = optionCard(label, baseline?.id === entry.id, BODY_VIEW, () => unpack(entry.look)?.state ?? initial(), () => { wearLook(entry); afterChangeKeep(true); });
+    const card = optionCard(label, baseline?.id === entry.id, LOOK_VIEW, () => unpack(entry.look)?.state ?? initial(), () => { wearLook(entry); afterChangeKeep(true); });
     card.querySelector('.art-box').classList.add('tall');
     card.querySelector('.label').remove(); // pictures only: the number and date are the tooltip
     card.title = `${label}: click to wear this look`; card.setAttribute('aria-label', label);

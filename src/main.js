@@ -405,17 +405,20 @@ async function renderPreview() {
   }, pose, PREVIEW_PAD);
 }
 
-// The middle of the bare body (head to feet, side to side) in scene coordinates, measured once from a body wearing nothing.
-let bodyMiddle = null;
-async function bodyCentre() {
-  return bodyMiddle ??= withScene(fresh(), buf => {
+// The bare body (head to feet, side to side) in scene coordinates, measured once from a body wearing nothing: { middle, height }.
+let bareBody = null;
+async function bodyBox() {
+  return bareBody ??= withScene(fresh(), buf => {
     let x0 = W, x1 = -1, y0 = H, y1 = -1;
     for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (buf.data[(y * W + x) * 4 + 3]) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
-    return [(x0 + x1 + 1) / 2, (y0 + y1 + 1) / 2];
+    return { middle: [(x0 + x1 + 1) / 2, (y0 + y1 + 1) / 2], height: y1 - y0 + 1 };
   });
 }
+const BODY_MARGIN = 9; // sprite pixels above the head and below the feet on a Look Book card
 async function drawThumb(canvas, boxEl, sel, view) {
-  const middle = view.body ? await bodyCentre() : null;
+  const body = view.body ? await bodyBox() : null;
+  // A Look Book card is as tall as the body at this zoom, plus a margin: at any zoom the whole body fits, centred.
+  if (body) boxEl.style.height = `${(body.height + 2 * BODY_MARGIN) * Math.max(1, Math.round(view.scale * dpr())) / dpr()}px`;
   await withScene(sel, (buf, source) => {
     const box = boxEl.getBoundingClientRect();
     let focus = view.focus;
@@ -427,7 +430,7 @@ async function drawThumb(canvas, boxEl, sel, view) {
     }
     const n = Math.max(1, Math.round(view.scale * dpr()));
     if (view.feet) focus = [focus[0], view.feet - box.height * dpr() / n / 2];
-    if (middle) focus = middle;
+    if (body) focus = body.middle;
     paintFocus(canvas, box.width, box.height, n, focus, source);
   });
 }

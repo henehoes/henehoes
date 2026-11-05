@@ -88,7 +88,7 @@ input { font: inherit; border-radius: 0; }
 /* ---- Equipped panel (the workbench) ---- */
 .colour {
   grid-column: 1 / -1; grid-row: 2; min-height: 96px; overflow: auto; padding: 12px; --c: var(--bench-line);
-  background-color: var(--bench); background-image: radial-gradient(circle at 2px 2px, oklch(100% 0 0 / .7) 1px, transparent 1.5px); background-size: 12px 12px;
+  background-color: oklch(95.5% .022 230); background-image: radial-gradient(circle at 2px 2px, oklch(100% 0 0 / .7) 1px, transparent 1.5px); background-size: 12px 12px; /* the bench colour a quarter of the way to white */
   box-shadow: 0 -3px 0 0 var(--c), 0 3px 0 0 var(--c), -3px 0 0 0 var(--c), 3px 0 0 0 var(--c), 6px 6px 0 0 var(--drop);
 }
 .colour h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; font: 600 16px var(--font-pixel); color: var(--head); }

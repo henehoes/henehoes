@@ -212,6 +212,7 @@ input { font: inherit; border-radius: 0; }
   transition: transform 80ms steps(2, end);
 }
 .card:hover { transform: translateY(-2px); background: var(--paper-deep); }
+.grid.looks { padding: 8px 8px 0 0; } /* room for each card's x, which sits over its top-right corner (the list scrolls, so it would be cut off) */
 .looks .slot .card { width: 100%; padding-bottom: 6px; } /* a Look Book card has no caption: it fills its column like the Body tab's (inside the slot that holds its x) */
 .card[aria-pressed="true"] { --c: var(--maple); background: oklch(82% .14 85 / .4); color: var(--maple-deep); }
 .card[aria-pressed="true"]::after { content: ""; position: absolute; top: -6px; right: -6px; width: 16px; height: 16px; background: var(--maple) var(--check-white) center / 10px 8px no-repeat; z-index: 2; }

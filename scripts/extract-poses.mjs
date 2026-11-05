@@ -18,13 +18,12 @@ import { image, png, originOf, at, str, val } from './lib-wz.mjs';
 const MOTIONS = {
   oneHanded: { acts: ['swingO1', 'swingO2', 'swingO3'], rest: 'stand1' },
   stab: { acts: ['stabO1', 'stabO2'], rest: 'stand1' },
-  twoHanded: { acts: ['swingT1', 'swingT2', 'swingT3'], rest: 'stand2' },
+  twoHanded: { acts: ['swingT1', 'swingT2', 'swingT3'], fallback: ['swingP1', 'swingP2'], rest: 'stand2' }, // the polearm swings are nearly the same: used only by a weapon with no two-handed swing
   spear: { acts: ['stabT1', 'stabT2'], rest: 'stand2' },
-  polearm: { acts: ['swingP1', 'swingP2'], rest: 'stand2' },
   bow: { acts: ['shoot1'], rest: 'stand1' },
   crossbow: { acts: ['shoot2'], rest: 'stand2' },
 };
-const ACTIONS = [...Object.values(MOTIONS).flatMap(m => m.acts), 'stand2', 'ladder'];
+const ACTIONS = [...Object.values(MOTIONS).flatMap(m => [...m.acts, ...m.fallback ?? []]), 'stand2', 'ladder'];
 const SKIN_TONES = [0, 1, 2, 3, 4, 5, 9, 10, 11, 12, 13];
 const FOLDERS = { 100: 'Cap', 101: 'Accessory', 102: 'Accessory', 103: 'Accessory', 104: 'Coat', 105: 'Longcoat', 106: 'Pants', 107: 'Shoes', 108: 'Glove', 110: 'Cape', 170: 'Weapon' };
 const POINT_ORDER = ['brow', 'hand', 'handMove', 'navel', 'neck'];

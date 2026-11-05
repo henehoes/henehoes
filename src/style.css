@@ -75,8 +75,8 @@ input { font: inherit; border-radius: 0; }
 .tool:active, .small-btn:active { transform: translateY(2px); box-shadow: 0 -3px 0 0 var(--bench-line), 0 3px 0 0 var(--bench-line), -3px 0 0 0 var(--bench-line), 3px 0 0 0 var(--bench-line), inset 0 2px 0 0 var(--brass-dark); }
 .stage-tools { position: absolute; top: 12px; left: 12px; display: flex; gap: 10px; z-index: 2; }
 .tool { width: 30px; height: 30px; padding: 0; }
-.pose-tools { position: absolute; left: 12px; bottom: 12px; display: flex; flex-direction: column; gap: 10px; z-index: 2; }
-.pose-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.pose-tools { position: absolute; right: 12px; top: 12px; bottom: 12px; display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; z-index: 2; pointer-events: none; }
+.pose-row { display: flex; flex-direction: column; flex-wrap: wrap-reverse; justify-content: flex-end; align-content: flex-end; gap: 10px; max-height: 100%; pointer-events: auto; } /* a short stage (phones) wraps it into a second column on the left */
 .tool.pose:disabled { opacity: .35; filter: grayscale(1); cursor: not-allowed; transform: none; }
 .tool.pose { color: oklch(20% .02 60); }
 .tool.pose[aria-pressed="true"] { background: linear-gradient(to bottom, var(--brass), var(--brass-dark)); box-shadow: 0 -3px 0 0 var(--bench-line), 0 3px 0 0 var(--bench-line), -3px 0 0 0 var(--bench-line), 3px 0 0 0 var(--bench-line), inset 0 2px 0 0 var(--brass-dark); }

@@ -307,11 +307,14 @@ const ringWorn = sel => RING_SLOTS.some(slot => sel.wear[slot].item != null);
 // Composes `sel` into a canvas of its own and runs `paint(buf, source)` in the same step. Every call gets a fresh canvas on purpose:
 // WebKit (the engine of every iPhone browser) reads a canvas late when it is drawn into another one, so with one shared canvas that
 // the next card then overwrote, each thumbnail showed its neighbour's picture.
-async function withScene(sel, paint, view = null) {
-  const buf = composite(await buildLayers(sel, view), W, H);
+// `pad` sprite pixels are added on every side (the preview: a big weapon effect reaches far past the character); scene point (x, y)
+// is at (x + pad, y + pad) in `buf` and `source`.
+async function withScene(sel, paint, view = null, pad = 0) {
+  const w = W + 2 * pad, h = H + 2 * pad;
+  const buf = composite((await buildLayers(sel, view)).map(l => pad ? { ...l, x: l.x + pad, y: l.y + pad } : l), w, h);
   const source = document.createElement('canvas');
-  source.width = W; source.height = H;
-  source.getContext('2d').putImageData(new ImageData(buf.data, W, H), 0, 0);
+  source.width = w; source.height = h;
+  source.getContext('2d').putImageData(new ImageData(buf.data, w, h), 0, 0);
   return paint(buf, source);
 }
 
@@ -336,7 +339,7 @@ function drawBackdrop(ctx, n, startX, startY, canvasW, canvasH) {
   const rows = Math.max(1, Math.ceil((canvasH - dy) / h)), first = Math.floor(-dx / w), last = Math.floor((canvasW - dx) / w);
   for (let iy = 0; iy < rows; iy++) for (let ix = first; ix <= last; ix++) tile(dx + ix * w, dy + iy * h, Math.abs(ix) % 2 === 1, iy % 2 === 1);
 }
-function paintFocus(canvas, boxW, boxH, n, focus, source, withBackdrop = false) {
+function paintFocus(canvas, boxW, boxH, n, focus, source, withBackdrop = false, pad = 0) {
   const d = dpr();
   const sw = Math.ceil(boxW * d / n), sh = Math.ceil(boxH * d / n);
   canvas.width = sw * n; canvas.height = sh * n;
@@ -348,10 +351,11 @@ function paintFocus(canvas, boxW, boxH, n, focus, source, withBackdrop = false) 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   const startX = Math.round(focus[0] - sw / 2), startY = Math.round(focus[1] - sh / 2);
   if (withBackdrop && backdrop) drawBackdrop(ctx, n, startX, startY, canvas.width, canvas.height);
-  ctx.drawImage(source, startX, startY, sw, sh, 0, 0, canvas.width, canvas.height);
+  ctx.drawImage(source, startX + pad, startY + pad, sw, sh, 0, 0, canvas.width, canvas.height);
 }
 
 let renderToken = 0;
+const PREVIEW_PAD = 256; // room around the preview's scene for a weapon effect, which is drawn whole even past the stage's edges
 async function renderPreview() {
   if (mode === 'housing') return housing.renderStage();
   poseButtons(); // the motions the worn weapon has
@@ -363,17 +367,18 @@ async function renderPreview() {
     let viewW = PREVIEW_VIEW, viewH = PREVIEW_VIEW, focus = PREVIEW_FOCUS;
     if (ringWorn(state)) {
       let x0 = CENTRE_X - 28, x1 = CENTRE_X + 28, y0 = OY - 15, y1 = OY + 72;
-      for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (buf.data[(y * W + x) * 4 + 3]) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+      const bw = W + 2 * PREVIEW_PAD; // the frame fits what is in the unpadded scene, as before (an effect may run off the stage)
+      for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (buf.data[((y + PREVIEW_PAD) * bw + x + PREVIEW_PAD) * 4 + 3]) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
       viewH = Math.max(PREVIEW_VIEW, y1 - y0 + 8); viewW = Math.max(PREVIEW_VIEW, x1 - x0 + 8); // each axis on its own: a wide bubble must not shrink a stage that is wide anyway
       focus = [(x0 + x1) / 2, (y0 + y1) / 2];
     }
     // The biggest whole-number scale that fits both ways, allowing the edges to crop by up to 5%.
     const n = Math.max(1, Math.floor(Math.min((box.width - 2) / viewW, (box.height - 2) / viewH) * dpr() / 0.95));
-    paintFocus($('preview'), box.width - 2, box.height - 2, n, focus, source, true);
+    paintFocus($('preview'), box.width - 2, box.height - 2, n, focus, source, true, PREVIEW_PAD);
     $('preview').dataset.view = `${viewW}x${viewH}`; // the frame in sprite pixels (read by the tests)
     $('preview').dataset.zoom = n; // device pixels per sprite pixel (read by the tests)
     $('preview').dataset.pose = pose.name === 'stand' ? 'stand' : `${pose.name}:${pose.act}:${pose.frame}`; // read by the tests
-  }, pose);
+  }, pose, PREVIEW_PAD);
 }
 
 async function drawThumb(canvas, boxEl, sel, view) {

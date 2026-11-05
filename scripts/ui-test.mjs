@@ -26,7 +26,7 @@ const settle = () => new Promise(r => setTimeout(r, 700));
 const start = await pixels();
 check('preview draws something', start.n > 500, `(${start.n} px)`);
 check('on load the Released tab is open, on Mystery Fashion and its newest box (Nov 4)', (await page.$eval('.tab[aria-selected="true"]', e => e.title)).startsWith('Released') && (await page.$eval('#content .past-tab[aria-selected="true"]', e => e.textContent)) === 'Mystery Fashion' && (await page.$eval('#content .pill[aria-pressed="true"]', e => e.textContent)) === 'Nov 4 – Nov 18');
-check('Released and Upcoming close the rail, below Chat Ring, and never carry a checkmark', await page.$$eval('.tab', ts => { const t = ts.map(x => x.title); const n = t.length; return t[n - 2].startsWith('Released') && t[n - 1].startsWith('Possible') && t[n - 3] === 'Chat Ring' && !ts[n - 2].querySelector('.tick') && !ts[n - 1].querySelector('.tick'); }));
+check('the Look Book, Released and Upcoming close the rail, below Chat Ring, and never carry a checkmark', await page.$$eval('.tab', ts => { const t = ts.map(x => x.title); const n = t.length; return t[n - 2].startsWith('Released') && t[n - 1].startsWith('Possible') && t[n - 3].startsWith('Look Book') && t[n - 4] === 'Chat Ring' && ![n - 3, n - 2, n - 1].some(i => ts[i].querySelector('.tick')); }));
 
 // Nothing is worn at the start: no face and no hair
 const selectedNames = async tab => { await clickTab(tab); await settle(); return page.$$eval('#content .grid .card[aria-pressed="true"] .label', els => els.map(e => e.textContent)); };
@@ -445,14 +445,14 @@ check('Chestnut is listed under male hair', (await names()).includes('Chestnut')
   await page.evaluate(() => [...document.querySelectorAll('#content .card')].find(c => c.querySelector('.label')?.textContent === 'Kitty Chat Ring').click()); await settle(); // take it off again
   check('clicking the worn ring takes it off', !(await page.evaluate(() => [...document.querySelectorAll('#colour .slot .card')].some(c => c.dataset.slot === 'Chat Ring'))));
   // a look saved with the old placeholder "Maple" opens with "henehoe"; an emptied Name box falls back to it too
-  await page.evaluate(() => { localStorage.removeItem('maple-layers:looks-v1'); localStorage.setItem('maple-layers:default-v2', JSON.stringify({ skin: 0, face: { key: null }, hair: { key: null }, wear: {}, text: { name: 'Maple' } })); }); // an old saved default: it becomes the Look Book's first look
+  await page.evaluate(() => { localStorage.removeItem('maple-layers:looks-v1'); localStorage.removeItem('maple-layers:working-v1'); localStorage.setItem('maple-layers:default-v2', JSON.stringify({ skin: 0, face: { key: null }, hair: { key: null }, wear: {}, text: { name: 'Maple' } })); }); // an old saved default: it becomes the Look Book's first look
   await page.reload({ waitUntil: 'networkidle0' }); await settle();
   await clickTab('Name Ring'); await settle();
   await page.evaluate(() => [...document.querySelectorAll('#content .card')].find(c => c.querySelector('.label')?.textContent === 'Chocolate Label Ring').click()); await settle(); await settle();
   check('Name box: a look saved with the old "Maple" opens with "henehoe"', await page.evaluate(() => document.querySelector('#colour .text-field input')?.value) === 'henehoe');
   check('Name box: its placeholder is "henehoe"', await page.evaluate(() => document.querySelector('#colour .text-field input')?.placeholder) === 'henehoe');
   check('Look Book: the old saved default became its first look', await page.evaluate(() => JSON.parse(localStorage.getItem('maple-layers:looks-v1')).map(x => x.id).join()) === 'look-1');
-  await page.evaluate(() => { localStorage.removeItem('maple-layers:default-v2'); localStorage.removeItem('maple-layers:looks-v1'); }); await page.reload({ waitUntil: 'networkidle0' }); await settle();
+  await page.evaluate(() => { localStorage.removeItem('maple-layers:default-v2'); localStorage.removeItem('maple-layers:looks-v1'); localStorage.removeItem('maple-layers:working-v1'); }); await page.reload({ waitUntil: 'networkidle0' }); await settle();
   await clickTab('Name Ring'); await settle();
 }
 await clickTab('Top'); await settle();
@@ -467,6 +467,7 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   const phone = await browser.newPage();
   await phone.setViewport({ width: 390, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
   await phone.goto('http://localhost:5173/', { waitUntil: 'networkidle0' });
+  await phone.evaluate(() => localStorage.removeItem('maple-layers:working-v1')); await phone.reload({ waitUntil: 'networkidle0' }); // start bare, not with the desktop page's character
   const wait = ms => new Promise(r => setTimeout(r, ms)); await wait(900);
   const openTab = label => phone.evaluate(l => [...document.querySelectorAll('.tab')].find(t => t.title.startsWith(l)).click(), label);
   await openTab('Hair'); await wait(900);
@@ -723,8 +724,10 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   const working = await shot();
   await clickTab('Look Book'); await settle(); await settle();
   check('Look Book: opening the tab does not change the character', (await shot()) === working);
-  const labels = await page.$$eval('#content .looks .card', c => c.map(x => x.querySelector('.label').textContent));
-  check('Look Book: newest first, numbered, each with a hover x', /^Look \d+ · /.test(labels[0]) && labels.length === ids.length && (await page.$$('#content .looks .slot .remove')).length === labels.length, labels.join(' | '));
+  const widths = await page.$$eval('#content .looks .card', c => c.map(x => x.offsetWidth));
+  check('Look Book: the cards are drawn at full width (they once collapsed to nothing without a caption)', widths.length && widths.every(v => v >= 95), widths.join());
+  const labels = await page.$$eval('#content .looks .card', c => c.map(x => (x.querySelector('.label') ? '!' : '') + x.getAttribute('aria-label')));
+  check('Look Book: pictures only (no caption), newest first, numbered and dated in the tooltip, each with a hover x', /^Look \d+ · /.test(labels[0]) && labels[0].split(' ')[1] > labels[1].split(' ')[1] && labels.length === ids.length && (await page.$$('#content .looks .slot .remove')).length === labels.length, labels.join(' | '));
   await page.evaluate(() => document.querySelectorAll('#content .looks .card')[1].click()); await settle(); await settle();
   check('Look Book: clicking a card wears that look and stays on the tab', (await shot()) === first && (await page.$eval('#chapter', e => e.textContent)) === 'Look Book');
   await clickTab('Hat'); await settle();
@@ -734,6 +737,15 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   await clickTab('Look Book'); await settle();
   await page.hover('#content .looks .slot'); await page.click('#content .looks .slot .remove'); await settle();
   check('Look Book: the x deletes that look', (await looks()).split(',').length === ids.length - 1 && (await page.$$('#content .looks .card')).length === ids.length - 1);
+  await clickTab('Hat'); await settle();
+  await page.evaluate(() => [...document.querySelectorAll('#content .grid .card:not(.none)')].find(c => c.getAttribute('aria-pressed') !== 'true').click()); await settle();
+  await clickTab('Look Book'); await settle();
+  const wearing = await shot(), worn = () => page.$$eval('#colour .equipped .card', c => c.map(x => x.title).join(' | '));
+  const wornBefore = await worn();
+  while ((await page.$$('#content .looks .slot')).length) { await page.hover('#content .looks .slot'); await page.click('#content .looks .slot .remove'); await settle(); }
+  check('Look Book: deleting every look keeps the character on the stage', (await shot()) === wearing && (await worn()) === wornBefore);
+  await page.reload({ waitUntil: 'networkidle0' }); await settle(); await settle();
+  check('Look Book: after deleting, reopening the page still shows the character you had', wornBefore && (await worn()) === wornBefore, `${await worn()} vs ${wornBefore}`);
   await page.evaluate(() => localStorage.removeItem('maple-layers:looks-v1'));
 }
 

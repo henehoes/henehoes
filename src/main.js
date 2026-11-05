@@ -153,6 +153,14 @@ function readLooks() {
 const writeLooks = looks => localStorage.setItem(LOOKS_KEY, JSON.stringify(looks));
 // The look last loaded from the book or saved into it: the stage's undo button goes back to it. null: a blank character.
 let baseline = null; // { id, look }
+// The character on the stage is kept too (with its baseline), so reopening the page shows what you had, whatever was deleted from
+// the book since. Written whenever the preview is drawn, only when it changed.
+const WORK_KEY = 'maple-layers:working-v1';
+let workSeen = '';
+function keepWorking() {
+  try { const v = JSON.stringify({ look: pack(), baseline }); if (v !== workSeen) { localStorage.setItem(WORK_KEY, v); workSeen = v; } } catch { /* storage blocked */ }
+}
+function readWorking() { try { return JSON.parse(localStorage.getItem(WORK_KEY)); } catch { return null; } }
 
 let gender = 'all'; // which styles the Face and Hair tabs list: 'all' (the default), 'male' or 'female'
 let state = fresh();
@@ -373,6 +381,7 @@ const PREVIEW_PAD = 256; // room around the preview's scene for a weapon effect,
 async function renderPreview() {
   if (mode === 'housing') return housing.renderStage();
   poseButtons(); // the motions the worn weapon has
+  keepWorking();
   const token = ++renderToken;
   await withScene(state, (buf, source) => {
     if (token !== renderToken) return; // a newer render has started
@@ -450,12 +459,12 @@ function renderTabs() {
     tabs.append(t);
   };
   add('search', 'Search', false, 'lookup');
-  add('looks', 'Look Book: your saved looks', false, 'looks');
   add('body', 'Body', false, 'character');
   add('face', 'Face', state.face.style != null, 'character');
   add('hair', 'Hair', state.hair.style != null, 'character');
   WEAR_ORDER.filter(s => catalog.wearables[s] && !DISABLED_SLOTS.has(s)).forEach((s, i) => add(s, catalog.wearables[s].label, state.wear[s].item != null, i === 0 ? 'wearable first' : 'wearable'));
-  // Released (every crate and box so far, newest first) and Upcoming (a guess) close the rail, below Chat Ring.
+  // The Look Book, then Released (every crate and box so far, newest first) and Upcoming (a guess), close the rail below Chat Ring.
+  add('looks', 'Look Book: your saved looks', false, 'looks');
   add('past', 'Released crates and boxes, and what each held', false, 'wearable past');
   if (SHOW_UPCOMING) add('upcoming', 'Possible items for the next Mystery Fashion Crates (unconfirmed)', false, 'wearable upcoming'); // never a checkmark: it is not something you wear
   tabs.scrollLeft = scrolled;
@@ -1227,13 +1236,14 @@ function saveLook() {
 const lookDate = iso => { const d = new Date(iso); return isNaN(d) ? 'Saved look' : d.toLocaleString('en-GB', { day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' }); };
 function renderLooks(c) {
   const looks = readLooks().reverse();
-  if (!looks.length) return c.append(infoNote(el('strong', { textContent: 'No saved looks yet.' }), ' Press the save button on the stage to add the look you are wearing. Every save adds a new look here.'));
+  if (!looks.length) return c.append(infoNote(el('strong', { textContent: 'No saved looks yet.' }), ' Press the save button in the character preview to save your look here.'));
   const grid = el('div', { className: 'grid looks' });
   for (const entry of looks) {
-    const label = `Look ${entry.id.split('-')[1]} · ${lookDate(entry.saved)}`; // numbered: two looks saved in one minute stay apart
+    const label = `Look ${entry.id.split('-')[1]} · ${lookDate(entry.saved)}`; // numbered, so two looks saved in one minute stay apart
     const card = optionCard(label, baseline?.id === entry.id, BODY_VIEW, () => unpack(entry.look)?.state ?? initial(), () => { wearLook(entry); afterChangeKeep(true); });
     card.querySelector('.art-box').classList.add('tall');
-    card.title = `${label}: click to wear this look`;
+    card.querySelector('.label').remove(); // pictures only: the number and date are the tooltip
+    card.title = `${label}: click to wear this look`; card.setAttribute('aria-label', label);
     const x = el('button', { className: 'remove', type: 'button', title: `Delete ${label}` });
     x.setAttribute('aria-label', x.title);
     x.onclick = () => { try { writeLooks(readLooks().filter(l => l.id !== entry.id)); } catch { flash('Could not delete: browser storage is blocked'); } renderContent(true); };
@@ -1390,7 +1400,9 @@ async function init() {
   stageTools();
   renderBooks();
   loadBackdrop();
-  wearLook(readLooks().at(-1)); // the page opens on the newest saved look (a blank character when there is none)
+  // The page opens on the character you last had on the stage; the first time, on the newest saved look (blank when there is none).
+  const work = readWorking(), had = work && unpack(work.look);
+  if (had) { state = had.state; gender = had.gender; baseline = work.baseline?.look ? work.baseline : null; } else wearLook(readLooks().at(-1));
   afterChangeKeep();
   // Redraw at the right pixel sizes when the window changes size or moves to another display.
   let timer;

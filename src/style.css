@@ -191,7 +191,7 @@ input { font: inherit; border-radius: 0; }
 .tab.character { background: oklch(72% .17 140 / .85); color: var(--ink); }
 .tab.wearable { background: var(--paper-deep); color: var(--sepia); }
 .tab.first { margin-top: 10px; }
-.tab.past { margin-top: 12px; } /* Released and Upcoming close the rail, a little apart from the item tabs */
+.tab.past, .tab.looks { margin-top: 12px; } /* the Look Book, then Released and Upcoming, close the rail: each a section apart from the item tabs */
 /* Released and Upcoming: one lighter purple, semi-transparent like the green character tabs; deeper and solid when selected. */
 .tab.past, .tab.upcoming { background: oklch(76% .13 305 / .85); color: var(--ink); }
 .tab.past[aria-selected="true"], .tab.upcoming[aria-selected="true"] { background: oklch(50% .19 305); color: oklch(99% .01 305); }
@@ -212,6 +212,7 @@ input { font: inherit; border-radius: 0; }
   transition: transform 80ms steps(2, end);
 }
 .card:hover { transform: translateY(-2px); background: var(--paper-deep); }
+.looks .slot .card { width: 100%; padding-bottom: 6px; } /* a Look Book card has no caption: it fills its column like the Body tab's (inside the slot that holds its x) */
 .card[aria-pressed="true"] { --c: var(--maple); background: oklch(82% .14 85 / .4); color: var(--maple-deep); }
 .card[aria-pressed="true"]::after { content: ""; position: absolute; top: -6px; right: -6px; width: 16px; height: 16px; background: var(--maple) var(--check-white) center / 10px 8px no-repeat; z-index: 2; }
 .art-box { position: relative; height: 84px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
@@ -243,6 +244,8 @@ input { font: inherit; border-radius: 0; }
    tap stays where it was. The tabs run along the top of the book, the page scrolls as a whole (no list scrolling inside a page),
    and cards are as wide as on a desktop (about 3 per row on a phone) so the art is not cropped. */
 @media (max-width: 800px) {
+  .pose-tools { top: auto; } /* small screens: the pose buttons are one row along the bottom of the stage (a column runs off a short stage) */
+  .pose-row { flex-direction: row; flex-wrap: nowrap; gap: 8px; }
   body { overflow: auto; }
   .app { display: flex; flex-direction: column; gap: 12px; height: auto; padding: 8px 10px 16px; }
   .side { display: contents; }
@@ -254,8 +257,8 @@ input { font: inherit; border-radius: 0; }
   .tab:hover { transform: none; }
   .tab[aria-selected="true"] { transform: translateY(-3px); }
   .tab.first { margin-top: 0; margin-left: 10px; }
-  .tab.lookup, .tab.looks { margin-bottom: 0; margin-right: 10px; }
-  .tab.past { margin-top: 0; margin-left: 10px; }
+  .tab.lookup { margin-bottom: 0; margin-right: 10px; }
+  .tab.past, .tab.looks { margin-top: 0; margin-left: 10px; }
   .topbar { order: 0; }
   .cover { order: 2; flex: none; }
   .page { height: auto; }
@@ -298,9 +301,9 @@ input { font: inherit; border-radius: 0; }
 
 /* Search tab: brass tab with a magnifier, and headings between the groups of results */
 .tab.lookup[aria-selected="true"], .tab.looks[aria-selected="true"] { background: var(--maple); color: oklch(99% .01 90); }
-.tab.looks { background: oklch(82% .1 350 / .85); color: var(--ink); } /* the Look Book: a pink sticky under Search */
+.tab.looks { background: oklch(82% .1 350 / .85); color: var(--ink); } /* the Look Book: a pink sticky above Released */
 .tab.lookup { background: oklch(84% .15 92 / .85); color: var(--ink); } /* the same small sticky as the others, in yellow, with a magnifier */
-@media (min-width: 801px) { .tab.lookup, .tab.looks { margin-bottom: 8px; } } /* a gap under it in the side column; on a phone it sits in the row and must stretch to the same height as the others */
+@media (min-width: 801px) { .tab.lookup { margin-bottom: 8px; } } /* a gap under it in the side column; on a phone it sits in the row and must stretch to the same height as the others */
 .tab-glass { margin: 0 6px 3px 0; border-color: currentColor; }
 .tab-glass::after { background: currentColor; }
 .group-title { display: flex; align-items: center; gap: 8px; margin: 14px 0 10px; font: 400 17px var(--font-pixel); color: var(--sepia); }
@@ -379,8 +382,9 @@ input { font: inherit; border-radius: 0; }
 .past-tab[aria-selected="true"] { background: oklch(50% .19 305); color: oklch(99% .01 305); padding-bottom: 9px; margin-bottom: -1px; }
 .past-tab:focus-visible { outline: 2px solid var(--maple-deep); outline-offset: -3px; }
 
-.ends-line { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0 8px; margin: 4px 3px 10px; font: 12px var(--font-label); letter-spacing: .04em; color: var(--ends-blue); --ends-blue: oklch(48% .16 255); }
-.ends-dot { width: 8px; height: 8px; border-radius: 50%; background: #2fa24f; box-shadow: 0 0 0 2px #2fa24f40; } /* the same green as a pill's on-sale dot; the words stay blue */
+.ends-line { display: flex; flex-wrap: nowrap; align-items: center; justify-content: center; gap: 0 8px; margin: 4px 3px 10px; font: 12px var(--font-label); letter-spacing: .04em; color: var(--ends-blue); --ends-blue: oklch(48% .16 255); }
+.ends-line > span { min-width: 0; } /* the words wrap beside the dot, never onto a line of their own under it */
+.ends-dot { flex: none; width: 8px; height: 8px; border-radius: 50%; background: #2fa24f; box-shadow: 0 0 0 2px #2fa24f40; } /* the same green as a pill's on-sale dot; the words stay blue */
 .ends-line.ended { color: oklch(48% .01 80); }
 .ends-line.ended .ends-dot { background: #b3aca0; box-shadow: 0 0 0 2px #b3aca040; }
 .ends-line.avail { justify-content: flex-start; margin: 4px 3px; padding: 6px 10px; background: var(--bench-deep); box-shadow: 0 -2px 0 0 var(--bench-line), 0 2px 0 0 var(--bench-line), -2px 0 0 0 var(--bench-line), 2px 0 0 0 var(--bench-line); } /* boxed like a chip, so it does not float in the panel */

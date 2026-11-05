@@ -677,7 +677,7 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   const poseOf = () => page.$eval('#preview', e => e.dataset.pose);
   const pressed = () => page.$$eval('#pose-tools .tool', b => b.filter(x => x.getAttribute('aria-pressed') === 'true').map(x => x.dataset.pose).join());
   const rows = await page.$$eval('#pose-tools .pose-row', r => r.map(x => [...x.querySelectorAll('.tool')].map(b => b.dataset.pose + (b.querySelector('svg rect') ? '' : '!')).join()));
-  check('pose buttons: one row of the attack motions and the ladder, each with a silhouette icon, none pressed', rows.join('|') === 'oneHanded,stab,twoHanded,spear,bow,crossbow,ladder' && (await pressed()) === '', rows.join('|'));
+  check('pose buttons: one row of the attack motions and the ladder, each with a silhouette icon, none pressed', rows.join('|') === 'oneHanded,twoHanded,spear,stab,crossbow,bow,ladder' && (await pressed()) === '', rows.join('|'));
   const off = await page.$$eval('#pose-tools .tool:disabled', b => b.map(x => x.title));
   check('pose buttons: a motion the weapon lacks is greyed out and says so', off.every(t => /not a motion the .+ has$/.test(t)), off.join('; '));
   await settle(); const still = JSON.stringify(await pixels());

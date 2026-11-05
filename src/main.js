@@ -1220,20 +1220,28 @@ async function playPose(name) {
   pose = back; poseButtons(); return renderPreview();
 }
 const stopPose = () => { poseRun++; pose = resting = { name: 'stand' }; };
-// The pose buttons' icons: little black silhouettes of each motion, drawn on a 16 x 16 pixel grid like the sprites.
+// The pose buttons' icons: 16 x 16 pixel drawings of each weapon (designed by the user) and a ladder, in the button's ink. A letter is a
+// pixel: o outline; w, r, d the darker fills (wood, gem, dark steel); g, s the lighter ones (gold, steel). Each is drawn cropped to its
+// own size, so a small drawing fills the button as well as a big one.
 const POSE_ICONS = {
-  oneHanded: ['..............##', '.............###', '............###', '...........###', '..........###', '.........###', '........###', '...#...###', '....#.###', '.....###', '....#.#', '...#...#', '..#', '.##', '##'], // a sword
-  stab: ['', '', '', '', '............#', '..........###', '.........###', '........###', '....#..###', '.....####', '......##', '.....#.#', '....#...#', '...#', '..#'], // a dagger
-  twoHanded: ['.......##', '......####', '......####', '......####', '......####', '......####', '......####', '......####', '......####', '......####', '...##########', '.......##', '.......##', '.......##', '......####'], // a greatsword, held upright
-  spear: ['..............##', '............####', '...........####', '...........###', '...........#', '..........#', '.........#', '........#', '.......#', '......#', '.....#', '....#', '...#', '..#', '.#', '#'],
-  bow: ['....##', '....#.#', '....#..#', '....#...#', '....#....#', '....#....#', '..#.#....#...#', '..#############', '..#.#....#...#', '....#....#', '....#....#', '....#...#', '....#..#', '....#.#', '....##'],
-  crossbow: ['.......##', '......####', '.......##', '...##########', '.##....##....##', '#......##......#', '..#....##....#', '....#..##..#', '......####', '.......##', '.......##', '......###', '.......##', '......####', '......####', '.......##'], // pointing up
-  ladder: ['..#..........#', '..############', '..#.#......#.#', '..#.#.####.#.#', '..#.#.####.#.#', '..####.##.####', '..#..######..#', '..#...####...#', '..#####..#####', '..#...####...#', '..#...#..#...#', '..#...#..#...#', '..####.##.####', '..#..........#', '..#..........#'],
+  oneHanded: ["", "............oo", ".......oo..owo", ".......oggowo", "........ogro", "........odggo", ".......odsoogo", "......odso..oo", ".....odso", "....odso", "...osso", "..osso", "..ooo", "", "", ""], // a sword
+  twoHanded: ["........o", ".......owo.o", ".......owooso", ".......owossdo", "......oowosssdo", ".....osowossssdo", "....ossowossssdo", ".....osowossssdo", "......oowosssdo", ".......owossdo", ".......owooso", ".......owo.o", ".......owo", ".......owo", "......ogggo", ".......ooo"], // a two-handed axe
+  spear: ["..............o", "............ooso", "...........osso", "..........osdo", ".........ogoo", "........owo", ".......owo", "......owo", ".....owo", "....owo", "...owo", "..owo", ".owo", ".oo", "", ""], // a spear
+  stab: ["", "", "", "", "", ".....oo", "....ogo.ooooo", "..ooogoosssssoo", ".owwwrosssssssso", "..ooogoodddddoo", "....ogo.ooooo", ".....oo", "", "", "", ""], // a dagger thrust
+  crossbow: ["", ".....oo", ".....oso", "......oso", "......odo", ".oooooodoooo", "owwwwwogowwwo..o", "owwwwwogooooosso", "ooooowogowwwo..o", "....owodoooo", "....ooodo", "......oso", ".....oso", ".....oo", "", ""], // a crossbow
+  bow: ["..oo", "..owo", "..o.owo", "..o..owo", "..o...owo", "..o....owo", "..o.....owo", "ggoooooooogwooso", "..o.....owo", "..o....owo", "..o...owo", "..o..owo", "..o.owo", "..owo", "..oo", ""], // a bow and arrow
+  ladder: ["...owo....owo", "...owo....owo", "...owoooooowo", "...owwwwwwwwo", "...owoooooowo", "...owo....owo", "...owoooooowo", "...owwwwwwwwo", "...owoooooowo", "...owo....owo", "...owoooooowo", "...owwwwwwwwo", "...owoooooowo", "...owo....owo", "...owo....owo", "...ooo....ooo"],
 };
+const ICON_SHADE = { o: 1, w: .6, r: .6, d: .6, g: .3, s: .2 };
 // The attack motions (each click the next swing), then the ladder.
-const MOTION_BUTTONS = [['oneHanded', 'One-handed swing'], ['stab', 'Dagger stab'], ['twoHanded', 'Two-handed swing'], ['spear', 'Spear stab'], ['bow', 'Bow shot'], ['crossbow', 'Crossbow shot']];
+const MOTION_BUTTONS = [['oneHanded', 'One-handed swing'], ['twoHanded', 'Two-handed swing'], ['spear', 'Spear stab'], ['stab', 'Dagger stab'], ['crossbow', 'Crossbow shot'], ['bow', 'Bow shot']];
 const POSES = [['ladder', 'Climb a ladder (twice)']];
-const poseSvg = rows => `<svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">${rows.flatMap((r, y) => [...r].map((c, x) => c === '#' ? `<rect x="${x}" y="${y}" width="1" height="1"/>` : '')).join('')}</svg>`;
+function poseSvg(rows) {
+  const px = rows.flatMap((r, y) => [...r].flatMap((c, x) => ICON_SHADE[c] ? [{ x, y, c }] : []));
+  const x0 = Math.min(...px.map(p => p.x)), x1 = Math.max(...px.map(p => p.x)) + 1, y0 = Math.min(...px.map(p => p.y)), y1 = Math.max(...px.map(p => p.y)) + 1;
+  const side = Math.max(x1 - x0, y1 - y0), box = `${(x0 + x1 - side) / 2} ${(y0 + y1 - side) / 2} ${side} ${side}`; // a square around the drawing
+  return `<svg viewBox="${box}" width="22" height="22" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">${px.map(({ x, y, c }) => `<rect x="${x}" y="${y}" width="1" height="1"${ICON_SHADE[c] < 1 ? ` fill-opacity="${ICON_SHADE[c]}"` : ''}/>`).join('')}</svg>`;
+}
 function poseButtons() {
   const box = $('pose-tools');
   if (!box) return;

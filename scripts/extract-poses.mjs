@@ -1,8 +1,8 @@
-// Reads the attack, two-handed stance, ladder and rope poses from the game's own files for the preview's pose buttons, and writes them as ready-placed parts:
+// Reads the attack, two-handed stance and ladder poses from the game's own files for the preview's pose buttons, and writes them as ready-placed parts:
 //   public/poses/body.json            the body (every skin tone) per action and frame: its parts, the frame's delay, whether the face shows,
 //                                     and the attachment points (brow, navel, hand, ...), in the app's sprite coordinates
 //   public/poses/w/<catalogue id>.json a wearable's parts per action and frame (a weapon only has the actions its file has)
-//   public/poses/hair/<colour id>.json a hair colour's parts per action and frame (the back view on ladders and ropes)
+//   public/poses/hair/<colour id>.json a hair colour's parts per action and frame (the back view on ladders)
 //   public/sprites/pose/<hash>.png    every picture, once (named by its contents, so the many frames that reuse a picture share one file)
 // Faces are not written: the app moves the standing face with the brow, and hides it when the frame says the face does not show.
 // Placement is the client's: the body sits at the origin, every other part is moved so one of its points (map) lands on the same point
@@ -24,7 +24,7 @@ const MOTIONS = {
   bow: { acts: ['shoot1'], rest: 'stand1' },
   crossbow: { acts: ['shoot2'], rest: 'stand2' },
 };
-const ACTIONS = [...Object.values(MOTIONS).flatMap(m => m.acts), 'stand2', 'ladder', 'rope'];
+const ACTIONS = [...Object.values(MOTIONS).flatMap(m => m.acts), 'stand2', 'ladder'];
 const SKIN_TONES = [0, 1, 2, 3, 4, 5, 9, 10, 11, 12, 13];
 const FOLDERS = { 100: 'Cap', 101: 'Accessory', 102: 'Accessory', 103: 'Accessory', 104: 'Coat', 105: 'Longcoat', 106: 'Pants', 107: 'Shoes', 108: 'Glove', 110: 'Cape', 170: 'Weapon' };
 const POINT_ORDER = ['brow', 'hand', 'handMove', 'navel', 'neck'];
@@ -142,7 +142,7 @@ function itemPoses(img, actions, base = '') {
     const n = framePoints[act].length, frames = [];
     for (let i = 0; i < n; i++) {
       let f = frameOf(img, `${base}${act}/${i}`) ?? (base ? null : frameOf(img, `${act}/0`)); // an item with fewer frames keeps its first
-      if (!f && !base && !img.getFromPath('stand1') && img.getFromPath('default')) f = frameOf(img, act === 'ladder' || act === 'rope' ? 'backDefault' : 'default') ?? frameOf(img, 'default'); // accessories: one picture
+      if (!f && !base && !img.getFromPath('stand1') && img.getFromPath('default')) f = frameOf(img, act === 'ladder' ? 'backDefault' : 'default') ?? frameOf(img, 'default'); // accessories: one picture
       if (!f) { frames.push(null); continue; }
       const pts = JSON.parse(JSON.stringify(framePoints[act][i]));
       frames.push(place(pieces(f, img), pts).filter(({ pc }) => Object.keys(pc.maps).length).map(({ pc, x, y }) => ({ f: save(pc.p), x: x + DX, y: y + DY, z: zOf(pc.layer), layer: pc.layer, ...(hiddenByOf(pc.layer) && { hiddenBy: hiddenByOf(pc.layer) }), ...(pc.tones && { tones: pc.tones }) })));

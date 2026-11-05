@@ -672,38 +672,38 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   await page.evaluate(() => { Date.now = window.__now; });
 }
 
-// ---- Pose buttons on the stage: seven attack motions (each click the next swing, then the motion's stance), Stand, Ladder and Rope ----
+// ---- Pose buttons on the stage: seven attack motions (each click the next swing, then the motion's stance) and the ladder (two climbs, then back) ----
 {
   const poseOf = () => page.$eval('#preview', e => e.dataset.pose);
   const pressed = () => page.$$eval('#pose-tools .tool', b => b.filter(x => x.getAttribute('aria-pressed') === 'true').map(x => x.dataset.pose).join());
   const rows = await page.$$eval('#pose-tools .pose-row', r => r.map(x => [...x.querySelectorAll('.tool')].map(b => b.dataset.pose + (b.querySelector('svg rect') ? '' : '!')).join()));
-  check('pose buttons: a row of attack motions and a row of Stand, Ladder and Rope, each with a silhouette icon, Stand pressed', rows.join('|') === 'oneHanded,stab,twoHanded,spear,polearm,bow,crossbow|stand,ladder,rope' && (await pressed()) === 'stand', rows.join('|'));
+  check('pose buttons: one row of the attack motions and the ladder, each with a silhouette icon, none pressed', rows.join('|') === 'oneHanded,stab,twoHanded,spear,polearm,bow,crossbow,ladder' && (await pressed()) === '', rows.join('|'));
   const off = await page.$$eval('#pose-tools .tool:disabled', b => b.map(x => x.title));
   check('pose buttons: a motion the weapon lacks is greyed out and says so', off.every(t => /not a motion the .+ has$/.test(t)), off.join('; '));
   await settle(); const still = JSON.stringify(await pixels());
-  await page.click('#pose-tools [data-pose="ladder"]'); await settle(); await settle();
-  const l1 = await poseOf(), lp = JSON.stringify(await pixels()); await new Promise(r => setTimeout(r, 300)); const l2 = await poseOf();
-  check('Ladder: the preview climbs (back view, frames go round) and the button is pressed', /^ladder:ladder:\d$/.test(l1) && l1 !== l2 && lp !== still && (await pressed()) === 'ladder', `${l1} -> ${l2}`);
-  await page.click('#pose-tools [data-pose="rope"]'); await settle();
-  check('Rope: switches to the rope', /^rope:rope:\d$/.test(await poseOf()) && (await pressed()) === 'rope');
-  // One click plays one attack to the end and rests: returns the actions seen and where it rested.
-  const swing = async name => {
+  // One click plays to the end and settles: returns the frames seen (name:action:frame) and where it settled.
+  const play = async name => {
     await page.click(`#pose-tools [data-pose="${name}"]`);
-    const seen = new Set(); let v;
-    for (let i = 0; i < 60; i++) { v = await poseOf(); if (/:stand[12]:0$/.test(v) && seen.size) break; if (v.startsWith(name + ':') && !/:stand[12]:/.test(v)) seen.add(v.split(':')[1]); await new Promise(r => setTimeout(r, 50)); }
-    return { acts: [...seen], rest: v };
+    const seen = []; let v;
+    for (let i = 0; i < 120; i++) { v = await poseOf(); if (v.startsWith(name + ':') && v.split(':')[1] !== 'stand1' && v.split(':')[1] !== 'stand2') { if (seen.at(-1) !== v) seen.push(v); } else if (seen.length) break; await new Promise(r => setTimeout(r, 30)); }
+    await settle(); return { seen, rest: await poseOf() };
   };
-  const s1 = await swing('oneHanded'), s2 = await swing('oneHanded');
-  check('One-handed swing: the first click plays swing 1 once and rests in the one-handed stance, button still pressed', s1.acts.join() === 'swingO1' && s1.rest === 'oneHanded:stand1:0' && (await pressed()) === 'oneHanded', JSON.stringify(s1));
-  check('One-handed swing: the next click plays the next swing', s2.acts.length === 1 && s2.acts[0] !== 'swingO1' && /^swingO\d$/.test(s2.acts[0]) && s2.rest === 'oneHanded:stand1:0', JSON.stringify(s2));
+  const acts = r => [...new Set(r.seen.map(v => v.split(':')[1]))];
+  const l0 = await play('ladder');
+  check('Ladder: climbs twice (each frame twice, back view) and goes back to standing', l0.seen.join() === 'ladder:ladder:0,ladder:ladder:1,ladder:ladder:0,ladder:ladder:1' && l0.rest === 'stand' && JSON.stringify(await pixels()) === still && (await pressed()) === '', JSON.stringify(l0));
+  const s1 = await play('oneHanded'), s2 = await play('oneHanded');
+  check('One-handed swing: the first click plays swing 1 once and rests in the one-handed stance, button pressed', acts(s1).join() === 'swingO1' && s1.rest === 'oneHanded:stand1:0' && (await pressed()) === 'oneHanded', JSON.stringify(s1));
+  check('One-handed swing: the next click plays the next swing', acts(s2).length === 1 && /^swingO[23]$/.test(acts(s2)[0]) && s2.rest === 'oneHanded:stand1:0', JSON.stringify(s2));
   if (!(await page.$eval('#pose-tools [data-pose="twoHanded"]', b => b.disabled))) {
-    const t1 = await swing('twoHanded');
-    check('Two-handed swing: a new motion starts at its first swing and rests holding the weapon in both hands', t1.acts.join() === 'swingT1' && /^twoHanded:stand[12]:0$/.test(t1.rest), JSON.stringify(t1));
+    const t1 = await play('twoHanded');
+    check('Two-handed swing: a new motion starts at its first swing and rests holding the weapon in both hands', acts(t1).join() === 'swingT1' && /^twoHanded:stand[12]:0$/.test(t1.rest), JSON.stringify(t1));
     const rested = JSON.stringify(await pixels());
     check('Two-handed stance: drawn from the pose data (not the standing picture)', !t1.rest.endsWith('stand2:0') || rested !== still);
+    const l1 = await play('ladder');
+    check('Ladder: from the two-handed stance it climbs and goes back to that stance', l1.rest === t1.rest && JSON.stringify(await pixels()) === rested && (await pressed()) === 'twoHanded', JSON.stringify(l1));
+    const t2 = await play('twoHanded');
+    check('Two-handed swing: the ladder in between keeps the count (swing 2 next)', acts(t2).join() === 'swingT2', JSON.stringify(t2));
   }
-  await page.click('#pose-tools [data-pose="stand"]'); await settle();
-  const back = JSON.stringify(await pixels()); check('Stand: back to the standing picture', (await poseOf()) === 'stand' && back === still, `${await poseOf()} ${back} vs ${still}`);
 }
 
 // ---- Housing book ----

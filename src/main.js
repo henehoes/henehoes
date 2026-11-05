@@ -184,7 +184,7 @@ function baseOf(sel) {
   return [!overall && w.coat.item == null && b.coat, !overall && w.pants.item == null && b.pants].filter(Boolean);
 }
 // ---------- poses (the pose buttons on the stage) ----------
-// Standing uses the catalogue's own pictures. The attacks, the two-handed stance, ladder and rope come from public/poses (scripts/extract-poses.mjs), fetched the
+// Standing uses the catalogue's own pictures. The attacks, the two-handed stance and the ladder come from public/poses (scripts/extract-poses.mjs), fetched the
 // first time they are needed: the body per action and frame (with the points everything hangs on), and each worn item's and hair
 // colour's parts, already placed. A face is the standing one moved with the brow, and is left out when the frame turns the face away.
 const poseFiles = new Map();
@@ -247,7 +247,7 @@ async function buildLayers(sel, view = null) {
     const w = sel.wear[slot];
     const item = catalog.wearables[slot]?.items.find(i => i.id === w.item);
     if (!item) continue;
-    if (P && !P.face && (slot === 'faceAcc' || slot === 'eyeAcc')) continue; // the face is turned away (ladder, rope)
+    if (P && !P.face && (slot === 'faceAcc' || slot === 'eyeAcc')) continue; // the face is turned away (ladder)
     add(P ? P.of(`poses/w/${item.id}.json`, item.parts) : partsFor(item), ...dyeOf(item, w), slot);
   }
   for (const slot of RING_SLOTS) {
@@ -1194,33 +1194,33 @@ function saveDefault() {
   catch { flash('Could not save: browser storage is blocked'); }
 }
 // Plays a pose. An attack motion plays its next action once (each click the next: swing 1, 2, 3, 1, ...) and then rests in the motion's
-// stance; the ladder and rope loop until another button is pressed. Every frame is built once before it starts (fetching its pictures),
-// so the motion does not stutter.
-let poseRun = 0, motionStep = -1;
+// stance; the ladder climbs twice and goes back to the stance it left (`resting`). Every frame is built once before it starts (fetching
+// its pictures), so the motion does not stutter.
+let poseRun = 0, motionStep = -1, resting = { name: 'stand' };
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 async function playPose(name) {
   const run = ++poseRun;
-  if (name === 'stand') { pose = { name }; poseButtons(); return renderPreview(); }
   const body = await fetchPose('poses/body.json');
   if (!body) { flash('Could not load the poses'); return; }
   const motion = body.motions[name] && await motionFor(state, name);
   if (body.motions[name] && !motion) return;
-  motionStep = motion ? (pose.name === name ? motionStep + 1 : 0) % motion.acts.length : -1;
+  if (motion) motionStep = (pose.name === name ? motionStep + 1 : 0) % motion.acts.length; // a ladder in between keeps the count
   const act = motion ? motion.acts[motionStep] : name, frames = body.actions[act];
+  const back = motion ? { name, act: motion.rest, frame: 0 } : resting;
   await Promise.all(frames.map((_, frame) => buildLayers(state, { name, act, frame })));
   if (run !== poseRun) return;
-  for (let i = 0; ; i = (i + 1) % frames.length) {
+  if (motion) resting = back;
+  for (let round = 0; round < (motion ? 1 : 2); round++) for (let i = 0; i < frames.length; i++) {
     pose = { name, act, frame: i }; poseButtons();
     await renderPreview();
     await sleep(frames[i].delay);
     if (run !== poseRun) return;
-    if (motion && i === frames.length - 1) { pose = { name, act: motion.rest, frame: 0 }; return renderPreview(); }
   }
+  pose = back; poseButtons(); return renderPreview();
 }
-const stopPose = () => { poseRun++; pose = { name: 'stand' }; };
+const stopPose = () => { poseRun++; pose = resting = { name: 'stand' }; };
 // The pose buttons' icons: little black silhouettes of each motion, drawn on a 16 x 16 pixel grid like the sprites.
 const POSE_ICONS = {
-  stand: ['', '......####', '......####', '......####', '.......##', '.....######', '....#.####.#', '....#.####.#', '....#.####.#', '......####', '......#..#', '......#..#', '......#..#', '.....##..##'],
   oneHanded: ['..............##', '.............##', '......####..##', '......####.##', '......####.#', '.......##.#', '.....######', '....#.####', '...#..####', '......####', '......#..#', '.....#....#', '....#......#', '...##......##'],
   stab: ['', '', '....####', '....####', '....####', '.....##...#', '...######.#', '..#.###########', '....####..#', '....####', '....####', '....#..#', '....#..#', '...#....#', '..##....##'],
   twoHanded: ['.............###', '............###', '...........###', '.........####', '....####.##', '....####.#', '....####.#', '.....##.#', '...######', '..#.####', '....####', '....####', '....#..#', '....#..#', '...#....#', '..##....##'],
@@ -1229,11 +1229,10 @@ const POSE_ICONS = {
   bow: ['', '..........##', '....####...#', '....####...#', '....####....#', '.....##.....#', '...##########', '....####....#', '....####....#', '....####...#', '....#..#...#', '....#..#..##', '...#....#', '..##....##'],
   crossbow: ['', '', '....####', '....####......#', '....####......#', '.....##.......#', '...############', '....####......#', '....####......#', '....####', '....#..#', '....#..#', '...#....#', '..##....##'],
   ladder: ['..#..........#', '..############', '..#.#......#.#', '..#.#.####.#.#', '..#.#.####.#.#', '..####.##.####', '..#..######..#', '..#...####...#', '..#####..#####', '..#...####...#', '..#...#..#...#', '..#...#..#...#', '..####.##.####', '..#..........#', '..#..........#'],
-  rope: ['.......##', '.......##', '......####', '.....#.##.#', '.....######', '.....######', '......####', '.......##', '.....######', '.....######', '......####', '......####', '.....#.##.#', '....##.##.##', '.......##', '.......##'],
 };
-// Two rows: the attack motions (each click the next swing), and standing, ladder and rope.
+// The attack motions (each click the next swing), then the ladder.
 const MOTION_BUTTONS = [['oneHanded', 'One-handed swing'], ['stab', 'One-handed stab'], ['twoHanded', 'Two-handed swing'], ['spear', 'Spear stab'], ['polearm', 'Polearm swing'], ['bow', 'Bow shot'], ['crossbow', 'Crossbow shot']];
-const POSES = [['stand', 'Stand'], ['ladder', 'Climb a ladder'], ['rope', 'Climb a rope']];
+const POSES = [['ladder', 'Climb a ladder (twice)']];
 const poseSvg = rows => `<svg viewBox="0 0 16 16" width="16" height="16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true">${rows.flatMap((r, y) => [...r].map((c, x) => c === '#' ? `<rect x="${x}" y="${y}" width="1" height="1"/>` : '')).join('')}</svg>`;
 function poseButtons() {
   const box = $('pose-tools');
@@ -1246,7 +1245,7 @@ function poseButtons() {
     b.onclick = () => playPose(name);
     return b;
   };
-  if (!box.children.length) box.append(el('div', { className: 'pose-row' }, ...MOTION_BUTTONS.map(button)), el('div', { className: 'pose-row' }, ...POSES.map(button)));
+  if (!box.children.length) box.append(el('div', { className: 'pose-row' }, ...MOTION_BUTTONS.map(button), ...POSES.map(button)));
   const all = [...box.querySelectorAll('.tool')];
   for (const b of all) b.setAttribute('aria-pressed', String(b.dataset.pose === pose.name));
   // A motion the worn weapon cannot do is greyed out (and a pose resting in one goes back to standing when the weapon changes).

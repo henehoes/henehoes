@@ -750,13 +750,10 @@ function renderColourPanel() {
     Object.assign(w, { h: between(0, 359), c: between(-99, 99), b: between(-99, 99) });
     renderColour(); renderPreview();
   };
-  // The game keeps some special effects in their own colour, and the sprite data does not say which, so this preview dyes every part it can.
-  const note = el('div', { className: 'dye-note', role: 'note' }, el('span', { className: 'dye-badge', textContent: '!', 'aria-hidden': 'true' }),
-    el('p', { textContent: "Some special effects keep their original colour in the game even when dyed. We can't tell which, so this preview dyes every part it can; some items may show little or no change." }));
   const buttons = el('div', { className: 'btn-row' }, random, reset);
   // Only a weapon has more than dye (Works with), so only a weapon labels its Dye section.
-  if (isWeapon) return c.append(heading, ...worksWith, section('Dye', sliders, buttons, note));
-  c.append(heading, sliders, buttons, note);
+  if (isWeapon) return c.append(heading, ...worksWith, section('Dye', sliders, buttons));
+  c.append(heading, sliders, buttons);
 }
 
 // keepScroll: redraw in place (after a selection or colour change) instead of jumping back to the top of the list.

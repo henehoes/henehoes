@@ -274,7 +274,7 @@ input { font: inherit; border-radius: 0; }
 .badge.unreleased-badge ~ .badge.upcoming-badge { top: 20px; } /* a datamined item that is also a possible upcoming one: the two badges stack */
 .badge.collab-badge { position: absolute; top: 4px; left: 4px; z-index: 1; background: oklch(58% .14 160); }
 
-/* Note under the dye controls: some special effects keep their colour in the game */
+/* An amber note in the colour panel (the eye colour warning) */
 .dye-note { display: flex; gap: 10px; align-items: flex-start; margin: 14px 3px 3px; padding: 8px 10px; background: oklch(96% .05 90); --c: oklch(70% .14 78); box-shadow: 0 -2px 0 0 var(--c), 0 2px 0 0 var(--c), -2px 0 0 0 var(--c), 2px 0 0 0 var(--c); }
 .empty-note { display: flex; gap: 12px; align-items: flex-start; margin: 4px 3px 3px; padding: 14px; background: oklch(99% .01 230); --c: var(--bench-line); box-shadow: 0 -2px 0 0 var(--c), 0 2px 0 0 var(--c), -2px 0 0 0 var(--c), 2px 0 0 0 var(--c); }
 .empty-note p { margin: 0; color: var(--ink); font: 15px/1.45 var(--font-text); }

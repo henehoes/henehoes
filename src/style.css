@@ -94,7 +94,7 @@ input { font: inherit; border-radius: 0; }
 .colour h3 { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; font: 600 16px var(--font-pixel); color: var(--head); }
 .colour h3::before { content: ""; width: 9px; height: 9px; background: var(--maple); transform: rotate(45deg); flex: none; }
 .colour h3::after { content: ""; height: 3px; flex: 1; background: oklch(78% .06 240); }
-/* A worn weapon's panel: the name beside the heading, then sections with small-caps subheadings (Dye, Works with, Availability). */
+/* A worn weapon's panel: the name beside the heading, then the dye (unlabelled) and sections with small-caps subheadings (Works with, Availability). */
 .colour h3 .item-name { flex: none; max-width: 60%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 400; color: var(--bench-dim); }
 .colour h3 .item-name::before { content: "·"; margin: 0 8px 0 0; color: var(--maple); }
 .panel-section { margin: 0 0 16px; padding: 0 3px; }
@@ -103,7 +103,7 @@ input { font: inherit; border-radius: 0; }
 .colour .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .colour .chip { padding: 3px 9px; background: var(--bench-deep); box-shadow: 0 -2px 0 0 var(--bench-line), 0 2px 0 0 var(--bench-line), -2px 0 0 0 var(--bench-line), 2px 0 0 0 var(--bench-line); color: var(--bench-text); font: 13px/1.3 var(--font-text); }
 .panel-section .btn-row { margin-top: 12px; }
-.btn-row + .panel-section { margin-top: 16px; } /* the dye buttons of a non-weapon item, then Availability: the same gap as after a section */
+.btn-row + .panel-section, .hint + .panel-section { margin-top: 16px; } /* after the dye buttons (or the can't-be-dyed line): the same gap as after a section */
 .colour .hint { margin: 0; color: var(--bench-dim); font: 13px var(--font-text); }
 .colour .equipped.grid { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; padding: 3px; }
 .equipped .card.mini { width: 68px; }

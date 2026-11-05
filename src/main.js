@@ -736,7 +736,7 @@ function renderColourPanel() {
   const types = worn?.worksWith?.[0] === 'weapon' ? ['any weapon'] : worn?.worksWith ?? [];
   const worksWith = isWeapon && types.length ? [section('Works with', el('div', { className: 'chips' }, ...types.map(t => el('span', { className: 'chip', textContent: t[0].toUpperCase() + t.slice(1) }))))] : [];
   // The game does not let you dye some items (no dye flag in its files): no sliders, just a note.
-  if (worn?.dyeable === false) { const hint = el('p', { className: 'hint', textContent: "This item can't be dyed in the game." }); return c.append(heading, ...worksWith, isWeapon ? section('Dye', hint) : hint); }
+  if (worn?.dyeable === false) { const hint = el('p', { className: 'hint', textContent: "This item can't be dyed in the game." }); return c.append(heading, isWeapon ? section('Dye', hint) : hint, ...worksWith); }
   // The game's own numbers, all starting at 0 (the item's own colours): Tone 0 to 359, Chroma and Brightness -99 to +99.
   const signed = v => `${v > 0 ? '+' : ''}${v}`;
   const slider = (label, key, min, max) => sliderRow(label, min, max, 1, w[key], signed, v => { w[key] = v; syncDyed(); renderPreview(); });
@@ -752,7 +752,7 @@ function renderColourPanel() {
   };
   const buttons = el('div', { className: 'btn-row' }, random, reset);
   // Only a weapon has more than dye (Works with), so only a weapon labels its Dye section.
-  if (isWeapon) return c.append(heading, ...worksWith, section('Dye', sliders, buttons));
+  if (isWeapon) return c.append(heading, section('Dye', sliders, buttons), ...worksWith);
   c.append(heading, sliders, buttons);
 }
 

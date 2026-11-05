@@ -31,7 +31,7 @@ const VIEW = { scale: 1.5, focus: [OX + 20, OY + 15] };  // shared crop for ever
 // The Equipped panel's small preview tiles: the whole head and a little chest at 1 css px per sprite px (a whole-number zoom, so still crisp).
 // The Body tab's cards show the whole body (undergarments, plus the worn face and hair) in a taller art box (`.art-box.tall`, 120px), at the same 1.5x.
 const BODY_VIEW = { scale: 1.5, focus: [OX + 21, OY + 27], feet: OY + 66 }; // feet: the scene row kept at the bottom edge (here just under the feet: the skin name follows), so the feet always fit
-const LOOK_VIEW = { ...BODY_VIEW, feet: OY + 73 }; // a Look Book card has no name under it: about as much room below the feet as above the head
+const LOOK_VIEW = { scale: 1.5, focus: [OX + 21, OY + 27], body: true }; // body: centred on the bare body (head to feet), whatever is worn
 const MINI_VIEW = { scale: 1, focus: [OX + 21, OY + 15], centre: true }; // centre: put whatever is drawn in the middle of the tile
 const MINI_ART = 44;                              // art height of a small Equipped tile, CSS px
 const SHORT_LABEL = { faceAcc: 'Face', eyeAcc: 'Eye' }; // category names shortened for the small tiles
@@ -405,7 +405,17 @@ async function renderPreview() {
   }, pose, PREVIEW_PAD);
 }
 
+// The middle of the bare body (head to feet, side to side) in scene coordinates, measured once from a body wearing nothing.
+let bodyMiddle = null;
+async function bodyCentre() {
+  return bodyMiddle ??= withScene(fresh(), buf => {
+    let x0 = W, x1 = -1, y0 = H, y1 = -1;
+    for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (buf.data[(y * W + x) * 4 + 3]) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
+    return [(x0 + x1 + 1) / 2, (y0 + y1 + 1) / 2];
+  });
+}
 async function drawThumb(canvas, boxEl, sel, view) {
+  const middle = view.body ? await bodyCentre() : null;
   await withScene(sel, (buf, source) => {
     const box = boxEl.getBoundingClientRect();
     let focus = view.focus;
@@ -417,6 +427,7 @@ async function drawThumb(canvas, boxEl, sel, view) {
     }
     const n = Math.max(1, Math.round(view.scale * dpr()));
     if (view.feet) focus = [focus[0], view.feet - box.height * dpr() / n / 2];
+    if (middle) focus = middle;
     paintFocus(canvas, box.width, box.height, n, focus, source);
   });
 }

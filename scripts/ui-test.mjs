@@ -672,21 +672,36 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   await page.evaluate(() => { Date.now = window.__now; });
 }
 
-// ---- Pose buttons on the stage: Stand, Attack (plays once), Ladder and Rope (loop), each a little silhouette icon ----
+// ---- Pose buttons on the stage: seven attack motions (each click the next swing, then the motion's stance), Stand, Ladder and Rope ----
 {
   const poseOf = () => page.$eval('#preview', e => e.dataset.pose);
   const pressed = () => page.$$eval('#pose-tools .tool', b => b.filter(x => x.getAttribute('aria-pressed') === 'true').map(x => x.dataset.pose).join());
-  check('pose buttons: Stand, Attack, Ladder and Rope, each with a silhouette icon, Stand pressed', (await page.$$eval('#pose-tools .tool', b => b.map(x => x.dataset.pose + (x.querySelector('svg rect') ? '' : '!')).join())) === 'stand,attack,ladder,rope' && (await pressed()) === 'stand');
+  const rows = await page.$$eval('#pose-tools .pose-row', r => r.map(x => [...x.querySelectorAll('.tool')].map(b => b.dataset.pose + (b.querySelector('svg rect') ? '' : '!')).join()));
+  check('pose buttons: a row of attack motions and a row of Stand, Ladder and Rope, each with a silhouette icon, Stand pressed', rows.join('|') === 'oneHanded,stab,twoHanded,spear,polearm,bow,crossbow|stand,ladder,rope' && (await pressed()) === 'stand', rows.join('|'));
+  const off = await page.$$eval('#pose-tools .tool:disabled', b => b.map(x => x.title));
+  check('pose buttons: a motion the weapon lacks is greyed out and says so', off.every(t => /not a motion the .+ has$/.test(t)), off.join('; '));
   await settle(); const still = JSON.stringify(await pixels());
   await page.click('#pose-tools [data-pose="ladder"]'); await settle(); await settle();
   const l1 = await poseOf(), lp = JSON.stringify(await pixels()); await new Promise(r => setTimeout(r, 300)); const l2 = await poseOf();
   check('Ladder: the preview climbs (back view, frames go round) and the button is pressed', /^ladder:ladder:\d$/.test(l1) && l1 !== l2 && lp !== still && (await pressed()) === 'ladder', `${l1} -> ${l2}`);
   await page.click('#pose-tools [data-pose="rope"]'); await settle();
   check('Rope: switches to the rope', /^rope:rope:\d$/.test(await poseOf()) && (await pressed()) === 'rope');
-  await page.click('#pose-tools [data-pose="attack"]');
-  let seen = new Set(); for (let i = 0; i < 40 && (await poseOf()) !== 'stand' || !seen.size; i++) { const v = await poseOf(); if (v !== 'stand') seen.add(v); await new Promise(r => setTimeout(r, 60)); }
-  check('Attack: plays the attack frames once, then stands again', [...seen].some(v => v.startsWith('attack:')) && (await poseOf()) === 'stand' && (await pressed()) === 'stand', [...seen].join(' '));
-  await page.click('#pose-tools [data-pose="ladder"]'); await settle();
+  // One click plays one attack to the end and rests: returns the actions seen and where it rested.
+  const swing = async name => {
+    await page.click(`#pose-tools [data-pose="${name}"]`);
+    const seen = new Set(); let v;
+    for (let i = 0; i < 60; i++) { v = await poseOf(); if (/:stand[12]:0$/.test(v) && seen.size) break; if (v.startsWith(name + ':') && !/:stand[12]:/.test(v)) seen.add(v.split(':')[1]); await new Promise(r => setTimeout(r, 50)); }
+    return { acts: [...seen], rest: v };
+  };
+  const s1 = await swing('oneHanded'), s2 = await swing('oneHanded');
+  check('One-handed swing: the first click plays swing 1 once and rests in the one-handed stance, button still pressed', s1.acts.join() === 'swingO1' && s1.rest === 'oneHanded:stand1:0' && (await pressed()) === 'oneHanded', JSON.stringify(s1));
+  check('One-handed swing: the next click plays the next swing', s2.acts.length === 1 && s2.acts[0] !== 'swingO1' && /^swingO\d$/.test(s2.acts[0]) && s2.rest === 'oneHanded:stand1:0', JSON.stringify(s2));
+  if (!(await page.$eval('#pose-tools [data-pose="twoHanded"]', b => b.disabled))) {
+    const t1 = await swing('twoHanded');
+    check('Two-handed swing: a new motion starts at its first swing and rests holding the weapon in both hands', t1.acts.join() === 'swingT1' && /^twoHanded:stand[12]:0$/.test(t1.rest), JSON.stringify(t1));
+    const rested = JSON.stringify(await pixels());
+    check('Two-handed stance: drawn from the pose data (not the standing picture)', !t1.rest.endsWith('stand2:0') || rested !== still);
+  }
   await page.click('#pose-tools [data-pose="stand"]'); await settle();
   const back = JSON.stringify(await pixels()); check('Stand: back to the standing picture', (await poseOf()) === 'stand' && back === still, `${await poseOf()} ${back} vs ${still}`);
 }

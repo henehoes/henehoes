@@ -1,7 +1,7 @@
-// Reads the attack, ladder and rope poses from the game's own files for the preview's pose buttons, and writes them as ready-placed parts:
+// Reads the attack, two-handed stance, ladder and rope poses from the game's own files for the preview's pose buttons, and writes them as ready-placed parts:
 //   public/poses/body.json            the body (every skin tone) per action and frame: its parts, the frame's delay, whether the face shows,
 //                                     and the attachment points (brow, navel, hand, ...), in the app's sprite coordinates
-//   public/poses/w/<catalogue id>.json a wearable's parts per action and frame (a weapon also says which attack it does)
+//   public/poses/w/<catalogue id>.json a wearable's parts per action and frame (a weapon only has the actions its file has)
 //   public/poses/hair/<colour id>.json a hair colour's parts per action and frame (the back view on ladders and ropes)
 //   public/sprites/pose/<hash>.png    every picture, once (named by its contents, so the many frames that reuse a picture share one file)
 // Faces are not written: the app moves the standing face with the brow, and hides it when the frame says the face does not show.
@@ -12,11 +12,19 @@ import { readFileSync, writeFileSync, mkdirSync, rmSync, renameSync, readdirSync
 import { createHash } from 'node:crypto';
 import { image, png, originOf, at, str, val } from './lib-wz.mjs';
 
-// The attack each real weapon type does (its class in the weapon's file: 30 one-handed sword, 43 spear, 45 bow, ...). A cash weapon is
-// drawn from the class of what you hold; the catalogue keeps one class per weapon (weaponClass, else 30). No weapon swings one-handed.
-const ATTACK_OF_CLASS = { 30: 'swingO1', 31: 'swingO1', 32: 'swingO1', 33: 'stabO1', 37: 'swingO1', 38: 'swingO1', 40: 'swingT1', 41: 'swingT1', 42: 'swingT1', 43: 'stabT1', 44: 'swingP1', 45: 'shoot1', 46: 'shoot2', 47: 'swingO1' };
-const ATTACKS = [...new Set(Object.values(ATTACK_OF_CLASS))];
-const ACTIONS = [...ATTACKS, 'ladder', 'rope'];
+// The pose buttons' attack motions, as the game numbers them: each click plays the next one, then the character rests in the motion's
+// stance (stand2 holds the weapon in both hands). A weapon offers a motion when its file has any of the motion's actions (in the class
+// the catalogue draws it from: weaponClass, else 30).
+const MOTIONS = {
+  oneHanded: { acts: ['swingO1', 'swingO2', 'swingO3'], rest: 'stand1' },
+  stab: { acts: ['stabO1', 'stabO2'], rest: 'stand1' },
+  twoHanded: { acts: ['swingT1', 'swingT2', 'swingT3'], rest: 'stand2' },
+  spear: { acts: ['stabT1', 'stabT2'], rest: 'stand2' },
+  polearm: { acts: ['swingP1', 'swingP2'], rest: 'stand2' },
+  bow: { acts: ['shoot1'], rest: 'stand1' },
+  crossbow: { acts: ['shoot2'], rest: 'stand2' },
+};
+const ACTIONS = [...Object.values(MOTIONS).flatMap(m => m.acts), 'stand2', 'ladder', 'rope'];
 const SKIN_TONES = [0, 1, 2, 3, 4, 5, 9, 10, 11, 12, 13];
 const FOLDERS = { 100: 'Cap', 101: 'Accessory', 102: 'Accessory', 103: 'Accessory', 104: 'Coat', 105: 'Longcoat', 106: 'Pants', 107: 'Shoes', 108: 'Glove', 110: 'Cape', 170: 'Weapon' };
 const POINT_ORDER = ['brow', 'hand', 'handMove', 'navel', 'neck'];
@@ -72,10 +80,11 @@ function pieces(frame, img) {
   }
   return out;
 }
+// A few pictures give a number instead of a layer name: those are drawn on their own name's layer.
 function piece(name, own, p, tones) {
   const [ox, oy] = originOf(own), maps = {};
   for (const m of own.getFromPath('map')?.wzProperties() ?? []) { const v = val(m); if (Array.isArray(v)) maps[m.getName()] = v; }
-  return { name, p, origin: [ox, oy], maps, layer: str(own, 'z') ?? name, ...(tones && { tones }) };
+  return { name, p, origin: [ox, oy], maps, layer: typeof str(own, 'z') === 'string' ? str(own, 'z') : name, ...(tones && { tones }) };
 }
 // Places pieces onto the points placed so far (and adds their own points). Returns [{ piece, x, y }] (top-left, game coordinates).
 function place(list, points) {
@@ -123,7 +132,7 @@ for (const act of ACTIONS) {
   }
 }
 body.stand = Object.fromEntries(Object.entries(standPoints).map(([k, v]) => [k, app(v)]));
-body.attackOfClass = ATTACK_OF_CLASS;
+body.motions = MOTIONS;
 writeFileSync('public/poses/body.json', JSON.stringify(body));
 
 // ---- an item: its parts per action and frame, placed on the body's points ----
@@ -154,8 +163,7 @@ for (const it of wearables) {
   if (folder === 'Weapon') {
     const classes = [...img.wzProperties()].map(c => c.getName()).filter(n => /^\d+$/.test(n));
     const cls = String(it.weaponClass ?? (classes.includes('30') ? 30 : classes[0]));
-    const attack = ATTACK_OF_CLASS[cls] ?? 'swingO1';
-    out = { attack, actions: itemPoses(img, [attack, 'ladder', 'rope'], `${cls}/`) };
+    out = { actions: itemPoses(img, ACTIONS, `${cls}/`) }; // only the actions its file has
   } else out = { actions: itemPoses(img, ACTIONS) };
   writeFileSync(`public/poses/w/${it.id}.json`, JSON.stringify(out)); written++;
 }

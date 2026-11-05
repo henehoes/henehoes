@@ -30,7 +30,7 @@ const ART_H = 84;                                // card art height, CSS px
 const VIEW = { scale: 1.5, focus: [OX + 20, OY + 15] };  // shared crop for every skin, face and hair card, in the catalogue and the Equipped panel: head and chest
 // The Equipped panel's small preview tiles: the whole head and a little chest at 1 css px per sprite px (a whole-number zoom, so still crisp).
 // The Body tab's cards show the whole body (undergarments, plus the worn face and hair) in a taller art box (`.art-box.tall`, 120px), at the same 1.5x.
-const BODY_VIEW = { scale: 1.5, focus: [OX + 21, OY + 27] };
+const BODY_VIEW = { scale: 1.5, focus: [OX + 21, OY + 27], feet: OY + 70 }; // feet: the scene row kept at the bottom edge, so the feet always fit (a tall hat may run off the top)
 const MINI_VIEW = { scale: 1, focus: [OX + 21, OY + 15], centre: true }; // centre: put whatever is drawn in the middle of the tile
 const MINI_ART = 44;                              // art height of a small Equipped tile, CSS px
 const SHORT_LABEL = { faceAcc: 'Face', eyeAcc: 'Eye' }; // category names shortened for the small tiles
@@ -414,7 +414,9 @@ async function drawThumb(canvas, boxEl, sel, view) {
       for (let y = OY - 30; y <= OY + 36; y++) for (let x = 0; x < W; x++) if (buf.data[(y * W + x) * 4 + 3]) { x0 = Math.min(x0, x); x1 = Math.max(x1, x); y0 = Math.min(y0, y); y1 = Math.max(y1, y); }
       if (x1 >= 0) focus = [(x0 + x1 + 1) / 2, (y0 + y1 + 1) / 2];
     }
-    paintFocus(canvas, box.width, box.height, Math.max(1, Math.round(view.scale * dpr())), focus, source);
+    const n = Math.max(1, Math.round(view.scale * dpr()));
+    if (view.feet) focus = [focus[0], view.feet - box.height * dpr() / n / 2];
+    paintFocus(canvas, box.width, box.height, n, focus, source);
   });
 }
 

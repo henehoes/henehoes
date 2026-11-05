@@ -213,11 +213,11 @@ input { font: inherit; border-radius: 0; }
 }
 .card:hover { transform: translateY(-2px); background: var(--paper-deep); }
 .grid.looks { padding: 8px 8px 0 0; } /* room for each card's x, which sits over its top-right corner (the list scrolls, so it would be cut off) */
-.looks .slot .card { width: 100%; padding-bottom: 6px; } /* a Look Book card has no caption: it fills its column like the Body tab's (inside the slot that holds its x) */
+.looks .slot .card { width: 100%; } /* no caption and no space for one: the picture fills the card */ /* a Look Book card has no caption: it fills its column like the Body tab's (inside the slot that holds its x) */
 .card[aria-pressed="true"] { --c: var(--maple); background: oklch(82% .14 85 / .4); color: var(--maple-deep); }
 .card[aria-pressed="true"]::after { content: ""; position: absolute; top: -6px; right: -6px; width: 16px; height: 16px; background: var(--maple) var(--check-white) center / 10px 8px no-repeat; z-index: 2; }
 .art-box { position: relative; height: 84px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.art-box.tall { height: 120px; } /* the Body tab's cards show the whole body */
+.art-box.tall { height: 150px; } /* the Body tab's and Look Book's cards show the whole body, feet at the bottom */
 .art-box canvas { display: block; position: absolute; top: 0; image-rendering: pixelated; }
 .icon { image-rendering: pixelated; height: auto; }
 .card .label { padding: 4px 4px 0; margin-bottom: 5px; height: calc(1.2em + 4px); display: block; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; } /* one line, so every card is the same size and no space is wasted; a longer name is cut off with an ellipsis (the full name is the tooltip) */

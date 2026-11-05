@@ -517,6 +517,15 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   check('Fit filter: All shows every hat again', (await cards()).length === HATS.length);
   await clickTab('Top');
   check('Fit filter: the row is only on the Hat tab', (await page.$$eval('#source .seg button', b => b.filter(x => /^All \(/.test(x.textContent)).length)) === 0);
+  // Weapon tab "Type" filter: types every weapon accepts together share an option; each option lists the weapons that go over it ('weapon' = any)
+  await clickTab('Weapon');
+  const typeBtns = await page.$$eval('#source .seg button', b => b.map(x => x.textContent));
+  const WEAPONS = released('weapon'), goes = (i, t) => i.worksWith?.some(x => x === 'weapon' || x === t);
+  check('Weapon tab: a Type row with All and the grouped weapon types (1H sword, axe and blunt together)', typeBtns[0] === `All (${WEAPONS.length})` && typeBtns.includes(`1H Sword / Axe / Blunt (${WEAPONS.filter(i => goes(i, 'one-handed sword')).length})`) && typeBtns.some(t => t.startsWith('Claw (')), typeBtns.join(' | '));
+  await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent.startsWith('Claw')).click()); await settle();
+  check('Weapon tab: Claw lists only weapons that go over a claw', (await cards()).length === WEAPONS.filter(i => goes(i, 'claw')).length, `${(await cards()).length}`);
+  await page.evaluate(() => document.querySelector('#source .seg button').click()); await settle();
+  check('Weapon tab: All lists every weapon again', (await cards()).length === WEAPONS.length);
   if (SHOW_UPCOMING) {
   // Released | Upcoming switch on the category tabs that have possible upcoming items (Next Crate tab's items, by slot)
   const segTexts = () => page.$$eval('#source .source-group:first-child .seg button', b => b.map(x => x.textContent));

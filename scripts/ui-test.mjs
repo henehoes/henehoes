@@ -121,7 +121,7 @@ check('and not in Search either', !(await page.$$eval('#content .card', cs => cs
 await page.$eval('.search-input', e => { e.value = ''; e.dispatchEvent(new Event('input')); }); await clickTab('Body'); await settle();
 } else {
 await clickTab('Upcoming'); await settle();
-check('Upcoming tab: only the note, shown in full (no toggle), saying upcoming items can no longer be datamined', await page.evaluate(() => /can no longer be datamined/.test(document.querySelector('#content .empty-note')?.textContent) && /can't be predicted/.test(document.querySelector('#content .empty-note').textContent) && !document.querySelector('#content .note-toggle, #content .card')));
+check('Upcoming tab: only the note, shown in full (no toggle), saying upcoming items can no longer be datamined', await page.evaluate(() => /can no longer be datamined/.test(document.querySelector('#content .empty-note')?.textContent) && /no way to tell/.test(document.querySelector('#content .empty-note').textContent) && !document.querySelector('#content .note-toggle, #content .card')));
 await clickTab('Hat'); await settle();
 check('no Released | Upcoming switch and no UPCOMING cards on the Hat tab', !(await page.$$eval('#source .seg button', b => b.some(x => x.textContent === 'Upcoming'))) && !(await page.$$eval('#content .card', cs => cs.some(c => c.textContent.includes('UPCOMING')))));
 await clickTab('Body'); await settle();

@@ -373,6 +373,7 @@ input { font: inherit; border-radius: 0; }
 .past-title h2 { margin: 0; font: 400 24px/1.15 var(--font-pixel); color: var(--sepia); }
 .past-meta { margin: 6px 0 4px; font: 700 12px var(--font-label); letter-spacing: .08em; text-transform: uppercase; color: var(--maple-deep); }
 .past-meta .dot { margin: 0 8px; color: var(--sepia); }
+.ends-line.past-when:not(.ended) { color: #1f7a3a; } /* "Ends in 3 days": the green of its dot (darker, so the small text stays readable); grey once ended, like every ends line */
 
 /* The Released tab's category tabs (Mystery Fashion Crates / Mystery Styles / Aurora Stamp Shop): file tabs like the Character / Housing ones at
    the top of the page (same cut corners), in the Released / Upcoming purples, on a purple rule that the selected tab joins, so they read apart from the box pills below. */

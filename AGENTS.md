@@ -202,7 +202,7 @@ A tab shows a check (`.tick`) when something in it is worn (never on Look Book, 
 - Hover x deletes at once, with no confirm.
 
 **Released tab (`renderPast`).**
-- Category file tabs (`.past-tab`, from `data/boxes.json` groups), date-first pills with sale dots (`onSale`, `.sale-dot`), then the selected box's title, ends/ended line and cards grouped by slot (Mystery Styles: Hairstyles/Faces sections with their colour bar, split Male/Female).
+- Category file tabs (`.past-tab`, from `data/boxes.json` groups), date-first pills with sale dots (`onSale`, `.sale-dot`), then the selected box's title (under its date line, `boxWhen`: a dot and "Ends in 14 days" in green, or "Ended 1 day ago" in grey; the short form because the dates are already on the line above) and cards grouped by slot (Mystery Styles: Hairstyles/Faces sections with their colour bar, split Male/Female).
 - Opens on the `latest` box (currently the Nov 4 crate).
 - Rates appear only in card tooltips.
 - Timing:

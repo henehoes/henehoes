@@ -938,13 +938,15 @@ function endedText(ends, day = false) {
   return `Ended ${date} · ${when}`;
 }
 const nextAgoChange = (ends, day = false) => { const ago = Date.now() - ends, unit = day || ago >= DAY ? DAY : 36e5; return ends + (Math.floor(ago / unit) + 1) * unit; };
-function endedLine(box) {
-  if (!box.end || endMs(box) > Date.now()) return null;
-  const ends = endMs(box), day = isDay(box.end);
-  const line = el('p', { className: 'ends-line ended' }, el('i', { className: 'ends-dot', 'aria-hidden': 'true' }), el('span', { textContent: endedText(ends, day) }));
-  line.dataset.ended = ends; if (day) line.dataset.day = '1';
-  wakeAt(nextAgoChange(ends, day));
-  return line;
+// The Released tab's line under a box's title, which already gives the dates, so the short forms: "Ends in 3 days" (green), "Ended 1 day ago" (grey).
+const shortText = (ends, day = false) => { const left = ends - Date.now(); return left > 0 ? `Ends in ${leftText(left, day).replace(/ left$/, '')}` : `Ended ${agoText(-left, day)}`; };
+function boxWhen(box) {
+  if (!box.end) return null;
+  const ends = endMs(box), day = isDay(box.end), over = ends <= Date.now();
+  const when = el('p', { className: `ends-line past-when${over ? ' ended' : ''}` }, el('i', { className: 'ends-dot', 'aria-hidden': 'true' }), el('span', { textContent: shortText(ends, day) }));
+  when.dataset[over ? 'ended' : 'ends'] = ends; when.dataset.short = '1'; if (day) when.dataset.day = '1';
+  wakeAt(over ? nextAgoChange(ends, day) : nextChange(ends, day));
+  return when;
 }
 function endsLine(boxes, className = '') {
   const next = boxes.filter(b => b.end && endMs(b) > Date.now()).sort((x, y) => endMs(x) - endMs(y))[0];
@@ -977,10 +979,10 @@ function tickEnds() {
   if (mode === 'housing') return;
   let redraw = false;
   for (const line of document.querySelectorAll('.ends-line[data-ends], .ends-line[data-ended]')) { // not the Availability line in the Equipped panel, which is drawn once
-    const day = !!line.dataset.day;
-    if (line.dataset.ended) { const ended = +line.dataset.ended; line.querySelector('span').textContent = endedText(ended, day); wakeAt(nextAgoChange(ended, day)); continue; }
+    const day = !!line.dataset.day, text = line.querySelector('span');
+    if (line.dataset.ended) { const ended = +line.dataset.ended; text.textContent = line.dataset.short ? shortText(ended, day) : endedText(ended, day); wakeAt(nextAgoChange(ended, day)); continue; }
     const ends = +line.dataset.ends;
-    if (ends <= Date.now()) redraw = true; else { line.querySelector('span').textContent = endsText(ends, day); wakeAt(nextChange(ends, day)); }
+    if (ends <= Date.now()) redraw = true; else { text.textContent = line.dataset.short ? shortText(ends, day) : endsText(ends, day); wakeAt(nextChange(ends, day)); }
   }
   for (const dot of document.querySelectorAll('.sale-dot')) {
     if (+dot.dataset.end <= Date.now()) { if (dot.classList.contains('on')) paintSaleDot(dot, false); } else wakeAt(+dot.dataset.end);
@@ -994,7 +996,6 @@ document.addEventListener('visibilitychange', () => { if (!document.hidden) tick
 function renderStyles(c, kind) {
   renderColourBar(kind);
   if (kind === 'face' && catalog.face.some(s => s.variants.some(v => v.colour === browse.face && v.label === NO_COUPON_EYES))) c.append(eyeWhiteNote()); // the list is shown in White
-  if (source === 'datamine') c.append(el('p', { className: 'datamine-note', textContent: 'Showing everything in the game data. Styles marked DATAMINE are not released yet.' }));
   // Mystery Rotation view: only the styles a live Mystery Styles box can give right now, with the end and the time left.
   const live = source === 'rotation' ? liveStyleBoxes() : [];
   rotationSeen = live.map(b => b.id).join();
@@ -1084,8 +1085,8 @@ function renderPast(c) {
   // The selected box's title: the name large, then its dates and size. Not an alert box.
   c.append(el('div', { className: 'past-title' }, el('h2', { textContent: box.name }),
     el('p', { className: 'past-meta' }, ...[box.dates ?? box.range, box.pending ? 'contents not added yet' : `${count} item${count === 1 ? '' : 's'}`].filter(Boolean).flatMap((t, i) => i ? [el('span', { className: 'dot', textContent: '·', 'aria-hidden': 'true' }), t] : [t]))));
-  const endsIn = endsLine([box]) ?? endedLine(box); // green "Ends…" while on sale, grey "Ended… ago" once over
-  if (endsIn) c.append(endsIn);
+  const when = boxWhen(box);
+  if (when) c.append(when);
   if (box.pending) c.append(infoNote('The contents of this one have not been added yet.'));
   if (box.note) c.append(el('p', { className: 'hint', textContent: box.note }));
   for (const [title, builders] of groups) {

@@ -19,8 +19,9 @@ const OX = 60, OY = 112;          // where the skin's top-left sits on that canv
 
 // A slot named in DISABLED_SLOTS is hidden from the tabs, the Equipped panel, the preview, Random and saved defaults (code and data stay).
 const narrowLayout = matchMedia('(max-width: 800px)'); // the one-column phone layout (see the media query in style.css)
-// The possible-upcoming items (Next Crate tab, Released | Upcoming switches) are hidden while this is false; code and data stay.
-const SHOW_UPCOMING = true;
+// The possible-upcoming items (their cards and the Released | Upcoming switches) are hidden while this is false; code and data stay.
+// The Upcoming tab itself always shows, holding only the note on why the next boxes can no longer be predicted.
+const SHOW_UPCOMING = false;
 const DISABLED_SLOTS = new Set(); // a slot named here is hidden everywhere (the code and data stay); empty now that the rings are rebuilt from the game files
 const WEAR_ORDER = ['cap', 'faceAcc', 'eyeAcc', 'earrings', 'longcoat', 'coat', 'pants', 'glove', 'shoes', 'cape', 'weapon', 'nameTag', 'chatBalloon'];
 
@@ -447,7 +448,7 @@ const note = text => { $('ph-note').textContent = text; };
 
 // Chapter tabs down the right edge of the book. Short names keep the rail narrow; the chapter title shows the full one.
 const TAB_NAMES = { looks: 'Look Book', search: 'All', faceAcc: 'Face Acc.', eyeAcc: 'Eye Deco', longcoat: 'Overall', nameTag: 'Name Ring', chatBalloon: 'Chat Ring', upcoming: 'Upcoming', past: 'Released' };
-const CHAPTER_TITLES = { looks: 'Look Book', past: 'Released Crates & Styles', upcoming: 'Possible Upcoming Crates', search: 'Search Everything', body: 'Body', face: 'Faces', hair: 'Hairstyles', cap: 'Hats', faceAcc: 'Face Accessories', eyeAcc: 'Eye Decorations', earrings: 'Earrings', longcoat: 'Overalls', coat: 'Tops', pants: 'Bottoms', glove: 'Gloves', shoes: 'Shoes', cape: 'Capes', weapon: 'Weapons', nameTag: 'Name Rings', chatBalloon: 'Chat Rings' };
+const CHAPTER_TITLES = { looks: 'Look Book', past: 'Released Crates & Styles', upcoming: 'Upcoming Crates', search: 'Search Everything', body: 'Body', face: 'Faces', hair: 'Hairstyles', cap: 'Hats', faceAcc: 'Face Accessories', eyeAcc: 'Eye Decorations', earrings: 'Earrings', longcoat: 'Overalls', coat: 'Tops', pants: 'Bottoms', glove: 'Gloves', shoes: 'Shoes', cape: 'Capes', weapon: 'Weapons', nameTag: 'Name Rings', chatBalloon: 'Chat Rings' };
 
 function renderTabs() {
   const tabs = $('tabs');
@@ -483,7 +484,7 @@ function renderTabs() {
   // The Look Book, then Released (every crate and box so far, newest first) and Upcoming (a guess), close the rail below Chat Ring.
   add('looks', 'Look Book: your saved looks', false, 'looks');
   add('past', 'Released crates and boxes, and what each held', false, 'wearable past');
-  if (SHOW_UPCOMING) add('upcoming', 'Possible items for the next Mystery Fashion Crates (unconfirmed)', false, 'wearable upcoming'); // never a checkmark: it is not something you wear
+  add('upcoming', 'Upcoming: why the next boxes can no longer be predicted', false, 'wearable upcoming'); // never a checkmark: it is not something you wear
   tabs.scrollLeft = scrolled;
   $('chapter').textContent = CHAPTER_TITLES[activeTab] ?? catalog.wearables[activeTab]?.label ?? '';
 }
@@ -980,19 +981,13 @@ function renderStyles(c, kind) {
   c.append(grid);
 }
 
-// The Upcoming tab: equipment the game files mark as dyeable that is not in the catalogue. UNCONFIRMED, and the page says so.
-// The disclaimer shown on the Next Crate tab and above the Upcoming view of a category tab.
-let noteOpen = false; // whether the explanation is expanded (kept while the lists redraw)
+// The Upcoming tab: only a note saying why the possible upcoming items are no longer listed (always shown in full).
 const unconfirmedNote = () => {
-  // Three lines when collapsed (Read more opens the rest); one paragraph of inline text so the line clamp counts the whole thing.
-  const text = el('p', { className: `note-text${noteOpen ? '' : ' collapsed'}` },
-    el('strong', { textContent: 'Upcoming items are speculative and based on datamined info. ' }),
-    el('span', { className: 'note-para', textContent: 'These are the only datamined items marked as dyeable that are not in the shop yet. They seem to fit cleanly into two new seasons plus one new Aurora season: Halloween (now released), winter (snowboard gear, parkas, beanies) and Aurora (fairy outfits such as Romance Rose, Baby Doll Puka, Baby Doll Linka and Fairy Pico). ' }),
-    el('span', { className: 'note-para', textContent: 'The Halloween release backed this up - every item in the new Halloween Mystery Fashion Crate had already been marked dyeable in the datamine. The same logic might carry through to the next crates, but there is no guarantee.' }));
-  const toggle = el('button', { className: 'note-toggle', type: 'button', textContent: noteOpen ? 'Show less' : 'Read more' });
-  toggle.setAttribute('aria-expanded', String(noteOpen));
-  toggle.onclick = () => { noteOpen = !noteOpen; text.classList.toggle('collapsed', !noteOpen); toggle.textContent = noteOpen ? 'Show less' : 'Read more'; toggle.setAttribute('aria-expanded', String(noteOpen)); };
-  return el('div', { className: 'empty-note unconfirmed', role: 'note' }, el('span', { className: 'empty-badge', textContent: '?', 'aria-hidden': 'true' }), el('div', { className: 'note-main' }, text, toggle));
+  const text = el('p', { className: 'note-text' },
+    el('strong', { textContent: 'Upcoming items can no longer be datamined.' }),
+    el('span', { className: 'note-para', textContent: 'With the latest release, it seems Nexon has started updating Mystery boxes during maintenance, instead of having each one end and the next one start at a set date and time. That older schedule needed the coming items to be marked dyeable in the game files ahead of time, which is how this tab used to list them.' }),
+    el('span', { className: 'note-para', textContent: "Since the dyeable items no longer show up before launch, the next boxes can't be predicted. New boxes will appear under Released once they are out." }));
+  return el('div', { className: 'empty-note unconfirmed', role: 'note' }, el('span', { className: 'empty-badge', textContent: '!', 'aria-hidden': 'true' }), el('div', { className: 'note-main' }, text));
 };
 // ---------- Past tab: every past crate and box and what it held ----------
 const pct = r => `${+r.toFixed(2)}%`; // 2 -> "2%", 2.5 -> "2.5%", 16.67 -> "16.67%"
@@ -1086,14 +1081,6 @@ function renderPast(c) {
 
 function renderUpcoming(c) {
   c.append(unconfirmedNote());
-  for (const slot of WEAR_ORDER) {
-    const items = (catalog.wearables[slot]?.items ?? []).filter(i => i.upcoming && matches(i.name));
-    if (!items.length) continue;
-    c.append(el('h3', { className: 'group-title', textContent: `${CHAPTER_TITLES[slot] ?? catalog.wearables[slot].label} · ${items.length}` }));
-    const grid = el('div', { className: 'grid' });
-    for (const item of items) grid.append(wearableCard(slot, item));
-    c.append(grid);
-  }
 }
 
 function renderWearable(c, slot) {

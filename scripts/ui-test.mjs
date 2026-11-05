@@ -26,7 +26,7 @@ const settle = () => new Promise(r => setTimeout(r, 700));
 const start = await pixels();
 check('preview draws something', start.n > 500, `(${start.n} px)`);
 check('on load the Released tab is open, on Mystery Fashion and its newest box (Nov 4)', (await page.$eval('.tab[aria-selected="true"]', e => e.title)).startsWith('Released') && (await page.$eval('#content .past-tab[aria-selected="true"]', e => e.textContent)) === 'Mystery Fashion' && (await page.$eval('#content .pill[aria-pressed="true"]', e => e.textContent)) === 'Nov 4 – Nov 18');
-check('the Look Book, Released and Upcoming close the rail, below Chat Ring, and never carry a checkmark', await page.$$eval('.tab', ts => { const t = ts.map(x => x.title); const n = t.length; return t[n - 2].startsWith('Released') && t[n - 1].startsWith('Possible') && t[n - 3].startsWith('Look Book') && t[n - 4] === 'Chat Ring' && ![n - 3, n - 2, n - 1].some(i => ts[i].querySelector('.tick')); }));
+check('the Look Book, Released and Upcoming close the rail, below Chat Ring, and never carry a checkmark', await page.$$eval('.tab', ts => { const t = ts.map(x => x.title); const n = t.length; return t[n - 2].startsWith('Released') && t[n - 1].startsWith('Upcoming') && t[n - 3].startsWith('Look Book') && t[n - 4] === 'Chat Ring' && ![n - 3, n - 2, n - 1].some(i => ts[i].querySelector('.tick')); }));
 
 // Nothing is worn at the start: no face and no hair
 const selectedNames = async tab => { await clickTab(tab); await settle(); return page.$$eval('#content .grid .card[aria-pressed="true"] .label', els => els.map(e => e.textContent)); };
@@ -120,7 +120,11 @@ await clickTab('Search'); await settle(); await page.type('.search-input', 'pump
 check('and not in Search either', !(await page.$$eval('#content .card', cs => cs.some(c => c.textContent.includes('UPCOMING')))));
 await page.$eval('.search-input', e => { e.value = ''; e.dispatchEvent(new Event('input')); }); await clickTab('Body'); await settle();
 } else {
-check('Next Crate: no Next Crate tab while upcoming items are hidden', !(await page.$$eval('.tab', t => t.some(x => /Next Crate|Possible/.test(x.title + x.textContent)))));
+await clickTab('Upcoming'); await settle();
+check('Upcoming tab: only the note, shown in full (no toggle), saying upcoming items can no longer be datamined', await page.evaluate(() => /can no longer be datamined/.test(document.querySelector('#content .empty-note')?.textContent) && /can't be predicted/.test(document.querySelector('#content .empty-note').textContent) && !document.querySelector('#content .note-toggle, #content .card')));
+await clickTab('Hat'); await settle();
+check('no Released | Upcoming switch and no UPCOMING cards on the Hat tab', !(await page.$$eval('#source .seg button', b => b.some(x => x.textContent === 'Upcoming'))) && !(await page.$$eval('#content .card', cs => cs.some(c => c.textContent.includes('UPCOMING')))));
+await clickTab('Body'); await settle();
 }
 
 const designPill = slot => page.evaluate(slot => [...document.querySelectorAll('#colour .equipped .card')].find(b => b.dataset.slot.toLowerCase() === slot.toLowerCase()).click(), slot);

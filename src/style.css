@@ -317,10 +317,7 @@ input { font: inherit; border-radius: 0; }
 .scroll > .empty-note { margin: 6px 3px 8px; }
 .note-main { min-width: 0; }
 .note-main .note-text { margin: 0; }
-.note-text.collapsed { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; } /* three lines until Read more */
-.note-text .note-para { display: inline; }
-.note-text:not(.collapsed) .note-para { display: block; margin-top: 8px; }
-.note-toggle { margin-top: 6px; padding: 0; border: 0; background: none; color: var(--bench-line); font: 700 13px var(--font-text); text-decoration: underline; cursor: pointer; }
+.note-text .note-para { display: block; margin-top: 8px; }
 .scroll > .empty-note.unconfirmed { margin-bottom: 24px; } /* the Unconfirmed guess note: as much room below it as above */
 .empty-note.unconfirmed + .group-title { margin-top: 0; }
 

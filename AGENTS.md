@@ -40,7 +40,7 @@ Not tested: real Retina hardware or a real phone (only Chrome emulation; WebKit 
 Source: **the game's own files** (via libwz) for everything: art, names, Classic ids, the hair/face lists, flags, poses, housing. The owner says extraction is permitted with credit. For a new item, style or list, write or extend an `extract-*.mjs` script (`String/Eqp.img` `ClassicWorld/<category>` has the game's names; the item files have everything else).
 
 Steps (run what the change needs, then `build-catalog.mjs`):
-- Favicon: `make-favicon.mjs` (Orange Cat Beanie icon).
+- Favicon: Vercel's tab is "classic henehoes" with the Orange Cat Beanie icons (`favicon*.png`, `apple-touch-icon.png`). The GitHub Pages build is "henehoes pro" with Bunny Slippers icons (`pro-*.png`, from `make-favicon.mjs`); `vite.config.js` swaps them in when `VITE_DATAMINE=1`.
 - From the game files (need `WZ_DATA`): `extract-wearables.mjs cap`, `extract-styles.mjs <hair|face> <ids>`, `extract-rings.mjs`, `extract-dyeable.mjs` (-> `data/game-dye.json`), `extract-weapon-types.mjs` (-> `data/weapon-types.json`), `extract-upcoming.mjs` (-> `data/upcoming.json`, `public/sprites/upcoming/`), `extract-datamine.mjs [section ...]` (-> `data/datamine/<section>.json`, `public/sprites/datamine/<section>/`; both draw through `scripts/lib-draw.mjs`), `extract-weapon-hold.mjs <id> <class>`, `extract-poses.mjs` (about 3.5 min; re-run after adding wearables; -> `public/poses/`, `public/sprites/pose/`), `extract-housing.mjs` (-> `public/housing/`).
 
 Game-file environment (`scripts/lib-wz.mjs`):

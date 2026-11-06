@@ -211,7 +211,7 @@ A tab shows a check (`.tick`) when something in it is worn (never on Look Book, 
   - No `end` means still on sale, with no ends line.
   - `tickEnds`/`wakeAt` update lines and dots only when their words change.
 
-**Upcoming tab (`renderUpcoming`).** Shows only `unconfirmedNote()`, always fully expanded: upcoming items can no longer be datamined (Nexon now changes boxes during maintenance and no longer flags coming items as dyeable ahead of launch), so new boxes will appear under Released.
+**Upcoming tab (`renderUpcoming`).** Shows only `unconfirmedNote()`, always fully expanded: upcoming items can no longer be datamined (Nexon now changes boxes during maintenance and no longer flags coming items as dyeable ahead of launch).
 - With `SHOW_UPCOMING = false`, the possible-upcoming items (`upcoming: true` in the catalogue) are not listed anywhere, not randomised, not searchable and not restored from saves.
 - Their code (`renderCrateSwitch`, `hasUpcoming`, `inView`, `regular`, UPCOMING badge) and data (`data/upcoming.json`, `public/sprites/upcoming/`) stay.
 - Items from a released box are marked `released: true` in `data/upcoming.json` and become ordinary items.

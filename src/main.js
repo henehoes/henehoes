@@ -1016,9 +1016,8 @@ function renderStyles(c, kind) {
 const unconfirmedNote = () => {
   const text = el('p', { className: 'note-text' },
     el('strong', { textContent: 'Upcoming items can no longer be datamined.' }),
-    el('span', { className: 'note-para', textContent: "This tab used to list items that were marked as dyeable in the game files but weren't in the shop yet. Those turned out to be the contents of the next boxes." }),
-    el('span', { className: 'note-para', textContent: "Nexon now seems to change Mystery boxes through maintenance updates instead of on a fixed schedule, and new items are no longer marked dyeable before they launch. Without that list, there's no way to tell what the next boxes will hold." }),
-    el('span', { className: 'note-para', textContent: "New boxes will show up under Released once they're out." }));
+    el('span', { className: 'note-para', textContent: "This tab used to list items that were marked as dyeable in the game files but weren't in the shop yet. Those dyeable items would be the contents of the next boxes." }),
+    el('span', { className: 'note-para', textContent: "Nexon now seems to update Mystery boxes during maintenance instead of on a fixed schedule, and new items are no longer marked dyeable before they launch. Without that list, there's no way to tell what the next boxes will hold." }));
   return el('div', { className: 'empty-note unconfirmed', role: 'note' }, el('span', { className: 'empty-badge', textContent: '!', 'aria-hidden': 'true' }), el('div', { className: 'note-main' }, text));
 };
 // ---------- Past tab: every past crate and box and what it held ----------

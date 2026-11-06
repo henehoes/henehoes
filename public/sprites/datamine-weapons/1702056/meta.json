@@ -1,0 +1,32 @@
+{
+ "id": 1702056,
+ "name": "In-Hand FB Helmet(Home)",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 22,
+   "h": 26,
+   "origin": {
+    "x": 25,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": -14,
+     "y": -7,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "id": 1702104,
+ "name": "Christmas Bell",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 15,
+   "h": 20,
+   "origin": {
+    "x": 7,
+    "y": 1,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

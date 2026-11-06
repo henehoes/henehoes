@@ -1,0 +1,32 @@
+{
+ "id": 1702227,
+ "name": "Rainbow Umbrella",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 55,
+   "h": 21,
+   "origin": {
+    "x": 46,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

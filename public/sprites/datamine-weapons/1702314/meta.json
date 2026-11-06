@@ -1,0 +1,50 @@
+{
+ "id": 1702314,
+ "name": "Fantastic Ice Pop",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 53,
+   "h": 35,
+   "origin": {
+    "x": 41,
+    "y": 6,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  },
+  {
+   "key": "effect",
+   "w": 179,
+   "h": 100,
+   "origin": {
+    "x": 94,
+    "y": 80,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "characterEnd"
+  }
+ ]
+}

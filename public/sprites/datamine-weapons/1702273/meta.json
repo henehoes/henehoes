@@ -1,0 +1,50 @@
+{
+ "id": 1702273,
+ "name": "Snowflake Rod",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 66,
+   "h": 45,
+   "origin": {
+    "x": 50,
+    "y": 10,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  },
+  {
+   "key": "effect",
+   "w": 83,
+   "h": 13,
+   "origin": {
+    "x": 66,
+    "y": -2,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "characterEnd"
+  }
+ ]
+}

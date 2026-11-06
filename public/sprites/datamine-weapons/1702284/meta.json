@@ -1,0 +1,50 @@
+{
+ "id": 1702284,
+ "name": "Iris Butterwand",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 44,
+   "h": 32,
+   "origin": {
+    "x": 31,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  },
+  {
+   "key": "effect",
+   "w": 134,
+   "h": 159,
+   "origin": {
+    "x": 49,
+    "y": 127,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "characterEnd"
+  }
+ ]
+}

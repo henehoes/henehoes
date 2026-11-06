@@ -1,0 +1,32 @@
+{
+ "id": 1702223,
+ "name": "Green Leaf Guards",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 25,
+   "h": 35,
+   "origin": {
+    "x": 35,
+    "y": 14,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": -20,
+     "y": -2,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponOverGlove"
+  }
+ ]
+}

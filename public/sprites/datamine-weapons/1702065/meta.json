@@ -1,0 +1,32 @@
+{
+ "id": 1702065,
+ "name": "Red Fist of Fury",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 21,
+   "h": 31,
+   "origin": {
+    "x": 25,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": -15,
+     "y": 14,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponOverGlove"
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "id": 1702246,
+ "name": "Burning Breeze Fan",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 48,
+   "h": 27,
+   "origin": {
+    "x": 37,
+    "y": 8,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  },
+  {
+   "key": "effect",
+   "w": 67,
+   "h": 21,
+   "origin": {
+    "x": 48,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "characterEnd"
+  }
+ ]
+}

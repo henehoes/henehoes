@@ -1,0 +1,32 @@
+{
+ "id": 1702137,
+ "name": "Giant Orchid",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 91,
+   "h": 56,
+   "origin": {
+    "x": 44,
+    "y": 30,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 12,
+     "y": 6,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

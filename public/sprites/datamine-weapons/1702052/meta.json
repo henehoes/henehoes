@@ -1,0 +1,32 @@
+{
+ "id": 1702052,
+ "name": "Elizabeth Fan",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 52,
+   "h": 37,
+   "origin": {
+    "x": 28,
+    "y": 29,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponWristOverGlove"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "id": 1702209,
+ "name": "Demon Sickle",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 113,
+   "h": 64,
+   "origin": {
+    "x": 89,
+    "y": 13,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 5,
+     "y": -3,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

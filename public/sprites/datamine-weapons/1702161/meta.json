@@ -1,0 +1,32 @@
+{
+ "id": 1702161,
+ "name": "Bunny Nunchucks",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 34,
+   "h": 20,
+   "origin": {
+    "x": 25,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

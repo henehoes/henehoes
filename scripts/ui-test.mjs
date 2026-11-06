@@ -13,7 +13,7 @@ await page.goto('http://localhost:5173/', { waitUntil: 'networkidle0' });
 
 // Counts come from the built catalogue, so the checks follow the data (items move from upcoming to released as boxes come out)
 const CAT = JSON.parse(readFileSync('public/catalog.json', 'utf8')).wearables;
-const released = slot => CAT[slot].items.filter(i => !i.upcoming), upcoming = slot => CAT[slot].items.filter(i => i.upcoming);
+const released = slot => CAT[slot].items.filter(i => !i.upcoming && i.released !== false), upcoming = slot => CAT[slot].items.filter(i => i.upcoming);
 const fitOf = i => i.fit ?? (i.vslots?.includes('H2') ? 'helmet' : i.vslots?.includes('H1') ? 'cap' : 'topper');
 const HATS = released('cap'), FIT = f => HATS.filter(i => fitOf(i) === f).length;
 const UPCOMING_TOTAL = Object.keys(CAT).reduce((n, k) => n + upcoming(k).length, 0);
@@ -517,15 +517,26 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   check('Fit filter: All shows every hat again', (await cards()).length === HATS.length);
   await clickTab('Top');
   check('Fit filter: the row is only on the Hat tab', (await page.$$eval('#source .seg button', b => b.filter(x => /^All \(/.test(x.textContent)).length)) === 0);
-  // Weapon tab "Type" filter: types every weapon accepts together share an option; each option lists the weapons that go over it ('weapon' = any)
+  // Weapon tab "Works with" filter: types every listed weapon accepts together share an option; each option lists the weapons that go over it ('weapon' = any)
   await clickTab('Weapon');
-  const typeBtns = await page.$$eval('#source .seg button', b => b.map(x => x.textContent));
+  await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent === 'Released').click()); await settle();
+  const typeBtns = await page.$$eval('#source .source-group:last-child .seg button', b => b.map(x => x.textContent));
   const WEAPONS = released('weapon'), goes = (i, t) => i.worksWith?.some(x => x === 'weapon' || x === t);
   check('Weapon tab: a Type row with All and the grouped weapon types (1H sword, axe and blunt together)', typeBtns[0] === `All (${WEAPONS.length})` && typeBtns.includes(`1H Sword / Axe / Blunt (${WEAPONS.filter(i => goes(i, 'one-handed sword')).length})`) && typeBtns.some(t => t.startsWith('Claw (')), typeBtns.join(' | '));
   await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent.startsWith('Claw')).click()); await settle();
   check('Weapon tab: Claw lists only weapons that go over a claw', (await cards()).length === WEAPONS.filter(i => goes(i, 'claw')).length, `${(await cards()).length}`);
-  await page.evaluate(() => document.querySelector('#source .seg button').click()); await settle();
+  const typeAll = () => page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => /^All \(/.test(b.textContent)).click());
+  await typeAll(); await settle();
   check('Weapon tab: All lists every weapon again', (await cards()).length === WEAPONS.length);
+  check('Weapon tab: the filter is labelled "Works with", next to a Show switch', JSON.stringify(await page.$$eval('#source .source-label', l => l.map(x => x.textContent))) === '["Show","Works with"]');
+  // All · Datamine: every cash weapon in the game files, the unreleased ones badged DATAMINE; Works with counts follow
+  const segBtn = l => page.evaluate(l => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent === l).click(), l);
+  await segBtn('All · Datamine'); await settle();
+  const ALL_WEAPONS = CAT.weapon.items, unreleasedW = ALL_WEAPONS.filter(i => i.released === false).length;
+  check('Weapon tab, All · Datamine: every weapon in the game files, the unreleased ones badged DATAMINE', (await cards()).length === ALL_WEAPONS.length && (await page.$$('#content .card .unreleased-badge')).length === unreleasedW && unreleasedW > 200, `${(await cards()).length} cards, ${unreleasedW} unreleased`);
+  check('Weapon tab, All · Datamine: the Works with counts include the datamined weapons', (await page.$$eval('#source .seg button', b => b.map(x => x.textContent))).includes(`All (${ALL_WEAPONS.length})`));
+  await segBtn('Released'); await settle();
+  check('Weapon tab: back to Released lists only released weapons', (await cards()).length === WEAPONS.length && !(await page.$('#content .card .unreleased-badge')));
   if (SHOW_UPCOMING) {
   // Released | Upcoming switch on the category tabs that have possible upcoming items (Next Crate tab's items, by slot)
   const segTexts = () => page.$$eval('#source .source-group:first-child .seg button', b => b.map(x => x.textContent));

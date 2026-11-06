@@ -1,0 +1,34 @@
+{
+ "id": 1702078,
+ "name": "Pink Shiner Crossbow",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp",
+  "Si"
+ ],
+ "islots": [
+  "Wp",
+  "Si"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 26,
+   "h": 26,
+   "origin": {
+    "x": 10,
+    "y": 5,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -1,
+     "y": 10,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponOverArm"
+  }
+ ]
+}

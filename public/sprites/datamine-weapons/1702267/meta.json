@@ -1,0 +1,32 @@
+{
+ "id": 1702267,
+ "name": "Lightning Soul",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 36,
+   "h": 41,
+   "origin": {
+    "x": 19,
+    "y": 21,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponOverHand"
+  }
+ ]
+}

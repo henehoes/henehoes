@@ -1,0 +1,50 @@
+{
+ "id": 1702328,
+ "name": "Guardian Scepter",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 58,
+   "h": 40,
+   "origin": {
+    "x": 40,
+    "y": 19,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  },
+  {
+   "key": "effect",
+   "w": 24,
+   "h": 33,
+   "origin": {
+    "x": 60,
+    "y": 17,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "characterEnd"
+  }
+ ]
+}

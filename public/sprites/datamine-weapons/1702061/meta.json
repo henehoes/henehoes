@@ -1,0 +1,32 @@
+{
+ "id": 1702061,
+ "name": "Blue Guitar",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 52,
+   "h": 52,
+   "origin": {
+    "x": 25,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": -9,
+     "y": 31,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponOverArm"
+  }
+ ]
+}

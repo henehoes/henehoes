@@ -1,0 +1,32 @@
+{
+ "id": 1702222,
+ "name": "Cherry Blossom Weapon",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 53,
+   "h": 26,
+   "origin": {
+    "x": 51,
+    "y": 10,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": -7,
+     "y": -3,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

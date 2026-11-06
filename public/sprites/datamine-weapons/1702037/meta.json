@@ -1,0 +1,32 @@
+{
+ "id": 1702037,
+ "name": "Hero's Spear",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 101,
+   "h": 29,
+   "origin": {
+    "x": 67,
+    "y": -1,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

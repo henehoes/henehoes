@@ -1,0 +1,32 @@
+{
+ "id": 1702122,
+ "name": "My Friend Kitty",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 56,
+   "h": 25,
+   "origin": {
+    "x": 46,
+    "y": 10,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

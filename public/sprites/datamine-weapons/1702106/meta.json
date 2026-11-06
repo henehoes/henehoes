@@ -1,0 +1,32 @@
+{
+ "id": 1702106,
+ "name": "Stellar Staff",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 50,
+   "h": 19,
+   "origin": {
+    "x": 25,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 14,
+     "y": -4,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

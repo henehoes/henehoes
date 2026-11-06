@@ -1,0 +1,32 @@
+{
+ "id": 1702197,
+ "name": "Santa Buddy",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 46,
+   "h": 72,
+   "origin": {
+    "x": 50,
+    "y": 57,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponBelowBody"
+  }
+ ]
+}

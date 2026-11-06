@@ -1,0 +1,32 @@
+{
+ "id": 1702143,
+ "name": "Skull Staff",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 56,
+   "h": 28,
+   "origin": {
+    "x": 28,
+    "y": 14,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 10,
+     "y": -5,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

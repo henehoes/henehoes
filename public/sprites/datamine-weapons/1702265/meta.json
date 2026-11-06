@@ -1,0 +1,32 @@
+{
+ "id": 1702265,
+ "name": "Alchemist Potion Weapon",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 29,
+   "h": 25,
+   "origin": {
+    "x": 17,
+    "y": 8,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

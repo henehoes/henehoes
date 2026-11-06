@@ -1,0 +1,32 @@
+{
+ "id": 1702177,
+ "name": "Giant Pop with a Swirl",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 50,
+   "h": 36,
+   "origin": {
+    "x": 39,
+    "y": 6,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

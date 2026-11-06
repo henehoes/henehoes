@@ -1,0 +1,34 @@
+{
+ "id": 1702020,
+ "name": "Lollipop",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp",
+  "Si"
+ ],
+ "islots": [
+  "Wp",
+  "Si"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 41,
+   "h": 20,
+   "origin": {
+    "x": 25,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 6,
+     "y": -3,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

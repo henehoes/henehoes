@@ -1,0 +1,32 @@
+{
+ "id": 1702315,
+ "name": "Fireworks Fan",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 105,
+   "h": 70,
+   "origin": {
+    "x": 87,
+    "y": 22,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "id": 1702207,
+ "name": "My Buddy Whale",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 62,
+   "h": 34,
+   "origin": {
+    "x": 72,
+    "y": 12,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponBelowBody"
+  }
+ ]
+}

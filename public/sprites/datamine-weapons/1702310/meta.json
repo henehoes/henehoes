@@ -1,0 +1,32 @@
+{
+ "id": 1702310,
+ "name": "Sea Otter Slammer",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 26,
+   "h": 29,
+   "origin": {
+    "x": 46,
+    "y": 14,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

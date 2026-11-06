@@ -1,0 +1,22 @@
+{
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 99,
+   "h": 25,
+   "origin": {
+    "x": 10,
+    "y": 15,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 47,
+     "y": -2,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponOverArm"
+  }
+ ]
+}

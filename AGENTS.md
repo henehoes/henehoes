@@ -45,7 +45,7 @@ Steps (run what the change needs, then `build-catalog.mjs`):
 - Skins: `download-skins.mjs` + `place-skins.mjs` (locates each part inside the flattened render in `data/skin-renders/`).
 - Backdrop: `download-map.mjs` -> `public/maps/henesys.png` + `henesys.json` (`groundRow`, `footholdRow`, `centreX`).
 - Favicon: `make-favicon.mjs` (Orange Cat Beanie icon).
-- From the game files (need `WZ_DATA`): `extract-wearables.mjs cap`, `extract-styles.mjs <hair|face> <ids>`, `extract-rings.mjs`, `extract-dyeable.mjs` (-> `data/game-dye.json`), `extract-weapon-types.mjs` (-> `data/weapon-types.json`), `extract-upcoming.mjs` (-> `data/upcoming.json`, `public/sprites/upcoming/`), `extract-weapon-hold.mjs <id> <class>`, `extract-poses.mjs` (about 2 min; -> `public/poses/`, `public/sprites/pose/`), `extract-housing.mjs` (-> `public/housing/`).
+- From the game files (need `WZ_DATA`): `extract-wearables.mjs cap`, `extract-styles.mjs <hair|face> <ids>`, `extract-rings.mjs`, `extract-dyeable.mjs` (-> `data/game-dye.json`), `extract-weapon-types.mjs` (-> `data/weapon-types.json`), `extract-upcoming.mjs` (-> `data/upcoming.json`, `public/sprites/upcoming/`), `extract-datamine-weapons.mjs` (-> `data/datamine-weapons.json`, `public/sprites/datamine-weapons/`; both draw through `scripts/lib-draw.mjs`), `extract-weapon-hold.mjs <id> <class>`, `extract-poses.mjs` (about 3.5 min; re-run after adding wearables; -> `public/poses/`, `public/sprites/pose/`), `extract-housing.mjs` (-> `public/housing/`).
 
 Game-file environment (`scripts/lib-wz.mjs`):
 - `WZ_DATA` = the client's Data folder. On this Mac (CrossOver): `~/Library/Application Support/MapleStoryNA/Bottles/maplestory/drive_c/Nexon/Library/maplestorycw/appdata/Data`.
@@ -151,8 +151,9 @@ A tab shows a check (`.tick`) when something in it is worn (never on Look Book, 
   - The names are ours: the game has no player-facing term.
   - Counts are in the buttons. The filter is kept across tabs, not saved.
   - About 16 game hats list H1 but not H2 yet look like helmets, so spot-check when adding hats.
-- **Weapon "Type" filter** (`renderWeaponType`):
-  - Each weapon's `worksWith` (from the game's item description via `extract-weapon-types.mjs`; `["weapon"]` = any weapon) says which weapon types it can be worn over.
+- **Weapon tab: `Show: Released | All · Datamine`** (the shared `renderSourceSwitch` / `source` / `listed`). All · Datamine adds every other cash weapon in the game files (`data/datamine-weapons.json`, `released: false`, DATAMINE badge); while `SHOW_UPCOMING` is off the one upcoming weapon counts as datamined too (`inView`). Datamined weapons stay out of Search and Random (`regular`). The three Transparent weapons (no picture) are skipped. A weapon with no one-handed stance (guitars, some crossbows) is drawn from its stand2 and gets `pose: 'stand2'`, like the Toy Rifle.
+- **Weapon "Works with" filter** (`renderWeaponType`):
+  - Each weapon's `worksWith` (from the game's item description via `extract-weapon-types.mjs`; `["weapon"]` = any weapon) says which weapon types it can be worn over. The parser handles "any weapon except a, b…" (every Classic type but those), a hand carried over ("a two-handed sword, axe, or blunt weapon"), plurals and one uncoded description. `build-catalog.mjs` keeps only Classic World's 14 types (the Glowing Pumpkin Basket lists exactly these); weapons naming only main-game types (knuckles, guns…) get no `worksWith` and show only under All (`warnings.noWeaponTypes`).
   - `goesOver(item, type)` is true for "any weapon" items too.
   - `weaponTypeGroups` merges the `WEAPON_TYPES` that exactly the same set of listed weapons accepts into one option (e.g. "1H Sword / Axe / Blunt"), so options and counts follow the data. `weaponType` holds the first type of the chosen group.
 - `.seg` switch rows wrap on narrow screens (`flex-wrap: wrap`, `min-width: 0`, 2px overlap and padding so wrapped lines align).

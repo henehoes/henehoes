@@ -1,0 +1,50 @@
+{
+ "id": 1702228,
+ "name": "Rainbow Bow",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 90,
+   "h": 38,
+   "origin": {
+    "x": 46,
+    "y": 26,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  },
+  {
+   "key": "weapon2",
+   "w": 41,
+   "h": 1,
+   "origin": {
+    "x": 22,
+    "y": 15,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponBelowArm"
+  }
+ ]
+}

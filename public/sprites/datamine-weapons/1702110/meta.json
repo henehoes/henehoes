@@ -1,0 +1,34 @@
+{
+ "id": 1702110,
+ "name": "Melting Chocolate",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp",
+  "Si"
+ ],
+ "islots": [
+  "Wp",
+  "Si"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 20,
+   "h": 20,
+   "origin": {
+    "x": 9,
+    "y": 2,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

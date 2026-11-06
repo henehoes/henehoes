@@ -8,13 +8,32 @@ import { writeFileSync, readdirSync } from 'node:fs';
 import { openWz, image, at, str, DATA } from './lib-wz.mjs';
 
 const eqp = image('String', 'Eqp.img');
+// The weapon types of Classic World (the Glowing Pumpkin Basket's description lists exactly these). Main-game types some descriptions
+// also name (knuckle, gun, katana, fan...) are kept in the file; build-catalog.mjs keeps only these.
+const CLASSIC = ['one-handed sword', 'one-handed axe', 'one-handed blunt weapon', 'dagger', 'wand', 'staff', 'two-handed sword', 'two-handed axe', 'two-handed blunt weapon', 'spear', 'polearm', 'bow', 'crossbow', 'claw'];
+// "any weapon" -> ['weapon']; "any weapon except a, b and c" -> every Classic type but those; "a two-handed sword, axe, or blunt weapon" ->
+// the hand carries over to the bare axe and blunt weapon. Lower case, singular ("Crossbows"), "two-handed blunt" -> "two-handed blunt weapon".
+function typesOf(text) {
+  const words = t => t.replace(/\.$/, '').trim().toLowerCase();
+  const except = words(text).match(/^any weapon except (.+)$/);
+  const list = (except ? except[1] : words(text)).split(/,\s*(?:or\s+|and\s+)?|\s+or\s+|\s+and\s+/).map(t => t.replace(/^(a|an|any|and)\s+/, '').trim()).filter(Boolean);
+  let hand = null;
+  const types = list.map(t => {
+    if (t === 'weapon') return t;
+    const h = t.match(/^(one|two)-handed /)?.[0]; if (h) hand = h; else if (hand && /^(sword|axe|blunt( weapon)?)$/.test(t)) t = hand + t;
+    t = t.replace(/^((one|two)-handed blunt)$/, '$1 weapon').replace(/-type weapon$/, '').replace(/^pole arm$/, 'polearm');
+    return CLASSIC.includes(t) || !t.endsWith('s') ? t : t.slice(0, -1); // "crossbows", "guns", "long swords"
+  });
+  return except ? CLASSIC.filter(t => !types.includes(t)) : types;
+}
 const out = {}, odd = [];
 for (const wz of readdirSync(`${DATA}/Character/Weapon`).filter(n => /_\d{3}\.wz$/.test(n))) {
   for (const img of openWz(`Character/Weapon/${wz}`).getWzDirectory().wzImages()) {
     const id = parseInt(img.getName()); if (!id) continue;
     const desc = str(at(eqp, `ClassicWorld/Weapon/${id}`), 'desc'); if (!desc) continue;
     const first = desc.split('\\n')[0]; // later lines name skills the weapon grants, not weapon types
-    const types = [...first.matchAll(/#c(.+?)#/g)].flatMap(m => m[1].split(/,\s*(?:or\s+)?|\s+or\s+|\s+and\s+/)).map(t => t.replace(/^(a|an|any)\s+/i, '').replace(/\.$/, '').trim()).filter(Boolean);
+    const coded = [...first.matchAll(/#c(.+?)#/g)].map(m => m[1]);
+    const types = (coded.length ? coded : [first.match(/equipped over (.+)$/i)?.[1] ?? '']).flatMap(typesOf); // one description has no colour codes
     if (types.length) out[id] = types; else if (/equipped over/i.test(desc)) odd.push(`${id}: ${desc}`);
   }
 }

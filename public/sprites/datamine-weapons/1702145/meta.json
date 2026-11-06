@@ -1,0 +1,34 @@
+{
+ "id": 1702145,
+ "name": "Moon Baton",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp",
+  "Si"
+ ],
+ "islots": [
+  "Wp",
+  "Si"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 99,
+   "h": 25,
+   "origin": {
+    "x": 25,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 37,
+     "y": 6,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

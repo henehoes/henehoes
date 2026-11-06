@@ -1,0 +1,32 @@
+{
+ "id": 1702132,
+ "name": "Serpent Staff ",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 63,
+   "h": 38,
+   "origin": {
+    "x": 47,
+    "y": 24,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

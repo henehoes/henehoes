@@ -1,0 +1,34 @@
+{
+ "id": 1702148,
+ "name": "Royal Oaken Staff",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp",
+  "Si"
+ ],
+ "islots": [
+  "Wp",
+  "Si"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 103,
+   "h": 137,
+   "origin": {
+    "x": 51,
+    "y": 68,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 10,
+     "y": -31,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

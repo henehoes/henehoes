@@ -1,0 +1,32 @@
+{
+ "id": 1702178,
+ "name": "Sunset Seraphim",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 27,
+   "h": 31,
+   "origin": {
+    "x": 15,
+    "y": 20,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponOverHand"
+  }
+ ]
+}

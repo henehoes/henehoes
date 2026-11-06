@@ -1,0 +1,32 @@
+{
+ "id": 1702121,
+ "name": "Zhu's Pork Pole",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 96,
+   "h": 32,
+   "origin": {
+    "x": 48,
+    "y": 16,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 6,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

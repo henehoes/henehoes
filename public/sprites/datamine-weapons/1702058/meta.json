@@ -1,0 +1,32 @@
+{
+ "id": 1702058,
+ "name": "Football Claw",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 24,
+   "h": 14,
+   "origin": {
+    "x": 25,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": -11,
+     "y": 1,
+     "isEmpty": false
+    }
+   },
+   "position": "armBelowHeadOverMailChest"
+  }
+ ]
+}

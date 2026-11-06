@@ -1,0 +1,34 @@
+{
+ "id": 1702055,
+ "name": "Hong Bao",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp",
+  "Si"
+ ],
+ "islots": [
+  "Wp",
+  "Si"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 49,
+   "h": 26,
+   "origin": {
+    "x": 25,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 15,
+     "y": 3,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

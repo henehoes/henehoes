@@ -1,0 +1,32 @@
+{
+ "id": 1702169,
+ "name": "Bluebird",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 52,
+   "h": 25,
+   "origin": {
+    "x": 33,
+    "y": 4,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 12,
+     "y": 6,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

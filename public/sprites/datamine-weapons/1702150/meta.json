@@ -1,0 +1,32 @@
+{
+ "id": 1702150,
+ "name": "Crissagrim Blade",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 39,
+   "h": 18,
+   "origin": {
+    "x": 19,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 8,
+     "y": -3,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

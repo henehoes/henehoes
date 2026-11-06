@@ -1,0 +1,32 @@
+{
+ "id": 1702000,
+ "name": "Dual Plasma Blade",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 58,
+   "h": 7,
+   "origin": {
+    "x": 25,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 3,
+     "y": -4,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

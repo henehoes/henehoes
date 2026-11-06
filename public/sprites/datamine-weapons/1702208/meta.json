@@ -1,0 +1,32 @@
+{
+ "id": 1702208,
+ "name": "Choco Banana",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 94,
+   "h": 32,
+   "origin": {
+    "x": 86,
+    "y": 21,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 5,
+     "y": -3,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

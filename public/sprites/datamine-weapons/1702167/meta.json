@@ -1,0 +1,32 @@
+{
+ "id": 1702167,
+ "name": "Electric Knuckle",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 42,
+   "h": 27,
+   "origin": {
+    "x": 28,
+    "y": 14,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponOverHand"
+  }
+ ]
+}

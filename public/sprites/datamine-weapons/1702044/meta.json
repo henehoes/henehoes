@@ -1,0 +1,32 @@
+{
+ "id": 1702044,
+ "name": "Brown Electric Guitar",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 69,
+   "h": 24,
+   "origin": {
+    "x": 25,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 5,
+     "y": 4,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

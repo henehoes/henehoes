@@ -1,0 +1,32 @@
+{
+ "id": 1702215,
+ "name": "Ghost Weapon",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 17,
+   "h": 17,
+   "origin": {
+    "x": 4,
+    "y": 13,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponOverHand"
+  }
+ ]
+}

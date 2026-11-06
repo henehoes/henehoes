@@ -1,0 +1,32 @@
+{
+ "id": 1702136,
+ "name": "Hook Hand",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 25,
+   "h": 31,
+   "origin": {
+    "x": 12,
+    "y": 15,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": -1,
+     "y": -6,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponOverGlove"
+  }
+ ]
+}

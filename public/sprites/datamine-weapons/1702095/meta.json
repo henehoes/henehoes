@@ -1,0 +1,32 @@
+{
+ "id": 1702095,
+ "name": "Tennis Racquet",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 74,
+   "h": 29,
+   "origin": {
+    "x": 25,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 36,
+     "y": 7,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "id": 1702305,
+ "name": "Goblin Fire",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 19,
+   "h": 27,
+   "origin": {
+    "x": 8,
+    "y": 17,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponOverGlove"
+  },
+  {
+   "key": "effect",
+   "w": 122,
+   "h": 87,
+   "origin": {
+    "x": 72,
+    "y": 63,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "characterEnd"
+  }
+ ]
+}

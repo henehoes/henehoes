@@ -1,0 +1,32 @@
+{
+ "id": 1702120,
+ "name": "Dragon's Fury",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 99,
+   "h": 31,
+   "origin": {
+    "x": 58,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

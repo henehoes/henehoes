@@ -170,7 +170,7 @@ input { font: inherit; border-radius: 0; }
 .source-row:empty { display: none; }
 .q-icon { display: inline-block; width: 11px; height: 11px; margin-left: 5px; vertical-align: -2px; background: currentColor; -webkit-mask: var(--help) center / contain no-repeat; mask: var(--help) center / contain no-repeat; } /* question-mark icon: "unconfirmed" */
 .source-group { display: flex; align-items: center; gap: 10px; min-width: 0; }
-.source-label { font: 10px var(--font-label); letter-spacing: .06em; text-transform: uppercase; color: var(--sepia); }
+.source-label { flex: none; white-space: nowrap; font: 10px var(--font-label); letter-spacing: .06em; text-transform: uppercase; color: var(--sepia); } /* "Works with" stays on one line */
 .datamine-note { margin: 0 0 10px; padding: 6px 8px; border: 2px dashed var(--maple); color: var(--maple-deep); font: 13px var(--font-text); }
 .seg { display: inline-flex; flex: 0 1 auto; flex-wrap: wrap; row-gap: 4px; min-width: 0; padding-left: 2px; } /* on narrow screens the options wrap onto a second line; every button overlaps the one before by 2px, so a wrapped line lines up too */
 .seg button { margin-left: -2px; padding: 5px 10px; border: 2px solid var(--sepia); background: var(--paper); color: var(--sepia); font: 10px var(--font-label); }

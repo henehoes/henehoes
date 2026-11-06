@@ -1,0 +1,40 @@
+{
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 20,
+   "h": 18,
+   "origin": {
+    "x": 8,
+    "y": 2,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": -1,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponBelowArm"
+  },
+  {
+   "key": "weaponWrist",
+   "w": 12,
+   "h": 15,
+   "origin": {
+    "x": 0,
+    "y": 1,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": -1,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponWristOverGlove"
+  }
+ ]
+}

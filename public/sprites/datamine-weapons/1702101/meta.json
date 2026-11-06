@@ -1,0 +1,34 @@
+{
+ "id": 1702101,
+ "name": "Fire Katana",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp",
+  "Si"
+ ],
+ "islots": [
+  "Wp",
+  "Si"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 92,
+   "h": 43,
+   "origin": {
+    "x": 46,
+    "y": 21,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 24,
+     "y": 11,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

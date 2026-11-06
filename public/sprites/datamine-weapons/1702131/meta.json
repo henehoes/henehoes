@@ -1,0 +1,32 @@
+{
+ "id": 1702131,
+ "name": "Smackdown Fist ",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 15,
+   "h": 18,
+   "origin": {
+    "x": -6,
+    "y": 0,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 12,
+     "y": 7,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponOverGlove"
+  }
+ ]
+}

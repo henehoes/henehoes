@@ -1,0 +1,1441 @@
+{
+ "_comment": "Cash weapons in the game files that are not in the catalogue (not released). Written by scripts/extract-datamine-weapons.mjs.",
+ "items": [
+  {
+   "id": 1702000,
+   "name": "Dual Plasma Blade",
+   "weaponClass": 33
+  },
+  {
+   "id": 1702001,
+   "name": "Bouquet",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702002,
+   "name": "Wooden Slingshot",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702005,
+   "name": "Yellow Candy Cane",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702006,
+   "name": "Red Candy Cane",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702007,
+   "name": "Green Candy Cane",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702008,
+   "name": "Santa Sack",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702009,
+   "name": "Tiger Paw",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702011,
+   "name": "Pink Toy Hammer",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702015,
+   "name": "Bug Net",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702016,
+   "name": "Picnic Basket",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702018,
+   "name": "Vanilla Ice Cream",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702020,
+   "name": "Lollipop",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702021,
+   "name": "Cupid's Bow",
+   "weaponClass": 45
+  },
+  {
+   "id": 1702023,
+   "name": "Cupid's Crossbow",
+   "weaponClass": 46,
+   "stand2Only": true
+  },
+  {
+   "id": 1702024,
+   "name": "Blazing Sword",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702027,
+   "name": "Well-Loved Frozen Tuna",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702028,
+   "name": "Founder's Thief Dagger",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702029,
+   "name": "Manji's Blade",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702037,
+   "name": "Hero's Spear",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702044,
+   "name": "Brown Electric Guitar",
+   "weaponClass": 44
+  },
+  {
+   "id": 1702049,
+   "name": "Viking Sword for Transformation"
+  },
+  {
+   "id": 1702050,
+   "name": "Black Bean One-Handed Blunt Weapon",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702052,
+   "name": "Elizabeth Fan",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702053,
+   "name": "Snowman Claw",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702054,
+   "name": "Cellphone",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702055,
+   "name": "Hong Bao",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702056,
+   "name": "In-Hand FB Helmet(Home)",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702057,
+   "name": "In-Hand FB Helmet(Away)",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702058,
+   "name": "Football Claw",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702059,
+   "name": "Ancient Korean Bow",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702060,
+   "name": "Guitar",
+   "weaponClass": 40,
+   "stand2Only": true
+  },
+  {
+   "id": 1702061,
+   "name": "Blue Guitar",
+   "weaponClass": 40,
+   "stand2Only": true
+  },
+  {
+   "id": 1702062,
+   "name": "Big Hand",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702063,
+   "name": "Cactus",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702064,
+   "name": "Shiner",
+   "weaponClass": 45
+  },
+  {
+   "id": 1702065,
+   "name": "Red Fist of Fury",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702066,
+   "name": "Blue Fist of Fury",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702067,
+   "name": "Scissor Stick",
+   "weaponClass": 43
+  },
+  {
+   "id": 1702068,
+   "name": "Rock Stick",
+   "weaponClass": 43
+  },
+  {
+   "id": 1702069,
+   "name": "Paper Stick",
+   "weaponClass": 43
+  },
+  {
+   "id": 1702070,
+   "name": "Canvas Tote Bag",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702071,
+   "name": "England Cheer Towel",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702072,
+   "name": "France Cheer Towel",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702073,
+   "name": "Brazil Cheer Towel",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702074,
+   "name": "Sporty Band",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702075,
+   "name": "Japan Cheer Towel",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702076,
+   "name": "Laser Sword",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702077,
+   "name": "Blue Shiner Crossbow",
+   "weaponClass": 46,
+   "stand2Only": true
+  },
+  {
+   "id": 1702078,
+   "name": "Pink Shiner Crossbow",
+   "weaponClass": 46,
+   "stand2Only": true
+  },
+  {
+   "id": 1702079,
+   "name": "USA Cheer Towel",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702080,
+   "name": "Mexico Cheer Towel",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702081,
+   "name": "Australia Cheer Towel",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702082,
+   "name": "Fairy Fan",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702083,
+   "name": "Blue Blazing Sword",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702084,
+   "name": "Green Blazing Sword",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702085,
+   "name": "Purple Blazing Sword",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702086,
+   "name": "Harp",
+   "weaponClass": 45
+  },
+  {
+   "id": 1702087,
+   "name": "Foam Hand",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702088,
+   "name": "Toy Pinwheel",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702089,
+   "name": "Frog Claw",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702090,
+   "name": "Chicken Smackaroo",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702091,
+   "name": "Red Pencil",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702092,
+   "name": "Super Scrubber",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702093,
+   "name": "Candy Hammer",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702094,
+   "name": "Feather Scimitar",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702095,
+   "name": "Tennis Racquet",
+   "weaponClass": 44
+  },
+  {
+   "id": 1702097,
+   "name": "Okie Donkie",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702098,
+   "name": "Mad Cow",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702099,
+   "name": "Frog Glove",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702100,
+   "name": "Pizza Pan",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702101,
+   "name": "Fire Katana",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702102,
+   "name": "Violin",
+   "weaponClass": 46,
+   "stand2Only": true
+  },
+  {
+   "id": 1702104,
+   "name": "Christmas Bell",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702105,
+   "name": "Meso Gunner",
+   "weaponClass": 46,
+   "stand2Only": true
+  },
+  {
+   "id": 1702106,
+   "name": "Stellar Staff",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702107,
+   "name": "Pink Ribbon Umbrella",
+   "weaponClass": 45
+  },
+  {
+   "id": 1702108,
+   "name": "Deluxe Cone",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702109,
+   "name": "Heart Key",
+   "weaponClass": 37
+  },
+  {
+   "id": 1702110,
+   "name": "Melting Chocolate",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702111,
+   "name": "Chocolate",
+   "weaponClass": 40,
+   "stand2Only": true
+  },
+  {
+   "id": 1702112,
+   "name": "Giant Lollipop",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702113,
+   "name": "Celestial Wand",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702115,
+   "name": "Red Rose",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702116,
+   "name": "Janus Sword",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702117,
+   "name": "Sachiel Sword",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702118,
+   "name": "Veamoth Sword",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702119,
+   "name": "White Seal Pillow",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702120,
+   "name": "Dragon's Fury",
+   "weaponClass": 40
+  },
+  {
+   "id": 1702121,
+   "name": "Zhu's Pork Pole",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702122,
+   "name": "My Friend Kitty",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702123,
+   "name": "Heart Cane",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702124,
+   "name": "Blue Shiner ",
+   "weaponClass": 45
+  },
+  {
+   "id": 1702125,
+   "name": "Water Gun",
+   "weaponClass": 46,
+   "stand2Only": true
+  },
+  {
+   "id": 1702126,
+   "name": "Green Shiner",
+   "weaponClass": 45
+  },
+  {
+   "id": 1702127,
+   "name": "Purple Shiner",
+   "weaponClass": 45
+  },
+  {
+   "id": 1702128,
+   "name": "Red Shiner",
+   "weaponClass": 45
+  },
+  {
+   "id": 1702129,
+   "name": "Pepe Beak",
+   "weaponClass": 33
+  },
+  {
+   "id": 1702130,
+   "name": "Slime Stick",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702131,
+   "name": "Smackdown Fist ",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702132,
+   "name": "Serpent Staff ",
+   "weaponClass": 37
+  },
+  {
+   "id": 1702133,
+   "name": "Vengence Claw",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702134,
+   "name": "Ice Flower",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702135,
+   "name": "Spanish Ham",
+   "weaponClass": 32
+  },
+  {
+   "id": 1702136,
+   "name": "Hook Hand",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702137,
+   "name": "Giant Orchid",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702138,
+   "name": "My Friend Puppy",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702139,
+   "name": "Pink Angel Stick",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702140,
+   "name": "Combat Syringe",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702141,
+   "name": "Broken Sword",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702142,
+   "name": "Bionic Claw",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702143,
+   "name": "Skull Staff",
+   "weaponClass": 37
+  },
+  {
+   "id": 1702144,
+   "name": "Skull Axe",
+   "weaponClass": 41,
+   "stand2Only": true
+  },
+  {
+   "id": 1702145,
+   "name": "Moon Baton",
+   "weaponClass": 44
+  },
+  {
+   "id": 1702146,
+   "name": "Tania Sword",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702147,
+   "name": "Mercury Sword",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702148,
+   "name": "Royal Oaken Staff",
+   "weaponClass": 44
+  },
+  {
+   "id": 1702149,
+   "name": "Flame Tongue",
+   "weaponClass": 40,
+   "stand2Only": true
+  },
+  {
+   "id": 1702150,
+   "name": "Crissagrim Blade",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702151,
+   "name": "Plasma Saber",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702152,
+   "name": "Shooting Star",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702153,
+   "name": "Forked Turkey",
+   "weaponClass": 38
+  },
+  {
+   "id": 1702154,
+   "name": "Burning Marshmallow",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702155,
+   "name": "The Jackal",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702156,
+   "name": "Blackbeard's Knuckle",
+   "weaponClass": 48
+  },
+  {
+   "id": 1702157,
+   "name": "Tiger Paw Knuckle",
+   "weaponClass": 48
+  },
+  {
+   "id": 1702158,
+   "name": "Dogged Out",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702159,
+   "name": "Koala Doll",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702160,
+   "name": "Hot Dog Fork",
+   "weaponClass": 40,
+   "stand2Only": true
+  },
+  {
+   "id": 1702161,
+   "name": "Bunny Nunchucks",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702162,
+   "name": "My Friend JY",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702163,
+   "name": "Holiday Candy Cane",
+   "weaponClass": 44
+  },
+  {
+   "id": 1702164,
+   "name": "Glow Fingers",
+   "weaponClass": 49
+  },
+  {
+   "id": 1702165,
+   "name": "Holiday Tree Ring",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702166,
+   "name": "My Friend SH",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702167,
+   "name": "Electric Knuckle",
+   "weaponClass": 48
+  },
+  {
+   "id": 1702168,
+   "name": "Party Popper",
+   "weaponClass": 45
+  },
+  {
+   "id": 1702169,
+   "name": "Bluebird",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702170,
+   "name": "Hessonite Saber",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702171,
+   "name": "Butterfly Staff",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702172,
+   "name": "Hot Dog Link",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702173,
+   "name": "Power Pesticide",
+   "weaponClass": 49
+  },
+  {
+   "id": 1702174,
+   "name": "Cloud 9 Pillow",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702175,
+   "name": "Dark Seraphim",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702176,
+   "name": "Picky Ducky",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702177,
+   "name": "Giant Pop with a Swirl",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702178,
+   "name": "Sunset Seraphim",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702179,
+   "name": "Aqua Seraphim",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702180,
+   "name": "White & Yellow Seraphim",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702181,
+   "name": "Patriot Seraphim",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702182,
+   "name": "Pink Seraphim",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702183,
+   "name": "Crabby",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702185,
+   "name": "Rainbow Sabre",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702186,
+   "name": "Towel Whip",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702187,
+   "name": "Maple Girl Wand",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702188,
+   "name": "Tsunami Wave",
+   "weaponClass": 44
+  },
+  {
+   "id": 1702189,
+   "name": "Bullseye Board",
+   "weaponClass": 44
+  },
+  {
+   "id": 1702190,
+   "name": "Bone Weapon",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702191,
+   "name": "Baby Ellie",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702192,
+   "name": "Halloween Teddy",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702193,
+   "name": "Japanese War Fan",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702194,
+   "name": "Musical Violin",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702195,
+   "name": "Alligator Tube",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702196,
+   "name": "Rudolph Stick",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702197,
+   "name": "Santa Buddy",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702198,
+   "name": "Blizzard Stick",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702199,
+   "name": "Galactic Legend",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702200,
+   "name": "Heartbreak Sword",
+   "weaponClass": 37
+  },
+  {
+   "id": 1702201,
+   "name": "Boleadoras",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702202,
+   "name": "Ducky Tube",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702203,
+   "name": "Dumbell Weapon",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702204,
+   "name": "Knockout Boxing Gloves",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702206,
+   "name": "Sparkler",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702207,
+   "name": "My Buddy Whale",
+   "weaponClass": 43
+  },
+  {
+   "id": 1702208,
+   "name": "Choco Banana",
+   "weaponClass": 40
+  },
+  {
+   "id": 1702209,
+   "name": "Demon Sickle",
+   "weaponClass": 40
+  },
+  {
+   "id": 1702210,
+   "name": "Popsicle Sword",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702211,
+   "name": "Rainbow Brush",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702212,
+   "name": "Metallic Arm",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702213,
+   "name": "Inari the White Fox",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702214,
+   "name": "Soft Plush Dolphin",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702215,
+   "name": "Ghost Weapon",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702216,
+   "name": "Rudolph",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702217,
+   "name": "Gosling Cushion",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702218,
+   "name": "Steel Briefcase",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702219,
+   "name": "Saw Machine Gun",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702220,
+   "name": "Hunting Hawk",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702221,
+   "name": "Bunny Umbrella",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702222,
+   "name": "Cherry Blossom Weapon",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702223,
+   "name": "Green Leaf Guards",
+   "weaponClass": 47
+  },
+  {
+   "id": 1702224,
+   "name": "Kitty Spirit Weapon",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702225,
+   "name": "Strawberry Basket",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702226,
+   "name": "Dragon Lord Gloves",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702227,
+   "name": "Rainbow Umbrella",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702228,
+   "name": "Rainbow Bow",
+   "weaponClass": 45
+  },
+  {
+   "id": 1702229,
+   "name": "Test Pen",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702230,
+   "name": "King Crow Fan",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702231,
+   "name": "Handbag (Pink)",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702232,
+   "name": "Handbag (Blue)",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702235,
+   "name": "Royal Marine Flag",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702237,
+   "name": "Suitcase",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702238,
+   "name": "Playing Cards",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702239,
+   "name": "Yo Yo",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702240,
+   "name": "Chocolate Dipped Stick",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702241,
+   "name": "Rabbit Weapon",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702242,
+   "name": "Alien Mug",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702243,
+   "name": "Baby Bottle",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702244,
+   "name": "Funny Punch Yo-yo",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702245,
+   "name": "Carrot",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702246,
+   "name": "Burning Breeze Fan",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702247,
+   "name": "Spring Blossoms",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702248,
+   "name": "Rainbow Sparkle",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702249,
+   "name": "Orange Seraphim",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702250,
+   "name": "Heaven's Seraphim",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702251,
+   "name": "Stellar Seraphim",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702252,
+   "name": "Dynamic Seraphim",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702253,
+   "name": "Bloody Ruby Sabre",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702254,
+   "name": "Twilight Sabre",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702255,
+   "name": "Evergreen Sabre",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702256,
+   "name": "Dark Magenta Sabre",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702257,
+   "name": "Solid Black Sabre",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702258,
+   "name": "Ombra & Luce Sabre",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702259,
+   "name": "Shock Wave",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702260,
+   "name": "Pink Angel Syringe",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702261,
+   "name": "Strawberry Delight",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702262,
+   "name": "Milky Way",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702263,
+   "name": "Strawberry Sword",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702264,
+   "name": "Crystal Fantasia Wand",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702265,
+   "name": "Alchemist Potion Weapon",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702266,
+   "name": "Lord Tempest",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702267,
+   "name": "Lightning Soul",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702268,
+   "name": "Rabbit in a Hat",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702270,
+   "name": "Boom Box",
+   "weaponClass": 53
+  },
+  {
+   "id": 1702271,
+   "name": "Fierce Cat",
+   "weaponClass": 53
+  },
+  {
+   "id": 1702272,
+   "name": "Fortune Flash",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702273,
+   "name": "Snowflake Rod",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702274,
+   "name": "Chocolatier Stick",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702275,
+   "name": "Tedtacular Bearingtons",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702276,
+   "name": "Magic Herb Teaspoon",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702277,
+   "name": "Starfall Magic Square",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702278,
+   "name": "Coin Sword",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702279,
+   "name": "Hunter Hawk",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702280,
+   "name": "Crystalline Sheen",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702281,
+   "name": "Dragon Familiar",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702282,
+   "name": "Shark-sicle",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702283,
+   "name": "Rose Butterwand",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702284,
+   "name": "Iris Butterwand",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702285,
+   "name": "Pimp Stick",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702286,
+   "name": "Pimp Chalice",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702287,
+   "name": "Bladed Falcon's Katana",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702288,
+   "name": "Atlantis",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702289,
+   "name": "Onmyouji Fan",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702290,
+   "name": "Azure Crystal Crusher",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702291,
+   "name": "Twin Crescent Blade",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702292,
+   "name": "Persimmon Branch",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702293,
+   "name": "Halloween Leopard Umbrella",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702294,
+   "name": "Dark Devil Weapon",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702295,
+   "name": "Slither Style Snake Sword",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702296,
+   "name": "Golden Holy Cup",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702297,
+   "name": "Baller Cane",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702298,
+   "name": "Twinkle Sparkle",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702299,
+   "name": "Fairy Lamp",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702300,
+   "name": "Neo Light Sword",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702301,
+   "name": "Stylish Iron",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702302,
+   "name": "Dreamy Candy Pillow",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702303,
+   "name": "Lord of the Carrots",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702304,
+   "name": "Blue Rose Parasol",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702305,
+   "name": "Goblin Fire",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702307,
+   "name": "GM Nori's Syringe",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702310,
+   "name": "Sea Otter Slammer",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702311,
+   "name": "Superstar Microphone",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702312,
+   "name": "Seal Wave Snuggler",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702314,
+   "name": "Fantastic Ice Pop",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702315,
+   "name": "Fireworks Fan",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702316,
+   "name": "Chicky-Chicky Boom",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702317,
+   "name": "Sparkling Buddy",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702318,
+   "name": "Mint Chocolatier Stick",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702319,
+   "name": "Cotton Candy Cloud",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702320,
+   "name": "Arachne",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702321,
+   "name": "Free Spirit",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702322,
+   "name": "Dark Devil Weapon",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702323,
+   "name": "Shadow Executor",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702324,
+   "name": "Sweet Snake",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702327,
+   "name": "Red Lantern",
+   "weaponClass": 30
+  },
+  {
+   "id": 1702328,
+   "name": "Guardian Scepter",
+   "weaponClass": 30
+  }
+ ]
+}

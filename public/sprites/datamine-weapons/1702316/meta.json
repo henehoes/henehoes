@@ -1,0 +1,32 @@
+{
+ "id": 1702316,
+ "name": "Chicky-Chicky Boom",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 37,
+   "h": 32,
+   "origin": {
+    "x": 58,
+    "y": 17,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "id": 1702193,
+ "name": "Japanese War Fan",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Wp"
+ ],
+ "islots": [
+  "Wp"
+ ],
+ "parts": [
+  {
+   "key": "weapon",
+   "w": 57,
+   "h": 21,
+   "origin": {
+    "x": 43,
+    "y": 4,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weapon"
+  }
+ ]
+}

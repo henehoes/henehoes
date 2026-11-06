@@ -166,10 +166,10 @@ input { font: inherit; border-radius: 0; }
 .search:focus-within { --c: var(--maple); }
 .glass { position: relative; flex: none; width: 11px; height: 11px; border: 2px solid var(--sepia); border-radius: 50%; margin: 0 4px 3px 0; }
 .glass::after { content: ""; position: absolute; width: 2px; height: 6px; background: var(--sepia); right: -4px; bottom: -6px; transform: rotate(-45deg); }
-.source-row { flex: none; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin-bottom: 10px; padding: 3px; }
+.source-row { flex: none; display: grid; grid-template-columns: max-content minmax(0, 1fr); align-items: center; justify-items: start; gap: 6px 10px; margin-bottom: 10px; padding: 3px; } /* one filter per line: the titles in one column, the options lined up in the next */
 .source-row:empty { display: none; }
 .q-icon { display: inline-block; width: 11px; height: 11px; margin-left: 5px; vertical-align: -2px; background: currentColor; -webkit-mask: var(--help) center / contain no-repeat; mask: var(--help) center / contain no-repeat; } /* question-mark icon: "unconfirmed" */
-.source-group { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.source-group { display: contents; } /* its title and options are cells of the row's grid */
 .source-label { flex: none; white-space: nowrap; font: 10px var(--font-label); letter-spacing: .06em; text-transform: uppercase; color: var(--sepia); } /* "Works with" stays on one line */
 .datamine-note { margin: 0 0 10px; padding: 6px 8px; border: 2px dashed var(--maple); color: var(--maple-deep); font: 13px var(--font-text); }
 .seg { display: inline-flex; flex: 0 1 auto; flex-wrap: wrap; row-gap: 4px; min-width: 0; padding-left: 2px; } /* on narrow screens the options wrap onto a second line; every button overlaps the one before by 2px, so a wrapped line lines up too */

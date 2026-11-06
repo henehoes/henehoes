@@ -190,20 +190,16 @@ const HAT_FITS = [
   ['cap', 'Cap', 'Flattens your hair but leaves most of it visible'],
   ['helmet', 'Helmet', 'Replaces your hair or hides most of your face (helmets, masks, and Hair (Hat) items, which bring their own hair)'],
 ];
-// Weapon tab filter ("Type"): which weapons a cash weapon can go over (its `worksWith`, from the game's item description; 'weapon' = any).
-// Types that every listed weapon accepts together (one usable means the other is too) share one option, so the options follow the data.
-let weaponType = 'all'; // 'all' or the first type of an option's group
+// Weapon tab filter ("Works with"): which weapons a cash weapon can go over (its `worksWith`, from the game's item description; 'weapon' = any).
+// One option per weapon type, plus Any (weapons that go over any weapon). Nothing is chosen at first, which lists every weapon; clicking the
+// chosen option again clears it.
+let weaponType = null; // null (every weapon), 'any' or a weapon type
 const WEAPON_TYPES = [
   ['one-handed sword', '1H Sword'], ['one-handed axe', '1H Axe'], ['one-handed blunt weapon', '1H Blunt'], ['dagger', 'Dagger'], ['wand', 'Wand'], ['staff', 'Staff'],
   ['two-handed sword', '2H Sword'], ['two-handed axe', '2H Axe'], ['two-handed blunt weapon', '2H Blunt'], ['spear', 'Spear'], ['polearm', 'Polearm'], ['bow', 'Bow'], ['crossbow', 'Crossbow'], ['claw', 'Claw'],
 ];
 const goesOver = (item, type) => item.worksWith?.some(t => t === 'weapon' || t === type) ?? false;
-function weaponTypeGroups(items) {
-  const groups = new Map(); // which items accept the type -> its types, in WEAPON_TYPES order
-  for (const t of WEAPON_TYPES) { const key = items.map(i => +goesOver(i, t[0])).join(''); (groups.get(key) ?? groups.set(key, []).get(key)).push(t); }
-  // "1H Sword / Axe / Blunt": a 1H or 2H prefix is written once for a run of the same hand
-  return [...groups.values()].map(ts => ({ type: ts[0][0], names: ts.map(t => t[0]), label: ts.map((t, i) => i && t[1].slice(0, 3) === ts[i - 1][1].slice(0, 3) && /^[12]H /.test(t[1]) ? t[1].slice(3) : t[1]).join(' / ') }));
-}
+const worksWithShown = (item, type = weaponType) => !type || (type === 'any' ? !!item.worksWith?.includes('weapon') : goesOver(item, type));
 const matches = name => name.toLowerCase().includes(search.trim().toLowerCase());
 let configTarget = null; // which equipped item the Equipped panel (left) is editing: 'face', 'hair' or a wearable slot
 // The colour the Face and Hair catalogues are shown in. Separate from the colour of the face/hair I am wearing.
@@ -601,16 +597,16 @@ function renderFit() {
   group.append(sw); src.append(group);
 }
 
-// The Weapon tab's "Type" picker, in the row above the search box: All, then each group of weapon types, with how many weapons go over it.
+// The Weapon tab's "Works with" picker, in the row above the search box: Any, then each weapon type, with how many weapons go over it.
 function renderWeaponType() {
   const weapons = catalog.wearables.weapon.items.filter(i => inView('weapon', i) && listed(i)), src = $('source');
   const group = el('div', { className: 'source-group' }, el('span', { className: 'source-label', textContent: 'Works with' }));
-  const sw = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': 'Which weapon type the cash weapon goes over' });
-  for (const g of [{ type: 'all', label: 'All', names: ['every weapon'] }, ...weaponTypeGroups(weapons)]) {
-    const n = g.type === 'all' ? weapons.length : weapons.filter(i => goesOver(i, g.type)).length;
-    const btn = el('button', { type: 'button', role: 'radio', textContent: `${g.label} (${n})`, title: g.type === 'all' ? 'Every weapon' : `Weapons you can wear over a ${g.names.length > 1 ? `${g.names.slice(0, -1).join(', ')} or ${g.names.at(-1)}` : g.names[0]}` });
-    btn.setAttribute('aria-pressed', String(weaponType === g.type)); btn.setAttribute('aria-checked', String(weaponType === g.type));
-    btn.onclick = () => { weaponType = g.type; renderFilters(); renderContent(true); };
+  const sw = el('div', { className: 'seg', role: 'group', 'aria-label': 'Which weapon type the cash weapon goes over (click again to show every weapon)' });
+  for (const [type, label] of [['any', 'Any'], ...WEAPON_TYPES]) {
+    const n = weapons.filter(i => worksWithShown(i, type)).length;
+    const btn = el('button', { type: 'button', textContent: `${label} (${n})`, title: type === 'any' ? 'Weapons you can wear over any weapon' : `Weapons you can wear over a ${type}` });
+    btn.setAttribute('aria-pressed', String(weaponType === type));
+    btn.onclick = () => { weaponType = weaponType === type ? null : type; renderFilters(); renderContent(true); };
     sw.append(btn);
   }
   group.append(sw); src.append(group);
@@ -1120,7 +1116,7 @@ function renderWearable(c, slot) {
   const grid = el('div', { className: 'grid' });
   if (RING_SLOTS.includes(slot) && source === 'datamine') c.append(el('p', { className: 'datamine-note', textContent: 'Showing everything in the game data. Rings marked DATAMINE are not released yet.' }));
   if (hasUpcoming(slot) && crate === 'upcoming') c.append(unconfirmedNote());
-  for (const item of data.items.filter(i => inView(slot, i) && matches(i.name) && (RING_SLOTS.includes(slot) || slot === 'weapon' ? listed(i) : true) && (slot !== 'cap' || hatFit === 'all' || hairEffectOf(i) === hatFit) && (slot !== 'weapon' || weaponType === 'all' || goesOver(i, weaponType)))) grid.append(wearableCard(slot, item));
+  for (const item of data.items.filter(i => inView(slot, i) && matches(i.name) && (RING_SLOTS.includes(slot) || slot === 'weapon' ? listed(i) : true) && (slot !== 'cap' || hatFit === 'all' || hairEffectOf(i) === hatFit) && (slot !== 'weapon' || worksWithShown(i)))) grid.append(wearableCard(slot, item));
   for (const p of (data.placeholders ?? []).filter(p => matches(p.name))) grid.append(placeholderCard(p));
   c.append(grid);
 }

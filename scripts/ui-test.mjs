@@ -517,24 +517,33 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   check('Fit filter: All shows every hat again', (await cards()).length === HATS.length);
   await clickTab('Top');
   check('Fit filter: the row is only on the Hat tab', (await page.$$eval('#source .seg button', b => b.filter(x => /^All \(/.test(x.textContent)).length)) === 0);
-  // Weapon tab "Works with" filter: types every listed weapon accepts together share an option; each option lists the weapons that go over it ('weapon' = any)
+  // Weapon tab "Works with" filter: Any (weapons that go over any weapon), then each of the 14 weapon types; nothing chosen lists every weapon
   await clickTab('Weapon');
   await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent === 'Released').click()); await settle();
   const typeBtns = await page.$$eval('#source .source-group:last-child .seg button', b => b.map(x => x.textContent));
-  const WEAPONS = released('weapon'), goes = (i, t) => i.worksWith?.some(x => x === 'weapon' || x === t);
-  check('Weapon tab: a Type row with All and the grouped weapon types (1H sword, axe and blunt together)', typeBtns[0] === `All (${WEAPONS.length})` && typeBtns.includes(`1H Sword / Axe / Blunt (${WEAPONS.filter(i => goes(i, 'one-handed sword')).length})`) && typeBtns.some(t => t.startsWith('Claw (')), typeBtns.join(' | '));
-  await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent.startsWith('Claw')).click()); await settle();
+  const WEAPONS = released('weapon'), goes = (i, t) => i.worksWith?.some(x => x === 'weapon' || x === t), anyW = WEAPONS.filter(i => i.worksWith?.includes('weapon')).length;
+  const typeBtn = l => page.evaluate(l => [...document.querySelectorAll('#source .source-group:last-child .seg button')].find(b => b.textContent.startsWith(l)).click(), l);
+  check('Weapon tab: a Works with row with Any and each of the 14 weapon types, nothing chosen, every weapon listed', typeBtns.length === 15 && typeBtns[0] === `Any (${anyW})` && typeBtns[1] === `1H Sword (${WEAPONS.filter(i => goes(i, 'one-handed sword')).length})` && !(await page.$('#source .source-group:last-child .seg button[aria-pressed="true"]')) && (await cards()).length === WEAPONS.length, typeBtns.join(' | '));
+  await typeBtn('Any'); await settle();
+  check('Weapon tab: Any lists only the weapons that go over any weapon', (await cards()).length === anyW && anyW < WEAPONS.length, `${(await cards()).length}`);
+  await typeBtn('Any'); await settle();
+  check('Weapon tab: clicking Any again clears it and lists every weapon', (await cards()).length === WEAPONS.length && !(await page.$('#source .source-group:last-child .seg button[aria-pressed="true"]')));
+  await typeBtn('Claw'); await settle();
   check('Weapon tab: Claw lists only weapons that go over a claw', (await cards()).length === WEAPONS.filter(i => goes(i, 'claw')).length, `${(await cards()).length}`);
-  const typeAll = () => page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => /^All \(/.test(b.textContent)).click());
-  await typeAll(); await settle();
-  check('Weapon tab: All lists every weapon again', (await cards()).length === WEAPONS.length);
-  check('Weapon tab: the filter is labelled "Works with", next to a Show switch', JSON.stringify(await page.$$eval('#source .source-label', l => l.map(x => x.textContent))) === '["Show","Works with"]');
+  await typeBtn('Claw'); await settle();
+  check('Weapon tab: the filter is labelled "Works with", under a Show switch, the options of both lined up', await page.evaluate(() => {
+    const labels = [...document.querySelectorAll('#source .source-label')].map(x => x.textContent), firsts = [...document.querySelectorAll('#source .seg')].map(s => Math.round(s.getBoundingClientRect().left));
+    return JSON.stringify(labels) === '["Show","Works with"]' && firsts[0] === firsts[1];
+  }));
   // All · Datamine: every cash weapon in the game files, the unreleased ones badged DATAMINE; Works with counts follow
   const segBtn = l => page.evaluate(l => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent === l).click(), l);
   await segBtn('All · Datamine'); await settle();
   const ALL_WEAPONS = CAT.weapon.items, unreleasedW = ALL_WEAPONS.filter(i => i.released === false).length;
   check('Weapon tab, All · Datamine: every weapon in the game files, the unreleased ones badged DATAMINE', (await cards()).length === ALL_WEAPONS.length && (await page.$$('#content .card .unreleased-badge')).length === unreleasedW && unreleasedW > 200, `${(await cards()).length} cards, ${unreleasedW} unreleased`);
-  check('Weapon tab, All · Datamine: the Works with counts include the datamined weapons', (await page.$$eval('#source .seg button', b => b.map(x => x.textContent))).includes(`All (${ALL_WEAPONS.length})`));
+  check('Weapon tab, All · Datamine: the Works with counts include the datamined weapons', (await page.$$eval('#source .seg button', b => b.map(x => x.textContent))).includes(`Any (${ALL_WEAPONS.filter(i => i.worksWith?.includes('weapon')).length})`));
+  await page.evaluate(() => [...document.querySelectorAll('#content .card')].find(c => c.querySelector('.unreleased-badge')).click()); await settle();
+  check('Weapon tab, All · Datamine: a datamined weapon can be dyed', await slidersNow() === 3);
+  await page.evaluate(() => [...document.querySelectorAll('#content .card')].find(c => c.querySelector('.unreleased-badge')).click()); await settle();
   await segBtn('Released'); await settle();
   check('Weapon tab: back to Released lists only released weapons', (await cards()).length === WEAPONS.length && !(await page.$('#content .card .unreleased-badge')));
   if (SHOW_UPCOMING) {

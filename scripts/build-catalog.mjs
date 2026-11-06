@@ -151,6 +151,7 @@ const gameDye = read('data/game-dye.json'), knownIds = new Set(gameDye.known), d
 warnings.dyeUnknown = [];
 for (const [slotKey, slot] of Object.entries(catalog.wearables)) for (const it of slot.items) {
   if (it.effect) continue; // rings have no colour settings at all
+  if (it.released === false) continue; // datamined items can always be dyed: their flags may not be set before release
   const cid = it.classicId ?? it.id;
   if (!knownIds.has(cid)) warnings.dyeUnknown.push(`${it.name} (${slotKey} ${cid})`);
   else if (!dyeIds.has(cid)) it.dyeable = false;

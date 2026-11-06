@@ -167,7 +167,7 @@ A tab shows a check (`.tick`) when something in it is worn (never on Look Book, 
 - **Name tags** are editable once worn (Name box, max 12 characters, placeholder/default `henehoe`, saved with the look). Each tag is drawn one of three ways:
   - From the game's design pieces (13 tags).
   - As a plain translucent box (White Label, `drawPlainTag`).
-  - From pieces cut out of its sample (`cutTag`, with `MANUAL`/`TEXT` overrides in `extract-rings.mjs`). Patterned middles become plain strips.
+  - From pieces cut out of its sample (`cutTag` in `extract-rings.mjs`). The middle piece is one whole repeat of the strip's pattern (P columns, found from the rows outside the text band), so scallops, waves, stripes and spikes carry along the name (`drawNameTag` tiles it). The ends then move out to where that repeat starts and stops, so ornaments are never cut through, and they never reach into the sample's own text (`SAMPLE_TEXT`: the cut tags whose sample shows "MapleStory"/"Maple", listed by hand because snowflakes, dots and corner marks fool any automatic guess). `MANUAL` gives starting ends (and `P` where the automatic repeat is fooled: Red Rose's stems, Snowy Christmas's candy-cane edge); `TEXT` gives text colours. Checked by rendering every tag beside its sample; Mighty Banana's dotted panel still comes out plain.
 - Cards and Equipped tiles show the sample picture.
 - Placement: tag under the feet, bubble over the head (`ringLayer`).
 - Text font is Noto Sans KR Medium 11px (the client's own English font).

@@ -50,19 +50,25 @@ function blankText(file, colour) {
   const [y0, y1] = span(rows), [x0, x1] = span(cols);
   return { value: 'Maple', colour, x: Math.round((x0 + x1) / 2), y: Math.round((y0 + y1) / 2) };
 }
-// Name tags with no usable game pieces are cut from their sample picture into a left end (w), a one-column middle (c) and a right end (e).
+// Name tags with no usable game pieces are cut from their sample picture into a left end (w), a middle (c: one repeat of the strip's pattern) and a right end (e).
 // Automatic: the edge rows of a tag (top two and bottom two) are never touched by the text, so the longest run of columns whose edge rows
 // match the most common ones is the middle; the ends are what is left on either side. Where the edge rows say a tag has no right end
 // (the ribbons, flags), or it has little text, the right end starts after the last run of columns that match the middle column exactly.
-// MANUAL sets the ends by hand (L: columns on the left, R: on the right) for the tags the automatic cut gets wrong or that are borrowed from
+// MANUAL sets the ends by hand (L: columns on the left, R: on the right; the cut can still move them out past an ornament), and P the repeat, for the tags the automatic cut gets wrong or that are borrowed from
 // another ring's design (Beach, Pink Candy, White Cloud, Rainbow); chosen on a rendering with a ruler. TEXT sets a text colour where the
 // sample's pattern would fool the automatic choice.
 const MANUAL = {
   1112112: { L: 15, R: 15 }, 1112114: { L: 14, R: 14 }, 1112116: { L: 10, R: 10 }, 1112117: { L: 7, R: 7 }, // borrowed designs
   1112121: { L: 17, R: 14 }, 1112135: { L: 6, R: 6 }, 1112141: { L: 18, R: 3 }, 1112142: { L: 18, R: 3 }, 1112150: { L: 32, R: 5 },
-  1112152: { L: 22, R: 15 }, 1112163: { L: 26, R: 10 }, 1112168: { L: 31, R: 9 }, 1112171: { L: 5, R: 5 }, 1112173: { L: 38, R: 16 },
+  1112152: { L: 22, R: 15 }, 1112163: { L: 36, R: 13 }, 1112168: { L: 31, R: 9 }, 1112171: { L: 5, R: 5 }, 1112173: { L: 38, R: 16 },
   1112174: { L: 38, R: 16 }, 1112189: { L: 28, R: 6 }, 1112155: { L: 28, R: 30 }, 1112156: { L: 28, R: 30 }, 1112164: { L: 34, R: 14 },
+  1112144: { L: 30, R: 5 }, 1112145: { L: 29, R: 10 }, 1112139: { L: 29, R: 31 }, 1112149: { L: 29, R: 9 }, 1112153: { L: 30, R: 15 },
+  1112169: { L: 31, R: 24 }, 1112170: { L: 10, R: 11 }, 1112185: { L: 29, R: 24 }, 1112186: { L: 31, R: 32 }, // the automatic cut went through the left ornament
+  1112132: { L: 20, R: 21, P: 1 }, 1112161: { L: 24, R: 39, P: 13 }, // P: the pattern's repeat, where the automatic one is fooled (rose stems; the candy-cane edge)
 };
+// The cut tags whose sample picture shows text ("MapleStory" or "Maple"), found by looking at every sample: their ends must stay clear of
+// it. In the others, nothing in the strip is text, so dots, snowflakes and stripes count as pattern.
+const SAMPLE_TEXT = new Set([1112112, 1112114, 1112115, 1112116, 1112117, 1112118, 1112121, 1112122, 1112123, 1112124, 1112125, 1112126, 1112132, 1112133, 1112134, 1112135, 1112136, 1112137, 1112151, 1112154, 1112168, 1112169]);
 const TEXT = { 1112150: '#ffffff', 1112158: '#ffffff', 1112173: '#000000', 1112174: '#000000', 1112185: '#0a2a55', 1112186: '#003300' }; // strips with a textured body, where the automatic choice picks up the texture
 const hex = (r, g, b) => '#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('');
 // Cuts a sample into w / c / e pieces, writes the three PNGs into `dir` and returns the `tag` block: { colour, pad, pieces }.
@@ -102,11 +108,43 @@ function cutTag(id, file, dir) {
   if (TEXT[id]) colour = TEXT[id];
   else if (deviating >= 12) colour = hex(...[...far].filter(([, [d]]) => d >= best * 0.6).sort((a, b) => b[1][1] - a[1][1])[0][0].split(',').map(Number));
   else { const mids = Array.from({ length: y1 - y0 + 1 }, (_, k) => bgAt(y0 + k)); const avg = mids.reduce((a, c) => a + lum(...c), 0) / mids.length; colour = avg < 150 ? '#ffffff' : '#000000'; }
-  const piece = (x0, x1) => { const png = new PNG({ width: x1 - x0, height: h }); for (let y = 0; y < h; y++) for (let x = x0; x < x1; x++) for (let c = 0; c < 4; c++) png.data[(y * png.width + x - x0) * 4 + c] = data[(y * w + x) * 4 + c]; return PNG.sync.write(png); };
+  // The strip's pattern: its border (every row outside the band the text sits in, so also anything above or below the strip) repeats every
+  // P columns (scallops, waves, stripes, lace, spikes; P = 1 for a plain strip). The middle piece is one whole repeat, so the pattern carries
+  // on along any name. The ends move out to where the repeat starts and stops, so an ornament at either end is never cut through, and the
+  // right end starts on the same step of the repeat as in the sample (the middle is drawn in whole repeats).
+  // the sample's own text ("MapleStory"): columns whose text band has the text colour where the plain middle column does not. The ends
+  // never reach into it.
+  const textCols = [];
+  if (SAMPLE_TEXT.has(id)) for (let x = L; x < w - R; x++) for (let y = y0; y <= y1; y++) { const i = (y * w + x) * 4; if (data[i + 3] && px(x, y) !== px(mid, y) && hex(data[i], data[i + 1], data[i + 2]) === colour) { textCols.push(x); break; } }
+  const t0 = textCols.length >= 3 ? textCols[0] : Infinity, t1 = textCols.length >= 3 ? textCols.at(-1) + 1 : -Infinity;
+  const border = x => Array.from({ length: h }, (_, y) => y < y0 || y > y1 ? px(x, y) : '').join(';');
+  // P: the step that repeats most often, the shortest on a near tie (the ends and the sample's text keep every score below 1)
+  const score = q => { let same = 0, n = 0; for (let x = L; x + q < w - R; x++, n++) if (border(x) === border(x + q)) same++; return n >= 2 * q ? same / n : 0; };
+  const scores = Array.from({ length: 24 }, (_, i) => score(i + 1)), top1 = Math.max(...scores);
+  const P = MANUAL[id]?.P ?? (top1 < 0.3 ? 1 : scores.findIndex(v => v >= top1 - 0.02) + 1);
+  const repeats = (a, b) => { for (let x = a; x < b; x++) if (x < 0 || x + P >= w || border(x) !== border(x + P)) return false; return true; };
+  const end0 = w - R;
+  let end = end0;
+  while (L < Math.min(mid, t0 - 1) && !repeats(L, L + P)) L++;
+  while (end > Math.max(mid, t1 + 1) && !repeats(end - 2 * P, end - P)) end--;
+  const step = (end - L) % P; // line the right end up with the repeat: a little wider where the text allows, else a little narrower
+  if (end - step >= t1 + 1) end -= step; else if (end + (P - step) % P <= end0) end += (P - step) % P;
+  R = w - end;
+  // the middle piece: column k is the border of column L + k, and the text band of a column on the same step that has no text in it
+  // (the first stretch whose whole columns repeat); with text all along, the band of the plain middle column
+  const run = Math.max(4, 3 * P), outside = x => x + run <= t0 || x >= t1;
+  let clean = -1; for (let x = L; x + run <= end && clean < 0; x++) { if (!outside(x)) continue; let ok = true; for (let k = 0; k + P < run && ok; k++) ok = full(x + k) === full(x + k + P); if (ok) clean = x; }
+  const piece = (x0, x1) => { const png = new PNG({ width: x1 - x0, height: h }); for (let y = 0; y < h; y++) for (let x = x0; x < x1; x++) for (let c = 0; c < 4; c++) png.data[(y * png.width + x - x0) * 4 + c] = data[(y * w + x) * 4 + c]; return png; };
+  const middle = new PNG({ width: P, height: h });
+  for (let k = 0; k < P; k++) {
+    const bandFrom = clean < 0 ? mid : clean + (((L + k - clean) % P) + P) % P;
+    let borderFrom = L + k; while (borderFrom >= t0 && borderFrom < t1 && borderFrom + P < end) borderFrom += P; // a column on the same step, clear of the text
+    for (let y = 0; y < h; y++) { const from = y < y0 || y > y1 ? borderFrom : bandFrom; for (let c = 0; c < 4; c++) middle.data[(y * P + k) * 4 + c] = data[(y * w + from) * 4 + c]; }
+  }
   mkdirSync(dir, { recursive: true });
-  writeFileSync(`${dir}/w.png`, piece(0, L)); writeFileSync(`${dir}/c.png`, piece(mid, mid + 1)); writeFileSync(`${dir}/e.png`, piece(w - R, w));
+  writeFileSync(`${dir}/w.png`, PNG.sync.write(piece(0, L))); writeFileSync(`${dir}/c.png`, PNG.sync.write(middle)); writeFileSync(`${dir}/e.png`, PNG.sync.write(piece(end, w)));
   const oy = top + 5, textY = (top + bottom) / 2; // the strip's top sits 5 rows above the layout line, as in the game's own pieces
-  return { colour, pad, pieces: { w: { w: L, h, ox: L, oy }, c: { w: 1, h, ox: 1, oy, textY }, e: { w: R, h, ox: 0, oy } } };
+  return { colour, pad, pieces: { w: { w: L, h, ox: L, oy }, c: { w: P, h, ox: P, oy, textY }, e: { w: R, h, ox: 0, oy } } };
 }
 // A plain label (White Label Ring): the box colours, read from the sample.
 function plainTag(file) {

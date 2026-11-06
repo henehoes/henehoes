@@ -361,7 +361,7 @@ async function withScene(sel, paint, view = null, pad = 0) {
 
 // Sizes `canvas` to cover a boxW x boxH CSS box, drawing each sprite pixel as `n` whole device pixels, then paints
 // the part of the scene around `focus`. The canvas may overhang the box by under one sprite pixel; the box crops it.
-// The Henesys backdrop (public/maps/henesys.png, made by scripts/download-map.mjs). The map's ground line is lined up with
+// The Henesys backdrop (public/maps/henesys.webp: lossless WebP, 102KB against the old 248KB PNG). The map's ground line is lined up with
 // the bottom of the character's feet, and it is drawn at the same whole-number zoom as the sprites so both share one pixel grid.
 const FOOT_EDGE = OY + 66; // the sprite row just under the feet
 let backdrop = null;
@@ -1339,7 +1339,7 @@ const POSE_ICONS = {
 const ICON_SHADE = { o: 1, w: .6, r: .6, d: .6, g: .3, s: .2 };
 // The attack motions (each click the next swing), then the ladder.
 const MOTION_BUTTONS = [['oneHanded', 'One-handed swing'], ['twoHanded', 'Two-handed swing'], ['spear', 'Spear stab'], ['stab', 'Dagger stab'], ['crossbow', 'Crossbow shot'], ['bow', 'Bow shot']];
-const POSES = [['ladder', 'Climb a ladder (twice)']];
+const POSES = [['ladder', 'Climb on ladder']];
 function poseSvg(rows) {
   const px = rows.flatMap((r, y) => [...r].flatMap((c, x) => ICON_SHADE[c] ? [{ x, y, c }] : []));
   const x0 = Math.min(...px.map(p => p.x)), x1 = Math.max(...px.map(p => p.x)) + 1, y0 = Math.min(...px.map(p => p.y)), y1 = Math.max(...px.map(p => p.y)) + 1;
@@ -1426,7 +1426,7 @@ async function loadBackdrop() {
   try {
     const info = await (await fetch('/maps/henesys.json')).json();
     const img = new Image();
-    img.src = '/maps/henesys.png';
+    img.src = '/maps/henesys.webp';
     await img.decode();
     // Colours to continue the picture with: its top row (meadow) and bottom row (cobblestone).
     const c = document.createElement('canvas'); c.width = img.width; c.height = img.height;

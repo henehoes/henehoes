@@ -96,7 +96,7 @@ Hand-edited data:
   - Wearing a ring widens the frame to fit it (only measured on the unpadded scene).
   - `PREVIEW_PAD` lets big weapon effects run off the stage.
   - Thumbnails are not padded.
-- **Backdrop:** `drawBackdrop` lines `groundRow` (feet planted a few rows into the grass) up with `FOOT_EDGE`. It mirrors the 800px picture left, right and below so wide or zoomed-out stages are always full. Sky/meadow come from `Map/Back/grassySoil.img` layers 0, 1, 4 over the Henesys street floor (map x=1700).
+- **Backdrop:** `drawBackdrop` lines `groundRow` (feet planted a few rows into the grass) up with `FOOT_EDGE`. It mirrors the 800px picture (`public/maps/henesys.webp`, lossless WebP) left, right and below so wide or zoomed-out stages are always full. Sky/meadow come from `Map/Back/grassySoil.img` layers 0, 1, 4 over the Henesys street floor (map x=1700).
 - **Dye** (`adjustColour`): game model as seen on meaegi.com.
   - Tone 0-359 (HSL hue turn).
   - Chroma -99..99 (linear saturation).

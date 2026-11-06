@@ -22,6 +22,9 @@ const narrowLayout = matchMedia('(max-width: 800px)'); // the one-column phone l
 // The possible-upcoming items (their cards and the Released | Upcoming switches) are hidden while this is false; code and data stay.
 // The Upcoming tab itself always shows, holding only the note on why the next boxes can no longer be predicted.
 const SHOW_UPCOMING = false;
+// Datamined clothing, weapons and rings (their All · Datamine views, and in Search) are hidden while this is false: listing them all cost
+// too many file requests on the free hosting tier. Face and Hair keep theirs. Code and data stay; set it to true to bring them back.
+const SHOW_DATAMINE_WEARABLES = false;
 const DISABLED_SLOTS = new Set(); // a slot named here is hidden everywhere (the code and data stay); empty now that the rings are rebuilt from the game files
 const WEAR_ORDER = ['cap', 'faceAcc', 'eyeAcc', 'earrings', 'longcoat', 'coat', 'pants', 'glove', 'shoes', 'cape', 'weapon', 'nameTag', 'chatBalloon'];
 
@@ -134,7 +137,7 @@ function unpack(d) {
     for (const k of WEAR_ORDER) {
       if (DISABLED_SLOTS.has(k)) continue; // a ring saved before they were switched off is not brought back
       const w = d.wear?.[k];
-      if (w && (w.item == null || catalog.wearables[k]?.items.some(i => i.id === w.item && (SHOW_UPCOMING || !i.upcoming || i.released === false)))) s.wear[k] = { item: w.item, two: !!w.two, h: clamp(Math.round(+w.h || 0), 0, 359), c: clamp(Math.round(+w.c || 0), -99, 99), b: clamp(Math.round(+w.b || 0), -99, 99) };
+      if (w && (w.item == null || catalog.wearables[k]?.items.some(i => i.id === w.item && (i.released !== false || SHOW_DATAMINE_WEARABLES)))) s.wear[k] = { item: w.item, two: !!w.two, h: clamp(Math.round(+w.h || 0), 0, 359), c: clamp(Math.round(+w.c || 0), -99, 99), b: clamp(Math.round(+w.b || 0), -99, 99) };
     }
     // A look saved before the placeholder became "henehoe" carries the old placeholder "Maple": show the new one instead.
     if (typeof d.text?.name === 'string') s.text = { name: d.text.name === 'Maple' ? DEFAULT_NAME : d.text.name.slice(0, 12) };
@@ -179,12 +182,14 @@ const hasUpcoming = slot => SHOW_UPCOMING && !!catalog.wearables[slot]?.items.so
 const inView = (slot, item) => !SHOW_UPCOMING || !!item.upcoming === (hasUpcoming(slot) && crate === 'upcoming');
 const dyeOf = (item, w) => item.dyeable === false ? [0, 0, 0] : [w.h, w.c, w.b]; // the game does not let you dye some items: their colour settings do nothing
 const listed = s => source === 'datamine' || s.released !== false;
+const listedWear = i => i.released !== false || (SHOW_DATAMINE_WEARABLES && source === 'datamine'); // a clothing, weapon or ring item
 let search = ''; // text typed in the catalogue's search box; cleared when the tab changes
 // Hat tab filter ("Fit"): how a hat treats the worn hair, from the covered-slot codes (vslots) it carries, the same ones buildLayers
 // acts on (H1 hides the hair over the top of the head, H2 hides the rest). The names are ours: the game has no player-facing term.
 // A few hats are put in Helmet by hand (rules.json fitHelmet: Demon Goblin, Iljimae Mask): they hide the face or most of the head.
 let hatFit = 'all'; // 'all', 'topper', 'cap' or 'helmet'
-const hairEffectOf = item => item.fit ?? (item.vslots?.includes('H2') ? 'helmet' : item.vslots?.includes('H1') ? 'cap' : 'topper');
+// A hood (it also hides the back-hair layers H3, H4, H6 and Hf, like the Iljimae Mask) is a Helmet too.
+const hairEffectOf = item => item.fit ?? (item.vslots?.includes('H2') || ['H3', 'H4', 'H6', 'Hf'].every(v => item.vslots?.includes(v)) ? 'helmet' : item.vslots?.includes('H1') ? 'cap' : 'topper');
 const HAT_FITS = [
   ['topper', 'Topper', 'Sits on your head without changing your hair'],
   ['cap', 'Cap', 'Flattens your hair but leaves most of it visible'],
@@ -516,10 +521,10 @@ function renderFilters() {
   if (everything) { input.focus(); input.setSelectionRange(input.value.length, input.value.length); }
   if (activeTab === 'body') return renderSexPicker();
   if (WEAR_ORDER.includes(activeTab) && hasUpcoming(activeTab)) renderCrateSwitch();
-  if (RING_SLOTS.includes(activeTab)) return renderSourceSwitch(activeTab === 'nameTag' ? 'Which name tags to list' : 'Which chat bubbles to list', 'Rings');
+  if (RING_SLOTS.includes(activeTab)) return SHOW_DATAMINE_WEARABLES && renderSourceSwitch(activeTab === 'nameTag' ? 'Which name tags to list' : 'Which chat bubbles to list', 'Rings');
   if (WEAR_ORDER.includes(activeTab)) { // every clothing tab: Released | All · Datamine, then the Hat tab's Fit or the Weapon tab's Works with
     const what = CHAPTER_TITLES[activeTab] ?? catalog.wearables[activeTab].label;
-    renderSourceSwitch(`Which ${what.toLowerCase()} to list`, what);
+    if (SHOW_DATAMINE_WEARABLES) renderSourceSwitch(`Which ${what.toLowerCase()} to list`, what);
     if (activeTab === 'cap') renderFit();
     if (activeTab === 'weapon') renderWeaponType();
     return;
@@ -589,7 +594,7 @@ function renderCrateSwitch() {
 
 // The Hat tab's "Fit" picker, in the row above the search box: All, Topper, Cap, Helmet, each with how many hats it holds.
 function renderFit() {
-  const hats = catalog.wearables.cap.items.filter(i => inView('cap', i) && listed(i)), src = $('source');
+  const hats = catalog.wearables.cap.items.filter(i => inView('cap', i) && listedWear(i)), src = $('source');
   const group = el('div', { className: 'source-group' }, el('span', { className: 'source-label', textContent: 'Fit' }));
   const sw = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': 'How the hat treats your hair' });
   for (const [v, label, tip] of [['all', 'All', 'Every hat'], ...HAT_FITS]) {
@@ -604,7 +609,7 @@ function renderFit() {
 
 // The Weapon tab's "Works with" picker, in the row above the search box: Any, then each weapon type, with how many weapons go over it.
 function renderWeaponType() {
-  const weapons = catalog.wearables.weapon.items.filter(i => inView('weapon', i) && listed(i)), src = $('source');
+  const weapons = catalog.wearables.weapon.items.filter(i => inView('weapon', i) && listedWear(i)), src = $('source');
   const group = el('div', { className: 'source-group' }, el('span', { className: 'source-label', textContent: 'Works with' }));
   const sw = el('div', { className: 'seg', role: 'group', 'aria-label': 'Which weapon type the cash weapon goes over (click again to show every weapon)' });
   for (const [type, label] of [['any', 'Any'], ...WEAPON_TYPES]) {
@@ -1120,9 +1125,9 @@ function renderUpcoming(c) {
 function renderWearable(c, slot) {
   const data = catalog.wearables[slot];
   const grid = el('div', { className: 'grid' });
-  if (RING_SLOTS.includes(slot) && source === 'datamine') c.append(el('p', { className: 'datamine-note', textContent: 'Showing everything in the game data. Rings marked DATAMINE are not released yet.' }));
+  if (RING_SLOTS.includes(slot) && SHOW_DATAMINE_WEARABLES && source === 'datamine') c.append(el('p', { className: 'datamine-note', textContent: 'Showing everything in the game data. Rings marked DATAMINE are not released yet.' }));
   if (hasUpcoming(slot) && crate === 'upcoming') c.append(unconfirmedNote());
-  for (const item of data.items.filter(i => inView(slot, i) && matches(i.name) && listed(i) && (slot !== 'cap' || hatFit === 'all' || hairEffectOf(i) === hatFit) && (slot !== 'weapon' || worksWithShown(i)))) grid.append(wearableCard(slot, item));
+  for (const item of data.items.filter(i => inView(slot, i) && matches(i.name) && listedWear(i) && (slot !== 'cap' || hatFit === 'all' || hairEffectOf(i) === hatFit) && (slot !== 'weapon' || worksWithShown(i)))) grid.append(wearableCard(slot, item));
   for (const p of (data.placeholders ?? []).filter(p => matches(p.name))) grid.append(placeholderCard(p));
   c.append(grid);
 }
@@ -1144,7 +1149,9 @@ function renderSearch(c) {
     add(title, catalog[kind].flatMap((s, i) => flat(s.style).includes(q) ? [() => styleCard(kind, s, i)] : []));
   for (const slot of WEAR_ORDER) {
     if (DISABLED_SLOTS.has(slot) || !catalog.wearables[slot]) continue;
-    add(CHAPTER_TITLES[slot] ?? catalog.wearables[slot].label, catalog.wearables[slot].items.filter(it => !it.effect && !it.upcoming && it.released !== false && flat(it.name).includes(q)).map(it => () => wearableCard(slot, it)));
+    // datamined items too while SHOW_DATAMINE_WEARABLES is on (badged DATAMINE), after the released ones
+    const found = catalog.wearables[slot].items.filter(it => !it.effect && (!SHOW_UPCOMING || !it.upcoming) && (SHOW_DATAMINE_WEARABLES || it.released !== false) && flat(it.name).includes(q));
+    add(CHAPTER_TITLES[slot] ?? catalog.wearables[slot].label, [...found.filter(it => it.released !== false), ...found.filter(it => it.released === false)].map(it => () => wearableCard(slot, it)));
   }
   const total = groups.reduce((n, g) => n + g.entries.length, 0);
   if (!total) return c.append(el('p', { className: 'empty', textContent: 'No entries match. Try another word.' }));

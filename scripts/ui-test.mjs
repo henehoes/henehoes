@@ -1,7 +1,8 @@
 // Drives the running dev server in Chrome and checks the main interactions. Usage: node scripts/ui-test.mjs
 import puppeteer from 'puppeteer-core';
 import { mkdirSync, readFileSync } from 'node:fs';
-const SHOW_UPCOMING = /const SHOW_UPCOMING = true/.test(readFileSync('src/main.js', 'utf8')); // the possible-upcoming items are hidden while the flag in src/main.js is false
+const SHOW_UPCOMING = /const SHOW_UPCOMING = true/.test(readFileSync('src/main.js', 'utf8'));
+const DM = /const SHOW_DATAMINE_WEARABLES = true/.test(readFileSync('src/main.js', 'utf8')); // datamined clothing, weapons and rings are listed only while the flag in src/main.js is true // the possible-upcoming items are hidden while the flag in src/main.js is false
 mkdirSync('tmp', { recursive: true }); // screenshots go here; the folder is not shipped
 
 const browser = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', defaultViewport: { width: 1200, height: 1000 } });
@@ -14,7 +15,7 @@ await page.goto('http://localhost:5173/', { waitUntil: 'networkidle0' });
 // Counts come from the built catalogue, so the checks follow the data (items move from upcoming to released as boxes come out)
 const CAT = JSON.parse(readFileSync('public/catalog.json', 'utf8')).wearables;
 const released = slot => CAT[slot].items.filter(i => !i.upcoming && i.released !== false), upcoming = slot => CAT[slot].items.filter(i => i.upcoming);
-const fitOf = i => i.fit ?? (i.vslots?.includes('H2') ? 'helmet' : i.vslots?.includes('H1') ? 'cap' : 'topper');
+const fitOf = i => i.fit ?? (i.vslots?.includes('H2') || ['H3', 'H4', 'H6', 'Hf'].every(v => i.vslots?.includes(v)) ? 'helmet' : i.vslots?.includes('H1') ? 'cap' : 'topper');
 const HATS = released('cap'), FIT = f => HATS.filter(i => fitOf(i) === f).length;
 const UPCOMING_TOTAL = Object.keys(CAT).reduce((n, k) => n + upcoming(k).length, 0);
 const results = [];
@@ -140,6 +141,11 @@ for (const [tab, slot] of [['Hair', 'Hair'], ['Face', 'Face']]) {
   check(`${tab}: clicking the same style in the same colour takes it off`, (await wornTitle()) === null);
   await swatch(0); await settle(); await firstCard(); await settle(); // worn again, as the next checks expect
 }
+// Search finds datamined clothing too, badged, after the released items
+await clickTab('Search'); await settle(); await page.type('.search-input', 'hoodie'); await settle();
+const hoodie = await page.evaluate(() => [...document.querySelectorAll('#content .card')].some(c => c.title.startsWith('Navy Hoodie Cap') && c.querySelector('.unreleased-badge')));
+check(DM ? 'Search finds datamined clothing (Navy Hoodie Cap), badged DATAMINE' : 'Search leaves datamined clothing out (no Navy Hoodie Cap)', hoodie === DM);
+await page.$eval('.search-input', e => { e.value = ''; e.dispatchEvent(new Event('input')); }); await settle();
 const designPill = slot => page.evaluate(slot => [...document.querySelectorAll('#colour .equipped .card')].find(b => b.dataset.slot.toLowerCase() === slot.toLowerCase()).click(), slot);
 
 // Hair colours: every colour of my hair is in the Equipped panel, once I select Hair there
@@ -295,7 +301,7 @@ check('every unreleased card is marked DATAMINE and no released card is', await 
 await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent === 'Released').click()); await settle();
 check('back to Released hides every DATAMINE badge', (await page.$$('#content .card .unreleased-badge')).length === 0);
 await clickTab('Hat'); await settle();
-check('the Hat tab has the Released/Datamine switch, then its Fit row', JSON.stringify(await page.$$eval('#source .source-label', l => l.map(x => x.textContent))) === '["Show","Fit"]' && (await page.$$eval('#source .seg button', b => b.some(x => /Datamine/.test(x.textContent)))));
+check(DM ? 'the Hat tab has the Released/Datamine switch, then its Fit row' : 'the Hat tab has only its Fit row (no datamine switch)', JSON.stringify(await page.$$eval('#source .source-label', l => l.map(x => x.textContent))) === (DM ? '["Show","Fit"]' : '["Fit"]') && (await page.$$eval('#source .seg button', b => b.some(x => /Datamine/.test(x.textContent)))) === DM);
 await clickTab('Hair'); await settle();
 
 // Order inside the book on Face and Hair: Released/Datamine, then search and gender, then colours
@@ -349,9 +355,12 @@ const rock = await page.evaluate(() => ({ cards: document.querySelectorAll('#con
 check('"rockstar" returns both released and DATAMINE cards', rock.cards >= 2 && rock.datamine >= 1 && rock.datamine < rock.cards, JSON.stringify(rock));
 await searchBox('sailor');
 check('clothing shows up grouped by category', (await page.$$eval('#content .group-title', hs => hs.map(h => h.textContent))).some(g => /^(Overalls|Tops|Bottoms|Hats)/.test(g)));
+const searchResults = () => page.evaluate(() => ({ cards: document.querySelectorAll('#content .card').length, note: document.querySelector('#content .empty-note p')?.textContent ?? '' }));
+const sailor = await searchResults();
+check('a search with fewer than 60 matches shows every one, with no note', sailor.cards >= 3 && sailor.cards < 60 && sailor.note === '', JSON.stringify(sailor));
 await searchBox('hair');
-const broad = await page.evaluate(() => ({ cards: document.querySelectorAll('#content .card').length, note: document.querySelector('#content .empty-note p')?.textContent ?? '' }));
-check('a broad search returns every match when there are fewer than 60 (the cap is only a safety net)', broad.cards > 30 && broad.cards <= 60 && broad.note === '', JSON.stringify(broad));
+const broad = await searchResults();
+check('a broad search shows every match up to 60, and past 60 stops there and says how many matched', broad.cards > 30 && ((broad.cards === 60 && /^Showing the first 60 of \d+ matches/.test(broad.note)) || (broad.cards < 60 && broad.note === '')), JSON.stringify(broad));
 await searchBox('zzzzzz');
 check('no match says so', !!(await page.$('#content .empty')) && (await page.$$('#content .card')).length === 0);
 await searchBox('sailor hat');
@@ -433,12 +442,13 @@ check('Chestnut is listed under male hair', (await names()).includes('Chestnut')
   const labels = () => page.$$eval('#content .card .label', e => e.map(x => x.textContent));
   const tagCards = await labels();
   check('Name tag, Released: the six released tags, White Label Ring first and only once', JSON.stringify(tagCards) === JSON.stringify(['White Label Ring', 'Classic Beginnings Label Ring', 'MapleStory Fest 2026 Label Ring', "Founder's Label Ring", 'Chocolate Label Ring', 'Ink-and-Wash Painting Name Tag Ring']), tagCards.join(', '));
-  check('Name tag: the Released / All · Datamine switch is above the search box', await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].map(b => b.textContent).join('|')) === 'Released|All · Datamine');
-  await showSource('All · Datamine');
+  check(DM ? 'Name tag: the Released / All · Datamine switch is above the search box' : 'Name tag: no datamine switch', await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].map(b => b.textContent).join('|')) === (DM ? 'Released|All · Datamine' : ''));
+  if (DM) await showSource('All · Datamine');
   const allTags = await labels();
+  if (DM) 
   check('Name tag, All · Datamine: every tag in the game files (76), with the DATAMINE badge on the unreleased ones', allTags.length === 76 && (await page.$$('#content .card .unreleased-badge')).length === 70 && !!(await page.$('#content .datamine-note')), String(allTags.length));
   // editable name: the Name box, the tag redrawn for each ring including Rainbow (cut from its sample) and White Label (plain box); every one of the 76 tags works the same way (a few datamine ones are tried here)
-  for (const ring of ['Chocolate Label Ring', 'Rainbow Label Ring', 'Pink Candy Label Ring', 'White Cloud Label Ring', 'Beach Label Ring', 'Ink-and-Wash Painting Name Tag Ring', 'White Label Ring', 'Red Cloud Label Ring', 'White Puppy Label Ring', 'Meadow Sheep Label Ring', 'Honey Bee Label Ring']) {
+  for (const ring of ['Chocolate Label Ring', 'Rainbow Label Ring', 'Pink Candy Label Ring', 'White Cloud Label Ring', 'Beach Label Ring', 'Ink-and-Wash Painting Name Tag Ring', 'White Label Ring', 'Red Cloud Label Ring', 'White Puppy Label Ring', 'Meadow Sheep Label Ring', 'Honey Bee Label Ring'].filter(r => DM || allTags.includes(r))) {
     await page.evaluate(r => [...document.querySelectorAll('#content .card')].find(c => c.querySelector('.label')?.textContent === r).click(), ring); await settle(); await settle();
     const nameBox = await page.evaluate(() => { const i = document.querySelector('#colour .text-field input'); return i ? i.value : null; });
     const drawn = async () => page.evaluate(() => { const c = document.getElementById('preview'); const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; let h = 0; for (let i = 3; i < d.length; i += 4) if (d[i]) h++; return [...d].reduce((a, v, k) => (k % 4 === 0 ? (a * 31 + v) % 1000003 : a), 7); });
@@ -447,13 +457,15 @@ check('Chestnut is listed under male hair', (await names()).includes('Chestnut')
     check(`name tag: ${ring} has a Name box and changing the name redraws the tag`, nameBox === 'henehoe' && (await drawn()) !== before, String(nameBox));
     await page.evaluate(() => { const i = document.querySelector('#colour .text-field input'); i.value = 'henehoe'; i.dispatchEvent(new Event('input', { bubbles: true })); }); await settle();
   }
-  await showSource('Released');
+  if (DM) await showSource('Released');
   await clickTab('Chat Ring'); await settle();
   const chatCards = await labels();
   check('Chat bubble, Released: the seven released bubbles', JSON.stringify(chatCards) === JSON.stringify(['Kitty Chat Ring', 'Teddy Bear Chat Ring', 'Classic Beginnings Chat Ring', 'MapleStory Fest 2026 Chat Ring', "Founder's Chat Ring", 'Ink-and-Wash Thought Bubble Ring', 'Chocolate Chat Ring']), chatCards.join(', '));
+  if (DM) {
   await showSource('All · Datamine');
   check('Chat bubble, All · Datamine: all 81 bubbles', (await labels()).length === 81 && (await page.$$('#content .card .unreleased-badge')).length === 74, String((await labels()).length));
   await showSource('Released');
+  }
   await page.evaluate(() => [...document.querySelectorAll('#content .card')].find(c => c.querySelector('.label')?.textContent === 'Kitty Chat Ring').click()); await settle(); await settle();
   check('wearing a chat ring puts it in the Equipped panel, with no text boxes (it is shown as in the game)', await page.evaluate(() => [...document.querySelectorAll('#colour .slot .card')].some(c => c.dataset.slot === 'Chat Ring') && !document.querySelector('#colour .text-field, #colour input[type="text"]')));
   const bubble = await page.evaluate(() => { const c = document.getElementById('preview'); const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; let gold = 0; for (let i = 0; i < d.length; i += 4) if (d[i] > 230 && d[i + 1] > 170 && d[i + 1] < 215 && d[i + 2] < 60) gold++; return gold; });
@@ -532,7 +544,7 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   check('Fit filter: the row is only on the Hat tab', (await page.$$eval('#source .seg button', b => b.filter(x => /^All \(/.test(x.textContent)).length)) === 0);
   // Weapon tab "Works with" filter: Any (weapons that go over any weapon), then each of the 14 weapon types; nothing chosen lists every weapon
   await clickTab('Weapon');
-  await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent === 'Released').click()); await settle();
+  await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent === 'Released')?.click()); await settle();
   const typeBtns = await page.$$eval('#source .source-group:last-child .seg button', b => b.map(x => x.textContent));
   const WEAPONS = released('weapon'), goes = (i, t) => i.worksWith?.some(x => x === 'weapon' || x === t), anyW = WEAPONS.filter(i => i.worksWith?.includes('weapon')).length;
   const typeBtn = l => page.evaluate(l => [...document.querySelectorAll('#source .source-group:last-child .seg button')].find(b => b.textContent.startsWith(l)).click(), l);
@@ -544,10 +556,11 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   await typeBtn('Claw'); await settle();
   check('Weapon tab: Claw lists only weapons that go over a claw', (await cards()).length === WEAPONS.filter(i => goes(i, 'claw')).length, `${(await cards()).length}`);
   await typeBtn('Claw'); await settle();
-  check('Weapon tab: the filter is labelled "Works with", under a Show switch, the options of both lined up', await page.evaluate(() => {
+  if (DM) check('Weapon tab: the filter is labelled "Works with", under a Show switch, the options of both lined up', await page.evaluate(() => {
     const labels = [...document.querySelectorAll('#source .source-label')].map(x => x.textContent), firsts = [...document.querySelectorAll('#source .seg')].map(s => Math.round(s.getBoundingClientRect().left));
     return JSON.stringify(labels) === '["Show","Works with"]' && firsts[0] === firsts[1];
   }));
+  if (DM) {
   // All · Datamine: every cash weapon in the game files, the unreleased ones badged DATAMINE; Works with counts follow
   const segBtn = l => page.evaluate(l => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent === l).click(), l);
   await segBtn('All · Datamine'); await settle();
@@ -568,6 +581,9 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
     check(`${tab} tab, All · Datamine: every ${slot} item, the ${unrel} unreleased ones badged DATAMINE`, n >= want && badges === unrel && unrel > 5, `${n} cards, ${badges} badges`);
     await segBtn('Released'); await settle();
     check(`${tab} tab, Released: no DATAMINE items`, !(await page.$('#content .card .unreleased-badge')));
+  }
+  } else {
+    for (const tab of ['Hat', 'Weapon', 'Top', 'Name Ring']) { await clickTab(tab); check(`${tab} tab: no datamine switch and no DATAMINE items`, !(await page.$$eval('#source .seg button', b => b.some(x => /Datamine/.test(x.textContent)))) && !(await page.$('#content .card .unreleased-badge'))); }
   }
   if (SHOW_UPCOMING) {
   // Released | Upcoming switch on the category tabs that have possible upcoming items (Next Crate tab's items, by slot)
@@ -725,7 +741,7 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   await page.evaluate(() => { Date.now = window.__now; });
   await clickTab('Hair'); await settle();
   await clickTab('Name Ring'); await settle();
-  check('a ring tab keeps its two options and shows Released when Mystery Rotation was picked on Face', (await page.$$eval('#source .seg button', bs => bs.map(b => `${b.textContent}:${b.getAttribute('aria-pressed')}`))).join() === 'Released:true,All · Datamine:false');
+  if (DM) check('a ring tab keeps its two options and shows Released when Mystery Rotation was picked on Face', (await page.$$eval('#source .seg button', bs => bs.map(b => `${b.textContent}:${b.getAttribute('aria-pressed')}`))).join() === 'Released:true,All · Datamine:false');
   await page.evaluate(() => { Date.now = window.__now; });
 }
 
@@ -860,7 +876,7 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   const wtab = async l => { await wide.evaluate(l => [...document.querySelectorAll('.tab')].find(x => x.title === l).click(), l); await new Promise(r => setTimeout(r, 500)); };
   await wtab('Name Ring'); await wide.evaluate(() => document.querySelector('#content .card').click()); await new Promise(r => setTimeout(r, 500));
   await wtab('Chat Ring'); await wide.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent.includes('Datamine'))?.click()); await new Promise(r => setTimeout(r, 500));
-  await wide.$eval('.search-input', i => { i.value = 'Frog'; i.dispatchEvent(new Event('input', { bubbles: true })); }); await new Promise(r => setTimeout(r, 500));
+  await wide.$eval('.search-input', i => { i.value = 'Kitty'; i.dispatchEvent(new Event('input', { bubbles: true })); }); await new Promise(r => setTimeout(r, 500));
   await wide.evaluate(() => document.querySelector('#content .card').click()); await new Promise(r => setTimeout(r, 700));
   check('zoomed-out browser, name tag and chat bubble worn: the character is drawn at 2x, not 1x', (await wide.$eval('#preview', c => c.dataset.zoom)) === '2');
   await wide.close();

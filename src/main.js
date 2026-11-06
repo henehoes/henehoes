@@ -876,12 +876,13 @@ function skinCard(s) {
 
 function styleCard(kind, s, i) {
   const first = s.variants.find(v => v.colour === browse[kind]) ?? s.variants[0];
-  const card = optionCard(s.style, state[kind].style === i, VIEW,
+  const worn = () => state[kind].style === i && state[kind].colour === first.colour; // this style in the colour the card shows
+  const card = optionCard(s.style, worn(), VIEW,
     // Preview the style on my current skin, with my current face (or hair) alongside.
     () => only(sel => { sel.face = { ...state.face }; sel.hair = { ...state.hair }; sel[kind] = { style: i, colour: first.colour }; return sel; }),
-    // Clicking the selected style takes it off again.
+    // Clicking the style in the colour I wear takes it off again; the same style in another colour puts that colour on.
     () => {
-      const on = state[kind].style === i;
+      const on = worn();
       state[kind] = { style: on ? null : i, colour: on ? state[kind].colour : first.colour };
       if (!on) configTarget = kind;
       afterChange();

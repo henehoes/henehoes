@@ -136,6 +136,7 @@ A tab shows a check (`.tick`) when something in it is worn (never on Look Book, 
 - `Gender: Male | Female` (`renderSexPicker`, `state.sex`) picks the undergarments. It is separate from the Face/Hair list filter; whether they should be linked is undecided.
 
 **Face and Hair (`renderStyles`).**
+- Clicking a style card (`styleCard`) takes the style off only when it is worn in the colour the list shows (`browse`); the same style in another colour switches to that colour. The card is highlighted only for that exact style and colour.
 - Colour bar (`renderColourBar`, `HAIR_COLOURS`/`EYE_COLOURS`) recolours the list only (`browse`), never what is worn.
 - `All / ♂ Male / ♀ Female` filter (`gender`, default All; collab styles are `gender: 'both'`).
 - `Show: Released | Mystery Rotation | All · Datamine` (`renderSourceSwitch`). Mystery Rotation lists only styles in a Mystery Styles box on sale now, with an ends line. Released is a clean list with no rotation markers (per-card labels were tried and judged too busy).

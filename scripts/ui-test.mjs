@@ -127,6 +127,19 @@ check('no Released | Upcoming switch and no UPCOMING cards on the Hat tab', !(aw
 await clickTab('Body'); await settle();
 }
 
+// Clicking a worn hair or face in another list colour puts that colour on; only the exact style and colour takes it off
+for (const [tab, slot] of [['Hair', 'Hair'], ['Face', 'Face']]) {
+  await clickTab(tab); await settle();
+  const swatch = i => page.evaluate(i => document.querySelectorAll('#toolbar .swatch')[i].click(), i);
+  const firstCard = () => page.evaluate(() => document.querySelector('#content .grid .card:not(.placeholder)').click());
+  const wornTitle = () => page.evaluate(s => [...document.querySelectorAll('#colour .slot .card')].find(c => c.dataset.slot === s)?.title ?? null, slot);
+  await swatch(0); await settle(); await firstCard(); await settle(); if (!(await wornTitle())) { await firstCard(); await settle(); } const a = await wornTitle(); // worn in colour 0 (it may have been on already)
+  await swatch(1); await settle(); await firstCard(); await settle(); const b = await wornTitle();
+  check(`${tab}: the worn style clicked in another colour switches to that colour, still worn`, a && b && a !== b && await page.evaluate(() => document.querySelector('#content .grid .card:not(.placeholder)').getAttribute('aria-pressed')) === 'true', `${a} -> ${b}`);
+  await firstCard(); await settle();
+  check(`${tab}: clicking the same style in the same colour takes it off`, (await wornTitle()) === null);
+  await swatch(0); await settle(); await firstCard(); await settle(); // worn again, as the next checks expect
+}
 const designPill = slot => page.evaluate(slot => [...document.querySelectorAll('#colour .equipped .card')].find(b => b.dataset.slot.toLowerCase() === slot.toLowerCase()).click(), slot);
 
 // Hair colours: every colour of my hair is in the Equipped panel, once I select Hair there

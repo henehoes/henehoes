@@ -2,7 +2,8 @@
 import puppeteer from 'puppeteer-core';
 import { mkdirSync, readFileSync } from 'node:fs';
 const SHOW_UPCOMING = /const SHOW_UPCOMING = true/.test(readFileSync('src/main.js', 'utf8'));
-const DM = /const SHOW_DATAMINE_WEARABLES = true/.test(readFileSync('src/main.js', 'utf8')); // datamined clothing, weapons and rings are listed only while the flag in src/main.js is true // the possible-upcoming items are hidden while the flag in src/main.js is false
+const BASE = process.env.BASE_URL ?? 'http://localhost:5173/'; // e.g. BASE_URL=http://localhost:5174/ for a second dev server
+const DM = process.env.VITE_DATAMINE === '1'; // datamined clothing, weapons and rings are listed only in a VITE_DATAMINE=1 build: start the dev server with the same setting // the possible-upcoming items are hidden while the flag in src/main.js is false
 mkdirSync('tmp', { recursive: true }); // screenshots go here; the folder is not shipped
 
 const browser = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', defaultViewport: { width: 1200, height: 1000 } });
@@ -10,7 +11,7 @@ const page = await browser.newPage();
 const errors = [];
 page.on('pageerror', e => errors.push(e.message));
 page.on('console', m => m.type() === 'error' && errors.push(m.text()));
-await page.goto('http://localhost:5173/', { waitUntil: 'networkidle0' });
+await page.goto(BASE, { waitUntil: 'networkidle0' });
 
 // Counts come from the built catalogue, so the checks follow the data (items move from upcoming to released as boxes come out)
 const CAT = JSON.parse(readFileSync('public/catalog.json', 'utf8')).wearables;
@@ -495,7 +496,7 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
 {
   const phone = await browser.newPage();
   await phone.setViewport({ width: 390, height: 844, deviceScaleFactor: 2, isMobile: true, hasTouch: true });
-  await phone.goto('http://localhost:5173/', { waitUntil: 'networkidle0' });
+  await phone.goto(BASE, { waitUntil: 'networkidle0' });
   await phone.evaluate(() => localStorage.removeItem('maple-layers:working-v1')); await phone.reload({ waitUntil: 'networkidle0' }); // start bare, not with the desktop page's character
   const wait = ms => new Promise(r => setTimeout(r, ms)); await wait(900);
   const openTab = label => phone.evaluate(l => [...document.querySelectorAll('.tab')].find(t => t.title.startsWith(l)).click(), label);
@@ -864,7 +865,7 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
 {
   const wide = await browser.newPage();
   await wide.setViewport({ width: 2400, height: 1100, deviceScaleFactor: 0.8 });
-  await wide.goto('http://localhost:5173/', { waitUntil: 'networkidle0' }); await new Promise(r => setTimeout(r, 1200));
+  await wide.goto(BASE, { waitUntil: 'networkidle0' }); await new Promise(r => setTimeout(r, 1200));
   const colours = await wide.$eval('#preview', c => {
     const g = c.getContext('2d'), seen = new Set(), edge = 8;
     for (const x0 of [0, c.width - edge]) { const d = g.getImageData(x0, 0, edge, c.height).data; for (let i = 0; i < d.length; i += 4) seen.add(`${d[i]},${d[i + 1]},${d[i + 2]}`); }
@@ -886,7 +887,7 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
 {
   const ultra = await browser.newPage();
   await ultra.setViewport({ width: 3440, height: 1440, deviceScaleFactor: 1 });
-  await ultra.goto('http://localhost:5173/', { waitUntil: 'networkidle0' }); await new Promise(r => setTimeout(r, 1200));
+  await ultra.goto(BASE, { waitUntil: 'networkidle0' }); await new Promise(r => setTimeout(r, 1200));
   const m = await ultra.evaluate(() => { const a = document.querySelector('.app').getBoundingClientRect(), s = document.querySelector('.stage-box').getBoundingClientRect(); return { left: Math.round(a.left), width: Math.round(a.width), right: Math.round(innerWidth - a.right), stage: Math.round(s.width), zoom: document.querySelector('#preview').dataset.zoom, scrollW: document.documentElement.scrollWidth, perRow: (() => { const c = [...document.querySelectorAll('#content .card')]; return c.length ? c.filter(x => x.offsetTop === c[0].offsetTop).length : 0; })() }; });
   check('ultrawide 3440px: the page is capped at 2400px and centred', m.width === 2400 && Math.abs(m.left - m.right) <= 1 && m.scrollW <= 3440, JSON.stringify(m));
   check('ultrawide 3440px: the preview is still drawn zoomed in (2x or more)', Number(m.zoom) >= 2, JSON.stringify(m));

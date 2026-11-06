@@ -27,6 +27,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+        env:
+          VITE_DATAMINE: '1' # the test site lists every datamined item (the Vercel site does not)
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

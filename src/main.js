@@ -22,9 +22,10 @@ const narrowLayout = matchMedia('(max-width: 800px)'); // the one-column phone l
 // The possible-upcoming items (their cards and the Released | Upcoming switches) are hidden while this is false; code and data stay.
 // The Upcoming tab itself always shows, holding only the note on why the next boxes can no longer be predicted.
 const SHOW_UPCOMING = false;
-// Datamined clothing, weapons and rings (their All · Datamine views, and in Search) are hidden while this is false: listing them all cost
-// too many file requests on the free hosting tier. Face and Hair keep theirs. Code and data stay; set it to true to bring them back.
-const SHOW_DATAMINE_WEARABLES = false;
+// Datamined clothing, weapons and rings (their All · Datamine views, and in Search) are shown only in a build with VITE_DATAMINE=1: the
+// GitHub Pages test site (henehoes.github.io) is built that way; the Vercel site is not (listing them all cost too many file requests on
+// its free tier). Face and Hair keep their datamine views everywhere.
+const SHOW_DATAMINE_WEARABLES = import.meta.env.VITE_DATAMINE === '1';
 const DISABLED_SLOTS = new Set(); // a slot named here is hidden everywhere (the code and data stay); empty now that the rings are rebuilt from the game files
 const WEAR_ORDER = ['cap', 'faceAcc', 'eyeAcc', 'earrings', 'longcoat', 'coat', 'pants', 'glove', 'shoes', 'cape', 'weapon', 'nameTag', 'chatBalloon'];
 

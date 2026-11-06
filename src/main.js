@@ -12,7 +12,7 @@ import * as housing from './housing.js';
 // from vercel-scripts.com and log to the console. On a deployment it needs Analytics switched on in the Vercel project settings.
 // Loaded on the side and allowed to fail: an ad or tracker blocker that blocks anything called "analytics" must not stop the app
 // (as a plain import it did: the whole page stayed empty).
-if (import.meta.env.PROD) import('@vercel/analytics').then(m => m.inject()).catch(() => {});
+if (import.meta.env.PROD && !location.hostname.endsWith('github.io')) import('@vercel/analytics').then(m => m.inject()).catch(() => {}); // Vercel's analytics only work on Vercel
 
 const W = 160, H = 230;          // working canvas, in sprite pixels (tall: a chat bubble sits above the head, a name tag below the feet)
 const OX = 60, OY = 112;          // where the skin's top-left sits on that canvas

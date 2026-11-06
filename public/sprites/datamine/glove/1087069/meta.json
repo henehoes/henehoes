@@ -1,0 +1,51 @@
+{
+ "id": 1087069,
+ "name": "Cat Lolita Gloves",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "lGlove",
+   "w": 10,
+   "h": 13,
+   "origin": {
+    "x": 6,
+    "y": 4,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 5,
+     "y": -4,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveOverBody"
+  },
+  {
+   "key": "rGlove",
+   "w": 12,
+   "h": 13,
+   "origin": {
+    "x": 12,
+    "y": 11,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -19,
+     "y": -11,
+     "isEmpty": false
+    }
+   },
+   "position": "glove"
+  }
+ ]
+}

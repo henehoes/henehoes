@@ -1,0 +1,61 @@
+{
+ "id": 1007202,
+ "name": "Sachiel Wig",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hf",
+  "Hb",
+  "Hx",
+  "Hs"
+ ],
+ "islots": [
+  "Hr",
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 67,
+   "h": 57,
+   "origin": {
+    "x": 33,
+    "y": 28,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -8,
+     "y": -1,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  },
+  {
+   "key": "defaultAc",
+   "w": 73,
+   "h": 76,
+   "origin": {
+    "x": 36,
+    "y": 38,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -8,
+     "y": -8,
+     "isEmpty": false
+    }
+   },
+   "position": "backCap"
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "id": 1057336,
+ "name": "Luxurious Padded Coat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma",
+  "Pn"
+ ],
+ "islots": [
+  "Ma",
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 21,
+   "h": 31,
+   "origin": {
+    "x": 6,
+    "y": 12,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChestOverPants"
+  },
+  {
+   "key": "mailArm",
+   "w": 10,
+   "h": 13,
+   "origin": {
+    "x": -7,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  }
+ ]
+}

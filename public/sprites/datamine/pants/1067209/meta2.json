@@ -1,0 +1,22 @@
+{
+ "parts": [
+  {
+   "key": "pants",
+   "w": 16,
+   "h": 9,
+   "origin": {
+    "x": 11,
+    "y": 6,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -6,
+     "y": -7,
+     "isEmpty": false
+    }
+   },
+   "position": "pants"
+  }
+ ]
+}

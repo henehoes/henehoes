@@ -1,0 +1,32 @@
+{
+ "id": 1037015,
+ "name": "Wind Bell Earrings",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ae"
+ ],
+ "islots": [
+  "Ae"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 39,
+   "h": 16,
+   "origin": {
+    "x": 19,
+    "y": 8,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -3,
+     "y": -23,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEar"
+  }
+ ]
+}

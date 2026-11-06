@@ -1,0 +1,22 @@
+{
+ "parts": [
+  {
+   "key": "default",
+   "w": 19,
+   "h": 35,
+   "origin": {
+    "x": -7,
+    "y": 26,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "id": 1017071,
+ "name": "Fu Manchu",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 54,
+   "h": 24,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 6,
+     "y": -30,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFace"
+  }
+ ]
+}

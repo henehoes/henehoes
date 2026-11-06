@@ -1,0 +1,32 @@
+{
+ "id": 1067204,
+ "name": "Checkered Tights",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Pn"
+ ],
+ "islots": [
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "pants",
+   "w": 14,
+   "h": 15,
+   "origin": {
+    "x": 3,
+    "y": -1,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "pantsBelowShoes"
+  }
+ ]
+}

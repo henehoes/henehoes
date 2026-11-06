@@ -1,0 +1,22 @@
+{
+ "parts": [
+  {
+   "key": "cape",
+   "w": 16,
+   "h": 13,
+   "origin": {
+    "x": 11,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -19,
+     "y": -16,
+     "isEmpty": false
+    }
+   },
+   "position": "capeBelowBody"
+  }
+ ]
+}

@@ -1,0 +1,50 @@
+{
+ "id": 1047078,
+ "name": "Pink Trainer Jacket",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma"
+ ],
+ "islots": [
+  "Ma"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 15,
+   "h": 16,
+   "origin": {
+    "x": 11,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -7,
+     "y": 1,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChest"
+  },
+  {
+   "key": "mailArm",
+   "w": 9,
+   "h": 9,
+   "origin": {
+    "x": 3,
+    "y": 4,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -9,
+     "y": 5,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "id": 1077090,
+ "name": "Red Ribbon Shoes",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "So"
+ ],
+ "islots": [
+  "So"
+ ],
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 23,
+   "h": 12,
+   "origin": {
+    "x": 7,
+    "y": -11,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "shoesOverPants"
+  }
+ ]
+}

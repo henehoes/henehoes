@@ -1,0 +1,32 @@
+{
+ "id": 1007682,
+ "name": "Pink Ribbon Marine Cap",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 32,
+   "h": 31,
+   "origin": {
+    "x": 7,
+    "y": 20,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

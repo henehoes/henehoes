@@ -1,0 +1,46 @@
+{
+ "id": 1007417,
+ "name": "Huge Green Lips",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "Hd",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hs",
+  "Hf",
+  "Hb",
+  "Af",
+  "Ay",
+  "As",
+  "Ae"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 39,
+   "h": 35,
+   "origin": {
+    "x": 19,
+    "y": 17,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -4,
+     "y": -5,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

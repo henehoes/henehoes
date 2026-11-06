@@ -1,0 +1,40 @@
+{
+ "parts": [
+  {
+   "key": "mail",
+   "w": 18,
+   "h": 25,
+   "origin": {
+    "x": 6,
+    "y": 10,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChestOverPants"
+  },
+  {
+   "key": "mailArm",
+   "w": 12,
+   "h": 17,
+   "origin": {
+    "x": -4,
+    "y": 10,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  }
+ ]
+}

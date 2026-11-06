@@ -1,0 +1,32 @@
+{
+ "id": 1007672,
+ "name": "Macaroon Hairpin",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 23,
+   "h": 33,
+   "origin": {
+    "x": 9,
+    "y": 40,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

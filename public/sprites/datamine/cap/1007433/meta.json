@@ -1,0 +1,34 @@
+{
+ "id": 1007433,
+ "name": "Huge Pink Ribbon",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 38,
+   "h": 25,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": -6,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

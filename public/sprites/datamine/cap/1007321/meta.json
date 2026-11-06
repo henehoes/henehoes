@@ -1,0 +1,37 @@
+{
+ "id": 1007321,
+ "name": "Welding Mask",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "Hd",
+  "H1",
+  "H2",
+  "H3",
+  "H4"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 41,
+   "h": 46,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 1,
+     "y": -9,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

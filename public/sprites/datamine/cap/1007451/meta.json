@@ -1,0 +1,40 @@
+{
+ "id": 1007451,
+ "name": "Cutie Birk Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hf",
+  "Hb",
+  "Ae"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 55,
+   "h": 53,
+   "origin": {
+    "x": 27,
+    "y": 26,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -5,
+     "y": -5,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

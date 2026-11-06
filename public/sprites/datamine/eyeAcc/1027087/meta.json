@@ -1,0 +1,32 @@
+{
+ "id": 1027087,
+ "name": "Big White Sunglasses",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ay"
+ ],
+ "islots": [
+  "Ay"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 40,
+   "h": 15,
+   "origin": {
+    "x": 19,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -3,
+     "y": -11,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEye"
+  }
+ ]
+}

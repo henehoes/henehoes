@@ -1,0 +1,22 @@
+{
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 18,
+   "h": 4,
+   "origin": {
+    "x": 10,
+    "y": 5,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -3,
+     "y": -22,
+     "isEmpty": false
+    }
+   },
+   "position": "shoesOverPants"
+  }
+ ]
+}

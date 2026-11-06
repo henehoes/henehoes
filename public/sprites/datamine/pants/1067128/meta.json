@@ -1,0 +1,32 @@
+{
+ "id": 1067128,
+ "name": "Red Wine Skinny Jeans",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Pn"
+ ],
+ "islots": [
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "pants",
+   "w": 16,
+   "h": 17,
+   "origin": {
+    "x": 3,
+    "y": -1,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "pants"
+  }
+ ]
+}

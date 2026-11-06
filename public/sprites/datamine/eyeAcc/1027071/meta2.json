@@ -1,0 +1,22 @@
+{
+ "parts": [
+  {
+   "key": "default",
+   "w": 36,
+   "h": 12,
+   "origin": {
+    "x": 18,
+    "y": 6,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -3,
+     "y": -11,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEye"
+  }
+ ]
+}

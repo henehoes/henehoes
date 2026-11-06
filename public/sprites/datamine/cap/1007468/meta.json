@@ -1,0 +1,33 @@
+{
+ "id": 1007468,
+ "name": "Silver Fox Ears",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 48,
+   "h": 22,
+   "origin": {
+    "x": 24,
+    "y": 11,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -4,
+     "y": 8,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

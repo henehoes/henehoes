@@ -1,0 +1,52 @@
+{
+ "id": 1057241,
+ "name": "Cherry Snow Outfit",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma",
+  "Pn"
+ ],
+ "islots": [
+  "Ma",
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 22,
+   "h": 32,
+   "origin": {
+    "x": 7,
+    "y": 11,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChestBelowPants"
+  },
+  {
+   "key": "mailArm",
+   "w": 9,
+   "h": 13,
+   "origin": {
+    "x": -8,
+    "y": 8,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  }
+ ]
+}

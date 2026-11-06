@@ -1,0 +1,32 @@
+{
+ "id": 1027078,
+ "name": "Eye Mask (Red)",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ay"
+ ],
+ "islots": [
+  "Ay"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 33,
+   "h": 17,
+   "origin": {
+    "x": 16,
+    "y": 8,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -1,
+     "y": -9,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEye"
+  }
+ ]
+}

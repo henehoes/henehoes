@@ -1,0 +1,50 @@
+{
+ "id": 1047198,
+ "name": "Gold Chainz",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma"
+ ],
+ "islots": [
+  "Ma"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 16,
+   "h": 17,
+   "origin": {
+    "x": 3,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChest"
+  },
+  {
+   "key": "mailArm",
+   "w": 5,
+   "h": 6,
+   "origin": {
+    "x": -8,
+    "y": 8,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  }
+ ]
+}

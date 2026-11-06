@@ -1,0 +1,52 @@
+{
+ "id": 1007531,
+ "name": "Giant Bear Cap",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 53,
+   "h": 45,
+   "origin": {
+    "x": 21,
+    "y": 32,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  },
+  {
+   "key": "defaultAC",
+   "w": 68,
+   "h": 66,
+   "origin": {
+    "x": 23,
+    "y": 56,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "backCap"
+  }
+ ]
+}

@@ -1,0 +1,801 @@
+{
+ "_comment": "Cash shoes items in the game files that are not in the catalogue (not released). Written by scripts/extract-datamine.mjs.",
+ "items": [
+  {
+   "id": 1077001,
+   "name": "Red Air H's"
+  },
+  {
+   "id": 1077002,
+   "name": "Blue Air H's"
+  },
+  {
+   "id": 1077003,
+   "name": "Black Air H's"
+  },
+  {
+   "id": 1077005,
+   "name": "Yellow Flippers"
+  },
+  {
+   "id": 1077006,
+   "name": "Blue Flippers"
+  },
+  {
+   "id": 1077007,
+   "name": "Yellow Rain Boots"
+  },
+  {
+   "id": 1077008,
+   "name": "Sky Blue Rain Boots"
+  },
+  {
+   "id": 1077009,
+   "name": "Red Rain Boots"
+  },
+  {
+   "id": 1077010,
+   "name": "Green Rain Boots"
+  },
+  {
+   "id": 1077011,
+   "name": "Blue Baseball Cleats"
+  },
+  {
+   "id": 1077012,
+   "name": "Red Baseball Cleats"
+  },
+  {
+   "id": 1077013,
+   "name": "Black Baseball Cleats"
+  },
+  {
+   "id": 1077015,
+   "name": "Military Boots"
+  },
+  {
+   "id": 1077016,
+   "name": "Flipper Boots"
+  },
+  {
+   "id": 1077019,
+   "name": "Red Marble Slippers"
+  },
+  {
+   "id": 1077021,
+   "name": "Beige Galoshes"
+  },
+  {
+   "id": 1077022,
+   "name": "Sky Blue Galoshes"
+  },
+  {
+   "id": 1077024,
+   "name": "Black Boxing Shoes"
+  },
+  {
+   "id": 1077025,
+   "name": "Blue Boxing Shoes"
+  },
+  {
+   "id": 1077026,
+   "name": "Red Boxing Shoes"
+  },
+  {
+   "id": 1077027,
+   "name": "Bear Shoes"
+  },
+  {
+   "id": 1077028,
+   "name": "Bubbling Slippers"
+  },
+  {
+   "id": 1077032,
+   "name": "Blue Gomushin"
+  },
+  {
+   "id": 1077033,
+   "name": "Black Santa Boots"
+  },
+  {
+   "id": 1077035,
+   "name": "Blue Loose Sox"
+  },
+  {
+   "id": 1077036,
+   "name": "Red Loose Sox"
+  },
+  {
+   "id": 1077037,
+   "name": "Blue Gomushin"
+  },
+  {
+   "id": 1077038,
+   "name": "Red Santa Boots"
+  },
+  {
+   "id": 1077039,
+   "name": "Bunny Boots"
+  },
+  {
+   "id": 1077041,
+   "name": "Well-Loved White & Blue Sandals"
+  },
+  {
+   "id": 1077042,
+   "name": "Founder's Thief Boots"
+  },
+  {
+   "id": 1077043,
+   "name": "Reticent Steps"
+  },
+  {
+   "id": 1077061,
+   "name": "Kimono Shoes"
+  },
+  {
+   "id": 1077062,
+   "name": "Western Walkers"
+  },
+  {
+   "id": 1077063,
+   "name": "Santa Boy Boots"
+  },
+  {
+   "id": 1077064,
+   "name": "Royal Costume Shoes"
+  },
+  {
+   "id": 1077065,
+   "name": "Lunar Celebration Shoes"
+  },
+  {
+   "id": 1077066,
+   "name": "Paris Wingtips"
+  },
+  {
+   "id": 1077067,
+   "name": "Veras Heels [m]"
+  },
+  {
+   "id": 1077068,
+   "name": "Dandy Silver Sneaks"
+  },
+  {
+   "id": 1077069,
+   "name": "Napoleon Shoes "
+  },
+  {
+   "id": 1077070,
+   "name": "Twinkling Boy Glow Shoes"
+  },
+  {
+   "id": 1077071,
+   "name": "Garnet-Studded Boots"
+  },
+  {
+   "id": 1077072,
+   "name": "Evergreen Magistrate Pretty Shoes"
+  },
+  {
+   "id": 1077073,
+   "name": "Shadow Sandals"
+  },
+  {
+   "id": 1077074,
+   "name": "Pink Nurse Shoes"
+  },
+  {
+   "id": 1077075,
+   "name": "White Nurse Shoes"
+  },
+  {
+   "id": 1077076,
+   "name": "SF Ninja Shoes"
+  },
+  {
+   "id": 1077077,
+   "name": "Western Walkers"
+  },
+  {
+   "id": 1077078,
+   "name": "Hero's Boots"
+  },
+  {
+   "id": 1077079,
+   "name": "Diao Chan Shoes"
+  },
+  {
+   "id": 1077080,
+   "name": "White Cat Shoes"
+  },
+  {
+   "id": 1077081,
+   "name": "Black Cat Shoes"
+  },
+  {
+   "id": 1077082,
+   "name": "Maid Shoes"
+  },
+  {
+   "id": 1077083,
+   "name": "Santa Girl Boots"
+  },
+  {
+   "id": 1077084,
+   "name": "Leopard Print Shoes"
+  },
+  {
+   "id": 1077085,
+   "name": "Brown Leather Boots"
+  },
+  {
+   "id": 1077086,
+   "name": "Gothic Boots"
+  },
+  {
+   "id": 1077088,
+   "name": "Twinkling Girl Glow Shoes"
+  },
+  {
+   "id": 1077089,
+   "name": "Pink Angel Wing Shoes"
+  },
+  {
+   "id": 1077090,
+   "name": "Red Ribbon Shoes"
+  },
+  {
+   "id": 1077091,
+   "name": "Garnet-Studded Boots"
+  },
+  {
+   "id": 1077093,
+   "name": "Pinky Pretty Gomushin"
+  },
+  {
+   "id": 1077094,
+   "name": "Shadow Garter"
+  },
+  {
+   "id": 1077095,
+   "name": "Ninja Shoes"
+  },
+  {
+   "id": 1077096,
+   "name": "Green Ting Slippers"
+  },
+  {
+   "id": 1077097,
+   "name": "Blue B-ball Sneakers"
+  },
+  {
+   "id": 1077098,
+   "name": "Orange B-ball Sneakers"
+  },
+  {
+   "id": 1077101,
+   "name": "Red Leather Boots"
+  },
+  {
+   "id": 1077102,
+   "name": "M-Forcer Boots"
+  },
+  {
+   "id": 1077103,
+   "name": "Guan Yu Shoes"
+  },
+  {
+   "id": 1077104,
+   "name": "Zhu-Ge-Liang Shoes"
+  },
+  {
+   "id": 1077105,
+   "name": "Liu Bei Shoes"
+  },
+  {
+   "id": 1077106,
+   "name": "Cao Cao Shoes"
+  },
+  {
+   "id": 1077107,
+   "name": "Sun Quan Shoes"
+  },
+  {
+   "id": 1077108,
+   "name": "Red Enamel Shoes"
+  },
+  {
+   "id": 1077109,
+   "name": "Blue Enamel Shoes"
+  },
+  {
+   "id": 1077110,
+   "name": "Pink Sneakers"
+  },
+  {
+   "id": 1077111,
+   "name": "Hunting Boots"
+  },
+  {
+   "id": 1077112,
+   "name": "Horoscope Shoes"
+  },
+  {
+   "id": 1077113,
+   "name": "Pro-Cat Sticker"
+  },
+  {
+   "id": 1077114,
+   "name": "Snowboard Boots"
+  },
+  {
+   "id": 1077115,
+   "name": "Football Cleats (Home)"
+  },
+  {
+   "id": 1077116,
+   "name": "Football Cleats (Away)"
+  },
+  {
+   "id": 1077117,
+   "name": "Puppy Slippers"
+  },
+  {
+   "id": 1077118,
+   "name": "Gray Kitty Slippers"
+  },
+  {
+   "id": 1077119,
+   "name": "Chick Slippers"
+  },
+  {
+   "id": 1077120,
+   "name": "Penguin Slippers"
+  },
+  {
+   "id": 1077121,
+   "name": "Blue Soccer Cleats"
+  },
+  {
+   "id": 1077122,
+   "name": "Black Soccer Cleats"
+  },
+  {
+   "id": 1077123,
+   "name": "Red Soccer Cleats"
+  },
+  {
+   "id": 1077124,
+   "name": "Moon Bunny Paws"
+  },
+  {
+   "id": 1077125,
+   "name": "Booster Shoes"
+  },
+  {
+   "id": 1077126,
+   "name": "Red Elf shoes"
+  },
+  {
+   "id": 1077127,
+   "name": "Rudolph Slippers"
+  },
+  {
+   "id": 1077128,
+   "name": "Super Booster Shoes"
+  },
+  {
+   "id": 1077129,
+   "name": "Golden Shoes"
+  },
+  {
+   "id": 1077130,
+   "name": "Sachiel Shoes"
+  },
+  {
+   "id": 1077131,
+   "name": "Veamoth Shoes"
+  },
+  {
+   "id": 1077132,
+   "name": "Janus Shoes"
+  },
+  {
+   "id": 1077133,
+   "name": "Zhu's Pig Shoes"
+  },
+  {
+   "id": 1077134,
+   "name": "Rollerskates"
+  },
+  {
+   "id": 1077135,
+   "name": "Starry Slippers"
+  },
+  {
+   "id": 1077136,
+   "name": "Piggy Slippers"
+  },
+  {
+   "id": 1077137,
+   "name": "Red Slime Slippers"
+  },
+  {
+   "id": 1077138,
+   "name": "Yellow Slime Slippers"
+  },
+  {
+   "id": 1077139,
+   "name": "Tania En Fuego"
+  },
+  {
+   "id": 1077140,
+   "name": "Mercury Lightning"
+  },
+  {
+   "id": 1077141,
+   "name": "Flipped Blue High Top"
+  },
+  {
+   "id": 1077142,
+   "name": "Green Classic Sneakers"
+  },
+  {
+   "id": 1077143,
+   "name": "Red Checkered Sneakers"
+  },
+  {
+   "id": 1077144,
+   "name": "Natural Galoshes"
+  },
+  {
+   "id": 1077145,
+   "name": "Soccer Cleats"
+  },
+  {
+   "id": 1077146,
+   "name": "Fluffy Slippers"
+  },
+  {
+   "id": 1077147,
+   "name": "Orange Sneakz"
+  },
+  {
+   "id": 1077148,
+   "name": "Olive Green Kicks"
+  },
+  {
+   "id": 1077149,
+   "name": "Elephant Slippers"
+  },
+  {
+   "id": 1077150,
+   "name": "Green Sneakz"
+  },
+  {
+   "id": 1077151,
+   "name": "Black High Tops"
+  },
+  {
+   "id": 1077156,
+   "name": "Cutie Birk Shoes"
+  },
+  {
+   "id": 1077157,
+   "name": "Gaga Shoes"
+  },
+  {
+   "id": 1077158,
+   "name": "Custom Blue High Tops"
+  },
+  {
+   "id": 1077159,
+   "name": "Purple Rainbow Sneaks"
+  },
+  {
+   "id": 1077160,
+   "name": "Lace Long Boots"
+  },
+  {
+   "id": 1077161,
+   "name": "White & Blue Sandals"
+  },
+  {
+   "id": 1077163,
+   "name": "Brave Soldier Shoes "
+  },
+  {
+   "id": 1077164,
+   "name": "Bling Bling Shoes"
+  },
+  {
+   "id": 1077165,
+   "name": "Stripe Knee Socks"
+  },
+  {
+   "id": 1077166,
+   "name": "Red Ankle-Strap Shoes"
+  },
+  {
+   "id": 1077167,
+   "name": "Pink Polka-Dotted Boots"
+  },
+  {
+   "id": 1077168,
+   "name": "Alchemist Shoes"
+  },
+  {
+   "id": 1077169,
+   "name": "Ninja Shoes"
+  },
+  {
+   "id": 1077170,
+   "name": "Chaos Metallic Shoes"
+  },
+  {
+   "id": 1077171,
+   "name": "Kawaii Kitty Shoes"
+  },
+  {
+   "id": 1077172,
+   "name": "Maple Racing Shoes"
+  },
+  {
+   "id": 1077173,
+   "name": "Clown Shoes"
+  },
+  {
+   "id": 1077174,
+   "name": "Freud's Shoes"
+  },
+  {
+   "id": 1077175,
+   "name": "Shiny Anklet"
+  },
+  {
+   "id": 1077176,
+   "name": "Passionate Flats"
+  },
+  {
+   "id": 1077178,
+   "name": "Green Leaf Shoes"
+  },
+  {
+   "id": 1077179,
+   "name": "Strawberry Shoes"
+  },
+  {
+   "id": 1077180,
+   "name": "Cat Set Boots"
+  },
+  {
+   "id": 1077184,
+   "name": "Rainbow Boots"
+  },
+  {
+   "id": 1077186,
+   "name": "Blue Slip-Ons"
+  },
+  {
+   "id": 1077189,
+   "name": "Combat Boots"
+  },
+  {
+   "id": 1077190,
+   "name": "King Crow Kimono Shoes"
+  },
+  {
+   "id": 1077191,
+   "name": "Henesys Academy Shoes"
+  },
+  {
+   "id": 1077192,
+   "name": "Pilot Boots"
+  },
+  {
+   "id": 1077193,
+   "name": "Striped Leggings (Pink)"
+  },
+  {
+   "id": 1077194,
+   "name": "Striped Leggings (Blue)"
+  },
+  {
+   "id": 1077195,
+   "name": "Brown Ankle Boots"
+  },
+  {
+   "id": 1077196,
+   "name": "Panda Slippers"
+  },
+  {
+   "id": 1077197,
+   "name": "White Boots"
+  },
+  {
+   "id": 1077198,
+   "name": "Black Kitty Slippers"
+  },
+  {
+   "id": 1077199,
+   "name": "Pearl Anklet"
+  },
+  {
+   "id": 1077200,
+   "name": "Red's Shoes"
+  },
+  {
+   "id": 1077201,
+   "name": "Pink Winged Shoes"
+  },
+  {
+   "id": 1077202,
+   "name": "Furry Lion Slippers"
+  },
+  {
+   "id": 1077203,
+   "name": "Winged Shoes"
+  },
+  {
+   "id": 1077204,
+   "name": "Starling Shoes"
+  },
+  {
+   "id": 1077205,
+   "name": "Crow Shoes"
+  },
+  {
+   "id": 1077207,
+   "name": "Ribboned Justice Boots"
+  },
+  {
+   "id": 1077208,
+   "name": "Western Cowboy Boots"
+  },
+  {
+   "id": 1077210,
+   "name": "Dark Force Boots "
+  },
+  {
+   "id": 1077211,
+   "name": "Elven Spirit Boots "
+  },
+  {
+   "id": 1077212,
+   "name": "Urban Pirate Shoes"
+  },
+  {
+   "id": 1077213,
+   "name": "Ebony Pimpernel Boots"
+  },
+  {
+   "id": 1077214,
+   "name": "Hades Shoes"
+  },
+  {
+   "id": 1077215,
+   "name": "Kerning Engineering School Shoes"
+  },
+  {
+   "id": 1077216,
+   "name": "Ellinia Magic School Shoes"
+  },
+  {
+   "id": 1077218,
+   "name": "Blue Dragon Shoes"
+  },
+  {
+   "id": 1077219,
+   "name": "Red Dragon Shoes"
+  },
+  {
+   "id": 1077220,
+   "name": "Intergalactic Shoes"
+  },
+  {
+   "id": 1077221,
+   "name": "The Onmyouji's Shoes"
+  },
+  {
+   "id": 1077223,
+   "name": "Cat Lolita Shoes"
+  },
+  {
+   "id": 1077224,
+   "name": "Exotic Festival Shoes"
+  },
+  {
+   "id": 1077225,
+   "name": "Bubble Bubble Chocolate Shoes"
+  },
+  {
+   "id": 1077226,
+   "name": "The Bladed Falcon's Shoes"
+  },
+  {
+   "id": 1077227,
+   "name": "Halloween Leopard Shoes"
+  },
+  {
+   "id": 1077228,
+   "name": "Dark Devil Shoes"
+  },
+  {
+   "id": 1077229,
+   "name": "Slither Style High-Tops"
+  },
+  {
+   "id": 1077230,
+   "name": "Pious Shaman Stockings"
+  },
+  {
+   "id": 1077231,
+   "name": "Red Strap Clogs"
+  },
+  {
+   "id": 1077233,
+   "name": "Mid High Golf Shoes"
+  },
+  {
+   "id": 1077234,
+   "name": "Ramling Slippers"
+  },
+  {
+   "id": 1077235,
+   "name": "Succubus Shoes"
+  },
+  {
+   "id": 1077236,
+   "name": "Featherly Angel Shoes"
+  },
+  {
+   "id": 1077237,
+   "name": "Golden Bell Shoes"
+  },
+  {
+   "id": 1077238,
+   "name": "Flame Boots"
+  },
+  {
+   "id": 1077239,
+   "name": "Baseball Shoes"
+  },
+  {
+   "id": 1077240,
+   "name": "Bubble Flip Flops"
+  },
+  {
+   "id": 1077242,
+   "name": "Odette Ballet Slippers"
+  },
+  {
+   "id": 1077243,
+   "name": "Odile Ballet Slippers"
+  },
+  {
+   "id": 1077244,
+   "name": "Cobalt Zero Shoes"
+  },
+  {
+   "id": 1077246,
+   "name": "Heart Pudding Slippers"
+  },
+  {
+   "id": 1077247,
+   "name": "Puffram Shoes"
+  },
+  {
+   "id": 1077248,
+   "name": "Powder Flats"
+  },
+  {
+   "id": 1077249,
+   "name": "Halloweenroid Boots"
+  },
+  {
+   "id": 1077250,
+   "name": "Guardian Shoes"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "id": 1027045,
+ "name": "Bizarre Monocle",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ay"
+ ],
+ "islots": [
+  "Ay"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 14,
+   "h": 19,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -15,
+     "y": -29,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEye"
+  }
+ ]
+}

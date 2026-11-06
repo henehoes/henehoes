@@ -1,0 +1,32 @@
+{
+ "id": 1017003,
+ "name": "Rouge",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 18,
+   "h": 4,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -6,
+     "y": -42,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFace"
+  }
+ ]
+}

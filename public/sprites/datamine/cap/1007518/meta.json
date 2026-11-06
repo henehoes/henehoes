@@ -1,0 +1,45 @@
+{
+ "id": 1007518,
+ "name": "Maple Racing Helmet",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H2",
+  "H3",
+  "H5",
+  "Hf",
+  "Hs",
+  "Af",
+  "Ay",
+  "As",
+  "Ae",
+  "Hb",
+  "H4",
+  "H6"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 41,
+   "h": 38,
+   "origin": {
+    "x": 20,
+    "y": 19,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -3,
+     "y": -7,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

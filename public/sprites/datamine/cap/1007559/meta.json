@@ -1,0 +1,32 @@
+{
+ "id": 1007559,
+ "name": "Battle Mage Goggles",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 37,
+   "h": 13,
+   "origin": {
+    "x": 16,
+    "y": 10,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

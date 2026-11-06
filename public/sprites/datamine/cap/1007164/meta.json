@@ -1,0 +1,34 @@
+{
+ "id": 1007164,
+ "name": "Napoleon Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 87,
+   "h": 47,
+   "origin": {
+    "x": 32,
+    "y": 29,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 2,
+     "y": 9,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

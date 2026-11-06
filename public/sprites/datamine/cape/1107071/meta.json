@@ -1,0 +1,50 @@
+{
+ "id": 1107071,
+ "name": "Aerial Wave Cape",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Sr"
+ ],
+ "islots": [
+  "Sr"
+ ],
+ "parts": [
+  {
+   "key": "cape",
+   "w": 52,
+   "h": 13,
+   "origin": {
+    "x": -9,
+    "y": 12,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capeBelowBody"
+  },
+  {
+   "key": "capeArm",
+   "w": 13,
+   "h": 7,
+   "origin": {
+    "x": 2,
+    "y": 10,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "cape"
+  }
+ ]
+}

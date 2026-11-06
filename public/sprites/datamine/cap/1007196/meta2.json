@@ -1,0 +1,40 @@
+{
+ "parts": [
+  {
+   "key": "default",
+   "w": 55,
+   "h": 33,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 8,
+     "y": -6,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  },
+  {
+   "key": "defalutAc",
+   "w": 14,
+   "h": 6,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -28,
+     "y": -39,
+     "isEmpty": false
+    }
+   },
+   "position": "capAccessoryBelowBody"
+  }
+ ]
+}

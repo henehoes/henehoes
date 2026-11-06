@@ -1,0 +1,32 @@
+{
+ "id": 1107002,
+ "name": "Blue Nymph Wing",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Sr"
+ ],
+ "islots": [
+  "Sr"
+ ],
+ "parts": [
+  {
+   "key": "cape",
+   "w": 45,
+   "h": 29,
+   "origin": {
+    "x": 11,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 3,
+     "y": 11,
+     "isEmpty": false
+    }
+   },
+   "position": "capeBelowBody"
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "parts": [
+  {
+   "key": "cape",
+   "w": 69,
+   "h": 80,
+   "origin": {
+    "x": -11,
+    "y": 78,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "backWing"
+  }
+ ]
+}

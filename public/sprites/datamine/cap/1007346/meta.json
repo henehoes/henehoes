@@ -1,0 +1,52 @@
+{
+ "id": 1007346,
+ "name": "Sergeant Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 43,
+   "h": 22,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 6,
+     "y": -13,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  },
+  {
+   "key": "defaultAc",
+   "w": 1,
+   "h": 1,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -35,
+     "y": -29,
+     "isEmpty": false
+    }
+   },
+   "position": "backCap"
+  }
+ ]
+}

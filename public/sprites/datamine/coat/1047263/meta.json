@@ -1,0 +1,50 @@
+{
+ "id": 1047263,
+ "name": "Jester Sweater",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma"
+ ],
+ "islots": [
+  "Ma"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 14,
+   "h": 15,
+   "origin": {
+    "x": 3,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChest"
+  },
+  {
+   "key": "mailArm",
+   "w": 8,
+   "h": 9,
+   "origin": {
+    "x": -8,
+    "y": 8,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  }
+ ]
+}

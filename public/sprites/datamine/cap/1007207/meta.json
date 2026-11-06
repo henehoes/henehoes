@@ -1,0 +1,52 @@
+{
+ "id": 1007207,
+ "name": "Strawberry Milk Frill Bonnet",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 55,
+   "h": 40,
+   "origin": {
+    "x": 28,
+    "y": 4,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -3,
+     "y": 14,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  },
+  {
+   "key": "defaultAc",
+   "w": 1,
+   "h": 1,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -38,
+     "y": -31,
+     "isEmpty": false
+    }
+   },
+   "position": "backCap"
+  }
+ ]
+}

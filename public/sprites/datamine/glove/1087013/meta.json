@@ -1,0 +1,51 @@
+{
+ "id": 1087013,
+ "name": "Founder's Thief Gloves",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "lGlove",
+   "w": 6,
+   "h": 8,
+   "origin": {
+    "x": 8,
+    "y": 0,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveOverBody"
+  },
+  {
+   "key": "rGlove",
+   "w": 10,
+   "h": 9,
+   "origin": {
+    "x": -8,
+    "y": 0,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "glove"
+  }
+ ]
+}

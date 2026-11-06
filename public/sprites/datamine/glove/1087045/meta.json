@@ -1,0 +1,51 @@
+{
+ "id": 1087045,
+ "name": "Tania Gloves",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "gloveOverBody",
+   "w": 9,
+   "h": 16,
+   "origin": {
+    "x": 10,
+    "y": 6,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveOverBody"
+  },
+  {
+   "key": "gloveOverHead",
+   "w": 15,
+   "h": 15,
+   "origin": {
+    "x": -8,
+    "y": 4,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveWrist"
+  }
+ ]
+}

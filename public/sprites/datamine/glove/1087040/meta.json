@@ -1,0 +1,69 @@
+{
+ "id": 1087040,
+ "name": "Moon Bunny Gloves",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "lGlove",
+   "w": 7,
+   "h": 9,
+   "origin": {
+    "x": 8,
+    "y": -1,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveOverBody"
+  },
+  {
+   "key": "rGlove",
+   "w": 10,
+   "h": 11,
+   "origin": {
+    "x": -8,
+    "y": 0,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "glove"
+  },
+  {
+   "key": "rWrist",
+   "w": 9,
+   "h": 6,
+   "origin": {
+    "x": -9,
+    "y": 2,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "glove"
+  }
+ ]
+}

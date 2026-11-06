@@ -1,0 +1,40 @@
+{
+ "parts": [
+  {
+   "key": "default",
+   "w": 35,
+   "h": 9,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -1,
+     "y": -21,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  },
+  {
+   "key": "defaultAc",
+   "w": 12,
+   "h": 27,
+   "origin": {
+    "x": -9,
+    "y": 62,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -2,
+     "y": -32,
+     "isEmpty": false
+    }
+   },
+   "position": "backHair"
+  }
+ ]
+}

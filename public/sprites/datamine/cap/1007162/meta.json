@@ -1,0 +1,61 @@
+{
+ "id": 1007162,
+ "name": "Janus Wig",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hf",
+  "Hb",
+  "Hx",
+  "Hs"
+ ],
+ "islots": [
+  "Hr",
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 53,
+   "h": 47,
+   "origin": {
+    "x": 26,
+    "y": 23,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -2,
+     "y": 3,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  },
+  {
+   "key": "defaultAc",
+   "w": 47,
+   "h": 49,
+   "origin": {
+    "x": 23,
+    "y": 24,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -2,
+     "y": -1,
+     "isEmpty": false
+    }
+   },
+   "position": "backCap"
+  }
+ ]
+}

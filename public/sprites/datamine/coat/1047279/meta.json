@@ -1,0 +1,32 @@
+{
+ "id": 1047279,
+ "name": "Cute Sleeveless Shirt",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma"
+ ],
+ "islots": [
+  "Ma"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 15,
+   "h": 16,
+   "origin": {
+    "x": 3,
+    "y": 10,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChest"
+  }
+ ]
+}

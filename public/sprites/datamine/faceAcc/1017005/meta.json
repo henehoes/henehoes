@@ -1,0 +1,32 @@
+{
+ "id": 1017005,
+ "name": "Bruise",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 16,
+   "h": 15,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -15,
+     "y": -29,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFaceBelowFace"
+  }
+ ]
+}

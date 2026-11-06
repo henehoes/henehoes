@@ -1,0 +1,46 @@
+{
+ "id": 1007403,
+ "name": "Helm of the Golden Monk",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "Hd",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hs",
+  "Hf",
+  "Hb",
+  "Af",
+  "Ay",
+  "As",
+  "Ae"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 48,
+   "h": 41,
+   "origin": {
+    "x": 24,
+    "y": 18,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -4,
+     "y": 1,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+{
+ "id": 1057198,
+ "name": "Pink-Striped Dress",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma",
+  "Pn"
+ ],
+ "islots": [
+  "Ma",
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 18,
+   "h": 15,
+   "origin": {
+    "x": 5,
+    "y": 6,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "pantsOverShoesBelowMailChest"
+  }
+ ]
+}

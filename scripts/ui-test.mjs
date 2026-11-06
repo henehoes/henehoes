@@ -282,7 +282,7 @@ check('every unreleased card is marked DATAMINE and no released card is', await 
 await page.evaluate(() => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent === 'Released').click()); await settle();
 check('back to Released hides every DATAMINE badge', (await page.$$('#content .card .unreleased-badge')).length === 0);
 await clickTab('Hat'); await settle();
-check('the Released/Datamine switch is not on wearable tabs (the Hat tab has Show and Fit rows)', !(await page.$$eval('#source .seg button', b => b.some(x => /Datamine/.test(x.textContent)))));
+check('the Hat tab has the Released/Datamine switch, then its Fit row', JSON.stringify(await page.$$eval('#source .source-label', l => l.map(x => x.textContent))) === '["Show","Fit"]' && (await page.$$eval('#source .seg button', b => b.some(x => /Datamine/.test(x.textContent)))));
 await clickTab('Hair'); await settle();
 
 // Order inside the book on Face and Hair: Released/Datamine, then search and gender, then colours
@@ -499,7 +499,7 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
 // ---- Hat tab: the Fit filter ----
 {
   const clickTab = async l => { await page.evaluate(l => [...document.querySelectorAll('.tab')].find(t => t.title === l)?.click(), l); await settle(); };
-  const fitBtn = label => page.evaluate(l => [...document.querySelectorAll('#source .seg button')].find(b => b.textContent.startsWith(l))?.click(), label);
+  const fitBtn = label => page.evaluate(l => [...document.querySelectorAll('#source .source-group:last-child .seg button')].find(b => b.textContent.startsWith(l))?.click(), label);
   const cards = () => page.$$eval('#content .card .label', e => e.map(x => x.textContent));
   await clickTab('Hat');
   check('Fit filter: the Hat tab has All, Topper, Cap and Helmet with counts', JSON.stringify(await page.$$eval('#source .source-group:last-child .seg button', b => b.map(x => x.textContent))) === JSON.stringify([`All (${HATS.length})`, `Topper (${FIT('topper')})`, `Cap (${FIT('cap')})`, `Helmet (${FIT('helmet')})`]));
@@ -546,6 +546,16 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   await page.evaluate(() => [...document.querySelectorAll('#content .card')].find(c => c.querySelector('.unreleased-badge')).click()); await settle();
   await segBtn('Released'); await settle();
   check('Weapon tab: back to Released lists only released weapons', (await cards()).length === WEAPONS.length && !(await page.$('#content .card .unreleased-badge')));
+  // Every clothing tab has Released | All · Datamine: All · Datamine lists every cash item of that kind in the game files, the unreleased ones badged
+  for (const [tab, slot] of [['Hat', 'cap'], ['Earrings', 'earrings'], ['Overall', 'longcoat'], ['Top', 'coat'], ['Bottom', 'pants'], ['Shoes', 'shoes'], ['Gloves', 'glove'], ['Cape', 'cape']]) {
+    await clickTab(tab);
+    await segBtn('All · Datamine'); await settle();
+    const n = (await page.$$('#content .grid .card')).length, badges = (await page.$$('#content .card .unreleased-badge')).length;
+    const want = CAT[slot].items.length - (CAT[slot].placeholders?.length ? 0 : 0), unrel = CAT[slot].items.filter(i => i.released === false).length;
+    check(`${tab} tab, All · Datamine: every ${slot} item, the ${unrel} unreleased ones badged DATAMINE`, n >= want && badges === unrel && unrel > 5, `${n} cards, ${badges} badges`);
+    await segBtn('Released'); await settle();
+    check(`${tab} tab, Released: no DATAMINE items`, !(await page.$('#content .card .unreleased-badge')));
+  }
   if (SHOW_UPCOMING) {
   // Released | Upcoming switch on the category tabs that have possible upcoming items (Next Crate tab's items, by slot)
   const segTexts = () => page.$$eval('#source .source-group:first-child .seg button', b => b.map(x => x.textContent));
@@ -570,7 +580,7 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
   await clickTab('Earrings');
   check('Earrings (nothing upcoming) has no Released | Upcoming switch', (await page.$$eval('#source .seg button', b => b.filter(x => x.textContent === 'Upcoming').length)) === 0);
   // Weapons say which weapon types they go over (the game's own description), in the Equipped panel
-  const wearByName = async (tab, name) => { await clickTab(tab); await page.$eval('.search-input', (i, n) => { i.value = n; i.dispatchEvent(new Event('input', { bubbles: true })); }, name); await settle(); await (await page.$$('#content .grid .card'))[0].click(); await settle(); };
+  const wearByName = async (tab, name) => { await clickTab(tab); await page.$eval('.search-input', (i, n) => { i.value = n; i.dispatchEvent(new Event('input', { bubbles: true })); }, name); await settle(); const card = (await page.$$('#content .grid .card'))[0]; if (!card) throw new Error(`wearByName: no ${name} on ${tab}; switches: ${await page.$$eval('#source .seg button[aria-pressed=true]', b => b.map(x => x.textContent).join(', '))}`); await card.click(); await settle(); };
   const worksWithText = async () => { const t = await page.$$eval('#colour .chip', e => e.map(x => x.textContent)); return t.length ? t.join(', ') : null; };
   await wearByName('Weapon', 'Toy Rifle');
   check('Equipped panel: the Toy Rifle works with crossbows', (await worksWithText()) === 'Crossbow');

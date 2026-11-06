@@ -1,0 +1,52 @@
+{
+ "id": 1007717,
+ "name": "Blue Love Bonnet",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 56,
+   "h": 52,
+   "origin": {
+    "x": 20,
+    "y": 22,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 3,
+     "y": -2,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  },
+  {
+   "key": "defaultTail",
+   "w": 56,
+   "h": 43,
+   "origin": {
+    "x": 43,
+    "y": 41,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -20,
+     "y": -21,
+     "isEmpty": false
+    }
+   },
+   "position": "backCap"
+  }
+ ]
+}

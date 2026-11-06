@@ -1,0 +1,33 @@
+{
+ "id": 1007703,
+ "name": "Halloween Leopard Ears",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 38,
+   "h": 14,
+   "origin": {
+    "x": 12,
+    "y": -5,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 5,
+     "y": 20,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

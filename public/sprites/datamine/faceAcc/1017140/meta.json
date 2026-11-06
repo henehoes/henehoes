@@ -1,0 +1,32 @@
+{
+ "id": 1017140,
+ "name": "Enlightened Face Accessory",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 25,
+   "h": 13,
+   "origin": {
+    "x": 12,
+    "y": -6,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFace"
+  }
+ ]
+}

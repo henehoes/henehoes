@@ -1,0 +1,32 @@
+{
+ "id": 1027002,
+ "name": "Yellow Shades",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ay"
+ ],
+ "islots": [
+  "Ay"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 31,
+   "h": 8,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -2,
+     "y": -34,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEye"
+  }
+ ]
+}

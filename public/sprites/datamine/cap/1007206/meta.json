@@ -1,0 +1,33 @@
+{
+ "id": 1007206,
+ "name": "Gothic Headband",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 48,
+   "h": 36,
+   "origin": {
+    "x": 31,
+    "y": 11,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -13,
+     "y": 4,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

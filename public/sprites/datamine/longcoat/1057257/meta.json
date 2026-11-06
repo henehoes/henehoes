@@ -1,0 +1,52 @@
+{
+ "id": 1057257,
+ "name": "Pinky Baseball",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma",
+  "Pn"
+ ],
+ "islots": [
+  "Ma",
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 18,
+   "h": 18,
+   "origin": {
+    "x": 5,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChestOverPants"
+  },
+  {
+   "key": "mailArm",
+   "w": 7,
+   "h": 7,
+   "origin": {
+    "x": -7,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  }
+ ]
+}

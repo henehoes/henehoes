@@ -1,0 +1,33 @@
+{
+ "id": 1087072,
+ "name": "Featherly Angel Gloves",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "rGlove",
+   "w": 19,
+   "h": 13,
+   "origin": {
+    "x": -9,
+    "y": 5,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "glove"
+  }
+ ]
+}

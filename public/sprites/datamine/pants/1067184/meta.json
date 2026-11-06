@@ -1,0 +1,32 @@
+{
+ "id": 1067184,
+ "name": "Pink Sprite Pants",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Pn"
+ ],
+ "islots": [
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "pants",
+   "w": 14,
+   "h": 9,
+   "origin": {
+    "x": 3,
+    "y": -1,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "pantsOverShoesBelowMailChest"
+  }
+ ]
+}

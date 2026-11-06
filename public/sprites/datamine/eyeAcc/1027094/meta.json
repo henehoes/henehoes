@@ -1,0 +1,32 @@
+{
+ "id": 1027094,
+ "name": "Futuroid VR Visor",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ay"
+ ],
+ "islots": [
+  "Ay"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 42,
+   "h": 19,
+   "origin": {
+    "x": 20,
+    "y": 10,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -3,
+     "y": -11,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEarOverHair"
+  }
+ ]
+}

@@ -1,0 +1,76 @@
+{
+ "parts": [
+  {
+   "key": "lGlove",
+   "w": 8,
+   "h": 11,
+   "origin": {
+    "x": 3,
+    "y": 5,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 7,
+     "y": -5,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveOverHair"
+  },
+  {
+   "key": "lWrist",
+   "w": 4,
+   "h": 4,
+   "origin": {
+    "x": 2,
+    "y": 2,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 4,
+     "y": -2,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveWristOverHair"
+  },
+  {
+   "key": "rGlove",
+   "w": 12,
+   "h": 10,
+   "origin": {
+    "x": 11,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -11,
+     "y": -4,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveOverHair"
+  },
+  {
+   "key": "rWrist",
+   "w": 4,
+   "h": 6,
+   "origin": {
+    "x": 4,
+    "y": 3,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -12,
+     "y": -2,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveWristOverHair"
+  }
+ ]
+}

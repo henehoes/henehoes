@@ -1,0 +1,32 @@
+{
+ "id": 1107056,
+ "name": "Elephant Balloon",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Sr"
+ ],
+ "islots": [
+  "Sr"
+ ],
+ "parts": [
+  {
+   "key": "cape",
+   "w": 50,
+   "h": 89,
+   "origin": {
+    "x": -3,
+    "y": 88,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "backWing"
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "id": 1057337,
+ "name": "Christmas Party Suit",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma",
+  "Pn"
+ ],
+ "islots": [
+  "Ma",
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 21,
+   "h": 32,
+   "origin": {
+    "x": 4,
+    "y": 14,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChestOverPants"
+  },
+  {
+   "key": "mailArm",
+   "w": 7,
+   "h": 9,
+   "origin": {
+    "x": -8,
+    "y": 8,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  }
+ ]
+}

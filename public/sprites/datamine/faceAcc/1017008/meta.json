@@ -1,0 +1,32 @@
+{
+ "id": 1017008,
+ "name": "Censor",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 30,
+   "h": 9,
+   "origin": {
+    "x": 15,
+    "y": 4,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": -12,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFace"
+  }
+ ]
+}

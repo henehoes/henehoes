@@ -1,0 +1,52 @@
+{
+ "id": 1007412,
+ "name": "Soul Teddy Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 47,
+   "h": 55,
+   "origin": {
+    "x": 23,
+    "y": 27,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -7,
+     "y": 1,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  },
+  {
+   "key": "defaultAc",
+   "w": 20,
+   "h": 26,
+   "origin": {
+    "x": 10,
+    "y": 13,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -27,
+     "y": -21,
+     "isEmpty": false
+    }
+   },
+   "position": "capAccessoryBelowBody"
+  }
+ ]
+}

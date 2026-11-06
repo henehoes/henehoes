@@ -1,0 +1,40 @@
+{
+ "parts": [
+  {
+   "key": "default",
+   "w": 11,
+   "h": 16,
+   "origin": {
+    "x": -10,
+    "y": 8,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  },
+  {
+   "key": "effect",
+   "w": 33,
+   "h": 36,
+   "origin": {
+    "x": -3,
+    "y": 24,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

@@ -1,0 +1,47 @@
+{
+ "id": 1007148,
+ "name": "Men's Ninja Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hf",
+  "Hs",
+  "Hb",
+  "Hc",
+  "Af",
+  "Ay",
+  "As",
+  "Af",
+  "Ae"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 40,
+   "h": 33,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": -12,
+     "isEmpty": false
+    }
+   },
+   "position": "capBelowAccessory"
+  }
+ ]
+}

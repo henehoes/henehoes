@@ -1,0 +1,52 @@
+{
+ "id": 1007131,
+ "name": "Manji's Bamboo Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "backCap",
+   "w": 65,
+   "h": 41,
+   "origin": {
+    "x": 30,
+    "y": 21,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "backCap"
+  },
+  {
+   "key": "cap",
+   "w": 73,
+   "h": 43,
+   "origin": {
+    "x": 32,
+    "y": 22,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

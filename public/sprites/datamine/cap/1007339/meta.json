@@ -1,0 +1,34 @@
+{
+ "id": 1007339,
+ "name": "Hunting Cap",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 44,
+   "h": 21,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 5,
+     "y": -12,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

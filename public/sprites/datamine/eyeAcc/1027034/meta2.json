@@ -1,0 +1,22 @@
+{
+ "parts": [
+  {
+   "key": "default",
+   "w": 1,
+   "h": 1,
+   "origin": {
+    "x": 17,
+    "y": 11,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -7,
+     "y": -29,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEyeOverCap"
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "id": 1057332,
+ "name": "Centaurus Legs",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma",
+  "Pn"
+ ],
+ "islots": [
+  "Ma",
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 38,
+   "h": 31,
+   "origin": {
+    "x": 19,
+    "y": 15,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -12,
+     "y": -5,
+     "isEmpty": false
+    }
+   },
+   "position": "pantsOverShoesBelowMailChest"
+  },
+  {
+   "key": "mailArm",
+   "w": 4,
+   "h": 3,
+   "origin": {
+    "x": 2,
+    "y": 1,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -10,
+     "y": 9,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  }
+ ]
+}

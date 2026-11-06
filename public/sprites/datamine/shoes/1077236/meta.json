@@ -1,0 +1,32 @@
+{
+ "id": 1077236,
+ "name": "Featherly Angel Shoes",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "So"
+ ],
+ "islots": [
+  "So"
+ ],
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 30,
+   "h": 13,
+   "origin": {
+    "x": 12,
+    "y": -11,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "shoesOverPants"
+  }
+ ]
+}

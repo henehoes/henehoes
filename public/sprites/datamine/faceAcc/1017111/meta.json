@@ -1,0 +1,32 @@
+{
+ "id": 1017111,
+ "name": "Star Face Painting",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 23,
+   "h": 22,
+   "origin": {
+    "x": 19,
+    "y": 30,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -15,
+     "y": -29,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFaceBelowFace"
+  }
+ ]
+}

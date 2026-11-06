@@ -1,0 +1,32 @@
+{
+ "id": 1027090,
+ "name": "Silky Black Eye Patch",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ay"
+ ],
+ "islots": [
+  "Ay"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 34,
+   "h": 16,
+   "origin": {
+    "x": 29,
+    "y": 30,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -16,
+     "y": -31,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEye"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "id": 1017080,
+ "name": "Doggy Mouth",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 18,
+   "h": 11,
+   "origin": {
+    "x": 17,
+    "y": 27,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -8,
+     "y": -39,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFace"
+  }
+ ]
+}

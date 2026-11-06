@@ -1,0 +1,32 @@
+{
+ "id": 1067165,
+ "name": "Plaid Roll-Up Jeans",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Pn"
+ ],
+ "islots": [
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "pants",
+   "w": 16,
+   "h": 14,
+   "origin": {
+    "x": 4,
+    "y": -1,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "pantsOverShoesBelowMailChest"
+  }
+ ]
+}

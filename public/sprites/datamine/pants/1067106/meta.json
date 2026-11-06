@@ -1,0 +1,32 @@
+{
+ "id": 1067106,
+ "name": "Golf Skirt",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Pn"
+ ],
+ "islots": [
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "pants",
+   "w": 17,
+   "h": 11,
+   "origin": {
+    "x": 5,
+    "y": 0,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "pantsBelowShoes"
+  }
+ ]
+}

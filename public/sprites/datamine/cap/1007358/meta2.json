@@ -1,0 +1,40 @@
+{
+ "parts": [
+  {
+   "key": "default",
+   "w": 43,
+   "h": 47,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 3,
+     "y": -2,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  },
+  {
+   "key": "defaultTail",
+   "w": 10,
+   "h": 8,
+   "origin": {
+    "x": 5,
+    "y": 4,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -20,
+     "y": -21,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

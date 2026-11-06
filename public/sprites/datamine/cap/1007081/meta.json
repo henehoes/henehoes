@@ -1,0 +1,52 @@
+{
+ "id": 1007081,
+ "name": "Octopus Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 44,
+   "h": 27,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 5,
+     "y": -6,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  },
+  {
+   "key": "defaultAc",
+   "w": 35,
+   "h": 23,
+   "origin": {
+    "x": 17,
+    "y": 11,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -2,
+     "y": -18,
+     "isEmpty": false
+    }
+   },
+   "position": "capAccessoryBelowAccFace"
+  }
+ ]
+}

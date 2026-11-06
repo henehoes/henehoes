@@ -1,0 +1,33 @@
+{
+ "id": 1007446,
+ "name": "Cone Ears",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 45,
+   "h": 8,
+   "origin": {
+    "x": 16,
+    "y": 6,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 2,
+     "y": -11,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

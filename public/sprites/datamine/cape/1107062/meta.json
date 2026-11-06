@@ -1,0 +1,32 @@
+{
+ "id": 1107062,
+ "name": "Sage Cape",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Sr"
+ ],
+ "islots": [
+  "Sr"
+ ],
+ "parts": [
+  {
+   "key": "cape",
+   "w": 53,
+   "h": 52,
+   "origin": {
+    "x": 26,
+    "y": 26,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -22,
+     "y": -1,
+     "isEmpty": false
+    }
+   },
+   "position": "capeBelowBody"
+  }
+ ]
+}

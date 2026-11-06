@@ -1,0 +1,33 @@
+{
+ "id": 1087048,
+ "name": "Luxury Wristwatch",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "rWrist",
+   "w": 9,
+   "h": 6,
+   "origin": {
+    "x": 3,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveWrist"
+  }
+ ]
+}

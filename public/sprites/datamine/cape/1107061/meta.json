@@ -1,0 +1,32 @@
+{
+ "id": 1107061,
+ "name": "The Flaming Cape",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Sr"
+ ],
+ "islots": [
+  "Sr"
+ ],
+ "parts": [
+  {
+   "key": "cape",
+   "w": 51,
+   "h": 37,
+   "origin": {
+    "x": 16,
+    "y": 16,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "backWing"
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+ "id": 1007473,
+ "name": "Panda Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hf",
+  "Hb",
+  "Ae"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 48,
+   "h": 47,
+   "origin": {
+    "x": 11,
+    "y": 6,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 8,
+     "y": 13,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

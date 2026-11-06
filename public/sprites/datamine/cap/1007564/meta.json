@@ -1,0 +1,33 @@
+{
+ "id": 1007564,
+ "name": "Maid Headband (Blue)",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 44,
+   "h": 27,
+   "origin": {
+    "x": 24,
+    "y": 11,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -5,
+     "y": 7,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

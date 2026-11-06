@@ -1,0 +1,50 @@
+{
+ "id": 1047040,
+ "name": "Bowling Shirt",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma"
+ ],
+ "islots": [
+  "Ma"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 14,
+   "h": 15,
+   "origin": {
+    "x": 11,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -8,
+     "y": 1,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChestOverHighest"
+  },
+  {
+   "key": "mailArm",
+   "w": 7,
+   "h": 8,
+   "origin": {
+    "x": 3,
+    "y": 4,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -10,
+     "y": 5,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  }
+ ]
+}

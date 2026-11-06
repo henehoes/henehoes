@@ -1,0 +1,51 @@
+{
+ "id": 1087049,
+ "name": "Moomoo Gloves",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "gloveOverBody",
+   "w": 6,
+   "h": 10,
+   "origin": {
+    "x": 8,
+    "y": -2,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveOverBody"
+  },
+  {
+   "key": "gloveOverHead",
+   "w": 10,
+   "h": 11,
+   "origin": {
+    "x": -8,
+    "y": -1,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveWrist"
+  }
+ ]
+}

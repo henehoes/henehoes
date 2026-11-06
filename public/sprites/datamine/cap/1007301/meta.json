@@ -1,0 +1,34 @@
+{
+ "id": 1007301,
+ "name": "Cao Cao Headpiece",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 30,
+   "h": 13,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -4,
+     "y": -2,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

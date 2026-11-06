@@ -1,0 +1,46 @@
+{
+ "id": 1007526,
+ "name": "Doll Face Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "Hd",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hs",
+  "Hf",
+  "Hb",
+  "Af",
+  "Ay",
+  "As",
+  "Ae"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 59,
+   "h": 47,
+   "origin": {
+    "x": 32,
+    "y": 26,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -7,
+     "y": -4,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

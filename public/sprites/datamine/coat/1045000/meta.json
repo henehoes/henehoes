@@ -1,0 +1,32 @@
+{
+ "id": 1045000,
+ "name": "Hawaiian Shirt",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma"
+ ],
+ "islots": [
+  "Ma"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 11,
+   "h": 10,
+   "origin": {
+    "x": 11,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -8,
+     "y": 1,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChestOverHighest"
+  }
+ ]
+}

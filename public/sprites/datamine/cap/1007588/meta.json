@@ -1,0 +1,33 @@
+{
+ "id": 1007588,
+ "name": "Pretty Teddy",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 20,
+   "h": 20,
+   "origin": {
+    "x": -14,
+    "y": -7,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 5,
+     "y": 20,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

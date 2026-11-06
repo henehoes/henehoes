@@ -1,0 +1,32 @@
+{
+ "id": 1027095,
+ "name": "Aviator Shades",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ay"
+ ],
+ "islots": [
+  "Ay"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 34,
+   "h": 15,
+   "origin": {
+    "x": 18,
+    "y": 6,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -3,
+     "y": -11,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryOverHair"
+  }
+ ]
+}

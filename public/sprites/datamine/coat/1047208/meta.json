@@ -1,0 +1,32 @@
+{
+ "id": 1047208,
+ "name": "Rainbow Top",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma"
+ ],
+ "islots": [
+  "Ma"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 16,
+   "h": 15,
+   "origin": {
+    "x": 4,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChest"
+  }
+ ]
+}

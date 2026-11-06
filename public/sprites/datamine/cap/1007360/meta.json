@@ -1,0 +1,46 @@
+{
+ "id": 1007360,
+ "name": "Acorn Headgear",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "Hd",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hs",
+  "Hf",
+  "Hb",
+  "Af",
+  "Ay",
+  "As",
+  "Ae"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 52,
+   "h": 49,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 8,
+     "y": 1,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

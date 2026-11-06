@@ -1,0 +1,52 @@
+{
+ "id": 1007099,
+ "name": "Blue Beanie",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 45,
+   "h": 47,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 2,
+     "y": -8,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  },
+  {
+   "key": "defalutAc",
+   "w": 4,
+   "h": 13,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -4,
+     "y": -42,
+     "isEmpty": false
+    }
+   },
+   "position": "capAccessoryBelowBody"
+  }
+ ]
+}

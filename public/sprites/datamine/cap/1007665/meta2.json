@@ -1,0 +1,40 @@
+{
+ "parts": [
+  {
+   "key": "default",
+   "w": 41,
+   "h": 22,
+   "origin": {
+    "x": 16,
+    "y": 14,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  },
+  {
+   "key": "defaultBack",
+   "w": 17,
+   "h": 19,
+   "origin": {
+    "x": -15,
+    "y": -5,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "backHairOverCape"
+  }
+ ]
+}

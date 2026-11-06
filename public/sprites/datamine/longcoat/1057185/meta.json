@@ -1,0 +1,52 @@
+{
+ "id": 1057185,
+ "name": "Rabbit Fur Dress",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma",
+  "Pn"
+ ],
+ "islots": [
+  "Ma",
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 20,
+   "h": 20,
+   "origin": {
+    "x": 11,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -5,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChestOverHighest"
+  },
+  {
+   "key": "mailArm",
+   "w": 5,
+   "h": 5,
+   "origin": {
+    "x": 3,
+    "y": 4,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -10,
+     "y": 5,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  }
+ ]
+}

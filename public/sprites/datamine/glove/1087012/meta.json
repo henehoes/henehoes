@@ -1,0 +1,51 @@
+{
+ "id": 1087012,
+ "name": "Well-Loved Work Gloves",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "lGlove",
+   "w": 7,
+   "h": 8,
+   "origin": {
+    "x": 8,
+    "y": -2,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveOverBody"
+  },
+  {
+   "key": "rGlove",
+   "w": 10,
+   "h": 9,
+   "origin": {
+    "x": -8,
+    "y": -2,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "glove"
+  }
+ ]
+}

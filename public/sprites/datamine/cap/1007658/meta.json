@@ -1,0 +1,32 @@
+{
+ "id": 1007658,
+ "name": "Alice's Teacup",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 29,
+   "h": 26,
+   "origin": {
+    "x": 1,
+    "y": 24,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

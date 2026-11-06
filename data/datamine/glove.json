@@ -1,0 +1,241 @@
+{
+ "_comment": "Cash glove items in the game files that are not in the catalogue (not released). Written by scripts/extract-datamine.mjs.",
+ "items": [
+  {
+   "id": 1087000,
+   "name": "Red Boxing Gloves"
+  },
+  {
+   "id": 1087001,
+   "name": "Blue Boxing Gloves"
+  },
+  {
+   "id": 1087002,
+   "name": "Brown Baseball Glove"
+  },
+  {
+   "id": 1087003,
+   "name": "Blue Baseball Glove"
+  },
+  {
+   "id": 1087004,
+   "name": "Hero's Gloves"
+  },
+  {
+   "id": 1087007,
+   "name": "Santa Gloves"
+  },
+  {
+   "id": 1087008,
+   "name": "Haircutter Gloves"
+  },
+  {
+   "id": 1087009,
+   "name": "M-Forcer Gloves"
+  },
+  {
+   "id": 1087011,
+   "name": "Wedding Gloves"
+  },
+  {
+   "id": 1087012,
+   "name": "Well-Loved Work Gloves"
+  },
+  {
+   "id": 1087013,
+   "name": "Founder's Thief Gloves"
+  },
+  {
+   "id": 1087022,
+   "name": "White Ninja Gloves"
+  },
+  {
+   "id": 1087024,
+   "name": "Red Ninja Gloves"
+  },
+  {
+   "id": 1087025,
+   "name": "Blue Ninja Gloves"
+  },
+  {
+   "id": 1087026,
+   "name": "White Cat Gloves"
+  },
+  {
+   "id": 1087027,
+   "name": "Black Cat Gloves"
+  },
+  {
+   "id": 1087028,
+   "name": "Elizabeth Gloves"
+  },
+  {
+   "id": 1087029,
+   "name": "Elizabeth Gloves"
+  },
+  {
+   "id": 1087034,
+   "name": "Snowman Gloves"
+  },
+  {
+   "id": 1087037,
+   "name": "Star Gloves"
+  },
+  {
+   "id": 1087038,
+   "name": "Love Gloves"
+  },
+  {
+   "id": 1087039,
+   "name": "Nero Gloves"
+  },
+  {
+   "id": 1087040,
+   "name": "Moon Bunny Gloves"
+  },
+  {
+   "id": 1087041,
+   "name": "Rose Crystal Watch"
+  },
+  {
+   "id": 1087043,
+   "name": "Snowflake Gloves"
+  },
+  {
+   "id": 1087044,
+   "name": "Lightning Gloves"
+  },
+  {
+   "id": 1087045,
+   "name": "Tania Gloves"
+  },
+  {
+   "id": 1087046,
+   "name": "Mercury Gloves"
+  },
+  {
+   "id": 1087047,
+   "name": "Skull Tattoo"
+  },
+  {
+   "id": 1087048,
+   "name": "Luxury Wristwatch"
+  },
+  {
+   "id": 1087049,
+   "name": "Moomoo Gloves"
+  },
+  {
+   "id": 1087050,
+   "name": "Cutie Birk Gloves"
+  },
+  {
+   "id": 1087051,
+   "name": "Neon Amulet"
+  },
+  {
+   "id": 1087052,
+   "name": "Rock Chain Armlet"
+  },
+  {
+   "id": 1087053,
+   "name": "Maple Racing Glove"
+  },
+  {
+   "id": 1087055,
+   "name": "Bunny Gloves"
+  },
+  {
+   "id": 1087056,
+   "name": "Cat Set Mittens"
+  },
+  {
+   "id": 1087061,
+   "name": "Winter 2011 Moon Bunny Gloves"
+  },
+  {
+   "id": 1087062,
+   "name": "Rainbow Bracelet"
+  },
+  {
+   "id": 1087063,
+   "name": "Dark Force Gloves "
+  },
+  {
+   "id": 1087064,
+   "name": "Elven Spirit Gloves"
+  },
+  {
+   "id": 1087065,
+   "name": "Blue Dragon Gloves"
+  },
+  {
+   "id": 1087066,
+   "name": "Red Dragon Gloves"
+  },
+  {
+   "id": 1087067,
+   "name": "Intergalactic Gloves"
+  },
+  {
+   "id": 1087068,
+   "name": "Harp Seal Doll Gloves"
+  },
+  {
+   "id": 1087069,
+   "name": "Cat Lolita Gloves"
+  },
+  {
+   "id": 1087070,
+   "name": "Dark Devil Gloves"
+  },
+  {
+   "id": 1087071,
+   "name": "Dark Force Gloves"
+  },
+  {
+   "id": 1087072,
+   "name": "Featherly Angel Gloves"
+  },
+  {
+   "id": 1087073,
+   "name": "Xenon Neo-Tech Gloves"
+  },
+  {
+   "id": 1087074,
+   "name": "Golf Gloves"
+  },
+  {
+   "id": 1087075,
+   "name": "Ramling Fur Glove"
+  },
+  {
+   "id": 1087076,
+   "name": "Succubus Gloves"
+  },
+  {
+   "id": 1087079,
+   "name": "Golf Gloves"
+  },
+  {
+   "id": 1087082,
+   "name": "Chicken Glovaroo"
+  },
+  {
+   "id": 1087083,
+   "name": "Puffram Gloves"
+  },
+  {
+   "id": 1087085,
+   "name": "Dark Devil Gloves"
+  },
+  {
+   "id": 1087088,
+   "name": "Mr. K's Cat Gloves"
+  },
+  {
+   "id": 1087089,
+   "name": "Guardian Gloves"
+  }
+ ]
+}

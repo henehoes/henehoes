@@ -1,0 +1,33 @@
+{
+ "id": 1007209,
+ "name": "Dear Christmas",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 57,
+   "h": 29,
+   "origin": {
+    "x": 10,
+    "y": 19,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 12,
+     "y": 6,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

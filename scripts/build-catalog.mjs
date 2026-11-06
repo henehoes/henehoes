@@ -136,14 +136,17 @@ const byId = (a, b) => a - b;
 const orderOf = (kind, s) => s.classicId ?? (kind === 'hair' ? s.key * 10 : s.key);
 catalog.skins.sort((a, b) => byId(a.tone, b.tone));
 for (const kind of ['face', 'hair']) catalog[kind].sort((a, b) => byId(orderOf(kind, a), orderOf(kind, b)) || byId(a.key, b.key));
-// Datamined cash weapons (data/datamine-weapons.json, scripts/extract-datamine-weapons.mjs): in the game files, not released. They join the
-// Weapon list with `released: false`; the app lists them only in the Weapon tab's All · Datamine view. A weapon with only the two-handed stance
+// Datamined cash items (data/datamine/<section>.json, scripts/extract-datamine.mjs): in the game files, not released. They join their tab's
+// list with `released: false`; the app lists them only in that tab's All · Datamine view. A weapon with only the two-handed stance
 // (`stand2Only`) is drawn like the Toy Rifle: the whole body in the two-handed pose.
-for (const d of read('data/datamine-weapons.json').items) {
-  const dir = `sprites/datamine-weapons/${d.id}`, meta = read(`public/${dir}/meta.json`), parts = partsOf(meta, dir);
-  if (!parts.length) { warnings.noParts.push(`${d.name} (datamine weapon)`); continue; }
-  const p2 = parts2Of(dir, d.name);
-  catalog.wearables.weapon.items.push({ id: d.id, name: d.name, classicId: d.id, released: false, vslots: meta.vslots ?? [], ...(existsSync(`public/${dir}/icon.png`) && { icon: `${dir}/icon.png` }), ...(d.weaponClass && { weaponClass: d.weaponClass }), ...(d.stand2Only && { pose: 'stand2' }), parts, ...(p2 && { parts2: p2 }) });
+for (const file of existsSync('data/datamine') ? readdirSync('data/datamine').filter(f => f.endsWith('.json')) : []) {
+  const section = file.slice(0, -5);
+  for (const d of read(`data/datamine/${file}`).items) {
+    const dir = `sprites/datamine/${section}/${d.id}`, meta = read(`public/${dir}/meta.json`), parts = partsOf(meta, dir);
+    if (!parts.length) { warnings.noParts.push(`${d.name} (datamine ${section})`); continue; }
+    const p2 = parts2Of(dir, d.name);
+    (catalog.wearables[section] ??= { label: section, items: [] }).items.push({ id: d.id, name: d.name, classicId: d.id, released: false, vslots: meta.vslots ?? [], ...(existsSync(`public/${dir}/icon.png`) && { icon: `${dir}/icon.png` }), ...(d.weaponClass && { weaponClass: d.weaponClass }), ...(d.stand2Only && { pose: 'stand2' }), parts, ...(p2 && { parts2: p2 }) });
+  }
 }
 // Dyeing: the game marks the items it lets you dye (data/game-dye.json, scripts/extract-dyeable.mjs). A catalogue item the game has and
 // does not mark gets `dyeable: false` (no colour sliders in the app); an item the game files do not list is left alone.

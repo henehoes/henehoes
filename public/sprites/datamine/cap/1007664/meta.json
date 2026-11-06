@@ -1,0 +1,34 @@
+{
+ "id": 1007664,
+ "name": "Ebony Pimpernel Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 66,
+   "h": 37,
+   "origin": {
+    "x": 25,
+    "y": 31,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 3,
+     "y": -10,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

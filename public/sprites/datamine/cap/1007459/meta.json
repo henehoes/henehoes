@@ -1,0 +1,42 @@
+{
+ "id": 1007459,
+ "name": "Noob Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hf",
+  "Hs",
+  "Hb",
+  "Ae"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 41,
+   "h": 47,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 1,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capBelowAccessory"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "id": 1017127,
+ "name": "Playful Band",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 9,
+   "h": 4,
+   "origin": {
+    "x": 10,
+    "y": 22,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -5,
+     "y": -35,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFace"
+  }
+ ]
+}

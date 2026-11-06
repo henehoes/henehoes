@@ -1,0 +1,32 @@
+{
+ "id": 1077205,
+ "name": "Crow Shoes",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "So"
+ ],
+ "islots": [
+  "So"
+ ],
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 20,
+   "h": 5,
+   "origin": {
+    "x": 7,
+    "y": -16,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "shoesTop"
+  }
+ ]
+}

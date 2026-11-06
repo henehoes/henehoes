@@ -1,0 +1,34 @@
+{
+ "id": 1007364,
+ "name": "White Rabbit Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 48,
+   "h": 69,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 6,
+     "y": 19,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

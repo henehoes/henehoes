@@ -1,0 +1,34 @@
+{
+ "id": 1007391,
+ "name": "Golden Trench Helmet",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 49,
+   "h": 54,
+   "origin": {
+    "x": 17,
+    "y": 43,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 3,
+     "y": -13,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

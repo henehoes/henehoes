@@ -1,0 +1,32 @@
+{
+ "id": 1077064,
+ "name": "Royal Costume Shoes",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "So"
+ ],
+ "islots": [
+  "So"
+ ],
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 20,
+   "h": 6,
+   "origin": {
+    "x": 10,
+    "y": 5,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -3,
+     "y": -20,
+     "isEmpty": false
+    }
+   },
+   "position": "shoesOverPants"
+  }
+ ]
+}

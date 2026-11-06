@@ -1,0 +1,34 @@
+{
+ "id": 1007089,
+ "name": "Yellow Knitted Beanie",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 45,
+   "h": 38,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 2,
+     "y": -2,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

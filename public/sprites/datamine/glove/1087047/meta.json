@@ -1,0 +1,33 @@
+{
+ "id": 1087047,
+ "name": "Skull Tattoo",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "rGlove",
+   "w": 6,
+   "h": 5,
+   "origin": {
+    "x": 3,
+    "y": 2,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "glove"
+  }
+ ]
+}

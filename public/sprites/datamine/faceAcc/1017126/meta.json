@@ -1,0 +1,32 @@
+{
+ "id": 1017126,
+ "name": "Flushed Cheeks",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 26,
+   "h": 17,
+   "origin": {
+    "x": 12,
+    "y": -4,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFaceBelowFace"
+  }
+ ]
+}

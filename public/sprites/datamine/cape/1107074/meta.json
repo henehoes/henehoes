@@ -1,0 +1,32 @@
+{
+ "id": 1107074,
+ "name": "White Monkey Balloon",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Sr"
+ ],
+ "islots": [
+  "Sr"
+ ],
+ "parts": [
+  {
+   "key": "cape",
+   "w": 48,
+   "h": 74,
+   "origin": {
+    "x": 24,
+    "y": 37,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -39,
+     "y": 32,
+     "isEmpty": false
+    }
+   },
+   "position": "backWing"
+  }
+ ]
+}

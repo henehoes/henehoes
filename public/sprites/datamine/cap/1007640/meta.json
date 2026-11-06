@@ -1,0 +1,52 @@
+{
+ "id": 1007640,
+ "name": "Garnet Raven Persona",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 56,
+   "h": 41,
+   "origin": {
+    "x": 21,
+    "y": 45,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": -19,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  },
+  {
+   "key": "default2",
+   "w": 39,
+   "h": 18,
+   "origin": {
+    "x": -11,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": -19,
+     "isEmpty": false
+    }
+   },
+   "position": "backCap"
+  }
+ ]
+}

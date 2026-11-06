@@ -1,0 +1,34 @@
+{
+ "id": 1057173,
+ "name": "Purple Ring One Piece",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma",
+  "Pn"
+ ],
+ "islots": [
+  "Ma",
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 19,
+   "h": 23,
+   "origin": {
+    "x": 11,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -6,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChest"
+  }
+ ]
+}

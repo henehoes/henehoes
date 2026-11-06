@@ -1,0 +1,22 @@
+{
+ "parts": [
+  {
+   "key": "mail",
+   "w": 22,
+   "h": 19,
+   "origin": {
+    "x": 11,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -4,
+     "y": -4,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChestOverHighest"
+  }
+ ]
+}

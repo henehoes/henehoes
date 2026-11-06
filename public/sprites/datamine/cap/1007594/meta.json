@@ -1,0 +1,40 @@
+{
+ "id": 1007594,
+ "name": "Raspberry Candy Hoodie",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hf",
+  "Hb",
+  "Ae"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 41,
+   "h": 42,
+   "origin": {
+    "x": 16,
+    "y": 14,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

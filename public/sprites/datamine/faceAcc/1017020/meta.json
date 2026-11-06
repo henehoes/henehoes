@@ -1,0 +1,32 @@
+{
+ "id": 1017020,
+ "name": "Founder's Thief Face",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 35,
+   "h": 20,
+   "origin": {
+    "x": 14,
+    "y": 0,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFace"
+  }
+ ]
+}

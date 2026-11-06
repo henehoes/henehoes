@@ -1,0 +1,32 @@
+{
+ "id": 1017092,
+ "name": "Apple Bubble Gum",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 10,
+   "h": 10,
+   "origin": {
+    "x": 5,
+    "y": 5,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 6,
+     "y": -23,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFace"
+  }
+ ]
+}

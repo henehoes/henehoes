@@ -1,0 +1,34 @@
+{
+ "id": 1007456,
+ "name": "Violet Heart Beanie",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 46,
+   "h": 34,
+   "origin": {
+    "x": 15,
+    "y": 14,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

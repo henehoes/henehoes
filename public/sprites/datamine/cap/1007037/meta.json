@@ -1,0 +1,34 @@
+{
+ "id": 1007037,
+ "name": "Cabbie",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 52,
+   "h": 29,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 9,
+     "y": -9,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

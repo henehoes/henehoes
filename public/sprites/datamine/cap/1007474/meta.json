@@ -1,0 +1,40 @@
+{
+ "id": 1007474,
+ "name": "Bear Tassel Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hf",
+  "Hb",
+  "Ae"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 41,
+   "h": 48,
+   "origin": {
+    "x": 8,
+    "y": 2,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 8,
+     "y": 13,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

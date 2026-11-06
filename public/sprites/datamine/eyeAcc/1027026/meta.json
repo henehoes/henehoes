@@ -1,0 +1,32 @@
+{
+ "id": 1027026,
+ "name": "Yellow Toy Shades",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ay"
+ ],
+ "islots": [
+  "Ay"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 39,
+   "h": 13,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 3,
+     "y": -30,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEyeOverCap"
+  }
+ ]
+}

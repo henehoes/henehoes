@@ -1,0 +1,32 @@
+{
+ "id": 1077158,
+ "name": "Custom Blue High Tops",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "So"
+ ],
+ "islots": [
+  "So"
+ ],
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 22,
+   "h": 8,
+   "origin": {
+    "x": 9,
+    "y": -13,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "shoesOverPants"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "id": 1107063,
+ "name": "Tania Cloak",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Sr"
+ ],
+ "islots": [
+  "Sr"
+ ],
+ "parts": [
+  {
+   "key": "cape",
+   "w": 21,
+   "h": 22,
+   "origin": {
+    "x": 5,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "backWing"
+  }
+ ]
+}

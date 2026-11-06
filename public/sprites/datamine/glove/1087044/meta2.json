@@ -1,0 +1,22 @@
+{
+ "parts": [
+  {
+   "key": "rGlove",
+   "w": 18,
+   "h": 12,
+   "origin": {
+    "x": 14,
+    "y": 3,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveOverHair"
+  }
+ ]
+}

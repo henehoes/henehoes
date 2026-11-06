@@ -1,0 +1,33 @@
+{
+ "id": 1007380,
+ "name": "Fallen Angel Headband",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 62,
+   "h": 22,
+   "origin": {
+    "x": 31,
+    "y": 11,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -8,
+     "y": 9,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

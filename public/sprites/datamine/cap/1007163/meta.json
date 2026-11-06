@@ -1,0 +1,34 @@
+{
+ "id": 1007163,
+ "name": "White Floral Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 47,
+   "h": 23,
+   "origin": {
+    "x": 23,
+    "y": 11,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -3,
+     "y": 5,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

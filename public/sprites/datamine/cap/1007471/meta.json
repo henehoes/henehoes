@@ -1,0 +1,34 @@
+{
+ "id": 1007471,
+ "name": "Blue Bow Beret",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 48,
+   "h": 43,
+   "origin": {
+    "x": 24,
+    "y": 11,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -7,
+     "y": 9,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

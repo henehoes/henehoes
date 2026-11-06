@@ -1,0 +1,32 @@
+{
+ "id": 1017114,
+ "name": "Clown Nose",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 11,
+   "h": 11,
+   "origin": {
+    "x": 5,
+    "y": 5,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 1,
+     "y": -15,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFaceOverFaceBelowCap"
+  }
+ ]
+}

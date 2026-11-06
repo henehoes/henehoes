@@ -1,0 +1,32 @@
+{
+ "id": 1017093,
+ "name": "Purple Noisemaker",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 15,
+   "h": 10,
+   "origin": {
+    "x": 0,
+    "y": 0,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 15,
+     "y": -19,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFace"
+  }
+ ]
+}

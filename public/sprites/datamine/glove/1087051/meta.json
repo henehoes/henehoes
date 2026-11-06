@@ -1,0 +1,33 @@
+{
+ "id": 1087051,
+ "name": "Neon Amulet",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "rWrist",
+   "w": 8,
+   "h": 6,
+   "origin": {
+    "x": -10,
+    "y": 1,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveWrist"
+  }
+ ]
+}

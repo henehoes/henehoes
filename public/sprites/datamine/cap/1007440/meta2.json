@@ -1,0 +1,40 @@
+{
+ "parts": [
+  {
+   "key": "default",
+   "w": 57,
+   "h": 43,
+   "origin": {
+    "x": 28,
+    "y": 21,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -14,
+     "y": 6,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  },
+  {
+   "key": "defaultAc",
+   "w": 23,
+   "h": 34,
+   "origin": {
+    "x": 11,
+    "y": 17,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 19,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capAccessoryBelowBody"
+  }
+ ]
+}

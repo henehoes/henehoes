@@ -1,0 +1,32 @@
+{
+ "id": 1027084,
+ "name": "3D Glasses",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ay"
+ ],
+ "islots": [
+  "Ay"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 39,
+   "h": 20,
+   "origin": {
+    "x": 12,
+    "y": 27,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 5,
+     "y": -27,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEye"
+  }
+ ]
+}

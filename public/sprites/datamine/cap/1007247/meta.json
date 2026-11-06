@@ -1,0 +1,33 @@
+{
+ "id": 1007247,
+ "name": "Grey Headband",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 35,
+   "h": 9,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -1,
+     "y": -21,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

@@ -1,0 +1,40 @@
+{
+ "id": 1007493,
+ "name": "Navy Hoodie Cap",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hf",
+  "Hb",
+  "Ae"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 47,
+   "h": 39,
+   "origin": {
+    "x": 27,
+    "y": 19,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -5,
+     "y": -5,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

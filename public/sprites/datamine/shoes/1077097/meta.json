@@ -1,0 +1,32 @@
+{
+ "id": 1077097,
+ "name": "Blue B-ball Sneakers",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "So"
+ ],
+ "islots": [
+  "So"
+ ],
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 22,
+   "h": 7,
+   "origin": {
+    "x": 10,
+    "y": 5,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -2,
+     "y": -19,
+     "isEmpty": false
+    }
+   },
+   "position": "shoesOverPants"
+  }
+ ]
+}

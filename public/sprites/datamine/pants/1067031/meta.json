@@ -1,0 +1,32 @@
+{
+ "id": 1067031,
+ "name": "Military Shorts",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Pn"
+ ],
+ "islots": [
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "pants",
+   "w": 18,
+   "h": 13,
+   "origin": {
+    "x": 9,
+    "y": 6,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -5,
+     "y": -7,
+     "isEmpty": false
+    }
+   },
+   "position": "pants"
+  }
+ ]
+}

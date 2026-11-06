@@ -1,0 +1,33 @@
+{
+ "id": 1087008,
+ "name": "Haircutter Gloves",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "lGlove",
+   "w": 9,
+   "h": 11,
+   "origin": {
+    "x": 3,
+    "y": 4,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 7,
+     "y": -4,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveOverBody"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "id": 1077201,
+ "name": "Pink Winged Shoes",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "So"
+ ],
+ "islots": [
+  "So"
+ ],
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 23,
+   "h": 8,
+   "origin": {
+    "x": 7,
+    "y": -13,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "shoesTop"
+  }
+ ]
+}

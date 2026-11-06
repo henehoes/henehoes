@@ -1,0 +1,32 @@
+{
+ "id": 1077199,
+ "name": "Pearl Anklet",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "So"
+ ],
+ "islots": [
+  "So"
+ ],
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 7,
+   "h": 5,
+   "origin": {
+    "x": -6,
+    "y": -14,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "shoesOverPants"
+  }
+ ]
+}

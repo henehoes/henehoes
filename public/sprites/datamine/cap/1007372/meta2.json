@@ -1,0 +1,22 @@
+{
+ "parts": [
+  {
+   "key": "default",
+   "w": 39,
+   "h": 45,
+   "origin": {
+    "x": 19,
+    "y": 22,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -4,
+     "y": -1,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

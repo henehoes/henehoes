@@ -1,0 +1,32 @@
+{
+ "id": 1077013,
+ "name": "Black Baseball Cleats",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "So"
+ ],
+ "islots": [
+  "So"
+ ],
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 20,
+   "h": 9,
+   "origin": {
+    "x": 10,
+    "y": 5,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -3,
+     "y": -17,
+     "isEmpty": false
+    }
+   },
+   "position": "shoes"
+  }
+ ]
+}

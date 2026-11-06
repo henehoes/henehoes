@@ -1,0 +1,32 @@
+{
+ "id": 1077119,
+ "name": "Chick Slippers",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "So"
+ ],
+ "islots": [
+  "So"
+ ],
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 24,
+   "h": 7,
+   "origin": {
+    "x": 10,
+    "y": 5,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -1,
+     "y": -19,
+     "isEmpty": false
+    }
+   },
+   "position": "shoesTop"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "id": 1027073,
+ "name": "Gaga Glasses",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ay"
+ ],
+ "islots": [
+  "Ay"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 34,
+   "h": 12,
+   "origin": {
+    "x": 18,
+    "y": 4,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -3,
+     "y": -11,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEye"
+  }
+ ]
+}

@@ -1,0 +1,52 @@
+{
+ "id": 1057288,
+ "name": "Cao Cao Robe",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma",
+  "Pn"
+ ],
+ "islots": [
+  "Ma",
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 23,
+   "h": 29,
+   "origin": {
+    "x": 11,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -5,
+     "y": 1,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChestOverHighest"
+  },
+  {
+   "key": "mailArm",
+   "w": 8,
+   "h": 13,
+   "origin": {
+    "x": 3,
+    "y": 4,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -12,
+     "y": 5,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  }
+ ]
+}

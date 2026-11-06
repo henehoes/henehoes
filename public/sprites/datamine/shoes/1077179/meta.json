@@ -1,0 +1,32 @@
+{
+ "id": 1077179,
+ "name": "Strawberry Shoes",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "So"
+ ],
+ "islots": [
+  "So"
+ ],
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 20,
+   "h": 6,
+   "origin": {
+    "x": 10,
+    "y": 1,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -3,
+     "y": -16,
+     "isEmpty": false
+    }
+   },
+   "position": "shoes"
+  }
+ ]
+}

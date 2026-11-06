@@ -1,0 +1,61 @@
+{
+ "id": 1007197,
+ "name": "Korean Dress Wig",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hf",
+  "Hs",
+  "Hb",
+  "Hx"
+ ],
+ "islots": [
+  "Hr",
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 43,
+   "h": 29,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 3,
+     "y": -8,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  },
+  {
+   "key": "defaultAc",
+   "w": 35,
+   "h": 44,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -1,
+     "y": -13,
+     "isEmpty": false
+    }
+   },
+   "position": "backHair"
+  }
+ ]
+}

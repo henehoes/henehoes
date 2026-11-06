@@ -1,0 +1,32 @@
+{
+ "id": 1077069,
+ "name": "Napoleon Shoes ",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "So"
+ ],
+ "islots": [
+  "So"
+ ],
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 20,
+   "h": 10,
+   "origin": {
+    "x": 10,
+    "y": 10,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -3,
+     "y": -21,
+     "isEmpty": false
+    }
+   },
+   "position": "shoes"
+  }
+ ]
+}

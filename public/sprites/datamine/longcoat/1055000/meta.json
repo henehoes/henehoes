@@ -1,0 +1,34 @@
+{
+ "id": 1055000,
+ "name": "Red Swimming Trunk",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma",
+  "Pn"
+ ],
+ "islots": [
+  "Ma",
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 15,
+   "h": 7,
+   "origin": {
+    "x": 11,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -7,
+     "y": -10,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChestOverPants"
+  }
+ ]
+}

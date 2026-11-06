@@ -1,0 +1,42 @@
+{
+ "id": 1007413,
+ "name": "Stoplight Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hf",
+  "Hs",
+  "Hb",
+  "Ae"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "0",
+   "w": 52,
+   "h": 66,
+   "origin": {
+    "x": 14,
+    "y": -4,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 8,
+     "y": 44,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

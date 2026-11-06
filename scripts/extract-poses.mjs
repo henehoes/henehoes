@@ -152,7 +152,10 @@ function itemPoses(img, actions, base = '') {
 }
 
 const missing = [];
-const wearables = [...Object.entries(catalog.wearables).filter(([s]) => s !== 'nameTag' && s !== 'chatBalloon').flatMap(([, g]) => g.items), ...Object.values(catalog.base).flatMap(g => Object.values(g))];
+// Datamined items of the big sections get no motion frames (about 2,000 items, 150MB+ of pictures): in a motion the app moves their
+// standing picture with the head. Released, upcoming and the smaller sections' datamined items (and weapons) get the full frames.
+const NO_FRAMES = new Set(['cap', 'coat', 'longcoat', 'pants', 'shoes']);
+const wearables = [...Object.entries(catalog.wearables).filter(([s]) => s !== 'nameTag' && s !== 'chatBalloon').flatMap(([s, g]) => g.items.filter(i => !(NO_FRAMES.has(s) && i.released === false && !i.upcoming))), ...Object.values(catalog.base).flatMap(g => Object.values(g))];
 let written = 0;
 for (const it of wearables) {
   const cid = it.classicId ?? it.id, group = Math.floor(cid / 10000), folder = FOLDERS[group] ?? (group >= 130 && group < 180 ? 'Weapon' : null);

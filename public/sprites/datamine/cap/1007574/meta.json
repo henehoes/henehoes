@@ -1,0 +1,34 @@
+{
+ "id": 1007574,
+ "name": "Rudolph Santa Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 57,
+   "h": 67,
+   "origin": {
+    "x": 25,
+    "y": 30,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

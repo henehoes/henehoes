@@ -1,0 +1,1545 @@
+{
+ "_comment": "Cash longcoat items in the game files that are not in the catalogue (not released). Written by scripts/extract-datamine.mjs.",
+ "items": [
+  {
+   "id": 1055000,
+   "name": "Red Swimming Trunk"
+  },
+  {
+   "id": 1055001,
+   "name": "Blue Swimming Trunk"
+  },
+  {
+   "id": 1055002,
+   "name": "Boxing Trunks"
+  },
+  {
+   "id": 1055003,
+   "name": "Blue Tiny Swim Shorts"
+  },
+  {
+   "id": 1055004,
+   "name": "Black Tiny Swim Shorts"
+  },
+  {
+   "id": 1056000,
+   "name": "White Swimming Suit"
+  },
+  {
+   "id": 1056001,
+   "name": "Red Swimming Suit"
+  },
+  {
+   "id": 1056002,
+   "name": "Blue Swimming Suit"
+  },
+  {
+   "id": 1056003,
+   "name": "Pink Strapless Bikini"
+  },
+  {
+   "id": 1056004,
+   "name": "Blue Strapless Bikini"
+  },
+  {
+   "id": 1057000,
+   "name": "Recycled Box"
+  },
+  {
+   "id": 1057001,
+   "name": "Paper Box"
+  },
+  {
+   "id": 1057002,
+   "name": "Cardboard Box"
+  },
+  {
+   "id": 1057004,
+   "name": "Maroon Chinese Undead Costume"
+  },
+  {
+   "id": 1057005,
+   "name": "Yellow Raincoat"
+  },
+  {
+   "id": 1057006,
+   "name": "Sky Blue Raincoat"
+  },
+  {
+   "id": 1057007,
+   "name": "Red Raincoat"
+  },
+  {
+   "id": 1057008,
+   "name": "Green Raincoat"
+  },
+  {
+   "id": 1057009,
+   "name": "Orange Overall"
+  },
+  {
+   "id": 1057010,
+   "name": "Pink Overall"
+  },
+  {
+   "id": 1057011,
+   "name": "Blue Overall"
+  },
+  {
+   "id": 1057013,
+   "name": "Graduation Gown"
+  },
+  {
+   "id": 1057014,
+   "name": "Ducky Costume"
+  },
+  {
+   "id": 1057015,
+   "name": "Orange Life Jacket"
+  },
+  {
+   "id": 1057016,
+   "name": "Green Life Jacket"
+  },
+  {
+   "id": 1057017,
+   "name": "Blue Life Jacket"
+  },
+  {
+   "id": 1057018,
+   "name": "Denim Overall"
+  },
+  {
+   "id": 1057021,
+   "name": "Reindeer Suit"
+  },
+  {
+   "id": 1057023,
+   "name": "Blue Officer Uniform"
+  },
+  {
+   "id": 1057026,
+   "name": "Green Skull Overall"
+  },
+  {
+   "id": 1057027,
+   "name": "Blue Skull Overall"
+  },
+  {
+   "id": 1057028,
+   "name": "Orange Skull Overall"
+  },
+  {
+   "id": 1057029,
+   "name": "Yellow Tights"
+  },
+  {
+   "id": 1057030,
+   "name": "Silver Officer Uniform"
+  },
+  {
+   "id": 1057031,
+   "name": "Black Officer Uniform"
+  },
+  {
+   "id": 1057032,
+   "name": "Red Officer Uniform"
+  },
+  {
+   "id": 1057033,
+   "name": "Fine Brown Hanbok"
+  },
+  {
+   "id": 1057034,
+   "name": "Fine Black Hanbok"
+  },
+  {
+   "id": 1057035,
+   "name": "Fine Blue Hanbok"
+  },
+  {
+   "id": 1057038,
+   "name": "Blue Celebration Hanbok"
+  },
+  {
+   "id": 1057039,
+   "name": "Green Celebration Hanbok"
+  },
+  {
+   "id": 1057041,
+   "name": "Red M-Forcer"
+  },
+  {
+   "id": 1057042,
+   "name": "Blue M-Forcer"
+  },
+  {
+   "id": 1057043,
+   "name": "Green M-Forcer"
+  },
+  {
+   "id": 1057044,
+   "name": "Black M-Forcer"
+  },
+  {
+   "id": 1057045,
+   "name": "Green Picnicwear"
+  },
+  {
+   "id": 1057046,
+   "name": "Sky Blue Picnicwear"
+  },
+  {
+   "id": 1057047,
+   "name": "Wedding Tuxedo"
+  },
+  {
+   "id": 1057050,
+   "name": "Red Fine Hanbok Dress"
+  },
+  {
+   "id": 1057051,
+   "name": "Blue Fine Hanbok Dress"
+  },
+  {
+   "id": 1057054,
+   "name": "Mrs. Claus Costume"
+  },
+  {
+   "id": 1057055,
+   "name": "Blue Celebration Hanbok Dress"
+  },
+  {
+   "id": 1057056,
+   "name": "Pink Celebration Hanbok Dress"
+  },
+  {
+   "id": 1057059,
+   "name": "Ragged Hanbok"
+  },
+  {
+   "id": 1057060,
+   "name": "Pink M-Forcer"
+  },
+  {
+   "id": 1057061,
+   "name": "Yellow M-Forcer"
+  },
+  {
+   "id": 1057062,
+   "name": "Black M-Forcer"
+  },
+  {
+   "id": 1057063,
+   "name": "Pink Picnic Dress"
+  },
+  {
+   "id": 1057064,
+   "name": "Yellow Picnic Dress"
+  },
+  {
+   "id": 1057065,
+   "name": "Purple Frill One Piece"
+  },
+  {
+   "id": 1057066,
+   "name": "Blue Frill One Piece"
+  },
+  {
+   "id": 1057067,
+   "name": "Boxing Gear"
+  },
+  {
+   "id": 1057068,
+   "name": "Wedding Dress"
+  },
+  {
+   "id": 1057070,
+   "name": "Flight Attendant Uniform"
+  },
+  {
+   "id": 1057071,
+   "name": "Tropical Dress"
+  },
+  {
+   "id": 1057072,
+   "name": "Violet Strapless Dress"
+  },
+  {
+   "id": 1057073,
+   "name": "Well-Loved Blue Sauna Robe"
+  },
+  {
+   "id": 1057074,
+   "name": "Founder's Thief Outfit"
+  },
+  {
+   "id": 1057075,
+   "name": "Manji's Clothes"
+  },
+  {
+   "id": 1057101,
+   "name": "Pink Pop Suit"
+  },
+  {
+   "id": 1057102,
+   "name": "Men's Ninja Overall"
+  },
+  {
+   "id": 1057103,
+   "name": "Western Cowboy"
+  },
+  {
+   "id": 1057104,
+   "name": "Hero's Armor"
+  },
+  {
+   "id": 1057106,
+   "name": "Santa Boy Overall"
+  },
+  {
+   "id": 1057107,
+   "name": "Horoscope Overall"
+  },
+  {
+   "id": 1057108,
+   "name": "Royal Hanbok"
+  },
+  {
+   "id": 1057109,
+   "name": "Lunar Festivities Suit"
+  },
+  {
+   "id": 1057110,
+   "name": "Imperial Uniform"
+  },
+  {
+   "id": 1057111,
+   "name": "Go! Korea!"
+  },
+  {
+   "id": 1057112,
+   "name": "Beau Tuxedo"
+  },
+  {
+   "id": 1057113,
+   "name": "Black Fur Overcoat"
+  },
+  {
+   "id": 1057114,
+   "name": "White Fur Overcoat"
+  },
+  {
+   "id": 1057115,
+   "name": "School Uniform with Hoody Jumper"
+  },
+  {
+   "id": 1057116,
+   "name": "Boys Uniform"
+  },
+  {
+   "id": 1057117,
+   "name": "Hooded Korean Traditional Costume"
+  },
+  {
+   "id": 1057118,
+   "name": "Princess Korean Traditional Costume"
+  },
+  {
+   "id": 1057119,
+   "name": "Pretzel Uniform"
+  },
+  {
+   "id": 1057120,
+   "name": "Exotic Festival Outfit"
+  },
+  {
+   "id": 1057121,
+   "name": "Seraphim Suit"
+  },
+  {
+   "id": 1057122,
+   "name": "Blue Towel"
+  },
+  {
+   "id": 1057123,
+   "name": "Bunny Boy"
+  },
+  {
+   "id": 1057125,
+   "name": "Napoleon Uniform"
+  },
+  {
+   "id": 1057126,
+   "name": "Maple Boy School Uniform"
+  },
+  {
+   "id": 1057127,
+   "name": "Holiday Party Gear"
+  },
+  {
+   "id": 1057129,
+   "name": "Flower Heir Hanbok"
+  },
+  {
+   "id": 1057130,
+   "name": "Military Pop Star"
+  },
+  {
+   "id": 1057131,
+   "name": "Red Overall Pants"
+  },
+  {
+   "id": 1057132,
+   "name": "Schoolboy Formals"
+  },
+  {
+   "id": 1057133,
+   "name": "Moonlight Serenade Get-Up"
+  },
+  {
+   "id": 1057134,
+   "name": "Light Cotton Candy Overalls"
+  },
+  {
+   "id": 1057135,
+   "name": "Maple Doctor's Scrubs (M)"
+  },
+  {
+   "id": 1057136,
+   "name": "Dark Force Mail (M) "
+  },
+  {
+   "id": 1057137,
+   "name": "Elven Spirit Coat"
+  },
+  {
+   "id": 1057138,
+   "name": "Imperial Garnet Suit"
+  },
+  {
+   "id": 1057139,
+   "name": "Mint Snow Outfit"
+  },
+  {
+   "id": 1057140,
+   "name": "Chamomile Tea Time"
+  },
+  {
+   "id": 1057141,
+   "name": "Magic Star Suit"
+  },
+  {
+   "id": 1057142,
+   "name": "Prince Charming"
+  },
+  {
+   "id": 1057143,
+   "name": "Jett's Outfit(M)"
+  },
+  {
+   "id": 1057144,
+   "name": "Opening Star"
+  },
+  {
+   "id": 1057145,
+   "name": "Saint Luminous"
+  },
+  {
+   "id": 1057146,
+   "name": "Evergreen Magistrate Outfit"
+  },
+  {
+   "id": 1057147,
+   "name": "Halloween Leopard Costume"
+  },
+  {
+   "id": 1057148,
+   "name": "Golden Bell Outfit"
+  },
+  {
+   "id": 1057149,
+   "name": "Thermidor"
+  },
+  {
+   "id": 1057150,
+   "name": "Tinky Baseball"
+  },
+  {
+   "id": 1057151,
+   "name": "Beach Bum Outfit"
+  },
+  {
+   "id": 1057152,
+   "name": "Superstar Suit"
+  },
+  {
+   "id": 1057155,
+   "name": "Fresh Ice"
+  },
+  {
+   "id": 1057156,
+   "name": "Blue Checkered Vacation"
+  },
+  {
+   "id": 1057157,
+   "name": "Powder Butler's Digs (M)"
+  },
+  {
+   "id": 1057158,
+   "name": "Ribbon Boy School Look"
+  },
+  {
+   "id": 1057159,
+   "name": "Bloody Leo"
+  },
+  {
+   "id": 1057160,
+   "name": "Pink Nurse Uniform"
+  },
+  {
+   "id": 1057161,
+   "name": "White Nurse Uniform"
+  },
+  {
+   "id": 1057162,
+   "name": "Women's Ninja Uniform"
+  },
+  {
+   "id": 1057163,
+   "name": "Pink Kimono"
+  },
+  {
+   "id": 1057164,
+   "name": "White Kimono"
+  },
+  {
+   "id": 1057165,
+   "name": "Red Kimono"
+  },
+  {
+   "id": 1057166,
+   "name": "Yellow Kimono"
+  },
+  {
+   "id": 1057167,
+   "name": "Pink Kimono"
+  },
+  {
+   "id": 1057168,
+   "name": "Prep Uniform"
+  },
+  {
+   "id": 1057169,
+   "name": "Western Cowgirl"
+  },
+  {
+   "id": 1057171,
+   "name": "Diao Chan Dress"
+  },
+  {
+   "id": 1057172,
+   "name": "White Cat Costume"
+  },
+  {
+   "id": 1057173,
+   "name": "Purple Ring One Piece"
+  },
+  {
+   "id": 1057174,
+   "name": "Black Cat Costume"
+  },
+  {
+   "id": 1057175,
+   "name": "Red Chinese Dress"
+  },
+  {
+   "id": 1057176,
+   "name": "Maid Uniform"
+  },
+  {
+   "id": 1057177,
+   "name": "Horoscope Overall"
+  },
+  {
+   "id": 1057178,
+   "name": "Unseemly Wedding Dress"
+  },
+  {
+   "id": 1057179,
+   "name": "Santa Girl Overall"
+  },
+  {
+   "id": 1057180,
+   "name": "White Coat"
+  },
+  {
+   "id": 1057181,
+   "name": "Rough Coat"
+  },
+  {
+   "id": 1057182,
+   "name": "Leopard Print Coat"
+  },
+  {
+   "id": 1057183,
+   "name": "Ruffled Coat"
+  },
+  {
+   "id": 1057184,
+   "name": "Royal Palace Hanbok"
+  },
+  {
+   "id": 1057185,
+   "name": "Rabbit Fur Dress"
+  },
+  {
+   "id": 1057186,
+   "name": "Lunar Festivities Dress"
+  },
+  {
+   "id": 1057187,
+   "name": "Female Shaman Costume"
+  },
+  {
+   "id": 1057188,
+   "name": "Vibrant Yellow Dress"
+  },
+  {
+   "id": 1057189,
+   "name": "Race Queen Tank Top & Skirt"
+  },
+  {
+   "id": 1057190,
+   "name": "Elegant Blue One Piece"
+  },
+  {
+   "id": 1057191,
+   "name": "Street Cred Ensemble"
+  },
+  {
+   "id": 1057192,
+   "name": "Navy Blue Au Luxe"
+  },
+  {
+   "id": 1057193,
+   "name": "Princess Isis"
+  },
+  {
+   "id": 1057194,
+   "name": "Queen Mary"
+  },
+  {
+   "id": 1057195,
+   "name": "White Fur Wrap Coat"
+  },
+  {
+   "id": 1057196,
+   "name": "School Uniform with Hoody Jumper"
+  },
+  {
+   "id": 1057197,
+   "name": "Girls Uniform"
+  },
+  {
+   "id": 1057198,
+   "name": "Pink-Striped Dress"
+  },
+  {
+   "id": 1057199,
+   "name": "Cute Sailor Dress"
+  },
+  {
+   "id": 1057200,
+   "name": "Gothic Overall"
+  },
+  {
+   "id": 1057201,
+   "name": "Dressu Korean Traditional Costume"
+  },
+  {
+   "id": 1057202,
+   "name": "Black Rockabilly Dress"
+  },
+  {
+   "id": 1057204,
+   "name": "Pretzel Uniform"
+  },
+  {
+   "id": 1057205,
+   "name": "Pretty Girl"
+  },
+  {
+   "id": 1057206,
+   "name": "Sailor Outfit"
+  },
+  {
+   "id": 1057207,
+   "name": "Exotic Festival Outfit"
+  },
+  {
+   "id": 1057208,
+   "name": "Night Fever Ensemble"
+  },
+  {
+   "id": 1057209,
+   "name": "Maid Dress"
+  },
+  {
+   "id": 1057210,
+   "name": "Blue Daisy Dress"
+  },
+  {
+   "id": 1057211,
+   "name": "Yellow Anticipation"
+  },
+  {
+   "id": 1057212,
+   "name": "Seraphim Suit"
+  },
+  {
+   "id": 1057213,
+   "name": "Blue-Striped Dress"
+  },
+  {
+   "id": 1057214,
+   "name": "Orange Towel"
+  },
+  {
+   "id": 1057215,
+   "name": "Bunny Girl"
+  },
+  {
+   "id": 1057216,
+   "name": "Strawberry Girl"
+  },
+  {
+   "id": 1057218,
+   "name": "Elizabeth Dress"
+  },
+  {
+   "id": 1057219,
+   "name": "Maple Girl School Uniform"
+  },
+  {
+   "id": 1057220,
+   "name": "Rainbow Mini Dress"
+  },
+  {
+   "id": 1057221,
+   "name": "Holiday Party Dress"
+  },
+  {
+   "id": 1057222,
+   "name": "Pink Snow Flower Wear"
+  },
+  {
+   "id": 1057223,
+   "name": "Flower Heiress Hanbok"
+  },
+  {
+   "id": 1057224,
+   "name": "Alps Girl"
+  },
+  {
+   "id": 1057225,
+   "name": "Pink Shock Pop Star"
+  },
+  {
+   "id": 1057226,
+   "name": "Lady Gold"
+  },
+  {
+   "id": 1057227,
+   "name": "Orange Checked Squares"
+  },
+  {
+   "id": 1057228,
+   "name": "Pink Angel Uniform"
+  },
+  {
+   "id": 1057229,
+   "name": "Little Red Riding Dress"
+  },
+  {
+   "id": 1057230,
+   "name": "Schoolgirl Formals"
+  },
+  {
+   "id": 1057231,
+   "name": "Golden Moonlight Dress"
+  },
+  {
+   "id": 1057232,
+   "name": "Light Chiffon Dress"
+  },
+  {
+   "id": 1057233,
+   "name": "Marchen Fantasy"
+  },
+  {
+   "id": 1057234,
+   "name": "Maple Doctor's Scrubs (F)"
+  },
+  {
+   "id": 1057235,
+   "name": "Silver Angora Fur Dress"
+  },
+  {
+   "id": 1057236,
+   "name": "Gold Angora Fur Dress"
+  },
+  {
+   "id": 1057237,
+   "name": "Dark Force Mail (F) "
+  },
+  {
+   "id": 1057238,
+   "name": "Elven Spirit Coat"
+  },
+  {
+   "id": 1057239,
+   "name": "Imperial Garnet Suit"
+  },
+  {
+   "id": 1057240,
+   "name": "Cygnus Dress"
+  },
+  {
+   "id": 1057241,
+   "name": "Cherry Snow Outfit"
+  },
+  {
+   "id": 1057242,
+   "name": "Rosemary Tea Dress"
+  },
+  {
+   "id": 1057243,
+   "name": "Magic Star Dress"
+  },
+  {
+   "id": 1057244,
+   "name": "Princess Charming"
+  },
+  {
+   "id": 1057245,
+   "name": "Jett's Outfit(F)"
+  },
+  {
+   "id": 1057246,
+   "name": "Opening Angel"
+  },
+  {
+   "id": 1057249,
+   "name": "Cynical Dress"
+  },
+  {
+   "id": 1057250,
+   "name": "Saint Luminous"
+  },
+  {
+   "id": 1057251,
+   "name": "Pink Fluffy Hanbok"
+  },
+  {
+   "id": 1057252,
+   "name": "Halloween Leopard Dress"
+  },
+  {
+   "id": 1057253,
+   "name": "Fluffy Cat Outfit"
+  },
+  {
+   "id": 1057254,
+   "name": "Succubus Dress"
+  },
+  {
+   "id": 1057255,
+   "name": "Golden Bell Dress"
+  },
+  {
+   "id": 1057256,
+   "name": "Thermidor"
+  },
+  {
+   "id": 1057257,
+   "name": "Pinky Baseball"
+  },
+  {
+   "id": 1057258,
+   "name": "Beach Babe Outfit"
+  },
+  {
+   "id": 1057259,
+   "name": "Superstar Dress"
+  },
+  {
+   "id": 1057262,
+   "name": "Fresh Ice"
+  },
+  {
+   "id": 1057263,
+   "name": "Fresh Checkered Vacation"
+  },
+  {
+   "id": 1057264,
+   "name": "Powder Maid's Getup (F)"
+  },
+  {
+   "id": 1057265,
+   "name": "Passionate Qi Pao"
+  },
+  {
+   "id": 1057266,
+   "name": "Ribbon Girl School Look"
+  },
+  {
+   "id": 1057267,
+   "name": "Bloody Jeanne"
+  },
+  {
+   "id": 1057268,
+   "name": "Odette Tutu"
+  },
+  {
+   "id": 1057269,
+   "name": "Odile Tutu"
+  },
+  {
+   "id": 1057270,
+   "name": "Halloweenroid Dress"
+  },
+  {
+   "id": 1057271,
+   "name": "Blue Shinsengumi Uniform"
+  },
+  {
+   "id": 1057272,
+   "name": "Brown Shinsengumi Uniform"
+  },
+  {
+   "id": 1057273,
+   "name": "White Body Tights"
+  },
+  {
+   "id": 1057274,
+   "name": "Black Body Tights"
+  },
+  {
+   "id": 1057275,
+   "name": "White Holed Tights"
+  },
+  {
+   "id": 1057276,
+   "name": "Black Holed Tights"
+  },
+  {
+   "id": 1057277,
+   "name": "Big Kimono"
+  },
+  {
+   "id": 1057278,
+   "name": "Grey Full Coat"
+  },
+  {
+   "id": 1057279,
+   "name": "Red Full Coat"
+  },
+  {
+   "id": 1057280,
+   "name": "Forest Samurai Outfit"
+  },
+  {
+   "id": 1057281,
+   "name": "Red Bruma"
+  },
+  {
+   "id": 1057282,
+   "name": "Green Bruma"
+  },
+  {
+   "id": 1057283,
+   "name": "Blue Bruma"
+  },
+  {
+   "id": 1057284,
+   "name": "Guan Yu Armor"
+  },
+  {
+   "id": 1057285,
+   "name": "Zhu-Ge-Liang Gown"
+  },
+  {
+   "id": 1057286,
+   "name": "Blue Robot Pilotgear"
+  },
+  {
+   "id": 1057287,
+   "name": "Liu Bei Robe"
+  },
+  {
+   "id": 1057288,
+   "name": "Cao Cao Robe"
+  },
+  {
+   "id": 1057289,
+   "name": "Sun Quan Robe"
+  },
+  {
+   "id": 1057290,
+   "name": "Pink Robot Pilotgear"
+  },
+  {
+   "id": 1057291,
+   "name": "Hip Hop Sweats"
+  },
+  {
+   "id": 1057292,
+   "name": "Scuba Diving Suit"
+  },
+  {
+   "id": 1057293,
+   "name": "Mink Coat"
+  },
+  {
+   "id": 1057294,
+   "name": "Snowman Costume"
+  },
+  {
+   "id": 1057295,
+   "name": "Black Snowboard Overall"
+  },
+  {
+   "id": 1057296,
+   "name": "Brown Snowboard Overall"
+  },
+  {
+   "id": 1057297,
+   "name": "Yang In"
+  },
+  {
+   "id": 1057298,
+   "name": "Red Hip Hop"
+  },
+  {
+   "id": 1057299,
+   "name": "Blue Hip Hop"
+  },
+  {
+   "id": 1057300,
+   "name": "Musashi Costume"
+  },
+  {
+   "id": 1057301,
+   "name": "Welder Look"
+  },
+  {
+   "id": 1057302,
+   "name": "Enamer"
+  },
+  {
+   "id": 1057303,
+   "name": "Soccer Uniform"
+  },
+  {
+   "id": 1057304,
+   "name": "Soccer Uniform (No.7)"
+  },
+  {
+   "id": 1057305,
+   "name": "Soccer Uniform (No.10)"
+  },
+  {
+   "id": 1057306,
+   "name": "Soccer Uniform (No.14)"
+  },
+  {
+   "id": 1057307,
+   "name": "England Soccer Uniform (No.8)"
+  },
+  {
+   "id": 1057308,
+   "name": "Brazil Soccer Uniform (No.9)"
+  },
+  {
+   "id": 1057309,
+   "name": "France Soccer Uniform (No.10)"
+  },
+  {
+   "id": 1057310,
+   "name": "USA Soccer Uniform (No.17)"
+  },
+  {
+   "id": 1057311,
+   "name": "Soccer Uniform (No.4)"
+  },
+  {
+   "id": 1057312,
+   "name": "Soccer Uniform (No.21)"
+  },
+  {
+   "id": 1057313,
+   "name": "Mexico Soccer Uniform (No.9)"
+  },
+  {
+   "id": 1057314,
+   "name": "Skull Suit"
+  },
+  {
+   "id": 1057315,
+   "name": "Flamboyant Autumn Gear"
+  },
+  {
+   "id": 1057316,
+   "name": "Nero Bell Outfit"
+  },
+  {
+   "id": 1057317,
+   "name": "Moon Bunny Costume"
+  },
+  {
+   "id": 1057318,
+   "name": "Soap Bubble Bonanza"
+  },
+  {
+   "id": 1057319,
+   "name": "Prince of Darkness"
+  },
+  {
+   "id": 1057320,
+   "name": "Elf Overall"
+  },
+  {
+   "id": 1057321,
+   "name": "Sun Wukong Robe"
+  },
+  {
+   "id": 1057322,
+   "name": "Golden Armor"
+  },
+  {
+   "id": 1057323,
+   "name": "Red Amorian Apron"
+  },
+  {
+   "id": 1057324,
+   "name": "Blue Amorian Apron"
+  },
+  {
+   "id": 1057325,
+   "name": "Dark Blue Robes"
+  },
+  {
+   "id": 1057326,
+   "name": "Black Overcoat of Doom"
+  },
+  {
+   "id": 1057327,
+   "name": "Rompers"
+  },
+  {
+   "id": 1057328,
+   "name": "Sachiel Armor"
+  },
+  {
+   "id": 1057329,
+   "name": "Veamoth Armor"
+  },
+  {
+   "id": 1057330,
+   "name": "Janus Armor"
+  },
+  {
+   "id": 1057331,
+   "name": "Zhu's Pork Belly"
+  },
+  {
+   "id": 1057332,
+   "name": "Centaurus Legs"
+  },
+  {
+   "id": 1057333,
+   "name": "Tomato Suit"
+  },
+  {
+   "id": 1057334,
+   "name": "Shorts with Suspenders"
+  },
+  {
+   "id": 1057335,
+   "name": "Sky Blue Padded Coat"
+  },
+  {
+   "id": 1057336,
+   "name": "Luxurious Padded Coat"
+  },
+  {
+   "id": 1057337,
+   "name": "Christmas Party Suit"
+  },
+  {
+   "id": 1057338,
+   "name": "Bosshunter Armor"
+  },
+  {
+   "id": 1057339,
+   "name": "Bosshunter Gi"
+  },
+  {
+   "id": 1057340,
+   "name": "Red Viska for Transformation"
+  },
+  {
+   "id": 1057341,
+   "name": "Tiger Cub Costume"
+  },
+  {
+   "id": 1057342,
+   "name": "Cutie Birk Outfit"
+  },
+  {
+   "id": 1057344,
+   "name": "Noob Overall"
+  },
+  {
+   "id": 1057345,
+   "name": "Baby Chick Apron"
+  },
+  {
+   "id": 1057347,
+   "name": "Fox Outfit"
+  },
+  {
+   "id": 1057348,
+   "name": "Coastal Winter Wear"
+  },
+  {
+   "id": 1057349,
+   "name": "Fashionable Checkerwear"
+  },
+  {
+   "id": 1057350,
+   "name": "Snowflake Knit"
+  },
+  {
+   "id": 1057351,
+   "name": "Cow Costume"
+  },
+  {
+   "id": 1057352,
+   "name": "Denim Overalls"
+  },
+  {
+   "id": 1057353,
+   "name": "Galactic Hero Suit"
+  },
+  {
+   "id": 1057355,
+   "name": "Bombacha"
+  },
+  {
+   "id": 1057356,
+   "name": "Honeybee Costume"
+  },
+  {
+   "id": 1057357,
+   "name": "Ugabuga"
+  },
+  {
+   "id": 1057360,
+   "name": "Brave Soldier Armor"
+  },
+  {
+   "id": 1057361,
+   "name": "Pink Bean Suit"
+  },
+  {
+   "id": 1057362,
+   "name": "Blade Overall"
+  },
+  {
+   "id": 1057363,
+   "name": "Shiny Sailor Uniform"
+  },
+  {
+   "id": 1057364,
+   "name": "One Summer Night "
+  },
+  {
+   "id": 1057365,
+   "name": "Royal Navy Uniform"
+  },
+  {
+   "id": 1057366,
+   "name": "Alchemist Overall"
+  },
+  {
+   "id": 1057367,
+   "name": "Fire Shadow Suit"
+  },
+  {
+   "id": 1057368,
+   "name": "Chaos Armor"
+  },
+  {
+   "id": 1057369,
+   "name": "Maple Racing Suit"
+  },
+  {
+   "id": 1057370,
+   "name": "Clown Suit"
+  },
+  {
+   "id": 1057371,
+   "name": "Strawberry Baby"
+  },
+  {
+   "id": 1057372,
+   "name": "Layered Long Skull Tee"
+  },
+  {
+   "id": 1057373,
+   "name": "Little Prince"
+  },
+  {
+   "id": 1057374,
+   "name": "Stylish Layered Plaid"
+  },
+  {
+   "id": 1057375,
+   "name": "Petite School Shawl"
+  },
+  {
+   "id": 1057376,
+   "name": "Green Leaf Overall"
+  },
+  {
+   "id": 1057377,
+   "name": "Cat Set Suit"
+  },
+  {
+   "id": 1057378,
+   "name": "Dual Blade Suit"
+  },
+  {
+   "id": 1057379,
+   "name": "Green Overall Shorts"
+  },
+  {
+   "id": 1057381,
+   "name": "Royal Rainbow Zip-Up Jacket"
+  },
+  {
+   "id": 1057383,
+   "name": "Pilot Suit"
+  },
+  {
+   "id": 1057386,
+   "name": "Hooded Track Suit"
+  },
+  {
+   "id": 1057387,
+   "name": "King Crow Suit"
+  },
+  {
+   "id": 1057388,
+   "name": "Sanctus Combat Dress"
+  },
+  {
+   "id": 1057389,
+   "name": "Sanctus Combat Suit"
+  },
+  {
+   "id": 1057390,
+   "name": "Maid Dress (Pink)"
+  },
+  {
+   "id": 1057391,
+   "name": "Maid Dress (Blue)"
+  },
+  {
+   "id": 1057392,
+   "name": "Japanesque Dress"
+  },
+  {
+   "id": 1057393,
+   "name": "Trench Coat"
+  },
+  {
+   "id": 1057394,
+   "name": "Pitch Dark Outfit"
+  },
+  {
+   "id": 1057395,
+   "name": "Blue Mage Gear"
+  },
+  {
+   "id": 1057396,
+   "name": "Red Mage Gear"
+  },
+  {
+   "id": 1057397,
+   "name": "Christmas Casual Outfit"
+  },
+  {
+   "id": 1057398,
+   "name": "Commander Captain"
+  },
+  {
+   "id": 1057399,
+   "name": "Belt Coat"
+  },
+  {
+   "id": 1057400,
+   "name": "Rising Star Baggy Digs"
+  },
+  {
+   "id": 1057401,
+   "name": "Crow Suit"
+  },
+  {
+   "id": 1057402,
+   "name": "Starling Suit"
+  },
+  {
+   "id": 1057403,
+   "name": "Victorian Vampire Suit"
+  },
+  {
+   "id": 1057404,
+   "name": "Kerning Engineering School Uniform"
+  },
+  {
+   "id": 1057405,
+   "name": "Ribboned Justice Dress"
+  },
+  {
+   "id": 1057406,
+   "name": "Alchemist Overall"
+  },
+  {
+   "id": 1057407,
+   "name": "Toy Prince"
+  },
+  {
+   "id": 1057409,
+   "name": "Honeybee Suit"
+  },
+  {
+   "id": 1057410,
+   "name": "Urban Pirate Outfit"
+  },
+  {
+   "id": 1057411,
+   "name": "Hades Overall"
+  },
+  {
+   "id": 1057412,
+   "name": "Fancy Noblesse Robe"
+  },
+  {
+   "id": 1057413,
+   "name": "Princess Hakama"
+  },
+  {
+   "id": 1057414,
+   "name": "Ganache Chocolate Suit"
+  },
+  {
+   "id": 1057415,
+   "name": "Ellinia Magic School Uniform"
+  },
+  {
+   "id": 1057416,
+   "name": "Mu Lung Dojo Uniform"
+  },
+  {
+   "id": 1057417,
+   "name": "Combat Fatigues"
+  },
+  {
+   "id": 1057418,
+   "name": "Taisho Romance"
+  },
+  {
+   "id": 1057419,
+   "name": "Intergalactic Armor"
+  },
+  {
+   "id": 1057420,
+   "name": "Sausage Outfit"
+  },
+  {
+   "id": 1057421,
+   "name": "The Onmyouji Ceremonial Robes"
+  },
+  {
+   "id": 1057422,
+   "name": "The Bladed Falcon's Armor"
+  },
+  {
+   "id": 1057423,
+   "name": "Marine Stripe"
+  },
+  {
+   "id": 1057424,
+   "name": "Yellow Bell Robe"
+  },
+  {
+   "id": 1057425,
+   "name": "Gray Bell Robe"
+  },
+  {
+   "id": 1057426,
+   "name": "Dark Devil Outfit"
+  },
+  {
+   "id": 1057427,
+   "name": "Flowing Flame Robes"
+  },
+  {
+   "id": 1057428,
+   "name": "Pious Shaman Robes"
+  },
+  {
+   "id": 1057431,
+   "name": "Lucia Outfit"
+  },
+  {
+   "id": 1057432,
+   "name": "Harp Seal Doll Outfit"
+  },
+  {
+   "id": 1057433,
+   "name": "Black Duster"
+  },
+  {
+   "id": 1057434,
+   "name": "Blue Love Dress"
+  },
+  {
+   "id": 1057435,
+   "name": "Ramling PJs"
+  },
+  {
+   "id": 1057436,
+   "name": "Splash Wave Outfit"
+  },
+  {
+   "id": 1057437,
+   "name": "Man's Shirts"
+  },
+  {
+   "id": 1057439,
+   "name": "Chicken Coataroo"
+  },
+  {
+   "id": 1057440,
+   "name": "Puffram Onesie"
+  },
+  {
+   "id": 1057442,
+   "name": "Rudi's Outfit"
+  }
+ ]
+}

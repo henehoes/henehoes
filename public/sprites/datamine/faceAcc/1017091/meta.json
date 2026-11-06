@@ -1,0 +1,32 @@
+{
+ "id": 1017091,
+ "name": "Facial Powder",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 29,
+   "h": 11,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -4,
+     "y": -36,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFaceBelowFace"
+  }
+ ]
+}

@@ -1,0 +1,51 @@
+{
+ "id": 1087085,
+ "name": "Dark Devil Gloves",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "lGlove",
+   "w": 8,
+   "h": 8,
+   "origin": {
+    "x": 4,
+    "y": 4,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 5,
+     "y": -4,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveOverBody"
+  },
+  {
+   "key": "rGlove",
+   "w": 12,
+   "h": 8,
+   "origin": {
+    "x": 11,
+    "y": 10,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -19,
+     "y": -9,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveBelowMailArm"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "id": 1037018,
+ "name": "Futuroid Cyber Earrings",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ae"
+ ],
+ "islots": [
+  "Ae"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 35,
+   "h": 15,
+   "origin": {
+    "x": 14,
+    "y": -15,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEar"
+  }
+ ]
+}

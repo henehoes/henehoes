@@ -1,0 +1,32 @@
+{
+ "id": 1017079,
+ "name": "Allergic Reaction",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 24,
+   "h": 5,
+   "origin": {
+    "x": 14,
+    "y": 27,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -4,
+     "y": -41,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFaceBelowFace"
+  }
+ ]
+}

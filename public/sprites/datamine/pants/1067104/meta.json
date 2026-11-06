@@ -1,0 +1,32 @@
+{
+ "id": 1067104,
+ "name": "Bright Frilly Shorts",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Pn"
+ ],
+ "islots": [
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "pants",
+   "w": 20,
+   "h": 11,
+   "origin": {
+    "x": 6,
+    "y": -1,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "pantsBelowShoes"
+  }
+ ]
+}

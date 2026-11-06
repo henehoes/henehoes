@@ -1,0 +1,40 @@
+{
+ "parts": [
+  {
+   "key": "lGlove",
+   "w": 8,
+   "h": 9,
+   "origin": {
+    "x": 10,
+    "y": -2,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveOverHair"
+  },
+  {
+   "key": "glove",
+   "w": 11,
+   "h": 10,
+   "origin": {
+    "x": 0,
+    "y": 5,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveWristOverHair"
+  }
+ ]
+}

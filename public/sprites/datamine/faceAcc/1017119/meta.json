@@ -1,0 +1,32 @@
+{
+ "id": 1017119,
+ "name": "Heart Pounding Lip Gloss",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 5,
+   "h": 3,
+   "origin": {
+    "x": 3,
+    "y": -17,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFace"
+  }
+ ]
+}

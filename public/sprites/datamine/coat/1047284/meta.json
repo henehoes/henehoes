@@ -1,0 +1,50 @@
+{
+ "id": 1047284,
+ "name": "Frog Raindrop",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma"
+ ],
+ "islots": [
+  "Ma"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 19,
+   "h": 17,
+   "origin": {
+    "x": 6,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -2,
+     "y": 4,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChest"
+  },
+  {
+   "key": "mailArm",
+   "w": 7,
+   "h": 9,
+   "origin": {
+    "x": -9,
+    "y": 8,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  }
+ ]
+}

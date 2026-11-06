@@ -1,0 +1,34 @@
+{
+ "id": 1007236,
+ "name": "Basic Earmuff",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5",
+  "Ae"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 42,
+   "h": 13,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 2,
+     "y": -29,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

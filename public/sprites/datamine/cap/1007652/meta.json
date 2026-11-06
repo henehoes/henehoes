@@ -1,0 +1,46 @@
+{
+ "id": 1007652,
+ "name": "Gas Mask and Helmet",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "Hd",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hs",
+  "Hf",
+  "Hb",
+  "Af",
+  "Ay",
+  "As",
+  "Ae"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 46,
+   "h": 44,
+   "origin": {
+    "x": 23,
+    "y": 23,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -5,
+     "y": -7,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

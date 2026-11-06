@@ -1,0 +1,51 @@
+{
+ "id": 1087043,
+ "name": "Snowflake Gloves",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "lGlove",
+   "w": 7,
+   "h": 10,
+   "origin": {
+    "x": 3,
+    "y": 5,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 5,
+     "y": -5,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveOverBody"
+  },
+  {
+   "key": "rGlove",
+   "w": 10,
+   "h": 11,
+   "origin": {
+    "x": 5,
+    "y": 5,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -13,
+     "y": -5,
+     "isEmpty": false
+    }
+   },
+   "position": "glove"
+  }
+ ]
+}

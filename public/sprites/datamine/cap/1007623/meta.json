@@ -1,0 +1,33 @@
+{
+ "id": 1007623,
+ "name": "Rosy Pink Twin Ribbons",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 53,
+   "h": 24,
+   "origin": {
+    "x": 22,
+    "y": 18,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

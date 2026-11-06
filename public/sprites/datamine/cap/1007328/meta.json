@@ -1,0 +1,45 @@
+{
+ "id": 1007328,
+ "name": "Black Snowboard Helmet",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H2",
+  "H3",
+  "H5",
+  "Hf",
+  "Hs",
+  "Af",
+  "Ay",
+  "As",
+  "Ae",
+  "Hb",
+  "H4",
+  "H6"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 43,
+   "h": 35,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 2,
+     "y": -10,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

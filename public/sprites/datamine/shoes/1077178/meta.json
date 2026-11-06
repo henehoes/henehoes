@@ -1,0 +1,32 @@
+{
+ "id": 1077178,
+ "name": "Green Leaf Shoes",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "So"
+ ],
+ "islots": [
+  "So"
+ ],
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 21,
+   "h": 7,
+   "origin": {
+    "x": 10,
+    "y": 2,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -3,
+     "y": -16,
+     "isEmpty": false
+    }
+   },
+   "position": "shoes"
+  }
+ ]
+}

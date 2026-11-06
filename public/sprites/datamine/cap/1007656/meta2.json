@@ -1,0 +1,16 @@
+{
+ "parts": [
+  {
+   "key": "default",
+   "w": 28,
+   "h": 22,
+   "origin": {
+    "x": 20,
+    "y": 80,
+    "isEmpty": false
+   },
+   "maps": {},
+   "position": 0
+  }
+ ]
+}

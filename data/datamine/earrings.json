@@ -1,0 +1,53 @@
+{
+ "_comment": "Cash earrings items in the game files that are not in the catalogue (not released). Written by scripts/extract-datamine.mjs.",
+ "items": [
+  {
+   "id": 1037007,
+   "name": "Beaded Cross Earrings"
+  },
+  {
+   "id": 1037008,
+   "name": "Snow Earrings"
+  },
+  {
+   "id": 1037009,
+   "name": "Diamond Earrings"
+  },
+  {
+   "id": 1037011,
+   "name": "Clover Earrings"
+  },
+  {
+   "id": 1037012,
+   "name": "Wireless Headset"
+  },
+  {
+   "id": 1037013,
+   "name": "Altair Earrings"
+  },
+  {
+   "id": 1037014,
+   "name": "Shiny Altair Earrings"
+  },
+  {
+   "id": 1037015,
+   "name": "Wind Bell Earrings"
+  },
+  {
+   "id": 1037016,
+   "name": "Heart Rainbow Earrings"
+  },
+  {
+   "id": 1037017,
+   "name": "Faraway Earring"
+  },
+  {
+   "id": 1037018,
+   "name": "Futuroid Cyber Earrings"
+  },
+  {
+   "id": 1037019,
+   "name": "Halloweenroid Sensor"
+  }
+ ]
+}

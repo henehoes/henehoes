@@ -1,0 +1,52 @@
+{
+ "id": 1057111,
+ "name": "Go! Korea!",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma",
+  "Pn"
+ ],
+ "islots": [
+  "Ma",
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 16,
+   "h": 28,
+   "origin": {
+    "x": 11,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -8,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChestBelowPants"
+  },
+  {
+   "key": "mailArm",
+   "w": 6,
+   "h": 6,
+   "origin": {
+    "x": 3,
+    "y": 4,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -11,
+     "y": 4,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  }
+ ]
+}

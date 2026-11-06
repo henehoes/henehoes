@@ -1,0 +1,32 @@
+{
+ "id": 1107060,
+ "name": "Pepe Balloon",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Sr"
+ ],
+ "islots": [
+  "Sr"
+ ],
+ "parts": [
+  {
+   "key": "cape",
+   "w": 46,
+   "h": 102,
+   "origin": {
+    "x": -5,
+    "y": 104,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "backWing"
+  }
+ ]
+}

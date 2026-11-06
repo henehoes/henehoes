@@ -1,0 +1,40 @@
+{
+ "parts": [
+  {
+   "key": "default",
+   "w": 43,
+   "h": 48,
+   "origin": {
+    "x": 17,
+    "y": 32,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": -9,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  },
+  {
+   "key": "defaultBelowBody",
+   "w": 43,
+   "h": 48,
+   "origin": {
+    "x": 17,
+    "y": 23,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "backCap"
+  }
+ ]
+}

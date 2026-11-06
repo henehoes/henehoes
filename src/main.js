@@ -134,7 +134,7 @@ function unpack(d) {
     for (const k of WEAR_ORDER) {
       if (DISABLED_SLOTS.has(k)) continue; // a ring saved before they were switched off is not brought back
       const w = d.wear?.[k];
-      if (w && (w.item == null || catalog.wearables[k]?.items.some(i => i.id === w.item && (SHOW_UPCOMING || !i.upcoming || k === 'weapon')))) s.wear[k] = { item: w.item, two: !!w.two, h: clamp(Math.round(+w.h || 0), 0, 359), c: clamp(Math.round(+w.c || 0), -99, 99), b: clamp(Math.round(+w.b || 0), -99, 99) };
+      if (w && (w.item == null || catalog.wearables[k]?.items.some(i => i.id === w.item && (SHOW_UPCOMING || !i.upcoming || i.released === false)))) s.wear[k] = { item: w.item, two: !!w.two, h: clamp(Math.round(+w.h || 0), 0, 359), c: clamp(Math.round(+w.c || 0), -99, 99), b: clamp(Math.round(+w.b || 0), -99, 99) };
     }
     // A look saved before the placeholder became "henehoe" carries the old placeholder "Maple": show the new one instead.
     if (typeof d.text?.name === 'string') s.text = { name: d.text.name === 'Maple' ? DEFAULT_NAME : d.text.name.slice(0, 12) };
@@ -175,8 +175,8 @@ const regular = slot => catalog.wearables[slot].items.filter(i => !i.upcoming &&
 // Category tabs that have possible upcoming items (the Next Crate tab's items, by slot) get a Released | Upcoming switch.
 let crate = 'released'; // 'released' or 'upcoming': which items those tabs list (shared between them, like `source`)
 const hasUpcoming = slot => SHOW_UPCOMING && !!catalog.wearables[slot]?.items.some(i => i.upcoming);
-// While SHOW_UPCOMING is off, an upcoming weapon is just a datamined one (listed only in All · Datamine, by `listed`).
-const inView = (slot, item) => !SHOW_UPCOMING && slot === 'weapon' ? true : !!item.upcoming === (hasUpcoming(slot) && crate === 'upcoming');
+// While SHOW_UPCOMING is off, an upcoming item is just a datamined one (listed only in All · Datamine, by `listed`).
+const inView = (slot, item) => !SHOW_UPCOMING || !!item.upcoming === (hasUpcoming(slot) && crate === 'upcoming');
 const dyeOf = (item, w) => item.dyeable === false ? [0, 0, 0] : [w.h, w.c, w.b]; // the game does not let you dye some items: their colour settings do nothing
 const listed = s => source === 'datamine' || s.released !== false;
 let search = ''; // text typed in the catalogue's search box; cleared when the tab changes
@@ -516,9 +516,14 @@ function renderFilters() {
   if (everything) { input.focus(); input.setSelectionRange(input.value.length, input.value.length); }
   if (activeTab === 'body') return renderSexPicker();
   if (WEAR_ORDER.includes(activeTab) && hasUpcoming(activeTab)) renderCrateSwitch();
-  if (activeTab === 'cap') return renderFit();
-  if (activeTab === 'weapon') { renderSourceSwitch('Which weapons to list', 'Weapons'); return renderWeaponType(); }
   if (RING_SLOTS.includes(activeTab)) return renderSourceSwitch(activeTab === 'nameTag' ? 'Which name tags to list' : 'Which chat bubbles to list', 'Rings');
+  if (WEAR_ORDER.includes(activeTab)) { // every clothing tab: Released | All · Datamine, then the Hat tab's Fit or the Weapon tab's Works with
+    const what = CHAPTER_TITLES[activeTab] ?? catalog.wearables[activeTab].label;
+    renderSourceSwitch(`Which ${what.toLowerCase()} to list`, what);
+    if (activeTab === 'cap') renderFit();
+    if (activeTab === 'weapon') renderWeaponType();
+    return;
+  }
   if (activeTab !== 'face' && activeTab !== 'hair') return;
   const seg = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': 'Show styles for' });
   for (const [g, label] of [['all', 'All'], ['male', '♂ Male'], ['female', '♀ Female']]) {
@@ -535,7 +540,7 @@ function renderFilters() {
   renderSourceSwitch('Which styles to list', 'Styles', true);
 }
 
-// The Released / All · Datamine switch (Face, Hair, Weapon and the two ring tabs), in the row above the search box. `what` names the things listed.
+// The Released / All · Datamine switch (Face, Hair and every clothing and ring tab), in the row above the search box. `what` names the things listed.
 function renderSourceSwitch(label, what, withRotation = false) {
   const src = $('source');
   const group = el('div', { className: 'source-group' }, el('span', { className: 'source-label', textContent: 'Show' }));
@@ -584,7 +589,7 @@ function renderCrateSwitch() {
 
 // The Hat tab's "Fit" picker, in the row above the search box: All, Topper, Cap, Helmet, each with how many hats it holds.
 function renderFit() {
-  const hats = catalog.wearables.cap.items.filter(i => inView('cap', i)), src = $('source');
+  const hats = catalog.wearables.cap.items.filter(i => inView('cap', i) && listed(i)), src = $('source');
   const group = el('div', { className: 'source-group' }, el('span', { className: 'source-label', textContent: 'Fit' }));
   const sw = el('div', { className: 'seg', role: 'radiogroup', 'aria-label': 'How the hat treats your hair' });
   for (const [v, label, tip] of [['all', 'All', 'Every hat'], ...HAT_FITS]) {
@@ -1116,7 +1121,7 @@ function renderWearable(c, slot) {
   const grid = el('div', { className: 'grid' });
   if (RING_SLOTS.includes(slot) && source === 'datamine') c.append(el('p', { className: 'datamine-note', textContent: 'Showing everything in the game data. Rings marked DATAMINE are not released yet.' }));
   if (hasUpcoming(slot) && crate === 'upcoming') c.append(unconfirmedNote());
-  for (const item of data.items.filter(i => inView(slot, i) && matches(i.name) && (RING_SLOTS.includes(slot) || slot === 'weapon' ? listed(i) : true) && (slot !== 'cap' || hatFit === 'all' || hairEffectOf(i) === hatFit) && (slot !== 'weapon' || worksWithShown(i)))) grid.append(wearableCard(slot, item));
+  for (const item of data.items.filter(i => inView(slot, i) && matches(i.name) && listed(i) && (slot !== 'cap' || hatFit === 'all' || hairEffectOf(i) === hatFit) && (slot !== 'weapon' || worksWithShown(i)))) grid.append(wearableCard(slot, item));
   for (const p of (data.placeholders ?? []).filter(p => matches(p.name))) grid.append(placeholderCard(p));
   c.append(grid);
 }

@@ -1,0 +1,32 @@
+{
+ "id": 1007771,
+ "name": "Deer Headband",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 50,
+   "h": 17,
+   "origin": {
+    "x": 21,
+    "y": 16,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

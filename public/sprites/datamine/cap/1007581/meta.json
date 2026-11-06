@@ -1,0 +1,34 @@
+{
+ "id": 1007581,
+ "name": "Pirate Captain's Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 70,
+   "h": 64,
+   "origin": {
+    "x": 29,
+    "y": 47,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 3,
+     "y": -10,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

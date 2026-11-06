@@ -1,0 +1,32 @@
+{
+ "id": 1027050,
+ "name": "Butterfly Ball Mask",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ay"
+ ],
+ "islots": [
+  "Ay"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 39,
+   "h": 25,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 4,
+     "y": -22,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEyeOverCap"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "id": 1037016,
+ "name": "Heart Rainbow Earrings",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ae"
+ ],
+ "islots": [
+  "Ae"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 42,
+   "h": 14,
+   "origin": {
+    "x": 21,
+    "y": 7,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -3,
+     "y": -23,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEar"
+  }
+ ]
+}

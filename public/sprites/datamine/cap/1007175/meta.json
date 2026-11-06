@@ -1,0 +1,41 @@
+{
+ "id": 1007175,
+ "name": "Women's Ninja Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hf",
+  "Hs",
+  "Hb"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 47,
+   "h": 30,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 4,
+     "y": -12,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

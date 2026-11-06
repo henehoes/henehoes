@@ -1,0 +1,34 @@
+{
+ "id": 1007395,
+ "name": "Vintage Grey Cap",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 44,
+   "h": 25,
+   "origin": {
+    "x": 22,
+    "y": 12,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -1,
+     "y": 2,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

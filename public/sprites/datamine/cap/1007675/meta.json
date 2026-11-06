@@ -1,0 +1,32 @@
+{
+ "id": 1007675,
+ "name": "Chocolate Cupcake Hairpin",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 26,
+   "h": 29,
+   "origin": {
+    "x": -1,
+    "y": 29,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

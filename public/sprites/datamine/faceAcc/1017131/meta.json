@@ -1,0 +1,32 @@
+{
+ "id": 1017131,
+ "name": "Surprised Face Accessory",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 25,
+   "h": 15,
+   "origin": {
+    "x": 11,
+    "y": -6,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFace"
+  }
+ ]
+}

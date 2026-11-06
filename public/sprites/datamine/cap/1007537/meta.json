@@ -1,0 +1,32 @@
+{
+ "id": 1007537,
+ "name": "Pinky Bow",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 40,
+   "h": 25,
+   "origin": {
+    "x": 28,
+    "y": 17,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -11,
+     "y": 10,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

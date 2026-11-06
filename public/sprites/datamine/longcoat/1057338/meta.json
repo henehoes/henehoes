@@ -1,0 +1,52 @@
+{
+ "id": 1057338,
+ "name": "Bosshunter Armor",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma",
+  "Pn"
+ ],
+ "islots": [
+  "Ma",
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 27,
+   "h": 30,
+   "origin": {
+    "x": 7,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChestOverHighest"
+  },
+  {
+   "key": "mailArm",
+   "w": 10,
+   "h": 13,
+   "origin": {
+    "x": -7,
+    "y": 8,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  }
+ ]
+}

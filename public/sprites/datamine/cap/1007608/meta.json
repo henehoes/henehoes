@@ -1,0 +1,52 @@
+{
+ "id": 1007608,
+ "name": "Button-a-Holic Sugar Cap",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 38,
+   "h": 25,
+   "origin": {
+    "x": 13,
+    "y": 17,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  },
+  {
+   "key": "acc",
+   "w": 41,
+   "h": 33,
+   "origin": {
+    "x": 13,
+    "y": 12,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "backCap"
+  }
+ ]
+}

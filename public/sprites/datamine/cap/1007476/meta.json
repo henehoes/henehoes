@@ -1,0 +1,33 @@
+{
+ "id": 1007476,
+ "name": "Holly Hair Clip",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 23,
+   "h": 24,
+   "origin": {
+    "x": 11,
+    "y": 12,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -14,
+     "y": 4,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

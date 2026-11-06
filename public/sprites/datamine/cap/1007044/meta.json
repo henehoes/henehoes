@@ -1,0 +1,34 @@
+{
+ "id": 1007044,
+ "name": "Sky Blue Goggled Beanie",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 47,
+   "h": 50,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 3,
+     "y": 5,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

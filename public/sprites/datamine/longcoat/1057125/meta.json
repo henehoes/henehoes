@@ -1,0 +1,52 @@
+{
+ "id": 1057125,
+ "name": "Napoleon Uniform",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma",
+  "Pn"
+ ],
+ "islots": [
+  "Ma",
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 19,
+   "h": 26,
+   "origin": {
+    "x": 10,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -5,
+     "y": 1,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChestOverHighest"
+  },
+  {
+   "key": "mailArm",
+   "w": 10,
+   "h": 13,
+   "origin": {
+    "x": 5,
+    "y": 4,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -12,
+     "y": 5,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  }
+ ]
+}

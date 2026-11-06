@@ -1,0 +1,22 @@
+{
+ "parts": [
+  {
+   "key": "pants",
+   "w": 20,
+   "h": 17,
+   "origin": {
+    "x": 5,
+    "y": -2,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "pantsOverShoesBelowMailChest"
+  }
+ ]
+}

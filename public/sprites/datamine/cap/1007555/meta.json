@@ -1,0 +1,33 @@
+{
+ "id": 1007555,
+ "name": "Black Dressy Ribbon",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 47,
+   "h": 47,
+   "origin": {
+    "x": 23,
+    "y": 23,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -16,
+     "y": 3,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

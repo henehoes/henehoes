@@ -1,0 +1,32 @@
+{
+ "id": 1027062,
+ "name": "Redbeard's Pirate Eye Patch",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ay"
+ ],
+ "islots": [
+  "Ay"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 43,
+   "h": 29,
+   "origin": {
+    "x": 21,
+    "y": 14,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -6,
+     "y": -12,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEye"
+  }
+ ]
+}

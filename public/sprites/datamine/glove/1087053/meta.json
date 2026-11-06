@@ -1,0 +1,51 @@
+{
+ "id": 1087053,
+ "name": "Maple Racing Glove",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "lGlove",
+   "w": 7,
+   "h": 9,
+   "origin": {
+    "x": 3,
+    "y": 5,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 5,
+     "y": -5,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveOverBody"
+  },
+  {
+   "key": "rGlove",
+   "w": 10,
+   "h": 10,
+   "origin": {
+    "x": 11,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -20,
+     "y": -11,
+     "isEmpty": false
+    }
+   },
+   "position": "glove"
+  }
+ ]
+}

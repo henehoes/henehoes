@@ -1,0 +1,22 @@
+{
+ "parts": [
+  {
+   "key": "gloveOverHand",
+   "w": 29,
+   "h": 16,
+   "origin": {
+    "x": 11,
+    "y": 5,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveOverHair"
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "id": 1007180,
+ "name": "Teddy Bear Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hf",
+  "Hs",
+  "Hb",
+  "Ae"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 53,
+   "h": 36,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 7,
+     "y": -11,
+     "isEmpty": false
+    }
+   },
+   "position": "capBelowAccessory"
+  }
+ ]
+}

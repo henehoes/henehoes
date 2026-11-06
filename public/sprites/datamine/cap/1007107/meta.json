@@ -1,0 +1,45 @@
+{
+ "id": 1007107,
+ "name": "Mesoranger Blue Helmet",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H2",
+  "H3",
+  "H5",
+  "Hf",
+  "Hs",
+  "Af",
+  "Ay",
+  "As",
+  "Ae",
+  "Hb",
+  "H4",
+  "H6"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 45,
+   "h": 42,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 6,
+     "y": -7,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

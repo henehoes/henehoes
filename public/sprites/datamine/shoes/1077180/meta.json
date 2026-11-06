@@ -1,0 +1,32 @@
+{
+ "id": 1077180,
+ "name": "Cat Set Boots",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "So"
+ ],
+ "islots": [
+  "So"
+ ],
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 21,
+   "h": 10,
+   "origin": {
+    "x": 11,
+    "y": 10,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -3,
+     "y": -21,
+     "isEmpty": false
+    }
+   },
+   "position": "shoes"
+  }
+ ]
+}

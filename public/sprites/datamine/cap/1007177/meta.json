@@ -1,0 +1,41 @@
+{
+ "id": 1007177,
+ "name": "Miko Wig",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hf",
+  "Hs",
+  "Hb"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 56,
+   "h": 32,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 10,
+     "y": -6,
+     "isEmpty": false
+    }
+   },
+   "position": "capBelowAccessory"
+  }
+ ]
+}

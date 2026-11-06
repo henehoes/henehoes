@@ -1,0 +1,70 @@
+{
+ "id": 1057405,
+ "name": "Ribboned Justice Dress",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma",
+  "Pn"
+ ],
+ "islots": [
+  "Ma",
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 29,
+   "h": 20,
+   "origin": {
+    "x": 8,
+    "y": 8,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChest"
+  },
+  {
+   "key": "mailback",
+   "w": 24,
+   "h": 13,
+   "origin": {
+    "x": 3,
+    "y": -7,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "backMailChest"
+  },
+  {
+   "key": "mailArm",
+   "w": 7,
+   "h": 8,
+   "origin": {
+    "x": -8,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  }
+ ]
+}

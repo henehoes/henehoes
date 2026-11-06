@@ -1,0 +1,33 @@
+{
+ "id": 1087002,
+ "name": "Brown Baseball Glove",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "lGlove",
+   "w": 9,
+   "h": 13,
+   "origin": {
+    "x": 3,
+    "y": 4,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 7,
+     "y": -6,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveOverBody"
+  }
+ ]
+}

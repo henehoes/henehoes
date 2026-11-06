@@ -1,0 +1,32 @@
+{
+ "id": 1007659,
+ "name": "Blue Dragon Horn\r\n",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 43,
+   "h": 32,
+   "origin": {
+    "x": 22,
+    "y": 32,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

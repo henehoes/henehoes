@@ -1,0 +1,2725 @@
+{
+ "_comment": "Cash cap items in the game files that are not in the catalogue (not released). Written by scripts/extract-datamine.mjs.",
+ "items": [
+  {
+   "id": 1007000,
+   "name": "Brown Flight Headgear"
+  },
+  {
+   "id": 1007001,
+   "name": "Red Swimming Goggles"
+  },
+  {
+   "id": 1007005,
+   "name": "Green Swimming Goggles"
+  },
+  {
+   "id": 1007006,
+   "name": "Blue Swimming Goggles"
+  },
+  {
+   "id": 1007007,
+   "name": "Red Flight Headgear"
+  },
+  {
+   "id": 1007008,
+   "name": "Blue Flight Headgear"
+  },
+  {
+   "id": 1007009,
+   "name": "Sky Blue Camping Hat"
+  },
+  {
+   "id": 1007010,
+   "name": "Pink Camping Hat"
+  },
+  {
+   "id": 1007011,
+   "name": "Blue Pre-School Hat"
+  },
+  {
+   "id": 1007012,
+   "name": "Red Pre-School Hat"
+  },
+  {
+   "id": 1007014,
+   "name": "Maroon Chinese Undead Hat"
+  },
+  {
+   "id": 1007015,
+   "name": "Rosy Swimming Cap"
+  },
+  {
+   "id": 1007016,
+   "name": "Flowery Swimming Cap"
+  },
+  {
+   "id": 1007017,
+   "name": "Blue Baseball Helmet"
+  },
+  {
+   "id": 1007018,
+   "name": "Red Baseball Helmet"
+  },
+  {
+   "id": 1007019,
+   "name": "Indigo Baseball Helmet"
+  },
+  {
+   "id": 1007020,
+   "name": "Black Baseball Helmet"
+  },
+  {
+   "id": 1007021,
+   "name": "Green Visor"
+  },
+  {
+   "id": 1007022,
+   "name": "Sky Blue Visor"
+  },
+  {
+   "id": 1007023,
+   "name": "Orange Visor"
+  },
+  {
+   "id": 1007024,
+   "name": "Yellow Rain Cap"
+  },
+  {
+   "id": 1007025,
+   "name": "Red Rain Cap"
+  },
+  {
+   "id": 1007026,
+   "name": "Sky Blue Rain Cap"
+  },
+  {
+   "id": 1007027,
+   "name": "Green Rain Cap"
+  },
+  {
+   "id": 1007029,
+   "name": "Black Slanted Visor"
+  },
+  {
+   "id": 1007030,
+   "name": "Purple Slanted Visor"
+  },
+  {
+   "id": 1007031,
+   "name": "Red Upside-Down Visor"
+  },
+  {
+   "id": 1007032,
+   "name": "Blue Upside-Down Visor"
+  },
+  {
+   "id": 1007034,
+   "name": "Santa Hat"
+  },
+  {
+   "id": 1007035,
+   "name": "Fashionable Hat"
+  },
+  {
+   "id": 1007036,
+   "name": "Blue Fisherman Hat"
+  },
+  {
+   "id": 1007037,
+   "name": "Cabbie"
+  },
+  {
+   "id": 1007038,
+   "name": "Goggled Red Cap"
+  },
+  {
+   "id": 1007039,
+   "name": "Goggled Black Cap"
+  },
+  {
+   "id": 1007040,
+   "name": "Goggled Blue Cap"
+  },
+  {
+   "id": 1007041,
+   "name": "Starry Red Beanie"
+  },
+  {
+   "id": 1007042,
+   "name": "Starry Pink Beanie"
+  },
+  {
+   "id": 1007044,
+   "name": "Sky Blue Goggled Beanie"
+  },
+  {
+   "id": 1007045,
+   "name": "Khaki Goggled Beanie"
+  },
+  {
+   "id": 1007047,
+   "name": "Graduation Hat"
+  },
+  {
+   "id": 1007048,
+   "name": "Yellow Trucker Hat"
+  },
+  {
+   "id": 1007049,
+   "name": "Blue Trucker Hat"
+  },
+  {
+   "id": 1007050,
+   "name": "Red Trucker Hat"
+  },
+  {
+   "id": 1007051,
+   "name": "Green Trucker Hat"
+  },
+  {
+   "id": 1007052,
+   "name": "Hardhat"
+  },
+  {
+   "id": 1007054,
+   "name": "Ducky Hat"
+  },
+  {
+   "id": 1007055,
+   "name": "Camouflage Helmet"
+  },
+  {
+   "id": 1007057,
+   "name": "Pink Frill Pajama Hat"
+  },
+  {
+   "id": 1007059,
+   "name": "Red Frill Pajama Hat"
+  },
+  {
+   "id": 1007060,
+   "name": "Brown Bucket Hat"
+  },
+  {
+   "id": 1007062,
+   "name": "Cubic Newsie Hat"
+  },
+  {
+   "id": 1007063,
+   "name": "Green Picnic Hat"
+  },
+  {
+   "id": 1007064,
+   "name": "Yellow Picnic Hat"
+  },
+  {
+   "id": 1007065,
+   "name": "Pink Picnic Hat"
+  },
+  {
+   "id": 1007066,
+   "name": "Blue Picnic Hat"
+  },
+  {
+   "id": 1007067,
+   "name": "Silver Chain Hat"
+  },
+  {
+   "id": 1007068,
+   "name": "Watermelon Hat"
+  },
+  {
+   "id": 1007069,
+   "name": "Flower Crown"
+  },
+  {
+   "id": 1007070,
+   "name": "Red Straw Hat"
+  },
+  {
+   "id": 1007071,
+   "name": "Blue Straw Hat"
+  },
+  {
+   "id": 1007075,
+   "name": "Red Festive Gumball"
+  },
+  {
+   "id": 1007076,
+   "name": "White Festive Gumball"
+  },
+  {
+   "id": 1007078,
+   "name": "Reindeer Hat"
+  },
+  {
+   "id": 1007079,
+   "name": "Hawaiian Flower"
+  },
+  {
+   "id": 1007080,
+   "name": "Sunflower Petal"
+  },
+  {
+   "id": 1007081,
+   "name": "Octopus Hat"
+  },
+  {
+   "id": 1007082,
+   "name": "Orange Mushroom Hat"
+  },
+  {
+   "id": 1007083,
+   "name": "Zombie Mushroom Hat"
+  },
+  {
+   "id": 1007084,
+   "name": "Slime Hat"
+  },
+  {
+   "id": 1007085,
+   "name": "Drake Hat"
+  },
+  {
+   "id": 1007086,
+   "name": "Biker Bandana"
+  },
+  {
+   "id": 1007087,
+   "name": "Pink Knitted Beanie"
+  },
+  {
+   "id": 1007088,
+   "name": "Blue Knitted Beanie"
+  },
+  {
+   "id": 1007089,
+   "name": "Yellow Knitted Beanie"
+  },
+  {
+   "id": 1007092,
+   "name": "Korean Flower Petal"
+  },
+  {
+   "id": 1007093,
+   "name": "Blue Jelly Cap"
+  },
+  {
+   "id": 1007094,
+   "name": "Pink Jelly Cap"
+  },
+  {
+   "id": 1007095,
+   "name": "Rainbow Afro Wig"
+  },
+  {
+   "id": 1007098,
+   "name": "Kuniragi Hat"
+  },
+  {
+   "id": 1007099,
+   "name": "Blue Beanie"
+  },
+  {
+   "id": 1007100,
+   "name": "Fine Black Hanbok Hat"
+  },
+  {
+   "id": 1007101,
+   "name": "Fine Blue Hanbok Hat"
+  },
+  {
+   "id": 1007106,
+   "name": "Mesoranger Red Helmet"
+  },
+  {
+   "id": 1007107,
+   "name": "Mesoranger Blue Helmet"
+  },
+  {
+   "id": 1007108,
+   "name": "Mesoranger Green Helmet"
+  },
+  {
+   "id": 1007109,
+   "name": "Mesoranger Black Helmet"
+  },
+  {
+   "id": 1007110,
+   "name": "Chief Hat"
+  },
+  {
+   "id": 1007112,
+   "name": "Picnic Hat"
+  },
+  {
+   "id": 1007113,
+   "name": "Orange Beanie"
+  },
+  {
+   "id": 1007114,
+   "name": "Hanbok Jobawi"
+  },
+  {
+   "id": 1007117,
+   "name": "Mesoranger Pink Helmet"
+  },
+  {
+   "id": 1007118,
+   "name": "Mesoranger Yellow Helmet"
+  },
+  {
+   "id": 1007119,
+   "name": "Mesoranger Black Helmet"
+  },
+  {
+   "id": 1007120,
+   "name": "Red Feather Bandana"
+  },
+  {
+   "id": 1007121,
+   "name": "Blue Feather Bandana"
+  },
+  {
+   "id": 1007122,
+   "name": "Yellow Bridal Veil"
+  },
+  {
+   "id": 1007126,
+   "name": "Mark of the Founder (Tan)"
+  },
+  {
+   "id": 1007127,
+   "name": "Mark of the Founder (Brown)"
+  },
+  {
+   "id": 1007128,
+   "name": "Mark of the Founder (Black)"
+  },
+  {
+   "id": 1007129,
+   "name": "Well-Loved Brown Bamboo Hat"
+  },
+  {
+   "id": 1007130,
+   "name": "Founder's Thief Hat"
+  },
+  {
+   "id": 1007131,
+   "name": "Manji's Bamboo Hat"
+  },
+  {
+   "id": 1007148,
+   "name": "Men's Ninja Hat"
+  },
+  {
+   "id": 1007149,
+   "name": "Samurai Hair-do"
+  },
+  {
+   "id": 1007150,
+   "name": "Yellow Crown"
+  },
+  {
+   "id": 1007151,
+   "name": "Green Crown"
+  },
+  {
+   "id": 1007152,
+   "name": "Blue Crown"
+  },
+  {
+   "id": 1007153,
+   "name": "Red Crown"
+  },
+  {
+   "id": 1007154,
+   "name": "Van Hat"
+  },
+  {
+   "id": 1007155,
+   "name": "Green Goya Hat"
+  },
+  {
+   "id": 1007156,
+   "name": "Hero's Helm"
+  },
+  {
+   "id": 1007158,
+   "name": "Santa Boy Hat"
+  },
+  {
+   "id": 1007159,
+   "name": "Lunar Festivities Cap"
+  },
+  {
+   "id": 1007160,
+   "name": "Sachiel Wig"
+  },
+  {
+   "id": 1007161,
+   "name": "Veamoth Wig"
+  },
+  {
+   "id": 1007162,
+   "name": "Janus Wig"
+  },
+  {
+   "id": 1007163,
+   "name": "White Floral Hat"
+  },
+  {
+   "id": 1007164,
+   "name": "Napoleon Hat"
+  },
+  {
+   "id": 1007165,
+   "name": "Santa Hat"
+  },
+  {
+   "id": 1007166,
+   "name": "Twinkling Boy Hat"
+  },
+  {
+   "id": 1007167,
+   "name": "Dark Force Horns (M) "
+  },
+  {
+   "id": 1007168,
+   "name": "Elven Spirit Band"
+  },
+  {
+   "id": 1007169,
+   "name": "Mint Snow Cap"
+  },
+  {
+   "id": 1007170,
+   "name": "Evergreen Magistrate Hat"
+  },
+  {
+   "id": 1007171,
+   "name": "Dark Force Horns"
+  },
+  {
+   "id": 1007172,
+   "name": "Cool Carrot Hat"
+  },
+  {
+   "id": 1007173,
+   "name": "Pink Nurse Hat"
+  },
+  {
+   "id": 1007174,
+   "name": "White Nurse Hat"
+  },
+  {
+   "id": 1007175,
+   "name": "Women's Ninja Hat"
+  },
+  {
+   "id": 1007176,
+   "name": "SF Ninja Hat"
+  },
+  {
+   "id": 1007177,
+   "name": "Miko Wig"
+  },
+  {
+   "id": 1007178,
+   "name": "A Ladylike Hat"
+  },
+  {
+   "id": 1007179,
+   "name": "Ribbon"
+  },
+  {
+   "id": 1007180,
+   "name": "Teddy Bear Hat"
+  },
+  {
+   "id": 1007181,
+   "name": "Tiara"
+  },
+  {
+   "id": 1007182,
+   "name": "Princess Tiara"
+  },
+  {
+   "id": 1007183,
+   "name": "Lady Blue"
+  },
+  {
+   "id": 1007184,
+   "name": "Lady Pink"
+  },
+  {
+   "id": 1007185,
+   "name": "Lady Yellow"
+  },
+  {
+   "id": 1007186,
+   "name": "The Gabera Hat"
+  },
+  {
+   "id": 1007187,
+   "name": "Van Hat with Heart"
+  },
+  {
+   "id": 1007188,
+   "name": "Diamond Tiara"
+  },
+  {
+   "id": 1007189,
+   "name": "Ruby Tiara"
+  },
+  {
+   "id": 1007191,
+   "name": "Diao Chan Headpiece"
+  },
+  {
+   "id": 1007192,
+   "name": "White Cat Ears"
+  },
+  {
+   "id": 1007193,
+   "name": "Black Cat Ears"
+  },
+  {
+   "id": 1007194,
+   "name": "Maid Hat"
+  },
+  {
+   "id": 1007195,
+   "name": "Santa Girl Hat"
+  },
+  {
+   "id": 1007196,
+   "name": "Leopard Print Hat"
+  },
+  {
+   "id": 1007197,
+   "name": "Korean Dress Wig"
+  },
+  {
+   "id": 1007198,
+   "name": "Lunar Festivities Ornament"
+  },
+  {
+   "id": 1007199,
+   "name": "Purple Bride's Veil"
+  },
+  {
+   "id": 1007200,
+   "name": "Royal Tiara"
+  },
+  {
+   "id": 1007201,
+   "name": "Green Bride's Veil"
+  },
+  {
+   "id": 1007202,
+   "name": "Sachiel Wig"
+  },
+  {
+   "id": 1007203,
+   "name": "Veamoth Wig"
+  },
+  {
+   "id": 1007204,
+   "name": "Janus Wig"
+  },
+  {
+   "id": 1007205,
+   "name": "Gothic Mini Hat"
+  },
+  {
+   "id": 1007206,
+   "name": "Gothic Headband"
+  },
+  {
+   "id": 1007207,
+   "name": "Strawberry Milk Frill Bonnet"
+  },
+  {
+   "id": 1007208,
+   "name": "Elizabeth Hat"
+  },
+  {
+   "id": 1007209,
+   "name": "Dear Christmas"
+  },
+  {
+   "id": 1007210,
+   "name": "Twinkling Girl Hat"
+  },
+  {
+   "id": 1007211,
+   "name": "Pink Angel Wing Cap"
+  },
+  {
+   "id": 1007212,
+   "name": "Red Hood Bandana"
+  },
+  {
+   "id": 1007213,
+   "name": "Dark Force Horns (F) "
+  },
+  {
+   "id": 1007214,
+   "name": "Elven Spirit Band"
+  },
+  {
+   "id": 1007215,
+   "name": "Gold Angora Gatsby"
+  },
+  {
+   "id": 1007216,
+   "name": "Silver Angora Gatsby"
+  },
+  {
+   "id": 1007218,
+   "name": "Cherry Snow Cap"
+  },
+  {
+   "id": 1007219,
+   "name": "Angelic Ribbon"
+  },
+  {
+   "id": 1007220,
+   "name": "Angelic Navy Cap"
+  },
+  {
+   "id": 1007221,
+   "name": "Pinky Butterfly Hair Pin"
+  },
+  {
+   "id": 1007222,
+   "name": "Warm Carrot Hat"
+  },
+  {
+   "id": 1007223,
+   "name": "Fluffy Cat Hood"
+  },
+  {
+   "id": 1007224,
+   "name": "Dumpling Head Wig"
+  },
+  {
+   "id": 1007225,
+   "name": "Construction Hardhat"
+  },
+  {
+   "id": 1007226,
+   "name": "The Legendary Gold Poop Hat"
+  },
+  {
+   "id": 1007227,
+   "name": "Hajimaki"
+  },
+  {
+   "id": 1007228,
+   "name": "Techwin Wig"
+  },
+  {
+   "id": 1007229,
+   "name": "Headphone Bandana"
+  },
+  {
+   "id": 1007230,
+   "name": "Circus Cowboy Hat"
+  },
+  {
+   "id": 1007231,
+   "name": "Orange Mushroom Hat"
+  },
+  {
+   "id": 1007232,
+   "name": "Blue Mushroom Hat"
+  },
+  {
+   "id": 1007233,
+   "name": "Blue Diamondy Bandana"
+  },
+  {
+   "id": 1007234,
+   "name": "Black Top Hat"
+  },
+  {
+   "id": 1007235,
+   "name": "Elf's Ear"
+  },
+  {
+   "id": 1007236,
+   "name": "Basic Earmuff"
+  },
+  {
+   "id": 1007237,
+   "name": "Chef's Hat"
+  },
+  {
+   "id": 1007238,
+   "name": "Slime Hat"
+  },
+  {
+   "id": 1007239,
+   "name": "Blue Headband"
+  },
+  {
+   "id": 1007240,
+   "name": "Brown Headband"
+  },
+  {
+   "id": 1007241,
+   "name": "Blue B-Ball Headband"
+  },
+  {
+   "id": 1007242,
+   "name": "Orange B-Ball Headband"
+  },
+  {
+   "id": 1007243,
+   "name": "Traveler's Hat"
+  },
+  {
+   "id": 1007244,
+   "name": "Evil Watermelon Hat"
+  },
+  {
+   "id": 1007245,
+   "name": "Palm Tree Hat"
+  },
+  {
+   "id": 1007246,
+   "name": "Zombie Mushroom Hat"
+  },
+  {
+   "id": 1007247,
+   "name": "Grey Headband"
+  },
+  {
+   "id": 1007248,
+   "name": "Red Headband"
+  },
+  {
+   "id": 1007249,
+   "name": "Whale Hat"
+  },
+  {
+   "id": 1007250,
+   "name": "Fuji Hat"
+  },
+  {
+   "id": 1007251,
+   "name": "Crow Hat"
+  },
+  {
+   "id": 1007252,
+   "name": "Lobster Hat"
+  },
+  {
+   "id": 1007253,
+   "name": "Wind Goblin"
+  },
+  {
+   "id": 1007254,
+   "name": "Cloud Goblin"
+  },
+  {
+   "id": 1007255,
+   "name": "Raccoon Hat"
+  },
+  {
+   "id": 1007256,
+   "name": "Triangular Hat"
+  },
+  {
+   "id": 1007257,
+   "name": "Noble Moca"
+  },
+  {
+   "id": 1007258,
+   "name": "Laurel Crown"
+  },
+  {
+   "id": 1007259,
+   "name": "Starry Olive Beanie"
+  },
+  {
+   "id": 1007260,
+   "name": "Party Hat"
+  },
+  {
+   "id": 1007261,
+   "name": "Blue Corporal Hat"
+  },
+  {
+   "id": 1007262,
+   "name": "Brown Corporal Hat"
+  },
+  {
+   "id": 1007263,
+   "name": "Bamboo Hat"
+  },
+  {
+   "id": 1007264,
+   "name": "Black Cowboy Hat"
+  },
+  {
+   "id": 1007265,
+   "name": "Red Cowboy Hat"
+  },
+  {
+   "id": 1007266,
+   "name": "Yellow Cowboy Hat"
+  },
+  {
+   "id": 1007267,
+   "name": "Red Knitted Hat"
+  },
+  {
+   "id": 1007268,
+   "name": "Purple Knitted Hat"
+  },
+  {
+   "id": 1007269,
+   "name": "Yellow Knitted Hat"
+  },
+  {
+   "id": 1007270,
+   "name": "Blue Kitty Beanie"
+  },
+  {
+   "id": 1007271,
+   "name": "Yellow Kitty Beanie"
+  },
+  {
+   "id": 1007272,
+   "name": "Green Knitted Gumball"
+  },
+  {
+   "id": 1007273,
+   "name": "Blue Knitted Gumball"
+  },
+  {
+   "id": 1007275,
+   "name": "Antenna Hairband"
+  },
+  {
+   "id": 1007276,
+   "name": "Black-Striped Feathered Bandana"
+  },
+  {
+   "id": 1007277,
+   "name": "Red-Dotted Feathered Bandana"
+  },
+  {
+   "id": 1007278,
+   "name": "Feathered Bandana with Hearts"
+  },
+  {
+   "id": 1007279,
+   "name": "Cloth Wrapper"
+  },
+  {
+   "id": 1007280,
+   "name": "Red Beret"
+  },
+  {
+   "id": 1007281,
+   "name": "Yellow Beret"
+  },
+  {
+   "id": 1007282,
+   "name": "Pink Beret"
+  },
+  {
+   "id": 1007283,
+   "name": "Casual Cowboy Hat"
+  },
+  {
+   "id": 1007284,
+   "name": "Red Eskimo Hat"
+  },
+  {
+   "id": 1007285,
+   "name": "Brown Eskimo Hat"
+  },
+  {
+   "id": 1007286,
+   "name": "Green Eskimo Hat"
+  },
+  {
+   "id": 1007288,
+   "name": "Tin Bucket"
+  },
+  {
+   "id": 1007289,
+   "name": "Pink Turban"
+  },
+  {
+   "id": 1007290,
+   "name": "Yellow Turban"
+  },
+  {
+   "id": 1007291,
+   "name": "Skyblue Turban"
+  },
+  {
+   "id": 1007292,
+   "name": "Beige Goya Beret"
+  },
+  {
+   "id": 1007293,
+   "name": "Green Goya Beret"
+  },
+  {
+   "id": 1007294,
+   "name": "Bull's Horn"
+  },
+  {
+   "id": 1007295,
+   "name": "Spring Hat"
+  },
+  {
+   "id": 1007296,
+   "name": "Summer Hat"
+  },
+  {
+   "id": 1007297,
+   "name": "Autumn Hat"
+  },
+  {
+   "id": 1007298,
+   "name": "Guan Yu Headpiece"
+  },
+  {
+   "id": 1007299,
+   "name": "Zhu-Ge-Liang Hat"
+  },
+  {
+   "id": 1007300,
+   "name": "Liu Bei Headpiece"
+  },
+  {
+   "id": 1007301,
+   "name": "Cao Cao Headpiece"
+  },
+  {
+   "id": 1007302,
+   "name": "Sun Quan Headpiece"
+  },
+  {
+   "id": 1007303,
+   "name": "Rolled Towel"
+  },
+  {
+   "id": 1007304,
+   "name": "Winged Cap"
+  },
+  {
+   "id": 1007305,
+   "name": "Conch Cap"
+  },
+  {
+   "id": 1007306,
+   "name": "Starfish"
+  },
+  {
+   "id": 1007307,
+   "name": "Horoscope Hat (Aquarius)"
+  },
+  {
+   "id": 1007308,
+   "name": "Horoscope Hat (Pisces)"
+  },
+  {
+   "id": 1007309,
+   "name": "Horoscope Hat (Aries)"
+  },
+  {
+   "id": 1007310,
+   "name": "Horoscope Hat (Taurus)"
+  },
+  {
+   "id": 1007311,
+   "name": "Horoscope Hat (Gemini)"
+  },
+  {
+   "id": 1007312,
+   "name": "Horoscope Hat (Cancer)"
+  },
+  {
+   "id": 1007313,
+   "name": "Horoscope Hat (Leo)"
+  },
+  {
+   "id": 1007314,
+   "name": "Horoscope Hat (Virgo)"
+  },
+  {
+   "id": 1007315,
+   "name": "Horoscope Hat (Libra)"
+  },
+  {
+   "id": 1007316,
+   "name": "Horoscope Hat (Scorpius)"
+  },
+  {
+   "id": 1007317,
+   "name": "Horoscope Hat (Sagittarius)"
+  },
+  {
+   "id": 1007318,
+   "name": "Horoscope Hat (Capricorn)"
+  },
+  {
+   "id": 1007319,
+   "name": "Golden Bulldog Hat"
+  },
+  {
+   "id": 1007320,
+   "name": "Jester Hat"
+  },
+  {
+   "id": 1007321,
+   "name": "Welding Mask"
+  },
+  {
+   "id": 1007322,
+   "name": "Cabbage Patch Hat"
+  },
+  {
+   "id": 1007323,
+   "name": "Rough Hat"
+  },
+  {
+   "id": 1007324,
+   "name": "Slime Hair Pin"
+  },
+  {
+   "id": 1007325,
+   "name": "Mushroom Hair Pin"
+  },
+  {
+   "id": 1007326,
+   "name": "Snowman Mask"
+  },
+  {
+   "id": 1007327,
+   "name": "White Wig Hat"
+  },
+  {
+   "id": 1007328,
+   "name": "Black Snowboard Helmet"
+  },
+  {
+   "id": 1007329,
+   "name": "Red Snowboard Helmet"
+  },
+  {
+   "id": 1007330,
+   "name": "Polar Bear Hat"
+  },
+  {
+   "id": 1007331,
+   "name": "Green Visor Beanie"
+  },
+  {
+   "id": 1007332,
+   "name": "Rainbow Visor Beanie"
+  },
+  {
+   "id": 1007333,
+   "name": "Military Fur Hat"
+  },
+  {
+   "id": 1007334,
+   "name": "Football Helmet (Home)"
+  },
+  {
+   "id": 1007335,
+   "name": "Football Helmet (Away)"
+  },
+  {
+   "id": 1007336,
+   "name": "Musashi Hat"
+  },
+  {
+   "id": 1007337,
+   "name": "Angora Hat"
+  },
+  {
+   "id": 1007338,
+   "name": "Black Skull Bandana"
+  },
+  {
+   "id": 1007339,
+   "name": "Hunting Cap"
+  },
+  {
+   "id": 1007340,
+   "name": "Bald Wig"
+  },
+  {
+   "id": 1007341,
+   "name": "White Tiger Hat"
+  },
+  {
+   "id": 1007342,
+   "name": "Korean Flag Bandana"
+  },
+  {
+   "id": 1007343,
+   "name": "Vintage Denim Hat"
+  },
+  {
+   "id": 1007344,
+   "name": "Vintage Pink Hat"
+  },
+  {
+   "id": 1007345,
+   "name": "Old Fisherman Hat"
+  },
+  {
+   "id": 1007346,
+   "name": "Sergeant Hat"
+  },
+  {
+   "id": 1007347,
+   "name": "Floral Crown"
+  },
+  {
+   "id": 1007348,
+   "name": "Soccer Ball Hat"
+  },
+  {
+   "id": 1007349,
+   "name": "Red Spirit Bandana"
+  },
+  {
+   "id": 1007350,
+   "name": "Maple Party Hat"
+  },
+  {
+   "id": 1007351,
+   "name": "White Felt Hat"
+  },
+  {
+   "id": 1007352,
+   "name": "Red Rose"
+  },
+  {
+   "id": 1007353,
+   "name": "White Hairband"
+  },
+  {
+   "id": 1007354,
+   "name": "Pink-Dotted Hairband"
+  },
+  {
+   "id": 1007355,
+   "name": "Paper Boat Hat"
+  },
+  {
+   "id": 1007356,
+   "name": "Coke Hat"
+  },
+  {
+   "id": 1007357,
+   "name": "Skull Hat"
+  },
+  {
+   "id": 1007358,
+   "name": "White Puppy Hat"
+  },
+  {
+   "id": 1007359,
+   "name": "Paper Bag"
+  },
+  {
+   "id": 1007360,
+   "name": "Acorn Headgear"
+  },
+  {
+   "id": 1007361,
+   "name": "Acorn Helmet"
+  },
+  {
+   "id": 1007363,
+   "name": "Yellow Slime Hat"
+  },
+  {
+   "id": 1007364,
+   "name": "White Rabbit Hat"
+  },
+  {
+   "id": 1007365,
+   "name": "Black Cat Hat"
+  },
+  {
+   "id": 1007366,
+   "name": "Moon Bunny Headgear"
+  },
+  {
+   "id": 1007369,
+   "name": "Jr. Lioner Hat"
+  },
+  {
+   "id": 1007370,
+   "name": "Werebeast"
+  },
+  {
+   "id": 1007371,
+   "name": "Nordic Knitted Beanie"
+  },
+  {
+   "id": 1007372,
+   "name": "Striped Knitted Beanie"
+  },
+  {
+   "id": 1007373,
+   "name": "Fur Hat"
+  },
+  {
+   "id": 1007375,
+   "name": "Elf Hat"
+  },
+  {
+   "id": 1007376,
+   "name": "Tweed Headband"
+  },
+  {
+   "id": 1007377,
+   "name": "Candlelight hat"
+  },
+  {
+   "id": 1007378,
+   "name": "Pastel Cap"
+  },
+  {
+   "id": 1007379,
+   "name": "Angel Headband"
+  },
+  {
+   "id": 1007380,
+   "name": "Fallen Angel Headband"
+  },
+  {
+   "id": 1007381,
+   "name": "Maximus Galea"
+  },
+  {
+   "id": 1007382,
+   "name": "Wrestling Mask"
+  },
+  {
+   "id": 1007383,
+   "name": "Star Baseball Cap"
+  },
+  {
+   "id": 1007384,
+   "name": "Leatty Hat"
+  },
+  {
+   "id": 1007385,
+   "name": "Sun Wu Kong Hat"
+  },
+  {
+   "id": 1007386,
+   "name": "Smiley Headgear"
+  },
+  {
+   "id": 1007387,
+   "name": "Goggled Smiley Headgear"
+  },
+  {
+   "id": 1007388,
+   "name": "Bulldog Cap"
+  },
+  {
+   "id": 1007389,
+   "name": "Husky Hat"
+  },
+  {
+   "id": 1007390,
+   "name": "Rabbit Ear"
+  },
+  {
+   "id": 1007391,
+   "name": "Golden Trench Helmet"
+  },
+  {
+   "id": 1007392,
+   "name": "Jet Black Head Scarf"
+  },
+  {
+   "id": 1007393,
+   "name": "Zhu's Pig Hat"
+  },
+  {
+   "id": 1007394,
+   "name": "Superstar Cap"
+  },
+  {
+   "id": 1007395,
+   "name": "Vintage Grey Cap"
+  },
+  {
+   "id": 1007396,
+   "name": "Stack of Books"
+  },
+  {
+   "id": 1007397,
+   "name": "Orange Mushroom Hat"
+  },
+  {
+   "id": 1007398,
+   "name": "Orange Cap with Shades"
+  },
+  {
+   "id": 1007399,
+   "name": "Bird Nest"
+  },
+  {
+   "id": 1007400,
+   "name": "Tomato Hat"
+  },
+  {
+   "id": 1007401,
+   "name": "White Basic Cap"
+  },
+  {
+   "id": 1007402,
+   "name": "Star Hair Pin"
+  },
+  {
+   "id": 1007403,
+   "name": "Helm of the Golden Monk"
+  },
+  {
+   "id": 1007404,
+   "name": "Helm of the Silver Monk"
+  },
+  {
+   "id": 1007405,
+   "name": "Helm of the Bronze Monk"
+  },
+  {
+   "id": 1007406,
+   "name": "Old Hockey Mask"
+  },
+  {
+   "id": 1007407,
+   "name": "Eye Poppers"
+  },
+  {
+   "id": 1007408,
+   "name": "Centaurus Horns"
+  },
+  {
+   "id": 1007409,
+   "name": "Centaurus Horns (Ghost)"
+  },
+  {
+   "id": 1007410,
+   "name": "Centaurus Horns (Green)"
+  },
+  {
+   "id": 1007411,
+   "name": "Centaurus Horns (Light)"
+  },
+  {
+   "id": 1007412,
+   "name": "Soul Teddy Hat"
+  },
+  {
+   "id": 1007413,
+   "name": "Stoplight Hat"
+  },
+  {
+   "id": 1007414,
+   "name": "Devilfish Headgear"
+  },
+  {
+   "id": 1007415,
+   "name": "Vintage Khaki Cap"
+  },
+  {
+   "id": 1007416,
+   "name": "Big Green Eye"
+  },
+  {
+   "id": 1007417,
+   "name": "Huge Green Lips"
+  },
+  {
+   "id": 1007418,
+   "name": "Big Blue Eye - Bluesy"
+  },
+  {
+   "id": 1007419,
+   "name": "Big Blue Eye - Bright"
+  },
+  {
+   "id": 1007420,
+   "name": "Huge Blue Lips"
+  },
+  {
+   "id": 1007421,
+   "name": "Huge Red Lips"
+  },
+  {
+   "id": 1007422,
+   "name": "Red Vintage Bandana"
+  },
+  {
+   "id": 1007423,
+   "name": "Snowy Knitted Hat"
+  },
+  {
+   "id": 1007424,
+   "name": "Pink Kitty Hat"
+  },
+  {
+   "id": 1007425,
+   "name": "Black Bubble Beanie"
+  },
+  {
+   "id": 1007426,
+   "name": "Military Beanie"
+  },
+  {
+   "id": 1007427,
+   "name": "Lovely Maplemas"
+  },
+  {
+   "id": 1007428,
+   "name": "Raccoon Earmuffs"
+  },
+  {
+   "id": 1007429,
+   "name": "Teddy Earmuffs"
+  },
+  {
+   "id": 1007430,
+   "name": "Cat Hat"
+  },
+  {
+   "id": 1007431,
+   "name": "Pierced Apple"
+  },
+  {
+   "id": 1007432,
+   "name": "Umbrella Hat"
+  },
+  {
+   "id": 1007433,
+   "name": "Huge Pink Ribbon"
+  },
+  {
+   "id": 1007434,
+   "name": "Chinese Lion Headgear"
+  },
+  {
+   "id": 1007435,
+   "name": "Glowy Smile Cap"
+  },
+  {
+   "id": 1007436,
+   "name": "Glowy Patterned Cap"
+  },
+  {
+   "id": 1007437,
+   "name": "Yellow Baby Dragon Hat"
+  },
+  {
+   "id": 1007438,
+   "name": "Baby Turkey Hat"
+  },
+  {
+   "id": 1007439,
+   "name": "Apple-Green Hood"
+  },
+  {
+   "id": 1007440,
+   "name": "Celestial Crown"
+  },
+  {
+   "id": 1007441,
+   "name": "Orange Mushroom Scholar"
+  },
+  {
+   "id": 1007442,
+   "name": "Hero's Beret"
+  },
+  {
+   "id": 1007443,
+   "name": "Hero's Casket"
+  },
+  {
+   "id": 1007444,
+   "name": "Maple Hood Hat"
+  },
+  {
+   "id": 1007445,
+   "name": "Globe Cap"
+  },
+  {
+   "id": 1007446,
+   "name": "Cone Ears"
+  },
+  {
+   "id": 1007447,
+   "name": "Tiger Cub Hat"
+  },
+  {
+   "id": 1007448,
+   "name": "Victory Hairpin"
+  },
+  {
+   "id": 1007449,
+   "name": "\"A\" Cap"
+  },
+  {
+   "id": 1007450,
+   "name": "Prismatic Sun Cap"
+  },
+  {
+   "id": 1007451,
+   "name": "Cutie Birk Hat"
+  },
+  {
+   "id": 1007452,
+   "name": "Mrs. Octopus"
+  },
+  {
+   "id": 1007453,
+   "name": "Brown Felt Hat"
+  },
+  {
+   "id": 1007454,
+   "name": "Striped Bandana"
+  },
+  {
+   "id": 1007455,
+   "name": "Inferno Horns"
+  },
+  {
+   "id": 1007456,
+   "name": "Violet Heart Beanie"
+  },
+  {
+   "id": 1007457,
+   "name": "Bird Nest"
+  },
+  {
+   "id": 1007458,
+   "name": "Scarface Mask"
+  },
+  {
+   "id": 1007459,
+   "name": "Noob Hat"
+  },
+  {
+   "id": 1007460,
+   "name": "Leo Hairpin"
+  },
+  {
+   "id": 1007461,
+   "name": "Scorpius Hairpin"
+  },
+  {
+   "id": 1007462,
+   "name": "Sagittarius Hair Clip"
+  },
+  {
+   "id": 1007463,
+   "name": "Capricorn Hair Clip"
+  },
+  {
+   "id": 1007464,
+   "name": "Tengu Mask"
+  },
+  {
+   "id": 1007466,
+   "name": "Hatched Bird Cap"
+  },
+  {
+   "id": 1007468,
+   "name": "Silver Fox Ears"
+  },
+  {
+   "id": 1007469,
+   "name": "Chipmunk Ears"
+  },
+  {
+   "id": 1007470,
+   "name": "Pink Bunny Cap"
+  },
+  {
+   "id": 1007471,
+   "name": "Blue Bow Beret"
+  },
+  {
+   "id": 1007472,
+   "name": "Frog Hat"
+  },
+  {
+   "id": 1007473,
+   "name": "Panda Hat"
+  },
+  {
+   "id": 1007474,
+   "name": "Bear Tassel Hat"
+  },
+  {
+   "id": 1007475,
+   "name": "Moon Bunny Hat"
+  },
+  {
+   "id": 1007476,
+   "name": "Holly Hair Clip"
+  },
+  {
+   "id": 1007477,
+   "name": "Cow Mask"
+  },
+  {
+   "id": 1007478,
+   "name": "Snow Flake Hat"
+  },
+  {
+   "id": 1007479,
+   "name": "Owl Hat"
+  },
+  {
+   "id": 1007480,
+   "name": "Red Panda Cap"
+  },
+  {
+   "id": 1007481,
+   "name": "Pink Bow"
+  },
+  {
+   "id": 1007482,
+   "name": "Pink Ribbon Hairband"
+  },
+  {
+   "id": 1007483,
+   "name": "Red Ribbon Hairband"
+  },
+  {
+   "id": 1007484,
+   "name": "Purple Ribbon Hairband"
+  },
+  {
+   "id": 1007485,
+   "name": "Blue Ribbon Hairband"
+  },
+  {
+   "id": 1007486,
+   "name": "Green Ribbon Hairband"
+  },
+  {
+   "id": 1007487,
+   "name": "Pink Bandana"
+  },
+  {
+   "id": 1007488,
+   "name": "Checkered Fedora"
+  },
+  {
+   "id": 1007490,
+   "name": "Miranda Ribbon"
+  },
+  {
+   "id": 1007491,
+   "name": "Pink Mini Hat"
+  },
+  {
+   "id": 1007492,
+   "name": "Blue Mini Hat"
+  },
+  {
+   "id": 1007493,
+   "name": "Navy Hoodie Cap"
+  },
+  {
+   "id": 1007494,
+   "name": "Pink Star Beanie"
+  },
+  {
+   "id": 1007495,
+   "name": "Colorful Striped Beanie"
+  },
+  {
+   "id": 1007496,
+   "name": "6th Anniversary Cone Hat"
+  },
+  {
+   "id": 1007497,
+   "name": "Felt Hat"
+  },
+  {
+   "id": 1007498,
+   "name": "Moon Bloom Hair Pin"
+  },
+  {
+   "id": 1007499,
+   "name": "Green Mushroom Hat"
+  },
+  {
+   "id": 1007500,
+   "name": "Honey Bee Hat"
+  },
+  {
+   "id": 1007501,
+   "name": "Heart Hairband"
+  },
+  {
+   "id": 1007502,
+   "name": "Fluttering Sunhat"
+  },
+  {
+   "id": 1007503,
+   "name": "Aran Helmet"
+  },
+  {
+   "id": 1007504,
+   "name": "Brave Musashi Helmet"
+  },
+  {
+   "id": 1007505,
+   "name": "Blue Mushroom Hat"
+  },
+  {
+   "id": 1007507,
+   "name": "Black Crown"
+  },
+  {
+   "id": 1007508,
+   "name": "Gray Mask"
+  },
+  {
+   "id": 1007509,
+   "name": "Peony Flower Accessory"
+  },
+  {
+   "id": 1007510,
+   "name": "Pancake Hat"
+  },
+  {
+   "id": 1007511,
+   "name": "Brown Puppy Ears"
+  },
+  {
+   "id": 1007512,
+   "name": "Mysterious Mask"
+  },
+  {
+   "id": 1007513,
+   "name": "Jr. Lucida Hat"
+  },
+  {
+   "id": 1007514,
+   "name": "Maid Headband"
+  },
+  {
+   "id": 1007515,
+   "name": "Marbum Headgear"
+  },
+  {
+   "id": 1007518,
+   "name": "Maple Racing Helmet"
+  },
+  {
+   "id": 1007519,
+   "name": "Pharaoh Crown"
+  },
+  {
+   "id": 1007520,
+   "name": "Maplemas Light Hairband"
+  },
+  {
+   "id": 1007521,
+   "name": "Dancing Blue Butterfly"
+  },
+  {
+   "id": 1007522,
+   "name": "Red Loose-Fit Beanie"
+  },
+  {
+   "id": 1007523,
+   "name": "Pink Scooter Helmet"
+  },
+  {
+   "id": 1007524,
+   "name": "Blue Scooter Helmet"
+  },
+  {
+   "id": 1007526,
+   "name": "Doll Face Hat"
+  },
+  {
+   "id": 1007527,
+   "name": "Maplemas Bell"
+  },
+  {
+   "id": 1007528,
+   "name": "Clown Hat"
+  },
+  {
+   "id": 1007529,
+   "name": "Bear Hat"
+  },
+  {
+   "id": 1007530,
+   "name": "Maplemas Wreath"
+  },
+  {
+   "id": 1007531,
+   "name": "Giant Bear Cap"
+  },
+  {
+   "id": 1007532,
+   "name": "Desert Fox"
+  },
+  {
+   "id": 1007533,
+   "name": "Tilted Fedora"
+  },
+  {
+   "id": 1007534,
+   "name": "Mini Crown"
+  },
+  {
+   "id": 1007535,
+   "name": "Maplemas Hairpin"
+  },
+  {
+   "id": 1007536,
+   "name": "Tiger-Print Cap"
+  },
+  {
+   "id": 1007537,
+   "name": "Pinky Bow"
+  },
+  {
+   "id": 1007538,
+   "name": "Black-Lace Ribbon"
+  },
+  {
+   "id": 1007539,
+   "name": "Strawberry Hat"
+  },
+  {
+   "id": 1007540,
+   "name": "Knitted Corsage Hat"
+  },
+  {
+   "id": 1007541,
+   "name": "Sparkling Butterfly"
+  },
+  {
+   "id": 1007542,
+   "name": "Green Leaf Hat"
+  },
+  {
+   "id": 1007543,
+   "name": "Cat Set Hat"
+  },
+  {
+   "id": 1007544,
+   "name": "Wolf Hat"
+  },
+  {
+   "id": 1007545,
+   "name": "Sprout Hat"
+  },
+  {
+   "id": 1007546,
+   "name": "Royal Crown"
+  },
+  {
+   "id": 1007550,
+   "name": "6th Anniversary Top Hat"
+  },
+  {
+   "id": 1007551,
+   "name": "Royal Rainbow Hood"
+  },
+  {
+   "id": 1007553,
+   "name": "Yellow Petite Scarf"
+  },
+  {
+   "id": 1007554,
+   "name": "Black Petite Scarf"
+  },
+  {
+   "id": 1007555,
+   "name": "Black Dressy Ribbon"
+  },
+  {
+   "id": 1007556,
+   "name": "Red Bow"
+  },
+  {
+   "id": 1007557,
+   "name": "White Bow"
+  },
+  {
+   "id": 1007559,
+   "name": "Battle Mage Goggles"
+  },
+  {
+   "id": 1007560,
+   "name": "Straw Sun Hat"
+  },
+  {
+   "id": 1007561,
+   "name": "King Crow Hat"
+  },
+  {
+   "id": 1007562,
+   "name": "Dragon Hat"
+  },
+  {
+   "id": 1007563,
+   "name": "Lace Ribbon (Pink)"
+  },
+  {
+   "id": 1007564,
+   "name": "Maid Headband (Blue)"
+  },
+  {
+   "id": 1007565,
+   "name": "Pilot Cap"
+  },
+  {
+   "id": 1007566,
+   "name": "Rabbit Ear Hood"
+  },
+  {
+   "id": 1007567,
+   "name": "Sanctus Combat Veil"
+  },
+  {
+   "id": 1007568,
+   "name": "Brown Hunting Cap"
+  },
+  {
+   "id": 1007569,
+   "name": "Star Head Wrap"
+  },
+  {
+   "id": 1007570,
+   "name": "Leather Cap"
+  },
+  {
+   "id": 1007571,
+   "name": "Pink Cat Hood"
+  },
+  {
+   "id": 1007572,
+   "name": "Gray Cat Hood"
+  },
+  {
+   "id": 1007573,
+   "name": "Rookie Bobble Heart Band"
+  },
+  {
+   "id": 1007574,
+   "name": "Rudolph Santa Hat"
+  },
+  {
+   "id": 1007575,
+   "name": "Courageous Bunny Hat"
+  },
+  {
+   "id": 1007576,
+   "name": "Curly Rabbit Poof"
+  },
+  {
+   "id": 1007577,
+   "name": "Magic Hat"
+  },
+  {
+   "id": 1007578,
+   "name": "Earmuffs and Pom Pom Beanie"
+  },
+  {
+   "id": 1007579,
+   "name": "Blue Snowdrop Cunning Hat"
+  },
+  {
+   "id": 1007580,
+   "name": "Pink Snowdrop Cunning Hat"
+  },
+  {
+   "id": 1007581,
+   "name": "Pirate Captain's Hat"
+  },
+  {
+   "id": 1007582,
+   "name": "Flower Heir Cap"
+  },
+  {
+   "id": 1007583,
+   "name": "Flower Heiress Band"
+  },
+  {
+   "id": 1007584,
+   "name": "Knit Flower Hairband"
+  },
+  {
+   "id": 1007585,
+   "name": "Pink Polka Dot Bow"
+  },
+  {
+   "id": 1007586,
+   "name": "Blue Polka Dot Bow"
+  },
+  {
+   "id": 1007587,
+   "name": "Lost Baby Chick"
+  },
+  {
+   "id": 1007588,
+   "name": "Pretty Teddy"
+  },
+  {
+   "id": 1007589,
+   "name": "I'm Honey Rabbit"
+  },
+  {
+   "id": 1007590,
+   "name": "Pink Jeweled Chaplain Hat"
+  },
+  {
+   "id": 1007591,
+   "name": "Blue Jeweled Chaplain Hat"
+  },
+  {
+   "id": 1007592,
+   "name": "Lion Head"
+  },
+  {
+   "id": 1007593,
+   "name": "Gray Puppy Ears"
+  },
+  {
+   "id": 1007594,
+   "name": "Raspberry Candy Hoodie"
+  },
+  {
+   "id": 1007595,
+   "name": "Blueberry Candy Hoodie"
+  },
+  {
+   "id": 1007596,
+   "name": "6th Anniversary Party Hat"
+  },
+  {
+   "id": 1007597,
+   "name": "Mad Hatter's Hat"
+  },
+  {
+   "id": 1007598,
+   "name": "Topaz Musical Note"
+  },
+  {
+   "id": 1007599,
+   "name": "Ruby Musical Note"
+  },
+  {
+   "id": 1007600,
+   "name": "Citrine Musical Note"
+  },
+  {
+   "id": 1007601,
+   "name": "Amethyst Musical Note"
+  },
+  {
+   "id": 1007602,
+   "name": "Amber Musical Note"
+  },
+  {
+   "id": 1007603,
+   "name": "Sapphire Musical Note"
+  },
+  {
+   "id": 1007604,
+   "name": "Quartz Musical Note"
+  },
+  {
+   "id": 1007605,
+   "name": "Emerald Musical Note"
+  },
+  {
+   "id": 1007606,
+   "name": "Rose Tinia Shades"
+  },
+  {
+   "id": 1007607,
+   "name": "Marine Tinia Shades"
+  },
+  {
+   "id": 1007608,
+   "name": "Button-a-Holic Sugar Cap"
+  },
+  {
+   "id": 1007609,
+   "name": "Button-a-holic Toy Cap"
+  },
+  {
+   "id": 1007611,
+   "name": "Bastille Hat"
+  },
+  {
+   "id": 1007613,
+   "name": "Grass Spirit"
+  },
+  {
+   "id": 1007614,
+   "name": "Mermaid Shell"
+  },
+  {
+   "id": 1007615,
+   "name": "Chain Crusher Cap"
+  },
+  {
+   "id": 1007616,
+   "name": "Tic Toc Red Sun Cap"
+  },
+  {
+   "id": 1007617,
+   "name": "Dear Orange Sun Cap"
+  },
+  {
+   "id": 1007618,
+   "name": "Fresh Lemon Sun Cap"
+  },
+  {
+   "id": 1007619,
+   "name": "Lime Green Sun Cap"
+  },
+  {
+   "id": 1007620,
+   "name": "Crystal Blue Sun Cap"
+  },
+  {
+   "id": 1007621,
+   "name": "Night Navy Sun Cap"
+  },
+  {
+   "id": 1007622,
+   "name": "Sweet Purple Sun Cap"
+  },
+  {
+   "id": 1007623,
+   "name": "Rosy Pink Twin Ribbons"
+  },
+  {
+   "id": 1007624,
+   "name": "Crown of Flowers"
+  },
+  {
+   "id": 1007625,
+   "name": "Memorial Angel"
+  },
+  {
+   "id": 1007626,
+   "name": "Alchemist Hat"
+  },
+  {
+   "id": 1007627,
+   "name": "Bat Costume Hood"
+  },
+  {
+   "id": 1007628,
+   "name": "Beanie Headphone"
+  },
+  {
+   "id": 1007629,
+   "name": "Orchid's Black Wing Hat"
+  },
+  {
+   "id": 1007630,
+   "name": "Honeybee Antenna Hairband"
+  },
+  {
+   "id": 1007638,
+   "name": "Imp Hat"
+  },
+  {
+   "id": 1007639,
+   "name": "Dino Cap"
+  },
+  {
+   "id": 1007640,
+   "name": "Garnet Raven Persona"
+  },
+  {
+   "id": 1007641,
+   "name": "Lucia Hat"
+  },
+  {
+   "id": 1007642,
+   "name": "Milk Chocolate Cone"
+  },
+  {
+   "id": 1007643,
+   "name": "Lania's Floral Crown"
+  },
+  {
+   "id": 1007644,
+   "name": "Kitty Cap"
+  },
+  {
+   "id": 1007645,
+   "name": "Pixiemom Hat"
+  },
+  {
+   "id": 1007646,
+   "name": "Green Zodiac Dragon Hat"
+  },
+  {
+   "id": 1007647,
+   "name": "Pink Zodiac Dragon Hat"
+  },
+  {
+   "id": 1007648,
+   "name": "White Zodiac Dragon Hat"
+  },
+  {
+   "id": 1007649,
+   "name": "Green Zodiac Dragon Cake"
+  },
+  {
+   "id": 1007650,
+   "name": "Yellow Zodiac Dragon Cake"
+  },
+  {
+   "id": 1007651,
+   "name": "White Zodiac Dragon Cake"
+  },
+  {
+   "id": 1007652,
+   "name": "Gas Mask and Helmet"
+  },
+  {
+   "id": 1007653,
+   "name": "Crisp Egg Nigiri"
+  },
+  {
+   "id": 1007654,
+   "name": "Fresh Salmon Nigiri"
+  },
+  {
+   "id": 1007655,
+   "name": "Chewy Octopus Nigiri"
+  },
+  {
+   "id": 1007656,
+   "name": "Tangy Fish Egg Nigiri"
+  },
+  {
+   "id": 1007657,
+   "name": "Cute Shrimp Nigiri"
+  },
+  {
+   "id": 1007658,
+   "name": "Alice's Teacup"
+  },
+  {
+   "id": 1007659,
+   "name": "Blue Dragon Horn\r\n"
+  },
+  {
+   "id": 1007660,
+   "name": "Red Dragon Horn"
+  },
+  {
+   "id": 1007661,
+   "name": "Intergalactic Hat"
+  },
+  {
+   "id": 1007662,
+   "name": "Sausage Hat"
+  },
+  {
+   "id": 1007663,
+   "name": "Alice Rabbit Hat"
+  },
+  {
+   "id": 1007664,
+   "name": "Ebony Pimpernel Hat"
+  },
+  {
+   "id": 1007665,
+   "name": "Small Black Devil Hat"
+  },
+  {
+   "id": 1007666,
+   "name": "Sunset-colored Straw Hat"
+  },
+  {
+   "id": 1007667,
+   "name": "Wire Headband"
+  },
+  {
+   "id": 1007668,
+   "name": "Dainty Hat"
+  },
+  {
+   "id": 1007669,
+   "name": "GM Nori's Wing Cap"
+  },
+  {
+   "id": 1007670,
+   "name": "Country Rabbit Hat"
+  },
+  {
+   "id": 1007671,
+   "name": "Strawberry Macaroon Hairpin"
+  },
+  {
+   "id": 1007672,
+   "name": "Macaroon Hairpin"
+  },
+  {
+   "id": 1007673,
+   "name": "Strawberry Cupcake Hairpin"
+  },
+  {
+   "id": 1007674,
+   "name": "Melon Cupcake Hairpin"
+  },
+  {
+   "id": 1007675,
+   "name": "Chocolate Cupcake Hairpin"
+  },
+  {
+   "id": 1007676,
+   "name": "Parfait Cupcake Hairpin"
+  },
+  {
+   "id": 1007677,
+   "name": "Aerial Mystic Black Silk Hat"
+  },
+  {
+   "id": 1007678,
+   "name": "Aerial Mystic Black Silk Ribbon"
+  },
+  {
+   "id": 1007679,
+   "name": "Blue Cat Hood"
+  },
+  {
+   "id": 1007680,
+   "name": "Yellow Cat Hood"
+  },
+  {
+   "id": 1007681,
+   "name": "Mint Star Marine Cap"
+  },
+  {
+   "id": 1007682,
+   "name": "Pink Ribbon Marine Cap"
+  },
+  {
+   "id": 1007683,
+   "name": "Pink Teddy Hat"
+  },
+  {
+   "id": 1007684,
+   "name": "Metal Pink Baseball Cap"
+  },
+  {
+   "id": 1007685,
+   "name": "Metal Crown Nuera"
+  },
+  {
+   "id": 1007686,
+   "name": "Jett's Hat"
+  },
+  {
+   "id": 1007687,
+   "name": "Aqua Shell"
+  },
+  {
+   "id": 1007688,
+   "name": "Cheering Pink"
+  },
+  {
+   "id": 1007689,
+   "name": "Cheering Blue"
+  },
+  {
+   "id": 1007690,
+   "name": "Cheering Green"
+  },
+  {
+   "id": 1007691,
+   "name": "Cheering Gold"
+  },
+  {
+   "id": 1007692,
+   "name": "Yin-Yang Hairpin"
+  },
+  {
+   "id": 1007698,
+   "name": "Maple Red Beret"
+  },
+  {
+   "id": 1007699,
+   "name": "Maple Blue Beret"
+  },
+  {
+   "id": 1007700,
+   "name": "Maple Black Beret"
+  },
+  {
+   "id": 1007701,
+   "name": "Maple Green Beret"
+  },
+  {
+   "id": 1007702,
+   "name": "Hidden Street Red Husky Hat"
+  },
+  {
+   "id": 1007703,
+   "name": "Halloween Leopard Ears"
+  },
+  {
+   "id": 1007704,
+   "name": "Red Pierre Hat"
+  },
+  {
+   "id": 1007705,
+   "name": "Blue Pierre Hat"
+  },
+  {
+   "id": 1007707,
+   "name": "Slither Style Cap"
+  },
+  {
+   "id": 1007708,
+   "name": "Zodiac Snake Cake"
+  },
+  {
+   "id": 1007709,
+   "name": "Ribbon Kitty Ears"
+  },
+  {
+   "id": 1007710,
+   "name": "Blue Point Kitty Hat"
+  },
+  {
+   "id": 1007711,
+   "name": "Harp Seal Mask"
+  },
+  {
+   "id": 1007712,
+   "name": "Zombie Hunter Hat"
+  },
+  {
+   "id": 1007713,
+   "name": "Visor"
+  },
+  {
+   "id": 1007715,
+   "name": "The Bladed Falcon's Helm"
+  },
+  {
+   "id": 1007716,
+   "name": "Bunny Top Hat"
+  },
+  {
+   "id": 1007717,
+   "name": "Blue Love Bonnet"
+  },
+  {
+   "id": 1007718,
+   "name": "Ramling Hair Pin"
+  },
+  {
+   "id": 1007719,
+   "name": "Wild Spike Wig"
+  },
+  {
+   "id": 1007720,
+   "name": "Colorstream Wig"
+  },
+  {
+   "id": 1007721,
+   "name": "Wacky Olympus Wig"
+  },
+  {
+   "id": 1007722,
+   "name": "Goin' Nuclear Wig"
+  },
+  {
+   "id": 1007723,
+   "name": "Succubus Hat"
+  },
+  {
+   "id": 1007724,
+   "name": "Bizarre Fox Mask"
+  },
+  {
+   "id": 1007730,
+   "name": "Iris Psyche"
+  },
+  {
+   "id": 1007732,
+   "name": "Teddy Ribbon"
+  },
+  {
+   "id": 1007733,
+   "name": "Starlight Wings"
+  },
+  {
+   "id": 1007735,
+   "name": "Blue Mossy Mom Hat"
+  },
+  {
+   "id": 1007736,
+   "name": "Jr. Cellion Hat"
+  },
+  {
+   "id": 1007737,
+   "name": "Lupin Hat"
+  },
+  {
+   "id": 1007738,
+   "name": "Yeti Hat"
+  },
+  {
+   "id": 1007739,
+   "name": "Pepe Hat"
+  },
+  {
+   "id": 1007740,
+   "name": "Leaf Diamond"
+  },
+  {
+   "id": 1007741,
+   "name": "Triumphant Ribbon Pig Hat"
+  },
+  {
+   "id": 1007742,
+   "name": "Triumphant Zakum Hat"
+  },
+  {
+   "id": 1007743,
+   "name": "Pink Soda Cap"
+  },
+  {
+   "id": 1007744,
+   "name": "Petite Diablo"
+  },
+  {
+   "id": 1007745,
+   "name": "Hawaiian Sunhat"
+  },
+  {
+   "id": 1007746,
+   "name": "Shadow Hood"
+  },
+  {
+   "id": 1007747,
+   "name": "Anima Ears"
+  },
+  {
+   "id": 1007748,
+   "name": "Azalea Hair Pin"
+  },
+  {
+   "id": 1007749,
+   "name": "Romantic Bamboo Hat"
+  },
+  {
+   "id": 1007750,
+   "name": "Superstar Crown"
+  },
+  {
+   "id": 1007752,
+   "name": "Odette Tiara"
+  },
+  {
+   "id": 1007753,
+   "name": "Odile Tiara"
+  },
+  {
+   "id": 1007755,
+   "name": "Head Cooler"
+  },
+  {
+   "id": 1007757,
+   "name": "Mint Mochi Ice"
+  },
+  {
+   "id": 1007758,
+   "name": "Pink Mochi Ice"
+  },
+  {
+   "id": 1007759,
+   "name": "Chicken Hataroo"
+  },
+  {
+   "id": 1007760,
+   "name": "Puffram Hat"
+  },
+  {
+   "id": 1007761,
+   "name": "Powder Fedora"
+  },
+  {
+   "id": 1007762,
+   "name": "Grab N' Pull"
+  },
+  {
+   "id": 1007763,
+   "name": "Snow Bear Beanie"
+  },
+  {
+   "id": 1007764,
+   "name": "Red Panda Ears"
+  },
+  {
+   "id": 1007765,
+   "name": "Chipmunk Ears"
+  },
+  {
+   "id": 1007766,
+   "name": "Deluxe Rabbit Ears"
+  },
+  {
+   "id": 1007767,
+   "name": "Puppy Ears"
+  },
+  {
+   "id": 1007768,
+   "name": "Bear Ears"
+  },
+  {
+   "id": 1007769,
+   "name": "Rudi's Hat"
+  },
+  {
+   "id": 1007770,
+   "name": "Explorer Cap"
+  },
+  {
+   "id": 1007771,
+   "name": "Deer Headband"
+  },
+  {
+   "id": 1007772,
+   "name": "Guardian Head Band"
+  }
+ ]
+}

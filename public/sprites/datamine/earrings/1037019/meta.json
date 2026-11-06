@@ -1,0 +1,32 @@
+{
+ "id": 1037019,
+ "name": "Halloweenroid Sensor",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ae"
+ ],
+ "islots": [
+  "Ae"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 41,
+   "h": 20,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 2,
+     "y": -6,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEarOverHair"
+  }
+ ]
+}

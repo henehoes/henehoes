@@ -1,0 +1,34 @@
+{
+ "id": 1056000,
+ "name": "White Swimming Suit",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma",
+  "Pn"
+ ],
+ "islots": [
+  "Ma",
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 14,
+   "h": 12,
+   "origin": {
+    "x": 11,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -8,
+     "y": -4,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChestOverPants"
+  }
+ ]
+}

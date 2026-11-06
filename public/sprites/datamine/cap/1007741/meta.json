@@ -1,0 +1,34 @@
+{
+ "id": 1007741,
+ "name": "Triumphant Ribbon Pig Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 77,
+   "h": 67,
+   "origin": {
+    "x": 19,
+    "y": 47,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 5,
+     "y": 8,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

@@ -1,0 +1,34 @@
+{
+ "id": 1007251,
+ "name": "Crow Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 54,
+   "h": 45,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 3,
+     "y": 3,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

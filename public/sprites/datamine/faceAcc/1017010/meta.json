@@ -1,0 +1,32 @@
+{
+ "id": 1017010,
+ "name": "White Kabuki Mask",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 35,
+   "h": 34,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -1,
+     "y": -13,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFaceOverFaceBelowCap"
+  }
+ ]
+}

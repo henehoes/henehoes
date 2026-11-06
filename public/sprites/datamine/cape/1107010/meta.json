@@ -1,0 +1,26 @@
+{
+ "id": 1107010,
+ "name": "Silent Sea of Clouds",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Sr"
+ ],
+ "islots": [
+  "Sr"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 1,
+   "h": 1,
+   "origin": {
+    "x": 0,
+    "y": 0,
+    "isEmpty": false
+   },
+   "maps": {},
+   "position": 0
+  }
+ ]
+}

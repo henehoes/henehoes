@@ -1,0 +1,52 @@
+{
+ "id": 1007005,
+ "name": "Green Swimming Goggles",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 37,
+   "h": 18,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 1,
+     "y": -14,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  },
+  {
+   "key": "defaultAC",
+   "w": 22,
+   "h": 44,
+   "origin": {
+    "x": 5,
+    "y": 4,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 19,
+     "y": 22,
+     "isEmpty": false
+    }
+   },
+   "position": "capAccessoryBelowBody"
+  }
+ ]
+}

@@ -1,0 +1,27 @@
+{
+ "id": 1007653,
+ "name": "Crisp Egg Nigiri",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 31,
+   "h": 22,
+   "origin": {
+    "x": 20,
+    "y": 80,
+    "isEmpty": false
+   },
+   "maps": {},
+   "position": 0
+  }
+ ]
+}

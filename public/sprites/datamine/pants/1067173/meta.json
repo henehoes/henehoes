@@ -1,0 +1,32 @@
+{
+ "id": 1067173,
+ "name": "Underpants",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Pn"
+ ],
+ "islots": [
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "pants",
+   "w": 14,
+   "h": 7,
+   "origin": {
+    "x": 9,
+    "y": 6,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -6,
+     "y": -7,
+     "isEmpty": false
+    }
+   },
+   "position": "pantsBelowShoes"
+  }
+ ]
+}

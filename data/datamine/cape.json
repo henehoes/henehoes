@@ -1,0 +1,225 @@
+{
+ "_comment": "Cash cape items in the game files that are not in the catalogue (not released). Written by scripts/extract-datamine.mjs.",
+ "items": [
+  {
+   "id": 1107000,
+   "name": "Red G-Wing Jetpack"
+  },
+  {
+   "id": 1107001,
+   "name": "Blue G-Wing Jetpack"
+  },
+  {
+   "id": 1107002,
+   "name": "Blue Nymph Wing"
+  },
+  {
+   "id": 1107003,
+   "name": "Green Nymph Wing"
+  },
+  {
+   "id": 1107004,
+   "name": "Yellow Nymph Wing"
+  },
+  {
+   "id": 1107005,
+   "name": "Pink Nymph Wing"
+  },
+  {
+   "id": 1107009,
+   "name": "Well-Loved Pan Lid"
+  },
+  {
+   "id": 1107010,
+   "name": "Silent Sea of Clouds"
+  },
+  {
+   "id": 1107017,
+   "name": "Red Hood Cape"
+  },
+  {
+   "id": 1107018,
+   "name": "Red Landcell Pack"
+  },
+  {
+   "id": 1107019,
+   "name": "Black Landcell Pack"
+  },
+  {
+   "id": 1107020,
+   "name": "Blue Landcell Pack"
+  },
+  {
+   "id": 1107021,
+   "name": "Hero's Cape"
+  },
+  {
+   "id": 1107030,
+   "name": "Pink Ribbon"
+  },
+  {
+   "id": 1107031,
+   "name": "Martial Cape"
+  },
+  {
+   "id": 1107032,
+   "name": "Fallen Angel Wings"
+  },
+  {
+   "id": 1107033,
+   "name": "Christmas Cape"
+  },
+  {
+   "id": 1107034,
+   "name": "Dracula Cloak"
+  },
+  {
+   "id": 1107035,
+   "name": "Tiger Tail"
+  },
+  {
+   "id": 1107036,
+   "name": "Harpie Cape"
+  },
+  {
+   "id": 1107037,
+   "name": "Pink Wings"
+  },
+  {
+   "id": 1107038,
+   "name": "Blue Book Bag"
+  },
+  {
+   "id": 1107039,
+   "name": "Yellow-Green Backpack"
+  },
+  {
+   "id": 1107040,
+   "name": "Hot Pink Backpack"
+  },
+  {
+   "id": 1107041,
+   "name": "Dragonfly Wings"
+  },
+  {
+   "id": 1107042,
+   "name": "Bat's Bane"
+  },
+  {
+   "id": 1107043,
+   "name": "Newspaper Cape"
+  },
+  {
+   "id": 1107044,
+   "name": "Cotton Blanket"
+  },
+  {
+   "id": 1107045,
+   "name": "Summer Kite"
+  },
+  {
+   "id": 1107048,
+   "name": "Sun Wu Kong Tail"
+  },
+  {
+   "id": 1107049,
+   "name": "Veamoth Wings"
+  },
+  {
+   "id": 1107050,
+   "name": "Sachiel Wings"
+  },
+  {
+   "id": 1107051,
+   "name": "Janus Wings"
+  },
+  {
+   "id": 1107053,
+   "name": "Rocket Booster"
+  },
+  {
+   "id": 1107054,
+   "name": "Fallen Angel Tail"
+  },
+  {
+   "id": 1107055,
+   "name": "Chipmunk Tail"
+  },
+  {
+   "id": 1107056,
+   "name": "Elephant Balloon"
+  },
+  {
+   "id": 1107057,
+   "name": "Bunny Doll"
+  },
+  {
+   "id": 1107059,
+   "name": "Pink Wing Bag"
+  },
+  {
+   "id": 1107060,
+   "name": "Pepe Balloon"
+  },
+  {
+   "id": 1107061,
+   "name": "The Flaming Cape"
+  },
+  {
+   "id": 1107062,
+   "name": "Sage Cape"
+  },
+  {
+   "id": 1107063,
+   "name": "Tania Cloak"
+  },
+  {
+   "id": 1107064,
+   "name": "Mercury Cloak"
+  },
+  {
+   "id": 1107066,
+   "name": "Lost Kitty"
+  },
+  {
+   "id": 1107067,
+   "name": "Pirate Emblem Flag"
+  },
+  {
+   "id": 1107068,
+   "name": "Sunfire Wings"
+  },
+  {
+   "id": 1107069,
+   "name": "Zakum Arms"
+  },
+  {
+   "id": 1107071,
+   "name": "Aerial Wave Cape"
+  },
+  {
+   "id": 1107072,
+   "name": "Puppet Strings"
+  },
+  {
+   "id": 1107073,
+   "name": "Peacock Feather Cape"
+  },
+  {
+   "id": 1107074,
+   "name": "White Monkey Balloon"
+  },
+  {
+   "id": 1107075,
+   "name": "Baby Lupin Cape"
+  },
+  {
+   "id": 1107076,
+   "name": "Maple MSX Guitar"
+  },
+  {
+   "id": 1107077,
+   "name": "Blue Wing Bag"
+  }
+ ]
+}

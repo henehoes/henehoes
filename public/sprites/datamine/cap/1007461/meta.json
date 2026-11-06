@@ -1,0 +1,33 @@
+{
+ "id": 1007461,
+ "name": "Scorpius Hairpin",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 29,
+   "h": 31,
+   "origin": {
+    "x": 24,
+    "y": 36,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -22,
+     "y": -13,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

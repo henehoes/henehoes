@@ -1,0 +1,32 @@
+{
+ "id": 1077137,
+ "name": "Red Slime Slippers",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "So"
+ ],
+ "islots": [
+  "So"
+ ],
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 26,
+   "h": 10,
+   "origin": {
+    "x": 11,
+    "y": -11,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "shoesTop"
+  }
+ ]
+}

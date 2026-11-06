@@ -1,0 +1,32 @@
+{
+ "id": 1027058,
+ "name": "Pink Sunglasses",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ay"
+ ],
+ "islots": [
+  "Ay"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 36,
+   "h": 11,
+   "origin": {
+    "x": 18,
+    "y": 5,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -3,
+     "y": -11,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEye"
+  }
+ ]
+}

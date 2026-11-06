@@ -1,0 +1,34 @@
+{
+ "id": 1007017,
+ "name": "Blue Baseball Helmet",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 45,
+   "h": 34,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 6,
+     "y": -11,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

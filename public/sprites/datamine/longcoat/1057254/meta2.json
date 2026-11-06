@@ -1,0 +1,58 @@
+{
+ "parts": [
+  {
+   "key": "mail",
+   "w": 24,
+   "h": 26,
+   "origin": {
+    "x": 7,
+    "y": 10,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChest"
+  },
+  {
+   "key": "mailback",
+   "w": 10,
+   "h": 9,
+   "origin": {
+    "x": -3,
+    "y": -7,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "backMailChest"
+  },
+  {
+   "key": "mailArm",
+   "w": 8,
+   "h": 8,
+   "origin": {
+    "x": -7,
+    "y": 10,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  }
+ ]
+}

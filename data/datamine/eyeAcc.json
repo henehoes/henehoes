@@ -1,0 +1,353 @@
+{
+ "_comment": "Cash eyeAcc items in the game files that are not in the catalogue (not released). Written by scripts/extract-datamine.mjs.",
+ "items": [
+  {
+   "id": 1027000,
+   "name": "Orange Shades"
+  },
+  {
+   "id": 1027001,
+   "name": "Blue Shades"
+  },
+  {
+   "id": 1027002,
+   "name": "Yellow Shades"
+  },
+  {
+   "id": 1027003,
+   "name": "Green Shades"
+  },
+  {
+   "id": 1027005,
+   "name": "Red Hard-Rimmed Glasses"
+  },
+  {
+   "id": 1027006,
+   "name": "Blue Hard-Rimmed Glasses"
+  },
+  {
+   "id": 1027007,
+   "name": "Green Hard-Rimmed Glasses"
+  },
+  {
+   "id": 1027009,
+   "name": "Dark Shades"
+  },
+  {
+   "id": 1027010,
+   "name": "Blue & Red Eye Guard"
+  },
+  {
+   "id": 1027011,
+   "name": "Red Eye Guard"
+  },
+  {
+   "id": 1027012,
+   "name": "Blue Eye Guard"
+  },
+  {
+   "id": 1027013,
+   "name": "Black Eye Guard"
+  },
+  {
+   "id": 1027014,
+   "name": "Brown Aviator Shades"
+  },
+  {
+   "id": 1027015,
+   "name": "Black Aviator Shades"
+  },
+  {
+   "id": 1027016,
+   "name": "Blue Aviator Shades"
+  },
+  {
+   "id": 1027017,
+   "name": "Purple Aviator Shades"
+  },
+  {
+   "id": 1027018,
+   "name": "Crested Eye Patch"
+  },
+  {
+   "id": 1027020,
+   "name": "Red Hearted Eye Patch"
+  },
+  {
+   "id": 1027021,
+   "name": "Purple Starred Eye Patch"
+  },
+  {
+   "id": 1027023,
+   "name": "Spinning Groucho"
+  },
+  {
+   "id": 1027024,
+   "name": "Spinning Piglet"
+  },
+  {
+   "id": 1027025,
+   "name": "White Toy Shades"
+  },
+  {
+   "id": 1027026,
+   "name": "Yellow Toy Shades"
+  },
+  {
+   "id": 1027027,
+   "name": "Orange Sports Goggles"
+  },
+  {
+   "id": 1027030,
+   "name": "Purple Round Shades"
+  },
+  {
+   "id": 1027031,
+   "name": "Orange Round Shades"
+  },
+  {
+   "id": 1027032,
+   "name": "Lead Monocle"
+  },
+  {
+   "id": 1027033,
+   "name": "Cyclist Shades"
+  },
+  {
+   "id": 1027034,
+   "name": "Transparent Eye Accessory"
+  },
+  {
+   "id": 1027035,
+   "name": "Aqua Toy Shades"
+  },
+  {
+   "id": 1027036,
+   "name": "Pink Toy Shades"
+  },
+  {
+   "id": 1027038,
+   "name": "Classic Masquerade Mask"
+  },
+  {
+   "id": 1027039,
+   "name": "Old-School Glasses"
+  },
+  {
+   "id": 1027040,
+   "name": "Metal Shades"
+  },
+  {
+   "id": 1027041,
+   "name": "Red Head-Spinning Glasses"
+  },
+  {
+   "id": 1027042,
+   "name": "Blue Head-Spinning Glasses"
+  },
+  {
+   "id": 1027043,
+   "name": "Hot Teacher Glasses"
+  },
+  {
+   "id": 1027044,
+   "name": "Politician Glasses"
+  },
+  {
+   "id": 1027045,
+   "name": "Bizarre Monocle"
+  },
+  {
+   "id": 1027046,
+   "name": "Scouter"
+  },
+  {
+   "id": 1027047,
+   "name": "Head Bandage"
+  },
+  {
+   "id": 1027048,
+   "name": "Nerdy Glasses"
+  },
+  {
+   "id": 1027049,
+   "name": "Red Bushido Bandana"
+  },
+  {
+   "id": 1027050,
+   "name": "Butterfly Ball Mask"
+  },
+  {
+   "id": 1027051,
+   "name": "Owl Ball Mask"
+  },
+  {
+   "id": 1027052,
+   "name": "Green-Rimmed Glasses"
+  },
+  {
+   "id": 1027053,
+   "name": "Vintage Glasses"
+  },
+  {
+   "id": 1027054,
+   "name": "Red Half-Rim Glasses"
+  },
+  {
+   "id": 1027055,
+   "name": "Future Vision Shades"
+  },
+  {
+   "id": 1027056,
+   "name": "Futuristic Shades"
+  },
+  {
+   "id": 1027057,
+   "name": "Round Shield Shades"
+  },
+  {
+   "id": 1027058,
+   "name": "Pink Sunglasses"
+  },
+  {
+   "id": 1027059,
+   "name": "Pink Aviator Sunglasses"
+  },
+  {
+   "id": 1027060,
+   "name": "Pop-Eye"
+  },
+  {
+   "id": 1027061,
+   "name": "Black Shades"
+  },
+  {
+   "id": 1027062,
+   "name": "Redbeard's Pirate Eye Patch"
+  },
+  {
+   "id": 1027063,
+   "name": "Black Skull Eye Patch"
+  },
+  {
+   "id": 1027064,
+   "name": "Flat Mini Glasses"
+  },
+  {
+   "id": 1027065,
+   "name": "Big Red Glasses"
+  },
+  {
+   "id": 1027066,
+   "name": "Alphabet Glasses"
+  },
+  {
+   "id": 1027067,
+   "name": "Star Spectacles"
+  },
+  {
+   "id": 1027068,
+   "name": "White Shades"
+  },
+  {
+   "id": 1027069,
+   "name": "Orange Shutter Shades"
+  },
+  {
+   "id": 1027070,
+   "name": "Green Shutter Shades"
+  },
+  {
+   "id": 1027071,
+   "name": "Red Shutter Shades"
+  },
+  {
+   "id": 1027072,
+   "name": "Yellow Shutter Shades"
+  },
+  {
+   "id": 1027073,
+   "name": "Gaga Glasses"
+  },
+  {
+   "id": 1027074,
+   "name": "Twinkling Eyes"
+  },
+  {
+   "id": 1027076,
+   "name": "Cracked Glasses"
+  },
+  {
+   "id": 1027077,
+   "name": "Hitman Sunglasses"
+  },
+  {
+   "id": 1027078,
+   "name": "Eye Mask (Red)"
+  },
+  {
+   "id": 1027079,
+   "name": "Pink Eye Mask"
+  },
+  {
+   "id": 1027080,
+   "name": "Blue Eye Mask"
+  },
+  {
+   "id": 1027082,
+   "name": "I Like Money"
+  },
+  {
+   "id": 1027083,
+   "name": "LED Sunglasses"
+  },
+  {
+   "id": 1027084,
+   "name": "3D Glasses"
+  },
+  {
+   "id": 1027085,
+   "name": "Yellow Two-Toned Shades"
+  },
+  {
+   "id": 1027086,
+   "name": "Pink Two-Toned Shades"
+  },
+  {
+   "id": 1027087,
+   "name": "Big White Sunglasses"
+  },
+  {
+   "id": 1027088,
+   "name": "X-Ray Goggles"
+  },
+  {
+   "id": 1027089,
+   "name": "6th B-Day Party Glasses"
+  },
+  {
+   "id": 1027090,
+   "name": "Silky Black Eye Patch"
+  },
+  {
+   "id": 1027091,
+   "name": "Star Sunglasses"
+  },
+  {
+   "id": 1027092,
+   "name": "Broken Up Today"
+  },
+  {
+   "id": 1027093,
+   "name": "Money Lover"
+  },
+  {
+   "id": 1027094,
+   "name": "Futuroid VR Visor"
+  },
+  {
+   "id": 1027095,
+   "name": "Aviator Shades"
+  }
+ ]
+}

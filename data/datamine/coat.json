@@ -1,0 +1,1029 @@
+{
+ "_comment": "Cash coat items in the game files that are not in the catalogue (not released). Written by scripts/extract-datamine.mjs.",
+ "items": [
+  {
+   "id": 1045000,
+   "name": "Hawaiian Shirt"
+  },
+  {
+   "id": 1046000,
+   "name": "Hawaiian Shirt"
+  },
+  {
+   "id": 1047001,
+   "name": "Black Hooded Vest"
+  },
+  {
+   "id": 1047002,
+   "name": "Red Hooded Vest"
+  },
+  {
+   "id": 1047003,
+   "name": "Pink Hooded Vest"
+  },
+  {
+   "id": 1047004,
+   "name": "Pink Camping Shirt"
+  },
+  {
+   "id": 1047006,
+   "name": "Blue Camping Shirt"
+  },
+  {
+   "id": 1047007,
+   "name": "Basic Wildcats Baseball Shirt"
+  },
+  {
+   "id": 1047008,
+   "name": "Home Wildcats Baseball Shirt"
+  },
+  {
+   "id": 1047009,
+   "name": "Away Wildcats Baseball Shirt"
+  },
+  {
+   "id": 1047010,
+   "name": "Alternate Wildcats Baseball Shirt"
+  },
+  {
+   "id": 1047011,
+   "name": "Yellow Snowboard Top"
+  },
+  {
+   "id": 1047012,
+   "name": "Green Snowboard Top"
+  },
+  {
+   "id": 1047013,
+   "name": "Yellow Layered Combo"
+  },
+  {
+   "id": 1047014,
+   "name": "Blue Layered Combo"
+  },
+  {
+   "id": 1047016,
+   "name": "Sky Blue Snowboard Top"
+  },
+  {
+   "id": 1047017,
+   "name": "Red Shirt with Heart"
+  },
+  {
+   "id": 1047018,
+   "name": "M Layered T-Shirt"
+  },
+  {
+   "id": 1047019,
+   "name": "Old Military Uniform"
+  },
+  {
+   "id": 1047020,
+   "name": "Camouflage Uniform"
+  },
+  {
+   "id": 1047022,
+   "name": "Red Polka-Dot Pajama Top"
+  },
+  {
+   "id": 1047024,
+   "name": "Flowery Dress Shirt"
+  },
+  {
+   "id": 1047026,
+   "name": "Orange Mushroom T-Shirt"
+  },
+  {
+   "id": 1047028,
+   "name": "Beige Double Coat"
+  },
+  {
+   "id": 1047029,
+   "name": "Green Double Coat"
+  },
+  {
+   "id": 1047030,
+   "name": "Red Double Coat"
+  },
+  {
+   "id": 1047031,
+   "name": "Christmas Padded Jacket"
+  },
+  {
+   "id": 1047032,
+   "name": "Snowman Padded Jacket"
+  },
+  {
+   "id": 1047033,
+   "name": "Red Sweater"
+  },
+  {
+   "id": 1047034,
+   "name": "Sky Blue Allstar"
+  },
+  {
+   "id": 1047036,
+   "name": "Black Allstar"
+  },
+  {
+   "id": 1047038,
+   "name": "Green Striped Rugby Tee"
+  },
+  {
+   "id": 1047039,
+   "name": "Pink Striped Rugby Tee"
+  },
+  {
+   "id": 1047040,
+   "name": "Bowling Shirt"
+  },
+  {
+   "id": 1047045,
+   "name": "Red Rider"
+  },
+  {
+   "id": 1047046,
+   "name": "Shine Rider"
+  },
+  {
+   "id": 1047047,
+   "name": "Dark Rider"
+  },
+  {
+   "id": 1047048,
+   "name": "Blue Striped Trainer"
+  },
+  {
+   "id": 1047049,
+   "name": "Green Striped Trainer"
+  },
+  {
+   "id": 1047050,
+   "name": "Orange Striped Trainer"
+  },
+  {
+   "id": 1047051,
+   "name": "Green Disco Shirt"
+  },
+  {
+   "id": 1047052,
+   "name": "Orange Disco Shirt"
+  },
+  {
+   "id": 1047053,
+   "name": "Original Disco Shirt"
+  },
+  {
+   "id": 1047054,
+   "name": "Wild Top"
+  },
+  {
+   "id": 1047055,
+   "name": "Brown Wild Top"
+  },
+  {
+   "id": 1047056,
+   "name": "Red Wild Top"
+  },
+  {
+   "id": 1047057,
+   "name": "Pre-School Uniform Top"
+  },
+  {
+   "id": 1047062,
+   "name": "Military Cargo Jacket"
+  },
+  {
+   "id": 1047063,
+   "name": "Heart Tank Top"
+  },
+  {
+   "id": 1047064,
+   "name": "Blue Line Tank Top"
+  },
+  {
+   "id": 1047065,
+   "name": "Red Casual Suit"
+  },
+  {
+   "id": 1047066,
+   "name": "Green Tie Casual Suit"
+  },
+  {
+   "id": 1047067,
+   "name": "Pink Tie Casual Suit"
+  },
+  {
+   "id": 1047068,
+   "name": "Palm Tree Tank Top"
+  },
+  {
+   "id": 1047070,
+   "name": "Blue Sailor Shirt"
+  },
+  {
+   "id": 1047071,
+   "name": "Pink Mimi Blouse"
+  },
+  {
+   "id": 1047073,
+   "name": "Pre-School Uniform Top"
+  },
+  {
+   "id": 1047074,
+   "name": "Pink Top"
+  },
+  {
+   "id": 1047077,
+   "name": "Sky Blue Trainer Jacket"
+  },
+  {
+   "id": 1047078,
+   "name": "Pink Trainer Jacket"
+  },
+  {
+   "id": 1047079,
+   "name": "Black Trainer Jacket"
+  },
+  {
+   "id": 1047080,
+   "name": "Pink Frill Pajama Top"
+  },
+  {
+   "id": 1047083,
+   "name": "Heart Sleeveless"
+  },
+  {
+   "id": 1047084,
+   "name": "Cross Sleeveless"
+  },
+  {
+   "id": 1047085,
+   "name": "Yellow Frill Camisole"
+  },
+  {
+   "id": 1047086,
+   "name": "Blue Frill Camisole"
+  },
+  {
+   "id": 1047087,
+   "name": "Pink Ribboned Janie"
+  },
+  {
+   "id": 1047088,
+   "name": "White Collared Shirt"
+  },
+  {
+   "id": 1047104,
+   "name": "Prep School Uniform"
+  },
+  {
+   "id": 1047105,
+   "name": "Long Blue Shirt"
+  },
+  {
+   "id": 1047106,
+   "name": "Orange Puffy Jacket"
+  },
+  {
+   "id": 1047107,
+   "name": "Muscle Man T"
+  },
+  {
+   "id": 1047108,
+   "name": "Tania Tailored Jacket"
+  },
+  {
+   "id": 1047109,
+   "name": "Mercury Leather Jacket"
+  },
+  {
+   "id": 1047110,
+   "name": "Island Beads"
+  },
+  {
+   "id": 1047111,
+   "name": "Bulletproof Vest"
+  },
+  {
+   "id": 1047112,
+   "name": "Cowboy Shirt"
+  },
+  {
+   "id": 1047113,
+   "name": "Sky Blue Mimi Blouse"
+  },
+  {
+   "id": 1047114,
+   "name": "Yellow Mimi Blouse"
+  },
+  {
+   "id": 1047115,
+   "name": "SF Ninja Top"
+  },
+  {
+   "id": 1047116,
+   "name": "Pink Frill Camisole"
+  },
+  {
+   "id": 1047117,
+   "name": "Grey Cardigan"
+  },
+  {
+   "id": 1047118,
+   "name": "Angora Mustang"
+  },
+  {
+   "id": 1047119,
+   "name": "Tube-Top Jacket"
+  },
+  {
+   "id": 1047120,
+   "name": "Pink Vest Blouse"
+  },
+  {
+   "id": 1047121,
+   "name": "Pink-Dotted Top"
+  },
+  {
+   "id": 1047122,
+   "name": "Tania Bolero"
+  },
+  {
+   "id": 1047123,
+   "name": "Mercury Leather Jacket"
+  },
+  {
+   "id": 1047124,
+   "name": "Island Beads"
+  },
+  {
+   "id": 1047125,
+   "name": "Ribbon Frilled top"
+  },
+  {
+   "id": 1047126,
+   "name": "Cowgirl Shirt"
+  },
+  {
+   "id": 1047127,
+   "name": "Starry Layered Combo"
+  },
+  {
+   "id": 1047128,
+   "name": "Blue B-Ball Jersey"
+  },
+  {
+   "id": 1047129,
+   "name": "Orange B-Ball Jersey"
+  },
+  {
+   "id": 1047130,
+   "name": "Octopus T-Shirt"
+  },
+  {
+   "id": 1047131,
+   "name": "Star-Patterned Yellow Shirt"
+  },
+  {
+   "id": 1047132,
+   "name": "Purple Star Shirt"
+  },
+  {
+   "id": 1047133,
+   "name": "Short Denim Jacket"
+  },
+  {
+   "id": 1047134,
+   "name": "Baseball Jumper"
+  },
+  {
+   "id": 1047136,
+   "name": "Blue Down Parka"
+  },
+  {
+   "id": 1047137,
+   "name": "Blue Wool Jacket"
+  },
+  {
+   "id": 1047138,
+   "name": "Pink Wool Jacket"
+  },
+  {
+   "id": 1047139,
+   "name": "Beat Shirt"
+  },
+  {
+   "id": 1047140,
+   "name": "Red Half"
+  },
+  {
+   "id": 1047141,
+   "name": "Preppy Red and White"
+  },
+  {
+   "id": 1047142,
+   "name": "Pola Sweater"
+  },
+  {
+   "id": 1047143,
+   "name": "Ball Zone Jumper"
+  },
+  {
+   "id": 1047144,
+   "name": "Stitched Leather Jacket"
+  },
+  {
+   "id": 1047145,
+   "name": "Red Turtleneck Sweater"
+  },
+  {
+   "id": 1047146,
+   "name": "Football Jersey (Home)"
+  },
+  {
+   "id": 1047147,
+   "name": "Football Top (Away)"
+  },
+  {
+   "id": 1047148,
+   "name": "Orange Hooded Zip-Up"
+  },
+  {
+   "id": 1047149,
+   "name": "Drill Muffler"
+  },
+  {
+   "id": 1047150,
+   "name": "Pink Big-Belt Shirt"
+  },
+  {
+   "id": 1047151,
+   "name": "Sky Blue Big-Belt Shirt"
+  },
+  {
+   "id": 1047152,
+   "name": "Pastel Layered Hooded Shirt"
+  },
+  {
+   "id": 1047153,
+   "name": "Red Layered Hooded Shirt"
+  },
+  {
+   "id": 1047154,
+   "name": "Navy Blue Dress Shirt"
+  },
+  {
+   "id": 1047155,
+   "name": "White Longsleeve With Star"
+  },
+  {
+   "id": 1047156,
+   "name": "Pink Pluto T"
+  },
+  {
+   "id": 1047157,
+   "name": "Dotted Disco Shirt"
+  },
+  {
+   "id": 1047158,
+   "name": "Rainbow T"
+  },
+  {
+   "id": 1047159,
+   "name": "White & Blue Sailor Top"
+  },
+  {
+   "id": 1047160,
+   "name": "Red Hot Racer T"
+  },
+  {
+   "id": 1047161,
+   "name": "Rainbow Hooded Pancho"
+  },
+  {
+   "id": 1047162,
+   "name": "Army General Hoodie"
+  },
+  {
+   "id": 1047163,
+   "name": "Canary Heart T"
+  },
+  {
+   "id": 1047164,
+   "name": "Skull Shirt"
+  },
+  {
+   "id": 1047165,
+   "name": "Black Skull Hooded Vest"
+  },
+  {
+   "id": 1047166,
+   "name": "Blue Skull Hooded Vest"
+  },
+  {
+   "id": 1047167,
+   "name": "Red Skull Hooded Vest"
+  },
+  {
+   "id": 1047168,
+   "name": "Pink Skull Hooded Vest"
+  },
+  {
+   "id": 1047169,
+   "name": "Pointed Double Coat"
+  },
+  {
+   "id": 1047170,
+   "name": "Orange Snowflake Sweater"
+  },
+  {
+   "id": 1047171,
+   "name": "Vintage Hooded Shirt"
+  },
+  {
+   "id": 1047172,
+   "name": "M Shirt"
+  },
+  {
+   "id": 1047173,
+   "name": "Print Layered Hoody"
+  },
+  {
+   "id": 1047174,
+   "name": "Camo Hooded Jacket"
+  },
+  {
+   "id": 1047175,
+   "name": "Striped Hooded Shirt"
+  },
+  {
+   "id": 1047176,
+   "name": "Checkered Casual Suit"
+  },
+  {
+   "id": 1047177,
+   "name": "Blanc Rose Top"
+  },
+  {
+   "id": 1047178,
+   "name": "Aqua Road Shirt"
+  },
+  {
+   "id": 1047179,
+   "name": "White Outlaw Shirt"
+  },
+  {
+   "id": 1047180,
+   "name": "Lime Green Sleeveless"
+  },
+  {
+   "id": 1047181,
+   "name": "Crown Hooded T"
+  },
+  {
+   "id": 1047182,
+   "name": "Rainbow-Striped Hoodie"
+  },
+  {
+   "id": 1047183,
+   "name": "Pink Flower T-shirt"
+  },
+  {
+   "id": 1047184,
+   "name": "Purple Tank"
+  },
+  {
+   "id": 1047185,
+   "name": "Yellow & Red-Striped Jacket"
+  },
+  {
+   "id": 1047186,
+   "name": "Orange Pea Coat"
+  },
+  {
+   "id": 1047187,
+   "name": "Green Baseball Jacket"
+  },
+  {
+   "id": 1047188,
+   "name": "Red Checkered Shirt"
+  },
+  {
+   "id": 1047189,
+   "name": "Vintage Muffler Jacket"
+  },
+  {
+   "id": 1047190,
+   "name": "Celeste Blue Double Coat"
+  },
+  {
+   "id": 1047191,
+   "name": "Opera Pink Double Coat"
+  },
+  {
+   "id": 1047192,
+   "name": "Bowtie Jacket"
+  },
+  {
+   "id": 1047194,
+   "name": "Red and Black Blazer"
+  },
+  {
+   "id": 1047195,
+   "name": "Green Suspenders"
+  },
+  {
+   "id": 1047196,
+   "name": "Apple-Green Sweater"
+  },
+  {
+   "id": 1047197,
+   "name": "\"Black Tie Affair\" Dress Shirt"
+  },
+  {
+   "id": 1047198,
+   "name": "Gold Chainz"
+  },
+  {
+   "id": 1047199,
+   "name": "Preppy Black Vest"
+  },
+  {
+   "id": 1047200,
+   "name": "Aqua Green Star"
+  },
+  {
+   "id": 1047201,
+   "name": "Striped Hoodie Shirt"
+  },
+  {
+   "id": 1047202,
+   "name": "Yellow Shirt with Pads"
+  },
+  {
+   "id": 1047203,
+   "name": "Dark Master Sergeant for Transformation"
+  },
+  {
+   "id": 1047204,
+   "name": "Red Legolesse for Transformation"
+  },
+  {
+   "id": 1047205,
+   "name": "Dark Tech Top"
+  },
+  {
+   "id": 1047206,
+   "name": "The White Tee"
+  },
+  {
+   "id": 1047208,
+   "name": "Rainbow Top"
+  },
+  {
+   "id": 1047209,
+   "name": "Disco Tank Top"
+  },
+  {
+   "id": 1047210,
+   "name": "Checkered Resort Shirt"
+  },
+  {
+   "id": 1047211,
+   "name": "Layered Duckie T"
+  },
+  {
+   "id": 1047212,
+   "name": "Preppy Knit Vest"
+  },
+  {
+   "id": 1047213,
+   "name": "80's Knit Pullover"
+  },
+  {
+   "id": 1047214,
+   "name": "Brown Argyle Sweater"
+  },
+  {
+   "id": 1047215,
+   "name": "Rainbow Knitted Top"
+  },
+  {
+   "id": 1047216,
+   "name": "Red Plaid Duffle Coat"
+  },
+  {
+   "id": 1047217,
+   "name": "Bohemian Hooded Jacket"
+  },
+  {
+   "id": 1047218,
+   "name": "Sky Rider Jacket"
+  },
+  {
+   "id": 1047219,
+   "name": "Galaxy T-Shirt"
+  },
+  {
+   "id": 1047220,
+   "name": "Lovely Pink Heart T-Shirt"
+  },
+  {
+   "id": 1047221,
+   "name": "Monotone Jacket"
+  },
+  {
+   "id": 1047222,
+   "name": "Navy Hoodie"
+  },
+  {
+   "id": 1047223,
+   "name": "Yellow Spring Jacket"
+  },
+  {
+   "id": 1047224,
+   "name": "Blue-Striped Undershirt"
+  },
+  {
+   "id": 1047225,
+   "name": "Pink Heart T-Shirt & Muffler"
+  },
+  {
+   "id": 1047226,
+   "name": "Green Tie & Shirt"
+  },
+  {
+   "id": 1047227,
+   "name": "Pink Bowtie & White Vest"
+  },
+  {
+   "id": 1047228,
+   "name": "Leather Biker Jacket"
+  },
+  {
+   "id": 1047229,
+   "name": "Lightning T-Shirt"
+  },
+  {
+   "id": 1047230,
+   "name": "Rainbow Tie-Dye Shirt"
+  },
+  {
+   "id": 1047231,
+   "name": "Super Summer Shirt"
+  },
+  {
+   "id": 1047232,
+   "name": "Preppy Blue Shirt"
+  },
+  {
+   "id": 1047233,
+   "name": "Green Polo"
+  },
+  {
+   "id": 1047234,
+   "name": "Camping Shirt"
+  },
+  {
+   "id": 1047235,
+   "name": "I Love CN Top"
+  },
+  {
+   "id": 1047236,
+   "name": "Vintage Hoodie Jacket"
+  },
+  {
+   "id": 1047237,
+   "name": "Puppy Tee"
+  },
+  {
+   "id": 1047238,
+   "name": "Napoleon Jacket"
+  },
+  {
+   "id": 1047239,
+   "name": "Denim Hoodie"
+  },
+  {
+   "id": 1047240,
+   "name": "Pink Argyle Plaid"
+  },
+  {
+   "id": 1047241,
+   "name": "Tiger-Print Scarf & Top"
+  },
+  {
+   "id": 1047242,
+   "name": "JM's Street Gear"
+  },
+  {
+   "id": 1047243,
+   "name": "Fur Vest"
+  },
+  {
+   "id": 1047244,
+   "name": "Pink Sweater"
+  },
+  {
+   "id": 1047245,
+   "name": "Puffy Raglan Tee"
+  },
+  {
+   "id": 1047246,
+   "name": "Lamb Wool Top"
+  },
+  {
+   "id": 1047247,
+   "name": "Dual-Color Heart Tee"
+  },
+  {
+   "id": 1047248,
+   "name": "Padded Vest"
+  },
+  {
+   "id": 1047249,
+   "name": "Rainbow Tee"
+  },
+  {
+   "id": 1047250,
+   "name": "Pink Smiley Tee"
+  },
+  {
+   "id": 1047251,
+   "name": "Blue Smiley Tee"
+  },
+  {
+   "id": 1047252,
+   "name": "Penguin Tee"
+  },
+  {
+   "id": 1047253,
+   "name": "Orange Scarf Tee"
+  },
+  {
+   "id": 1047254,
+   "name": "Hamburger Tee"
+  },
+  {
+   "id": 1047255,
+   "name": "Black Rider Jacket"
+  },
+  {
+   "id": 1047256,
+   "name": "Star Trainer Jacket"
+  },
+  {
+   "id": 1047257,
+   "name": "Elephant Hoody"
+  },
+  {
+   "id": 1047258,
+   "name": "Mustang Vest Green Tee"
+  },
+  {
+   "id": 1047259,
+   "name": "Mustang Vest Pink Tee"
+  },
+  {
+   "id": 1047260,
+   "name": "Blue Spring Jacket"
+  },
+  {
+   "id": 1047261,
+   "name": "Pink Spring Jacket"
+  },
+  {
+   "id": 1047262,
+   "name": "Spring Sweater Set"
+  },
+  {
+   "id": 1047263,
+   "name": "Jester Sweater"
+  },
+  {
+   "id": 1047264,
+   "name": "Red Viva Baseball"
+  },
+  {
+   "id": 1047265,
+   "name": "Black Viva Baseball"
+  },
+  {
+   "id": 1047266,
+   "name": "Raspberry Candy T-Shirt"
+  },
+  {
+   "id": 1047267,
+   "name": "Blue Stars T-Shirt"
+  },
+  {
+   "id": 1047268,
+   "name": "Shiny Training Top"
+  },
+  {
+   "id": 1047269,
+   "name": "Lemon Freshness"
+  },
+  {
+   "id": 1047270,
+   "name": "Cutie Raincoat"
+  },
+  {
+   "id": 1047271,
+   "name": "Bat Costume Sweater"
+  },
+  {
+   "id": 1047272,
+   "name": "Rabbit Top"
+  },
+  {
+   "id": 1047273,
+   "name": "Green Apple Sweater"
+  },
+  {
+   "id": 1047274,
+   "name": "Gold Tailor Vest"
+  },
+  {
+   "id": 1047275,
+   "name": "Colorful T-Shirt"
+  },
+  {
+   "id": 1047276,
+   "name": "Flying Violet"
+  },
+  {
+   "id": 1047277,
+   "name": "Summer Picnic"
+  },
+  {
+   "id": 1047278,
+   "name": "Slither Style Hoodie"
+  },
+  {
+   "id": 1047279,
+   "name": "Cute Sleeveless Shirt"
+  },
+  {
+   "id": 1047280,
+   "name": "Strawberry Shirt"
+  },
+  {
+   "id": 1047281,
+   "name": "Exciting Hoodie"
+  },
+  {
+   "id": 1047282,
+   "name": "Ribbon Days"
+  },
+  {
+   "id": 1047283,
+   "name": "Meow T-shirt"
+  },
+  {
+   "id": 1047284,
+   "name": "Frog Raindrop"
+  },
+  {
+   "id": 1047285,
+   "name": "Denim Hoodie"
+  },
+  {
+   "id": 1047286,
+   "name": "Hun T-Shirt"
+  },
+  {
+   "id": 1047287,
+   "name": "Min T-Shirt"
+  },
+  {
+   "id": 1047288,
+   "name": "Jeong T-Shirt"
+  },
+  {
+   "id": 1047289,
+   "name": "Eum T-Shirt"
+  },
+  {
+   "id": 1047290,
+   "name": "Pastel Dot Tee"
+  },
+  {
+   "id": 1047291,
+   "name": "Guardian Clothing"
+  },
+  {
+   "id": 1047292,
+   "name": "Couple Shirt"
+  },
+  {
+   "id": 1047293,
+   "name": "Bunny Love T-Shirt"
+  },
+  {
+   "id": 1047294,
+   "name": "Friendship Shirt"
+  }
+ ]
+}

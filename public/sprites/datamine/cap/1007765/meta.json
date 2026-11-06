@@ -1,0 +1,27 @@
+{
+ "id": 1007765,
+ "name": "Chipmunk Ears",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 1,
+   "h": 1,
+   "origin": {
+    "x": 0,
+    "y": 0,
+    "isEmpty": false
+   },
+   "maps": {},
+   "position": 0
+  }
+ ]
+}

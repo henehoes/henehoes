@@ -1,0 +1,33 @@
+{
+ "id": 1087037,
+ "name": "Star Gloves",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "rGlove",
+   "w": 8,
+   "h": 8,
+   "origin": {
+    "x": 11,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -20,
+     "y": -11,
+     "isEmpty": false
+    }
+   },
+   "position": "glove"
+  }
+ ]
+}

@@ -1,0 +1,76 @@
+{
+ "parts": [
+  {
+   "key": "mail",
+   "w": 39,
+   "h": 31,
+   "origin": {
+    "x": 6,
+    "y": 10,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChestOverPants"
+  },
+  {
+   "key": "mailArm",
+   "w": 7,
+   "h": 9,
+   "origin": {
+    "x": -6,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailArm"
+  },
+  {
+   "key": "mail_tail",
+   "w": 37,
+   "h": 18,
+   "origin": {
+    "x": -12,
+    "y": -2,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChestOverPants"
+  },
+  {
+   "key": "mail_under",
+   "w": 13,
+   "h": 9,
+   "origin": {
+    "x": 1,
+    "y": -6,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "pants"
+  }
+ ]
+}

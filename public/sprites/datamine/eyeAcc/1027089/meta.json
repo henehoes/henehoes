@@ -1,0 +1,32 @@
+{
+ "id": 1027089,
+ "name": "6th B-Day Party Glasses",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ay"
+ ],
+ "islots": [
+  "Ay"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 34,
+   "h": 16,
+   "origin": {
+    "x": 16,
+    "y": -4,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "hairOverHead"
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+{
+ "id": 1037011,
+ "name": "Clover Earrings",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ae"
+ ],
+ "islots": [
+  "Ae"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 40,
+   "h": 11,
+   "origin": {
+    "x": 16,
+    "y": -14,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryEar"
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "parts": [
+  {
+   "key": "rWrist",
+   "w": 6,
+   "h": 8,
+   "origin": {
+    "x": -7,
+    "y": 3,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveWristOverHair"
+  }
+ ]
+}

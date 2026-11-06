@@ -1,0 +1,32 @@
+{
+ "id": 1017065,
+ "name": "Taegeuk Paint (Korea)",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 31,
+   "h": 26,
+   "origin": {
+    "x": 15,
+    "y": 20,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -2,
+     "y": -17,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFaceBelowFace"
+  }
+ ]
+}

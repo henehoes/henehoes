@@ -1,0 +1,34 @@
+{
+ "id": 1057376,
+ "name": "Green Leaf Overall",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Ma",
+  "Pn"
+ ],
+ "islots": [
+  "Ma",
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "mail",
+   "w": 23,
+   "h": 23,
+   "origin": {
+    "x": 11,
+    "y": 11,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -5,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "mailChest"
+  }
+ ]
+}

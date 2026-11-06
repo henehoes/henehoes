@@ -1,0 +1,32 @@
+{
+ "id": 1077147,
+ "name": "Orange Sneakz",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "So"
+ ],
+ "islots": [
+  "So"
+ ],
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 23,
+   "h": 7,
+   "origin": {
+    "x": 10,
+    "y": -14,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "shoesOverPants"
+  }
+ ]
+}

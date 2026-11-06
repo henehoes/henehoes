@@ -1,0 +1,40 @@
+{
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 14,
+   "h": 13,
+   "origin": {
+    "x": -6,
+    "y": -10,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "shoesTop"
+  },
+  {
+   "key": "shoesBack",
+   "w": 9,
+   "h": 11,
+   "origin": {
+    "x": 3,
+    "y": -10,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capAccessoryBelowBody"
+  }
+ ]
+}

@@ -1,0 +1,43 @@
+{
+ "id": 1007370,
+ "name": "Werebeast",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hf",
+  "Hb",
+  "Hx",
+  "Hs"
+ ],
+ "islots": [
+  "Hr",
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 46,
+   "h": 48,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 4,
+     "y": -3,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

@@ -1,0 +1,22 @@
+{
+ "parts": [
+  {
+   "key": "Gold",
+   "w": 35,
+   "h": 24,
+   "origin": {
+    "x": 10,
+    "y": 30,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

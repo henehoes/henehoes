@@ -1,0 +1,34 @@
+{
+ "id": 1007234,
+ "name": "Black Top Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 64,
+   "h": 39,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 14,
+     "y": 5,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

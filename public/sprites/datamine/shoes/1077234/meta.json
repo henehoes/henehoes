@@ -1,0 +1,32 @@
+{
+ "id": 1077234,
+ "name": "Ramling Slippers",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "So"
+ ],
+ "islots": [
+  "So"
+ ],
+ "parts": [
+  {
+   "key": "shoes",
+   "w": 25,
+   "h": 8,
+   "origin": {
+    "x": 10,
+    "y": -13,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "weaponOverBody"
+  }
+ ]
+}

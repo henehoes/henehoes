@@ -1,0 +1,737 @@
+{
+ "_comment": "Cash pants items in the game files that are not in the catalogue (not released). Written by scripts/extract-datamine.mjs.",
+ "items": [
+  {
+   "id": 1067000,
+   "name": "Red Hip-Hop Pants"
+  },
+  {
+   "id": 1067002,
+   "name": "Pink Camping Shorts"
+  },
+  {
+   "id": 1067004,
+   "name": "Blue Camping Shorts"
+  },
+  {
+   "id": 1067005,
+   "name": "Basic Wildcats Baseball Pants"
+  },
+  {
+   "id": 1067006,
+   "name": "Home Wildcats Baseball Pants"
+  },
+  {
+   "id": 1067007,
+   "name": "Away Wildcats Baseball Pants"
+  },
+  {
+   "id": 1067008,
+   "name": "Alternate Wildcats Baseball Pants"
+  },
+  {
+   "id": 1067010,
+   "name": "Yellow Snowboard Pants"
+  },
+  {
+   "id": 1067011,
+   "name": "Green Snowboard Pants"
+  },
+  {
+   "id": 1067014,
+   "name": "Sky Blue Snowboard Pants"
+  },
+  {
+   "id": 1067016,
+   "name": "Old Army Pants"
+  },
+  {
+   "id": 1067017,
+   "name": "Camouflaged Army Pants"
+  },
+  {
+   "id": 1067019,
+   "name": "Red Polka-Dot Pajama Pants"
+  },
+  {
+   "id": 1067021,
+   "name": "Picnic Jean Shorts"
+  },
+  {
+   "id": 1067022,
+   "name": "Checkered Shorts"
+  },
+  {
+   "id": 1067023,
+   "name": "Cargo Pants"
+  },
+  {
+   "id": 1067024,
+   "name": "Red Checkered Pants"
+  },
+  {
+   "id": 1067025,
+   "name": "White Checkered Pants"
+  },
+  {
+   "id": 1067026,
+   "name": "Hip Hop Jeans"
+  },
+  {
+   "id": 1067028,
+   "name": "Washed Denim Cargos"
+  },
+  {
+   "id": 1067029,
+   "name": "Denim Cargos"
+  },
+  {
+   "id": 1067031,
+   "name": "Military Shorts"
+  },
+  {
+   "id": 1067032,
+   "name": "Blue Rider Pants"
+  },
+  {
+   "id": 1067033,
+   "name": "Shine Rider Pants"
+  },
+  {
+   "id": 1067034,
+   "name": "Dark Rider Pants"
+  },
+  {
+   "id": 1067035,
+   "name": "Blue Trainer Pants"
+  },
+  {
+   "id": 1067036,
+   "name": "Green Trainer Pants"
+  },
+  {
+   "id": 1067037,
+   "name": "Orange Trainer Pants"
+  },
+  {
+   "id": 1067038,
+   "name": "Original Disco Pants"
+  },
+  {
+   "id": 1067039,
+   "name": "Green Disco Pants"
+  },
+  {
+   "id": 1067040,
+   "name": "Blue Disco Pants"
+  },
+  {
+   "id": 1067042,
+   "name": "Brown Wild Pants"
+  },
+  {
+   "id": 1067043,
+   "name": "Red Wild Pants"
+  },
+  {
+   "id": 1067044,
+   "name": "Pre-School Pants"
+  },
+  {
+   "id": 1067046,
+   "name": "Hawaiian Skirt"
+  },
+  {
+   "id": 1067048,
+   "name": "Blue Leggings"
+  },
+  {
+   "id": 1067050,
+   "name": "Military Cargo Shorts"
+  },
+  {
+   "id": 1067051,
+   "name": "Tropical Shorts"
+  },
+  {
+   "id": 1067053,
+   "name": "Blue Sailor Skirt"
+  },
+  {
+   "id": 1067054,
+   "name": "Pink Mimi Skirt"
+  },
+  {
+   "id": 1067055,
+   "name": "Rolled-Up Jeans"
+  },
+  {
+   "id": 1067057,
+   "name": "Sky Blue Mimi Skirt"
+  },
+  {
+   "id": 1067058,
+   "name": "Yellow Mimi Skirt"
+  },
+  {
+   "id": 1067059,
+   "name": "Pre-School Uniform Skirt"
+  },
+  {
+   "id": 1067061,
+   "name": "Sky Blue Trainer Pants"
+  },
+  {
+   "id": 1067062,
+   "name": "Pink Trainer Pants"
+  },
+  {
+   "id": 1067063,
+   "name": "Black Trainer Pants"
+  },
+  {
+   "id": 1067064,
+   "name": "Blue Skirt"
+  },
+  {
+   "id": 1067066,
+   "name": "Red Training Shorts"
+  },
+  {
+   "id": 1067067,
+   "name": "Sky Blue Training Shorts"
+  },
+  {
+   "id": 1067068,
+   "name": "Pink Training Shorts"
+  },
+  {
+   "id": 1067069,
+   "name": "Black Training Shorts"
+  },
+  {
+   "id": 1067070,
+   "name": "Pink Frill Pajama Bottoms"
+  },
+  {
+   "id": 1067071,
+   "name": "Hawaiian Skirt"
+  },
+  {
+   "id": 1067072,
+   "name": "Red Leggings"
+  },
+  {
+   "id": 1067073,
+   "name": "Plitz Skirt"
+  },
+  {
+   "id": 1067074,
+   "name": "Blue Diamond Bootcuts"
+  },
+  {
+   "id": 1067075,
+   "name": "Pink Diamond Bootcuts"
+  },
+  {
+   "id": 1067077,
+   "name": "Blue Skinny Jeans"
+  },
+  {
+   "id": 1067083,
+   "name": "Prep School Uniform Pants"
+  },
+  {
+   "id": 1067084,
+   "name": "Orange Puffy Pants"
+  },
+  {
+   "id": 1067085,
+   "name": "Tania Tartan Pants"
+  },
+  {
+   "id": 1067086,
+   "name": "Mercury Washed Jeans"
+  },
+  {
+   "id": 1067087,
+   "name": "Black Wakeboard Pants"
+  },
+  {
+   "id": 1067088,
+   "name": "Cowboy Pants"
+  },
+  {
+   "id": 1067089,
+   "name": "Golf Shorts"
+  },
+  {
+   "id": 1067090,
+   "name": "SF Ninja Pants"
+  },
+  {
+   "id": 1067091,
+   "name": "Green Long Skirt"
+  },
+  {
+   "id": 1067093,
+   "name": "Blue Slit Skirt"
+  },
+  {
+   "id": 1067094,
+   "name": "Skirt with Tights"
+  },
+  {
+   "id": 1067095,
+   "name": "Orange Long Skirt"
+  },
+  {
+   "id": 1067096,
+   "name": "Pink Layered Skirt"
+  },
+  {
+   "id": 1067097,
+   "name": "Long Khaki Skirt"
+  },
+  {
+   "id": 1067098,
+   "name": "Dark Denim Skirt"
+  },
+  {
+   "id": 1067099,
+   "name": "Pink Heart Hot Pants"
+  },
+  {
+   "id": 1067100,
+   "name": "Denim Skirt & Striped Sox"
+  },
+  {
+   "id": 1067101,
+   "name": "Tania Tartan Skirt"
+  },
+  {
+   "id": 1067102,
+   "name": "Mercury Jean Skirt"
+  },
+  {
+   "id": 1067103,
+   "name": "Pink Frill Swim Skirt"
+  },
+  {
+   "id": 1067104,
+   "name": "Bright Frilly Shorts"
+  },
+  {
+   "id": 1067105,
+   "name": "Cowgirl Pants"
+  },
+  {
+   "id": 1067106,
+   "name": "Golf Skirt"
+  },
+  {
+   "id": 1067107,
+   "name": "Baggy Jeans"
+  },
+  {
+   "id": 1067108,
+   "name": "Blue B-Ball Shorts"
+  },
+  {
+   "id": 1067109,
+   "name": "Orange B-Ball Shorts"
+  },
+  {
+   "id": 1067110,
+   "name": "Jeans with Chain"
+  },
+  {
+   "id": 1067111,
+   "name": "Black Leather Pants"
+  },
+  {
+   "id": 1067112,
+   "name": "Red Starrium"
+  },
+  {
+   "id": 1067113,
+   "name": "Vintage Pocket Pants"
+  },
+  {
+   "id": 1067114,
+   "name": "Brisk"
+  },
+  {
+   "id": 1067115,
+   "name": "Brown Checkered Pants"
+  },
+  {
+   "id": 1067116,
+   "name": "Football Pants (Home)"
+  },
+  {
+   "id": 1067117,
+   "name": "Football Bottom (Away)"
+  },
+  {
+   "id": 1067118,
+   "name": "All-Star Blue Jeans"
+  },
+  {
+   "id": 1067119,
+   "name": "White Faded Jeans"
+  },
+  {
+   "id": 1067120,
+   "name": "Pink-Lined Shorts"
+  },
+  {
+   "id": 1067121,
+   "name": "Busy Bee Shorts"
+  },
+  {
+   "id": 1067122,
+   "name": "Jailbird Shorts"
+  },
+  {
+   "id": 1067123,
+   "name": "Military Cargo Pants"
+  },
+  {
+   "id": 1067124,
+   "name": "Scottish Pants"
+  },
+  {
+   "id": 1067125,
+   "name": "Inferno Jeans"
+  },
+  {
+   "id": 1067126,
+   "name": "Vintage Black Jeans"
+  },
+  {
+   "id": 1067127,
+   "name": "Olive Skinny Jeans"
+  },
+  {
+   "id": 1067128,
+   "name": "Red Wine Skinny Jeans"
+  },
+  {
+   "id": 1067129,
+   "name": "Dark Rocker Jeans"
+  },
+  {
+   "id": 1067130,
+   "name": "Checks Point Pants"
+  },
+  {
+   "id": 1067131,
+   "name": "White-Striped Trainer Shorts"
+  },
+  {
+   "id": 1067132,
+   "name": "Vintage Sky Blue Jeans"
+  },
+  {
+   "id": 1067133,
+   "name": "Summer Capris"
+  },
+  {
+   "id": 1067134,
+   "name": "Rainbow Shorts"
+  },
+  {
+   "id": 1067135,
+   "name": "Brown Chained Pants"
+  },
+  {
+   "id": 1067136,
+   "name": "Painted Blue Jeans"
+  },
+  {
+   "id": 1067137,
+   "name": "Low-Rise Ripped Jeans"
+  },
+  {
+   "id": 1067138,
+   "name": "Relaxed Fit Jeans"
+  },
+  {
+   "id": 1067139,
+   "name": "Olive Pumpkin Pants"
+  },
+  {
+   "id": 1067140,
+   "name": "Brown Pumpkin Pants"
+  },
+  {
+   "id": 1067141,
+   "name": "Vintage Black Pants"
+  },
+  {
+   "id": 1067142,
+   "name": "Light Blue Ripped Jeans"
+  },
+  {
+   "id": 1067143,
+   "name": "Brown Bubble Jeans"
+  },
+  {
+   "id": 1067144,
+   "name": "Red and Black Warm-ups"
+  },
+  {
+   "id": 1067145,
+   "name": "Brown Pocket Shorts"
+  },
+  {
+   "id": 1067146,
+   "name": "Jewel Chain Jeans"
+  },
+  {
+   "id": 1067147,
+   "name": "\"Black Tie Affair\" Dress Pants"
+  },
+  {
+   "id": 1067148,
+   "name": "Dark Master Sergeant Skirt for Transformation"
+  },
+  {
+   "id": 1067149,
+   "name": "Red Legolia Pants for Transformation"
+  },
+  {
+   "id": 1067150,
+   "name": "Dark Night Pants for Transformation"
+  },
+  {
+   "id": 1067151,
+   "name": "Pink Heart Boxers"
+  },
+  {
+   "id": 1067152,
+   "name": "Black Checkered Shorts"
+  },
+  {
+   "id": 1067153,
+   "name": "Pink 80s Slacks"
+  },
+  {
+   "id": 1067154,
+   "name": "Moss Green Pants"
+  },
+  {
+   "id": 1067155,
+   "name": "Ruby-Buckled Shorts"
+  },
+  {
+   "id": 1067156,
+   "name": "Milan Jeans"
+  },
+  {
+   "id": 1067157,
+   "name": "Practical Linen Trousers"
+  },
+  {
+   "id": 1067158,
+   "name": "Ella Blue Denim"
+  },
+  {
+   "id": 1067159,
+   "name": "Aqua Jeans"
+  },
+  {
+   "id": 1067160,
+   "name": "Rolled-Up Baggy Jeans"
+  },
+  {
+   "id": 1067161,
+   "name": "Rolled-Up Skinny Jeans"
+  },
+  {
+   "id": 1067162,
+   "name": "Twinkle Star Blue Jeans"
+  },
+  {
+   "id": 1067163,
+   "name": "Baggy Glow-in-the-Dark Pants"
+  },
+  {
+   "id": 1067164,
+   "name": "Dark Purple Jeans"
+  },
+  {
+   "id": 1067165,
+   "name": "Plaid Roll-Up Jeans"
+  },
+  {
+   "id": 1067167,
+   "name": "Bunny Frill Pants"
+  },
+  {
+   "id": 1067168,
+   "name": "Shooting Star Jeans"
+  },
+  {
+   "id": 1067169,
+   "name": "Vintage Jeans"
+  },
+  {
+   "id": 1067170,
+   "name": "Neon Skinny Jeans"
+  },
+  {
+   "id": 1067171,
+   "name": "Baby Pink Pants"
+  },
+  {
+   "id": 1067172,
+   "name": "Blue Ribbon Shorts"
+  },
+  {
+   "id": 1067173,
+   "name": "Underpants"
+  },
+  {
+   "id": 1067175,
+   "name": "Crayon Shorts"
+  },
+  {
+   "id": 1067176,
+   "name": "Pink Heart Shorts"
+  },
+  {
+   "id": 1067177,
+   "name": "Star Beach Shorts"
+  },
+  {
+   "id": 1067178,
+   "name": "Stone Washed Jeans"
+  },
+  {
+   "id": 1067179,
+   "name": "Technicolour Funky Pants"
+  },
+  {
+   "id": 1067180,
+   "name": "Tiger-Print Leggings"
+  },
+  {
+   "id": 1067181,
+   "name": "Plaid-Cuffed Jeans"
+  },
+  {
+   "id": 1067182,
+   "name": "High-Rider"
+  },
+  {
+   "id": 1067183,
+   "name": "Saruel Pants"
+  },
+  {
+   "id": 1067184,
+   "name": "Pink Sprite Pants"
+  },
+  {
+   "id": 1067185,
+   "name": "Red Spotted Shorts"
+  },
+  {
+   "id": 1067186,
+   "name": "Blue Spotted Shorts"
+  },
+  {
+   "id": 1067187,
+   "name": "White Jeans"
+  },
+  {
+   "id": 1067188,
+   "name": "Star Trainer Pants"
+  },
+  {
+   "id": 1067189,
+   "name": "Super Pop Shorts"
+  },
+  {
+   "id": 1067190,
+   "name": "Shiny Gold Pants"
+  },
+  {
+   "id": 1067191,
+   "name": "Layered Denim Pants"
+  },
+  {
+   "id": 1067192,
+   "name": "Plum Sherbet Pants"
+  },
+  {
+   "id": 1067193,
+   "name": "Mint Sherbet Pants"
+  },
+  {
+   "id": 1067194,
+   "name": "Deep Blue Sea Knee Socks"
+  },
+  {
+   "id": 1067195,
+   "name": "Funky Xylophone Leggings"
+  },
+  {
+   "id": 1067196,
+   "name": "Sky Rainbow Shorts [temp]"
+  },
+  {
+   "id": 1067197,
+   "name": "Rabbit Bottom"
+  },
+  {
+   "id": 1067198,
+   "name": "Neon Pink Pants"
+  },
+  {
+   "id": 1067199,
+   "name": "Vacation Denim Pants"
+  },
+  {
+   "id": 1067200,
+   "name": "Oceanic Sandblasted Jeans"
+  },
+  {
+   "id": 1067201,
+   "name": "Mosaic Purple"
+  },
+  {
+   "id": 1067202,
+   "name": "Chocolate Strawberry Shorts"
+  },
+  {
+   "id": 1067203,
+   "name": "Slither Style Pants"
+  },
+  {
+   "id": 1067204,
+   "name": "Checkered Tights"
+  },
+  {
+   "id": 1067205,
+   "name": "Pink Skinny Jeans"
+  },
+  {
+   "id": 1067206,
+   "name": "Little Bunny Pants"
+  },
+  {
+   "id": 1067207,
+   "name": "Sapphire Jeans"
+  },
+  {
+   "id": 1067208,
+   "name": "Hot Pink Overalls"
+  },
+  {
+   "id": 1067209,
+   "name": "Guardian Pants"
+  }
+ ]
+}

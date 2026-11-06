@@ -1,0 +1,33 @@
+{
+ "id": 1087038,
+ "name": "Love Gloves",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "rGlove",
+   "w": 7,
+   "h": 7,
+   "origin": {
+    "x": 11,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -21,
+     "y": -12,
+     "isEmpty": false
+    }
+   },
+   "position": "glove"
+  }
+ ]
+}

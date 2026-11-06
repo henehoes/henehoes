@@ -1,0 +1,441 @@
+{
+ "_comment": "Cash faceAcc items in the game files that are not in the catalogue (not released). Written by scripts/extract-datamine.mjs.",
+ "items": [
+  {
+   "id": 1017001,
+   "name": "Bindi"
+  },
+  {
+   "id": 1017002,
+   "name": "Leather Mask"
+  },
+  {
+   "id": 1017003,
+   "name": "Rouge"
+  },
+  {
+   "id": 1017004,
+   "name": "Camo Face Paint"
+  },
+  {
+   "id": 1017005,
+   "name": "Bruise"
+  },
+  {
+   "id": 1017006,
+   "name": "Rose"
+  },
+  {
+   "id": 1017007,
+   "name": "Santa Beard"
+  },
+  {
+   "id": 1017008,
+   "name": "Censor"
+  },
+  {
+   "id": 1017009,
+   "name": "Rudolph's Red Nose"
+  },
+  {
+   "id": 1017010,
+   "name": "White Kabuki Mask"
+  },
+  {
+   "id": 1017011,
+   "name": "Red Kabuki Mask"
+  },
+  {
+   "id": 1017012,
+   "name": "Yellow Kabuki Mask"
+  },
+  {
+   "id": 1017014,
+   "name": "Fierce Face Paint"
+  },
+  {
+   "id": 1017016,
+   "name": "Transparent Face Accessory"
+  },
+  {
+   "id": 1017017,
+   "name": "Long Brown Beard"
+  },
+  {
+   "id": 1017018,
+   "name": "Goatee"
+  },
+  {
+   "id": 1017019,
+   "name": "5 O'Clock Shadow"
+  },
+  {
+   "id": 1017020,
+   "name": "Founder's Thief Face"
+  },
+  {
+   "id": 1017027,
+   "name": "Ninja Mask for Men"
+  },
+  {
+   "id": 1017029,
+   "name": "General's Mustache (1)"
+  },
+  {
+   "id": 1017030,
+   "name": "General's Mustache (2)"
+  },
+  {
+   "id": 1017031,
+   "name": "Yakuza Scar"
+  },
+  {
+   "id": 1017032,
+   "name": "Ninja Mask for Women"
+  },
+  {
+   "id": 1017033,
+   "name": "SF Ninja Mask"
+  },
+  {
+   "id": 1017034,
+   "name": "Heart"
+  },
+  {
+   "id": 1017035,
+   "name": "Freckles"
+  },
+  {
+   "id": 1017045,
+   "name": "Kiss Mark"
+  },
+  {
+   "id": 1017052,
+   "name": "Guan Yu Beard"
+  },
+  {
+   "id": 1017054,
+   "name": "Blush"
+  },
+  {
+   "id": 1017055,
+   "name": "Jester Mask"
+  },
+  {
+   "id": 1017056,
+   "name": "Eye Scar"
+  },
+  {
+   "id": 1017057,
+   "name": "Leaf"
+  },
+  {
+   "id": 1017058,
+   "name": "White Bread"
+  },
+  {
+   "id": 1017059,
+   "name": "England Face Painting"
+  },
+  {
+   "id": 1017060,
+   "name": "Tri-color Paint (France)"
+  },
+  {
+   "id": 1017061,
+   "name": "Brazillian Paint (Brazil)"
+  },
+  {
+   "id": 1017062,
+   "name": "Bundes Paint (Germany)"
+  },
+  {
+   "id": 1017063,
+   "name": "Armillary Shield Paint (Portugal)"
+  },
+  {
+   "id": 1017064,
+   "name": "Rising Sun Paint (Japan)"
+  },
+  {
+   "id": 1017065,
+   "name": "Taegeuk Paint (Korea)"
+  },
+  {
+   "id": 1017066,
+   "name": "Heart Face Painting"
+  },
+  {
+   "id": 1017067,
+   "name": "Star Spangled Paint (USA)"
+  },
+  {
+   "id": 1017068,
+   "name": "Aztec Paint (Mexico)"
+  },
+  {
+   "id": 1017069,
+   "name": "Australia Face Painting"
+  },
+  {
+   "id": 1017071,
+   "name": "Fu Manchu"
+  },
+  {
+   "id": 1017072,
+   "name": "Dark Jack's Scar"
+  },
+  {
+   "id": 1017073,
+   "name": "Ogre Mask"
+  },
+  {
+   "id": 1017075,
+   "name": "Dark Jester"
+  },
+  {
+   "id": 1017076,
+   "name": "Tongue Twister Scroll"
+  },
+  {
+   "id": 1017077,
+   "name": "Unmanaged Anger"
+  },
+  {
+   "id": 1017078,
+   "name": "Purple Rage"
+  },
+  {
+   "id": 1017079,
+   "name": "Allergic Reaction"
+  },
+  {
+   "id": 1017080,
+   "name": "Doggy Mouth"
+  },
+  {
+   "id": 1017082,
+   "name": "Mild Pink Lipstick"
+  },
+  {
+   "id": 1017083,
+   "name": "Kitty Paint"
+  },
+  {
+   "id": 1017084,
+   "name": "Mocking Laughter"
+  },
+  {
+   "id": 1017085,
+   "name": "Cold Sweat"
+  },
+  {
+   "id": 1017086,
+   "name": "Fat Lips"
+  },
+  {
+   "id": 1017087,
+   "name": "MV Mask"
+  },
+  {
+   "id": 1017090,
+   "name": "Cherry Bubblegum"
+  },
+  {
+   "id": 1017091,
+   "name": "Facial Powder"
+  },
+  {
+   "id": 1017092,
+   "name": "Apple Bubble Gum"
+  },
+  {
+   "id": 1017093,
+   "name": "Purple Noisemaker"
+  },
+  {
+   "id": 1017094,
+   "name": "Facial Powder(blue)"
+  },
+  {
+   "id": 1017095,
+   "name": "Facial Powder(red)"
+  },
+  {
+   "id": 1017097,
+   "name": "Super Sucker"
+  },
+  {
+   "id": 1017098,
+   "name": "Bauhinia Paint (Hong Kong)"
+  },
+  {
+   "id": 1017099,
+   "name": "ROC Paint (Taiwan)"
+  },
+  {
+   "id": 1017100,
+   "name": "5-Starred Red Paint (China)"
+  },
+  {
+   "id": 1017101,
+   "name": "Coat of Arms Paint (Spain)"
+  },
+  {
+   "id": 1017102,
+   "name": "Gold Nordic Paint (Sweden)"
+  },
+  {
+   "id": 1017103,
+   "name": "Holland Paint (Netherlands)"
+  },
+  {
+   "id": 1017104,
+   "name": "Union Paint (UK)"
+  },
+  {
+   "id": 1017105,
+   "name": "Chakra Paint (Thailand)"
+  },
+  {
+   "id": 1017106,
+   "name": "Yellow Star Paint (Vietnam)"
+  },
+  {
+   "id": 1017107,
+   "name": "Crescent Paint (Singapore)"
+  },
+  {
+   "id": 1017108,
+   "name": "Jalur Gemilang Paint (Malaysia)"
+  },
+  {
+   "id": 1017109,
+   "name": "Maple Leaf Paint (Canada)"
+  },
+  {
+   "id": 1017110,
+   "name": "Face Accessory"
+  },
+  {
+   "id": 1017111,
+   "name": "Star Face Painting"
+  },
+  {
+   "id": 1017112,
+   "name": "Immortal Mask"
+  },
+  {
+   "id": 1017114,
+   "name": "Clown Nose"
+  },
+  {
+   "id": 1017115,
+   "name": "Villain Mask"
+  },
+  {
+   "id": 1017116,
+   "name": "Orange Blush"
+  },
+  {
+   "id": 1017117,
+   "name": "Chocolate Heart"
+  },
+  {
+   "id": 1017118,
+   "name": "Shadow Mask"
+  },
+  {
+   "id": 1017119,
+   "name": "Heart Pounding Lip Gloss"
+  },
+  {
+   "id": 1017120,
+   "name": "6th Anniversary Party Glasses"
+  },
+  {
+   "id": 1017122,
+   "name": "Hand Mark"
+  },
+  {
+   "id": 1017123,
+   "name": "Adhesive Bandage"
+  },
+  {
+   "id": 1017124,
+   "name": "Zombie Hunter Mask"
+  },
+  {
+   "id": 1017126,
+   "name": "Flushed Cheeks"
+  },
+  {
+   "id": 1017127,
+   "name": "Playful Band"
+  },
+  {
+   "id": 1017128,
+   "name": "Clown"
+  },
+  {
+   "id": 1017129,
+   "name": "Peruvian Flag Face Paint"
+  },
+  {
+   "id": 1017130,
+   "name": "Bloody Tears"
+  },
+  {
+   "id": 1017131,
+   "name": "Surprised Face Accessory"
+  },
+  {
+   "id": 1017132,
+   "name": "Thick Eyebrows Face Accessory"
+  },
+  {
+   "id": 1017133,
+   "name": "Round Eyes-And-Mouth Face Accessory"
+  },
+  {
+   "id": 1017134,
+   "name": "Bear Nose Face Accessory"
+  },
+  {
+   "id": 1017135,
+   "name": "Straight Face Accessory"
+  },
+  {
+   "id": 1017136,
+   "name": "Cat-Mouth Face Accessory"
+  },
+  {
+   "id": 1017137,
+   "name": "Animal Face Accessory"
+  },
+  {
+   "id": 1017138,
+   "name": "Mustache Face Accessory"
+  },
+  {
+   "id": 1017139,
+   "name": "Gross Face Accessory"
+  },
+  {
+   "id": 1017140,
+   "name": "Enlightened Face Accessory"
+  },
+  {
+   "id": 1017141,
+   "name": "Palm Print Mask"
+  },
+  {
+   "id": 1017144,
+   "name": "Blazing Eyes"
+  },
+  {
+   "id": 1017145,
+   "name": "Frozen Eye"
+  }
+ ]
+}

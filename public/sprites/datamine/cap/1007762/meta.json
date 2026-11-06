@@ -1,0 +1,33 @@
+{
+ "id": 1007762,
+ "name": "Grab N' Pull",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 39,
+   "h": 27,
+   "origin": {
+    "x": 18,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": -10,
+     "y": 23,
+     "isEmpty": false
+    }
+   },
+   "position": "capOverHair"
+  }
+ ]
+}

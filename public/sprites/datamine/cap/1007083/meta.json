@@ -1,0 +1,42 @@
+{
+ "id": 1007083,
+ "name": "Zombie Mushroom Hat",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H2",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hf",
+  "Hs",
+  "Hb",
+  "Ae"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 55,
+   "h": 50,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 7,
+     "y": 3,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

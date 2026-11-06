@@ -1,0 +1,51 @@
+{
+ "id": 1087076,
+ "name": "Succubus Gloves",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "lGlove",
+   "w": 7,
+   "h": 10,
+   "origin": {
+    "x": 3,
+    "y": 3,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 5,
+     "y": -3,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveOverBody"
+  },
+  {
+   "key": "rGlove",
+   "w": 10,
+   "h": 10,
+   "origin": {
+    "x": 11,
+    "y": 6,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -19,
+     "y": -7,
+     "isEmpty": false
+    }
+   },
+   "position": "glove"
+  }
+ ]
+}

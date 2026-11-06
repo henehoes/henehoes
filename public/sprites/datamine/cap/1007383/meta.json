@@ -1,0 +1,34 @@
+{
+ "id": 1007383,
+ "name": "Star Baseball Cap",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 42,
+   "h": 24,
+   "origin": {
+    "x": 21,
+    "y": 12,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 2,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

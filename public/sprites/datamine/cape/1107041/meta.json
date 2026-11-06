@@ -1,0 +1,32 @@
+{
+ "id": 1107041,
+ "name": "Dragonfly Wings",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Sr"
+ ],
+ "islots": [
+  "Sr"
+ ],
+ "parts": [
+  {
+   "key": "cape",
+   "w": 82,
+   "h": 76,
+   "origin": {
+    "x": 29,
+    "y": 45,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "backWing"
+  }
+ ]
+}

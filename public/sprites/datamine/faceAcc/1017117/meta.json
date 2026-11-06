@@ -1,0 +1,32 @@
+{
+ "id": 1017117,
+ "name": "Chocolate Heart",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 16,
+   "h": 11,
+   "origin": {
+    "x": 4,
+    "y": -15,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 10,
+     "y": -3,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFace"
+  }
+ ]
+}

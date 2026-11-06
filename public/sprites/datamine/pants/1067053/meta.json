@@ -1,0 +1,32 @@
+{
+ "id": 1067053,
+ "name": "Blue Sailor Skirt",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Pn"
+ ],
+ "islots": [
+  "Pn"
+ ],
+ "parts": [
+  {
+   "key": "pants",
+   "w": 21,
+   "h": 9,
+   "origin": {
+    "x": 9,
+    "y": 6,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -2,
+     "y": -5,
+     "isEmpty": false
+    }
+   },
+   "position": "pants"
+  }
+ ]
+}

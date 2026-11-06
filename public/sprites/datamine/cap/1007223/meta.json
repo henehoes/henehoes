@@ -1,0 +1,40 @@
+{
+ "id": 1007223,
+ "name": "Fluffy Cat Hood",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H3",
+  "H4",
+  "H5",
+  "H6",
+  "Hf",
+  "Hb",
+  "Ae"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default1",
+   "w": 50,
+   "h": 39,
+   "origin": {
+    "x": 19,
+    "y": 21,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 3,
+     "y": -6,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

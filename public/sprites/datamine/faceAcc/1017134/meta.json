@@ -1,0 +1,32 @@
+{
+ "id": 1017134,
+ "name": "Bear Nose Face Accessory",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Af"
+ ],
+ "islots": [
+  "Af"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 25,
+   "h": 16,
+   "origin": {
+    "x": 11,
+    "y": -5,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "accessoryFace"
+  }
+ ]
+}

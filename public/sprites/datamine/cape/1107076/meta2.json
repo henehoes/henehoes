@@ -1,0 +1,40 @@
+{
+ "parts": [
+  {
+   "key": "cape",
+   "w": 37,
+   "h": 24,
+   "origin": {
+    "x": 3,
+    "y": 11,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "capeBelowBody"
+  },
+  {
+   "key": "capeArm",
+   "w": 15,
+   "h": 11,
+   "origin": {
+    "x": 2,
+    "y": 9,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "cape"
+  }
+ ]
+}

@@ -1,0 +1,51 @@
+{
+ "id": 1087068,
+ "name": "Harp Seal Doll Gloves",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "lGlove",
+   "w": 15,
+   "h": 20,
+   "origin": {
+    "x": 8,
+    "y": 12,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": 5,
+     "y": -4,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveOverBody"
+  },
+  {
+   "key": "rGlove",
+   "w": 16,
+   "h": 22,
+   "origin": {
+    "x": 12,
+    "y": 18,
+    "isEmpty": false
+   },
+   "maps": {
+    "navel": {
+     "x": -19,
+     "y": -9,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveBelowMailArm"
+  }
+ ]
+}

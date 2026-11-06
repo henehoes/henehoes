@@ -1,0 +1,34 @@
+{
+ "id": 1007441,
+ "name": "Orange Mushroom Scholar",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H1",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 57,
+   "h": 33,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 8,
+     "y": -4,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

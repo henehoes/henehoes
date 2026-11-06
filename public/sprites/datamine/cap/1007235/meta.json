@@ -1,0 +1,33 @@
+{
+ "id": 1007235,
+ "name": "Elf's Ear",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Cp",
+  "H5"
+ ],
+ "islots": [
+  "Cp"
+ ],
+ "parts": [
+  {
+   "key": "default",
+   "w": 45,
+   "h": 16,
+   "origin": {
+    "x": 15,
+    "y": 25,
+    "isEmpty": false
+   },
+   "maps": {
+    "brow": {
+     "x": 3,
+     "y": -27,
+     "isEmpty": false
+    }
+   },
+   "position": "cap"
+  }
+ ]
+}

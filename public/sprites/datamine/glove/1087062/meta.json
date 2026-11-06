@@ -1,0 +1,33 @@
+{
+ "id": 1087062,
+ "name": "Rainbow Bracelet",
+ "source": "game files",
+ "kind": "wearable",
+ "vslots": [
+  "Gl",
+  "Gw"
+ ],
+ "islots": [
+  "Gv"
+ ],
+ "parts": [
+  {
+   "key": "rWrist",
+   "w": 8,
+   "h": 6,
+   "origin": {
+    "x": 3,
+    "y": 6,
+    "isEmpty": false
+   },
+   "maps": {
+    "hand": {
+     "x": 0,
+     "y": 0,
+     "isEmpty": false
+    }
+   },
+   "position": "gloveWrist"
+  }
+ ]
+}

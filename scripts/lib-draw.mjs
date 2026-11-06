@@ -1,6 +1,7 @@
 // Draws one wearable from the game files into public/sprites/<group>/<Classic id>/ (pictures, meta.json, meta2.json, icon.png): the layout
 // extract-wearables.mjs uses, so build-catalog.mjs reads it with the same code. Used by extract-upcoming.mjs and extract-datamine-weapons.mjs.
-import { writeFileSync, mkdirSync, rmSync } from 'node:fs';
+import { writeFileSync, readFileSync, copyFileSync, mkdirSync, rmSync } from 'node:fs';
+import { PNG } from 'pngjs';
 import { image, png, originOf, at, str, val } from './lib-wz.mjs';
 
 // The picture node behind a part: follows _inlink (same image), a UOL link, or _outlink (handled by png()).
@@ -36,6 +37,7 @@ export const weaponClass = img => {
 };
 const pairs = s => (s ?? '').match(/.{1,2}/g) ?? [];
 
+const blank = file => { const { data } = PNG.sync.read(readFileSync(file)); for (let i = 3; i < data.length; i += 4) if (data[i]) return false; return true; };
 // Draws `it` ({ id, name, folder }) into `dir`. Returns { weaponClass, stand2Only } (a weapon's class, else null; true when it only has
 // the two-handed stance), or { problem }: why it could not be drawn.
 export function drawItem(it, dir) {
@@ -54,6 +56,8 @@ export function drawItem(it, dir) {
   if (!parts?.length) { rmSync(dir, { recursive: true, force: true }); return { problem: 'no stand1 picture' }; }
   // a few items (Glowing Pumpkin Basket, Evil Skull, Cat Soul) have only iconRaw, no icon
   const icon = png(info?.getFromPath('icon')) ?? png(info?.getFromPath('iconRaw')); if (icon) icon.saveToFile(`${dir}/icon.png`);
+  // an icon with nothing in it (Dreamy Candy Pillow's is a blank 1x1): the item's own standing picture instead (its first part that is not an effect)
+  if (!icon || blank(`${dir}/icon.png`)) { const art = parts.find(p => !/effect/i.test(p.key)) ?? parts[0]; copyFileSync(`${dir}/${art.key}.png`, `${dir}/icon.png`); }
   writeFileSync(`${dir}/meta.json`, JSON.stringify({ id: it.id, name: it.name, source: 'game files', kind: 'wearable', vslots: pairs(str(info, 'vslot')), islots: pairs(str(info, 'islot')), parts }, null, 1));
   writeFileSync(`${dir}/meta2.json`, JSON.stringify({ parts: parts2 }, null, 1));
   return { weaponClass: cls && Number(cls), ...(stand2Only && { stand2Only }) };

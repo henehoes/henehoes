@@ -77,7 +77,7 @@ Hand-edited data:
   - Hd head, Fc face, Af face accessory, Ay eye decoration, Ae earrings.
   - H3 to H6 and Hf are **back-view** layers. They do nothing here, but hats list them.
 - **Hair** takes only `default/hair`, `hairOverHead`, `hairBelowBody`, `hairShade`. `backDefault/*` is the back view (ladders and ropes). Drawing it doubles the hair, so **do not extract it**.
-- `hairShade` is one picture per skin tone (`tones` on the part; `buildLayers` skips parts whose `tones` exclude the worn skin). It is shared between poses (`shared: true`).
+- `hairShade` is one picture per skin tone (`tones` on the part; `buildLayers` skips parts whose `tones` exclude the worn skin). It is shared between poses (`shared: true`). Catalogue and Look Book cards leave it out (`drawThumb` passes `noShade`): it is barely visible at card size and cost one request per hair card on the free hosting tier. The stage keeps it.
 - **Overall vs top/bottom** are mutually exclusive (`select`).
 - **Undergarments:** `baseOf(sel)` draws the gender's starter top/bottom (`rules.baseBody` -> `catalog.base`) unless a top, bottom or overall covers them. They are not in `state.wear`, not in Top/Bottom lists, have no tile. Any `fresh()` used for a preview must copy `sex` and `skin`.
 - **Two-handed stance:** only weapons in `stand2Only` (Toy Rifle: no one-handed art) get `pose: 'stand2'` and switch the whole body to `parts2`.

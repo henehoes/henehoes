@@ -268,7 +268,7 @@ async function buildLayers(sel, view = null) {
     ...base.map((it, n) => ({ owner: `base${n}`, codes: it.vslots ?? [] }))];
   const add = (parts, h = 0, c = 0, b = 0, owner = 'body') => {
     const covered = new Set(covering.filter(e => e.owner !== owner).flatMap(e => e.codes));
-    for (const p of parts.filter(p => !covered.has(p.hiddenBy) && (!p.tones || p.tones.includes(sel.skin)))) jobs.push(tinted(p.file, h, c, b).then(img => ({ img, x: OX + p.x, y: OY + p.y, z: p.z })));
+    for (const p of parts.filter(p => !covered.has(p.hiddenBy) && (!p.tones || (!sel.noShade && p.tones.includes(sel.skin))))) jobs.push(tinted(p.file, h, c, b).then(img => ({ img, x: OX + p.x, y: OY + p.y, z: p.z })));
   };
   // A weapon with no standing pose (Orange Toy Hammer) puts the whole body in the two-handed pose.
   const twoHanded = isTwoHanded(sel);
@@ -436,7 +436,8 @@ async function drawThumb(canvas, boxEl, sel, view) {
   const body = view.body ? await bodyBox() : null;
   // A Look Book card is as tall as the body at this zoom, plus a margin: at any zoom the whole body fits, centred.
   if (body) boxEl.style.height = `${(body.height + 2 * BODY_MARGIN) * Math.max(1, Math.round(view.scale * dpr())) / dpr()}px`;
-  await withScene(sel, (buf, source) => {
+  // Cards leave out the hair shade: barely visible at card size, and one more file to fetch per hair card. The stage keeps it.
+  await withScene({ ...sel, noShade: true }, (buf, source) => {
     const box = boxEl.getBoundingClientRect();
     let focus = view.focus;
     if (view.centre) {

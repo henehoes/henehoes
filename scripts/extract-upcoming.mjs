@@ -4,12 +4,13 @@
 // and the list to data/upcoming.json. Nothing here is confirmed: dyeable is only a hint (see AGENTS.md).
 //   WZ_DATA=".../maplestorycw/appdata/Data" node scripts/extract-upcoming.mjs
 // Needs the game files: see scripts/lib-wz.mjs. "In the catalogue" means a catalogue item's Classic id (or sprite id) is the same.
+import { readCatalog } from './lib-catalog.mjs';
 import { readFileSync, writeFileSync, rmSync, existsSync } from 'node:fs';
 import { drawItem } from './lib-draw.mjs';
 
 const read = f => JSON.parse(readFileSync(f, 'utf8'));
 const dye = read('data/game-dye.json');
-const catalogue = read('public/catalog.json');
+const catalogue = readCatalog();
 const before = existsSync('data/upcoming.json') ? read('data/upcoming.json').items : []; // the last run: its items (released or not) are not "already in the catalogue"
 const mine = new Set(before.map(i => i.id)), releasedBefore = new Set(before.filter(i => i.released).map(i => i.id));
 const have = new Set(Object.values(catalogue.wearables).flatMap(s => s.items.filter(i => !mine.has(i.classicId ?? i.id)).flatMap(i => [i.id, i.classicId])));

@@ -208,7 +208,17 @@ catalog.boxes = read('data/boxes.json').groups.map(g => ({ id: g.id, title: g.ti
 
 // Hats the Fit filter files as Helmet by hand (they cover the face or most of the head although their slot codes do not hide the hair).
 for (const it of catalog.wearables.cap?.items ?? []) if (rules.fitHelmet?.includes(it.id)) it.fit = 'helmet';
+// Datamined clothing, weapons and rings (released: false) go in a file of their own, public/catalog-datamine.json: only a VITE_DATAMINE=1
+// build (the GitHub Pages test site) shows them and loads it, so the Vercel site's visitors never download ~2,000 items they cannot see.
+// Faces and hairs stay in catalog.json (their datamine views are on everywhere). Scripts read both through scripts/lib-catalog.mjs.
+const datamine = { wearables: {} };
+for (const [slot, g] of Object.entries(catalog.wearables)) {
+  const out = g.items.filter(i => i.released === false);
+  if (!out.length) continue;
+  datamine.wearables[slot] = out; g.items = g.items.filter(i => i.released !== false);
+}
 writeFileSync('public/catalog.json', JSON.stringify(catalog));
+writeFileSync('public/catalog-datamine.json', JSON.stringify(datamine));
 console.log('placeholders:', JSON.stringify(Object.fromEntries(Object.entries(placeholders.wearables).map(([k, v]) => [k, v.map(p => p.name)]))), 'hair', placeholders.hair.map(p => p.name), 'face', placeholders.face.map(p => p.name));
 console.log(`skins ${catalog.skins.length}, faces ${catalog.face.length}, hairs ${catalog.hair.length}, wearable slots`, Object.fromEntries(Object.entries(catalog.wearables).map(([k, v]) => [k, v.items.length])));
 console.log(JSON.stringify(warnings, null, 1));

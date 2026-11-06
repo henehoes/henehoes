@@ -1444,6 +1444,11 @@ narrowLayout.addEventListener?.('change', () => { if (catalog) renderColour(); }
 async function init() {
   const res = await fetch('/catalog.json');
   catalog = await res.json();
+  // Datamined clothing, weapons and rings are a file of their own, fetched only in a build that shows them (scripts/lib-catalog.mjs merges the same way)
+  if (SHOW_DATAMINE_WEARABLES) {
+    const extra = await fetch('/catalog-datamine.json').then(r => r.json()).catch(() => null);
+    for (const [slot, items] of Object.entries(extra?.wearables ?? {})) { const g = (catalog.wearables[slot] ??= { label: slot, items: [] }); g.items = [...g.items, ...items].sort((a, b) => a.id - b.id); }
+  }
   stageTools();
   renderBooks();
   loadBackdrop();

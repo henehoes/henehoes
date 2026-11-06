@@ -8,6 +8,7 @@
 // Placement is the client's: the body sits at the origin, every other part is moved so one of its points (map) lands on the same point
 // already placed (navel, neck, hand, brow, ...). The standing pose's navel lines up with the catalogue's (ANCHORS in build-catalog.mjs).
 //   WZ_DATA=".../maplestorycw/appdata/Data" node scripts/extract-poses.mjs        (needs libwz: see scripts/lib-wz.mjs)
+import { readCatalog } from './lib-catalog.mjs';
 import { readFileSync, writeFileSync, mkdirSync, rmSync, renameSync, readdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
 import { image, png, originOf, at, str, val } from './lib-wz.mjs';
@@ -29,7 +30,7 @@ const FOLDERS = { 100: 'Cap', 101: 'Accessory', 102: 'Accessory', 103: 'Accessor
 const POINT_ORDER = ['brow', 'hand', 'handMove', 'navel', 'neck'];
 
 const read = f => JSON.parse(readFileSync(f, 'utf8'));
-const catalog = read('public/catalog.json'), zmap = read('data/zmap.json'), rules = read('data/rules.json');
+const catalog = readCatalog(), zmap = read('data/zmap.json'), rules = read('data/rules.json');
 const smap = image('Base', 'smap.img');
 const zOf = layer => { const i = zmap.indexOf(rules.zFallback[layer] ?? layer); return i === -1 ? 74.6 : i; };
 // A part of the hair, head or face (or an accessory) is hidden when another worn item covers its slot: the catalogue's rule, else the game's

@@ -75,6 +75,8 @@ for (const h of HOMES) {
   // crop sits inside the drawn part)
   const [cx, cy] = h.focus, w = Math.min(h.focus[2], dst.w - cx), hh = Math.min(h.focus[3], dst.h - cy), out = new Uint8Array(w * hh * 4), x0 = cx, y0 = cy;
   for (let y = 0; y < hh; y++) out.set(dst.data.subarray(((y + y0) * dst.w + x0) * 4, ((y + y0) * dst.w + x0 + w) * 4), y * w * 4);
+  // The published home pictures are this PNG converted to lossless WebP (about half the size, identical pixels), and public/housing/catalog.json
+  // points at the .webp. After a re-run, convert again (e.g. Pillow: Image.open(png).save(webp, lossless=True, method=6)) and fix the paths.
   writeFileSync(`${OUT}/homes/${h.key}.png`, toPng(w, hh, out));
   homes.push({ id: h.key, name: h.name, mapId: h.mapId, file: `housing/homes/${h.key}.png`, width: w, height: hh });
   console.log(h.name, `${w}x${hh}`);

@@ -1,9 +1,10 @@
 // Drives the running dev server in Chrome and checks the main interactions. Usage: node scripts/ui-test.mjs
+import { readCatalog } from './lib-catalog.mjs';
 import puppeteer from 'puppeteer-core';
 import { mkdirSync, readFileSync } from 'node:fs';
-const SHOW_UPCOMING = /const SHOW_UPCOMING = true/.test(readFileSync('src/main.js', 'utf8'));
+const SHOW_UPCOMING = /const SHOW_UPCOMING = true/.test(readFileSync('src/main.js', 'utf8')); // the possible-upcoming items are hidden while the flag in src/main.js is false
 const BASE = process.env.BASE_URL ?? 'http://localhost:5173/'; // e.g. BASE_URL=http://localhost:5174/ for a second dev server
-const DM = process.env.VITE_DATAMINE === '1'; // datamined clothing, weapons and rings are listed only in a VITE_DATAMINE=1 build: start the dev server with the same setting // the possible-upcoming items are hidden while the flag in src/main.js is false
+const DM = process.env.VITE_DATAMINE === '1'; // datamined clothing, weapons and rings are listed only in a VITE_DATAMINE=1 build: start the dev server with the same setting
 mkdirSync('tmp', { recursive: true }); // screenshots go here; the folder is not shipped
 
 const browser = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', defaultViewport: { width: 1200, height: 1000 } });
@@ -14,7 +15,7 @@ page.on('console', m => m.type() === 'error' && errors.push(m.text()));
 await page.goto(BASE, { waitUntil: 'networkidle0' });
 
 // Counts come from the built catalogue, so the checks follow the data (items move from upcoming to released as boxes come out)
-const CAT = JSON.parse(readFileSync('public/catalog.json', 'utf8')).wearables;
+const CAT = (DM ? readCatalog() : JSON.parse(readFileSync('public/catalog.json', 'utf8'))).wearables; // the datamined items only count in a VITE_DATAMINE=1 run
 const released = slot => CAT[slot].items.filter(i => !i.upcoming && i.released !== false), upcoming = slot => CAT[slot].items.filter(i => i.upcoming);
 const fitOf = i => i.fit ?? (i.vslots?.includes('H2') || ['H3', 'H4', 'H6', 'Hf'].every(v => i.vslots?.includes(v)) ? 'helmet' : i.vslots?.includes('H1') ? 'cap' : 'topper');
 const HATS = released('cap'), FIT = f => HATS.filter(i => fitOf(i) === f).length;
@@ -898,7 +899,7 @@ await page.screenshot({ path: 'tmp/ui-final.png' });
 
 // Hair is the front view only (no backDefault layers: those are the back-facing pose) plus the hair shade, one picture per skin tone
 {
-  const FULL = JSON.parse(readFileSync('public/catalog.json', 'utf8'));
+  const FULL = readCatalog();
   const layers = new Set(FULL.hair.flatMap(h => h.variants.flatMap(v => v.parts.map(p => p.layer))));
   check('hair: only the front-view layers and the hair shade are in the catalogue (no back-view layers)', [...layers].every(l => ['hair', 'hairOverHead', 'hairBelowBody', 'hairShade'].includes(l)) && layers.has('hairShade'), [...layers].join());
   const shade = FULL.hair.flatMap(h => h.variants.flatMap(v => v.parts.filter(p => p.layer === 'hairShade')));

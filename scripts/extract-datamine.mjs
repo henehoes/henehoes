@@ -3,6 +3,7 @@
 // data/datamine/<section>.json. build-catalog.mjs adds them to their tab's list with `released: false`.
 //   WZ_DATA=".../maplestorycw/appdata/Data" node scripts/extract-datamine.mjs [section ...]   (no section: all of them)
 // Needs the game files: see scripts/lib-wz.mjs. Run build-catalog.mjs first if the catalogue changed, and extract-poses.mjs after.
+import { readCatalog } from './lib-catalog.mjs';
 import { readFileSync, writeFileSync, readdirSync, rmSync, mkdirSync, existsSync } from 'node:fs';
 import { openWz, image, at, str, val, DATA } from './lib-wz.mjs';
 import { drawItem } from './lib-draw.mjs';
@@ -13,7 +14,7 @@ export const SECTIONS = {
   longcoat: ['Longcoat', 105], pants: ['Pants', 106], shoes: ['Shoes', 107], glove: ['Glove', 108], cape: ['Cape', 110], weapon: ['Weapon', 170],
 };
 const read = f => JSON.parse(readFileSync(f, 'utf8'));
-const catalogue = read('public/catalog.json');
+const catalogue = readCatalog();
 const eqp = image('String', 'Eqp.img');
 
 for (const section of process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(SECTIONS)) {

@@ -73,7 +73,7 @@ Hand-edited data:
 - **Feature flags:** `SHOW_UPCOMING = false`. `DISABLED_SLOTS` is empty (a slot named there is hidden everywhere).
 - **Storage keys** (localStorage, prefix kept as `maple-layers:` so saves survive): `looks-v1` (Look Book), `working-v1` (the stage's current look and baseline), `default-v2` (legacy single default, migrated into the book as `look-1` on first read), `housing-v2`.
 - Vercel Analytics: `if (import.meta.env.PROD) import('@vercel/analytics').then(m => m.inject()).catch(() => {})`. **Keep it a dynamic, fail-safe import.** A static import let ad blockers (which block anything named "analytics") kill the whole module graph and blank the page. Mention analytics in any privacy notice.
-- `vercel.json` caches `/assets` for a year, `/sprites` and `/maps` for 7 days, and `catalog.json` for 1 hour. A sprite regenerated in place can show up to 7 days late.
+- `vercel.json`: browsers keep pictures (`/assets`, `/sprites`, `/maps`, `/housing/furniture`, `/housing/homes`) for a year (`immutable`), the motion data (`/poses`) for 7 days, and the two lists (`catalog.json`, `housing/catalog.json`) for 1 hour. Reason: the free tier's request limit; the owner's rule is that designs never change, only their categories (released, datamine, available), and those live in the lists. **So never change a picture in place:** a regenerated or fixed picture (a re-cut name tag, a replaced icon) must get a new file name, or returning visitors keep the old one for up to a year.
 
 ## Rendering facts (hard to rediscover)
 - **Placement:** part top-left = `anchor - origin - mapOffset`. Anchors in skin-PNG pixels: brow (17,14), navel (17,45), hand (29,51); two-handed hand (22,45) (`ANCHORS`/`ANCHORS2` in `build-catalog.mjs`).

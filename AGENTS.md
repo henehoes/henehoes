@@ -8,7 +8,7 @@ A one-screen website (page title `classic henehoes`; project name Maple Layers) 
 - **Housing book:** pick a home and place furniture in it (`src/housing.js`).
 - Everything the app shows is stored in the project (`public/`). The running app makes **no API calls**; all sprite fetching happens in scripts.
 
-Stack: Vite 5, vanilla JS (no framework). `pngjs` for scripts, `puppeteer-core` for browser tests (expects Chrome at `/Applications/Google Chrome.app`, hard-coded in `scripts/ui-test.mjs` and `scripts/layout-check.mjs`; `scripts/fetch-henesys.mjs` honours `CHROME_PATH`). Fonts self-hosted via `@fontsource/*` (Pixelify Sans, Silkscreen, Nunito, Noto Sans KR 500; all OFL). Deployed on Vercel.
+Stack: Vite 5, vanilla JS (no framework). `pngjs` for scripts, `puppeteer-core` for browser tests (expects Chrome at `/Applications/Google Chrome.app`, hard-coded in `scripts/ui-test.mjs` and `scripts/layout-check.mjs`). Fonts self-hosted via `@fontsource/*` (Pixelify Sans, Silkscreen, Nunito, Noto Sans KR 500; all OFL). Deployed on Vercel.
 
 ## House rules
 - **Keep the repository private.** MapleStory art belongs to Nexon; anything public needs sign-off first. Flag licensing when relevant.
@@ -17,7 +17,7 @@ Stack: Vite 5, vanilla JS (no framework). `pngjs` for scripts, `puppeteer-core` 
 - British English, SGD, DD/MM/YYYY. No secrets in code (none are used). Never invent statistics or say something is tested unless it was run.
 - User-facing wording (credits, notes, empty states) is usually the owner's exact text: do not reword it without asking.
 - The saved Nexon pages (`*_Cash_Shop.html` + `_files/`) are source material only: git-ignored and purged from history. Never commit them.
-- **All new data comes only from the game's own files** (our extraction through `scripts/lib-wz.mjs`): art, names, ids, lists, flags. The raw game files are the most reliable source. Do not use maplestory.io, henesys.gg or any other outside site for anything new. What came from them earlier stays as it is, because the art is identical to the game's (see Sources), but their scripts are legacy: do not run them to add or update anything. The one outside input is the owner's saved Nexon cash-shop pages, for which boxes were sold, when and with what.
+- **All data comes only from the game's own files** (our extraction through `scripts/lib-wz.mjs`): art, names, ids, lists, flags. The raw game files are the most reliable source; do not use outside sites (fan sites, sprite APIs) for anything. Everything in the repo matches the game files (art checked pixel for pixel). The one outside input is the owner's saved Nexon cash-shop pages, for which boxes were sold, when and with what.
 
 ## Run, build, test
     npm install
@@ -26,7 +26,6 @@ Stack: Vite 5, vanilla JS (no framework). `pngjs` for scripts, `puppeteer-core` 
     node scripts/colour-check.mjs    # dye maths, no server needed
     node scripts/ui-test.mjs         # full browser test; needs the dev server running
     node scripts/layout-check.mjs    # layout at 3 window sizes; needs the dev server
-    node scripts/verify.mjs <name> <ids>   # legacy: our layering vs a maplestory.io render (do not rely on it)
 
 `scripts/ui-test.mjs` is the main regression suite (desktop, a 390x844 touch phone, zoomed-out and 3440px ultrawide pages). It reads `SHOW_UPCOMING` from `src/main.js` and takes item counts from `public/catalog.json`, so it follows the data. Tests that reload or open a second page must clear `maple-layers:working-v1`. Screenshots go to `tmp/` (ignored). Extend it when adding a feature.
 
@@ -35,15 +34,9 @@ Not tested: real Retina hardware or a real phone (only Chrome emulation; WebKit 
 ## Data pipeline
 `public/catalog.json` is the only data file the app reads (plus pictures and the pose/housing JSON). It is written by `node scripts/build-catalog.mjs`, which merges `data/items.json` with `data/rules.json`, `rings.json`, `boxes.json`, `upcoming.json`, `game-dye.json`, `weapon-types.json`, `zmap.json`, `skins*.json`, `henesys-*.json`, placeholders, and writes `warnings` (e.g. `dyeUnknown`, `boxUnresolved`, `noWeaponTypes`). **Re-run it after any data change.**
 
-Sources:
-- **The game's own files** (via libwz), **the only source for anything new**: hats, rings, dye flags, weapon types, poses, housing, some hair/face styles, every upcoming and datamined item. The owner says extraction is permitted with credit. For a new item, style or list, write or extend an `extract-*.mjs` script (`String/Eqp.img` `ClassicWorld/<category>` has the game's names; the item files have everything else).
-- Legacy, kept as is (identical art) but never used for new work: **maplestory.io** supplied the hair/face art (`sprites/mcw/`, Classic region `MCW`), the older released clothes and weapons and their icons (`sprites/wearable/`), the skins and the Henesys backdrop; **henesys.gg** supplied Classic ids, names and the hair/face salon list (`data/henesys-*.json`).
+Source: **the game's own files** (via libwz) for everything: art, names, Classic ids, the hair/face lists, flags, poses, housing. The owner says extraction is permitted with credit. For a new item, style or list, write or extend an `extract-*.mjs` script (`String/Eqp.img` `ClassicWorld/<category>` has the game's names; the item files have everything else).
 
-Steps (run what the change needs, then `build-catalog.mjs`). The maplestory.io and henesys.gg steps (wearables via `build-manifest.mjs`/`download.mjs`/`download-icons.mjs`, hair/face via `fetch-henesys.mjs`/`add-styles.mjs`, skins, backdrop) only describe how the existing files were made; do not re-run them:
-- Wearables: `data/names.txt` -> `build-manifest.mjs` (also appends `data/mcw-wearables.json`, `collab-wearables.json`, `game-wearables.json`; entries may carry `region`, `classicId`, `collab`) -> `download.mjs` (sprites into `public/sprites/wearable/<id>`; retries, `DOWNLOAD_WORKERS` default 6) -> `download-icons.mjs`.
-- Hair/face: `fetch-henesys.mjs` (drives Chrome) -> `add-styles.mjs` (rebuilds every style in `data/items.json` from the salon list + MCW, applies `data/released.json`, appends `data/game-styles.json`, uses `data/art-sources.json` for styles MCW lacks) -> `download.mjs` (stores **every** colour of every style under `public/sprites/mcw/<kind>/<id>`; when MCW has only an icon it tries TWMS 256, JMS 444, GMS 270, TMS 209, SEA 220 and records `source` in `meta.json`).
-- Skins: `download-skins.mjs` + `place-skins.mjs` (locates each part inside the flattened render in `data/skin-renders/`).
-- Backdrop: `download-map.mjs` -> `public/maps/henesys.png` + `henesys.json` (`groundRow`, `footholdRow`, `centreX`).
+Steps (run what the change needs, then `build-catalog.mjs`):
 - Favicon: `make-favicon.mjs` (Orange Cat Beanie icon).
 - From the game files (need `WZ_DATA`): `extract-wearables.mjs cap`, `extract-styles.mjs <hair|face> <ids>`, `extract-rings.mjs`, `extract-dyeable.mjs` (-> `data/game-dye.json`), `extract-weapon-types.mjs` (-> `data/weapon-types.json`), `extract-upcoming.mjs` (-> `data/upcoming.json`, `public/sprites/upcoming/`), `extract-datamine.mjs [section ...]` (-> `data/datamine/<section>.json`, `public/sprites/datamine/<section>/`; both draw through `scripts/lib-draw.mjs`), `extract-weapon-hold.mjs <id> <class>`, `extract-poses.mjs` (about 3.5 min; re-run after adding wearables; -> `public/poses/`, `public/sprites/pose/`), `extract-housing.mjs` (-> `public/housing/`).
 
@@ -89,7 +82,7 @@ Hand-edited data:
 - **Undergarments:** `baseOf(sel)` draws the gender's starter top/bottom (`rules.baseBody` -> `catalog.base`) unless a top, bottom or overall covers them. They are not in `state.wear`, not in Top/Bottom lists, have no tile. Any `fresh()` used for a preview must copy `sex` and `skin`.
 - **Two-handed stance:** only weapons in `stand2Only` (Toy Rifle: no one-handed art) get `pose: 'stand2'` and switch the whole body to `parts2`.
   - Every other weapon stands one-handed, so there is no Hold choice: a cash weapon is drawn from the class of the weapon held, so the real hold varies.
-  - The Orange Toy Hammer's one-handed art was extracted from the game (class 30) by `extract-weapon-hold.mjs` (maplestory.io only had stand2).
+  - The Orange Toy Hammer's one-handed art was extracted from the game (class 30) by `extract-weapon-hold.mjs`.
 - **Crisp pixels:** sprite pixels are whole device pixels. Never CSS-scale canvases by non-whole factors.
   - `init()` redraws on `resize` **and** polls `devicePixelRatio` twice a second, because zoom and display changes often send no event.
   - The redraw must include `renderColour()`.
@@ -239,7 +232,8 @@ A tab shows a check (`.tick`) when something in it is worn (never on Look Book, 
 - `el()` filters only `null`/`undefined` children: write `cond ? el(...) : null`, never `cond && el(...)` (it prints "false").
 - `extract-styles.mjs` mangles "Übel" in `data/items.json`, and a re-run rewrites hair PNGs with identical pixels. Restore both from git afterwards so only real changes show. Game strings with U+FFFD are patched in the extractors.
 - Changing an item's id (e.g. moving it to its Classic id) silently drops it from looks saved under the old id.
-- Classic ids differ from GMS sprite ids for many items. **A Classic id identifies the style** (MCW art at that id), not the name: name matching picked the wrong art.
+- **A Classic id (the game's id) identifies a hair or face style**, not its name: several styles share a name, and matching by name picks the wrong art.
+- The game's own text damages the "ü" in the Frieren collab names ("Übel", "Lügner" come out garbled); the catalogue keeps the correct spelling.
 - Weapon art in the client is stored per weapon class (`Character/Weapon/0<id>.img/<class>/<anim>`). A cash weapon is drawn from the class of what is held.
 - `extract-upcoming.mjs` ignores items flagged `upcoming` when deciding what is already in the catalogue. `rules.upcomingExclude` keeps the Skull Overalls out on purpose.
 - A box `end` with no time must be written date-only (`"2026-11-18"`). Add the time once Nexon prints it (the Nov 4 crate's end is date-only).
